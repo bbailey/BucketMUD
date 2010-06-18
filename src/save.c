@@ -391,6 +391,10 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
                  npaf->modifier, npaf->location, npaf->bitvector );
     }
 
+#ifdef IMC
+    imc_savechar( ch, fp );
+#endif
+
     fprintf( fp, "End\n\n" );
     return;
 }
@@ -702,6 +706,11 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name )
     ch->pcdata->who_prefix = NULL;
     ch->pcdata->immcmdlist = NULL;
     ch->pcdata->faction_standings = NULL;
+
+#ifdef IMC
+    imc_initchar( ch );
+#endif
+
     found = FALSE;
     fclose( fpReserve );
 
@@ -1152,6 +1161,10 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "InvisLevel", ch->invis_level, fread_number( fp ) );
             KEY( "Invi", ch->invis_level, fread_number( fp ) );
             KEY( "Inca", ch->incarnations, fread_number( fp ) );
+#ifdef IMC
+            if( ( fMatch = imc_loadchar( ch, fp, word ) ) )
+                break;
+#endif
             break;
 
         case 'L':

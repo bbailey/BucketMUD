@@ -655,6 +655,10 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define AVATAR                  (MAX_LEVEL - 8)
 #define HERO                    LEVEL_HERO
 
+#ifdef IMC
+   #include "imc.h"
+#endif
+
 #define CLASS_MAGE              0
 #define CLASS_CLERIC            1
 #define CLASS_THIEF             2

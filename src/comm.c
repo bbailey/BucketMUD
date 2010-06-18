@@ -376,6 +376,10 @@ int main( int argc, char **argv )
 {
     struct timeval now_time = { 0, 0 };
 
+#ifdef IMC
+   int imcsocket = -1;
+#endif
+
     fCopyOver = FALSE;
 
     /*
@@ -445,6 +449,9 @@ int main( int argc, char **argv )
         {
             fCopyOver = TRUE;
             control = atoi( argv[3] );
+#ifdef IMC
+            imcsocket = atoi( argv[4] );
+#endif
         }
     }
 
@@ -461,6 +468,12 @@ int main( int argc, char **argv )
             return -1;
         }
     }
+
+#ifdef IMC
+    /* Initialize and connect to IMC2 */
+    imc_startup( FALSE, imcsocket, fCopyOver );
+#endif
+
     if ( boot_db(  ) )
     {
         log_string( "Error: boot_db(), shutting down." );
@@ -480,12 +493,18 @@ int main( int argc, char **argv )
 #else
         close( control );
 #endif
+#ifdef IMC
+        imc_shutdown( FALSE );
+#endif
         return -1;
     }
 #if defined (WIN32)
     closesocket( control );
 #else
     close( control );
+#endif
+#ifdef IMC
+    imc_shutdown( FALSE );
 #endif
 
     /*
@@ -857,6 +876,10 @@ int game_loop( int control )
                 d->incomm[0] = '\0';
             }
         }
+
+#ifdef IMC
+        imc_loop();
+#endif
 
         /*
          * Autonomous game motion.

@@ -695,6 +695,9 @@ struct pc_data {
     char *spouse;
     FACTIONPC_DATA *faction_standings;
     IMMCMD_TYPE *immcmdlist;
+#ifdef IMC
+    IMC_CHARDATA *imcchardata;
+#endif
 };
 
 /* Data for generating characters -- only used during generation */

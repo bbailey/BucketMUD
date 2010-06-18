@@ -279,7 +279,7 @@ void do_copyover( CHAR_DATA * ch, char *argument )
     char strPath[MAX_STRING_LENGTH];
     FILE *fp;
     DESCRIPTOR_DATA *d, *d_next;
-    char buf[100], buf2[100];
+    char buf[100], buf2[100], buf3[100];
     int close args( ( int fd ) );
     if ( IS_NPC( ch ) )
     {
@@ -344,6 +344,10 @@ void do_copyover( CHAR_DATA * ch, char *argument )
     fprintf( fp, "-1\n" );
     fclose( fp );
 
+#ifdef IMC
+   imc_hotboot();
+#endif
+
     /* Close reserve and other always-open files and release other resources */
 
     fclose( fpReserve );
@@ -352,7 +356,16 @@ void do_copyover( CHAR_DATA * ch, char *argument )
 
     sprintf( buf, "%d", port );
     sprintf( buf2, "%d", control );
-    execl( EXE_FILE, " ", buf, "EmberMUD", buf2, ( char * ) NULL );
+#ifdef IMC
+    if( this_imcmud )
+       snprintf( buf3, 100, "%d", this_imcmud->desc );
+    else
+       strncpy( buf3, "-1", 100 );
+#else
+    strncpy( buf3, "-1", 100 );
+#endif
+
+    execl( EXE_FILE, " ", buf, "EmberMUD", buf2, buf3, ( char * ) NULL );
 
     /* Failed - sucessful exec will not return */
 
@@ -2509,6 +2522,10 @@ void free_char( CHAR_DATA * ch )
         free_string( &ch->long_descr );
     if ( ch->description )
         free_string( &ch->description );
+
+#ifdef IMC
+    imc_freechardata( ch );
+#endif
 
     if ( ch->hate )
     {

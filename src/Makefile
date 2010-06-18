@@ -21,6 +21,14 @@ O_FILES = act_comm.o	act_info.o	act_move.o \
    	  ssm.o		string.o        todoolc.o \
   	  update.o	remort.o 
 
+## IMC2 support.
+IMC     = 1
+
+ifdef IMC
+   O_FILES := imc.o sha256.o $(O_FILES)
+   C_FLAGS := $(C_FLAGS) -DIMC -DIMCROM -DIMCEMBER
+endif
+
 all: ember
 
 ember: $(O_FILES)
