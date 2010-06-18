@@ -1,0 +1,132 @@
+1 1 cause light
+1 1 cure light
+1 6 axe
+1 3 dagger
+1 3 flail
+1 2 mace
+1 6 polearm
+1 4 shield block
+1 4 spear
+1 6 sword
+1 3 scrolls
+1 3 staves
+1 3 wands
+1 2 recall
+2 1 armor
+3 1 create water
+3 1 faerie fire
+3 50 hide
+4 1 continual light
+4 1 detect evil
+5 1 create food
+5 1 refresh
+6 1 cure blindness
+6 1 detect magic
+6 5 meditation
+7 1 bless
+7 1 cause serious
+7 1 cure serious
+7 1 detect poison
+8 1 blindness
+8 1 detect invis
+9 1 know alignment
+9 1 protection evil
+9 5 fast healing
+10 1 earthquake
+10 5 hand to hand
+10 6 lore
+11 1 detect hidden
+12 1 poison
+12 1 summon
+12 4 kick
+13 1 cause critical
+13 1 cure critical
+13 1 cure disease
+13 1 infravision
+14 1 cure poison
+14 1 weaken
+15 1 dispel evil
+15 1 locate object
+16 1 calm
+16 1 identify
+17 1 create spring
+17 1 gate
+17 1 plague
+17 1 vision
+18 1 call lightning
+18 1 curse
+18 1 fly
+18 1 remove curse
+18 8 haggle
+19 1 control weather
+19 1 giant strength
+19 1 web
+20 1 flamestrike
+20 1 sanctuary
+20 8 parry
+21 1 faerie fog
+21 1 heal
+21 7 peek
+22 1 energy drain
+22 1 teleport
+22 8 dodge
+23 1 harm
+23 1 lightning bolt
+24 1 dispel magic
+24 1 frenzy
+24 8 second attack
+25 1 mass invis
+25 1 regeneration
+25 8 pick lock
+26 1 cancellation
+28 1 word of recall
+29 1 haste
+30 9 enhanced damage
+30 3 brew
+32 1 pass door
+34 1 demonfire
+35 1 shield
+35 3 scribe
+36 2 holy word
+38 2 mass healing
+40 1 stone skin
+40 8 track
+45 1 restoration
+50 1 burning hands
+50 1 chain lightning
+50 1 charm person
+50 1 chill touch
+50 1 colour spray
+50 1 enchant armor
+50 1 enchant weapon
+50 1 fireball
+50 1 invis
+50 1 magic missile
+50 1 shocking grasp
+50 1 sleep
+50 1 ventriloquate
+50 1 acid breath
+50 1 fire breath
+50 1 frost breath
+50 1 gas breath
+50 1 lightning breath
+50 1 firewind
+50 1 meteor swarm
+50 1 multi missile
+50 1 disintegrate 
+50 1 ice ray
+50 1 holyfire
+50 1 ice storm
+50 1 whip
+50 1 backstab
+50 1 bash
+50 1 berserk
+50 1 dirt kicking
+50 1 disarm
+50 1 rescue
+50 1 trip
+50 1 third attack
+50 1 sneak
+50 1 steal
+50 1 acid blast
+-1

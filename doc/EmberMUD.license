@@ -1,0 +1,64 @@
+EmberMUD v0.9.46+ License
+-------------------------
+Revised: 07/14/98
+Revised: 04/09/02
+
+In compiling this code, you have agreed to the following restrictions on
+any operating version of EmberMUD code:
+
+1) You will follow all guidelines in the Diku license (contained in the
+   file old/license.diku)
+2) You will follow all guidelines in the Merc license (contained in the
+   file old/license.merc)
+3) You will follow all guidelines in the ROM license (contained in the
+   file old/license.rom)
+4) The login/greeting message for your mud must contain a notice that it
+   is based on EmberMUD code.  Optionally, you may also include the names
+   Zak, Zane, Thexder, Kyle, Lancelight, and/or Dorzak there or in other 
+   credits.
+5) help ember and help embermud cannot be altered, and must always display
+   the help text shipped with the mud.
+6) You will attempt to contact Zak of the EmberMUD coding team (e-mail
+   address and web page are listed at the end of this document) before
+   you open your MUD and notify him of your name and email address (or
+   other contact information).  Including the address of your MUD is 
+   optional (although we'd love to see what you're doing with our code!)
+
+EmberMUD is a modified form of the ROM 2.3 mud code.  These modifications,
+in total, are copyright 2002 by Kevin Williams.  Many of the individual 
+modifications have been written by other contributors to the MUD 
+community (too many names to mention here - however they have been 
+thanked in the Changelog and in the code itself where possible).
+
+The name EmberMUD remains the exclusive copyright of Kevin Williams (Zak).
+This includes the sole right to release future versions of EmberMUD source
+code, and the title EmberMUD as pertains to a mud.  As a coder, you have
+full rights to release your own derivatives of the EmberMUD code, provided
+they follow the restrictions of this license, contain all README and license
+files included in the base EmberMUD distribution you are using, and are
+properly labelled as being derivatives of the EmberMUD code (just as
+EmberMUD is a derivative of ROM 2.3 code and Merc 2.1 code).
+
+If you do not follow these license terms, we will ask you to comply.  If that
+doesn't work, then we will talk to your system administrators (not about your
+running a mud, but on the grounds that you're using our copyrighted software
+without permission).
+
+These are very generous terms for any software.  If you don't want to accept
+them, feel free to run some other software, or write your own.
+
+If you have any questions about this license, please send email to a member
+of our development team.  The contact information is as follows:
+
+Kevin Williams  - Zak     - zak@embermud.org
+Ej Wilburn      - Zane    - zane@embermud.org
+Nathan Cookson  - Dorzak  - dorzak@embermud.org
+
+Also, you may wish to contact Russ Taylor, author of the ROM code that
+EmberMUD is based on.  His email address is: rtaylor@cie-2.uoregon.edu.
+
+The Official EmberMUD homepage is currently located at:
+    http://www.embermud.org
+    
+Please visit the homepage for the most recent version of EmberMUD and any
+updates, code snippits, etc that may be available.

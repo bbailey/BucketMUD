@@ -1,0 +1,209 @@
+EmberMUD v0.9.44 Faction Documentation
+7/14/2000 by Kevin Williams (zak@embermud.org)
+
+The factions system is first being distributed in EmberMUD v0.9.44.  This
+documentation is being written for that release.  In all likelihood, changes
+will be made to the factions system post-0.9.44 and we'll forget to update
+this document.  You have been warned. <smile>
+
+What IS the factions system?
+----------------------------
+How many times have I answered that question in the last few weeks? <grin>
+The best answer seems to be that it's a very complex alignment system.  Any
+mobile may be a member of one or more factions.  Your standing with these 
+factions will affect how the mobile interacts with you.  If the mobile is a
+shopkeeper, he may charge you more for items if you are in poor standing with
+one of his factions.  If the mobile is a city guard, he may not allow you to
+enter his city if he doesn't like you.  A particular quest mob may give you
+a nicer quest item if he likes you more.
+
+Why do I want to use the factions system?
+-----------------------------------------
+Well, to add more flavor to your MUD, of course!  The complex situations
+caused by factions can entertain (as well as frustrate) players on your MUD
+perhaps more than anything else available to you.  Imagine a player that
+kills a high ranking official in a certain city in order to get a really
+cool piece of equipment.  The city now hates him and if he comes near it,
+he is mobbed by cityguards seeking revenge.  Maybe the city is enemies with
+a nearby city.  In order to set things straight with the first city, the
+player must head into the second city, kill someone, and bring proof of the
+kill back - thereby increasing faction with the first city (and of course,
+lowering it with the second).  You can see where a very complex system could
+come about here...
+
+So, how does it really work?
+----------------------------
+Basically, a given mob has a list of faction affects associated with it.
+These faction affects are applied to any player that kills that mob.
+Additionally, factions can be affected by MUDProgs (so that things like quests
+to raise factions work) and can be checked by MUDProgs (so that mobs can
+spit on you when you walk in the room if they dislike you).
+
+Where do I start?
+-----------------
+PLANNING.  As I have said, factions can get extremely complicated.  It's best
+to have a good plan before you begin.  Try to make it very difficult (if not
+impossible) for a player to be hated by every mobile in the game at the same
+time.  For every mobile that lowers a given faction standing, be sure you
+plan a mobile that raises that same standing (even if by only a little bit).
+In fact, most faction decreases should be directly coupled with a faction
+increase.  A good example of this:
+
+  A group of orcs are camped right outside the gates of some city.  When you
+  kill these orcs, it will lower your faction standing with them.  However,
+  it will also increase your faction standing with the city (which doesn't
+  like having them hanging out so nearby).
+
+First thing to do is to define the various groups on your MUD.  The first
+and probably easiest ones are the different intelligent races.  Dark Elves,
+Dwarves, Humans, High Elves, Gnomes, etc are examples.  Next, groups of
+enemies...  A clan of orcs, a group of gnolls, etc - basically any group
+that would remember your deeds and would hate you for them.  Next, groups of
+"friendlies"...  The clerics of Midgaard, the druid protectors of the forest,
+the citizens of Thalos, etc - any group that might be either alarmed at or
+impressed by some action the player might take.  Lastly, any other stray
+groups that have been missed up until now (Sorry, can't think of an example).
+Note, of course, that a given mobile may be members of multiple factions 
+(although I wouldn't recommend stacking too many factions on a single mobile).
+
+Now, each of these groups will define a faction.  Each faction will need three
+things...  A name, an increase message (displayed to players when they have
+done something that the faction likes), and a decrease message (displayed when
+a player does something that the faction dislikes).
+
+Next - define inter-relationships between the groups.  Are the humans friends
+with the dwarves?  Do the high elves hate the dark elves?  Do the humans hate
+the orcs?  These relationships will help you to decide what faction affects
+to assign mobile members of each faction.  For instance, if the humans are
+friends with the dwarves, killing dwarves will lower dwarf faction a lot and
+lower human faction some too.  But, if there is a group of evil dwarves
+somewhere plotting to do away with the other dwarves, your actions may increase
+faction standing with their group at the same time.
+
+Once you have defined the relationships, it is time to decide how MUCH faction
+standings will be affected by certain actions.  This part can be a bit touchy
+and will almost certainly have to be adjusted post-implementation.  Try to get
+close now and it'll save you some work later.  Keep in mind that by default,
+EmberMUD's minimum and maximum faction standings are set to -1000 and 1000
+(these parameters can be changed in config.h however).  If you want something
+to be a major crime against a certain faction, have it decrease the player's
+faction by a large amount (say 750).  If you want something to make the player
+a hero to a certain faction (for instance, slaying a dragon may make the 
+citizens of a nearby town love you), have the faction increase by a large 
+amount (maybe 500 or so).  Also, don't forget the little things!  Killing
+the rats that pollute the streets may raise your faction with the town by a
+small amount (maybe just 1 or 2 points).
+
+How is it done?
+---------------
+Well, OLC of course!  <smile>  Oh, you need to know the actual commands, don't
+you. <grin>
+
+  edit faction create
+
+This command will create a new faction and place you in the factions OLC editor.
+As with any other OLC editor, just hit ENTER to view the current values for
+the various variables.  There are commands (type commands for the list) to
+change the name, increase message, and decrease message for the faction.  Also
+note the faction's vnum (you cannot change this).  Faction vnums are unique
+across the whole MUD (like clan vnums) and are auto-assigned by the MUD.  You
+will be referencing your faction by number in most other commands.
+
+Example:
+
+   > edit faction create
+  Faction Created.
+
+   > 
+  VNum:             [1    ]
+  Name:             Unnamed
+  Increase Message: Your unnamed faction has increased
+  Decrease Message: Your unnamed faction has decreased
+
+   > name Midgaard's Finest
+  Faction name set.
+
+   > increase Midgaard's Finest are impressed by your actions!
+  Faction increase message set.
+
+   > decrease Midgaard's Finest will not be pleased!
+  Faction decrease message set.
+
+   > done
+
+Once you've created a faction, you can edit it by typing 'edit faction #' where
+# is the number of the faction you want to edit.  Can't remember your faction's
+number?  Use the vnum command, like this:
+
+   > vnum faction all
+  vnum  name
+  ---------------------------
+      1 Midgaard's Finest
+      2 Clan EmberMUD
+
+After a faction has been created, you'll want to assign it to a mobile.  How?
+Well, bring up the mobile in question in the OLC editor, like this:
+
+   > edit mob 1234
+   
+There is a new command in the mob editor...  'faction'.  Type it to see the
+syntax:
+
+   > faction
+   Syntax:
+     faction add <vnum> <change>
+     faction delete <vnum>
+
+This command is used to add or remove factions to be affected when this
+mobile is killed.  For instance, if you want this mob's death to cause a
+player's faction #1 to go down 100 points, type this:
+
+   > faction add 1 -100
+   
+If you want a player's faction #2 to also go up 10 points, type this:
+
+   > faction add 2 10
+   
+If you change your mind and decide you don't want faction 2 to go up
+after all, you can do this:
+
+   > faction delete 2
+
+What else?
+----------
+Okay, there are a few other commands that you and your players will want
+to know about.  They are:
+
+  > factions
+  
+This is a mortal command that lists their current faction standings.
+
+  > set char <name> faction <vnum> <value>
+
+An imm command to set player <name>'s faction #<vnum> to value <value>.
+
+What about MUDProgs?
+--------------------
+MUDProgs can change a player's faction with the mpchangefaction command.
+
+  mpchangefaction <name> <vnum> <amount>
+
+This will affect player <name>'s faction #<vnum> by <amount>.  Example:
+
+  mpchangefaction $n 3 -200
+
+That would decrease the person that triggered the prog's faction #3 by
+200 points.
+
+There is also a new ifcheck for progs to check a player's faction
+standing.  Example:
+
+  > entry_prog 100~
+  if ( faction( $n, 2 ) < -500 )
+    spit $n
+    break
+  endif
+  break
+
+That would spit on anyone entering the room that has faction #2 less
+than -500.

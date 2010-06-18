@@ -1,0 +1,241 @@
+Clan Documentation v1.0 7/14/98
+by Kyle Boyd
+
+
+
+Introduction
+
+	This document is a guide to using the clan system included with official
+EmberMUD releases.  This system was desinged and coded by me, Kyle Boyd, for
+my EmberMUD, MUDweiser, and was later modified slightly to install it in the
+EmberMUD releases.  This clan code used the existing OLC system standard to
+EmberMUD and many other Merc-derived bases.  Most of the clan code is in the
+clan.c file, with the clan data being stored in the clans.are file in the area
+directory.  If the following document does not answer whatever questions you
+have, you may e-mail me at boyd1@proaxis.com.  After 9/23/98 or so I will be
+attenting Oregon State university, so my e-mail address will likely change
+then, but until I post a new address any mail sent to boyd1@proaxis.com will
+likely be forwarded to my new address and will reach me that way.
+	I'm pretty sure I have some bugs left in this code.  PLEASE PLEASE let
+me know if you fix one, so I can fix it on official releases.
+
+General information about this clan system
+
+This clan system has a few fundamental concepts that are not immediately obvious
+to the new EmberMUD implementor.  One of the most important of these is the
+availability of private and secret clans.  Due to the fact that a player's clan
+is stored as a number, the true numbers of clans should not be released to anyone
+who is involved in them in any way, as this would defeat the purpose of "secret"
+clans.  Thus the code as it is written only allows implementors to know the true
+numbers of clans.  While this may be constricting to some, it is the only realistic
+way to preserve the concealment of secret clans.  
+	In addition, there is no way to remove a clan.  This was done on purpose
+to avoid problems involved with creating clans with the same number.  For instance,
+let's say a player logs on and joins clan #1.  This player then plays for a
+month then leaves for a while.  When he comes back, he discovers that clan #1
+was removed, and a new clan #1 was formed and now he is a member of a completely
+different clan.  To prevent these sort of problems, each clan has is assigned one
+of 5 statuses.  These are creating, active, inactive, disbanding, and dead.  The
+creating stage should not last long... it is for the period of time that OLC is
+being used to define the clan.  The active stage is where most clans will be...
+active just stands for "actively recruiting".  The inactive stage does not mean
+the clan is inactive, it just means the clan is not looking for any more members.
+The "disbanding" stage indicates that the clan will be gone soon and its members
+should resign and look for a new clan to join.  When the clan is dead, gone, and
+forgotten, in the "dead" stage, any remaining members should be forced to resign.
+	Each clan has 5 ranks.  This number can be changed by a coder (see the "For
+coders only" section below) but 5 is the default number.  There are also two
+positions that should be filled before starting the clan, the leader and the
+sponsor.  It should be emphasized to clan leaders that promotions should be
+given for doing something for the clan, just so all ranks get used.  Implementors
+can promote anyone to any rank, this will be explained in the "creating a clan"
+section below.  In order to promote anybody, the promoter must be at least rank
+2 (the ranks are 1=highest 5=lowest 0=not in a clan).  A rank 2 member can
+promote people up to rank 3, and a rank 1 person can promote people up to rank 2.
+Only the clan leader can promote someone to rank 1.
+	A note on the involvement of gods in the creation and playing of clans:
+this clan code was written with the possibility thta one day a mud might wish to
+have "clan wars" or some sort of feud between rival clans.  It is intended that
+all the IMPs are to remain neutral, due to their ability to do almost anything.
+The god sponsor of each clan should be primarily responsible for building clan
+rooms, mobs, and equipment for their clan, and acting as a sort of "go-between"
+to carry messages form the IMPs to clan members in the event of "clan wars".
+Gods not sponsoring clans should be discouraged from joining them to avoid
+unbalancing the different clans, but this is not restricted by the code in any way.  
+
+Creating a clan
+
+	Eventually, a player will come to you and ask for permission to start a clan.
+In order to insure that your mud doesn't end up with 49 clans averaging 3 members
+each you should probably estblish some guidelines regarding who can be able to start
+up a clan and what it costs to do so, etc.  I'll leave that up to you.  You should
+probably transfer yourself and the player starting the clan to a private room to
+assemble the clan interrupted.  The first thing you should do is type "edit clan
+create".  This will create a clan with blank values.  This command is not
+reversable so extreme care should be taken when typing it.  If you recieve the
+error "Limit on clans has been reached" that means you have reached the limit on
+clans allowed by the code and you need to raise MAX_CLAN in merc.h.  When you press
+enter or type "show" you should see a list of information listing the current values
+of the clan, just like editing a mob in OLC.  It should look something like this:
+Name:     [Unnamed]
+Number:   [ 1]
+Leader:   [        None]
+Sponsor:  [        None]
+Whoname:  []
+Maximum members: 30
+Minimum level: 15
+Clan recall: 3001
+Cost to join: 0
+Rank 1:[                          None]
+Rank 2:[                          None]
+Rank 3:[                          None]
+Rank 4:[                          None]
+Rank 5:[                          None]
+Clan flags: [creating]
+Join flags: []
+
+Most of these areas are self evident.  I'll clarify a few that I haven't gone over
+yet.  The "whoname" is what will appear before a character's name when the "who"
+command is typed.  If you want nothing to appear, leave this blank.  It may be
+necessary to put a space after the whoname to avoid having a character's name and
+clan name run together.  The max members field can be lowered, but to be raised
+MAX_CLAN_MEMBERS needs to be raised in merc.h.  Clan recall is the vnum of the
+room that the "crecall" command will transport clan members to.  Cost to join is
+the amount of gold pieces is will take in order to join this clan.  The clan flags
+section shows the status of the clan, as well as whether or no the clan is set to
+auto-accept new members, and whether it's private or secret(I'll explain the public
+and secret stuff later).  Join flags show the requirements to join this clan.  Type
+"? joinflags" to see a list... the list should be self-explanatory.  
+	Next you'll need to add the leader of the clan and promote him/her.  Type
+"clan set # member name" where # is the clan number and name is the name of who
+you are adding.  This is the "override" adding command.  It will add anyone regardless
+of any restrictions, unless they are alreay in a clan.  The final step to to get
+the clan out of the creating stage.  To do this, type "clan set # status active".
+The clan is now complete.  Type "done" to exit edit mode.  The clan file saves
+automatically when edited and when a member is added, so there is no command to save
+the clans file.
+
+Clan commands for mortals
+
+	At the time I wrote this, I have not included any help files for the various
+clan commands.  Until then this will do.  The following is a list of the clan commands
+for mortals and a short description of what they do:
+
+offer: offers membership in your clan to someone
+petition: petitions someone to join their clan
+accept: accepts an offer or petition
+decline: refuses an offer or petition
+show: shows a list of the public clans
+join: join a clan (if it autoaccepts members)
+promote: raise someone's rank in your clan
+demote: lower someone's rank in you clan
+clantalk: like gossip, but only sends message to online members of clans
+resign: type this twice to leave your clan
+
+The IMP clan command
+
+	Aside from the OLC, there's only one clan command for IMPs.  That command is
+called (surprise) "clan".  It does everything that IMPs should need to do to clans
+outside of OLC.  Here's a brief list of the different syntaxes for the "clan" command,
+with the # being the number of the pertinent clan:
+
+clan list: show a list of all clans, with their real numbers
+clan view #: show a deteailed description of clan #
+clan set # status <status>: set clan #'s status to <status>
+clan set # member <player>: add <player> to clan #
+clan snoop: Snoop the clantalk command. (toggle)
+clan bank # deposit <amount>: deposit <amount> in clan #'s fund
+clan bank # withdraw <amount>: withdraw <amount> from clan #'s fund
+
+	I don't believe I covered the clan fund yet.  It's where all the money
+goes if there's a required cost to join the clan.  It can be given to the leader
+of the clan or used for some other purpose, such as the for buying clan equipment
+of a clan hall or some such... individual IMPs should decide what to do with it.
+
+The clan logs
+
+	There is a directory set aside for clan logs outside of the normal log directory,
+called "clan".  In this directory there will be some files with names that look like
+"1.01-31-99" (assuming you have some clans :).  This example would be the log for
+what happened regarding clan 1 on Janurary 31st, 1999.  Later I or some other EmberMUD
+coder may code something in where imps, clan leaders, and/or clan sponsors can read
+these files while logged on.  For now someone with shell access must read them like
+normal logs.  These log files are intended to provide records to avoid unneeded problems.
+("Who let John into this clan and then promoted him to second in command without my
+approval?" "Not me." "Not me!" "I didn't do it." etc. )
+
+Clan-only rooms, objects, and mobs
+
+	Currently only objects have a restriction which limits them to only one clan.
+To set an object to a certain clan, enter edit object mode for the desired object and
+then type "oclan #" where # is the real number of that clan.  Only IMPs have access
+to this part of object editing... necessary to preserve the existance of sercet clans.
+Rooms may be made somewhat clan-only.  If you make the clan recall room enter into an
+area with no exits to the rest of the mud world then entrance is effectively blocked
+to non-clan members.  As for mobs, a coder can write a spec program to guard the
+clan-only rooms.
+
+The three types of clans
+
+	I made this clan system have 3 types of clans available to it: public, private,
+and secret.  Pulbic is the default: unless a clan is set to something else it will be
+public.  Public clans are acknowledged to exist and anyone who types "who" will see
+them.  Private clans are acknowledged to exist but only members and IMPs can see their
+clan whonames in the "who" listing.  When an IMP sees a private clan, it has a (P)
+before it to remind that IMP that the clan is private and most people cannot see it. 
+Secret clans are not acknowledged to exist at all.  The "show" command will not reveal
+their existance.  Members of secret clans should use the "clantalk" command to find out
+who else is in their clan, because only certain higher ranking people in the clan can
+see other clan members on the "who" list.  IMPs can see all members of secret clans,
+but they are prefixed with a (S) as a reminder that the clan is a secret one.  If you
+have any problems with private or secret clans I reccomend that you just use normal
+ones, but e-mail me with the problem.  
+
+For coders only
+
+	This section willl describe to coders (experienced ones!) some of the changes
+they can make.  If you're not a coder or not going to change the clan code you may
+stop right here.  Still here? Good.
+	There are some changes you'll need to make when the rest of the mud changes.
+For instance, if you add a new class, you'll need to add new anti-flags for that
+class to the joinflags.  You'll need to edit the clan_join_flags[] table in bit.c
+, as well as the can_ch_join function and the do_offer functions.  
+	There are also some features partially programmed in, but not finished yet.
+Take a look at the clan_data structure.  You may notice that many of its members
+are unused, such as kills, deaths, command, and skill.  These are for feature I
+meant to implement but never got around to.  The kills and deaths are arrays that
+were supposed to show the pk deaths and kills versus the other clans on the mud.
+It can be set up to report any form of pking, or set up to only to record the
+outcome of special duels between tow rival members.  However you with to code it,
+go ahead.  I may release it as a snippet later, but don't hold your breath waiting.
+The command and skill members of the structure were supposed to be so you could
+designate clan-only skills and/or commands.  You could make a special command or
+skill and use those fields to designate it.  You can probably remove these two
+members of the structure and not have it affect gameplay at all.
+	If you add something new to the sturcture, you'll probably need to save it.
+There's a handy way I've devised for saving the ranks and the names of members in
+a clan.  If you look in clan.c you'll see the load_clans() function, of which I've
+pasted a small part here:
+
+for( ; done == FALSE ; )
+{
+switch( fread_letter( fp ) )
+{
+	default: bug("Bad letter in clans.are", 0); 
+	break;
+	case 'M':
+		i = fread_number( fp );
+		GETSTR( clan->members[i-1] );
+
+
+After this switch statement, it checks for a letter, then matches it up with what
+it should load.  So if you modify the save_clans function to save your new data
+starting with a letter, then adding that letter as one of the cases under this
+switch statement, your new addidtion should save just fine.
+
+Conclusion
+
+	I've probably left some stuff out.  If I have please e-mail me and tell me. 
+Any feedback on this code is also appreciated!  Thank you for using EmberMUD.
+
+		Kyle Boyd

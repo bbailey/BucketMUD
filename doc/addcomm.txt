@@ -1,0 +1,142 @@
+
+                   Adding Commands to an EmberMUD (v1.0)
+                       (For EmberMUD .029 and .029b)
+                                by Ron Cole
+
+
+(Some snippets borrowed from the EmberMUD codebase, which is based on 
+ROM 2.3, which is based on MERC, which is based on DIKU. )
+
+
+Step #1: Plan the command.
+        The first step in command creation is to plan out exactly 
+ what command you wish to add.  Here are some questions you might 
+ want to have answered before going any further:
+ 
+
+   What will this command do?  
+   
+   Is there another command that already does this?
+
+   Will this command be used in combat?
+
+   What skills will help in the execution of this command?
+
+   What stats will help in the execution of this command?
+
+   What level should one have to be before they can use this 
+   command?  Every?  High level?
+
+   Can this command be done in every room type, or just one?
+
+   Do I have to have a special object in order to execute 
+   my command?
+
+   What races can use this command?  
+
+   Are any special body parts needed to execute this command?
+
+
+Step 2: Write and add the function the command will execute.
+        This is the most important part of the command, yet also 
+ the part which this document gives the least help on.  You must 
+ decide WHAT your command does, and then code it as a function. 
+ For help on the programming part, look at other functions in the
+ code and buy a really good C programming book.  Once you have 
+ written your function, simply place it into the most appropriate
+ *.c file.  It is not necessary to declare the function in the 
+ header of most *.c files.  Note that most functions start with 
+ a do_ if the have the same name as the command.  For instance,
+ the command NORTH calls the function do_north.
+
+
+Step 3: Add the appropriate line of code in interp.c.
+        You must add the appropriate line of code to the command 
+ table in interp.c.  Here is an example of the command table:
+
+    { "name",   function,   position,     trust,    logging,    show },
+ 
+
+ What it means...
+    
+    name: What someone will type in to execute the command.
+
+    function: The name of the function that will be called.  It
+    should probably start with a do_.
+
+    position: What position (SLEEPING, STANDING, etc..) the character
+    must be in or beyond in order to execute the command.
+
+    trust: The trust level someone must have in order to execute the
+    command.  If you want to have IMM only commands, this is where
+    you do it.
+
+    Logging: Does this command get logged when you execute it? 
+
+
+        Now, plug the values that you want into the structure, and 
+    then add it to the table.  For help with what positions and log
+    options you have, see the appendix at the end of this document.
+    Below are two examples of commands within the command table:
+
+    
+    { "north",          do_north,       POS_STANDING,    0,  LOG_NEVER, 0 },
+    { "east",           do_east,        POS_STANDING,    0,  LOG_NEVER, 0 },
+
+
+Step 4: Add the appropriate line of code in interp.h.
+        Find the declarations in interp.h, and add the name of your 
+ function to it.  Here are two examples:
+
+DECLARE_DO_FUN( do_advance      );
+DECLARE_DO_FUN( do_afk          );
+
+
+Step 5: Adding help files.
+        You will need to add a help file for your command, as well 
+ as altering any other appropriate help files ( if you added a new  
+ channel, for instance, you would also need to modify the gossip 
+ help).  These files can be found in help.are within the area directory.
+
+
+- Appendixes -  (Most of which can be found in interp.h)
+
+  
+  Log List:  
+        LOG_NORMAL      Only logs when someone is being logged.
+        LOG_ALWAYS      Logs who executed the function every time.
+        LOG_NEVER       The function is not logged.
+  
+
+Position List:
+        POS_DEAD                      0
+        POS_MORTAL                    1
+        POS_INCAP                     2
+        POS_STUNNED                   3
+        POS_SLEEPING                  4
+        POS_RESTING                   5
+        POS_SITTING                   6
+        POS_FIGHTING                  7
+        POS_STANDING                  8
+
+
+  Trust List:
+        ML      MAX_LEVEL       /* implementor */
+        L1      MAX_LEVEL - 1   /* creator */
+        L2      MAX_LEVEL - 2   /* supreme being */
+        L3      MAX_LEVEL - 3   /* deity */
+        L4      MAX_LEVEL - 4   /* god */
+        L5      MAX_LEVEL - 5   /* immortal */
+        L6      MAX_LEVEL - 6   /* demigod */
+        L7      MAX_LEVEL - 7   /* angel */
+        L8      MAX_LEVEL - 8   /* avatar */
+        IM      LEVEL_IMMORTAL  /* angel */
+        HE      LEVEL_HERO      /* hero */
+        0       Anyone can use the command.
+
+
+ Did I miss anything?  If so, feel free to e-mail me with your comments
+ and suggestions at clogar@concentric.net.
+
+                                  - END -
+

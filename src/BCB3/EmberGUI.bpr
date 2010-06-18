@@ -1,0 +1,140 @@
+# ---------------------------------------------------------------------------
+VERSION = BCB.03
+# ---------------------------------------------------------------------------
+!ifndef BCB
+BCB = $(MAKEDIR)\..
+!endif
+# ---------------------------------------------------------------------------
+PROJECT = EmberGUI.exe
+OBJFILES = obj\EmberGUI.obj obj\EmberForm.obj obj\EmberThread.obj obj\EmberDialog.obj \
+  obj\update.obj obj\act_info.obj obj\act_move.obj obj\act_obj.obj \
+  obj\act_wiz.obj obj\bit.obj obj\board.obj obj\clan.obj obj\comm.obj \
+  obj\const.obj obj\db.obj obj\fight.obj obj\handler.obj obj\interp.obj \
+  obj\magic.obj obj\mem.obj obj\mob_commands.obj obj\mob_prog.obj obj\olc.obj \
+  obj\olc_act.obj obj\olc_save.obj obj\random.obj obj\save.obj obj\skills.obj \
+  obj\special.obj obj\string.obj obj\act_comm.obj obj\win32util.obj \
+  obj\crypt_util.obj
+RESFILES = EmberGUI.res
+RESDEPEN = $(RESFILES) EmberForm.dfm EmberDialog.dfm
+LIBFILES =
+LIBRARIES = vcldbx35.lib vcldb35.lib vclx35.lib vcl35.lib
+SPARELIBS = vcl35.lib vclx35.lib vcldb35.lib vcldbx35.lib
+PACKAGES = vclx35.bpi VCL35.bpi vcldb35.bpi teeui35.bpi teedb35.bpi tee35.bpi dss35.bpi \
+  NMFast35.bpi inetdb35.bpi inet35.bpi
+PATHASM = .;
+PATHCPP = .;..\..\SRC;..\Win32Common
+PATHPAS = .;
+PATHRC = .;
+DEBUGLIBPATH = $(BCB)\lib\debug
+RELEASELIBPATH = $(BCB)\lib\release
+DEFFILE =
+# ---------------------------------------------------------------------------
+CFLAG1 = -O2 -Hc -w- -Ve -k- -vi -c -b- -w-par -w-inl -Vx
+CFLAG2 = -Dcbuilder;WIN32 \
+  -I..\..\src;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\;..\Win32Common \
+  -H=$(BCB)\lib\vcl35.csm
+CFLAG3 = -ff -5
+PFLAGS = -AWinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE \
+  -Dcbuilder;WIN32 -N2.\obj -N0.\obj \
+  -U..\win32common;..\..\src;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -I..\..\src;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\;..\Win32Common \
+  -H -W -$V- -$L- -$D- -v -JPHNV -M
+RFLAGS = -Dcbuilder;WIN32 \
+  -i..\..\src;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\;..\Win32Common
+AFLAGS = /i..\..\src /i$(BCB)\projects /i$(BCB)\include /i$(BCB)\include\vcl /i..\ \
+  /i..\Win32Common /dcbuilder /dWIN32 /mx /w2 /zn
+LFLAGS = -L..\win32common;..\..\src;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -S:0x800000 -aa -Tpe -x
+IFLAGS =
+LINKER = ilink32
+# ---------------------------------------------------------------------------
+ALLOBJ = c0w32.obj sysinit.obj $(OBJFILES)
+ALLRES = $(RESFILES)
+ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib
+# ---------------------------------------------------------------------------
+.autodepend
+
+!ifdef IDEOPTIONS
+
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+FileVersion=1.0.0.0
+
+[HistoryLists\hlIncludePath]
+Count=3
+Item0=..\..\src;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\;..\Win32Common
+Item1=$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\;..\Win32Common
+Item2=$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=2
+Item0=..\win32common;..\..\src;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib
+Item1=$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlConditionals]
+Count=4
+Item0=cbuilder;WIN32
+Item1=cbuilder
+Item2=cbuilder;_RTLDLL
+Item3=cbuilder;_WINSOCK2API_
+
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE
+
+[HistoryLists\hlIntOutputDir]
+Count=1
+Item0=.\obj
+
+[HistoryLists\hlHostApplication]
+Count=1
+Item0=D:\ember\src\EmberGUI.exe
+
+[Debugging]
+DebugSourceDirs=
+
+[Parameters]
+RunParams=
+HostApplication=
+
+!endif
+
+$(PROJECT): $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(BCB)\BIN\$(LINKER) @&&!
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    ..\$(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES) 
+!
+
+.pas.hpp:
+    $(BCB)\BIN\dcc32 $(PFLAGS) { $** }
+
+.pas.obj:
+    $(BCB)\BIN\dcc32 $(PFLAGS) { $** }
+
+.cpp.obj:
+    $(BCB)\BIN\bcc32 $(CFLAG1) $(CFLAG2) -o$* $* 
+
+.c.obj:
+    $(BCB)\BIN\bcc32 $(CFLAG1) $(CFLAG2) -o$* $**
+
+.rc.res:
+    $(BCB)\BIN\brcc32 $(RFLAGS) $<
+#-----------------------------------------------------------------------------

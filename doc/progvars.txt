@@ -1,0 +1,52 @@
+
+Note, "formatted for display" means that if it's an NPC, the short description will be used.  
+If it's a PLAYER, the player's name (properly capitalized) will be used.
+
+  $a	a/an based on first character of $o
+  $A	a/an based on first character of $p
+
+  $b	the first of the names of a random NPC in the room
+  $B	the short description of a random NPC in the room
+
+  $c	the first of the names of a random character in the room
+  $C	the name of a random character in the room (formatted for display)
+
+  $i	the first of the names of the room/obj/mob the prog is on
+  $I	the short description of the room/obj/mob the prog is on
+  $j	he/she/it based on sex of the room/obj/mob the prog is on
+  $k	him/her/it based on sex of the room/obj/mob the prog is on
+  $l	his/her/its based on sex of the room/obj/mob the prog is on
+
+  $r	the first of the names of a random PLAYER in the room
+  $R	the name of a random PLAYER in the room (formatted for display)
+  $J	he/she/it based on sex of a random PLAYER in the room
+  $K	him/her/it based on sex of a random PLAYER in the room
+  $L	his/her/its based on sex of a random PLAYER in the room
+
+  $n	the first of the names of the character that triggered the prog
+  $N	the name of the character that triggered the prog (formatted for display)
+  $m	him/her/it based on the sex of character that triggered the prog
+  $s	his/her/its based on sex of character that triggered the prog
+  $e	he/she/it based on sex of character that triggered the prog
+
+  $t	the first of the names of the victim of the action that triggered the prog
+  $T	the name of the victim of the action that triggered the prog (formatted for display)
+  $M	him/her/it based on the sex of victim of the action that triggered the prog
+  $S	his/her/its based on sex of the victim of the action that triggered the prog
+  $E	he/she/it based on sex of victim of the action that triggered the prog
+
+  $o	the first of the names of the primary object (ie: A drops B)
+  $O	the short description of the primary object
+
+  $p	the first of the names of the secondary object (ie: A puts B into C)
+  $P	the short description of the secondary object
+
+  $x	the first of the names of the most evil character fighting the prog's owner
+  $X	the name of the most evil character fighting the prog's owner (formatted for display)
+
+These variables are only available inside command_progs.  "extra" words are whatever is
+typed after the trigger command.  For example, if there was a trigger command of 'pull'
+and a player typed 'pull right lever', $d would be 'right' and $D would be 'right lever'.
+
+  $d    the first "extra" word in the command.
+  $D    All of the "extra" words in the command.

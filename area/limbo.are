@@ -1,0 +1,312 @@
+#AREADATA
+Name        {None } Diku    Limbo~
+Builders    None~
+VNUMs       1 99
+Security    9
+End
+
+
+
+#MOBILES
+#1
+Puff~
+Puff~
+Puff the Fractal Dragon is here, contemplating a higher reality.
+~
+You see a fantastic, vaguely draconian-shaped mathematical pattern.  
+Even as you watch, though, the form reiterates itself in finer detail--
+with each passing moment, the shape becomes more complex and interesting.
+Almost, almost, you can discern the pattern...
+
+For all her fabulous appearance, though, Puff seems quite... addled.  As 
+the definition of her eyes increases, you realize that the Fractal Dragon 
+is obviously not paying much attention to the mortal world; she seems lost 
+in strange contemplations.
+
+~
+unique~
+A 0 1000 S
+26 5 
+100 0 0 0 5d10+550 26d5+100 4d6+3 32
+-15 -15 -15 -10
+MNc AB CD 0
+8 8 2 500
+DHZ ACDEFHJKPQUVX M 0
+#4
+SuperMob mprogs~
+SuperMob`w~
+SuperMob is here to save the day!`w
+~
+(null)~
+Human~
+ABGVd 0 0 S
+93 29 
+100 0 0 0 112d164+930 93d10+193 11d9+31 0
+-57 -57 -57 -23
+0 CD 0 0
+8 8 0 2325
+AHKMV ABCDEFGHIJKLMO L 0
+#10
+zak avatar~
+Zak's Avatar~
+Zak's Avatar stands here
+~
+This is Zak's Avatar.
+~
+Human~
+ABV 0 0 S
+60 0 
+100 0 0 0 1d1+1 1d1+1 1d1+1 0
+-25 -25 -25 -5
+0 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#0
+
+
+
+#OBJECTS
+#1
+dummy object~
+a dummy object~
+Dummy object si used for loading non-existent objects~
+unknown~
+0 0 0
+0 0 0 0 0
+0 0 0 P
+#2
+coin gold~
+a gold coin~
+One miserable gold coin.~
+unknown~
+20 0 A
+A 0 0 0 0
+0 1 0 P
+#3
+coins gold~
+%d gold coins~
+A pile of gold coins.~
+unknown~
+20 0 A
+0 0 0 0 0
+0 1 0 P
+#10
+corpse~
+corpse of %s~
+The corpse of %s is lying here.~
+unknown~
+23 0 A
+0 0 0 A 0
+0 100 0 D
+#11
+corpse~
+corpse of %s~
+The corpse of %s is lying here.~
+unknown~
+24 O A
+0 0 0 A 0
+0 100 0 D
+#12
+head~
+the head of %s~
+The severed head of %s is lying here.~
+unknown~
+13 0 A
+0 0 0 0 0
+0 5 0 D
+#13
+heart~
+the heart of %s~
+The torn-out heart of %s is lying here.~
+unknown~
+19 0 A
+E 0 0 0 0
+0 2 0 D
+#14
+arm~
+the arm of %s~
+The sliced-off arm of %s is lying here.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 5 0 D
+#15
+leg~
+the leg of %s~
+The sliced-off leg of %s is lying here.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 5 0 D
+#16
+guts entrails~
+the guts of %s~
+A steaming pile of %s's entrails is lying here.~
+unknown~
+19 0 A
+AC 0 0 A 0
+0 2 0 D
+#17
+brains brain~
+the brains of %s~
+The splattered brains of %s are lying here.~
+unknown~
+19 0 A
+BD 0 0 0 0
+0 2 0 D
+#20
+mushroom~
+a Magic Mushroom~
+A delicious magic mushroom is here.~
+unknown~
+19 0 A
+D 0 0 0 0
+0 1 10 P
+#21
+ball light~
+a bright ball of light~
+A bright ball of light shimmers in the air.~
+unknown~
+1 A A
+0 0 999 0 0
+0 0 0 P
+#22
+spring~
+a magical spring~
+A magical spring flows from the ground here.~
+unknown~
+25 G 0
+FHJKPQ FHJKPQ 0 0 0
+0 0 0 P
+#30
+random armor~
+this is the vnums for random armor.~
+This obj is the vnum for random armor.~
+unknown~
+9 0 A
+0 0 0 0 0
+0 10 0 P
+#31
+random ring~
+a random ring vnum~
+A vnum for a random ring~
+unknown~
+9 0 AB
+0 0 0 0 0
+0 2 0 P
+#32
+random light~
+a random light vnum~
+A random light vnum~
+unknown~
+1 0 AO
+0 0 999 0 0
+0 5 0 P
+#33
+random weapon~
+a random weapon vnum~
+A random weapon vnum.~
+unknown~
+5 0 AN
+0 0 0 0 0
+0 8 0 P
+#34
+random bag~
+a random bag vnum~
+A random bag vnum.~
+unknown~
+15 0 A
+0 0 0 0 0
+0 4 0 P
+#35
+random scroll~
+a random scroll~
+A random scroll~
+unknown~
+2 0 AO
+0 0 0 0 0
+0 2 0 P
+#36
+random wand~
+a random wand vnum,~
+A random wand vnum~
+unknown~
+3 0 AO
+0 0 0 0 0
+0 3 0 P
+#37
+random potion~
+a random potion vnum~
+A random potion vnum.~
+unknown~
+10 0 AO
+0 0 0 0 0
+0 3 0 P
+#0
+
+
+
+#ROOMS
+#1
+The Void~
+You are floating in nothing.
+~
+0 12 1
+S
+#2
+Limbo~
+You are floating in a formless void, detached from all sensation of physical
+matter, surrounded by swirling glowing light, which fades into the relative
+darkness around you without any trace of edges or shadow.
+   There is a "No Tipping" notice pinned to the darkness.
+~
+0 8 1
+D4
+(null)~
+~
+0 -1 3001
+S
+#4
+Phone Booth~
+Supermob's changing booth.
+~
+0 4 0
+S
+#10
+Zak's Room~
+This is Zak's room.
+~
+0 1048584 0
+D5
+(null)~
+~
+0 0 3001
+S
+#55
+~
+(null)~
+0 4 0
+S
+#0
+
+
+
+#RESETS
+M 0 1 0 2 Load Puff
+M 0 10 0 10 Load Zak's Avatar
+S
+
+
+
+#PROGS
+M 1 24 Puff Load to: Puff
+S
+
+
+
+#SHOPS
+0
+
+
+
+#$

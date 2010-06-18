@@ -1,0 +1,115 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Ember - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\TEMP\RSP939.tmp" with contents
+[
+/nologo /MLd /W3 /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\CVS\EmberMUD\src\helpolc.c"
+]
+Creating command line "cl.exe @C:\TEMP\RSP939.tmp" 
+Creating temporary file "C:\TEMP\RSP93A.tmp" with contents
+[
+ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /profile /map:"Debug/Ember.map" /debug /machine:I386 /out:"..\Ember.exe" 
+.\Debug\act_comm.obj
+.\Debug\act_info.obj
+.\Debug\act_move.obj
+.\Debug\act_obj.obj
+.\Debug\act_wiz.obj
+.\Debug\auction.obj
+.\Debug\ban.obj
+.\Debug\bank.obj
+.\Debug\bit.obj
+.\Debug\board.obj
+.\Debug\clan.obj
+.\Debug\class.obj
+.\Debug\comm.obj
+.\Debug\const.obj
+.\Debug\crypt_util.obj
+.\Debug\db.obj
+.\Debug\factions.obj
+.\Debug\fight.obj
+.\Debug\handler.obj
+.\Debug\interp.obj
+.\Debug\magic.obj
+.\Debug\marry.obj
+.\Debug\mem.obj
+.\Debug\mprog_commands.obj
+.\Debug\mprog_procs.obj
+.\Debug\mud_progs.obj
+.\Debug\olc.obj
+.\Debug\olc_act.obj
+.\Debug\olc_save.obj
+.\Debug\random.obj
+.\Debug\recycle.obj
+.\Debug\save.obj
+.\Debug\skills.obj
+.\Debug\ssm.obj
+.\Debug\string.obj
+.\Debug\update.obj
+.\Debug\win32util.obj
+.\Debug\socialolc.obj
+.\Debug\helpolc.obj
+]
+Creating command line "link.exe @C:\TEMP\RSP93A.tmp"
+<h3>Output Window</h3>
+Compiling...
+helpolc.c
+Linking...
+Creating temporary file "C:\TEMP\RSP93C.tmp" with contents
+[
+/nologo /o"Debug/Ember.bsc" 
+.\Debug\act_comm.sbr
+.\Debug\act_info.sbr
+.\Debug\act_move.sbr
+.\Debug\act_obj.sbr
+.\Debug\act_wiz.sbr
+.\Debug\auction.sbr
+.\Debug\ban.sbr
+.\Debug\bank.sbr
+.\Debug\bit.sbr
+.\Debug\board.sbr
+.\Debug\clan.sbr
+.\Debug\class.sbr
+.\Debug\comm.sbr
+.\Debug\const.sbr
+.\Debug\crypt_util.sbr
+.\Debug\db.sbr
+.\Debug\factions.sbr
+.\Debug\fight.sbr
+.\Debug\handler.sbr
+.\Debug\interp.sbr
+.\Debug\magic.sbr
+.\Debug\marry.sbr
+.\Debug\mem.sbr
+.\Debug\mprog_commands.sbr
+.\Debug\mprog_procs.sbr
+.\Debug\mud_progs.sbr
+.\Debug\olc.sbr
+.\Debug\olc_act.sbr
+.\Debug\olc_save.sbr
+.\Debug\random.sbr
+.\Debug\recycle.sbr
+.\Debug\save.sbr
+.\Debug\skills.sbr
+.\Debug\ssm.sbr
+.\Debug\string.sbr
+.\Debug\update.sbr
+.\Debug\win32util.sbr
+.\Debug\socialolc.sbr
+.\Debug\helpolc.sbr]
+Creating command line "bscmake.exe @C:\TEMP\RSP93C.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+Ember.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

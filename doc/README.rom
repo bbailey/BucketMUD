@@ -1,0 +1,22 @@
+This is the ROM 2.3 version of Merc 2.1 base code. Please read the file in
+/Rom2/doc called rom.license before using this program.
+
+Some notes about ROM code:
+
+The file rom.credits contains some contributions to the code.
+
+This directory contains four maps to the sewers (by Ezra) which have not yet
+been added. Feel free to finish the process.
+
+The shield block and lore skills are not completed at this time, nor are 
+material types.
+
+The race table (in const.c) can be expanded at will to add new races
+
+The src/new directory contains work in progress on ROM, it may be worth
+looking at if you wish to expand the code.
+
+If you have any questions, feel free to bug me at rtaylor@cie-2.uoregon.edu.
+(ROM 2.4 is in the works, if that's your question)
+
+Alander 

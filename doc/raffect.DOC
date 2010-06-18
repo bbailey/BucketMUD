@@ -1,0 +1,75 @@
+Using raffects (Room Affects)
+-----------------------------
+[ note: I do NOT recommend using room affects.  They are buggy, they are    ]
+[       incomplete, and most of all, they are doomed.  I will probably be   ]
+[       eliminating them in the future (nothing is for sure, however). -Zak ]
+       
+There is currently only one type of raffect available, and that is the damage
+room affect.  It causes rafdam_type of damage to a player.  Here is the
+syntax for the raffect wiz command.  The raffect command always operates on
+the affects for the room the character is currently in.
+
+raffect create <raffect_type>
+
+Where raffect_type is the word damage (the only raffect type currently
+available).  A damage type room affect does damage to players in the room 
+from time to time (the time is configurable - see below).
+
+raffect list
+
+This one is pretty self-explanatory.  It will display a list of all of the
+room affects in the current room.
+
+raffect show <num>
+
+This will show details about room affect number <num>.  You can get the
+number from the raffect list command.
+
+raffect kill <num>
+
+This will delete room affect number <num> from the current room.
+
+raffect set <num> <field> <value>
+
+This command is used to configure a room affect.  <num> is the number as
+shown in raffect list.  <field> is one of the following: type, damname,
+roommsg, victmsg, timer, v0, v1, v2, v3, or v4.  <value> is the value
+to assign to that particular field.
+
+damname is the name of the damage to use in death messages (ie: Zak was
+killed by <damname>).
+
+roommsg and victmsg are the messages seen by the room around the victim and
+the victim themselves.  All of the usual act() variables (such as %n for
+the vict's name, etc) can be included.
+
+For the purposes of a damage room affect, timer is currently ignored (except
+for 0 -- if timer is 0, the room affect won't happen at all).
+
+For damage type affects, v0 is the type of damage to inflict.  The
+possibilities are: bash, pierce, slash, fire, cold, lightning, acid, 
+poison, negative (give health), holy, energy, mental, disease, drowning,
+light, other, or harm.  These parallel the damage types for weapons
+(and work the same way).
+
+v1 is the minimum damage to take/give.  v2 is the maximum damage to take/give.
+A random number between v1 and v2 will be chosen.
+
+v3 and v4 are currently ignored.
+
+EXAMPLE
+-------
+raffect create damage
+raffect set damname a fireball
+raffect set roommsg A fireball erupts from the wall, engulfing %n!
+raffect set victmsg A fireball erupts from the wall, engulfing YOU!
+raffect set timer 1
+raffect set v0 fire
+raffect set v1 30
+raffect set v2 40
+
+This sequence will create an affect in the current room that will, from time
+to time, send fireballs shooting from the walls of the room, to engulf any
+players standing there.  The damage will be of type fire (thus, the usual
+protections from fire should be helpful), and will be between 30 and 40 hp
+of damage to a player unprotected from damtype fire.

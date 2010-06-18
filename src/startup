@@ -1,0 +1,46 @@
+#!/bin/tcsh
+# Written by Furey.
+# With additions from Tony.
+limit core unlimited
+# Set the port number.
+set port = 9005
+if ( "$1" != "" ) set port="$1"
+
+# Change to area directory.
+# ( commented out in 0.9.42 - no longer necessary )
+#cd ../area
+
+# Set limits.
+if ( -e ../area/shutdown.txt ) rm -f ../area/shutdown.txt
+
+while ( 1 )
+    # If you want to have logs in a different directory,
+    #   change the 'set logfile' line to reflect the directory name.
+    set index = 1000
+    set coreind = 1000
+    while ( 1 )
+	set logfile = ../log/$index.log
+	if ( ! -e $logfile ) break
+	@ index++
+    end
+
+    while ( 1 )
+        set corefile = ./core.$coreind
+	if ( ! -e $corefile.gz ) break
+	@ coreind++
+    end
+    
+    if ( -e ./core ) mv ./core ./$corefile
+    if ( -e ./$corefile ) gzip ./$corefile
+
+    # Run ember.
+    ../src/ember $port >&! $logfile
+
+
+    # Restart, giving old connections a chance to die.
+    if ( -e ../area/shutdown.txt ) then
+	rm -f ../area/shutdown.txt
+	exit 0
+    endif
+    sleep 5
+end

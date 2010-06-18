@@ -1,0 +1,2320 @@
+#AREADATA
+Name        { 5 20} Hatchet Valley of the Elves~
+Builders    None~
+VNUMs       7800 7883
+Security    9
+End
+
+
+
+#MOBILES
+#7800
+dog cooshee~
+a cooshee~
+A rather large dog is here, wandering the valley.
+~
+A beast is the size of the largest common dog.  It has a greenish coat with
+brown spots.  Its shape, along with its colors, make this cooshee almost
+undetectable as it moves.
+~
+dog~
+AGHT P 0 S
+5 0 
+100 0 0 0 1d16+42 5d10+100 2d4+3 11
+6 6 6 8
+H 0 0 0
+8 8 0 0
+AGV ACDEFHJKUV M 0
+#7801
+elf valley~
+a valley elf~
+A valley elf wanders here, cautious of your intrusion.
+~
+This elf is almost as tall as you are, but much slimmer and agile.  You see
+hatred in his eyes, and you try to avoid his stare.  His tense body looks ready
+to spring upon you, like a mountain lion stalking its prey.  He sees you
+noticing him, and quietly disappears.
+~
+Elf~
+ACFGHT JP 0 S
+8 0 
+100 0 0 0 2d21+73 8d10+100 2d7+4 7
+5 5 5 7
+0 0 B Z
+8 8 1 1
+AHMV ABCDEFGHIJK M 0
+#7802
+elf valley~
+a valley elf~
+A female valley elf wanders here, skirting between the tall grasses.
+~
+This elf is almost as tall as you are, but much slimmer and more agile.
+She glares at you, then quickly disappears before you see more of her.
+~
+Elf~
+ACFGHT JP 0 S
+8 0 
+100 0 0 0 2d21+73 8d10+100 2d7+4 3
+5 5 5 7
+0 0 B Z
+8 8 2 1
+AHMV ABCDEFGHIJK M 0
+#7803
+elf sentry valley~
+a valley elf sentry~
+A valley elf sentry stands here, then noticing you, attacks quickly!
+~
+This elf is almost as tall as you are, but much slimmer and more agile.
+He glares at your intrusion and attacks with menace.
+~
+Elf~
+ABFT JP 0 S
+7 0 
+100 0 0 0 1d33+61 7d10+100 2d6+3 3
+5 5 5 7
+0 0 B Z
+8 8 1 1
+AHMV ABCDEFGHIJK M 0
+#7804
+elf sentry valley~
+a valley elf sentry~
+A valley elf sentry stands here, then noticing you, attacks quickly!
+~
+This elf is almost as tall as you are, but much slimmer and more agile.
+She glares at your intrusion and attacks with menace.
+~
+Elf~
+ABFT JP 0 S
+7 0 
+100 0 0 0 1d33+61 7d10+100 2d6+3 11
+5 5 5 7
+0 0 B Z
+8 8 2 1
+AHMV ABCDEFGHIJK M 0
+#7805
+elf scout valley~
+a valley elf scout~
+A valley elf scout wanders the valley, searching for intruders like you!
+~
+The elf notices your intrusion and attacks with determination.
+~
+Elf~
+ACFGT JP 0 S
+6 0 
+100 0 0 0 1d24+51 6d10+100 2d5+3 11
+6 6 6 8
+0 0 B Z
+8 8 1 1
+AHMV ABCDEFGHIJK M 0
+#7806
+elf valley~
+a valley elf~
+A valley elf is here, doing her duties.
+~
+She is currently doing some menial chores, and ignores your intrusion except
+when you are in her way.
+~
+Elf~
+AGHT JP 0 S
+6 0 
+100 0 0 0 1d24+51 6d10+100 2d5+3 3
+6 6 6 8
+0 0 B Z
+8 8 2 1
+AHMV ABCDEFGHIJK M 0
+#7807
+elf elder valley~
+a valley elf elder~
+A valley elf elder is here, studying.  He notices you.
+A valley elf elder shouts 'You have intruded wrongly.  Be prepared to die!'
+~
+This elf looks quite old, probably twenty or more times your age.  He looks
+quite potent, though.
+~
+Elf~
+ABCFT HJN 0 S
+14 0 
+100 0 0 0 4d33+145 14d10+100 4d6+7 7
+1 1 1 5
+0 0 B Z
+8 8 1 1
+AHMV ABCDEFGHIJK M 0
+#7808
+elf elder valley~
+a valley elf elder~
+A valley elf elder is here, studying.  She notices you.
+A valley elf elder says 'Your arrogance will be your end, human.'
+~
+This elf looks quite old, probably twenty or more times your age.  She looks
+quite potent, though.
+~
+Elf~
+ABCFT JN 0 S
+15 0 
+100 0 0 0 4d37+162 15d10+100 4d6+9 3
+0 0 0 5
+0 0 B Z
+8 8 2 1
+AHMV ABCDEFGHIJK M 0
+#7809
+pyrohydra pyro hydra~
+the pyrohydra~
+A big beast with many heads, each breathing fire, stares at you with malice.
+~
+This big beast looks like a small red dragon, but has many more heads than a
+regular dragon, too.  It doesn't look happy.
+~
+Human~
+ABFT 0 0 S
+21 0 
+100 0 0 0 8d37+252 21d10+100 5d7+12 11
+-3 -3 -3 3
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#7810
+hermit man old~
+an old hermit~
+An old hermit sits here, smoking a pipe.
+~
+He looks old and feeble.
+~
+Human~
+ABCHT 0 0 S
+3 0 
+100 0 0 0 1d6+23 3d10+100 1d5+1 3
+8 8 8 9
+0 0 0 0
+8 8 1 1
+AHMV ABCDEFGHIJK M 0
+#7811
+talemon wizard mage~
+Talemon~
+An old mage busies himself with some chemicals.
+~
+Talemon looks harmless, but the fireballs he throws at you don't.
+~
+Human~
+ABCFT 0 0 S
+25 0 
+100 0 0 0 10d42+322 25d10+100 5d8+16 11
+-5 -5 -5 2
+0 0 0 0
+8 8 1 100
+AHMV ABCDEFGHIJK M 0
+#7812
+guardian daemon~
+the guardian daemon~
+A huge guardian daemon is here, watching the treasure.
+~
+This daemon is unhappy with its summoned job, and is willing to take out it's
+anger at you!
+~
+Human~
+ABFT 0 -500 S
+24 0 
+100 0 0 0 10d38+311 24d10+100 5d8+14 7
+-5 -5 -5 2
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#7813
+wolf~
+a wolf~
+A wolf is here, looking for small prey.
+~
+The wolf is covered with brown hair.  It looks at you with fright.
+~
+Wolf~
+AFHT Z 0 S
+4 0 
+100 0 0 0 1d10+33 4d10+100 1d7+2 11
+7 7 7 8
+FH 0 0 0
+8 8 0 0
+AGV ACDEFJKQV M 0
+#7814
+antelope~
+an antelope~
+An antelope is here, peacefully munching on grass.
+~
+With horns and spots over coarse, brown hair, this beast is the spit and
+image of ... an antelope.
+~
+Human~
+AHT 0 0 S
+5 0 
+100 0 0 0 1d16+42 5d10+100 2d4+3 11
+6 6 6 8
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#0
+
+
+
+#OBJECTS
+#7800
+chainmail elven chain mail~
+elven chainmail~
+A shiny metallic shirt is on the floor.~
+unknown~
+9 0 AD
+C C C 0 0
+7 3 70 P
+#7801
+boots elven~
+elven boots~
+Some soft boots are on the floor.~
+unknown~
+9 0 AG
+C C C 0 0
+6 3 60 P
+A
+14 50
+#7802
+longsword elven sword long~
+an elven longsword~
+A shiny blade is on the floor.~
+unknown~
+5 G AN
+A AB AC AB 0
+10 3 100 P
+A
+18 1
+#7803
+cloak brown~
+a brown cloak~
+A pile of brown cloth is on the floor.~
+unknown~
+9 G AC
+C C C 0 0
+6 3 60 P
+A
+2 1
+#7804
+key~
+a key~
+A shiny key is on the floor.~
+unknown~
+18 0 A
+BCFHJKLM 0 0 0 0
+14 1 140 P
+#7805
+key~
+a key~
+A shiny key is on the floor.~
+unknown~
+18 0 A
+DGHJKLM 0 0 0 0
+21 1 210 P
+#7806
+ring gold~
+a gold ring~
+A shiny ring is on the floor.~
+unknown~
+9 G AB
+AC AC AC 0 0
+14 1 140 P
+A
+12 10
+#7807
+quarterstaff staff~
+a quarterstaff~
+A quarterstaff is on the floor.~
+unknown~
+5 G AN
+AB C AC D 0
+14 5 140 P
+A
+19 2
+#7808
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+10 1 29 0 0
+23 1 230 P
+#7809
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+10 25 0 0 0
+13 1 130 P
+#7810
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+10 44 20 0 0
+23 1 230 P
+#7811
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+50 59 59 59 0
+23 1 230 P
+#7812
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+10 81 34 0 0
+23 1 230 P
+#7813
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+10 38 0 0 0
+23 1 230 P
+#7814
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+10 3 0 0 0
+23 1 230 P
+#7815
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+10 15 0 0 0
+13 1 130 P
+#7816
+potion~
+a potion~
+A potion is on the floor.~
+unknown~
+10 G A
+10 0 0 0 0
+13 1 130 P
+#7817
+scroll~
+a scroll~
+A scroll is on the floor.~
+unknown~
+2 G A
+10 15 0 0 0
+13 1 130 P
+#7818
+scroll~
+a scroll~
+A scroll is on the floor.~
+unknown~
+2 G A
+10 0 0 0 0
+23 1 230 P
+#7819
+scroll~
+a scroll~
+A scroll is on the floor.~
+unknown~
+2 G A
+10 18 0 0 0
+13 1 130 P
+#7820
+scroll~
+a scroll~
+A scroll is on the floor.~
+unknown~
+2 G A
+10 13 0 0 0
+13 1 130 P
+#7821
+scroll~
+a scroll~
+A scroll is on the floor.~
+unknown~
+2 G A
+10 32 0 0 0
+23 1 230 P
+#7822
+scroll~
+a scroll~
+A scroll is on the floor.~
+unknown~
+2 G A
+10 8 0 0 0
+23 1 230 P
+#7823
+scroll~
+a scroll~
+A scroll is on the floor.~
+unknown~
+2 G A
+10 28 0 0 0
+13 1 130 P
+#7824
+rod light~
+the Rod of Neutrality~
+A dull iron shaft is on the floor.~
+unknown~
+1 GJK A
+0 0 999 0 0
+25 1 250 P
+A
+19 3
+#0
+
+
+
+#ROOMS
+#7800
+A Path from the Plains~
+You are on a path away from the Plains of Ofcol.  The path doesn't look well
+tread, but it is relatively well kept.  To the south are the Plains of Ofcol,
+while this path leads north.
+~
+0 0 2
+D0
+The path continues north.
+~
+~
+0 0 7801
+D2
+You see the Plains of Ofcol.
+~
+~
+0 0 323
+S
+#7801
+Along the Path~
+You are on the path away from the Plains of Ofcol.  The main path leads north
+to an overlook and south back toward the Plains of Ofcol.  Western and eastern
+side paths can be seen, probably deer trails by the width of them.
+~
+0 0 2
+D0
+You see the overlook.
+~
+~
+0 0 7804
+D1
+You see the small trail.
+~
+~
+0 0 7803
+D2
+You see the path back toward Ofcol.
+~
+~
+0 0 7800
+D3
+You see the small trail.
+~
+~
+0 0 7802
+S
+#7802
+A Small Trail~
+This small deer trail leads north and east.
+~
+0 0 2
+D0
+The trail continues north.
+~
+~
+0 0 7867
+D1
+The main path is to the east.
+~
+~
+0 0 7801
+S
+#7803
+A Small Trail~
+This small deer trail leads north and west.
+~
+0 0 2
+D0
+The trail continues north.
+~
+~
+0 0 7849
+D3
+The main path is to the west.
+~
+~
+0 0 7801
+S
+#7804
+The Overlook~
+You are above a large valley.  Below you, you see humanoid forms wandering
+around the valley.  Rich green grass covers the valley, with some small trees
+dotting the landscape.  To the south is the trail back toward Ofcol.
+~
+0 0 2
+D2
+You see the path back toward Ofcol.
+~
+~
+0 0 7801
+D5
+You see the entrance to the valley.
+~
+~
+0 0 7805
+S
+#7805
+The Entrance to the Valley of the Elves~
+You are at the entrance to the Valley of the Elves.  Elves stare at your
+intrusion, but most are too busy to bother with you.  The valley spreads to
+the north, while enlarging toward the east and west.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7810
+D1
+The valley continues east.
+~
+~
+0 0 7807
+D3
+The valley continues west.
+~
+~
+0 0 7806
+D4
+The overlook is above you.
+~
+~
+0 0 7804
+S
+#7806
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  High above you, you see a small
+trail circling the entire valley.  The valley continues north and east.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7809
+D1
+The entrance to the valley is to the east.
+~
+~
+0 0 7805
+S
+#7807
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  High above you, you see a small
+trail circling the entire valley.  The valley continues north and west.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7811
+D3
+The entrance to the valley is to the west.
+~
+~
+0 0 7805
+S
+#7808
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  High above you, you see a small
+trail circling the entire valley.  The valley continues north and east.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7813
+D1
+The valley continues east.
+~
+~
+0 0 7809
+S
+#7809
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7814
+D1
+The valley continues east.
+~
+~
+0 0 7810
+D2
+The valley continues south.
+~
+~
+0 0 7806
+D3
+The valley continues west.
+~
+~
+0 0 7808
+S
+#7810
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+The entrance to the valley is towards the south.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7815
+D1
+The valley continues east.
+~
+~
+0 0 7811
+D2
+You see the entrance to the valley.
+~
+~
+0 0 7805
+D3
+The valley continues west.
+~
+~
+0 0 7809
+S
+#7811
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7816
+D1
+The valley continues east.
+~
+~
+0 0 7812
+D2
+The valley continues south.
+~
+~
+0 0 7807
+D3
+The valley continues west.
+~
+~
+0 0 7810
+S
+#7812
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  High above you, you see a small
+trail circling the entire valley.  The valley continues north and west.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7817
+D3
+The valley continues west.
+~
+~
+0 0 7811
+S
+#7813
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  A steep trail leads up toward
+the deer trail circling the valley.  The valley continues north, south, and
+east.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7818
+D1
+The valley continues east.
+~
+~
+0 0 7814
+D2
+The valley continues south.
+~
+~
+0 0 7808
+D4
+The steep trail leads up.
+~
+~
+0 0 7863
+S
+#7814
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7819
+D1
+The valley continues east.
+~
+~
+0 0 7815
+D2
+The valley continues south.
+~
+~
+0 0 7809
+D3
+The valley continues west.
+~
+~
+0 0 7813
+S
+#7815
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7820
+D1
+The valley continues east.
+~
+~
+0 0 7816
+D2
+The valley continues south.
+~
+~
+0 0 7810
+D3
+The valley continues west.
+~
+~
+0 0 7814
+S
+#7816
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7821
+D1
+The valley continues east.
+~
+~
+0 0 7817
+D2
+The valley continues south.
+~
+~
+0 0 7811
+D3
+The valley continues west.
+~
+~
+0 0 7815
+S
+#7817
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  A steep trail leads up toward
+the deer trail circling the valley.  The valley continues north, south, and
+west.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7822
+D2
+The valley continues south.
+~
+~
+0 0 7812
+D3
+The valley continues west.
+~
+~
+0 0 7816
+D4
+The steep trail leads up.
+~
+~
+0 0 7853
+S
+#7818
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  High above you, you see a
+small trail circling the entire valley.  The valley continues south and east.
+~
+0 0 2
+D1
+The valley continues east.
+~
+~
+0 0 7819
+D2
+The valley continues south.
+~
+~
+0 0 7813
+S
+#7819
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7823
+D1
+The valley continues east.
+~
+~
+0 0 7820
+D2
+The valley continues south.
+~
+~
+0 0 7814
+D3
+The valley continues west.
+~
+~
+0 0 7818
+S
+#7820
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7824
+D1
+The valley continues east.
+~
+~
+0 0 7821
+D2
+The valley continues south.
+~
+~
+0 0 7815
+D3
+The valley continues west.
+~
+~
+0 0 7819
+S
+#7821
+The Valley of the Elves~
+You are in the Valley of the Elves.  The valley continues in all directions.
+~
+0 0 2
+D0
+The valley continues north.
+~
+~
+0 0 7825
+D1
+The valley continues east.
+~
+~
+0 0 7822
+D2
+The valley continues south.
+~
+~
+0 0 7816
+D3
+The valley continues west.
+~
+~
+0 0 7820
+S
+#7822
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  High above you, you see a small
+trail circling the entire valley.  The valley continues south and west.
+~
+0 0 2
+D2
+The valley continues south.
+~
+~
+0 0 7817
+D3
+The valley continues west.
+~
+~
+0 0 7821
+S
+#7823
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  High above you, you see a small
+trail circling the entire valley.  The valley continues south and east.
+~
+0 0 2
+D1
+The valley continues east.
+~
+~
+0 0 7824
+D2
+The valley continues south
+~
+~
+0 0 7819
+S
+#7824
+The Edge of the Valley~
+You are in the Valley of the Elves.  The valley continues in all directions.
+To the north, a small, narrow trail leads away from the valley.
+~
+0 0 2
+D0
+A small trail leads away from the valley.
+~
+~
+0 0 7826
+D1
+The valley continues east.
+~
+~
+0 0 7825
+D2
+The valley continues south.
+~
+~
+0 0 7820
+D3
+The valley continues west.
+~
+~
+0 0 7823
+S
+#7825
+The Edge of the Valley~
+You are at the edge of the Valley of the Elves.  High above you, you see a small
+trail circling the entire valley.  The valley continues south and west.
+~
+0 0 2
+D2
+The valley continues south.
+~
+~
+0 0 7821
+D3
+The valley continues west.
+~
+~
+0 0 7824
+S
+#7826
+A Trail Leading from the Valley~
+You are on a narrow trail leading away from the Valley of the Elves.  This
+trail leads north and south.  A rope ladder leads up to a rope bridge.
+~
+0 0 2
+D0
+The trail continues north.
+~
+~
+0 0 7827
+D2
+The trail leads back to the valley.
+~
+~
+0 0 7824
+D4
+You see the rope bridge above you.
+~
+~
+0 0 7858
+S
+#7827
+Along the Trail~
+You are on the trail away from the Valley of the Elves.  The hills around you
+keep this trail narrow.  The trail continues east, south, and west.
+~
+0 0 2
+D1
+The trail continues east.
+~
+~
+0 0 7828
+D2
+The trail continues south back toward the valley.
+~
+~
+0 0 7826
+D3
+The trail continues west.
+~
+~
+0 0 7868
+S
+#7828
+A Bend in the Trail~
+You are on the trail away from the Valley of the Elves.  The hills around you
+keep this trail narrow.  The trail continues north and back west.
+~
+0 0 2
+D0
+You see a small valley north.
+~
+~
+0 0 7829
+D3
+The trail goes back to the west.
+~
+~
+0 0 7827
+S
+#7829
+A Smaller Valley~
+You are in another valley within these hills. To the north, you can see a
+building, and to the south you see the trail away from this valley.  The
+west and east paths surround this building.
+~
+0 0 2
+D0
+You see the building.
+~
+door~
+1 -1 7834
+D1
+You see the trail around the building.
+~
+~
+0 0 7831
+D2
+You see the trail leading away from this valley.
+~
+~
+0 0 7828
+D3
+You see the trail around the building.
+~
+~
+0 0 7830
+S
+#7830
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads north and
+east.  To the north-east is a building.
+~
+0 0 2
+D0
+You see the trail.
+~
+~
+0 0 7832
+D1
+You see the trail.
+~
+~
+0 0 7829
+S
+#7831
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads west and
+east.  To the north is a building.
+~
+0 0 2
+D1
+You see the trail.
+~
+~
+0 0 7833
+D3
+You see the trail.
+~
+~
+0 0 7829
+S
+#7832
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads north and
+south.  To the east is a building.
+~
+0 0 2
+D0
+You see the trail.
+~
+~
+0 0 7837
+D2
+You see the trail.
+~
+~
+0 0 7830
+S
+#7833
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads north and
+west.  To the north-west is a building.
+~
+0 0 2
+D0
+You see the trail.
+~
+~
+0 0 7836
+D3
+You see the trail.
+~
+~
+0 0 7831
+S
+#7834
+The Elf Home~
+You are in the home of the valley elves.  The building continues to the north
+and the east, and the exit is to the south.
+~
+0 8 0
+D0
+The building continues to the north.
+~
+~
+0 0 7838
+D1
+The building continues to the east.
+~
+~
+0 0 7835
+D2
+The exit is to the south.
+~
+door~
+1 -1 7829
+S
+#7835
+The Kitchen~
+You are in a community kitchen for this valley elven home.  Pots and pans line
+the walls, along with shelves filled with many foodstuffs.  A big oven is to one
+side, and you can smell elfcakes being baked.
+There is a doorway to the north and one to the west.
+~
+0 8 0
+D0
+The building continues to the north.
+~
+~
+0 0 7839
+D3
+The building continues to the west.
+~
+~
+0 0 7834
+S
+#7836
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads north and
+south.  To the west is a building.
+~
+0 0 2
+D0
+You see the trail.
+~
+~
+0 0 7840
+D2
+You see the trail.
+~
+~
+0 0 7833
+S
+#7837
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads north and
+south.  To the east is a building.
+~
+0 0 2
+D0
+You see the trail.
+~
+~
+0 0 7841
+D2
+You see the trail.
+~
+~
+0 0 7832
+S
+#7838
+The Living Room~
+You are in the living room of the elven home.  Mats cover the floor, and a
+on a table is a bowl full of fruits.  Through the window you can see the
+valley, with its wild flowers and tall, green grasses.
+~
+0 8 0
+D1
+The building continues to the east.
+~
+~
+0 0 7839
+D2
+The entrance is to the south.
+~
+~
+0 0 7834
+S
+#7839
+The Storage Room~
+You are in the storage room of the elven home.  Sacks of flour cover one side,
+and cleaning accessories cover the other side.  You find nothing of use here.
+A staircase leads up.
+~
+0 8 0
+D2
+The building continues to the south.
+~
+~
+0 0 7835
+D3
+The building continues to the west.
+~
+~
+0 0 7838
+D4
+You see the second floor.
+~
+~
+0 0 7848
+S
+#7840
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads north and
+south.  To the west is a building.
+~
+0 0 2
+D0
+You see the trail.
+~
+~
+0 0 7844
+D2
+You see the trail.
+~
+~
+0 0 7836
+S
+#7841
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads south and
+east.  To the south-east is a building.
+~
+0 0 2
+D1
+You see the trail.
+~
+~
+0 0 7842
+D2
+You see the trail.
+~
+~
+0 0 7837
+S
+#7842
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads west and
+east.  To the south is a building.
+~
+0 0 2
+D1
+You see the trail.
+~
+~
+0 0 7843
+D3
+You see the trail.
+~
+~
+0 0 7841
+S
+#7843
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads east and
+west.  To the south is a building.
+~
+0 0 2
+D1
+You see the trail.
+~
+~
+0 0 7844
+D3
+You see the trail.
+~
+~
+0 0 7842
+S
+#7844
+A Trail in the Valley~
+You are on the trail in the Valley of the Elves.  This trail leads south and
+west.  To the south-west is a building.
+~
+0 0 2
+D2
+You see the trail.
+~
+~
+0 0 7840
+D3
+You see the trail.
+~
+~
+0 0 7843
+S
+#7845
+The Elders' Room~
+You are in the room of the valley elf elders.  Books written in strange
+languages line the numerous shelves, and scrolls cover a table.  There is a
+smooth spheric object in the center of the room.
+~
+0 8 0
+D0
+You see another room.
+~
+door~
+1 -1 7847
+D1
+You see another room.
+~
+door~
+2 7804 7846
+S
+#7846
+The Storage Room~
+You are in a storage room.  Many useless (to you) items fill this room.
+~
+0 8 0
+D0
+You see another room.
+~
+door~
+2 7804 7848
+D3
+You see another room.
+~
+door~
+2 7804 7845
+S
+#7847
+The Sleeping Quarters~
+You are in the sleeping quarters of the valley elves.  Cots line the floor,
+with two windows showing a view of the valley.  Books in strange languages
+line the shelves, but nothing of interest is here.
+~
+0 8 0
+D1
+You see another room.
+~
+door~
+1 -1 7848
+D2
+You see another room.
+~
+door~
+1 -1 7845
+S
+#7848
+Study~
+You are in the study room of the valley elves.  Comfortable mats are on the
+floor, and musical instruments are neatly stacked on shelves.  Books in
+strange languages line some other elves.  A stairway leads down to the
+first floor.
+~
+0 8 0
+D2
+You see another room.
+~
+door~
+2 7804 7846
+D3
+You see another room.
+~
+door~
+1 -1 7847
+D5
+You see the first floor.
+~
+~
+0 0 7839
+S
+#7849
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D1
+(null)~
+~
+0 0 7850
+D2
+(null)~
+~
+0 0 7803
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7850
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 7851
+D3
+(null)~
+~
+0 0 7849
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7851
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D1
+(null)~
+~
+0 0 7852
+D2
+(null)~
+~
+0 0 7850
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7852
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 7853
+D3
+(null)~
+~
+0 0 7851
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7853
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+A safe trail leads down into the valley.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 7854
+D2
+(null)~
+~
+0 0 7852
+D5
+The trail down looks safe.
+~
+~
+0 0 7817
+S
+#7854
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D2
+(null)~
+~
+0 0 7853
+D3
+(null)~
+~
+0 0 7855
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7855
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 7856
+D1
+(null)~
+~
+0 0 7854
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7856
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D2
+(null)~
+~
+0 0 7855
+D3
+(null)~
+~
+0 0 7857
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7857
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D1
+(null)~
+~
+0 0 7856
+D3
+You see a rope bridge~
+~
+0 0 7858
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7858
+On the Rope Bridge~
+You are on the rope bridge.  From here, you can see the whole Valley of the
+Elves.  To the south, you see the main valley.  To the north-east, you see a
+smaller valley with a building in the center of it.  To the north-west, you
+can see a very small valley with a shack in it's center.  A rope ladder
+leads down into a trail.
+~
+0 0 2
+D1
+(null)~
+~
+0 0 7857
+D3
+(null)~
+~
+0 0 7859
+D5
+You see the trail.
+~
+~
+0 0 7826
+S
+#7859
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D1
+You see a rope bridge.
+~
+~
+0 0 7858
+D3
+(null)~
+~
+0 0 7860
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7860
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D1
+(null)~
+~
+0 0 7859
+D2
+(null)~
+~
+0 0 7861
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7861
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 7860
+D3
+(null)~
+~
+0 0 7862
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7862
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D1
+(null)~
+~
+0 0 7861
+D2
+(null)~
+~
+0 0 7863
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7863
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+A safe trail leads down into the valley.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 7862
+D2
+(null)~
+~
+0 0 7864
+D5
+The trail down looks safe.
+~
+~
+0 0 7813
+S
+#7864
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 7863
+D1
+(null)~
+~
+0 0 7865
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7865
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D2
+(null)~
+~
+0 0 7866
+D3
+(null)~
+~
+0 0 7864
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7866
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 7865
+D1
+(null)~
+~
+0 0 7867
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7867
+Along a Windy Trail on the Rim of the Valley~
+You are on a narrow trail on the rim of the Valley of the Elves.  Below you,
+you can see the valley, filled with wild flowers and tall, green grasses.
+~
+0 0 2
+D2
+(null)~
+~
+0 0 7802
+D3
+(null)~
+~
+0 0 7866
+D5
+The trail down doesn't look safe to travel on at all.
+~
+~
+0 0 7883
+S
+#7868
+A Bend in the Trail~
+You are on a bend in the trail leading from the main valley.  The hills around
+you make this trail quite narrow.
+~
+0 0 2
+D0
+The trail continues north.
+~
+~
+0 0 7869
+D1
+The trail continues east.
+~
+~
+0 0 7827
+S
+#7869
+A Bend in the Trail~
+You are on a bend in the trail leading from the main valley.  The hills around
+you make this trail quite narrow.  To the west, you can see an even smaller
+valley, with looks like a small shack in the center of it.
+~
+0 0 2
+D2
+The trail continues south.
+~
+~
+0 0 7868
+D3
+The entrance to the small valley is to the west.
+~
+~
+0 0 7870
+S
+#7870
+The Small Valley~
+You are in the small valley.  Strangely, tall trees grow here, almost as if some
+magic was used to help them grow.  The exit from this valley is to the east, and
+the entrance to the shack is to the west.
+~
+0 0 2
+D0
+The valley continues to the north.
+~
+~
+0 0 7871
+D1
+The exit from this small valley is to the east.
+~
+~
+0 0 7869
+D2
+The valley continues to the south.
+~
+~
+0 0 7872
+D3
+You see the small shack.
+~
+door~
+1 -1 7878
+S
+#7871
+The Small Valley~
+You are in the small valley.  Strangely, tall trees grow here, almost as if some
+magic was used to help them grow.  To the south-west is a small shack.
+~
+0 0 2
+D2
+The valley continues to the south.
+~
+~
+0 0 7870
+D3
+The valley continues to the west.
+~
+~
+0 0 7873
+S
+#7872
+The Small Valley~
+You are in the small valley.  Strangely, tall trees grow here, almost as if some
+magic was used to help them grow.  To the north-west is a small shack.
+~
+0 0 2
+D0
+The valley continues to the north.
+~
+~
+0 0 7870
+D3
+The valley continues to the west.
+~
+~
+0 0 7877
+S
+#7873
+The Small Valley~
+You are in the small valley.  Strangely, tall trees grow here, almost as if some
+magic was used to help them grow.  To the south is a small shack.
+~
+0 0 2
+D1
+The valley continues to the east.
+~
+~
+0 0 7871
+D3
+The valley continues to the west.
+~
+~
+0 0 7874
+S
+#7874
+The Small Valley~
+You are in the small valley.  Strangely, tall trees grow here, almost as if some
+magic was used to help them grow.  To the south-east is a small shack.
+~
+0 0 2
+D1
+The valley continues to the east.
+~
+~
+0 0 7873
+D2
+The valley continues to the south.
+~
+~
+0 0 7875
+S
+#7875
+The Small Valley~
+You are in the small valley.  Strangely, tall trees grow here, almost as if some
+magic was used to help them grow.  To the east is a small shack.
+~
+0 0 2
+D0
+The valley continues to the north.
+~
+~
+0 0 7874
+D2
+The valley continues to the south.
+~
+~
+0 0 7876
+S
+#7876
+The Small Valley~
+You are in the small valley.  Strangely, tall trees grow here, almost as if some
+magic was used to help them grow.  To the north-east is a small shack.
+~
+0 0 2
+D0
+The valley continues to the north.
+~
+~
+0 0 7875
+D1
+The valley continues to the east.
+~
+~
+0 0 7877
+S
+#7877
+The Small Valley~
+You are in the small valley.  Strangely, tall trees grow here, almost as if some
+magic was used to help them grow.  To the north is a small shack.
+~
+0 0 2
+D1
+The valley continues to the east.
+~
+~
+0 0 7872
+D3
+The valley continues to the west.
+~
+~
+0 0 7876
+S
+#7878
+Inside the Small Shack~
+You are inside the small shack.  A small stove is on the side, with soup
+cooking over it.  You see nothing valuable.
+~
+0 8 0
+D1
+You see the valley outside.
+~
+door~
+1 -1 7870
+D5
+You see a trap door!
+~
+trap door~
+1 -1 7879
+S
+#7879
+Beneath the Small Shack~
+You are beneath the small shack, in a tunnel that leads south.  It feels
+quite warm down here.
+~
+0 9 0
+D2
+The room looks reddish down there.
+~
+~
+0 0 7880
+D4
+Back to known territory!
+~
+trap door~
+1 -1 7878
+S
+#7880
+The Den of the Pyrohydra~
+You are in the den of the pyrohydra.  All the walls are charred, and this
+room is filled with a smell close to that of burning tar.
+~
+0 9 0
+D0
+You see the relative safety to the north.
+~
+~
+0 0 7879
+D1
+You see breaks in the charred rock to the east.
+~
+secret~
+2 7805 7882
+D3
+You see a door to the west.
+~
+door~
+2 7805 7881
+S
+#7881
+The Workroom~
+This room looks like it is used for magical studies.  Potions bubble over
+burners, and the whole room spells of herbs and dead animal flesh.  A furnace
+to the side casts a bright light in this room.  The whole room radiates with
+a magical aura.
+~
+0 8 0
+D1
+(null)~
+door~
+2 7805 7880
+S
+#7882
+The Storage Room~
+This room is used to store scrolls, potions, and other magical items.  The
+whole room radiates with a magical aura.
+~
+0 8 0
+D3
+(null)~
+secret door~
+2 7805 7880
+S
+#7883
+WAY Far Down into the Valley~
+You have fallen trying to go down this steep hill.  Maybe that wasn't that
+good an idea, huh?
+
+
+You've fallen, and you can't get up!
+~
+0 4 0
+S
+#0
+
+
+
+#RESETS
+D 0 7829 0 1
+D 0 7834 2 1
+D 0 7845 0 1
+D 0 7845 1 2
+D 0 7846 0 2
+D 0 7846 3 2
+D 0 7847 1 1
+D 0 7847 2 1
+D 0 7848 2 2
+D 0 7848 3 1
+D 0 7870 3 1
+D 0 7878 1 1
+D 0 7878 5 1
+D 0 7879 4 1
+D 0 7880 1 2
+D 0 7880 3 2
+D 0 7881 1 2
+D 0 7882 3 2
+M 0 7801 0 7805 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7800 0 7806 Load a cooshee
+M 0 7800 0 7807 Load a cooshee
+M 0 7802 0 7811 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7814 0 7815 Load an antelope
+M 0 7801 0 7816 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7801 0 7818 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7813 3 7818 Load a wolf
+M 0 7801 0 7820 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7802 0 7820 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7800 0 7823 Load a cooshee
+M 0 7814 0 7825 Load an antelope
+M 0 7805 0 7827 Load a valley elf scout
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf scout
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf scout
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf scout
+M 0 7813 3 7830 Load a wolf
+M 0 7800 0 7833 Load a cooshee
+M 0 7806 0 7835 Load a valley elf
+M 0 7800 0 7837 Load a cooshee
+M 0 7806 0 7838 Load a valley elf
+M 0 7806 0 7839 Load a valley elf
+M 0 7802 0 7842 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7805 0 7842 Load a valley elf scout
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf scout
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf scout
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf scout
+M 0 7801 0 7844 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7807 0 7845 Load a valley elf elder
+G 0 7804 0 A key is given to a valley elf elder
+E 0 7806 0 1 A gold ring is loaded on the left finger of a valley elf elder
+E 0 7807 0 16 A quarterstaff is loaded wielded of a valley elf elder
+M 0 7808 0 7845 Load a valley elf elder
+E 0 7806 0 1 A gold ring is loaded on the left finger of a valley elf elder
+E 0 7807 0 16 A quarterstaff is loaded wielded of a valley elf elder
+O 0 7809 0 7846 A potion loaded to The Storage Room
+O 0 7823 0 7846 A scroll loaded to The Storage Room
+O 0 7820 0 7846 A scroll loaded to The Storage Room
+O 0 7817 0 7846 A scroll loaded to The Storage Room
+O 0 7815 0 7846 A potion loaded to The Storage Room
+O 0 7816 0 7846 A potion loaded to The Storage Room
+O 0 7819 0 7846 A scroll loaded to The Storage Room
+M 0 7806 0 7847 Load a valley elf
+M 0 7806 0 7847 Load a valley elf
+M 0 7803 0 7848 Load a valley elf sentry
+E 0 7800 0 5 Elven chainmail is loaded on the body of a valley elf sentry
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf sentry
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf sentry
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf sentry
+M 0 7804 0 7848 Load a valley elf sentry
+E 0 7800 0 5 Elven chainmail is loaded on the body of a valley elf sentry
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf sentry
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf sentry
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf sentry
+M 0 7804 0 7850 Load a valley elf sentry
+E 0 7800 0 5 Elven chainmail is loaded on the body of a valley elf sentry
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf sentry
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf sentry
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf sentry
+M 0 7805 0 7852 Load a valley elf scout
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf scout
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf scout
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf scout
+M 0 7814 0 7852 Load an antelope
+M 0 7803 0 7853 Load a valley elf sentry
+E 0 7800 0 5 Elven chainmail is loaded on the body of a valley elf sentry
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf sentry
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf sentry
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf sentry
+M 0 7802 0 7854 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7804 0 7856 Load a valley elf sentry
+E 0 7800 0 5 Elven chainmail is loaded on the body of a valley elf sentry
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf sentry
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf sentry
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf sentry
+M 0 7803 0 7860 Load a valley elf sentry
+E 0 7800 0 5 Elven chainmail is loaded on the body of a valley elf sentry
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf sentry
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf sentry
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf sentry
+M 0 7813 3 7860 Load a wolf
+M 0 7805 0 7862 Load a valley elf scout
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf scout
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf scout
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf scout
+M 0 7804 0 7863 Load a valley elf sentry
+E 0 7800 0 5 Elven chainmail is loaded on the body of a valley elf sentry
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf sentry
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf sentry
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf sentry
+M 0 7802 0 7865 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7803 0 7866 Load a valley elf sentry
+E 0 7800 0 5 Elven chainmail is loaded on the body of a valley elf sentry
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf sentry
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf sentry
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf sentry
+M 0 7802 0 7868 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7800 0 7873 Load a cooshee
+M 0 7805 0 7876 Load a valley elf scout
+E 0 7801 0 8 Elven boots is loaded on the feet of a valley elf scout
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf scout
+E 0 7803 0 3 A brown cloak is loaded around the neck (1) of a valley elf scout
+M 0 7801 0 7877 Load a valley elf
+E 0 7802 0 16 An elven longsword is loaded wielded of a valley elf
+M 0 7810 0 7878 Load an old hermit
+M 0 7809 0 7880 Load the pyrohydra
+G 0 7805 0 A key is given to the pyrohydra
+M 0 7811 0 7881 Load Talemon
+E 0 7806 0 1 A gold ring is loaded on the left finger of Talemon
+E 0 7807 0 16 A quarterstaff is loaded wielded of Talemon
+E 0 7824 0 0 The rod of neutrality is loaded as a light of Talemon
+O 0 7808 0 7882 A potion loaded to The Storage Room
+O 0 7822 0 7882 A scroll loaded to The Storage Room
+O 0 7821 0 7882 A scroll loaded to The Storage Room
+O 0 7810 0 7882 A potion loaded to The Storage Room
+O 0 7812 0 7882 A potion loaded to The Storage Room
+O 0 7811 0 7882 A potion loaded to The Storage Room
+O 0 7820 0 7882 A scroll loaded to The Storage Room
+O 0 7815 0 7882 A potion loaded to The Storage Room
+O 0 7818 0 7882 A scroll loaded to The Storage Room
+O 0 7814 0 7882 A potion loaded to The Storage Room
+O 0 7813 0 7882 A potion loaded to The Storage Room
+O 0 7823 0 7882 A scroll loaded to The Storage Room
+M 0 7812 0 7882 Load the guardian daemon
+S
+
+
+
+#PROGS
+M 7807 10 Offensive Cleric Load to: a valley elf elder
+M 7808 13 Offensive Mage Load to: a valley elf elder
+M 7809 3 Fire Breath Load to: the pyrohydra
+M 7811 13 Offensive Mage Load to: Talemon
+S
+
+
+
+#SHOPS
+0
+
+
+
+#$

@@ -1,0 +1,346 @@
+
+                     Adding races to an EmberMUD (v1.0)
+                       (For EmberMUD .029 and .029b)
+                                by Ron Cole
+
+
+(Some snippets borrowed from the EmberMUD codebase, which is based on 
+ROM 2.3, which is based on MERC, which is based on DIKU. )
+
+
+Step #1: Plan a race.
+        The first step in race creation is to plan out the race you 
+ wish to add.  Here are some questions you might want to have answered
+ before going any further:
+ 
+
+   What does it look like?  
+
+   If this race is from a myth, what attributes do those myths 
+   give the creature (afraid of the light, hurt by iron, etc..)?
+   
+   How large is it? (small, normal, large, etc..?)
+
+   Is it strong?  Smart?
+
+   What part of the world does it live in, and has it evolved any 
+   special features to help it survive there? (fur for resistance to 
+   cold weather, infrared vision to help it see underground, etc..)
+
+   What is it made of?  If it is flesh, does it have fur, skin, or 
+   scales?  If it is another material (rock, fire, etc..) what 
+   benefits and hindrances would that material give them?
+
+   Will it have any special abilities only available to that race?
+
+   Is it resistant to anything (Poison, disease, iron)?  Immune?
+
+   Is it vulnerable to anything?
+
+
+Step 2: Adding a race table.
+        Open the file const.c and look for a structure called the 
+ race_table.  The race table holds the basic shape and physical     
+ structure for every race, whether PC (player character) or not.
+ Below is an example of this structure:
+
+
+    {
+        name,           pc_race?,
+        act bits,       aff_by bits,    off bits,
+        imm,            res,            vuln,
+        form,           parts 
+    },
+
+ 
+ What it means...
+    
+    name: The name of the race. It should be capitolized and in quotes.
+    
+    pc_race?: Can player characters be this race?  If so, enter TRUE.
+    
+    act bits: These are act bits for the races.  Most act bits are for
+    NPC's (aggressive, pet, etc..).  You will probably not have to set  
+    any act bits.
+
+    aff_by bits: These are permanent affects that enchant the creature.
+    For instance, if you want your creature to be able to fly, you 
+    would most likely enter AFF_FLYING.  The most common affect you
+    will probably add is AFF_INFRARED.
+
+    off bits: These are offensive skills that NPC members of this race
+    will start out with.  It does not affect PC characters.
+
+    imm: This represents immunity, or the inability of a substance to 
+    harm said race.  This is an extremely powerful gift, so do not add
+    it lightly.
+
+    res: Resistance.  Creatures that are resistant to something take  
+    less damage from it and can more-easily overcome its affects.
+
+    vuln: Vulnerable.  Creatures that are vulnerable to something 
+    take more damage from it and are more easily overcome by it.
+    
+    form: What form does it take?  This is a general description of 
+    its body and general abilities. Unlike most other entries, this 
+    one is done with letters.
+
+    parts: These are the body parts that the race has, such as eyes, 
+    hands, legs, tentacles, and fins.  These are also denoted with 
+    letters.
+
+        Now, plug the values that you want into the structure, and 
+    then add it to the table.  If you want to put more than one bit
+    in a group, separate the bits with a |.  Lists of the various 
+    bits are at the bottom of this sheet in the appendixes, and 
+    an example of a completed race_table is below:
+
+    {
+        "Elf",                  TRUE,
+        0,              AFF_INFRARED,   0,
+        0,              RES_CHARM,      VULN_IRON,
+        A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K
+    },
+
+
+Step 3: Adding a pc_race_table.
+        Open the file const.c and look for a structure called the 
+ pc_race_table.  The PC race table holds important statistical      
+ information about each PC race such as their minimum and 
+ maximum stats.  It also contains how well said race will do  
+ within a chosen class.  Below is an example of this structure:
+
+
+    {
+        "race name",    short name,     points, { class multipliers },
+        { bonus skills },
+        { base stats },         { max stats },          size 
+    },
+
+ 
+ What it means...
+    
+    race name: The name of the race again.  This should be all in 
+    lower case.
+
+    short name: The short name of the race for the who list.  This
+    should be no larger than 5 characters.
+
+    points: The number of points it costs to purchase this race.
+
+    class multiplier: Increases the amount of experience needed to
+    go up in level if the class is chosen.  100 means to increase.
+    
+    bonus skills: Gives the character whatever skills are listed 
+    here for free.
+
+    base stats: Increases or decreases the base amount from which 
+    stats are generated.  In other words, it increases the chance 
+    to get better stats while not actually increasing the max 
+    stat number.
+
+    max stats: The maximum number any stat for that race can be 
+    without class modifiers.
+
+        Just like what you did with the race_table, plug the values 
+    you want into the structure and then add it to the table.  The
+    classes are in the following order: Mage, Cleric, Thief, Warrior.
+    Stats are in this order: STR, DEX, WIS, INT, CON.  An example of a 
+    completed pc_race_table is below:
+   
+    {   
+        "elf",          " Elf ",        5,      { 100, 125,  100, 120 }, 
+        { "sneak", "hide" },
+        { -1, 1, 0, 2, -2 },    { 16, 20, 18, 21, 15 }, SIZE_MEDIUM
+    },
+
+
+Step 4: Increasing the Maximum.
+        Open the file merc.h and look for the constant MAX_PC_RACE.
+ If you added a PC race, increase this by one. Below is what the       
+ define should look like, where XX is the new number:
+
+    #define MAX_PC_RACE                XX
+
+
+Step 5: Adding help files.
+        You will need to add a help file for the race, as well as 
+ altering the current "race" help file.  These files can be found 
+ in help.are within the area directory.
+
+
+Step 6: Final balance check.
+        This is the last step, and one that most people forget: check 
+ one more time to make sure that your race is balanced.  By balanced, 
+ I mean that its benefits do not outweigh its penalties.  If you 
+ have given your race an immunity, have you also given it sufficient 
+ penalties like increased cost or vulnerabilities to balance it?  
+
+
+- Appendixes -  (Most of which can be found in Merc.h)
+
+  Affect List:
+        AFF_BLIND               (A)
+        AFF_INVISIBLE           (B)
+        AFF_DETECT_EVIL         (C)
+        AFF_DETECT_INVIS        (D)
+        AFF_DETECT_MAGIC        (E)
+        AFF_DETECT_HIDDEN       (F)
+        AFF_HOLD                (G)             /* Unused       */
+        AFF_SANCTUARY           (H)
+        AFF_FAERIE_FIRE         (I)
+        AFF_INFRARED            (J)
+        AFF_CURSE               (K)
+        AFF_FLAMING             (L)             /* Unused       */
+        AFF_POISON              (M)
+        AFF_PROTECT             (N)
+        AFF_PARALYSIS           (O)             /* Unused       */
+        AFF_SNEAK               (P)
+        AFF_HIDE                (Q)
+        AFF_SLEEP               (R)
+        AFF_CHARM               (S)
+        AFF_FLYING              (T)
+        AFF_PASS_DOOR           (U)
+        AFF_HASTE               (V)
+        AFF_CALM                (W)
+        AFF_PLAGUE              (X)
+        AFF_WEAKEN              (Y)
+        AFF_DARK_VISION         (Z)
+        AFF_BERSERK             (aa)
+        AFF_SWIM                (bb)
+        AFF_REGENERATION        (cc)
+        AFF_WEB                 (dd)
+
+ Form List:
+        EDIBLE             (A)
+        POISON             (B)
+        MAGICAL            (C)
+        INSTANT_DECAY      (D)
+        FORM_OTHER         (E)  
+        ANIMAL             (G)
+        SENTIENT           (H)
+        UNDEAD             (I)
+        CONSTRUCT          (J)
+        MIST               (K)
+        INTANGIBLE         (L)
+        BIPED              (M)
+        CENTAUR            (N)
+        INSECT             (O)
+        SPIDER             (P)
+        CRUSTACEAN         (Q)
+        WORM               (R)
+        BLOB               (S)
+        MAMMAL             (V)
+        BIRD               (W)
+        REPTILE            (X)
+        SNAKE              (Y)
+        DRAGON             (Z)
+        AMPHIBIAN          (aa)
+        FISH               (bb)
+        COLD_BLOOD         (cc)    
+ 
+
+  Immunity List:
+        IMM_SUMMON              (A)
+        IMM_CHARM               (B)
+        IMM_MAGIC               (C)
+        IMM_WEAPON              (D)
+        IMM_BASH                (E)
+        IMM_PIERCE              (F)
+        IMM_SLASH               (G)
+        IMM_FIRE                (H)
+        IMM_COLD                (I)
+        IMM_LIGHTNING           (J)     
+        IMM_ACID                (K)
+        IMM_POISON              (L)
+        IMM_NEGATIVE            (M)
+        IMM_HOLY                (N)
+        IMM_ENERGY              (O)
+        IMM_MENTAL              (P)
+        IMM_DISEASE             (Q)
+        IMM_DROWNING            (R)
+        IMM_LIGHT               (S)
+ 
+
+ Part List:
+        HEAD               (A)
+        ARMS               (B)
+        LEGS               (C)
+        HEART              (D)
+        BRAINS             (E)
+        GUTS               (F)
+        HANDS              (G)
+        FEET               (H)
+        FINGERS            (I)
+        EAR                (J)
+        EYE                (K)
+        LONG_TONGUE        (L)
+        EYESTALKS          (M)
+        TENTACLES          (N)
+        FINS               (O)
+        WINGS              (P)
+        TAIL               (Q)
+        CLAWS              (U)
+        FANGS              (V)
+        HORNS              (W)
+        SCALES             (X)
+        TUSKS              (Y)
+
+
+  Resistance List:
+        RES_CHARM               (B)
+        RES_MAGIC               (C)
+        RES_WEAPON              (D)
+        RES_BASH                (E)
+        RES_PIERCE              (F)
+        RES_SLASH               (G)
+        RES_FIRE                (H)
+        RES_COLD                (I)
+        RES_LIGHTNING           (J)
+        RES_ACID                (K)
+        RES_POISON              (L)
+        RES_NEGATIVE            (M)
+        RES_HOLY                (N)
+        RES_ENERGY              (O)
+        RES_MENTAL              (P)
+        RES_DISEASE             (Q)
+        RES_DROWNING            (R)
+        RES_LIGHT               (S)
+ 
+
+  Size List:
+        SIZE_TINY                0
+        SIZE_SMALL               1
+        SIZE_MEDIUM              2
+        SIZE_LARGE               3
+        SIZE_HUGE                4
+        SIZE_GIANT               5
+
+  Vulnerability List:
+        VULN_MAGIC              (C)
+        VULN_WEAPON             (D)
+        VULN_BASH               (E)
+        VULN_PIERCE             (F)
+        VULN_SLASH              (G)
+        VULN_FIRE               (H)     
+        VULN_COLD               (I)
+        VULN_LIGHTNING          (J)
+        VULN_ACID               (K)
+        VULN_POISON             (L)
+        VULN_NEGATIVE           (M)
+        VULN_HOLY               (N)
+        VULN_ENERGY             (O)
+        VULN_MENTAL             (P)
+        VULN_DISEASE            (Q)
+        VULN_DROWNING           (R)
+        VULN_LIGHT              (S)
+        VULN_WOOD               (X)
+        VULN_SILVER             (Y)
+        VULN_IRON               (Z)
+
+
+ Did I miss anything?  If so, feel free to e-mail me with your comments
+ and suggestions at clogar@concentric.net.
+
+                                  - END -
+

@@ -1,0 +1,4244 @@
+EmberMUD Changelog
+
+v0.9.47 [11/14/2002]
+--------------------------------------------------------------------------
+Change: Re-wrote 'gain list' so that it now works anywhere (not 
+        just at a trainer), is sorted alphabetically, and displays
+        the level required in order to use a given skill.  Other
+        'gain' commands still require a trainer, however.
+        -Zak 11/10/2002
+
+Bugfix: Fix for SF bug #560617 - Crashes in the 'skills' command.
+        Just re-wrote the skills command to be better than before
+        and in the process removed the crash bug.
+        -Zak 11/10/2002
+
+Bugfix: Zak seems to think he wanted the bug fix so that the gocial
+        channel will show up in the channels list if you have 
+        USE_GOCIAL defined. 
+        -Dorzak 11/7/2002
+
+Bugfix: Fixed SourceForge bug #543924 - Replies to 'messages'
+        command output could go to the wrong person.
+        -Zak 7/14/2002
+
+Bugfix: Fixed crash when demoting someone that wasn't in a clan
+        at all.  Also fixed the incorrect error message that was
+        generated when promoting someone that wasn't in a clan.
+        -Zak 7/14/2002
+
+Bugfix: When you fled, it told you that you lost experience,
+        but you weren't really doing so.  Fixed by adding
+        a call to gain_exp in do_flee.  Thanks to Lancelight
+        for identifying the problem.  I am not sure if this
+        is the same fix he came up with or not.
+        -Dorzak 6/17/2002
+
+Bugfix: Fixed a problem with AUTO_HATE.  Problem was mobs
+        who hated themselves would spam the room with the
+        attack message.   First, made it so mobs shouldn't
+        be able to hate themselves, but just in case mobs
+        won't trigger the messages if they are hated 
+        themselves.  I guess mob self-esteem was improved
+        a bit today.
+        -Dorzak 6/17/2002
+
+Change: Ran the code through Zane's script for formatting
+        the code since we have drifted a bit from it.
+        -Dorzak 6/3/2002
+
+New:    New integer stored in pfiles called qp, for quest 
+        points.  Part of an ongoing effort to set up a 
+        quest system.  Can be given and taken with the
+        award command.
+        -Dorzak 6/3/2002
+
+New:    New NPC ACT flag - ACT_NO_STEAL - this makes mobs
+        immune to steal, but gives messages like you would
+        get if you failed.
+        -Dorzak 6/3/2002
+
+New:    New option in config.h to make shopkeeper immune to 
+        theft.  Gives fail messages as though they are just
+        really hard to steal from, not impossible.
+        -Dorzak 6/3/2002
+
+New:    Auction Info has been reworked.  Default is it gives level
+        object type, weapon class if a weapon, name, and a list
+        of extra descriptions.  But it can give up to a identify
+        spell worth of stuff, or stat the item.  Contributed by
+        Lancelight.  Committed by Dorzak.
+        -Dorzak 5/27/2002
+
+
+New:    This is in response to feature request 497264 - notes to
+        clans.  Two new note to: options.  clan, clans, clanned goes
+        to all people who are in a clan.   note to clan names works
+        for clans with a single word name.  
+        -Dorzak 5/27/2002
+
+New:    New Clan Command - roster.  Allows clan members to 
+        check who is members of the same clan they are, and to
+        check clan balance, and the name of the clan recall room.
+        Includes name of the clan leader, and the god who sponsored
+        the clan.
+        -Dorzak 5/27/2002
+
+Bugfix: Cvs Bug #560622 - weird behavior with disarm.
+        Fixed both weird behaviors.   First, added the grip check
+        after the initial success check in do_disarm instead of
+        the disarm function.  Second part was fixed by adding a
+        check to make sure the WIELD slot was empty before moving
+        the secondary to the primary slot.  This would have fixed
+        both bugs, but had already fixed the first part when
+        I found the second bug.  Will probably move the 
+        stuff back to disarm (actually doing so before submitting)
+        -Dorzak 5/25/2002
+
+Bugfix: Fix for CVS Bug 560623 - Circle does 113 points of
+        damage when it "misses".  This was because circle
+        was a command that was imported from a different 
+        codebase, and formatted the damage messages differently.
+        -Dorzak 5/25/2002
+
+Bugfix: Fix for Cvs Bug 543617 - Promote message/Demote crash 
+        for unclanned players.  This is fixed.
+        -Dorzak 5/25/2002        
+
+Bugfix: Lancelight found this bug last night, here is his note
+        on it:
+        NOTE FOR MANDRAKE 8.1 USERS:
+
+        Mandrake 8.1 has a bug in one of the init scripts for tcsh.
+        When you try to run the mud with ./startup & you will get 
+        the following error:
+
+        "Couldnt get a file descriptor referring to the console"
+
+        The fix for this can be found on the Mandrake updates
+        page at:
+
+        http://www.linux-mandrake.com/cgi-bin/cvsweb.cgi/soft/initscripts/mandrake/
+
+        Once there, download the inputrc.csh file. Then su to 
+        root, and stick that file in /etc/profile.d overwritting 
+        the one thats there, or you can move the old one. Then 
+        log out, and log back in to your shell account normally 
+        and the console error should no longer show up.
+        -Lancelight 4/28/2002 (entered by Dorzak)
+
+
+Bugfix: With my last updated, MAX_CLASS was 7, but only 4 
+        classes are in const.c, and this caused a crash bug.
+        Fixed.
+        -Dorzak 4/27/2002
+
+Bugfix: Fixed a typo in fight.c where gsn_backstab was there
+        instead of gsn_circle.
+        -Dorzak 4/27/2002
+
+Bugfix: Fixed a pesky compile error about unused variable cased
+        by a previous fix by Zak for shell lock up bug.
+        -Dorzak 4/23/2002
+
+New:    Added option of bonuses remort/rebirth characters 
+        in the max possible number of hp/mana/move gains, by 10%
+        per incarnation.  What this does is mud pick random
+        number between 1 and x for their gains.  This increases
+        x by 10% for each incarnation.  Can be turned on or off
+        in config.h
+        -Dorzak 4/23/2002
+
+Bugfix: Fixed several incidents of missing ROOM_NOMAGIC so that
+        the NOMAGIC rooms can not be summoned into or out of.
+        -Dorzak 4/23/2002
+
+New:    Immortal spellup function added to magic.c.  Must
+        be wizgranted to be used.
+        -Dorzak 4/23/2002
+
+New:    Beefed up enchant_armor a bit.  Instead of applying
+        -1 to ac each enchant, it applies -5, and the chance
+        of failure was modified a bit.  This brings it into
+        line with how it is being used on Tempestuous Realms.
+        -Dorzak 4/23/2002
+
+New:    Added new commands to interp.c/.h.
+        -Dorzak 4/23/2002
+
+New:    Added option (changeable in config.h) to restrict
+        backstab to daggers only.  This is done on my mud,
+        and was mentioned in the ember-admins mailing list.
+        -Dorzak 4/23/2002
+
+New:    Added circle functions to fight.c.  Circle is mostly
+        in, and will be a skill.  Needs section in const.c and 
+        interp.c/.h
+        -Dorzak 4/23/2002
+
+New:    Added changes for fourth attack and circle to db.c.
+        Changes for fourth attack should have been made when
+        fourth attack was made, but was forgotten.
+        -Dorzak 4/23/2002
+
+New:    Changes in config.h are complete for the changes that are
+        part of this batch.  (I think)
+        -Dorzak 4/21/2002
+
+New:    Support for remort added to comm.c.  If you don't use remort
+        this will never do anything.
+        -Dorzak 4/21/2002
+
+New:    Note to hero or variations thereof will work to send notes
+        to heroes and above.   Not to admin or administrator and 
+        variations thereof will send notes to MAX_LEVEL - 3 and 
+        above.
+        -Dorzak 4/21/2002
+
+New:    These entries are being made as I merge CVS and TR's code.
+        bit.c entries for no_flee_to, arena, and admin_only rooms
+        added.   Not added elsewhere.  no_flee_to, would prevent a 
+        room from being fled into.  This is useful in clan halls
+        or for area guardians.   arena is a flag only, but eventually
+        will be chaos rooms (pk allowed rooms).  admin_only rooms
+        are MAX_LEVEL - 3 and above only rooms.
+        -Dorzak 4/21/2002
+
+New:    Add incarnations to the stat display.
+        -Dorzak 4/21/2002
+
+New:    Clarified the autohelp fro string in regards to extended 
+        descriptions for objects.
+        -Dorzak 4/21/2002
+
+New:    Removed ban.txt from the diff section of the makefile.
+        -Dorzak 4/21/2002
+
+Bugfix: Anything sold to a shopkeeper was disappearing if purchased
+        again discouraging an economy.  Maybe they should disappear
+        in the mobs inventory, and this should be reworked later.
+        -Dorzak 4/21/2002
+
+New:    Player vs. Player stealing was automatically failing.  It 
+        now works, but can be turned off in config.h
+        -Dorzak 4/21/2002
+
+New:    Beaconreset command.  If you should make beacon a mortal 
+        command, this will allow them to reset it to the default
+        which is ROOM_VNUM_TEMPLE.
+        -Dorzak 4/21/2002
+
+New:    Added rebirth as an option.  Uncomment USE_REBIRTH in 
+        config.h, to use it.  This is one of two options for
+        restarting after reaching hero.
+        -Dorzak 4/21/2002
+
+Bugfix: Misc changes to hide SUPERMOB a bit better when he shows
+        up with room and object progs.
+        -Dorzak 4/21/2002
+
+New:    Added admintalk as an imm channel.  I use it for MAX_LEVEL-3 
+        and above.  Implimented after a discussion among imms got to 
+        a player involved because of clan loyalties/etc.  Includes
+        a lastadmin function.  Must be given with wizgrant or pfile
+        edit like any imm command.   Will not work unless 
+        USE_ADMINTALK is defined in config.h
+        -Dorzak 4/21/2002
+
+New:    Added herotalk channel for remorts and heroes for the same
+        reason as admintalk.  USE_HEROTALK must be defined, and 
+        lasthero is a function.
+        -Dorzak 4/21/2002
+
+New:    Added gocial channel, these are global socials.  USE_GOCIAL
+        must be defined in config.h for them to work.  Also they
+        are not saved to the last list because they can be spammy.
+        Also typing gocial by itself will turn off you seeing most 
+        gocials, except those directed at you specifically.
+        -Dorzak 4/21/2002
+
+New:    Added an exclusion for worktodo.txt and help.txt to the make 
+        diff section of the makefile.
+        -Dorzak 4/21/2002
+
+New:    Added remort.o to the makefile.
+        -Dorzak 4/21/2002
+
+v0.9.46 [04/24/2002]
+--------------------------------------------------------------------------
+New:    Added isequal() function for mudprogs.  It takes two arguments,
+        the first of which is a $variable and the second a string to
+        match.  An example use:  if ( isequal($d,lever) )   would return
+        true if the argument to a command_prog was "lever".  Note that
+        isequal() does a non-case-sensitive comparison (for instance,
+        "LEveR" would also work in the above case).
+        -Zak 4/17/2002
+
+New:    Added argument handling abilities to command_progs.  Now, your
+        prog can tell the difference between 'pull lever' and 'pull bs'.
+        To access the arguments, use the new $d and $D variables in your
+        prog (see progvars.txt for more information).
+        -Zak 4/17/2002
+
+Bugfix: The OBJ_VNUM_PORTAL object was missing from CVS, so the 'nexus' 
+        spell was broken.  I just added it to midgaard.are.
+        -Zak 4/15/2002
+
+Bugfix: 'enter 2.portal' or 'enter 3.portal', etc would always enter the
+        first portal in the room.  Fixed.
+        -Zak 4/15/2002
+
+Bugfix: If someone sent you a tell while they were invisible, you could
+        find out who they were by looking at your 'tq'.  Fixed.
+        -Zak 4/14/2002
+
+Bugfix: The 'tq' command was supposed to show your gtell history as well
+        as your regular tell history.  It WAS showing messages that you
+        had sent to gtell yourself, but was not showing the messages from
+        other group members.  Fixed.
+        -Zak 4/14/2002
+
+Bugfix: Clan operations that wrote to the clan log file were causing the
+        MUD to crash on RedHat 7.2.  I fixed the crash, but still have
+        not figured out why the call to fopen() is failing only on that
+        one Linux distribution.  If the MUD cannot write to the clan log,
+        it will output an error in its own log file and continue on with
+        no crash.
+        -Zak 4/14/2002
+
+Bugfix: Racial skills weren't showing up in the output of 'skills'.
+        -Zak 4/14/2002
+
+New:    As unbelievable as it sounds, we had mudprog functions for
+        mobvnum() and roomvnum(), but there was no objvnum() function.
+        One of the most important things for a give_prog!
+        -Zak 3/27/2002
+
+New:    Added an mpsilentchangefaction mudprog command.  Works just like
+        the regular mpchangefaction only the faction change message is
+        not sent to the player.
+        -Zak 3/27/2002
+
+Bugfix: Oops, the mpchangefaction mudprog command was set as an immcmd
+        which made it unavailable inside progs.  Fix submitted by Timos
+        (thank you!).
+        -Zak 3/26/2002
+
+Change: The documentation for factions had a couple of inaccuracies.
+        -Zak 3/25/2002
+
+Bugfix: Not all faction affects on mobs were being saved.  Fix submitted
+        by Dither (thanks!).
+        -Zak 2/28/2002
+
+Bugfix: Small memory leak I introduced unwittingly.   When a mob was
+        killed for the first time since reboot, the mud would leave
+        4 bytes of memory in use per mob.   Fixed.  
+        -Dorzak 1/22/2002
+
+Bugfix: If you used advance to lower a persons level to level 1, and they
+        logged off and logged back on, their hp, mana, and move would be
+        restored to the values prior to the advance to demote them. This
+        is because do_advance in act_wiz.c was not updating perm_hit, 
+        perm_mana, and perm_move.   Fixed.
+        -Dorzak 1/9/2002
+
+Bugfix: Fixed the bug in shell where exiting the shell could cause the
+        MUD to crash under certain circumstances.
+        -Zak 1/6/2002
+
+Bugfix: Skills that are given to you by default for your race can now be
+        practiced just like any other skill.
+        -Zak 12/12/2001
+
+Bugfix: A few bugs in the logic on spells for nomagic and norecall rooms.
+        -Dorzak 12/12/2001
+
+New:    MUSIC Channel - fully configurable in config.h.  Can be used for
+        any type of channel, or turned off in config.h.
+        -Dorzak 12/12/2001
+
+New:    Drunk Speech/Drunk Walk.  If a character is drunk their speech
+        and walking becomes random.   In config.h you can control which
+        channels are affected.
+        -Dorzak 12/12/2001
+
+Change: AUTO_HATE is now a option in config.h.   With this turned on, mobs
+        will automatically hate anybody who attacks them, and will attack
+        that player if they come into the room.
+        -Dorzak 12/11/2001
+
+Bugfix: xp_compute is called on death now, if you have at least 1 xp in
+        your xp_stack.  Alignment changes are no longer in hit_xp_compute.
+        This is to deal with RAPID alignment changes that take place when
+        we call alignment changes EVERYTIME you hit a mob.  
+        -Dorzak 12/11/2001
+
+Change: WEAPON_VORPAL and WEAPON_SHARP really did nothing.   I have been
+        using, and fixed a few bugs in, the VORPAL code that has been
+        sitting in my old ember snippets files.  I think I got it from
+        Clogar, and if I remember correctly it originally came from 
+        Mudweiser, but I may be mistaken.   There was one crash bug I 
+        found was there on a server running an Athlon 800, and was not
+        there on the old p133 I used to work on.  Using send_to_char
+        instead of writing directly to the descriptor seemed to solve it.
+        I suspect it had something to do with the player repoping in the 
+        morgue before the message was sent.  Or I could be bleary eyed
+        and crazy since I have very little sleep of late.
+        -Dorzak 12/11/2001
+
+Bugfix: Players who had backstab in their class could attempt to backstab
+        with a 1% chance even if they weren't high enough to use backstab.
+        FIXED.
+        -Dorzak 12/11/2001
+
+Change: Slay has an all option.  Slays all in the room.  Only available
+        to players of MAX_LEVEL.
+        -Dorzak 12/11/2001
+
+New:    Modified version of slay that doesn't require being in the room
+        with your victim.  mortslay.  What can I say.  I have a co-imp
+        with an evil mind.   She hasn't used it as far as I know, but
+        she wanted.   She is also my wife, so what could I do?
+        -Dorzak 12/11/2001
+
+Bugfix: A few additional places we were either setting blackjack on the
+        attacker, or checking if the attacker was affected by blackjack. 
+        I would say get rid of blackjack except I have players who like
+        it.
+        -Dorzak 12/11/2001
+
+New:    To help track how fast people are leveling, levels are now
+        logged.
+        -Dorzak 12/11/2001
+
+New:    do_hotboo.  Add this to the imm commands.  Added to prevent
+        my kindergarten son from hotbooting my mud.
+        -Dorzak 12/11/2001
+
+New:    First time connections are announced differently, then announced
+        normally (ie: "has entered the game for the first time").  Not
+        yet configurable in config.h, however.
+        -Dorzak 12/12/2001
+
+Change: Got rid of the 'You learned nothing from that fight' message.  I
+        originally put that in just to cover all the bases, but there
+        really shouldn't be any case where an actual fight ends in that
+        state.  This just caused too many problems, so I removed it.
+        -Zane 12/5/2001
+
+Bugfix: Non-imm commands could not be disabled via the 'disable' command.
+        -Zane 12/5/2001
+
+Bugfix: Several bugfixes related to the blackjack skill.  Sometimes, just
+        blackjacking a mob could crash the MUD.  Also, it was checking
+        the player's blackjack status instead of the target.  It allowed
+        you to blackjack something you were already fighting (blackjack
+        is hitting someone on the back of the head or behind the ear to
+        knock them out - kind of hard to do if you're already fighting
+        them).
+        -Zane 12/5/2001
+
+Bugfix: Fixed a crash bug in 'stat' for newaffect bits.
+        -Zane 12/5/2001
+
+
+v0.9.45 [12/02/2001]
+--------------------------------------------------------------------------
+New:    Zak just committed the INSTALL file, and I made one correction
+        to it to reflect how to change what port the mud is running on.
+        -Dorzak 12/2/2001
+
+Bugfix: Closed SourceForge bug #465415 - mpsilentcast not silent when
+        casting spells that do damage.
+        -Zak 12/1/2001
+
+Bugfix: Closed SourceForge bug #478556 - social "target not found"
+        messages weren't being used by the MUD.
+        -Zak 12/1/2001
+
+Bugfix: Closed SourceForge bug #485726 - 'note remove' not allowing the
+        author of the note to remove it from the board.  Appears to have 
+        been a simple logic error.
+        -Zak 11/30/2001
+
+Bugfix: Note to self, test compile before committing changes.
+        Typoes in my last fix, fixed.
+        -Dorzak 11/29/2001
+
+Bugfix: Fixed Sourceforge bug #484425 - EXP_TUNER.  Fixed.   Moved 
+        application of multiplier to before players are told how much
+        exp they gained.
+        -Dorzak 11/29/2001
+
+Bugfix: Fixed SourceForge bug #487250 - add2queue() not adding to your
+        'messages' queue while you were switched.
+        -Zak 11/29/2001.
+
+Bugfix: Fixed add2tell() not adding to your tell queue while you were 
+        switched.
+        -Zak 11/29/2001.
+
+Bugfix: Fix for SourceForge bug #455143 - Switched mobs will no longer 
+        be shown in the who list.  Additionally, when someone sends a 
+        tell to a switched player, the tell will automatically be 
+        re-routed to the person in his new body.  NOTE:  Any tells/replies
+        from the switched character will appear to be from the mob, NOT
+        from the imm!
+        -Zak 11/29/2001
+
+Bugfix: Anonymous users can no longer be whois'd (SourceForge bug
+        #455145).  This goes for imp's too (use 'stat' instead).
+        -Zak 11/29/2001
+
+New:    Made the auction channel strings configurable in config.h.  These
+        changes also fix SourceForge bug #478557 where colors weren't
+        working in the auction channel.  I may have missed some strings...
+        If so, just let me know.
+        -Zak 11/28/2001
+
+Change: You can now disable the 'auction info' command in config.h by
+        #defining DISABLE_AUC_INFO.  This was added because the feature
+        is basically a "free" identify spell.  I hope we can do a better
+        fix for this issue later...
+        -Zak 11/28/2001
+
+Typo:   " ... feels indifferet to you."  Added the missing n.
+        -Dorzak 11/27/2001
+
+Bugfix: Fixed the crash bug from loosing link while switched.  When you
+        loose link, the MUD will now automatically un-switch you.
+        -Zak 11/20/2001
+
+Bugfix: Faction affects on mobs were not saving (I swear that this used
+        to work fine - not sure what happened to the code, but it was
+        gone).
+        -Zak 11/18/2001
+
+Change: Link-dead players will no longer show up as "Currently
+        playing" in whois.  They will now be shown as "Currently
+        link-dead".
+        -Zak 11/08/2001
+
+Bugfix: Fixed SourceForge bug #478555 (switched mobs cannot see
+        channels).  When you switch into a mob, you will retain
+        full visibility of whatever channels you had active before
+        you switched.
+        -Zak 11/06/2001
+
+Bugfix: Related to the previous fix, and to sourceforge bug #478554
+        Additional fixes to use the short descript of the mob instead
+        of name in channels, last, lastimm, yell messages when stole
+        from.  In other words a general clean up of whenever we
+        knew a mobs name instead of short descript was being 
+        referenced.  Hopefully there isn't more such references, but
+        there may be.
+        -Zak 11/06/2001
+
+Bugfix: Fixed SourceForge bug #478553 (mpecho and related commands
+        not handling $n variables correctly).  Made the $variable
+        handling by mudprogs more consistent and created some new
+        documentation for them.  Check out progvars.txt in the
+        doc directory.
+        -Zak 11/06/2001
+
+Bugfix: This should close out sourceforge bug #464221 - if you wield
+        a two handed weapon, you could still second wield a one handed
+        weapon fixed. 
+        -Dorzak 11/06/2001
+
+Bugfix: Imms with trans can no longer trans other characters who have
+        a higher trust level than themselves.  
+        -Zak 11/05/2001
+
+Bugfix: Sourceforge bug #465443 - items in containers within containers
+        disappear when characers quits and logs back in.  We do not
+        allow containers to be put in containers currently.  Ideally,
+        the pfiles could store a heirarchy of items, but don't currently
+        seem capable of doing so.
+        -Dorzak 11/05/2001
+
+Bugfix: Crash bug - when a special weapon did more than 
+        MAX_MORTAL_WEAPON_DAMAGE, when the special weapon message was
+        called, we crashed.  Zak fixed this.
+        -Dorzak 11/02/2001
+
+Bugfix: Minor - a command was showing up twice in commands, because it
+        was in interp.c twice.  Fixed.
+        -Dorzak 10/29/2001
+
+Bugfix: Crash bug fixed, and bug causing us to enter crash state fixed.
+        Blackjack, was applying the affect to the ch, not victim.  Fixed.
+        NewAfBy was being saved under AfBy, but read under NewAfBy.  
+        Therefore if a player used blackjack, quit while affected by
+        blackjack and logged back in, we crashed.  Fixed.
+        -Dorzak 10/28/2001
+
+Bugfix: There were a few dividing by zero errors in shield block that
+        would cause crashes.  Fixed.
+        -Dorzak 10/28/2001
+
+New:    NO_MAGIC rooms.  NO_MAGIC rooms do not allow spells to be cast 
+        in them, or remote spells to affect chars in them.
+        -Dorzak 10/28/2001
+
+Bugfix: We would crash when people try to refer to supermob when there
+        are active oprog or rprogs.  First, you can't find supermob or
+        his phone booth in goto, and other commands the call the 
+        find_location function.  Also show_char_to_char is updated to
+        prevent showing him with the look command.
+        -Dorzak 10/28/2001
+
+Change: Law rooms no longer allow players to be summoned out of them.
+        This was done because of a propensity for pk'ers to summon
+        others to them.  This effectively makes midgaard safe from 
+        being summoned out of in the stock areas.
+        -Dorzak 10/28/2001
+
+New:    ? addaffect in the olc editors will show you the list of 
+        targets for addaffect command.
+        -Dorzak 10/28/2001
+
+Bugfix: oshow in the editors would crash. It is intended to take 
+        numerical arguements ONLY.  If a builder used  a name, 
+        crash!
+        -Dorzak 10/28/2001
+
+New:    Two new spells.  They are in magic.c, but not askilled or
+        in const.c yet.  Remove align (removes ANTI_ALIGN flags)
+        and knock (opens locked doors).
+        -Dorzak 10/28/2001
+
+Change: act_trigger for progs work.  It has been slightly redone
+        and now works almost identical to the speech_trigger. 
+        (It shouls since I used the speech function with a few
+        changes :> )
+        -Dorzak 10/28/2001
+
+Bugfix: When we made changes to allow olc to take advantage of the
+        previous infrastructure that allowed loading objects and
+        from any area, no check to make sure objects/mobs existed
+        was put in.  This is my fault. olc.c now checks to ensure
+        it is a valid reset before creating it.  Thanks to Rajic
+        for bringing this crash bug to our attention.  Thanks to
+        Zak for helping track it down.  Zak also wrote a function
+        in olc_save.c that allows for the reset to be saved with
+        a flag, so that if a bad reset should manage to creep in
+        it won't crash us and truncate the area file.
+        -Dorzak 10/28/2001
+
+Bugfix: Don't remember why I did this, but did it to fix a crash on my
+        mud.  So putting into cvs.  I think it had to to if you were
+        switched and tried to deposit money, or do balance.  Anyways
+        bank.c has an additional check to make sure you aren't an
+        npc when trying to do bank commands.
+        -Dorzak 10/27/2001
+
+Bugfix: Hid supermob and supermobs room in act_wiz.c in goto.  If there
+        are room/obj progs in the game, and you attempt to goto supermob
+        we would crash.  Goto will NOT find supermob.
+        -Dorzak 10/27/2001
+
+Change: Added Points: to do_mstat, only for PC's, it will show you
+        how many cp the player has currently.
+        -Dorzak 10/27/2001
+
+Bugfix: Players stealing from pk players were flagged as thieves.  
+        You can now still pk <-> pk.
+        -Dorzak 10/27/2001
+
+Bugfix: Pills are small, but you couldn't swallow them if full.  Fixed.
+        -Dorzak 10/27/2001
+
+Bugfix: We were listing prices at the healer in silver which we don't use,
+        and also charging in GOLD for the amount listed in silver.  
+        Silver changed to gold, and divided by 10, cost changed to
+        reflect this.
+        -Dorzak 10/27/2001
+
+Change: Took the reference to ballpark out of the con messages.  This
+        is the first in a SERIES of changes, now that I have cvs working.
+        -Dorzak 10/27/2001
+
+Bugfix: Crash bug in command trigger and oprogs.  Looks like what
+        happened is the section for checking triggers was copied from
+        mobs and a reference to vmob needed to be changed to obj.
+        As a side note, I have been mostly working on building and
+        features on my MUD, which I will bring in with config.h options
+        to turn them off, once 0.9.45 is released.
+        -Dorzak 10/7/2001
+
+Bugfix: Crash bug when doing channels as a switched character is fixed.
+        Zak sent me the fix in an e-mail right after I submitted the bug.
+        -Dorzak 9/23/2001
+
+Bugfix: Bugfix for the classes being set in the GUI as it is titled
+        on the sourceforge bugtraq.  We no longer reference any files
+        that get hardcoded into the executable.   Rather, they are all
+        referenced in ember.cfg files/dir that were moved are:
+            CLASS_DIR
+            HELP_FILE (renamed to help_log_file to avoid conflicts)
+            BAN_FILE
+            DISABLED_FILE 
+        If anybody sees any I missed, let me know.
+        -Dorzak 9/22/2001
+
+Bugfix: Realized my changes of a few minutes ago could have introduced
+        a crash bug.  Made it so that it is the abs value has 1 added
+        to it before being divided by MAX_LEVEL.
+        -Dorzak 9/21/2001
+
+New:    This was something I did to deal with a idiot on my MUD.  I 
+        turned off CAN_GAIN_REVERT, and also made it possible to turn
+        off CAN_GAIN_CONVERT as well.
+        -Dorzak 9/21/2001
+
+Bugfix: Pet Flee no_exp lost lost bug.  Not 100% fixed, but it is now
+        harder for pets to rescue.   Also there is a RESCUE_PENALTY 
+        value in config.h  This is used in the following formula:
+
+        ( abs ( ch->level - RESCUE PENALTY ) / MAX_LEVEL ) * 100 )
+
+        which is compared to a number generated by number_percent.
+        abs is used to generate the absolute value.  This required
+        adding another header to be included in fight.c "stdlib.h".
+        I did not want to make rescued players loose experience in
+        all cases because this would discourage grouping tactics.
+        -Dorzak 9/21/2001
+
+Bugfix: Healing mob while killing is FIXED.   I never did get the rules
+        in TAR_CHAR_DEFENSIVE, so I borrowed a few lines, and modified
+        them from the spell_cancelation, and added them to cure light,
+        cure serious, cure critical, and heal spells.  Anybody know of
+        any other TAR_CHAR_DEFENSIVE spells that could be cast to cause
+        the mob to take more damage points in a battle?  
+        -Dorzak 9/21/2001
+
+Bugfix: There is a crash bug when certain useless wands are attempted to 
+        be sold.  An example is the Willow Branch from Mahn-Tor.   This
+        is fixed.   This is my first changelog entry in a while.  
+        -Dorzak 9/19/2001
+
+Bugfix: [Hit Return to Continue] was overwriting lines in help files 
+        under certain circumstances.  Added \n\r at the beginning
+        of the string, so that Hit Return to Continue will be on a 
+        seperate line.
+        -Dorzak 9/8/2001
+
+Bugfix: Zak's Avatar in limbo.are was 0d0+0 hp, and if attacked would
+        crash the mud.  It now had 1d1+1 hp. :).   Btw, going forward 
+        if some builder creates a 0d0+0 mob, and attacks it, the MUD
+        will crash.  At least there isn't any that will do that in 
+        the stock.
+        -Dorzak 9/8/2001
+
+Fix:    Missed a few tell related commands with MIN_POS_ stuff for 
+        communications.  Added MIN_POS_TELL to tq and reply.
+	-Dorzak 9/8/2001
+
+Change: Okay, I got tired of shopkeepers only buying 1 of an item, and 
+        the magic shop not buying any scrolls.  This fix is a temporary
+        one until I can get it to count the number of an item that the
+        shopkeeper has and factor that in.  Anyways there is a new
+        variable in config.h MORE_BUY_MULTIPLIER this is the number
+        the cost is multiplied by if the shopkeeper is buying more of
+        an item he/she already has.   Set it to zero if you only want
+        them buying one of an item.
+        -Dorzak 9/2/2001
+
+Typo:   I made a stupid typo in last nights changes.  Fixed. had a (
+        instead of a { and LOGN_NORMAL instead of LOG_NORMAL.   
+        -Dorzak 8/27/2001
+
+New:    Recently had a player come on and make a 0 cp character and 
+        level like there was no tomorrow.  Not wanting to penalize all
+        players, I wrote a check into the exp calculations, that before
+        it calculates exp, it sets the points + a certain amount if they
+        are below a certain point.  These levels are defined in config.h
+        as CP_MIN_PENALTY (what point they start getting penalized), and 
+        CP_PENALTY (how many points get tacked on for exp calculations).
+        -Dorzak 8/26/2001
+
+New:    Players can spend trains with the gain command to lower their CP
+        the level was defined as 40 for the lowest they can go.  I wanted
+        the number somewhat lower, so I added #defin in config.h for this
+        pupose.
+        -Dorzak 8/26/2001
+
+New:    Beacon is in act_move.c, and not in act_wiz.c, and I remember
+        using it as a mort on a EmberMUD somewhere.   I have it as 
+        a mortal command on my MUD, but I didn't want to force my views
+        on others, so it is now controlled from config.h, whether it is a
+        mortal command or imm command with the #define BEACON_WIZ, 0 is 
+        a mortal command, 1 is a imm command.  Default in CVS is 1, to
+        coincide with its previous status.
+        -Dorzak 8/26/2001
+
+Change: Added a few spells to the const.c group tables.  create spring
+        was missing for example.
+        -Dorzak 8/26/2001
+
+Bugfix: Forgot to add the damage types for special weapons to bit.c not
+        sure if we need them there or not, but they are there.
+        -Dorzak 8/26/2001
+
+Bugfix: The last line of the who display was showing on the same line as
+        the prompt in some circumstances.  Fixed.
+        -Dorzak 8/26/2001
+
+Bugfix: Minor fix for the MIN_POS_TELL stuff.  
+        -Dorzak 8/26/2001
+
+New:    For clan members, a command cdeposit.  This is a deposit only
+        function that allows clan members to deposit into their clan
+        fund.  Withdrawals can be made by imms with access to the clan
+        command.  Something I noticed that is not documented in the clan
+        stuff is withdrawals do not put the gold into the imms inventory,
+        just removes it from the clan data.
+        -Dorzak 8/26/2001
+
+Typo:   When I went about trying to fix the core copying functionality I
+        made a few typos.  I think I got them now.
+        -Dorzak 8/25/2001
+
+Change: Fleeing now displays only the xp loss/gain in one line rather than
+        both seperately.
+        -Zane 8/21/2001
+
+Bugfix: The 'whois' command now properly hides private and secret clans
+        according to the rules in clan.c.
+        -Zane 8/21/2001
+
+Change: When a player's primary weapon is disarmed, they will automatically
+        switch their secondary weapon into their primary hand (primarily
+        because primary attacks happen a lot more often than secondary).
+        -Zane 8/21/2001
+
+Bugfix: Fixed the damage message for flaming, frost, and vampiric weapons
+        the messages are cheesy, but work.
+        -Dorzak 8/20/2001
+
+Bugfix: You spell clan as in mprog_clan with a n, not ss as in 
+        mprog_class, or at least I do.   Took me a bit to figure out
+        why the new clanguard mprog was attacking some clan members
+        and not others.  Found it. Fixed it.
+        -Dorzak 8/20/2001
+
+Bugfix: Fixed disarm so that secondary weapons are checked for both
+        characters.  If you try and disarm something while only wielding
+        a secondary weapon, it will now check your weapon skill instead
+        of hand-to-hand.  If the target of your disarm is wielding two
+        weapons, there's a 50/50 chance deciding whether to try for
+        primary or secondary.  If the target is only wielding a weapon in
+        the offhand, then that weapon will be targeted.
+        -Zane 8/20/2001
+
+Bugfix: Fixed several bugs in CHAOS mode.  First, the code was still doing
+        PK checks during CHAOS in several places.  XP was still being 
+        awarded during CHAOS.  Attacking someone during CHAOS was marking
+        you PK.  The MUD auto-saves players under certain circumstances,
+        but that should no longer happen during CHAOS.  Cancellation of
+        CHAOS mode now forces everyone on the MUD to 'quit' (this ensures
+        that their pre-CHAOS pfile is reloaded when they reconnect).
+        -Zak 8/18/2001
+
+Bugfix: When I added the MIN_POS stuff, I missed a few places.  Changed
+        act to act_new and gave it an arguement for the MIN_POS_TELL for
+        the message that is given to the player sending the message.
+        -Dorzak 8/18/2001
+
+Bugfix: RoM is designed to run the binary from the area directory. 
+        However, some time back that was changed with ember.  Although
+        the startup script still pointed to the area directory to rotate
+        the core files.  Fixed.  It now points to ./ the same directory 
+        that startup is run in.
+        -Dorzak 8/17/2001 
+
+Change: Changed all of the mob progs in Mudprogs.prg that use the mpkill
+        command to check to see if the mob is fighting before attempting
+        to attack.
+        -Zane 8/16/2001
+
+Bugfix: There were several calls to mpact in our Mudprogs.prg, but there
+        is no such MUDProg command!  Those calls have been changed to use
+        emote instead.
+        -Zane 8/16/2001
+
+New:    Added Dorzak's new mprog_clan() proc.  In a mudprog, the 
+        clan(target) command returns the number of that target's clan.
+        -Zane 8/16/2001
+
+Bugfix: Fixed a bug in MUDProg evaluations - || and && were being
+        evaluated with the same priority as <, >, ==, etc.  For example:
+
+          0&&0<300
+
+        was being evaluated as (0&&0)<300 instead of 0&&(0<300).
+        -Zane 8/16/2001
+
+Bugfix: Fixed an error in mprog_procs.c - fightinroom was calling 
+        mprog_level() instead of mprog_fightinroom().
+        -Zane 8/16/2001
+
+Change: Reformatted all of the EmberMUD code to be consistently spaced,
+        indented, etc.  Please try to follow our conventions in the
+        future.
+        -Zane 8/15/2001
+
+Change: The 'force' command now requires you to specify whether you want
+        to force a player or a mob (so that there is no confusion).  The
+        new syntax is:
+
+          force mob/char <name> <command>
+            OR
+          force all/players/gods <command>
+
+        Also updated help.are with the new syntax.
+
+        -Zane 8/14/2001
+
+New:    Added get_mob_room(), get_player_room(), and get_mob_world()
+        functions.
+        -Zane 8/14/2001
+
+Change: get_player_world() now calls get_player_room() first.
+        -Zane 8/14/2001
+
+New:    Two new imm commands - olevel and mlevel.  The take an arguement 
+        a number for the level, and optionally a name.  For example 
+        olevel 10  would give you a list of all objects loaded in the game
+        of level 10.  olevel 10 sword - only objects of level 10 with the
+        word sword in their name.  Same for mlevel, but for mobs.
+        -Dorzak 8/14/2001
+
+Bugfix: When I "fixed" haggle, I forgot to make it check to see if they
+        had learned it yet.  It was telling everybody they failed to
+        haggle.   Fixed, it now only tells you about failure if you know
+        the skill > 0.
+        -Dorzak 8/13/2001
+
+Bugfix: roll_stat() will no longer return negative or zero values.
+        -Zane 8/13/2001
+
+Bugfix: Fixed the damage bug check in new_damage() - it now works just
+        like in damage()
+        -Zane 8/13/2001
+
+Change: Removed second_one_hit() and added a weapon parameter to one_hit().
+        -Zane 8/13/2001
+
+Change: Dual-wielding mobs can actually attack with both weapons now.
+        -Zane 8/13/2001
+
+Bugfix: Several fixes to the counter skill.
+        -Zane 8/13/2001
+
+New:    Added MAX_COUNTER_PERCENTAGE to config.h.  This is the maximum
+        percentage of attacks a player with 100% counter skill can counter.
+        For instance, with the default value of 20%, a master at the 
+        counter skill (with 100%) will only counter 20% of the time.
+        -Zane 8/13/2001
+
+Update: Updated the README for 0.9.45 for the most common failure I have
+        seen with the area converter.  
+        -Dorzak 8/11/2001
+
+Change: I no longer have the domain tempestuous.net, so removed all 
+        references to my e-mail address there in the changelog.
+        -Dorzak 8/11/2001
+
+Bugfix: In get_curtime in handler.c "noon" was matching the rule for if
+        now.time > 11 and so was being displayed as 00:00 pm.  Changed
+        to > 12 which should fix that bug.   I will know when I can
+        set a machine to "noon" and run the MUD on it.
+        -Dorzak 8/11/2001
+
+New:    You can now specify the MINIMUM position for people to
+        participate in a channel in config.h. This also includes
+        the minimum position for tells.
+        -Dorzak 8/7/2001
+
+Change: do_worth now includes your bank balance.  The account function
+        which is part of bank.c gave more info, but only worked in the
+        bank room.  This way it works everywhere and gives a basics.
+        -Dorzak 8/7/2001
+
+Bugfix: Haggle was not letting you know when you failed, it will now 
+        give you a message when it fails, and check for improvement
+        like other skills which check even if they fail.
+        -Dorzak 8/7/2001
+
+Bugfix: You could speak on the channels, but not use last or lastimm.  
+        Changed POS_RESTING to POS_SLEEPING for being able to USE the 
+        command in interp.c
+        -Dorzak 8/3/2001
+
+Bugfix: The do_time function was outputting the time the mud was started 
+        up or last hotbooted.  However, on many terminals this was not
+        visible because it was not line feeding at the end, and the line
+        was being overwritten by the system time.   Added the missing \n
+        and included the fact that it was since the last hotboot and not
+        necessarily the actual uptime.
+        -Dorzak 7/29/2001
+
+
+v0.9.45-pre2 [ 7/28/01 ]
+--------------------------------------------------------------------------
+Bugfix: Fixed the bug that was causing players to become PK when they were
+        attacked by an IMM.
+        -Zane 7/26/2001
+
+Bugfix: Invisible players will no longer be named in the auction channel
+        SOLD message unless you can see them (detect invis, holylight, 
+        etc).  This was done by adding two parameters to the
+        auction_channel() function - Yes, I know this is a kludgy fix,
+        but auctions really need to be reworked a bit for a proper one.
+        -Zane 7/26/2001
+
+Change: Removed the second function declarations for the auction channel
+        from merc.h - They only need to be there once...
+        -Zane 7/26/2001
+
+Change: The cityguard heads (look in the mob factory) now have only the
+        parts that a head should have.  Also removed the biped flag.
+        -Zane 7/26/2001
+
+New:    Added MAX_MORTAL_WEAPON_DAMAGE to config.h instead of having it
+        hard-coded to 1000.  This is the limit for mortal weapon damage
+        in a single hit.  If a player that is not hero level or better
+        has a weapon that does damage greater than this value, the weapon
+        will be taken away and the player's name will be logged.
+        -Zane 7/26/2001
+
+Bugfix: Fixed a crash bug in damage() where doing > 1000 damage would
+        crash the MUD while trying to take the weapon away from the player.
+        -Zane & Dorzak 7/26/2001
+
+Bugfix: Fixed a bug in Win32 where users could occasionally hang the MUD
+        during login or new character creation.  Win32 appears to keep
+        getting three bytes of garbage (a telnet ACK maybe?) and Unix
+        systems don't.  The fix is in read_from_descriptor() - previously,
+        we would read until a CR/LF was found.  Now, the function stops
+        any time we read less from the socket than we were requesting.
+        -Zane 7/26/2001
+
+Bugfix: act_new was not checking min_pos correctly.  If you were at 
+        min_pos you did not get a message.  
+
+        changed:
+          || to->posit <= min_pos
+        to:
+          || to->posit < min_pos
+
+        -Dorzak 7/25/2001
+
+Bugfix: Several of the slot numbers in const.c were used more than once. 
+        The slot numbers are used in area files.  For example identify and
+        shocking grasp were both slot 53.  If you made a scroll of
+        shocking grasp, and reloaded the area, it would be a scroll of 
+        identify.  This is because identify appeared first in the const.c.
+        The second instance of each slot number was renumbered.
+
+        The following spells were renumbered:
+          shocking grasp - 53 changed to 54
+          nexus - changed from 83 to 84
+
+        The spells Thexder added had duplicated for many of them, they 
+        were changed from the 5xx to 4xx.
+
+        -Dorzak 7/25/2001
+        
+New:    The hard-coded vnum for the Donation Room is now configurable via
+        a config.h variable named ROOM_VNUM_DONATE.
+        -Zak & Gandalf 7/25/2001
+
+Bugfix: Fixed an OLC bug where editing resets and the area editor weren't
+        always marking the area as changed (and therefore not saving when
+        'asave changed' was run).
+        -Zane 7/24/2001
+
+Change: You can no longer exit the object editor for weapons without
+        setting a damage type first.  This will keep weapons from being
+        built with no damage type and later loaded in the MUD (causing
+        "unknown damage type" log file spam).
+        -Zane 7/24/2001
+
+Change: Removed the extra rlist command built-in to OLC because the global
+        one was better anyway.
+        -Zane 7/24/2001
+
+Change: Added bread to the shop in MUD school.  Wouldn't want our newbies
+        to get hungry, would we?
+        -Zane 7/24/2001
+
+Bugfix: When you went to sleep, the message "You go to sleep" was coming
+        up twice.
+        -Zane 7/24/2001
+
+Change: The OOC and INFO channels now show up while you are sleeping.
+        -Zane 7/24/2001
+
+New:    Added a NO_RDNS #define in config.h - commented out by default.
+        When it is defined, the MUD will not attempt to reverse resolve
+        the host name for connecting IP addresses.  This prevents the
+        system from being blocked by reverse DNS lag.  The side effect is
+        that with NO_RDNS defined, you can no longer ban players by host
+        name.
+        -Zane 7/23/2001
+
+Change: Changed COMM_SPOUSETALK to COMM_NOSPOUSETALK because that's how it
+        is being used and is consistent with the other channels.
+        -Zane 7/23/2001
+
+Bugfix: Fixed the crash problems with spouse and clan talk channels.  Both
+        channels were using descriptor->character without checking to see
+        if there was a player loaded yet.
+        -Zane 7/23/2001
+
+Bugfix: Now using Winsock v2.2 on Win32 (previously using v1.1).  This
+        fixes several problems related to the MUD hanging when clients
+        were killed without closing the connection properly.
+        -Zane 7/23/2001
+
+Bugfix: Fixed several reset bugs [Probably not all of them. -Zak].
+        -Zane 7/23/2001
+
+Bugfix: An '#else if' directive was missing from const.c.
+        -Zane 7/23/2001
+
+Change: Fixed some compile warnings under Linux and gcc-3.0.
+        -Zane 7/23/2001
+
+New:    Slaythar, who has a unnamed Ember based MUD in the works, donated
+        two spells.  They have been added to to magic.c, magic.h, and 
+        const.c but not added to any groups or askilled yet.  The two
+        spells are energize - allow you to transfer your mana to somebody
+        else and life drain, which is based on energy drain, but 
+        but specifically saps hit points.
+        -Dorzak 7/23/2001
+
+Bugfix: Fixed typo/bug when I added cost to objcheck.  Based it off of 
+        the weight check, but forgot to change the output.  It was 
+        outputting the weight of all items with a cost of zero.  Fixed.
+        -Dorzak 7/22/2001
+
+Bugfix: A bug was reported with some shops not selling things, despite 
+        shopkeeper having the item in their inventory.  Used objcheck to
+        verify the items.  Didn't find anything.  Later found the problem
+        was with the cost of the items.   Adding a check to objcheck to
+        check for cost less than or equal to zero.  Haven't fixed the 
+        area files yet though.
+        -Dorzak 7/21/2001
+
+Bugfix: Wizi imms can now use the 'sinfo' command again.
+        -Zak 7/21/2001
+
+Bugfix: Yells can no longer be heard by deaf people.
+        -Zak 7/21/2001
+
+Bugfix: Players can no longer hear the imm channel if they can't speak
+        on it.
+        -Zak 7/21/2001
+
+Change: The format of the OOC, gossip, q/a, and imm channels as well as
+        say, yell, and shout can now be configured in config.h.  This
+        replaces the old COLOR_ variables.
+        -Zak 7/21/2001
+
+Change: The OOC and gossip channels can now easily be renamed by changing
+        the CFG_OOC_NAME and CFG_GOS_NAME variables in config.h.  This
+        effects all references to the channels in the game - including
+        the commands used to talk on the channel and toggle them on/off.
+        -Zak 7/21/2001
+
+Change: The wear locations stuff in config.h is a bit friendlier now.  You
+        don't have to make sure you reset the color back to `0 and you no
+        longer have to add the right number of trailing spaces.
+        -Zak 7/21/2001
+
+Change: Did some more cleanup from when Lancelight overwrote our config.h
+        with his.
+        -Zak 7/21/2001
+
+New:    We are missing a lot of help files.   Now, when a player types 
+        help and the help file is not found, it is logged to help.txt.
+        The name and location of the file can be configured in config.h
+        -Dorzak 7/20/2001
+
+Change: Moved the get_player_world() prototype from act_info.c into merc.h
+        so now it's available throughout the code.
+        -Zane 7/20/2001
+
+Bugfix: Fixed a crash bug in do_wizgrant() and do_wizrevoke() and several
+        other functions in act_wiz.c where get_char_world() was being
+        called but no IS_NPC() check was being done.  Solution was to
+        replace get_char_world() with get_player_world().
+        -Zane 7/20/2001
+
+Bugfix: Fixed a memory allocation bug in show_list_to_char() - it was
+        occasionally trying to allocate 0 bytes of memory.
+        -Zane 7/20/2001
+
+New:    Anti_gender flags for objects. ITEM_ANTI_NEUTER, ITEM_ANTI_MALE,
+        and ITEM_ANTI_FEMALE.   
+        -Dorzak 7/20/2001
+
+Change: A line was being sent to players whenever the MUD checked for the
+        possibility of a skill improvement.  This has been wrapped in a 
+        ifdef statement.   The #define is in config.h, and turned OFF by 
+        default.  If you want your players to be sent this message, then
+        uncomment the #define SKILL_DEBUG line, right below the section 
+        for HEAVY_DEBUG.
+        -Dorzak 7/20/2001
+
+Bugfix: Fix for bug #216875 - wizi imms were being announced on the info
+        channel when they quit.  Now all INFO broadcasts check can_see()
+        -Zak 7/20/2001
+
+Bugfix: 'pload' was searching char_list for a partial name match, but now
+        it uses the player_list and doesn't do partial matching.  Now
+        Dorzak can 'pload Dor' (another character on his MUD).
+        -Zak 7/19/2001
+
+Change: Manually fixed the CVS area file resets - set the maxes back to
+        what they were before the broken area file saving code had a
+        chance to screw them up.
+        -Zane 7/19/2001
+
+Change: Modified the way new characters' race bonuses are applied during
+        new character creation.  Also, modified the pc_race_table to
+        define bonuses to match the new system.  The new roll_stat
+        function mirrors D&D 3rd Edition stat rolling - 4d6 is rolled,
+        the lowest roll is thrown away, the racial bonuses/penalties are
+        applied, and the REROLL_PENALTY is applied (if applicable).
+        -Zane 7/19/2001
+
+Change: Default REROLL_PENALTY changed to 0.
+        -Zane 7/19/2001
+
+Change: ROLL_STAT_ADJ renamed to REROLL_PENALTY (for clarity).
+        -Zane 7/19/2001
+
+New:    A while back a penalty to the rolls when rollng stats was added.
+        It was mentioned on the list by Zak that this should be adjustable,
+        or toggleble in config.h.  There is now a new #define in config.h.
+        It is ROLL_STAT_ADJ.   The value that is defined for it will be 
+        subtracted from the max stat available for their race.  It is 
+        currently set to 5, which is what the value it replaces was set
+        to.
+        -Dorzak 7/19/2001
+
+Bugfix: Moved a few things in interp.c 't' by itself now does 'tell', and
+        not 'tick', 'sc' does 'score', not 'scan'.
+        -Dorzak 7/18/2001
+
+Bugfix: The files in the class directory would not allow players to
+        practice their skills.   I imported the list from my mud.
+        -Dorzak 7/18/2001
+
+Design: The document that contains the working ideas for the new resets
+        system is in the doc/design/ directory as resets.txt.  It is 
+        very rough.   However should be an improvement.
+        -Dorzak 7/17/2001
+
+Bugfix: Changed the name of Farmer Sara.  There is a LONG story behind 
+        if you want to know, ask me.  dorzak@earthlink.net
+        -Dorzak 7/15/2001
+
+New:    Added additional option to IMMS_CAN_HIDE.  If defined, imm at the
+        imotd who type wizi will be logged in in wizi, and unannounced.
+        -Dorzak 7/15/2001
+
+New:    Added (with an ifdef) the option to have gain revert work.  Gain
+        revert allows players to convert practices to trains.  The code
+        is currently set to 8 practices for 1 train, for revert, and 1 
+        train for 10 practices.  Players will lose practices if they 
+        convert back and forth.   No advantage to the player unless they
+        really want their latest skill practiced up.  This is turned off
+        by default.  Comment out CAN_GAIN_REVERT in config.h to turn it
+        on.
+        -Dorzak 7/15/2001
+
+Bugfix: Fixed the DEFINE in config.h so that TRACK_IS_SKILL will work when
+        when defined.   Minor things would allow anybody to use it.
+        -Dorzak 7/15/2001
+
+Bugfix: Fixed a bug in act_move.c Practicing track skill was making it so
+        that the skill got worse, instead of better.  Somebody with a 
+        1% in the skill had a 99% chance of success.  FIXED.  Added ifdef
+        statements to const.c, merc.h, as well.
+        -Dorzak 7/15/2001
+
+Bugfix: Midnight now shows up as 12:XXam in output of the 'time' command
+        instead of '00:XXam'.
+        -Lancelight 7/15/2001
+
+Change: Changed the storage character castration routine.  In the old
+        code, keys would always poof from players when they left the game.
+        Now, key (and map) poofing is controlled by the v#s for the item
+        in the following way:
+
+          v0 - poof-proof flag
+          v1 - lowest level
+          v2 - highest level
+
+        The poof-proof flag, as the name implies, controls if the object 
+        will poof at all when a player leaves the game.  Set v0 to 1 for 
+        an item and it will NOT poof.
+
+        If an item is not poof-proof (v0 == 0), then v1 represents the 
+        lowest level character that is allowed to keep the item and v2 
+        represents the highest level character that is allowed to keep 
+        the item.  For example:
+
+          v0 = 0 and v1 = 10 and v2 = 20
+
+        If a level 9 or lower character somehow obtains this key or map, 
+        they will loose it when they log out of the game.  Likewise, a 
+        level 21 or higher character has no need for this object, so it 
+        will poof when they leave the game.  Level 10 to 20 characters 
+        WON'T loose the object when they log out.
+
+        Setting v1 or v2 to 0 eliminates that particular limit.
+
+        -Zak 7/14/2001
+
+New:    TODO OLC
+        -Lancelight 7/14/2001
+
+Bugfix: mlist, olist, and rlist output display is now formatted correctly.
+        -Lancelight 7/14/2001
+
+New:    mfreevnums, ofreevnums, and rfreevnums commands
+        -Lancelight 7/14/2001
+
+Change: helps now auto-save when you type 'done' in the OLC help editor.
+        -Lancelight 7/14/2001
+
+Change: Colorized a bunch of stuff through-out the codebase.
+        -Lancelight 7/14/2001
+
+Bugfix: Oops, minor bug in get_player_world() that would allow it to find
+        non-players (which was, in turn, causing some crashes in whois).
+        -Zak 07/12/2001
+
+Bugfix: Whoah, this one was big.  How'd we go this long without noticing
+        it???  Pets and charmed mobs will now assist PK players when they
+        are fighting other PK players.  You can also now order a pet to
+        kill a PK player as well.  The only reason I can think of for why
+        this didn't work was if there is some exploit related to this, but
+        I can't think of any...
+        -Zak 07/11/2001
+
+Change: Mob resets with a max of 0 now always show up as 1 in the output
+        of the resets command.
+        -Lancelight 07/11/2001
+
+Bugfix: Mob resets with a max greater than 1 were being set to 1 when the 
+        area was saved due to a small bug in the save code.  Thanks to
+        Lancelight for pointing it out.
+        -Zak 07/10/2001
+
+Change: Removed the valid_reset() stuff from olc.c as it's no longer 
+        necessary for EmberMUD.  Thanks to Dorzak for pointing that out.
+        -Zak 07/10/2001
+
+Change: Implemented Dorzak's ROM 2.4 snippit for "enhanced" sockets 
+        command.
+        -Zak and Dorzak 07/10/2001
+
+Bugfix: victfount changed to victfound in the social editor (bug #214882).
+        -Zak 07/10/2001
+
+New:    get_player_world() function added to handler.c.  It works just
+        like get_char_world() except that it only searches players (no
+        NPCs).
+        -Zak 07/09/2001
+
+Bugfix: do_finger() no longer looks at NPCs for partial name matches.
+        -Zak 07/09/2001
+
+Change: I fixed the double CRs in this Changelog file.  I wish I knew how
+        that keeps happening...
+        -Zak 07/07/2001
+
+Bugfix: When a mobile was created using OLC, it had no HP by default.  If
+        it was left that way and a player killed it, the MUD would crash.
+        All new mobs created with OLC will now always have at least 1 HP.
+        -Lancelight 03/09/2001
+
+New   : Added portal code.  To create a permanent one, create a new object
+        using OLC, set the type to 'portal', and set the 'v0' to the
+        destination room vnum.  Now, set a reset for it somewhere and
+        you're set.  Keep in mind - if you give it the 'take' wear flag,
+        players can carry it around and drop it to use it, but the portal
+        will stay where they dropped it until someone picks it up.  This
+        may or may not be desireable on your MUD.  Oh yeah, use the new
+        'enter' command to go through a portal.
+        -Lancelight and Zane The Insane 03/08/2001
+
+New   : Added a new level 22 spell for mages called 'nexus'.  It creates
+        a temporary two-way portal between the mage's current location
+        and a location specified by the caster.
+        -Lancelight 03/08/2001
+
+New   : There is now a way to scale how powerful or how weak a mob's
+        breath spell can be.  In the mob editor there is a new option
+        called Breath weapon Strength.  Normal setting is 100, anything
+        above 100 would cause the mob to do more damage, and anything less
+        would cause the mob to do less damage.
+        -Lancelight 01/22/2001
+
+New   : The area file format has been changed to reflect the new Breath
+        weapon Strength option.  An area converter will be made available.
+        -Lancelight 01/22/2001
+
+Bugfix: When the jail timer was set to 0 (Indefinite amount of time), the
+        mud would continue to decrease it's value resulting in a buffer
+        overflow after several days of being in jail.  Fixed.
+        -Lancelight 01/22/2001
+
+Bugfix: When a mob was jailed, it's timer was not being decreased.
+        Fixed.
+        -Lancelight 01/22/2001
+
+Bugfix: When a mob was jailed, and someone switched to that mob before
+        it's time was up, and stayed switched when it was time for the mob
+        to be released, the mud would crash.  Fixed.
+        -Lancelight 01/22/2001
+
+Bugfix: When a player was switched into a mob and got jailed, and returned
+        before the time was up, the mud would crash when it was time to
+        release the mob.  Fixed.
+        -Lancelight 01/22/2001
+
+New   : Added a command called 'tick'.  It is off by default but can be
+        turned on by typing 'tick'.  This will cause the mud to
+        automatically send a line feed to the user each time a tick
+        occurs.
+        -Lancelight 01/16/2001
+
+New   : The channels list now shows the Spouse channel and the tick 
+        channel.
+        -Lancelight 01/16/2001
+
+Bugfix: Fixed the 'casting a skill' bug where things like 'cast dagger'
+        would increase your dagger skill.
+        -Zak and Paul Bushore 12/5/00
+
+Bugfix: Wands and furniture were mixed up in olc_act.c causing v2 for
+        wands to be set as if they were furniture.  This also caused a
+        crash if an item created like this were sold in a shop.
+        -Lancelight 11/15/00
+
+Bugfix: Helps were not being saved upon 'asave world' or 'asave changed'.
+        -Lancelight 11/15/00
+
+Change: Random objects now save and load.  This has caused an area file
+        format change ( Hey, newaffs was doing this anyhow. - Zak ).
+        An area file conversion program will be provided with v0.9.45
+        to convert your 0.9.44 areas to the new format.
+        -Lancelight 11/15/00
+
+Bugfix: The 'lastimm' command was available to all players.  It is now an
+        imm-only command and has to be in the player's pfile (#IMM
+        section) for them to use it.
+        -Lancelight 11/2/00
+
+Bugfix: Granting 'edit' or 'asave' to a mortal would not let them use the
+        command.  I took out the old immortal checks as they are no longer
+        needed.  There are probably other imm commands with this problem.
+        -Lancelight 10/23/00
+
+New:    I've put in a LOT of code to support the new bits system for AFF
+        bits.  It's untested, isn't supported by OLC, and doesn't load or
+        save to area files or pfiles yet.  But, the infrastructure is
+        there for us to begin playing with it.  We have to thank Zane for
+        working out the basics of this system, but I was the one that did
+        all the hard work implementing it. <grin>
+        -Zak 10/16/00
+
+Change: Wear locations definitions have been moved from act_info.c into
+        config.h.  There are 3 pre-made color schemes available for use.
+        The default scheme is white/yellow.  This also fixes a color
+        bleed problem with the old default strings.
+        -Lancelight 10/16/00
+
+Change: Zak's slist command has been split into sklist and splist (for
+        skills and spells respectively).  They are also better looking
+        than slist was.
+        -Lancelight 10/16/00
+
+New:    Added BREW_SCRIBE_USE_LEVEL to config.h.  It controls the level of
+        the object created by the brew and scribe skills.  The default is
+        .40 which sets the object to 40% of the character's level.
+        -Lancelight 10/15/00
+
+New:    Added BREW_SCRIBE_LEVEL to config.h.  It controls the level of
+        spell that is imbued to the object.  The default value is .40
+        which makes it 40% of the character's level.
+        -Lancelight 10/15/00
+
+New:    Added MAX_ATTAINABLE_STATS to config.h.  It controls the maximum
+        STR, CON, DEX, INT, and WIS attainable by players.  It currently
+        MUST be set to either 25 or 30, but at some point we hope to make
+        it so that this can be set to any number you want.
+        -Lancelight 10/15/00
+
+Change: The socials command now displays in multiple columns like it used
+        to before socials OLC was added.
+        -Lancelight 10/15/00
+
+New:    The socials command now displays the social vnum for people with
+        access to socials OLC.
+        -Lancelight 10/15/00
+
+Change: Removed the 'reserved' spell.  This fixes the problem with new
+        characters choosing it as well as the problem of new potions
+        and scrolls having it.
+        -Lancelight 10/15/00
+
+Change: Potions and scrolls created via brew or sribe were being named
+        incorrectly (short desc was fine, however).  The items will now
+        be named using the item's type and the sn.name for the spell being
+        placed on the item.
+        -Lancelight 10/15/00
+
+New:    get_curtime now uses 12-hour (AM/PM) format.
+        -Lancelight 10/15/00
+
+Bugfix: Player descriptions that ended in a blank line were causing whois
+        to report (null) for the player's race (only affected running
+        whois on offline players).
+        -Zak & Lancelight 10/14/00
+
+Bugfix: The empty vial and blank scroll needed for the brew and scribe
+        skills have been missing from the area file distribution for quite
+        a while.  I added them back and verified that both the brew and
+        scribe skills are working properly.
+        -Zak 10/14/00
+
+Bugfix: Fixed another offline player whois bug.  Whois will now stop 
+        reading the pfile once it encounters the word "End" on the 
+        beginning of a line.  This cures the "End" at the end of the #IMM
+        section on a line by itself crashing the MUD thing.
+        -Zak 10/12/00
+
+Bugfix: Fixed a bug where whois could sometimes crash on an offline
+        player's pfile under certain circumstances (if the 'log' command
+        was in their #IMM section and was the first command on the line).
+        -Zak 10/12/00
+
+Change: Updated pfile version numbers from 3 to 4 as part of the above
+        fix.  The MUD will automatically convert version 3 pfiles to
+        the version 4 format when a user logs in.  Note: version 3 pfiles
+        are still vulnerable to the whois bug discussed above.
+        -Zak 10/12/00
+
+Change: Moved a struct definition from merc.h to olc.h (it's only used in
+        OLC anyhow) that was causing several compiler warnings under
+        Linux.
+        -Zak 9/24/00
+
+New:    New 'slist' wiz-command added.  Displays all the skills currently
+        available to a given class along with the associated level and
+        creation points (nice when setting skills up with 'askill').  I
+        know that it's terribly ugly, but at least it works (that's what
+        happens when I only spend 5 minutes on a piece of code <grin>).
+        -Zak 9/13/00
+
+Bugfix: Newbies are no longer stuck at the MOTD if they log in while
+        someone is in a shell.
+        -Zak 8/29/00
+
+Bugfix: Characters in a shell are no longer spammed with MUD output while
+        they are not in the MUD.
+        -Zak 8/29/00
+
+Change; Exiting from a shell now gets you put back into the MUD.  Still
+        some minor bugs in here, but I think I can nail them.
+        -Zak 8/28/00
+
+New:    do_shell now actually works.  The MUD still doesn't know how to
+        put a player back into the world after they exit the shell (the
+        code is written, but isn't in the MUD yet), so don't use it in
+        a production environment just yet.
+        -Zak 8/28/00
+
+New:    Created a new CHAR_DATA list for tracking players currently in a
+        shell, spico, etc.  It's called shell_char_list.  Anytime someone
+        enters a shell for some reason, they should be removed from the
+        char_list and player_list and added to the shell_char_list.
+        -Zak 8/27/00
+
+New:    Some of the infrastructure for do_shell is in place, but it
+        currently does nothing.  In config.h, there are a couple of new
+        settings (one to turn shells on/off and one to set a level limit
+        for access to the shell).  Note:  Even if you set a level limit
+        for the shell command, you will still need to wizgrant the command
+        to anyone that needs it.
+        -Zak 8/24/00
+
+Change: I changed the way that olist is output...  It's no longer done in
+        three columns -- it's now just one big list (one object per line).
+        This fixes the issue with colors in object short descriptions
+        screwing up the olist and also allows for objects with long
+        short descriptions to have the entire description shown.
+        -Zak 8/24/00
+
+Bugfix: Fixed permban.
+        -Lancelight 8/8/00
+
+New:    Furniture is now sittable, sleepable, etc.  All of the possible
+        stand/sit/sleep/rest on/in/at flags are listed in config.h.  The
+        values are:
+          v0 - Max # of people that can be on the obj.
+          v1 - Max weight obj can handle.
+          v2 - Furniture position type.
+          v3 - Heal rate.
+          v4 - Mana regen rate.
+        -Lancelight 8/6/00
+
+New:    PK, AFK, Married, Wizi, and Thief flags are now shown as single
+        letters in the output of who.  For instance, [-A--] means the
+        player is AFK.
+        -Lancelight 8/5/00
+
+New:    Added a new command - 'anonymous'.  Anyone can use this to make
+        their who info for level, race, and class anonymous.
+        -Lancelight 8/5/00
+
+Bugfix: Typing 'cast reserved' would crash the MUD.
+        -Lancelight 8/4/00
+
+New:    Added creation points to the ASKILL command.  The class files in
+        the main distribution have been updated to include creation
+        points.
+        -Lancelight & ZaneTheInsane 8/4/00
+
+Change: Added a #define RECALL_LEVEL to config.h.  This allows you to set
+        a level limit on recalling.  It is set to level 20 by default
+        (meaning anyone above level 20 cannot use the 'recall' command).
+        They can still use the recall spell, items that cast recall, or
+        any other means of getting "home" ('cas gate hassan' comes to
+        mind).
+        -Lancelight 7/29/00
+
+New:    You can now edit socials while the MUD is running via OLC.  The
+        socials.are file format has changed drastically.  The 'socials'
+        command is a bit different for the time being (still working on
+        the format).  You will notice that some socials have "none" for
+        some of their arguments...  This means that there is no argument
+        and the MUD will not print anything for that arg.
+
+        Use 'edit social create' to create a new social.
+        -Lancelight 7/28/00
+
+Bugfix: Typing 'reboot', 'hotboot', 'shutdown', 'asave', or 'beacon'
+        crashed the MUD if you were switched.  Mobs no longer have
+        the ability to do any of these things (switched or not).
+        -Lancelight 7/24/00
+
+New:    An info channel message is now sent to the MUD when a player
+        quits.
+        -Lancelight 7/23/00
+
+New:    Added a new hardcoded prompt for imms.  Activate it by typing
+        'prompt imm'.  It displays some things usefull to imms/builders.
+        -Lancelight 7/23/00
+
+New:    Added a %q variable for use in prompts.  It will display the area
+        that you are currently in.
+        -Lancelight 7/23/00
+
+Bugfix: Typing reboot, hotboot, shutdown, asave, or beacon all crashed the
+        MUD if you were switched.  Added checks to prevent mobs from doing
+        any of these commands.
+        -Lancelight 7/23/00
+
+New:    The jail command now has a time argument.  Typing 'jail lance 20'
+        would jail that player for 20 ticks.  'jail lance 0' will jail
+        them indefinately (no timer).  Once the timer reaches 0, the
+        player will automatically be freed to wherever you have your jail
+        release people to.
+        -Lancelight 7/23/00
+
+Change: When you jailed a mob, it's name was being used on the info
+        channel.  This has been changed to the mob's short description.
+        -Lancelight 7/23/00
+
+Bugfix: The MUD will no longer crash when a decaying item is auctioned.
+        Objects now stop their decay timers while on auction, but continue
+        to decay after being passed to the buyer.
+        -Lancelight 7/23/00
+
+New:    Added OLC support for the help.are file.  You can now edit
+        anything that is contained in the help.are file via the OLC
+        editor.  The IMOTD, MOTD, login screen, etc are all in there
+        and can be edited along with any help entry.  Use 'edit help
+        createhelp' to create new help entries or 'edit help <word'
+        to edit an existing help entry.  To delete a help entry, edit
+        it and set the keywords to 'deleted' and clear its text.
+
+        Typing 'help deleted' will list all of the deleted helps
+        (I plan to change this soon).
+        -Lanelight 7/20/00
+
+New:    A message is now sent to the room when a person enters or exits
+        an OLC editor.  Also, their name will be proceeded by a
+        [Building] tag while in the editor.
+        -Lancelight 7/19/00
+
+Bugfix: Fixed a minor bug in the faction() proc for MUDProgs.  Using
+        incorrect syntax could cause the MUD to crash.
+        -Zak 7/19/00
+
+New:    Added an isname() proc to MUDProgs.  Example usage:
+
+          if ( isname( $n, Zak ) )
+            bow $n
+            emote kisses $n's feet.
+            break
+          endif
+          break
+
+        This proc is something that was lost when Zane redid the MUDProg
+        code recently and has been on my list to re-code for awhile.
+        -Zak 7/19/00
+
+v0.9.44a [ 7/18/00 ]
+--------------------------------------------------------------------------
+
+Bugfix: Who_prefix and Who_race would cause crashes in who and save if a
+        player set either one then removed it via something like:
+	
+          set char Zak <whoname||prefix> none
+
+        The problem was with the new free_string - it would set the
+        pointer to NULL (as it should be) but when the code would check
+        whether or not to show (or save) who_prefix/race it would check
+        char->pcdata->who_prefix(or race)[0] or the first character.
+        It should have just been checking to see if the pointer was NULL
+        or not.
+        -Zane 7/18/00
+
+Bugfix: In save_mudprogs_area it was marking all saved mudprogs and
+        MobProgs which made it a bit hard to load ObjProgs or RoomProgs.
+	-Zane 7/18/00
+
+Bugfix: In the assign_<obj|mob|room>prog functions it was calling 
+        alloc_perm() when creating node elements in it's linked list
+        instead of malloc.  This caused unassign_*prog() functions to
+        crash when calling free_mem.
+        -Zane 7/18/00
+
+Bugfix: In the unassign_<obj|mob|room>prog functions if you tried to
+        unassign a prog that was the first prog in the list of progs
+        for that mob then the prog would not be unassigned. (was 
+        assigning obj|mob|room->mudprogs->next = pTemp->next instead
+        of obj|mob|room->mudprogs = pTemp->next in essence just setting
+        the original value to itself).  Combined with freeing memory
+        later in the proc this would cause a crash.
+        -Zane 7/18/00
+
+New:    Added an option in config.h to autosave areas whenever a builder
+        types done. The save that is done is asave changed. Use this with
+        caution, as there is a possibility it could corrupt an area if 2 
+        people work on it at once.
+        -Lancelight 7/18/00
+
+Bugfix: There was a major crash bug in poofin/poofout.  The problem was
+        that both commands were using strcat() to add to a string that
+        had been allocated with str_dup() (from SSM).  That is BAD BAD
+        BAD!  Stop that! :)  Once you str_dup() a string, the only way
+        to change it is to call free_string() then set the pointer to
+        a new str_dup()'d string.
+        -Zane 7/18/00
+
+Bugfix: Two functions were using strcat() on their char * parameters.
+        In this case, you don't know how much memory has been allocated
+        to that string (unless the size is passed as another parameter 
+        which isn't done much in this code).  A good rule of thumb is
+        to not directly modify a string passed in as a parameter unless
+        you have a good way of knowing EXACTLY what the size of that
+        string is (so you don't overflow).
+        -Zane 7/18/00
+
+Bugfix: When wielding a non-weapon, wear_progs weren't being triggered.
+        -Zak 7/18/00
+
+Bugfix: Fixed show_line_numbers to recognize \r\n as well as \n\r. \r\n is
+        the proper order for DOS files while \n\r is the common mud usage.
+        When loading files (such as mudprogs) that have been saved with 
+        \r\n show_line_numbers was screwing up on the display.
+        -Zane 7/17/00
+
+New:    faction() proc for MudProgs.  Use it in an ifcheck to see if a 
+        char's faction standing is above/below/equal a certain value.
+        For example:
+
+          if ( faction( $n, 2 ) < -500 )
+            yell Die $n, you filthy scum!
+            kill $n
+            break
+          endif
+
+        This prog would aggro on anyone with faction #2 below -500.
+        -Zak 7/17/00
+
+Bugfix: rlist was crashing.  I just changed it to not use strcat() cause
+        I'm lazy.  It works now, so who cares. <grin>
+        -Zak 7/16/00
+
+Bugfix: Oops.  Fixed a bug related to wizgrant/wizrevoke where a switched
+        mob would crash the MUD when trying to do a wiz command.
+        -Zak 7/16/00
+
+New:    Added an mprog command:  mpchangefaction.  Use it to adjust a 
+        player's faction by a given amount in mudprogs.
+        -Zak 7/16/00
+
+Bugfix: Removed a compile-time warning in ssm.c related to the new hashing
+        code.
+        -Zak 7/16/00
+
+New:    Added two new imm commands:  wizgrant and wizrevoke.  Use these
+        to grant and revoke access to individual imm commands to anyone
+        on the MUD (regardless of level).
+        -Zak 7/15/00
+
+Bugfix: str_len() wasn't counting `0 as a valid color code - it is now.
+        -Zak 7/15/00
+
+Change: Commands in the cmd_table are no longer restricted in any way
+        by a player's level.  Any "restricted" commands can be marked
+        as imm-only and access can be granted or revoked via the new
+        wizgrant and wizrevoke commands.
+        -Zak 7/15/00
+
+Bugfix: For some reason, the calls to write_to_descriptor in the hotboot
+        code were passing 0 as the string length, thereby causing the
+        "earth splits in two" and "earth remolds" messages to not be
+        printed during hotboot.
+        -Zak & Lancelight 7/15/00
+
+Bugfix: do_trust() was alowing you to "demote" people that were trusted
+        at a higher level than yourself.  You will get a "Nice try"
+        message now.
+        -Zak 7/15/00
+
+Bugfix: How long has THIS bug been there?  'purge <obj>' was crashing the
+        MUD.  Fixed.
+        -Zak 7/15/00
+
+Change: The door to the jail in midgaard's reset wasn't set to closed by
+        default (people could walk in the jail but couldn't get out).
+        -Zak 7/15/00
+
+Change: ssm.c now uses the ElfHash hash-key generation routine.  I also 
+        upped the MAY_KEY_HASH to 65413 in config.h since our total 
+        number of strings is about 45,000.  With Hash Tables it's always 
+        better (speed wise) to have about twice as many slots as you do 
+        strings.  Increasing that value took our load time from ~5 seconds 
+        to ~3 seconds.  Changing the hash function didn't appear to have 
+        much effect one way or the other.  Also, with this change, the 
+        entire string is evaluated instead of just the first 32 
+        characters. This is probably overkill but ELF doesn't do it and 
+        it's fast and so far I haven't noticed any slowdown in the load 
+        (and loading is the most string-intensive operation in the MUD).
+        -Zane 7/11/00
+
+Bugfix: Fixed a bug in do_jail() where jailing and unjailing a mob would
+        crash the MUD.
+        -Zak & Lancelight 7/11/00
+
+Change: Fidos in Midgaard are now level 3, not level 20.
+        -Zak 7/11/00
+
+Change: Deleted the extra Hassan reset in the donation room.
+        -Zak 7/11/00
+
+Change: free_string now requires you to pass in the address of the string
+        pointer you want freed so that free_string can set that pointer
+        to NULL when it has been freed.  This now makes it impossible to
+        free the same string twice.  All calls to free_string should now
+        look like this:
+
+          free_string( &thing->some_string );
+
+        -Zane 7/11/00
+
+Change: free_mem now works just like the new free_string.  So, instead of
+        calling free_mem(ptr) you now call free_mem(&ptr).  Unfortunately,
+        this is not as enforceable as free_string because of all the
+        typecasting that goes on.  BE CAREFUL when using free_mem!  If
+        you pass it an invalid value, it will still attempt to free that
+        memory (with unpredictable results).
+
+        -Zane 7/11/00
+
+Change: Removed the size parameter from free_mem as it hasn't been used
+        for quite some time and was only left in to support older calls.
+        I went through and fixed all of the old calls, so no reason to
+        keep the unused parameter anymore.
+
+        -Zane 7/11/00
+
+Bugfix: Strings were randomly being overwritten with Object Progs (and 
+        probably Room Progs as well). Turns out we were trying to free 
+        the same string twice and free_string was screwing up memory. 
+        We only free the string once now and I'm working on free_string 
+        to handle errors properly. 
+        -Zane 7/10/00
+
+Change: Shopkeepers now take factions into account when pricing items.
+        The discounts and mark-ups are configured in config.h
+        -Zak 7/10/00
+
+Change: Shopkeepers will now refuse to list, sell to, or buy from players
+        whose factions with them are worse than a specific percentage
+        (set in config.h).  The shopkeeper will actually boot the player
+        out of the store if there is an exit to boot them out of (thanks
+        for the idea, Zane).
+        -Zak 7/10/00
+
+Change: Factions now affect everyone in the group, regardless of who
+        landed the killing blow.
+        -Zak 7/10/00
+
+Bugfix: Fixed a bug in do_mset() that allowed someone with a lower level 
+        to use the set command on a player of a higher level.
+        -Zak 7/10/00
+
+Change: Changed the SHOW_DAMAGE_TO_CHARS damage messages to actually 
+        verbalize the damage rather than just tacking it on as a number 
+        at the end (Thanks Erd!).
+        -Zak 7/10/00
+
+Bugfix: Fixed a minor bug in do_mstat() where the Parts for a mob were 
+        being stated incorrectly.
+        -Erd 7/10/00
+
+New:   Faction changes can now be applied to mobs via OLC (no more editing
+       area files <smlie>).  When editing a mob, use this syntax:
+
+        faction add <vnum> <change>
+         OR
+        faction delete <vnum>
+
+       -Zak 7/7/00
+
+New:   Added factions to the output of the "stat" wizcommand.  For mobs,
+       it shows the factions they affect.  For players, it shows their 
+       current faction standings.
+       -Zak 7/7/00
+
+New:   Added factions to the vnum command.  The syntax is:
+
+        vnum faction <name>
+
+       -Zak 7/7/00
+
+New:    Factions.  A document describing how to implement them, the new
+        commands, etc. will be forthcoming...  Currently, the following
+        specific features have been coded:
+
+        * Factions OLC - Create and edit factions online via OLC.
+        * Factions in 'consider' - When considering a mob, their 
+          feelings towards you will be displayed.
+        * Killing a mob affects players' faction standings.
+        * 'factions' command to allow players to view their current
+          faction standings.
+        * 'set char <name> faction' command - allows imps to set
+          individual faction standings on a player.
+
+        -Zak 7/6/00
+
+Bugfix: Fixed a typo in the stock MudProgs where clerics were attempting
+        to cast 'disple magic' instead of 'dispel magic'.
+        -Zane 7/5/00
+
+Change: Set up MudProgs to use a first and last type of list.  With this
+        type of list, it keeps the list of progs in memory in the same
+        order as they are in the file.
+        -Zane 7/5/00
+
+v0.9.43 [ 6/28/00 ]
+--------------------------------------------------------------------------
+
+Bugfix: Fixed the "computed value not used" warning in mud_progs.c
+        -Zak 6/28/00
+
+Bugfix: There was a "comment within a comment" warning in db.c under 
+        Linux.
+        -Zak 6/28/00
+
+Bugfix: 8 Hassans were being spawned in the donation room.
+        -Zane 6/27/00
+
+Bugfix: put all.<object> <container> was broken.
+        -Zane 6/27/00
+
+Bugfix: Typing something at the "Press RETURN to continue" prompt was
+        causing the MUD to crash.
+        -Zane 6/27/00
+
+Bugfix: Players could not delete themselves.  Typing delete twice would
+        log the character off, but not delete their pfile.
+        -Zane 6/27/00
+
+Bugfix: The color code wasn't properly formatting double `s.  `` was
+        coming out as `.
+        -Zane 6/27/00
+
+Bugfix: When switched into a mob, you couldn't attack players.  You'd get
+        a message that you're not a player killer (even if you were).
+        Any mob can now attack any player, switched or not.
+        -Zane 6/27/00
+
+Change: Also removed some 2 and 3 level deep nested if statements. 
+        -Zane 6/27/00
+
+Change: Well basically ignore most everything in the last changes entry 
+        for resets. Here's how they work now: 
+
+        The max assigned to each mob reset is now a per reset max.  So, 
+        if you have 3 entries for 3 citiguards in the same room with a 
+        max of 3 for each, then you'll end up with 9 total citiguards 
+        (eventually).  The way the max works is every repop if the 
+        current number of mobs assigned to a reset is less than the 
+        max allowable number of mobs for a reset, then one more mob is 
+        spawned and the total for that reset is incremented by one.  So,
+        if you want 10 rabbits to spawn slowly over time then put one 
+        reset entry with a max of 10. If you want 10 to spawn all at 
+        once (and no more) then you create 10 seperate resets. If you 
+        set the max to -1 it will continually spawn mobs every repop 
+        (up to 999, should've put that in config.h) but I'd advise 
+        against doing that unless it's a REALLY popular area. :) 
+
+        All of the area files have been updated to support this new 
+        method.  Unfortunately, due to bad area creation, some areas 
+        may have more or less mobs since I couldn't tell what the hell 
+        the author was trying to do. :)  Also, the mob/reset/max limit 
+        is not affected by the total number of that mob in the world 
+        anymore, just the total number of that mob assigned to that reset.
+
+        Area files with mob reset max set to 1 now are converted to 0 when 
+        saved.  0 and 1 both spawn one mob but 0 is easier on the eyes when 
+        scanning area files.  Since I just redid the reset section of every 
+        damn area file I feel qualified to make that decision. :)  As usual,
+        all complaints/suggestions/bugs submissions/compliments should go 
+        to algore@whitehouse.gov
+        -Zane 6/26/00
+
+Bugfix: Got rid of the fread_char: no match.  When saving characters the 
+        new marry code was saving a number with a ~ after it so after the 
+        number was read in instead of getting a new property name from 
+        the next line you'd get the ~.  Existing players will cause this 
+        error once when they log in but next time they log out or save 
+        the file will be fixed.
+        -Zane 6/19/00
+
+Change: Resets now work differently.  There is no global max for a 
+        particular mob.  Each reset has a max associated with it now.  If 
+        you set the max to 4 then next repop 4 of that mob will spawn.
+        The equipment allocated for that group is loaded to all 4 at once.
+        If you want 4 of the same mob with 4 different sets of equipment
+        then you need to add each of them seperately with a max of 1 
+        followed by their equipment list (just like before except the 
+        max has a different meaning).  This should make things easier in 
+        the long run.  Previously if you wanted to add another cityguard 
+        you'd have to go to every cityguard reset and up the max by one
+        or more. 
+        -Zane 6/19/00
+
+Bugfix: Fixed another door bug in the Mudschool area (door from Mudschool
+        entrance south to the arena was locked and pickproof).
+        -Zane 6/16/00
+
+Bugfix: When you created a one-way exit in OLC, the area changed flag was
+        not being set.
+        -Zane 6/16/00
+
+New:    I added some configurability to the way PK Deaths are handled. You
+        can now define how the mud will handle PK_Corpses in config.h. The
+        new items are LOOTING_CHANCE and LOOTING_ALLOWED. Looting_chance
+        will let you determine how much of a chance the killer has of getting
+        some items off of the player he just killed (10 = 1 in 10 chance per
+        item). The Looting_allowed define has 3 settings, 0,1,2) 0 = no looting
+        at all, 1 = use the random system, 2 = the imp is a real bastid and
+        says that players can loot it ALL muhahaha.
+        -Lancelight 6/16/00
+
+Bugfix: The 'show all', 'show active', and 'show inactive' clan commands
+        had some bugs in them (didn't show clans in 'creating' status, etc).
+        -Zane 6/15/00
+
+Bugfix: The exit from room 3053 to 3503 in the stock areas has been fixed.
+        -Zane 6/15/00
+
+Bugfix: Fixed the door and diploma beast problems in the stock Mudschool
+        area.
+        -Zane 6/15/00
+
+Bugfix: It seems I left out some if's in the marriage code. You could marry
+        people to themselves and divorce people from themself. This is fixed,
+        so I now cant marry myself :(
+        -Lancelight 6/13/00
+
+New:    Forgot to mention that I had added a command called disable for imms.
+        This IMM Command allows an imm to disable single word mud commands or
+        skills such as goto or kick. Basically anything that passes through
+        interp.c can be disabled. Currently it does not disable spells, but
+        I'll find a way to do that somehow.
+        -Lancelight 6/13/00
+
+Bugfix: When someone was pk'd, they kept all of their items on them and
+        nothing was being left in the corpse. This has been fixed.
+        -Lancelight 6/13/00
+
+Bugfix: Bonehead me left and extra prompt in the note editor causing it to
+        display two prompts when word wrap was used. I patched it up.
+        -Lancelight 6/13/00
+
+Change: Changed the 80 character limit in the note editor to 255
+        characters.
+        -Lancelight 6/10/00
+
+New:    Added word wrapping and string replacement options to the note
+        editor.
+        -Lancelight 6/10/00
+
+New:    Added custom marriage code.  This includes a new spouse channel,
+        a new field in the whois data, a flag in the who list, and a
+        new player command 'consent' (consent is basically engagement).
+        Once players have consented, an imm uses the new 'marry' command
+        on them.  There is also a 'divorce' command.
+        -Lancelight 6/10/00
+
+New:    Added an elementary banking system for gold.  The vnums for the
+        banks (one for normal characters and one for the thief class - what
+        bank would do business with a known thief??) are defined in 
+        config.h.  The new commands are 'account', 'deposit', and
+        'withdraw'.
+        -Lancelight 6/10/00
+
+New:    Two new commands - 'pload' and 'punload'.  Pload pulls a character
+        into the MUD as though they were linkdead - allowing you to play
+        with them as though they were really online.  You can force them
+        to do things, give them things, set flags, etc.  Punload can be
+        used to unload the character (same as forcing them to quit - their
+        pfile WILL be saved).
+        -Lancelight 6/10/00
+
+New:    A 'permit' command has been added to allow a player to log in from
+        sites that are on the 'ban site permit' list.  If you ban a domain
+        and want to allow a certain player from that domain to still log
+        in, pload the player, permit them, and punload them.
+        -Lanelight 6/10/00
+
+New:    How about a command that lets you set the level that a skill
+        becomes available to a given class without having to edit any code
+        or reboot the MUD?  The new 'askill' command does just that.
+        Along with this new command comes a new directory called 'classes'.
+        If you want to add a new class, be SURE to place a new file in 
+        this directory or the MUD will not load correctly.  Be sure to read
+        comments in const.c regarding this change.
+        -Lancelight 6/10/00
+
+Bugfix: Whenever a player had a pet and the mud was hotbooted, the
+        hotboot would seem to be ok. Then whenever a player that had a
+        pet before the hotboot recalled, the mud would crash. This was
+        fixed by simply adding a load for pets in the copyover_recover
+        function.
+        -Lancelight 6/7/00
+
+Bugfix: If a player was PK'd or commited a PK, the PK counter 
+        would seem fine until they logged out. The second they logged
+        out, their PKDeaths and kills were reset to whatever the pk 
+        deaths were. Someone goofed and had 2 pk_deaths in save.c in the
+        fwrite_char function in the cases.
+        -Lancelight 6/7/00
+
+Bugfix: If an immortal typed 'alias x goto 3001' and then tried to
+        use x (x can be any string), it would say no location. A
+        small if statement in act_info.c in the substitute_alias
+        function fixed this problem.
+        -Lancelight 6/7/00
+
+New:    Reycle.c has been added for calls made by ban.c.  This will also
+        make porting ROM 2.4 code/snippets into ember easier because it
+        includes the ROM 2.4-style buffer features.
+        -Lancelight 6/7/00
+
+New:    I ripped out the old ban structures because they werent
+        quite up to par, and they did not allow for perm banning,
+        newbie banning or permitting. So I took it upon myself to 
+        rip Russ Taylors ban code out of rom 2.4b and port it over to 
+        ember. In the process, the ban.c file and recycle.c/recycle.h 
+        files were added along with structures in merc.h and 1
+        function in save.c to support the port. I hope I commented 
+        everyting well enough in the code incase someone wants to 
+        clean it up a bit.
+        -Lancelight 6/7/00
+
+New:    There seemed to be a big request for auto-auction on my
+        mud, so I ripped out the auction channel and ported the
+        snippet put out by Brian Babey for rom 2.4.  Not a whole lot 
+        had to be added for it, but quite a bit had to be modified to 
+        work with the ember way of doing things. I left the Auction.c 
+        file laying around because I was to lazy to stick it in an 
+        existing.c file.
+        -Lancelight 6/7/00
+
+New:    We were lacking some sort of jailing system, so I whipped
+        one up using the PLR_ACT bits. There is 1 thing that needs to
+        be set, and that is in act_wiz.c in the do_jail function. The 
+        jail room is currently set to 3011. You will want to change 
+        this to a room that you make for jailing people. Most of the 
+        IF statements can be found in act_obj.c and a couple others 
+        are scattered about the source.  The room vnum for the jail
+        is #DEFINE'd in act_wiz.c (will move it to config.h later).
+        Currently, players released from jail are sent to their
+        recall room.  NPCs released from jail are sent to the room
+        they were in before they were sent to jail.
+        -Lancelight 6/7/00
+
+Bugfix: Fixed a bug related to the new player_list.  Sometimes, players
+        were not being properly removed from the list which would cause a
+        MUD crash when they tried to log back in.
+        -Zak 4/25/00
+
+Bugfix: Fixed a minor bug in the 'purge' wiz command.  When an argument
+        was provided, the command would first search the current room
+        for an object matching the argument and then would search the
+        WORLD for a matching character.  The command now only searches 
+        the current room for a matching character.
+        -Zak 5/1/00
+
+Change: Also in the 'purge' command, if a player was being purged and was
+        only level 1, his pfile was not being saved before he was booted.
+        This harkens back to the day when level 1 players weren't allowed
+        to save AT ALL.  Anyhow, 'purge' now saves ANY player that is
+        targetted.
+        -Zak 5/1/00
+
+v0.9.42 [4/23/2000]
+--------------------------------------------------------------------------
+Bugfix: Pfiles will now save. <smile>
+        -Zak 4/20/00
+
+Bugfix: The startup script that shipped with 0.9.41 would change dirs to
+        the area dir before starting the MUD (which would then fail
+        becuase ember.cfg is located in the src dir).  So, I commented
+        out the dir change in the startup script for this version.
+        -Zak 4/20/00
+
+Change: Converted the Borland C++ Builder project from version 3.0 to
+        version 4.0 (and now I hear that 5.0 is out, so I'll have to get
+        that too! <grin>).
+        -Zak 4/20/00
+
+Bugfix: Oops, add2last_imm() was crashing when MAX_LAST_LENGTH was reached
+        due to a stray ; in the source.  This should keep the imm channel
+        from crashing after several messages...
+        -Zak 4/21/00
+
+New:    I got tired of having requests for it, so there's now what people
+        refer to as a "clear" color code available.  It's `0 (that's a
+        zero).
+        -Zak 4/22/00
+
+Bugfix: Zane's check for a player's xp overflowing MAX_EXP was backwards
+        and was therefore setting a player's xp to MAX_EXP anytime they
+        WEREN'T going to overflow.  It's fixed now...  No more level 51
+        newbies! <grin>
+        -Zak 4/22/00
+
+Bugfix: The MUD was saving clans.are in the src directory instead of the
+        area directory.
+        -Zak 4/22/00
+
+Bugfix: Fixed the bug where slaying an NPC would cause them to teleport
+        to the altar after leaving a corpse (instead of actually dying).
+        -Zak 4/23/00
+
+Bugfix: Another startup script problem...  Since shutdown.txt is being
+        written to the area directory, the startup script needs to look
+        for it there.
+        -Zak 4/23/00
+
+v0.9.41 [3/6/2000]
+--------------------------------------------------------------------------
+Bugfix: Got rid of a "used un-initialized" warning when compiling under
+        Linux.
+        -Zak 2/9/00
+
+Bugfix: Fixed a crash bug in 'edit mprog create'.
+        -Zak 2/9/00
+
+Bugfix: The mpclean command was calling do_mpdefault instead of 
+        do_mpclean.
+        -Zane 2/9/00
+
+Bugfix: do_mpdefault was calling itself mpforce in a bug() call.
+        -Zane 2/9/00
+
+Change: Added a syntax printout to the 'clan' command if no arguments
+        are used.  Also added the bank command to the syntax printout:
+        'clan <clan #> bank <deposit/withdraw> <amount>'.
+        -Zak 2/9/00
+
+Change: Made considerable changes to the way the 'clan' command works.
+        Take a look at the new syntax before attempting to use it.  
+        These commands just make more sense to me...
+        -Zak 2/9/00
+
+Change: mpclean now accepts a cost argument.  Anything worth less than 
+        the specified cost is considered trash and will be picked up.
+        If no argument is specified, the default cost is 10.
+        -Zane 2/9/00
+
+Change: Changed fightroom_prog to fightgroup_prog because fightgroup 
+        is more intuitive.
+        -Zane 2/9/00
+
+New:    Added ! to MUDProg if statements.  ! currently only reverses 
+        the return values of function calls, so 'if !level($n) == 33'
+        is different from 'if level($n) != 33' (the first returns the
+        opposite of the level() call.  Since all levels are >1 then 
+        !level() will always return False).  This was mainly put in 
+        so that I could easily do things like:
+
+        if isimmort($n)
+        and !isawake($n)
+        etc..
+
+        -Zane 2/10/00
+
+Bugfix: Fixed the bug where anything done by an object was done at
+        level 70 (default supermob level for some reason).  Now 
+        supermob's level is set to obj->level in set_supermob() 
+        and set back to HERO in release_supermob().
+        -Zane 2/10/00
+
+New:    Added /,*,+,- to the valid operators list. The following 
+        should be valid:
+
+        if level($n) >= 2 * level($i)
+          do something
+        endif
+
+        At this time you MUST have a space between operators and 
+        parameters ('2+2' would be invalid while '2 + 2' is fine).
+        -Zane 2/10/00
+
+Change: NPC's can now steal from both PC's and other NPC's.  When
+        stealing from a PC, their chance of success is 
+        (target->level - npc->level) * 20%.  So, if a level 13 NPC
+        attempts to steal from a level 15 PC, the NPC has a 60%
+        chance of success.  After 5 levels of difference, the
+        chance is 0% (unless the PC is asleep, in which case the
+        chance is 10%).  After 6 levels of difference, the chance
+        is ALWAYS 0%.
+        -Zane 2/10/00
+
+Change: There's now only one thing left in special.c (spec_puff).
+        -Zane 2/10/00
+
+Change: Upgraded our string management code to SSM v1.4.  SSM is
+        the "Shared String Manager" written by Fusion (Melvin
+        Smith).  We expect that this will need some major testing.
+        -Zane 2/10/00
+
+Bugfix: Fixed a crash bug in the add2tell command related to the
+        queue exceeding the MAX_LAST_LENGTH.  Maybe this is the
+        last bug in tell queues? <smile>
+        -Zak 2/11/00
+
+New:    Added an 'asave clans' command to save the clans file.
+        -Zak 2/11/00
+
+Change: In the clan editor, all of the commands used to require the
+        character have a security == 9.  Now, the only restriction
+        is that the character have trust >= MAX_LEVEL - 1.
+        -Zak 2/11/00
+
+Change: 'edit clan create' and the commands inside of the clan editor
+        no longer auto-save the clans file.  You will need to use the
+        new 'asave clans' command to save clans from now on.  Note:
+        the clans file IS still auto-saved when members are added or
+        removed, when the MUD is shutdown or rebooted, and when you
+        do an 'asave world' or 'asave changed'.
+        -Zak 2/11/00
+
+Change: Re-added several exits from Midgaard to other areas in the
+        MUD.  Don't know when these were lost...
+        -Zak 2/12/00
+
+New:    New 'aexits' and 'aentrances' wiz-commands.  These commands will
+        show all exits from and entrances to a given area.
+        -Zak 2/13/00
+
+Change: Re-added the rest of the exits from Midgaard to other areas.
+        (I used ROM 2.4's Midgaard as a model).
+        -Zak 2/13/00
+
+Change: Upgraded our string management code to SSM v2.2 and added Erwin's
+        hashing improvements.
+        -Zane 2/15/00
+
+Change: The parser for MUDProgs has been completely rewritten.
+        Notes:
+
+          if statements are now formed like this:
+
+             if (expression)
+             elseif (expression)
+             endif
+
+          Nested ifs are now allowed (woohoo!) and expressions can be
+          nearly any C expression.
+
+          '(' ')' '==' '!=' '<=' '>=' '<' '>' '&&' '||' and '!' are all
+          valid operators inside an expression now.
+
+          Any MUDProc can now be called inside of an expression.  For
+          instance, this if statement works now:
+
+             if (level($n)-5 <= level($i))
+               say 'you suck'
+             endif
+
+          ALL MUDProgs MUST end with 'break' now and all if expressions
+          must be surrounded by parenthesis ( '(' and ')' ).
+
+          Any command in a MUDProg may have an expression nested inside
+          of it if the expression is surrounded by #'s.  For instance:
+
+             if (level($i) > 10)
+               say Woohoo!  I'm level #level($i)#!
+             endif
+
+        -Zane 2/15/00
+
+New:    Added a hasmemory() function to MUDProgs to see if a mob is
+        currently remembering someone.
+        -Zane 2/15/00
+
+Change: Changed the memory($*) MUDProc so that calling it with no
+        parameter no longer works.  If you need to find out if the mob
+        is remembering someone, use the new hasmemory() function.
+        -Zane 2/15/00
+
+Change: Changed the return value for the hitpercent() MUDProg function.
+        Previously, it would return hit/max_hit which was a fraction
+        which was then cast to int so it became either 1 or 0.  Now,
+        it returns (hit/max_hit) * 100.  So 50% hp will return a value
+        of 50 (makes a bit more sense this way).
+        -Zane 2/15/00
+
+Change: Renamed some MUDProg functions:  inroom() is now roomvnum(),
+        goldamt() is now goldamount(), and number() is now mobvnum().
+        -Zane 2/15/00
+
+Change: Removed the name() MUDProg function.
+        -Zane 2/15/00
+
+Change: Changed gain_exp() in update.c so that it protects against xp
+        wrapping even if exp is unsigned.
+        -Zane 2/15/00
+
+New:    Added a MAX_CHUNKS define in config.h for SSM 2.2 - used to 
+        calculate MAX_STRING_LENGTH.
+        -Zane 2/15/00
+
+Change: Removed the isaffected() MUDProg function because it didn't
+        work.  Let us know if you need it and we'll write a new one.
+        -Zane 2/15/00
+
+Change: Modified fread_string_eol() in ssm.c for a minor speed increase.
+        -Zane 2/15/00
+
+New:    Added the 'repeat' wiz-command.  'repeat <x> <command>' will
+        repeat the specified command <x> number of times.  This is
+        very dangerous and is limited to MAX_LEVEL characters.  There
+        is NO WAY to break out of this command in-game.  (this command
+        is useful for testing things like loading 500 mobs into a room).
+        -Zane 2/15/00
+
+Bugfix: Previously write_to_buffer would try and close a socket if the
+        buffer size was greater than MAX_OUTPUT_BUFFER.  I made it so
+        that instead of closing the socket, it just returns without
+        adding to the output buffer.  This basically truncates very long
+        output (current setting is anything over 32000 bytes).  I also
+        set it to check size + 2048 > MAX_OUTPUT_BUFFER because 2048 is
+        the blocksize used to grow the output buffer.  End result - no
+        more buffer overflow crashes on extremely long MUD output.
+        -Zane 2/15/00
+
+Change: write_to_descriptor and do_color were using MAX_STRING_LENGTH*2
+        buffers.  These have been changed to MAX_OUTPUT_BUFFER*2 and the
+        buffer in write_to_descriptor is now static (and, it's wiped
+        every call).
+        -Zane 2/15/00
+
+Change: Optimized do_color and write_to_descriptor to use less memory and
+        run at least twice as fast.  Also fixed a potential buffer
+        overflow.
+        -Zane 2/16/00
+
+Bugfix: Fixed a memory leak in mprog_command_trigger where strdup() was 
+        being called without freeing the memory later.  This was 
+        especially bad considering every time a command was entered 
+        memory was allocated and not freed.  I'm gonna blame this on 
+        Zak cuz I think he wrote it and it's easy to blame him for 
+        stuff. :)
+        -Zane 2/16/00
+
+Bugfix: Fixed a memory leak in do_quit (was calling strdup() to copy the
+        char name and not calling free()).
+        -Zane 2/16/00
+
+Bugfix: Fixed a memory leak in do_prompt where it was calling strdup()
+        instead of str_dup().
+        -Zane 2/16/00
+
+Bugfix: Fixed at least 8 memory leaks in the do_award function where
+        strdup() was being called, but not free().  There are several
+        other bugs in this function, if someone wants to volunteer to
+        fix them...
+        -Zane 2/16/00
+
+Bugfix: Fixed a bug in the new MUDProgs parser where if statements 
+        with multiple elseif's weren't working quite right.
+        -Zane 2/16/00
+
+Change: specials.c is GONE.  All references to spec_progs everywhere have
+        been removed.  All the mobs that once had spec_progs now have
+        MUDProgs instead.
+        -Zane 2/16/00
+
+Bugfix: Fixed a bug in evaluate() - passing it !<number> was always failing.
+        -Zane 2/16/00
+
+Bugfix: Fixed an infinite loop bug in MUDProgs.  Oops!
+        -Zane 2/16/00
+
+New:    Added 'mprandomsocial'.  Allows a MUDProg to execute a random
+        social.
+        -Zane 2/16/00
+
+New:    Added MUDProg functions called sgetrand(<number>) and sreset().
+        sgetrand() works just like getrand() except that the result is 
+        static within each prog.  So the first call to sgetrand() in a 
+        prog will get a random value and each additional call within 
+        that prog will return the same value (if the number parameter 
+        changes then the values will also change -- calling sgetrand(33) 
+        then sgetrand(40) will return two different values).  sreset()
+        makes sgetrand() think this is a new prog and therefore generate
+        a new random value.
+        -Zane 2/16/00
+
+Change: Changed a couple of procedures that were calling str_prefix 
+        backwards.  The result was usually the same but calling it
+        backwards is a bit slower than calling it the right way if
+        they pass a real prefix and not the full string.
+        -Zane 2/18/00
+
+Change: Optimized str_prefix() a bit by making it correctly handle 
+        having astr be longer than bstr.  Previously it was only 
+        checking astr's length which is a potential buffer overflow 
+        (but only on very long astr's with shorter bstr's).  The
+        profiler pointed to str_prefix as being one of the biggest 
+        resource hogs.  It's now about 3% faster. :)
+        -Zane 2/18/00
+
+Change: Performed some speed optimizations in interpret() (sped up 
+        by about 15%).
+        -Zane 2/18/00
+
+New:    Added a new global list player_list.  This is a list of all 
+        PC's and is MUCH better than looping through char_list and 
+        checking to see if they're NPC's or PC's.  There are thousands 
+        of mobs loaded and usually a small fraction of that number are
+        players.  Using player_list is SOOO much faster.
+        -Zane 2/18/00
+
+Change: Optimized aggr_udpate() - It now loops through the player_list
+        instead of char_list.  The speed increase on this should be 
+        huge since we're only looking through a list of players 
+        instead of a list of all mobs.
+        -Zane 2/18/00
+
+Bugfix: Fixed a problem where in the aggr function they were trying to
+        pick a random player in the room but the way they were doing 
+        it would always pick the first player in the list.
+        -Zane 2/18/00
+
+Bugfix: In mobile_update(), rand_progs would only trigger on mobiles in
+        areas that had people in them.  rand_prog now triggers on mobs 
+        who have ACT_ALWAYS_UPDATE wether or not the area is empty.
+        -Zane 2/18/00
+
+Change: Minor speed improvements made to check_social.c (about 7%).
+        -Zane 2/18/00
+
+Change: Slight speedup in char_update().  Using player_list instead of
+        char_list for the auto-save and auto-quit portion.
+        -Zane 2/18/00
+
+Change: Slight speedup in check_reconnect() - using player_list instead
+        of char_list now.
+        -Zane 2/18/00
+
+New:    Put a configfile in.  Right now it checks in the current dir
+        for CONFIG_FILE (defined as ember.cfg right now).  This file 
+        is in ini file format (don't bitch).  Eventually most important
+        #define's will be moved into this file.
+        -Zane 2/22/00
+
+New:    Added ClansFile to ember.cfg.  The MUD now uses the value of
+        ClansFile (located in the AreaDir directory) to load and save
+        clans.
+        -Zak 2/24/00
+
+Bugfix: Fixed a crash bug that Zane left in clan_log() when he converted
+        it to use the new AreaDir setting in ember.cfg.
+        -Zak 2/24/00
+
+Bugfix: Fixed a bug in str_prefix() that was causing the 'quit', 'reboot',
+        'shutdown', 'delete', etc commands to fail.
+        -Zane 2/28/00
+
+
+v0.9.40 [2/9/2000]
+--------------------------------------------------------------------------
+Bugfix: 'edit mprog assign' and 'unassign' now mark the area that the 
+        obj/mob/room is in as changed.
+        -Zane
+
+Bugfix: When editing exits in the room editor, typing a direction followed
+        by something that doesn't make sense now generates an error 
+        message instructing the user to type "help exit".
+        -Zak
+
+Change: The 'vnum mprog' command now indicates if a prog is a Room,
+        Object, or Mob prog.
+        -Zane
+
+Change: Changed the mprog editor command 'progtype' to use str_prefix
+        instead of str_cmp for it's type arguments (mobprog, objprog, 
+        roomprog).  Now you can just type 'progtype obj' for instance.
+        -Zane
+
+Change: Removed the MOBProgs, OBJProgs, and ROOMProgs directories inside
+        the area directory (they are no longer used by the MUDProg code).
+        -Zak
+
+Change: MAJOR changes to the way MUDProgs work.  A lot of this is "under
+        the covers", but MUDProg OLC has also been improved.  New
+        documentation is planned, but for the moment, let's start with
+        this:  edit mprog create, edit mprog delete, and edit mprog 
+        assign.  Inside the editors, type commands for a list of commands.
+        -Zane
+
+Change: Removed most of the spec_procs from special.c and replaced them
+        with MUDProgs.  Only spec_thief and spec_puff remain.
+        -Zane
+
+New:    Added mpeatcorpse MUDProg command.  This one is a simple command
+        that any mob can use to eat a corpse and drop it's objects on 
+        the ground.
+        -Zane
+
+New:    Added mpfollowpath MUDProg command.  Basically this was needed 
+        so that you could provide a character string movement path for 
+        a mob and it will follow it, doing certain things.  Mainly 
+        this was added to get Midgaard's Mayor's mudprog to work but 
+        it can be used with other mobs in the future.
+        -Zane
+
+New:    Added alignment($*) to mudprogs.  Returns the target's alignment.
+        -Zane
+
+New:    Added fightinroom() to mudprogs.  Returns true if anyone in the 
+        room is fighting, returns false if not.
+        -Zane
+
+New:    Added crimethief($*) to mudprogs.  Basically returns wether or 
+        not the target has their crime set to THIEF.
+        -Zane
+
+New:    Added hour() to mudprogs.  Just returns the current mud hour.
+        -Zane
+
+New:    New command: 'edit mprog unassign'.  Removes a prog or prog group
+        from an obj/mob/room.
+        -Zane
+
+New:    Added AND to the if statements.  So now the following statement 
+        is valid in a mudprog:
+
+        if getrand(50) <= level($i)
+        and level($i) <= 10
+          do stuff
+        endif
+
+        The only limitation right now is there is no good way to mix 
+        and match and and ors.  There is no () equivilant in Mudprog 
+        so x == 1 || ( x == 2 && y == 1) could not be done.  
+        Basically it evaulates in the order you place them in the 
+        script. So to the above you'd have to do:
+
+        if x == 2
+        and y == 1
+        or x == 1
+
+        -Zane
+
+New:    Added a new MUDProg trigger "HIT_PROG" for objects.  This one
+        is triggered when a weapon hits an enemy and takes a percentage
+        as an argument (like rand_prog, fight_prog, etc).  If you're
+        writing code that uses the damage() or new_damage() functions,
+        they both now require an argument of a pointer to the weapon
+        that did the damage (or NULL) so that its objprog(s) can be
+        triggered.
+        -Zane
+
+New:    Added a new MUDProg trigger "FIGHTROOM_PROG" for mobiles.  This
+        one accepts a percentage argument and basically rolls a die for
+        each player fighting the mob every round.  For instance, if the
+        argument is 25 and there are 4 people fighting the mob, then
+        it is likely that one of the four will be a target.  Once one
+        target is found, it'll break using that player/NPC as a target.
+        -Zane
+
+New:    mpsilentcast MUDProg.  Allows a mob/obj/room to cast a spell on
+        someone without the usual "utters the words, 'yucandusbarr'"
+        stuff.
+        -Zane
+
+New:    New ifcheck for MUDProgs -- immune().  Use it in ObjProgs to
+        see if the target is immune to the type of damage that the
+        object does (assuming that it's a weapon).  For instance, a
+        dagger does pierce damage - if the target is immune to pierce
+        damage, you may not want your program to trigger on that target.
+
+        Example:
+
+        hit_prog 1
+        if immune($t) == 0
+          mpsilentcast 'poison' $t
+          mpechoat $t You have been poisoned by $n's weapon!
+          mpechoat $n Your weapon has poisoned your enemy!
+        endif
+
+        -Zane
+
+
+v0.9.40 Pre5 [2/2/2000]
+--------------------------------------------------------------------------
+Bugfix: Fixed several crash bugs where MUDProgs were doing an 
+        "if ( ch->in_room->something)" without checking to see that
+        ch->in_room wasn't NULL.
+        -Zane
+
+Bugfix: Fixed a bug in mprog_veval where it was trying to do a >= when it
+        should have been doing a <=.
+        -Zane
+
+Bugfix: In the clan editor, typing members <some large number> no longer 
+        sets members to 0.  Also, members <1 is no longer allowed.
+        -Zane
+
+Bugfix: In the clan editor, when NO_PK or REQ_PK is toggled it turns off 
+        its opposite (ie: NO_PK is on and you toggle REQ_PK then NO_PK 
+        is turned off and vice-versa).  I mean, if your clan is both NO_PK
+        and REQ_PK, you can't have ANY members, right?
+        -Zane
+
+Bugfix: Fixed do_score() to properly format for creation points >= 100.
+        Still think you should just be shot if you have that many creation 
+        points.
+        -Zane
+
+Bugfix: Not really a bug, but...  There were no limits on the lengths of
+        many of the clan strings (name, whoname, rank titles, etc).
+        -Zak
+
+Bugfix: Fixed another crash bug with saving files in save_area(), 
+        save_area_list(), write_mobprog(), write_roomprog() and 
+        write_objprog().  Basically if there was a problem opening 
+        a file it would bug() it then go ahead and try to write to 
+        it anyway.  Now it'll bug() it then exit the function letting it
+        try to save other areas.
+        -Zane
+
+Bugfix: Fixed a bug in save_char_obj() where if the player directory did 
+        not exist it would try to close a non-existant file and crash.
+        Now it just bugs() the error and moves on with life.
+        -Zane
+
+Bugfix: When a player with max HP and wearing +HP equipment removed the 
+        equipment, his current HP would remain at the old maximum until
+        he was injured or healed or something.  This made it possible for
+        people to run around with more HP than their max (even if it was
+        only temporary).  When removing eq, if HP/mana/move > max, it is
+        now set to max.
+        -Zane
+
+Bugfix: Scan will no longer show you characters in surrounding rooms if
+        either those rooms are dark or your current room is dark.
+        -Zane
+
+Bugfix: The poofin and poofout wiz-commands no longer require your name
+        to be included in the string.
+        -Zane
+
+Bugfix: Fixed a bug in clan.c where specifying a leader or sponsor that
+        was not a character on the MUD (no pfile in player dir) would
+        crash the MUD (fclose(fp) was being called on a NULL fp).
+        -Zak
+
+Bugfix: Fixed a bug in read_from_descriptor where long input lines would 
+        just disconnect a character without providing a reason.  We now
+        inform the character that the line was too long and was ignored 
+        and leave the character connected.
+        -Zane
+
+Bugfix: Y2K fix to get_date.  On some systems (maybe all - haven't tested),
+        the structure returned from localtime() gives the year as
+        year minus 1900 (so year 2000 was 100).  get_date now uses
+        year mod 100 (so 2000 is 00 and 3000 is 00, etc).
+        -Zane
+
+Bugfix: Fixed a bug in mpstat obj (do_objstat) where the wrong buffer was
+        being output to the player (and therefore, mpstat obj was never
+        showing programs for objects.
+        -Zane
+
+Bugfix: whoprefix and whorace weren't free'ing the string when deleted.
+        -Zane
+
+Bugfix: Added smash_tilde calls to set whoprefix and set whorace commands.
+        -Zane
+
+Bugfix: Fixed a buffer overflow in do_email.
+        -Zane
+
+Bugfix: do_oset and do_mset were not using str_prefix consistently.
+        -Zane
+
+Bugfix: Fixed a bug in do_who where it was using if (string == "string")
+        instead of using str_cmp.
+        -Zane
+
+Bugfix: Fixed do_whois and do_finger to format for 2 digit levels.
+        -Zane
+
+Bugfix: Fixed bug in how clan information was being formatted in whois.
+        -Zane
+
+Bugfix: Fixed a crash bug in lookup_class where it was using == instead
+        of str_cmp.
+        -Zane
+
+Bugfix: Fixed a minor bug in str_prefix where it would report an error as
+        being from strn_cmp instead of str_prefix.
+        -Zane
+
+Bugfix: Fixed a potential infinite loop problem in whois.
+        -Zane
+
+Bugfix: Fixed last and lastimm (the right way).  Removed the global count
+        variables and just did if (!last_list) instead of 
+        if (last_count == 0).  last_list is the pointer to the most recent
+        message in the last queue and starts out NULL untill the first
+        message comes through.
+        -Zane
+
+Bugfix: Asave was broke (how many hundreds of people reported this that
+        we didn't believe?).  It appears to have been related to some of
+        the changes that Kyle made awhile back (clans).  In any case, 
+        "asave all" should now work fine.
+        -Zane
+
+Bugfix: "fread_char: no match" fixed - The two clan parameters (clan 
+        number and rank)were not put into the char read side.
+        -Zane
+
+Bugfix: Fixed several warnings when compiling under Visual C++.
+        -Zane
+
+Bugfix: Fixed whorace - it was padding spaces onto the end of the race to
+        make it 10 characters.  Now the race will be centered in a field
+        of 10 spaces.
+        -Zane
+
+Bugfix: Corrected the help for the set wiz-command.  Now displays 
+        set char <blah blah blah> as an option.
+        -Zane
+
+Bugfix: Changed references to Ember.exe to EmberGUI.exe in the GUI
+        version (this allows reboots to work in the GUI).
+        -Zane
+
+Bugfix: Fixed mpstat (changes to do_mpstat, do_mobstat, do_objstat,
+        and do_roomstat).  mpstat obj <name> now works.
+        -Zane
+
+Bugfix: Fixed stat to use get_obj_world and get_mob_world to find mobs
+        and objects.
+        -Zane
+
+Change: Changed bamfin and bamfout (poofin, poofout) to use str_str 
+        instead of strstr to check to see if your name is in the 
+        string.  Just means you don't have to use the same exact 
+        case as your character name in the pfile.
+        -Zane
+
+Change: Increased MAX_STRING in db.c to allow for more areas.
+        -Zak
+
+Change: We're now including a full set of ROM-ish areas with the
+        EmberMUD distribution.  Yeah, I know that back in v0.17 I
+        said that we'd create our own set of balanced areas, but
+        that's not likely to happen <sigh>.  There are bound to
+        be bugs in these areas (I've been told there are some
+        doors that are supposed to be locked that aren't, etc).
+        If you find a bug, I'd appreciate it if you'd let us
+        know about it!
+        -Zak
+
+Change: Modified the BCB3 version of the MUD to create its .OBJ files
+        in an obj sub-directory under the BCB3 directory rather than
+        in the main src directory.
+        -Zak
+
+Change: Changed do_email and do_comment to give an error message when
+        the argument was longer than allowed (previously, the string
+        was just truncated).
+        -Zane
+
+Change: Changed several buf[2*MAX_STRING_LENGTH] to buf[MAX_STRING_LENGTH]
+        and made sure that str_len was being used to avoid buffer overflows.
+        -Zane
+
+Change: Changed log_string and logf_string to log to stdout instead of 
+        stderr under Win32 so it can be re-directed in DOS.
+        -Zane
+
+Change: Removed the BCB1 project files -- surely no one is still using
+        C++ Builder 1.0...
+        -Zane
+
+Change: Moved a lot of #define's from merc.h to config.h.
+        -Zane
+
+Change: Changed MAX_LEVEL back to 60.  This makes sense because nobody is
+        ever going to adjust the skills/spells/etc to work with 100 levels.
+        Also replaced ALL hard-coded references to 100 levels with MAX_LEVEL.
+        You should only have to change MAX_LEVEL in config.h if you want to
+        switch back.
+        -Zane
+
+Change: Who now only uses two digits for player's level (this goes hand
+        in hand with the MAX_LEVEL change).
+        -Zane
+
+Change: Changed the gain_exp function so that it stops deleting players
+        trying to exploit the lose xp to wrap around to max xp bug.  Now
+        if your exp would be set to something less than 0 it's set to 0
+        and if it would be set greater than MAX_EXP it's set to MAX_EXP.
+        So if you're at or near 0 xp and flee or die you won't go negative.
+        -Zane
+
+Change: Replaced startup.bat for Win32 systems with startmud.exe.  It does
+        the same thing startup.bat was supposed to do, except it works.
+        -Zak
+
+Change: Added the -lcrypt to the Makefile so it'll compile under glibc 
+        Linux properly.
+        -Zane
+
+Change: Made a change to aggr_update() so that a redudant check and loop 
+        is removed in some cases
+        -Zane
+
+Change: Unlocked a door that had no key in haon.are.
+        -Zak
+
+Change: Room affects are gone.  Use a RAND_PROG on a room and setup a 
+        program to do damage in there.  Of course with room progs you 
+        can do much more than damage every pulse, you could have a nice
+        healing room or a room that blessed or something similar.  If 
+        you're upgrading from an old version of Ember and moving area 
+        files over you'll have to go through each one and remove the 
+        #RAFFECTS section.
+        -Zane
+
+Change: Removed olc.hlp and ember.are from the area list (and deleted 
+        the files) and made it so that olc_save doesn't re-add these 
+        to the area list.  All helps MUST be in help.are
+        -Zane
+
+New:    Added code to give an error if #HELPS section is found in 
+        any file other than HELP_FILE.
+        -Zane
+
+New:    Added code in load_area to ensure that the vnum range is 
+        unique when loading the area.  If the range is not unique, 
+        we bug() it and terminate the mud.
+        -Zane
+
+New:    ? clanflags in the clan editor actually lists the clan 
+        flags now.
+        -Zane
+
+New:    Added a do_rfind() function and modified vnum to find rooms 
+        also. (Also shows what area the room is in).
+        -Zane
+
+New:    Added snprintf for MSVC.  Basically it just wraps around 
+        _snprintf() so we can use snprintf freely without worrying 
+        about compatibility.  Stole the wrapping code from Kyle's 
+        clan code.
+        -Zane
+
+New:    Added a MAX_EXP define to limit the maximum amout of experience
+        any player can have.
+        -Zane
+
+New:    Added an EXP_MODIFIER to config.h.  This is a modifier that is
+        applied to all experience players gain (allows you to tune how
+        easy or hard it is to level overall).  This modifier is only
+        applied to xp gains, not xp loss due to penalties (fleeing,
+        dying, etc).
+        -Zane
+
+New:    Added the lore and identify commands.  Use them if you have the
+        lore skill.
+        -Zane
+
+New:    Added code for the lore skill.  It can be used to "identify" 
+        items (similarly to how the identify spell works).  Depending
+        on the level of the item and the level of the player, different
+        detail will be available (unlike identify which always gives
+        the same results).
+        -Zane
+
+New:    Added a function called str_str that checks to see if a string 
+        exists within another string just like strstr but is 
+        case-insensitive.
+        -Zane
+
+New:    Added a str_upr function that uppercases the string passed to it
+        (functions just like MSVC's _strupr() function).  Used because 
+        not all OS's  support have strupr().
+        -Zane
+
+New:    Added owhere command.  Works just like mwhere except it lists 
+        the room or obj or char the object is contained in instead of
+        just the room.   Displays R:, O: or M: based on what the 
+        object is in (Room, Object or Mob).  Players have no vnum so
+        instead of a vnum is says [Player] if the  object is in a 
+        players inventory (or worn).  If an object is inside another 
+        object inside a mob or player it'll still show up as inside 
+        an object.
+        -Zane
+
+New:    Added some functionality to MUDProgs.  Basically if statements 
+        now allow functions on both sides of the operator so both of 
+        these are valid:
+
+        if level($i) >= 5
+        if level($i) >= level($n)
+
+        The first checks to see if the mob's level is greater than 5 
+        and the second checks to see if the mob's level is greater than 
+        the level of the PC or NPC that triggered the mobprog.
+        -Zane
+
+New:    Added a new mobprog function called getrand().  This function 
+        returns a number between 1 and the number you pass it.  
+        getrand(50) will return some number between 1 and 50.
+        -Zane
+
+v0.9.34 pre 1 [9-22-98]
+--------------------------------------------------------------------------
+Bugfix: Doing whois on an offline player could crash the mud.  Was a bug
+        in get_word calling malloc(sizeof(char*)) which only allocates
+        4 bytes instead of malloc(MAX_STRING_LENGTH) like it should have.
+        -Zane
+
+Bugfix: Create Clan now works.  Was a small mistake in olc.c that was
+        expecting "cedit" instead of "clan".
+        -Zane
+
+Bugfix: The BCB3 Ember GUI should now be functional.  Also BCB3 and BCB1
+        files were given their own directories under src to clean things
+        up a bit.  The executable was also renamed to EmberGUI.exe to
+        make way for the console version of Ember called Ember.exe.
+        When you make a new executable you'll need to copy it back down
+        to the src directory before running it.
+        -Zane
+
+New:    The Microsoft Visual C++ console port is in and under the MSVC
+        directory.  The console executable was also included in the src
+        directory (Ember.exe).  You'll need to use startup.bat to run it,
+        just like the UNIX version.
+        -Zane
+
+New:    A small Unix sleep clone was included in the src dir and the source
+        is in the Sleep directory under src.  Be amazed at the complexity.
+        :)
+        -Zane
+
+To Do:   I'm working on getting hotboot to work under Win32 but Winsock is
+        not playing nice.
+        -Zane
+
+v0.9.33 [8-25-98]
+--------------------------------------------------------------------------
+Bugfix: If a PC was charmed, they could type nofollow to become uncharmed.
+        -Kyle
+
+Bugfix: Console class can no longer be chosen during new character
+        creation.
+        -Kyle
+
+Bugfix: New do_title function...  Allows longer titles and doesn't count
+        color codes anymore.
+        -Kyle
+
+Bugfix: Link break / reconnect code fixed (again).
+        -Kyle
+
+New:    Clans.  No documentation is available yet, but Kyle has promised
+        it is forthcoming (everyone bombard boyd1@proaxis.com with stuff 
+        like "Where's the docs for clans?" and "Quit playing TA for 
+        awhile!" <grin>  Seriously...  This is a HUGE accomplishment!
+        Kyle is THE MAN.  I can't wait to see what people do with this.
+        -Kyle
+
+New:    Whois now displays number of PK deaths if the player is PK.
+        -Kyle
+
+New:    New commands setedit and setprog to allow/deny players access to
+        OLC and the Mudprog editor respectively.
+        -Kyle
+
+New:    Whorace and whoprefix wiz commands.  Allows wizards to set the
+        who text for a player's race and prefix their name with some
+        text.
+        -Kyle
+
+New:    Objcheck command.  In Kyle's words:  "This cycles through a
+        given set of vnums and identifies problems in the objects.
+        Useful for quickly debugging objects in new areas.
+        -Kyle
+
+New:    STARTING_PRACTICES, STARTING_TRAINS, and STARTING_TITLE #define's
+        added to config.h.
+        -Kyle
+
+New:    More config.h options.  Check Kyle's comments in config.h for
+        details.
+        -Kyle
+
+New:    New object flags anti-cleric, anti-thief, anti-warrior, and
+        anti-mage.
+        -Kyle
+
+New:    Morgue.  Toggle it on/off and set the vnum in config.h.
+        -Kyle
+
+Change: The music channel is now the OOC (Out of character) channel.
+        -Kyle
+
+Change: Players with trust or level >= MAX_LEVEL automatically have access
+        to OLC (no security check).
+        -Kyle
+
+Change: Material_type table filled in.  Still not implemented, though.
+        -Kyle
+
+v0.9.32 [Release date not recorded]
+--------------------------------------------------------------------------
+Zane
+----
+ Distribution now includes both Unix and Win32 code as well as the Win32
+ executable.
+
+ Win32 port via Borland C++ Builder.  If you don't own a copy of BCB then
+ you should go buy it right now.
+
+ Features of Win32 port include:
+
+	Administrative GUI Console
+	Log window, autosaves every night at midnight.
+	Users tab, lists all online users and allows you to kick, freeze,
+	ban, restore users from the GUI.  You can also send messages to
+	users via tell.  All these options are available by right-clicking
+	on a user in the user list.
+	Statistics tab that updates once a second.  Basically just uses
+	the output from the mem commmand.
+	Channels tab, lists all output from Channels, Echo, Info and allows
+	the console to send messages to any channel (including echo and 
+	sinfo).  The name used will be the Console Name on the Options tab.
+	Options tab, you can set the Port number form here as well as the
+	console name (used when sending channel messages).
+	When minized it hides from the taskbar and becomes an icon on
+	the system tray.
+	You can shutdown and reboot from within the GUI.
+	GUI has crash protection code, if the mud hangs for five seconds
+	then the GUI will restart it.  This timeout is configurable.
+
+ The GUI code will not affect compiling under Unix.
+
+ Ticks are no longer logged unless you compile with -DDEBUG.
+
+ To do:
+
+	Add user editing to the Online Users tab.
+
+Zak
+---
+ Yes, there's been a version numbering change.  0.32 is now 0.9.32 in
+ preparation for v1.0.0 by July 1998 if everything goes well.
+
+ Please check out README-0.9.32 and http://members.tripod.com/~Zak0/
+ for important information about this release.
+
+ Documentation for room affects, finally.  Check the doc directory.
+
+ While looking at the raffect code, I realized that although when they
+ were deleted, the used memory was being kept in a free list, the free list
+ wasn't being recycled in new_raffect().  That's fixed now.
+
+ New output format for do_mobstat, do_roomstat, and do_objstat functions.
+
+ Changed ch->buffer code from Thanatos' mudprogs into standard sprintf(), 
+ strcat(), and strlen() checks.  This code (or something very similar) 
+ will probably end up in an official EmberMUD release in time, however...
+
+ Don't forget to copy the supermob (mob vnum #4 in limbo.are) and his room
+ (room vnum #4 in limbo.are) into your area files, or your MUD won't boot.
+
+ Don't forget to make OBJProgs, ROOMProgs, and MOBProgs subdirectories under
+ your base area directory, or you won't be able to use any of those features.
+ 
+ Removed olc_ed_vnum function from olc.c.  It's not being used for anything...
+ Anyone know why it was even there?
+
+ Fixed a bug in new_mprog() related to using recycled memory.
+
+ New function check_level().  Pass it an argument (like you would pass to
+ interp()) and it will return the level required to execute that command.
+ 
+ Added check_level() call to mpsilentforce() to restrict which commands
+ mudprogs can silentforce (only commands of level < MAX_LEVEL-9).
+
+ Added check for silentmode being true in update.c (should never ever
+ happen, though).
+
+ Ooooh Yessss...  I've got command_prog working for mobs.  This still needs
+ testing before it's expanded to objects and rooms, but it looks really
+ good so far. (It's funny to have Hassan tell me I suck every time I type
+ north (or no or n) in the room with him).
+
+Kyle
+----
+ mpdefault?
+ 
+ command_progs expanded to work with objects and rooms.
+ 
+ act_prog_data struct?
+ 
+ Default new mudprog changed from in_file_prog to rand_prog.
+ 
+ Added line numbers, line replace, line delete, and other changes to the
+ line-based online text editor.  Oh, and fixed ~ on a blank line not working
+ bug.
+ 
+ Fixed Obj->next == object_list bug.
+
+ New mudprogs - mpsilentforce and mpdosilent.
+ 
+ mpsilentforce allows a mob, obj, or room force someone to do something
+ without any output being generated.  Like, the mob makes you drop something
+ and then echos at you that the item flew from your hands at his command
+ or something.
+ 
+ mpdosilent allows a mob to do something silently.  For instance, a mob could
+ open a door silently and then echo at you that the door opened when he said
+ "Open sesame" or something.
+
+Tyrluk & Thanatos
+-----------------
+ logf_string() and new bug() function that work like printf() to eliminate
+ the need for buffers in a few places.
+
+ bug_trace() function???
+
+ mpversion command inside the MUD now reports the base version of EmberMUD
+ this mud is running on.
+
+ New function: remove_color() which could have many uses, I suppose.
+
+ printf_to_char() function that works like it sounds... send_to_char with
+ printf() like options.
+
+ Added some reset validation code to OLC to prevent bad resets from crashing
+ the MUD.
+
+ MUD Programs.  That means not only mobprogs, but roomprogs and objprogs
+ as well.  This is a port of the SMAUG MUD progs code.
+
+ Online mudprog editing.  'Nuff said.
+
+ Changed a bunch of MAX_STRING_LENGTH to MAX_INPUT_LENGTH.
+
+ Cleaned up OLC some.
+
+ In edit mob, when you set the level of a mob, his stats are automatically
+ set to reasonable defaults.
+
+v0.31 [11-23-97]
+--------------------------------------------------------------------------
+Zak
+---
+ Again, check out the README.031 file for important notes on EmberMUD.
+
+Kyle
+----
+ The Playtester's Arena area has been included in the area directory.
+ This serves several purposes...  1) It gives the beginning admin a
+ chance to add in an area (just put it in area.lst and go put an exit
+ from Market Square down to room 400).  2) It gives playtesters or
+ builders somewhere to go to do something other than killing fidos
+ or mud school mobs.  3) It provides eq for up to level 10 newbies,
+ since previously there was none.
+
+ Change in act_move.c to keep xp from being taken away from mobs when
+ they recall.  This caused the mud to crash when you recalled with a pet.
+ 
+ Change in comm.c to prevent new players entering a large number while
+ stat rolling and getting strange stats. (ie: -102 str, 4941 dex, etc)
+ 
+ Random object loading code is in.  This only applies to objects that may
+ load on a particular instance of a particular mob.  Basically, it works
+ like this:  In OLC for a mob, you set a percentage chance of random objects
+ loading.  You also must set a number of objects to load and a type of
+ objects.  Currently, if the number of objects is greater than one, there
+ is an even chance of that number of that type of objects being loaded.
+ What that means is, if the number is 2, there's a 50% chance of 1 object
+ loading, and a 50% chance of 2 objects.  If the number is 4, there's a
+ 25% of 1, 25% of 2, 25% of 3, and 25% of 4.  You get the idea...
+ Objects of type ring, magic-weapon, and magic-armor are currently generated
+ with one random affect attached to them.  The higher level the mob is,
+ the better material the random object will be made of.  This is determined
+ as a percentage of MAX_LEVEL.
+ 
+ Documentation for the random object code is in the doc directory
+ (random.doc).
+ 
+ Fixed another missing smash_tilde in do_buy (when you buy a pet, you can
+ name it, and that name is saved in the pfile, so if you know anything
+ about smash_tilde bugs, you already know how to take advantage of this
+ one).  Another bug that was fixed in ROM 2.4, but we only just now caught
+ it.
+
+v0.30 [9-21-97]
+--------------------------------------------------------------------------
+Zak
+---
+ Please check out the README.030 file in this directory for release notes
+ regarding this version of EmberMUD.
+ 
+ Added config.h file for defining various constants for use in the game.
+ (things like colors for the various channels, connect and quit messages,
+ etc).  I expect to change some of these things from constants to variables
+ that can be changed on-line while the game is running (no hotboot required!)
+ Definately take a look at config.h if you're a new EmberMUD admin!
+
+ Fixed a bug pointed out by Rindar: All of the healing, curing, etc spells
+ were using hit_xp_compute() to figure xp for casting the spell.  This has
+ been replaced with a new function cast_xp_compute() that no longer modifies
+ the caster's alignment.  While messing around in this code, I noticed that
+ a lot of spells are not giving the caster any xp at all.  Someone (me?) 
+ should go through and put some cast_xp_compute() calls in those spells as
+ well, probably.
+
+ Fixed a small bug in do_finger (x!=71 changed to x<71).  If a player's
+ title was especially long, x could already be more than 71 before the loop
+ was entered...  Therefore the loop would never end!
+
+Raven & Rindar
+--------------
+ Modified the add2last function.  This should fix a number of errors when 
+ accompanied with the send fix.
+
+ Modified do_sendinfo so that it would work with add2last.  This should
+ fix a number of errors when accompanied with the new add2last fix.  These
+ errors include crashes due to gossips, being AFK, and using the LAST 
+ command.
+
+ Fixed the bug in do_quit which would often crash the game when someone
+ quit.
+
+ Did two quick fixes in fight.c to the functions do_bash and do_dirt. They 
+ had probably been there since MERC.
+
+ Added the "heal" command and healer to EmberMUD.  This feature can be
+ found in a number of MUDs, and allows NPC's to sell healing spells to
+ rich adventurers.  Use the act HEALER flag to enable this.
+ 
+ [ Zak: If you look back in Zane's 0.21 changes, this was removed before.
+        I'm going to allow it to stay for the meantime, but I do still intend
+        to remove it permanently and replace it with a mobprog someday ]
+
+ Activated the shield_block skill.  It works in a way similar to parry.
+ This is not meant to be a brand new feature; it is simply a way to 
+ justify keeping the shield block skill in the character roller and 
+ to keep players of the backs of Admins.
+
+ Activated the special weapon code for some of the weapons (technically,
+ Russ Taylor activated the code.. we just ported it over).
+
+ Changed the way the game loads when booting.  The new order allows 
+ objects or MOBs from an area to be used as resets in ANY other area. 
+
+ Fixed the memory leak in add2last that was causing the MUD to crash 
+ after too many gossips were executed.
+
+ Fixed the bug with the WHO list that showed the "Visible immortals:"
+ message even when all imms were WizInvis.
+
+ Fixed the bug in which too long of titles crashed the game when a 
+ SCORE was done.
+
+ Fixed the bug in which too long of tells would crash the game.
+
+ Fixed the MAJOR bug that allowed charmed NPC's to execute MOBPROGS
+ when ordered.  This bug could give anyone with the charm spell IMP
+ powers.
+
+ Fixed the MAJOR bug that allowed the master to force a charmed PC to
+ DELETE themselves or change their password.
+
+ Fixed the possible "roll-over experience" bug that allowed players to
+ easily get to the lowest IMM level.
+
+ Fixed the buy bug that crashed the game when too many items were 
+ purchased. Also fixed the bug that allowed characters to gain skill 
+ in haggle even if they didn't buy anything.
+
+ Fixed the bug in polearms that was setting them as whips.
+
+ Fixed the bug in the bodypart list that would set MOB bodyparts 
+ incorrectly.
+
+ Three new manuals have been added to the DOC folder: ADDRACE.TXT, 
+ ADDCOMM.TXT and CRLFFIX.TXT.  The first instructs the reader in how
+ to add new races, the second in how to add new commands, and the 
+ third in how to remove unwanted CR's.
+
+ The unofficial EmberMUD homepage is now up at:
+  http://www.concentric.net/~Clogar/
+ The site contains various code snippets, bug fixes, rumors, and links.
+  
+v0.29 [11-25-96]
+--------------------------------------------------------------------------
+ New beep command to toggle beeps on/off.
+ 
+ When you have beeps on, you will hear a beep when someone tells to you.
+ 
+ When someone tells to you while you're AFK, you will still see the tell
+ (and hear a beep if beeps are on), as well as the tell being recorded
+ in your messages.
+
+ Reconnect code has been reactivated and eq clone bug has been fixed the
+ RIGHT way.
+
+ Bug stomped...  When you ordererd a pet or charmee to wake up, the mud
+ would crash.  FIXED.
+
+ I'm pretty confidant the whois related crashes will stop now.
+ 
+ add2last_imm was occasionally trying to free an empty tmp->sender string
+ somehow...  There's an if check in there now to prevent that, but I'm not
+ sure why it was doing it in the first place. <shrug>
+
+ Ordering a mob to wake or stand would crash the mud.  FIXED.
+
+v0.28 [11-23-95]
+--------------------------------------------------------------------------
+ Fixed crash bug where ordering a charmed mob to advance would crash the
+ mud.
+ 
+ Fixed bug in xp per hit system where you could get xp for damaging yourself.
+ (ie: poison, casting magic missile on self, etc).
+ 
+ Small code cleanup in act_wiz to prevent compile-time warnings.
+ 
+ Fixed security bug in do_prompt (no smash_tilde(argument)).
+ 
+ _OLD_ bug introduced when OLC was installed fixed.  In do_mstat, there
+ was a reference to ch->pcdata->security that should have been
+ victim->pcdata->security.  <shrug> Dunno how that happened.  This caused
+ crashes every once in awhile (for instance if you were switched and got
+ statted, the !IS_NPC(victim) would pass, but victim->pcdata would be NULL
+ (since you really ARE an NPC), and the above reference would cause a
+ segfault.
+ 
+ There are still some switch related bugs in do_mstat.  Nothing that
+ seems to crash the MUD, but stuff that produces some strange information...
+ Hey, don't stat someone while they're switched, and you won't have a prob!
+ 
+ Crash bug fix.  If Zak switched into Hassan, then someone told to Hassan, 
+ the mud would crash.  Problem was that add2tell wasn't checking for a NULL
+ victim->pcdata.
+ 
+ Bug in the maximum damage check fixed.  If a mob did more than 1000 points
+ damage, the mud would crash.
+ 
+ _ALL_ references to the control port have been removed.  I don't have the
+ time to work on this piece of code right now, and it's still causing people
+ problems, so it's gone.  It was a good idea, though. 8-)
+ 
+ 
+v0.27 [10-19-97]
+--------------------------------------------------------------------------
+Zak
+---
+ I think this falls in the DUH category.  Last was being added to once for
+ each player online.  All calls to add2last need to be moved outside of the
+ descriptor_list loops.  Sorry about that guys <blush>.
+
+ You can now name rooms with OLC to include the word dark.
+ 
+ Added a cls(descriptor) macro to clear screen.  Used it in show_string to
+ clear screen before each screenfull of text.
+ 
+ I think the hotboot bug may be fixed.  It seems to be working okay on my
+ home system, at least.  After hotboot, I can telnet back into the control
+ port w/o a problem, as well as the main mud.  I get no errors in my logfile,
+ and it doesn't seem to be eating memory like crazy anymore.  I still need
+ someone to test it out on a heavy-use system, though.
+ 
+ Added a last command for the imm channel.  Use lastimm to view the last
+ MAX_LAST_LENGTH messages from the imm channel.
+ 
+ Added a last command for all private messages (tells, gtells, replies...)
+ Type tq to show your last MAX_LAST_LENGTH private messages.
+
+ Wizi imms should now show up as someone in last if they were wizi above
+ your level when they gossiped (or whatever).
+
+v0.26 [10-6-96]
+--------------------------------------------------------------------------
+Zak
+---
+ Made the last_list global instead of being attached to each individual.
+ This saves a lot of memory, plus allows players just logging on to view
+ the last MAX_LAST_LENGTH messages from before they logged in.  Also, dunno
+ if this is a plus or a minus, but if you're "tuned out" of a certain channel,
+ you can still see what's been said on it lately by typing last.
+
+ _ALL_ clan code has been commented out.  Eventually it will be removed
+ completely.  I'm going to redo all of the clan code from the beginning.
+ You need to remove clans.are from your area directory, and from the area.lst
+ file.
+ 
+ whois crash bug fixed (trying to free_string something that shouldn't have
+ been being freed).
+
+v0.25 [9-10-96]
+--------------------------------------------------------------------------
+Zak
+---
+ Started changes to support control client connections on the port the
+ mud is running on plus one.
+ 
+Zane
+----
+ Re-enabled xp/alignment code.  It works like this:  When you're of good
+ alignment and kill a good mob, you get less xp than if you kill a bad mob.
+ If you're of bad alignment and kill a good mob, you get more xp than if
+ you killed a bad mob.  Get it?
+ 
+ Fleeing now costs 5% of level.  This should help prevent bs-flee-bs-flee...
+ 
+ Recall during a fight now costs 10% of level.
+ 
+ If you do more than 1000 hp of damage in one hit, your weapon will be taken
+ away, and your name will be logged.
+ 
+ You now get 15% more xp while in a group.  ( Zak - Is this the right way to
+ encourage grouping?? )
+ 
+ Damage messages are now based on the % of HP damage you do to your enemy
+ instead of flat numbers of HP.
+ 
+ You no longer recieve xp for killing a mob.  You now recieve xp on a per
+ hit basis.  You will recieve a message telling you the total xp you earned
+ after the fight has ended (whether through flee, recall, kill, whatever).
+ 
+ You now recieve xp for casting healing spells on anyone besides yourself.
+ Also, you recieve xp for casting any remove spell.  The amount is based on
+ the amount of HP healed, and the level of the caster.
+
+v0.24 [9-2-96]
+--------------------------------------------------------------------------
+Zane
+----
+ Note boards are in.  New command board to list/change current board.
+ Note command changed as follows:
+ 
+  note list  - now lists all notes on the current board.
+  note read  - now reads a note on the current board.
+  note write - starts writing a new note.  You are automatically
+               set AFK until done, and any tells to you are queued
+	       until you're done.
+  note       - note without an argument reads the next new note on
+              the current board.  If there are no new notes left,
+	      the current board is changed to the next board.
+ 
+ Autolevel is out (type advance when you are notified that you are ready 
+ to level).  This will allow you to go wear leveling eq first, or save your
+ xp up to spend later (at a meta shop perhaps)?
+ 
+ Message queues are in.  Tells to you are saved in a queue while you 
+ are AFK, asleep, in quiet mode, or posting a note to a note board.  When
+ you awake, come back from AFK, turn of quieit mode, or finish posting,
+ you will be notified of how many messages have been recorded.  Type 
+ messages to see tells recorded in the queue.
+ 
+ When you're AFK, you can now still do stuff, but you will be constantly
+ reminded that you are still AFK.
+
+ Also, when you wake from being asleep, you automatically do a look now.
+
+ Memory leak in alias code fixed.  Memory leak in prompt code fixed.
+ 
+ New command, last.  Repeats last MAX_LAST_LENGTH things you would have
+ heard (tells, gossips, infos, etc).
+ 
+ PK corpses could be looted by players if the kill was by a mob.  Fixed.
+ 
+ Last mob or player to kill a player stored in pcdata (and shown in whois).
+ 
+ Number of pk kills and number of times killed by pk players stored in pcdata
+ (and shown in whois).
+ 
+ email and comment commands added.  email <text> and comment <text>.
+ Both variables are displayed in whois text.
+ 
+ track.c integrated into act_move.c
+ alias.c integrated into act_info.c
+ 
+ Crash bug in AFK code fixed (has to do with switched immortals).
+ 
+v0.23 [8-29-96]
+--------------------------------------------------------------------------
+Zane
+----
+ Added hotboot wiz command.  Thanks to reszor@intrcom.com for his TAOD
+ code so we could grab this bit of code.  It's really nice.  It reboots
+ the MUD (for code changes, loading new area files, or whatever) without
+ kicking all of the players offline.
+
+Zak
+---
+ Memory leak in do_finger fixed.
+
+v0.22 [8-12-96]
+--------------------------------------------------------------------------
+Zak
+---
+ Got rid of the global buf and arg except in olc_act.c.
+
+ Don't know who added it or when (probably Alander), but there's a
+ nice little undocumented feature a lot of people may be interested in.
+ You can gzip all of the pfiles in the player directory, and when
+ someone logs in, their file will auto-ungzip.  Use this once a month.
+ Whatever .gz files are left at the end of the month are players that
+ haven't logged on in a month and can be deleted.  Cooley, eh?
+
+ CON_GET_ANSI connected state added.  Players prompted "Use ANSI?" in
+ new_descriptor(). d->ansi set accordingly.  Color command remains for 
+ online toggling.
+
+ Just hitting ENTER at the "Use ANSI?" prompt defaults to Y.
+ 
+ help item ANSIGREET is displayed instead of GREETING for new connections
+ answering Y to "Use ANSI?" prompt.
+
+ smash_tilde() added to do_alias function to fix security bug.  That
+ alias code came directly from ROM 2.4, I think...  Hrm...
+ 
+ Fixed lots of buf[] and arg[] crash bugs.  I'm beginning to think maybe
+ we should change them ALL back...
+ 
+ New whois (maybe other stuff?) doesn't use the reserved file descriptor.
+ That could probably pose a problem...  Someone else do it -- PLEASE! <G>
+ 
+v0.21 [not released]
+--------------------------------------------------------------------------
+Zak
+---
+ Couple of extra spaces in whois output for players not currently online
+ removed.
+
+ Track command added.  This should probably be a skill or not be available
+ to players at all or something.  Usage: track <someone> will tell you the
+ first step to take in the direction of <someone> as long as they are in
+ the same area as you.  <somone> may be a mob or a player either one.
+ (I would like this to be worldwide, but not until it's made into a skill).
+ 
+ Lots of little touches.  Small fix in score display, changed "Note 
+ protected" string to "Note unprotected" when unprotecting a note, etc...
+
+ New MOBProg command, mpremember.  Syntax is: mpremember <name>.  MOB will
+ remember <name> until name logs off.  
+
+ New MOBProg command, mpforget.  Clears calling mob's memory.
+ 
+ New MOBProg variable, $b.  References name of mob or player in memory.
+
+ New MOBProg ifcheck, memory.  Used as follows:
+  if memory( )               : Returns TRUE if memory is not empty.
+  if memory( ) == $*         : Returns result of evaluation of opr and $*.
+                               opr may be any of ==,!=,/,or !/.  $* may be
+			       any of $n, $t, and $r.
+  if memory( ) == <name>     : Returns result of evaluation of opr and <name>.
+                               opr may be any of ==,!=,/,or !/.  <name> may
+			       be any string not beginning with $.
+ 
+ Following is an example of how to use the new MOB memory stuff:
+ 
+ >speech_prog die~
+ mpremember $n
+ say I shall remember thee, $n!
+ tell $n YOU, my friend, are the one that shall die!
+ ~
+ >speech_prog forget~
+ if memory( )
+  shout Oops, I forgot all about $b!
+  mpforget
+ endif
+ ~
+ >rand_prog 5~
+ if memory( )
+  shout $b shall die!
+ endif
+ ~
+ |
+ 
+Zane
+----
+ All buf[MAX_STRING_LENGTH] and arg[MAX_STRING_LENGTH] should be using
+ the global versions instead of function specific versions.  This means
+ it is possible that some buf's and arg's are being overwritten by a new
+ function before the old one gets used.  If a command is acting strangely
+ or not working, this is most likely the cause.  PLEASE LET US KNOW!
+ 
+ Mobs now load with all comm flags turned on.  This means MOBProgs can now
+ yell, shout, gossip, etc...
+ 
+ Removal of healer.c (specific vnum coding must DIE!).
+
+ New MOBProg for healer to replace healer.c stuff.
+
+ db.c and db2.c cleaned up and combined.
+
+ Old areafile conversion routines nuked as part of db.c cleanup.
+
+ New make diff option added to Makefile.  src/original directory must
+ exist and have copies of the *.h, *.c, and Makefile you are diffing
+ against.
+
+v0.20 [6-20-96]  DELETE YOUR notes.txt FILE!!!!!!!!
+--------------------------------------------------------------------------
+Zak
+---
+ New str_len() function to return the length of a string w/o counting any
+ color codes inside it.  Allows me to put your title into score and
+ whois output.
+
+ New whois output.  Title in score.
+
+ Added protected bit for notes and auto-delete for old non-protected notes.
+ note_cleanup() is called at bootup, and anytime someone posts a new note.
+ Auto-delete timer is one week currently.  It is set inside note_cleanup().
+ 
+ note protect imp command added to make a note permanent.
+
+ If a note is protected from auto-deletion, it will have a red P next to 
+ it's number in note list.  Also, the N in note list for unread notes is now
+ also red.
+ 
+ If a note is protected from auto-deletion, when you read it, the word
+ Permanent will appear in the note's header.
+ 
+ Players are now reminded to note post upon entering the note editor.
+ 
+ note protect imp command added to make a note permanent.
+
+ do_count() function removed.  Yeah, I could have fixed it, but I think
+ I'd rather just rewrite it from scratch later instead.
+ 
+ I added some more color here and there.
+ 
+ Default white color of gecho changed to grey (as it should always have
+ been).
+
+ Added get_curdate() and get_curtime() functions.
+
+ Fixed memory leak in current time in configurable prompt.
+
+ Fixed that extra space in do_score() for three digit levels.
+
+v0.19 [6-16-96 I think it was]
+--------------------------------------------------------------------------
+Zak
+---
+ Startup script changed to work under bash, since that's my shell of choice.
+ Old startup script renamed to startup.csh.
+ 
+ Removed the extra space after player's name (before title) in whois output.
+ 
+v0.18 [not released]
+--------------------------------------------------------------------------
+The original v0.18 Changelog was lost when we lost our old site.  The
+following is what I can remember has changed since v0.17.
+
+Thexder
+-------
+ %T in prompt for current time (according to the MUD's host's system clock).
+
+ raffect command added to manipulate room affects.
+
+ clan command added.
+
+ who display changed.  (PK) instead of (KILLER), and player's clan name in
+ front of their name.
+
+ whois command added.
+
+ rlist changed to work outside of OLC editors.
+
+Thex & Zak
+----------
+ Room affects added.
+
+ show command added.  show clans lists all clans.  show clan <name> shows
+ some information about clan name <name>.
+
+v0.17 [1-19-96]
+--------------------------------------------------------------------------
+Zak
+---
+ Makefile and startup script changed.  The MUD now compiles to an executable
+ named ember instead of merc.
+
+ A new distribution of the MUD has been built now.  It includes only the 
+ area files neccesary to get you started.  Since we upped the level limit
+ to 100, the old area files were unbalanced.  When we have our own standard
+ distribution of balanced areas ready, we will probably distribute them as
+ well.  Until then, thank the gods for OLC! <grin>
+
+v0.16 [not released]
+--------------------------------------------------------------------------
+Thexder
+-------
+ MAJOR bug fix.  When Allowing mobs to cast for MOBProgs, all mobs could cast
+ even pets, with unlimited mana and no level restricts on spells.  Now charmed
+ mobs cannot cast spells.  This should fix any abuse of this bug.
+  (Zak - I don't like this...  I wanna figure something else out, like maybe a
+  higher level charm that allows charmed mobs to cast with some kinda limited
+  mana or something.  Maybe Thex has something else in mind??)
+
+ Fix for rest or sit while affected by sleep spell (would allow you to
+ awake).
+
+ Code added to do_who to show a player's clan (if clan!=0).
+
+ Level 101 and 102 players now show up in who, but they show up as only
+ level 100.  Useful for implementers who wish to snoop on other level
+ 100 players.
+
+ Added function new_damage, same as damage function, with the addition of 
+ a boolean argument of whether to show the damage message.
+
+ Fix for pk and wands. You could zap anyone with wand, this is fixed.
+ (Hopefully we have taken care of all "attack" instances and pk problems)
+
+ Now while AFK no commands are accepted except "afk". Small fix in do_afk 
+ needed to work with this code.  
+
+ Upon entering game if char is afk, do_afk is called, seeing as how if
+ they are there to enter the game, they aren't too afk. :)
+
+ Simplified is_safe code by creating ACT_NO_KILL for mobs.  These are the 
+ only mobs now unattackable by chars.
+
+ Added brew and scribe skills.  Char must be holding an empty vial or blank
+ parchment before the skill can be used.  
+
+ Fix for some characters not being able to get on with Illegal name warnings.
+ is_name was parsing their name to a mob name. (Need a better fix for this 
+ later)
+
+ Autosave disabled during CHAOS. Log reports skipped autosaves.
+
+ cwho fixed(I think).
+
+ Added another placeholder in who level.
+
+ Check for NPC in wizi portion of show_char_to_char, otherwise setting
+ a mob to ACT_UNDEAD made them look (Wizi).
+
+ Minor color fix for 'web' string.
+
+ Aliases, alias <word> <string>, unalias <word>.  Current MAX_ALIAS = 8.
+
+ Shutdown and reboot disabled while in CHAOS mode.
+
+Zak
+---
+ Who now takes a name argument.  "who i" for a list of immorts online changed 
+ to "who imm" (because the way "who i" was checked made usernames starting
+ with I not work when the name argument was provided.
+
+ Added a function to save clans(in olc_save.c) called using 'asave world'
+ 'asave changed' or 'asave clans'.
+
+ Clans are now saved in area/clans.are, any existing clans need to be moved
+ this file.
+
+ Work on edit clan commands begun.
+
+ set char <name> clan <clan name> now works, but does not save new
+ member to the clan's member list (yet).
+
+ find_clan function added to code for use in set char clan and
+ for other future uses.
+
+
+v0.15 12/18/95
+--------------------------------------------------------------------------
+Thexder
+-------
+ Save command disabled while in CHAOS mode, to reduce chance of cloning.
+ Also, there is now an info message when chaos is toggled.  
+
+ Changed str_cmp to str_prefix in is_name function in handler.c
+ Allows for things like 'tell thex Hi' and 'kill has' 
+
+ Title no longer changes when advancing a level.
+
+ Wizinvis players who went AFK or returned from AFK were still being reported
+ via the INFO channel.  Fixed.
+
+Zak
+---
+ Level for asave, alist, edit, and resets commands changed from HERO to
+ level 90.  If you want to make a non-god builder, advance or trust them to
+ level 90.  There are still security checks in the code that keep level 90s
+ that shouldn't be messing with those commands from doing anything.
+
+ Upon reboot and shutdown, the mud will now sinfo a message like 
+ INFO: Reboot by Zak! unless Zak is wizinvis.  The echo call is still there,
+ in case someone has their info channel turned off.
+
+ All references to Mota in the code changed to "the gods".
+
+ Changed code so that only ACT_GAIN mobs and ACT_HEALER mobs are immune
+ to being attacked by players.  You still can't actually HIT those
+ guildmasters and shopkeeprs, but you can get your butt kicked _BY_ them
+ now. <grin>
+
+ New damage messages added:
+
+  if dam <=44 points, PULVERIZES (replaces DISEMBOWELS).
+  if dam <=165 points, <><><> BUTCHERS <><><>.
+  if dam <=185 points, <><><> DISEMBOWELS <><><>.
+
+ Beta testing raise in max level on mud to 100.  Maximum mortal level is now
+ level 90.  Several things are being affected by these changes, so if
+ something seems broke, it's being worked on.
+
+v0.14 [12/14/95]
+--------------------------------------------------------------------------
+Thexder
+-------
+ worth command fixed.
+
+ CHAOS code has been started and is functional.
+ Chaos has the following effects:
+ 1. Once chaos is toggled using the 'chaos' command the game is wizlocked
+ 2. Regen is at half rate for hit points and mana.
+ 3. Where command is disabled for levels below HERO
+ 4. Teleport, summon, gate, and vision spells are disabled
+ 5. When a character dies, they are disconnected. Characters eq is moved
+    to the room. ie. They drop everything on death.
+ NOTE: pfiles are not saved!
+
+ chaos.txt file for logging chaos deaths and finishing scores. (Need 
+ something better when I figure it out)
+
+ 'cwho' command added to show chaos scores of attached players.
+
+ Imms can now set a player's recall room with the set command.
+
+ asave no longer wipes out mobprogs (could use some work).
+
+ Pet-recall crash bug fixed.
+
+ Regeneration code back in place.
+
+ Combat prompt, "prompt combat" for the two line "coolprompt"
+
+ Fix in check_assist, will not assist pk char if attacking another player.
+ If you want to attack a pk player, you must do it explicitly.
+
+ Added ROOM_NOTELEPORT room flag, teleport skips these rooms when finding 
+ random room.  
+
+ Fix for EX_HIDDEN, looking in a direction no longer reveals a hidden door. 
+
+ Fix for PK - pk players may now cast offensive spells on each other.
+
+Zak
+---
+ 'mpstat' moved to a level 53 command.
+ 'beacon' moved to a level 53 command.
+
+v0.13 [12/1/95]
+--------------------------------------------------------------------------
+Thexder
+-------
+ Info channel was not reporting deaths properly.  FIXED.
+
+ recall_room added to pcdata for setting a player's recall room.
+
+ Beacon command added for imps to set recall room. Sample command.
+
+ New config prompt codes %x and %X for current xp and xp to level.
+
+ New config prompt codes %A for act bit on player AFK, WIZI, KILLER, THIEF.
+ Wizi also shows the level of wizinvis.
+
+ Pour command added.  Pour <container> out to empty <container> and
+ pour <container> <container2> to pour from <container> into <container2>.
+
+ Mobprogs in beta testing mode!!!
+
+ Hidden Door flag added.  Moving in the direction of a hidden door doesn't
+ reveal that there is a door there.
+
+ Sample search command for hidden doors.
+
+ Fix for autoassist and pk leaders.
+
+ Revised junk command.  Junk now does a sac from inventory only.  Also 
+ does not check for splitting gold recieved.
+
+ Revised purge command.  You can now purge a specific item(obj).  Must be in 
+ current room.
+
+ Fix for loss of racial benefits after death.
+
+ Fix for stat generation, was possible to enter number higher than column,
+ resulting in very strange stats.
+
+ Regen code back in place, hopefully for good this time.
+
+ Added a default prompt.  Use prompt default to return to default prompt.
+
+v0.12 [Nodist]
+--------------------------------------------------------------------------
+Thexder
+-------
+ AC for mobs in OLC editor fixed.
+
+ New spell code in place, but spells not made available to mortals yet.
+
+ New scan (thanks Thex).  Shows current room and some other changes.  No
+ longer sees through closed doors.
+
+ New prompt code %#.  Shows current room vnum.
+
+ New addaffect for objects.  Affect alignment.
+
+ New door flag added (passproof).  Can't pass with 'pass door'. 
+
+v0.11 [11/15/95]
+--------------------------------------------------------------------------
+Thexder
+-------
+ fight.c patched so that other aggresive attacks between non-pk players
+ are NOT allowed.  Thanks Thexder!
+
+Zane
+----
+ AFK command added (Away From Keyboard).
+
+ Added INFO channel to report player deaths, players becoming pk, players
+ leveling, and players that are AFK.
+
+ Added sinfo command for level 59+ players to talk on INFO channel.
+
+ Beginnings of clan code are in.  Not activated yet, but they're in. <G>
+
+v0.10 [11/1/95]
+--------------------------------------------------------------------------
+Zane
+----
+ OLC is back in and appears to be working without crashes for the most part. 
+ There are a few things causing crashes, but no more random crashes appear to
+ be related to OLC (ie: all crashes can be traced to "do this, cause crash").
+
+ All crash bugs are being worked on.
+
+ Player Killing has been added!  Type pk twice to toggle the flag for
+ yourself.  Keep in mind that it is NOT REVERSABLE! 
+
+Zak
+---
+ Major bug fixed with xp needed to level for level 40+ players.
+
+ New features will begin to be added again now that random crashes seem to 
+ have been eliminated.
+
+v0.09 [10/24/95]
+--------------------------------------------------------------------------
+Zane
+----
+ Many modifications made in both the color and config prompt code to
+ hopefully avoid future crashes relating to said code.
+
+v0.08 [9/24/95]
+--------------------------------------------------------------------------
+Zane
+----
+ OLC is in.  Still testing it to see how it works...
+
+ AFK command added.
+
+ who output format modified.
+
+v0.07 [9/23/95]
+--------------------------------------------------------------------------
+Zak & Thexder
+-------------
+ Group bug fixed.  Anytime you were grouped, you would recieve ZERO xp.
+ A new formula for figuring xp in group situations has been implemented
+ as follows.  YourXP = YourLevel * TotalXP / TotalLevelsinGroup.
+
+Zane
+----
+ Note crash bug fixed (I hope).
+
+ Cloning bug fixed. (aka reconnect bug)
+
+ Scan no longer sees invisible mobs and players, but still sees through
+ closed doors.
+
+ Dual wield no longer works if you are wearing a shield or holding an item.
+
+v0.06 [9/10/95]
+--------------------------------------------------------------------------
+Zane
+----
+ New NPC races added - Sheriff, Sailor, and Thain.
+
+ Working on new consider command.
+
+ Working on new player races.
+
+ Working on dual wield skill for players.
+ 
+v0.05 [9/3/95]
+--------------------------------------------------------------------------
+Zane
+----
+ SCAN command now in place.
+
+ Added rem all command.  
+
+ Donation room and donate command are in.  Go east from recall/temple.
+
+v0.04 [9/3/95]
+--------------------------------------------------------------------------
+Zane
+----
+ EFFECTS command is in to show current spell effects, etc, upon
+ a player (replaces effects part of old SCORE command). 
+
+ Levels command added to display needed XP per level (after creation 
+ points modifier is applied).
+
+ Configurable prompts are in. Help code for prompts added. (help prompt) 
+  
+ More work done on creation points affecting xp needed to level.
+
+Zak & Zane
+----------
+ New score command, shows how your creation points are affecting your
+ ability to level in addition to all the other stats.  Looks much prettier
+ now too, don't you think?
+
+v0.03 [9/2/95]
+--------------------------------------------------------------------------
+Zane
+----
+ XP requirements per level are now SET.  The only thing that will
+ modify the number of XP you will need to get from one level to 
+ the next is the number of creation points you spend when you 
+ create a player.
+
+ Taking out XP for killing mobs being based on your alignment and the
+ mob's alignment.  
+
+ Removing code that made a low level character get more xp from a kill
+ than a high level character would.  The xp value of a mob should be
+ dependant on how hard the mob is in general.  Working towards returning
+ to old more xp required to level per level way of doing things.  The
+ log-in configuration where you spend creation points will still have
+ an effect on your xp required to level each level, however.
+
+ Wiped out the code whereby the longer you took to level, the more xp 
+ you would get per kill.
+
+ Still adding color here and there around the mud.
+  
+ "Hurt and Suspicious" no backstab thing removed.  Possibly will be
+ replaced in the future with a more sensible no backstab rule.
+
+v0.02 [9/1/95]
+--------------------------------------------------------------------------
+Zane
+----
+ Added color command to turn colors on and off.
+
+ Added ` codes to change colors ANYWHERE and EVERYWHERE in the mud, 
+ including in says, tells, shouts, etc.  
+
+v0.01 [8/30/95]
+--------------------------------------------------------------------------
+Zak
+---
+ Small changes to the Makefile and the original ROM 2.3 source to get
+ it compiling on our Linux system.
+
+==================== The EmberMUD development team =======================
+Zaknafein        - Kevin Williams  - zak@embermud.org
+Zane             - Ej Wilburn      - zane@embermud.org
+Dorzak           - Nathan Cookson  - dorzak@embermud.org
+==========================================================================
+
+Please contact one of us if you have any coding ideas, etc.

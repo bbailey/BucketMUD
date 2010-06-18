@@ -1,0 +1,1961 @@
+#AREADATA
+Name        { 5 35} Poohb   The Shire~
+Builders    None~
+VNUMs       1100 1157
+Security    9
+End
+
+
+
+#MOBILES
+#1100
+elven wizard~
+the Elven Wizard~
+An Elven Wizard is here, creating fireworks for the festivities.
+~
+The Elven Wizard looks at you in a solemn sort of way.  His gaze seems to
+penetrate through your innermost being.  He is wearing a silvery cloak
+and holding a multi-colored staff.  Although he appears to be older
+than the oldest man, he seems to have an inner strength which most mortals
+cannot overcome.
+~
+Human~
+ABGT D 500 S
+18 0 
+100 0 0 0 6d36+205 18d10+100 4d7+12 11
+-1 -1 -1 4
+0 0 0 0
+8 8 1 75
+AHMV ABCDEFGHIJK M 0
+#1101
+ring keeper~
+the Keeper of the Ring~
+The Keeper of the Ring is here, guarding his treasure jealously.
+~
+The Ring Keeper is a rather big but short halfling.  His short stature and
+bulbous nose belie his true nature.  An elven sword that glows with a blue
+light hangs from his belt, and on his finger you see the One Ring.  Although
+usually a halfling of peace, he will fight you to the death if you attempt
+to take away that which belongs to him.
+~
+Human~
+ABGT BD 0 S
+20 0 
+100 0 0 0 7d38+238 20d10+100 5d7+10 11
+-2 -2 -2 3
+0 0 0 0
+8 8 1 100
+AHMV ABCDEFGHIJK M 0
+#1102
+farmer gamgee~
+Farmer Gamgee~
+Farmer Gamgee sniffs the air, wondering if harvest time is near.
+~
+Farmer Gamgee is a short, stout halfling of thirty years.  His skin has
+been tanned from working the fields night and day.  He's quite a jolly
+chap, always ready to befriend an injured bunny rabbit.
+~
+Human~
+ABHT 0 350 S
+7 0 
+100 0 0 0 1d33+61 7d10+100 2d6+3 11
+5 5 5 7
+0 0 0 0
+5 5 1 0
+AHMV ABCDEFGHIJK M 0
+#1103
+toddler~
+a toddler~
+A toddler crawls about, looking for something to chew on.
+~
+The toddler is dressed in nothing but his birthday suit.  He crawls about
+for he hasn't learned to walk yet.  He peers up at you and asks "da da?"
+~
+Human~
+ABHT 0 100 S
+2 0 
+100 0 0 0 1d2+16 2d10+100 1d3+1 11
+8 8 8 9
+0 0 0 0
+6 6 1 0
+AHMV ABCDEFGHIJK M 0
+#1104
+nursemaid~
+a nursemaid~
+A nursemaid wanders about, trying to keep track of all the toddlers.
+~
+The nursemaid looks rather tired and worn out.  Taking care of so many
+toddlers for too long has evidently taken its toll.  She looks to you and
+in her eyes you can see her longing for a better life.
+~
+Human~
+ABT 0 100 S
+5 0 
+100 0 0 0 1d16+42 5d10+100 2d4+3 3
+6 6 6 8
+0 0 0 0
+8 8 2 0
+AHMV ABCDEFGHIJK M 0
+#1105
+cow~
+a cow~
+A cow is here, chewing her cud.
+~
+The cow looks like it hasn't been milked in quite some time.  Although she
+is past her prime, you see that she still has a lot of years left, and that
+if provoked, her rear kick can be quite deadly.
+~
+Human~
+AGIT 0 0 S
+5 0 
+100 0 0 0 1d16+42 5d10+100 2d4+3 3
+6 6 6 8
+0 0 0 0
+5 5 0 0
+AHMV ABCDEFGHIJK M 0
+#1106
+pig~
+a pig~
+A pig wallows in the mud and oinks in contentment.
+~
+The pig appears quite happy to be a pig.  He is oblivious to your presence
+and cares only for the care-free life that he leads.  It is enormously fat
+and consequently cannot move around very quickly.
+~
+pig~
+AGIT 0 0 S
+4 0 
+100 0 0 0 1d10+33 4d10+100 1d7+2 11
+7 7 7 8
+0 0 0 0
+5 5 0 0
+AGV ACDEFHJK M 0
+#1107
+chicken~
+a chicken~
+A chicken sits on her nest.
+~
+The chicken is bright and healthy.  She has no weapons but her beak.
+~
+Human~
+AGIT 0 0 S
+2 0 
+100 0 0 0 1d2+16 2d10+100 1d3+1 7
+8 8 8 9
+0 0 0 0
+6 6 2 0
+AHMV ABCDEFGHIJK M 0
+#1108
+bull~
+a bull~
+A bull scratches at the ground and lowers his head.
+~
+The bull is in top condition.  He looks like quite a fighter, nothing to be
+reckoned with.  With his horns and his hooves he can attack just about
+anything.
+~
+Human~
+ABFT 0 0 S
+5 0 
+100 0 0 0 1d16+42 5d10+100 2d4+3 11
+6 6 6 8
+0 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#1109
+horse~
+a horse~
+A horse becomes frightened by your presence.
+~
+The horse looks at you and turns away.  You can tell that it is afraid of you.
+~
+Human~
+ABGIT 0 0 S
+5 0 
+100 0 0 0 1d16+42 5d10+100 2d4+3 11
+6 6 6 8
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#1110
+shiriff~
+a shiriff~
+A shiriff of the Shire looks for signs of trouble.
+~
+The shiriff is over waist high, quite tall for a halfling.  His eyes are
+ever roaming, looking for signs of trouble from riff-raff like you.  In
+his belt is a thin dagger, and on his body he wears a suit of leather armor.
+This is one halfling you don't want to mess with.
+~
+shiriff~
+ACGT 0 150 S
+9 0 
+100 0 0 0 2d27+83 9d10+100 2d7+6 11
+4 4 4 7
+LP 0 0 0
+6 6 1 0
+AHMV ABCDEFGHIJK M 0
+#1111
+shiriff~
+a shiriff~
+A shiriff of the Shire looks for signs of trouble.
+~
+The shiriff is over waist high, quite tall for a halfling.  His eyes are
+ever roaming, looking for signs of trouble from riff raff like you.  In
+his belt is a thin dagger, and on his body he wears a suit of leather armor.
+This is one halfling you don't want to mess with.
+~
+shiriff~
+ACGT 0 150 S
+8 0 
+100 0 0 0 2d21+73 8d10+100 2d7+4 3
+5 5 5 7
+LP 0 0 0
+6 6 1 0
+AHMV ABCDEFGHIJK M 0
+#1112
+thain~
+the Thain~
+The Thain commands respect from all Shire folk.
+~
+A personable yet serious halfling, the Thain looks at you and yells a
+deep 'Hullo'.  He walks about comfortably, secure in the knowledge that
+as long as he's in office, the Shire will always remain a safe haven for
+Shire folk.
+~
+thain~
+AGT 0 400 S
+14 0 
+100 0 0 0 4d33+145 14d10+100 4d6+7 11
+1 1 1 5
+LP 0 0 0
+6 6 1 50
+AHMV ABCDEFGHIJK M 0
+#1113
+innkeeper~
+the Innkeeper~
+The Innkeeper stands here awaiting your order.
+~
+The Innkeeper is a jolly old halfling who spends his days eavesdropping on
+local gossip.  In his younger days, he was quite a seasoned traveller.
+~
+Human~
+ABGT 0 200 S
+12 0 
+100 0 0 0 3d32+120 12d10+100 3d7+6 7
+2 2 2 6
+0 0 0 0
+8 8 1 7
+AHMV ABCDEFGHIJK M 0
+#1114
+miller~
+the Miller~
+The Miller is here, overseeing his busy mill workers.
+~
+The Miller is an impatient young halfling, always trying to command more
+respect from his workers than he can get.  He looks like the type of person
+who deserves a spanking but never got one.
+~
+Human~
+ACGHT 0 50 S
+5 0 
+100 0 0 0 1d16+42 5d10+100 2d4+3 3
+6 6 6 8
+0 0 0 0
+8 8 1 2
+AHMV ABCDEFGHIJK M 0
+#1115
+mill worker~
+the mill worker~
+The mill worker runs to and fro.
+~
+The mill worker is in fine shape from the hard labor that he does at the
+mill.  He doesn't notice your presence, but he looks like he could break you
+in two without thinking about it.
+~
+Human~
+ABT 0 0 S
+4 0 
+100 0 0 0 1d10+33 4d10+100 1d7+2 3
+7 7 7 8
+0 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#1116
+elven warrior~
+the elven warrior~
+The elven warrior watches you solemnly.
+~
+The tall elven warrior is light and fair-skinned.  The expression that he wears
+on his countenance is solemn and tragic.  He cares not for this world any
+longer and wearies of it.
+~
+Human~
+ABT 0 600 S
+17 0 
+100 0 0 0 5d39+187 17d10+100 4d7+10 3
+0 0 0 4
+0 0 0 0
+6 6 1 75
+AHMV ABCDEFGHIJK M 0
+#1117
+dwarven prince~
+the dwarven prince~
+The dwarven prince sits here patiently for the return of his king.
+~
+Grim and cold, the dwarven prince is quite strong and bulky, even for the
+dwarves of his land.  His glowing eyes peer out of his bushy face and stare
+beyond your gaze.
+~
+Human~
+ABT 0 200 S
+17 0 
+100 0 0 0 5d39+187 17d10+100 4d7+10 7
+0 0 0 4
+0 0 0 0
+6 6 1 75
+AHMV ABCDEFGHIJK M 0
+#1118
+shopkeeper~
+the shopkeeper~
+The shopkeeper smiles and patiently waits for you to buy something.
+~
+The shopkeeper will fight like a madman to protect his store from riff-raff
+like you.
+~
+Human~
+ABT 0 600 S
+21 0 
+100 0 0 0 8d37+252 21d10+100 5d7+12 3
+-3 -3 -3 3
+0 0 0 0
+8 8 1 120
+AHMV ABCDEFGHIJK M 0
+#1119
+grocer~
+the grocer~
+The grocer offers you the finest breads in all the land.
+~
+The grocer is a large, jovial halfling who knows how to enjoy his pipeweed.
+However, he also knows that it's worth protecting and so will do everything
+in his power to prevent riff-raff like you from stealing it.
+~
+Human~
+ABT 0 600 S
+22 0 
+100 0 0 0 9d36+270 22d10+100 5d7+14 11
+-3 -3 -3 3
+0 0 0 0
+8 8 1 15
+AHMV ABCDEFGHIJK M 0
+#1120
+blacksmith~
+the blacksmith~
+The blacksmith bids you welcome to his humble store.
+~
+The blacksmith is a lean and mean fighting machine.  His knowledge of weapons
+and armour would certainly help him in any fight against riff-raff like you.
+~
+Human~
+ABT 0 600 S
+23 0 
+100 0 0 0 9d36+300 50d10+100 5d7+18 11
+-21 -21 -21 -5
+0 0 0 0
+8 8 1 180
+AHMV ABCDEFGHIJK M 0
+#1121
+battle master~
+the battle master~
+The battle master offers you the services of his fine trainees.
+~
+The battle master is a wizened fighter, with many scars to prove his worth.
+~
+Human~
+ABT 0 350 S
+25 0 
+100 0 0 0 10d42+322 25d10+100 5d8+16 11
+-5 -5 -5 2
+0 0 0 0
+8 8 1 15
+AHMV ABCDEFGHIJK M 0
+#1122
+halfling youth~
+a halfling youth~
+A halfling youth stands here, waiting for nothing in particular.
+~
+The halfling youth is not yet quite in the prime of his youth.  He's knee
+high and you get the sudden urge to step on him.
+~
+Human~
+AGHT 0 0 S
+2 0 
+100 0 0 0 1d2+16 2d10+100 1d3+1 3
+8 8 8 9
+0 0 0 0
+8 8 1 15
+AHMV ABCDEFGHIJK M 0
+#1123
+seasoned adventurer~
+a seasoned adventurer~
+A seasoned adventurer sits here, telling tales of fame and fortune.
+~
+The seasoned adventurer has seen his share of glory days.  Although he is
+past his prime, he still looks like he could put up more than his share of
+a good fight.
+~
+Human~
+ABT 0 100 S
+7 0 
+100 0 0 0 1d33+61 7d10+100 2d6+3 3
+5 5 5 7
+0 0 0 0
+6 6 1 1
+AHMV ABCDEFGHIJK M 0
+#1124
+local gossip~
+a local gossip~
+A local gossip asks you, "Have you heard the latest?"
+~
+The gossip is all talk and no action.  You're transfixed by her ability to
+talk so much so quickly.
+~
+Human~
+ABHT 0 0 S
+3 0 
+100 0 0 0 1d6+23 3d10+100 1d5+1 7
+8 8 8 9
+0 0 0 0
+6 6 2 0
+AHMV ABCDEFGHIJK M 0
+#1125
+halfling beauty~
+a halfling beauty~
+A halfling beauty stares dreamily into your eyes.
+~
+She is the most beautiful creature you've seen in quite some time.  As you
+stare at her, thoughts of all else vanish.  You get the sudden urge to grovel
+at her feet, hoping she'll take you in like a lost puppy.  You wouldn't dare
+harm a hair on her precious little head.
+~
+Human~
+ABT 0 1000 S
+6 0 
+100 0 0 0 1d24+51 6d10+100 2d5+3 3
+6 6 6 8
+0 0 0 0
+8 8 2 20
+AHMV ABCDEFGHIJK M 0
+#1126
+trainee~
+a trainee~
+A trainee screams a death cry as he delivers the fatal blow to a dummy.
+~
+The trainee smiles smugly, aware of your interest in him.  He's a little
+fresh, but his enthusiasm and desire to please more than make up for what
+he lacks in skill.
+~
+Human~
+ABT 0 0 S
+6 0 
+100 0 0 0 1d24+51 6d10+100 2d5+3 11
+6 6 6 8
+0 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#1127
+chic urbanite~
+a chic urbanite~
+A chic urbanite sits here, enjoying his class status.
+~
+The urbanite seems very much at home in his surroundings.  His clothes are
+all of the latest fashions and his manners impeccable.  He offers you some
+coins if you'd be so good as to order a drink for him.
+~
+Human~
+ABHT 0 0 S
+4 0 
+100 0 0 0 1d10+33 4d10+100 1d7+2 11
+7 7 7 8
+0 0 0 0
+6 6 1 1
+AHMV ABCDEFGHIJK M 0
+#1128
+country bumpkin~
+a country bumpkin~
+A country bumpkin dreams of pipeweed and its many uses.
+~
+The country bumpkin snores noisily.
+~
+Human~
+ABT 0 0 S
+5 0 
+100 0 0 0 1d16+42 5d10+100 2d4+3 3
+6 6 6 8
+0 0 0 0
+4 4 1 0
+AHMV ABCDEFGHIJK M 0
+#1130
+innkeeper~
+the Innkeeper~
+The Innkeeper stands here awaiting your order.
+~
+The Innkeeper is a jolly old halfling who spends his days eavesdropping on
+local gossip.  In his younger days, he was quite a seasoned traveller.
+~
+Human~
+ABT 0 200 S
+12 0 
+100 0 0 0 3d32+120 12d10+100 3d7+6 11
+2 2 2 6
+0 0 0 0
+8 8 1 10
+AHMV ABCDEFGHIJK M 0
+#1131
+receptionist~
+the receptionist~
+The receptionist sits here, signing forms.
+~
+He is a very professional looking type.
+~
+Human~
+ABT 0 200 S
+11 0 
+100 0 0 0 3d27+107 11d10+100 3d6+6 11
+3 3 3 6
+0 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#1132
+shiriff~
+a shiriff~
+A shiriff of the Shire looks for the lost halfling youth.
+~
+The shiriff is over waist high, quite tall for a halfling.
+He looks at you, smiles and asks you if you have seen a halfling youth
+somewhere outside the shire.
+~
+shiriff~
+ABT 0 150 S
+7 0 
+100 0 0 0 1d33+61 7d10+100 2d6+3 11
+5 5 5 7
+LP 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#0
+
+
+
+#OBJECTS
+#1100
+rainbow staff~
+the rainbow staff~
+The rainbow staff lies here.~
+unknown~
+1 G A
+0 0 999 0 0
+18 8 180 P
+A
+4 1
+#1101
+sting~
+sting~
+Sting lies here.~
+unknown~
+5 ABK AN
+B AC AC BD 0
+20 1 200 P
+A
+2 2
+#1102
+sign~
+a sign~
+A sign demands your attention.~
+unknown~
+12 0 0
+0 0 0 0 0
+5 0 50 P
+E
+sign~
+Welcome to the Shire.  As you enter the Shire from Haon-Dor you come under
+the jurisdiction of the Thain, the peacekeeper of the Shire.  Consequently,
+by entering these lands you agree to obey our laws.  If you break these laws,
+you will be severely punished.  We do not like riff raff in our peaceful
+town.
+
+					The Thain
+					Peacekeeper of the Shire
+
+~
+#1103
+pipeweed bread~
+a pipeweed bread~
+A loaf of pipeweed bread arouses your hunger.~
+unknown~
+19 0 A
+DE 0 0 0 0
+5 1 50 P
+#1104
+silvery cloak~
+a silvery cloak~
+A silvery cloak lies here.~
+unknown~
+9 GK AK
+BC BC BC 0 0
+18 3 180 P
+A
+24 -2
+#1105
+one ring~
+the One Ring~
+The One Ring is here.~
+unknown~
+9 G ABO
+ABC ABC ABC 0 0
+20 3 200 P
+A
+17 10
+A
+12 20
+#1106
+elven bow~
+an elven bow~
+An elven bow lies here.~
+unknown~
+5 BGK AN
+0 AC C C 0
+17 10 170 P
+A
+18 2
+#1107
+mithril axe~
+a mithril axe~
+A mithril axe lies here.~
+unknown~
+5 ACMNO AN
+AC AC C ADE 0
+17 12 170 P
+A
+19 2
+#1108
+thain girth~
+the thain girth~
+The girth of the thain lies here.~
+unknown~
+9 0 AL
+AC AC AC 0 0
+14 4 140 P
+A
+4 2
+#1109
+tiny dagger~
+a tiny dagger~
+A tiny dagger lies here.~
+unknown~
+5 0 AN
+B AB AC ABD 0
+9 3 90 P
+#1110
+egg~
+an egg~
+An egg lies here.~
+unknown~
+19 0 A
+CD 0 0 0 0
+2 1 20 P
+#1111
+bag~
+a bag~
+A bag is on the floor.~
+unknown~
+15 0 A
+BEF 0 0 0 0
+0 5 0 P
+#1112
+lantern~
+a lantern~
+A lantern is on the floor.~
+unknown~
+1 0 A
+0 0 20 0 0
+0 4 0 P
+#1113
+bardiche~
+a bardiche~
+A long weapon with a sharp end is on the floor.~
+unknown~
+5 0 AN
+D B BC AB 0
+6 10 60 P
+A
+18 4
+#1114
+flail~
+a flail~
+A flail is on the floor.~
+unknown~
+5 0 AN
+BC A ABC BC 0
+0 8 0 P
+#0
+
+
+
+#ROOMS
+#1100
+A dimly lit path~
+You tread through the deep, dark forest on a dimly lit path.  Up ahead you
+can hear the faint sounds of a village.
+~
+0 0 3
+D0
+The dimly lit path leads north through the dense forest.
+~
+~
+0 -1 1101
+D2
+The dimly lit path leads south through the light forest.
+~
+~
+0 -1 6000
+S
+#1101
+A dimly lit path~
+You tread through the deep, dark forest on a dimly lit path.  Up ahead you
+can hear the faint sounds of a village.
+~
+0 0 3
+D0
+The dimly lit path leads north through the dense forest.
+~
+~
+0 -1 1102
+D2
+The dimly lit path leads south through the dense forest.
+~
+~
+0 -1 1100
+S
+#1102
+A dimly lit path~
+You tread through the deep, dark forest on a dimly lit path.  The forest
+here seems less dense than to the south.  Northward you see the faint outline
+of a village.
+~
+0 0 3
+D0
+The dimly lit path leads to a village.
+~
+~
+0 -1 1103
+D2
+The dimly lit path leads south through the dense forest.
+~
+~
+0 -1 1101
+S
+#1103
+Entrance to the Shire~
+You stand at the entrance to the Shire.  You see halflings, no more than
+wee tall, every which way you look. Bywater Road leads east and west.
+~
+0 0 1
+D1
+To the east runs Bywater Road.
+~
+~
+0 -1 1104
+D2
+To the south you see a dimly lit path which leads to a dense forest.
+~
+~
+0 -1 1102
+D3
+To the west runs Bywater Road.
+~
+~
+0 -1 1118
+S
+#1104
+Bywater Road~
+You stand on Bywater Road, the busiest street in all of Shiredom.  The road
+continues to the east and west while to the north lies the general store.
+~
+0 0 1
+D0
+The general store lies to the north.
+~
+~
+0 -1 1105
+D1
+To the east runs Bywater Road.
+~
+~
+0 -1 1106
+D3
+To the west you see the entrance to the Shire.
+~
+~
+0 -1 1103
+S
+#1105
+The General Store~
+You are inside the general store.  All sorts of goodies are stacked on the
+many shelves.  Your local friendly shopkeeper is smiling patiently, waiting to 
+serve you to the best of his abilities.  The only exit is to the south.
+~
+0 8 0
+D2
+The only exit lies to the south.
+~
+~
+0 -1 1104
+S
+#1106
+Bywater Road~
+You stand on Bywater Road, the busiest street in all of Shiredom.  The road
+continues to the east and west.  To the north, steps lead to a friendly looking
+weaponry/armory while a nursery lies to the south.
+~
+0 0 1
+D0
+Steps lead to a friendly looking weaponry and armory.
+~
+~
+0 -1 1107
+D1
+To the east runs Bywater Road.
+~
+~
+0 -1 1109
+D2
+To the south lies Kid'n Keep, the local nursery.
+~
+~
+0 -1 1108
+D3
+To the west runs Bywater Road.
+~
+~
+0 -1 1104
+S
+#1107
+The House of Arms~
+You are inside the finest weapons and armour shop in all of Shiredom.  The
+shopkeeper proudly displays his fine wares and humbly offers the best daggers
+that you have ever laid eyes on.
+~
+0 8 0
+D2
+The only exit lies to the south.
+~
+~
+0 -1 1106
+S
+#1108
+Kid'n Keep~
+You are inside Kid'n Keep, the convenient one-stop nursery that maintains
+the youth of the Shire.  Toddlers run every which way while their nursemaids
+sigh in exasperation.  The only exit lies to the north.
+~
+0 8 0
+D0
+The only exit lies to the north.
+~
+~
+0 -1 1106
+S
+#1109
+A bend in the road~
+Bywater Road continues west and south.  A large, imposing building lies
+to the east.  Farther to the south, you can see an Inn of some sort.
+~
+0 0 1
+D1
+A large, imposing building lies to the east.  A sign reads 'Shiriff Post'.
+~
+~
+0 -1 1110
+D2
+To the south runs Bywater Road.
+~
+~
+0 -1 1112
+D3
+To the west runs Bywater Road.
+~
+~
+0 -1 1106
+S
+#1110
+Shiriff Post of the Eastern Shire~
+You are in the Shiriff Post which acts as the nucleus for the three shiriffs
+of the Eastern Shire.  As you examine the shiriffs on duty, you come to realize
+that the halflings of the Shire are not to be reckoned with.  You cower with 
+awe.  A door offers passage to the east.
+~
+0 8 0
+D1
+A door offers passage to the office of the Thain.
+~
+door~
+1 0 1111
+D3
+To the west you can see Bywater Road.
+~
+~
+0 -1 1109
+S
+#1111
+Thain's Office~
+You stand inside the office of the Thain, the police protectorate of the
+great Shire.  The Thain has sworn to protect the Shire from all thieves and
+murderers with his life, and so eyes you suspiciously.  A door to the west
+leads to the Shiriff Post.
+~
+0 8 0
+D3
+A door offers passage to the Shiriff Post.
+~
+door~
+1 0 1110
+S
+#1112
+Bywater Road~
+You stand on Bywater Road, the busiest street in all of Shiredom.  The road
+continues to the north and south.  To the east you spy the training grounds for
+shiriffs in training.
+~
+0 0 1
+D0
+To the north runs Bywater Road.
+~
+~
+0 -1 1109
+D1
+The Shiriff Training Grounds lies to the east.
+~
+~
+0 -1 1117
+D2
+To the south runs Bywater Road.
+~
+~
+0 -1 1113
+S
+#1113
+Bywater Road~
+You stand on Bywater Road, the busiest street in all of Shiredom.  The road
+continues to the north.  The private residences of Shire inhabitants are to
+the east and west while to the south lies the Ivy Bush, second only to the
+Green Dragon for its hospitality and service.
+~
+0 0 1
+D0
+To the north runs Bywater Road.
+~
+~
+0 -1 1112
+D1
+You spy the private dwelling of a Shire folk to the east.
+~
+~
+0 -1 1115
+D2
+To the south you see the Ivy Bush, a favorite haunt of Shire urbanites and
+seasoned travelers.
+~
+~
+0 -1 1116
+D3
+You spy the private dwelling of a Shire folk to the west.
+~
+~
+0 -1 1114
+S
+#1114
+A smial~
+You are inside a smial, a hole in the ground which serves as the proper
+dwelling place for halflings.  As you look around this private abode, you feel
+as if you were intruding and so quickly cover your eyes.  The only exit lies
+to the east.
+~
+0 8 0
+D1
+The only exit lies to the east.
+~
+~
+0 -1 1113
+S
+#1115
+A smial~
+You are inside a smial, a hole in the ground which serves as the proper
+dwelling place for halflings.  As you look around this private abode, you feel
+as if you were intruding and so quickly cover your eyes.  The only exit lies
+to the west.
+~
+0 8 0
+D3
+The only exit lies to the west.
+~
+~
+0 -1 1113
+S
+#1116
+The Ivy Bush~
+You are in the Ivy Bush, one of the most famous inns in all of Shiredom.
+Chique Shire urbanites and seasoned travelers fill the confines of the room
+with gay and lively talk.  A jovial innkeeper stops all that he is doing to
+await your command.  The only exit lies to the north.
+~
+0 8 0
+D0
+The only exit lies to the north.
+~
+~
+0 -1 1113
+S
+#1117
+Shiriff Training Grounds~
+The sounds of mock battle and feigned death cries fill your ears.  Every
+which way you turn you see halfling trainees at the prime of their youth.  A
+wizened old battle instructor meets your gaze and asks if he may be of 
+service.  The only exit lies to the west.
+~
+0 0 0
+D3
+The only exit lies to the west.
+~
+~
+0 -1 1112
+S
+#1118
+Bywater Road~
+You stand on Bywater Road, the busiest street in all of Shiredom.  The road
+continues to the east and west.  A large, imposing building lies to the south.
+You catch a glimpse of the Brandywine River to the north.
+~
+0 0 1
+D1
+To the east you see the entrance to the Shire.
+~
+~
+0 -1 1103
+D2
+A large, imposing building lies to the south.  A sign reads 'Shiriff Post'.
+~
+~
+0 -1 1119
+D3
+To the west runs Bywater Road.
+~
+~
+0 -1 1120
+S
+#1119
+Shiriff Post of the Bridge~
+You are in the Shiriff Post which acts as the nucleus for the three shiriffs
+of the Bridge.  As you examine the shiriffs on duty, you come to realize that
+the halflings of the Shire are not to be reckoned with.  You cower with awe.
+The only exit is to the north.
+~
+0 8 0
+D0
+The only exit is to the north.
+~
+~
+0 -1 1118
+S
+#1120
+Bywater Road~
+You stand on Bywater Road, the busiest street in all of Shiredom.  The road
+continues to the east and west.  To the south you spy the Grocer's Delight,
+the premium grocer's shop in all the realm while to the north lies Brandywine
+Bridge.
+~
+0 0 1
+D0
+Brandywine Bridge offers safe passage across the tumultuous river.
+~
+~
+0 -1 1131
+D1
+To the east runs Bywater Road.
+~
+~
+0 -1 1118
+D2
+You see the Grocer's Delight to the south.
+~
+~
+0 -1 1121
+D3
+To the west runs Bywater Road.
+~
+~
+0 -1 1122
+S
+#1121
+The Grocer's Delight~
+You tremble with ecstasy as the tempting odors of freshly made pipeweed
+bread fill your lungs.  Rumor has it that the pipeweed bread sold here can
+restore vitality.  You look around but find no one to take your order.  
+You then peep over the counter and discover a friendly grocer who is too 
+short to be seen over the counter.  The only exit is to the north.
+~
+0 8 0
+D0
+The only exit is to the north.
+~
+~
+0 -1 1120
+S
+#1122
+Bywater Road~
+You stand on Bywater Road, the busiest street in all of Shiredom.  The road
+continues to the east.  A small hill lies to the west while you can see a
+watermill to the far south.  You catch a glimpse of the Brandywine River to
+the north.
+~
+0 0 1
+D1
+To the east runs Bywater Road.
+~
+~
+0 -1 1120
+D2
+An entrance to the watermill lies to the south.
+~
+~
+0 -1 1123
+D3
+A small hill to the west blocks your view.
+~
+~
+0 -1 1126
+S
+#1123
+Entrance to Watermill~
+You stand at the entrance to a watermill.  You hear the bustle of busy
+workers and the sound of a creaking mill.  Bywater Road is to the north while
+the watermill continues to the south.
+~
+0 0 0
+D0
+You see Bywater Road to the north.
+~
+~
+0 -1 1122
+D2
+A watermill meets your gaze.
+~
+~
+0 -1 1124
+S
+#1124
+The Watermill~
+Halfling workers are scattered everywhere, busy at work.  You see the river
+to the west and get a compelling urge to grab the nearest worker and to toss
+him into the river.  The entrance stands to the north while a door offers
+passage to the south.
+~
+0 8 0
+D0
+You see the entrance.
+~
+~
+0 -1 1123
+D2
+A wooden door leads to the rear of the watermill.
+~
+door~
+1 0 1125
+S
+#1125
+Rear of watermill~
+You stand in a damp, dimly lit room.  Mildew clings to the walls and it
+appears as if you were the first person to enter the room in ages.  A barely
+visible portal in the ground catches your eye.
+~
+0 8 0
+D0
+A watermill meets your gaze.
+~
+~
+0 -1 1124
+D5
+A hidden portal reveals a passageway down.
+~
+~
+0 -1 1146
+S
+#1126
+Took Hill~
+You stand on top of Took Hill, named after the legendary Bandobras Took.
+You feel honored to be standing on a hill named after your hero.  From this
+vantage point you can see all of shiredom.  You get the feeling that with
+one stomp you could eliminate their great city.  You can see the outline of
+Midgaard to the far east.  Sounds of joyful celebration are heard from the
+fields west of here.  The Brandywine flows by lazily nearby.
+~
+0 0 4
+D1
+To the east runs Bywater Road.
+~
+~
+0 -1 1122
+D3
+You see a grassy field to the west.
+~
+~
+0 -1 1128
+S
+#1127
+Northern end of grassy field~
+You stand in a grassy field--nothing to get too excited about.  The field
+extends toward the south and the west.  To the east you see Took Hill.
+~
+0 0 2
+D2
+You see a grassy field.
+~
+~
+0 -1 1128
+S
+#1128
+A grassy field~
+You stand in the center of a grassy field.  A great birthday party appears
+to be taking place.  Great tables of food are spread out and a young halfling
+beauty offers you welcome.  You are enticed by her generosity and suggestive
+winks.
+~
+0 0 2
+D0
+You see a grassy field.
+~
+~
+0 -1 1127
+D1
+A small hill to the east blocks your view.
+~
+~
+0 -1 1126
+D2
+You see a grassy field.
+~
+~
+0 -1 1129
+D3
+You see a grassy field.
+~
+~
+0 -1 1130
+S
+#1129
+Southern end of grassy field~
+You stand in a grassy field--nothing to get too excited about.  The field
+extends toward the north and the west.  To the east you see Took Hill.
+~
+0 0 2
+D0
+You see a grassy field.
+~
+~
+0 -1 1128
+S
+#1130
+Western end of grassy field~
+You stand in a grassy field--nothing to get too excited about.  The field
+extends every which way but west.
+~
+0 0 2
+D1
+You see a grassy field.
+~
+~
+0 -1 1128
+S
+#1131
+Brandywine Bridge~
+You stand on a solidly built bridge.  As you look down you spy gaily
+colored fish swimming with the current of Brandywine River.  The cool water
+looks invitingly refreshing and you get a sudden urge to strip and bathe in
+the river, but you hear the laughter of women nearby and so resist the urge.
+Delving Lane extends to the north while Bywater Road can be seen to the south.
+~
+0 0 1
+D0
+You see Delving Lane.
+~
+~
+0 -1 1132
+D2
+To the south runs Bywater Road.
+~
+~
+0 -1 1120
+S
+#1132
+Delving Lane~
+Delving Lane runs north and south in this small borough of the Shire.  To 
+the south stands Brandywine Bridge.  The Green Dragon, the undisputed leader
+in the art of innkeeping, offers rest and comfort to the east.  You hear the
+bray of horses from the west.
+~
+0 0 1
+D0
+You see Delving Lane.
+~
+~
+0 -1 1133
+D1
+The Green Dragon offers food, drink, and above all hospitality for mere gold.
+~
+~
+0 -1 1144
+D2
+Brandywine Bridge offers safe passage across the tumultuous river.
+~
+~
+0 -1 1131
+S
+#1133
+Delving Lane~
+Delving Lane runs north and south in this small borough of the Shire.  A 
+large, imposing building lies to the east.  You hear the bray of horses from
+the west.
+~
+0 0 1
+D0
+You see Delving Lane.
+~
+~
+0 -1 1134
+D1
+A large, imposing building lies to the east.  A sign reads 'Shiriff Post'.
+~
+~
+0 -1 1145
+D2
+You see Delving Lane.
+~
+~
+0 -1 1132
+D3
+You see a grassy field.
+~
+~
+0 -1 1138
+S
+#1134
+Delving Lane~
+Delving Lane runs north and south in this small borough of the Shire. There
+is a small house to the west, nothing to the east, and up ahead you see a round
+door which leads to a rather impressive abode.
+~
+0 0 1
+D0
+A large, magnificent house meets your steady gaze.  Above the round door a
+sign reads 'Bag End'.
+~
+~
+1 -1 1135
+D2
+You see Delving Lane.
+~
+~
+0 -1 1133
+S
+#1135
+Bag End~
+You stand in a comfortably well-equipped house, a palace by humble halfling
+standards.  On the wall you see a banner which reads "Home Sweet Home".
+A solid oak door to the east leads to a pantry while you see a cozy bedroom
+to the west.
+~
+0 8 0
+D1
+Through the keyhole you see what looks like a well stocked pantry.
+~
+door~
+1 -1 1137
+D2
+You see Delving Lane.
+~
+~
+0 -1 1134
+D3
+You see a bedroom.  It looks like the beds have recently been slept in.
+~
+~
+0 -1 1136
+S
+#1136
+Bedroom~
+You stand in the private bedroom of Bag End.  There are two beds to the
+side, neither of which are made.  Portraits of halflings hang on the wall,
+and as you gaze upon them you come to the conclusion that the owner of
+Bag End comes from a long line of distinguished halflings.  A cozy fire
+in the fireplace keeps the room warm and comfortable.
+~
+0 8 0
+D1
+Through the doorway you see the main room of Bag End.
+~
+~
+0 -1 1135
+S
+#1137
+Pantry~
+You are inside the pantry.  Shelves filled with food and drink surround
+you on all sides.  You wonder why a halfling would need so much to eat.
+The presence of something unseen chills you to your bones.  On the floor
+you spy a trapdoor.
+~
+0 8 0
+D3
+Beyond the door you see the main room of Bag End.
+~
+door~
+1 -1 1135
+D5
+It's anyone's guess as to where the trapdoor leads.
+~
+~
+0 -1 1156
+S
+#1138
+A grassy field~
+You stand upon a grassy field.  A bull stands grazing not far away and
+out of the corner of your eye you can see him considering you.  The sound
+of animals fill the air from the north.  To the south you see a pig pen.
+~
+0 0 2
+D0
+You see a large barn.
+~
+~
+0 -1 1142
+D1
+You see Delving Lane.
+~
+~
+0 -1 1133
+D2
+A rather large pig pen is to the south.
+~
+~
+0 -1 1139
+S
+#1139
+Pig pen~
+You feel your boots sinking into the mud.  Numerous pigs roam about,
+oblivious to your company.  A grassy field is to the north while you see
+a small path winding to the west.
+~
+0 0 1
+D0
+You see a grassy field.
+~
+~
+0 -1 1138
+D3
+A small path winds its way eastward.
+~
+~
+0 -1 1140
+S
+#1140
+A stony path~
+You walk on a stony path which leads to a small residence to the north.
+From the east you hear the noisy din of pigs.
+~
+0 0 1
+D0
+To the north you see a modest house.
+~
+~
+0 -1 1141
+D1
+A rather large pig pen is to the east.
+~
+~
+0 -1 1139
+S
+#1141
+Gamgee Residence~
+You stand inside a modest home.  You deduce that this is indeed the home
+of whomever owns the surrounding lands.  The air is somewhat musty and 
+the smell reminds you of a stable.  As you look around disdainfully, you
+think to yourself that this is more of a shack than a proper residence and
+you long for the urban riches of the Shire proper.
+~
+0 8 0
+D2
+You see a small path winding its way southward.
+~
+~
+0 -1 1140
+S
+#1142
+A barn~
+Animals of every sort fill the small barn.  You feel the hot breath of
+horses and cows on your neck and you feel the sudden need for fresh air.
+Other than that, you feel cozy and protected and don't mind staying for a
+bit longer.  All the warmth and good vibes remind you of the days when your
+mother would hold you in her arms and sing you to sleep.  You find yourself
+wanting to cradle all the animals.
+~
+0 8 0
+D0
+You see a chicken coop to the north.
+~
+~
+0 -1 1143
+D2
+You see a grassy field.
+~
+~
+0 -1 1138
+S
+#1143
+A chicken coop~
+You stand inside a rather crowded chicken coop.  The cackle of hens fill
+the air.  The only exit is to the south.
+~
+0 8 0
+D2
+You see a large barn.
+~
+~
+0 -1 1142
+S
+#1144
+The Green Dragon~
+Welcome to the Green Dragon, the undisputed leader in the art of
+innkeeping.  A rather charming and friendly hostess stands to the side,
+ready to offer you food and drink.  While most of the patrons are halfling
+locals, you spy an occasional human or two.  As you listen more closely
+to the conversations that fill the inn, you hear the tales of great and
+seasoned adventurers as well as the usual gossip.  You feel as if you've
+found your second home in the Green Dragon.  You see a stairway leading
+upwards.
+~
+0 8 0
+D3
+You see Delving Lane.
+~
+~
+0 -1 1132
+D4
+You see the reception.
+~
+~
+0 -1 1157
+S
+#1145
+Shiriff Post of Delving Lane~
+You are in the Shiriff Post which acts as the nucleus for the three shiriffs
+of Delving Lane.  As you examine the shiriffs on duty, you come to realize
+that the halflings of the Shire are not to be reckoned with.  You cower with
+awe.  The only exit is to the west.
+~
+0 8 0
+D3
+You see Delving Lane.
+~
+~
+0 -1 1133
+S
+#1146
+A dark tunnel~
+You stand inside a small underground tunnel.  The ceiling is so low that
+you must crouch to avoid hitting your head.  You see light from a small
+hole in the ceiling while to the east you see nothing but darkness.
+~
+0 9 0
+D1
+You see a dark tunnel.
+~
+~
+0 -1 1147
+D4
+You see a portal which leads to a small room.
+~
+~
+0 -1 1125
+S
+#1147
+A dark tunnel~
+You stand inside a small underground tunnel.  The ceiling is so low that
+you must crouch to avoid hitting your head.  The tunnel continues east and
+west.  All you can see is darkness.
+~
+0 9 0
+D1
+You see a dark tunnel.
+~
+~
+0 -1 1148
+D3
+You see a dark tunnel.
+~
+~
+0 -1 1146
+S
+#1148
+A dark tunnel~
+You stand inside a small underground tunnel.  The ceiling is so low that
+you must crouch to avoid hitting your head.  The tunnel continues east and
+west.  All you can see is darkness.
+~
+0 9 0
+D1
+You see a dark tunnel.
+~
+~
+0 -1 1149
+D3
+You see a dark tunnel.
+~
+~
+0 -1 1147
+S
+#1149
+A three way intersection~
+You stand at an intersection.  The tunnel continues east and west while
+to the north you can barely make out a smaller trail.
+~
+0 9 0
+D0
+You see a dark tunnel.
+~
+~
+0 -1 1151
+D1
+You see a dark tunnel.
+~
+~
+0 -1 1150
+D3
+You see a dark tunnel.
+~
+~
+0 -1 1148
+S
+#1150
+End of a dark tunnel~
+You stand at the end of a dark tunnel.  The underground tunnel continues
+to the west.  From a trapdoor in the ceiling you can hear the din of
+adventurers.
+~
+0 9 0
+D3
+You see a dark tunnel.
+~
+~
+0 -1 1149
+D4
+You hear the din of adventurers.
+~
+~
+0 -1 3001
+S
+#1151
+A dark tunnel~
+You stand inside a small underground tunnel.  The ceiling is so low that
+you must crouch to avoid hitting your head.  The tunnel continues north and
+south.  To the west you see a Shirriff Post while to the east lies a small
+home.  All you can see is darkness.
+~
+0 9 0
+D0
+You see a dark tunnel.
+~
+~
+0 -1 1152
+D1
+You see a halfling hole.
+~
+~
+0 -1 1154
+D2
+You see a dark tunnel.
+~
+~
+0 -1 1149
+D3
+Above a great oak door you see a sign which reads 'Shirriff Post'.
+~
+~
+0 -1 1153
+S
+#1152
+A dark tunnel~
+You stand inside a small underground tunnel.  The ceiling is so low that 
+you must crouch to avoid hitting your head.  The tunnel continues north and
+south.  To the west lies a small home.  All you can see is darkness.
+~
+0 9 0
+D0
+You see a dark tunnel.
+~
+~
+0 -1 1156
+D2
+You see a dark tunnel.
+~
+~
+0 -1 1151
+D3
+You see a halfling hole.
+~
+~
+0 -1 1155
+S
+#1153
+Shiriff Post of the Lower Shire~
+You are in the shiriff Post which acts as the nucleus for the three shiriffs 
+of the Lower Shire.  As you examine the shiriffs on duty, you come to realize
+that the halflings of the Shire are not to be reckoned with.  You cower with
+awe.  The only exit is to the east.
+~
+0 9 0
+D1
+You see a dark tunnel.
+~
+~
+0 -1 1151
+S
+#1154
+A halfling hole~
+You stand inside a rather crudely built halfling hole.  The many passageways
+and winding paths remind you of a rodent's lair.  The air is musty and damp
+and you feel the need for fresh air.
+~
+0 9 0
+D3
+You see a dark tunnel.
+~
+~
+0 -1 1151
+S
+#1155
+A halfling hole~
+You stand inside a rather crudely built halfling hole.  The many passageways
+and winding paths remind you of a rodent's lair.  The air is musty and damp
+and you feel the need for fresh air.
+~
+0 9 0
+D1
+You see a dark tunnel.
+~
+~
+0 -1 1152
+S
+#1156
+End of a dark tunnel~
+You are at one end of a dark tunnel.  The tunnel continues to the south
+while on the ceiling you can make out a trapdoor.
+~
+0 9 0
+D2
+You see a dark tunnel.
+~
+~
+0 -1 1152
+D4
+A trapdoor on the ceiling reveals a passageway.
+~
+~
+0 -1 1137
+S
+#1157
+The Inn of the Green Dragon~
+You are standing in the Inn of the Green dragon.  Large paintings of 
+halflings at work, and halflings at play adorn the walls.  Comfortable 
+benches and seats line the walls.  A stairway leads down.
+~
+0 24 0
+D5
+(null)~
+~
+0 -1 1144
+S
+#0
+
+
+
+#RESETS
+O 0 1102 0 1103 A sign loaded to Entrance to the Shire
+M 0 1118 0 1105 Load the shopkeeper
+G 0 1111 0 A bag is given to the shopkeeper
+G 0 1112 0 A lantern is given to the shopkeeper
+M 0 1120 0 1107 Load the blacksmith
+M 0 1104 0 1108 Load a nursemaid
+M 0 1104 0 1108 Load a nursemaid
+M 0 1103 0 1108 Load a toddler
+M 0 1103 0 1108 Load a toddler
+M 0 1103 0 1108 Load a toddler
+M 0 1103 0 1108 Load a toddler
+M 0 1103 0 1108 Load a toddler
+M 0 1103 0 1108 Load a toddler
+M 0 1110 0 1110 Load a shiriff
+E 0 1109 0 16 A tiny dagger is loaded wielded of a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1110 0 1110 Load a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1111 0 1110 Load a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1112 0 1111 Load the Thain
+E 0 1113 0 16 A bardiche is loaded wielded of the Thain
+E 0 616 0 5 A leather vest is loaded on the body of the Thain
+E 0 1108 0 13 The thain girth is loaded around the waist of the Thain
+M 0 1128 0 1114 Load a country bumpkin
+G 0 1103 0 A pipeweed bread is given to a country bumpkin
+M 0 1128 0 1115 Load a country bumpkin
+G 0 1103 0 A pipeweed bread is given to a country bumpkin
+M 0 1113 0 1116 Load the Innkeeper
+G 0 1110 0 An egg is given to the Innkeeper
+G 0 648 0 A shot of whiskey is given to the Innkeeper
+G 0 649 0 A quart of ale is given to the Innkeeper
+G 0 650 0 A quart of port brew is given to the Innkeeper
+M 0 1123 0 1116 Load a seasoned adventurer
+M 0 1123 0 1116 Load a seasoned adventurer
+M 0 1124 0 1116 Load a local gossip
+M 0 1124 0 1116 Load a local gossip
+M 0 1127 0 1116 Load a chic urbanite
+M 0 1127 0 1116 Load a chic urbanite
+M 0 1127 0 1116 Load a chic urbanite
+M 0 1121 0 1117 Load the battle master
+E 0 1113 0 16 A bardiche is loaded wielded of the battle master
+M 0 1126 0 1117 Load a trainee
+E 0 1113 0 16 A bardiche is loaded wielded of a trainee
+M 0 1126 0 1117 Load a trainee
+E 0 1113 0 16 A bardiche is loaded wielded of a trainee
+M 0 1126 0 1117 Load a trainee
+E 0 1113 0 16 A bardiche is loaded wielded of a trainee
+M 0 1110 0 1119 Load a shiriff
+E 0 1109 0 16 A tiny dagger is loaded wielded of a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1110 0 1119 Load a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1111 0 1119 Load a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1119 0 1121 Load the grocer
+G 0 1103 0 A pipeweed bread is given to the grocer
+M 0 1115 0 1123 Load the mill worker
+M 0 1115 0 1123 Load the mill worker
+M 0 1115 0 1124 Load the mill worker
+M 0 1115 0 1124 Load the mill worker
+M 0 1115 0 1124 Load the mill worker
+M 0 1114 0 1124 Load the Miller
+M 0 1115 0 1125 Load the mill worker
+M 0 1122 0 1127 Load a halfling youth
+M 0 1122 0 1127 Load a halfling youth
+M 0 1122 0 1127 Load a halfling youth
+M 0 1125 0 1128 Load a halfling beauty
+M 0 1100 0 1128 Load the Elven Wizard
+E 0 1104 0 12 A silvery cloak is loaded about the shoulders of the Elven Wizard
+E 0 1100 0 0 The rainbow staff is loaded as a light of the Elven Wizard
+M 0 1122 0 1129 Load a halfling youth
+M 0 1122 0 1129 Load a halfling youth
+M 0 1122 0 1129 Load a halfling youth
+M 0 1122 0 1130 Load a halfling youth
+M 0 1122 0 1130 Load a halfling youth
+M 0 1122 0 1130 Load a halfling youth
+M 0 1116 0 1136 Load the elven warrior
+E 0 1106 0 16 An elven bow is loaded wielded of the elven warrior
+E 0 622 0 6 A brass helm is loaded over the head of the elven warrior
+M 0 1117 0 1136 Load the dwarven prince
+E 0 1107 0 16 A mithril axe is loaded wielded of the dwarven prince
+E 0 621 0 5 Brass plate is loaded on the body of the dwarven prince
+M 0 1101 0 1137 Load the Keeper of the Ring
+E 0 1101 0 16 Sting is loaded wielded of the Keeper of the Ring
+E 0 1105 0 1 The one ring is loaded on the left finger of the Keeper of the Ring
+E 0 623 0 7 Brass leggings is loaded on the legs of the Keeper of the Ring
+M 0 1108 0 1138 Load a bull
+M 0 1106 0 1139 Load a pig
+M 0 1106 0 1139 Load a pig
+M 0 1106 0 1139 Load a pig
+M 0 1106 0 1139 Load a pig
+M 0 1106 0 1139 Load a pig
+M 0 1102 0 1141 Load Farmer Gamgee
+M 0 1105 0 1142 Load a cow
+M 0 1105 0 1142 Load a cow
+M 0 1105 0 1142 Load a cow
+M 0 1109 0 1142 Load a horse
+M 0 1109 0 1142 Load a horse
+M 0 1109 0 1142 Load a horse
+M 0 1109 0 1142 Load a horse
+M 0 1107 0 1143 Load a chicken
+G 0 1110 0 An egg is given to a chicken
+M 0 1107 0 1143 Load a chicken
+G 0 1110 0 An egg is given to a chicken
+M 0 1107 0 1143 Load a chicken
+G 0 1110 0 An egg is given to a chicken
+M 0 1107 0 1143 Load a chicken
+G 0 1110 0 An egg is given to a chicken
+M 0 1107 0 1143 Load a chicken
+G 0 1110 0 An egg is given to a chicken
+M 0 1107 0 1143 Load a chicken
+G 0 1110 0 An egg is given to a chicken
+M 0 1130 0 1144 Load the Innkeeper
+G 0 1110 0 An egg is given to the Innkeeper
+G 0 648 0 A shot of whiskey is given to the Innkeeper
+G 0 649 0 A quart of ale is given to the Innkeeper
+G 0 650 0 A quart of port brew is given to the Innkeeper
+M 0 1123 2 1144 Load a seasoned adventurer
+M 0 1123 0 1144 Load a seasoned adventurer
+M 0 1123 0 1144 Load a seasoned adventurer
+M 0 1127 0 1144 Load a chic urbanite
+M 0 1127 0 1144 Load a chic urbanite
+M 0 1127 0 1144 Load a chic urbanite
+M 0 1127 0 1144 Load a chic urbanite
+M 0 1110 0 1145 Load a shiriff
+E 0 1109 0 16 A tiny dagger is loaded wielded of a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1110 0 1145 Load a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1111 0 1145 Load a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1110 0 1153 Load a shiriff
+E 0 1109 0 16 A tiny dagger is loaded wielded of a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1110 0 1153 Load a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1111 0 1153 Load a shiriff
+E 0 616 0 5 A leather vest is loaded on the body of a shiriff
+M 0 1128 0 1154 Load a country bumpkin
+M 0 1128 0 1155 Load a country bumpkin
+M 0 1131 0 1157 Load the receptionist
+S
+
+
+
+#PROGS
+M 1100 13 Offensive Mage Load to: the Elven Wizard
+M 1110 20 CityGuard Load to: a shiriff
+M 1111 20 CityGuard Load to: a shiriff
+M 1112 20 CityGuard Load to: the Thain
+M 1116 13 Offensive Mage Load to: the elven warrior
+M 1117 10 Offensive Cleric Load to: the dwarven prince
+M 1121 20 CityGuard Load to: the battle master
+M 1122 21 Thief Load to: a halfling youth
+M 1132 20 CityGuard Load to: a shiriff
+S
+
+
+
+#SHOPS
+1113 17 0 0 0 0 150 50 0 23
+1118 13 5 15 1 17 150 50 0 23
+1119 13 5 15 1 17 150 50 0 23
+1120 9 5 0 0 0 150 50 0 23
+1130 17 0 0 0 0 150 50 0 23
+0
+
+
+
+#$

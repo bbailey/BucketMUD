@@ -1,0 +1,3295 @@
+#AREADATA
+Name        { ALL } Kira    Caedemon's Valley~
+Builders    (null)~
+VNUMs       12800 12899
+Security    9
+End
+
+
+
+#MOBILES
+#12800
+a young girl~
+a young girl~
+A young elven girl smiles at you as you walk past.
+~
+The little blonde haired girl looks up at you and smiles as you walk by. 
+She looks to be no more than six or seven.  She's building a small castle
+out of stones and sticks, and looks quite content and happy with the
+finished product.  
+~
+Elf~
+AG J 500 S
+1 1 
+100 0 0 0 1d2+6 0d0+0 1d2+0 0
+0 0 0 0
+0 0 B Z
+8 8 2 0
+AHMV ABCDEFGHIJK M 0
+#12801
+a young boy~
+a young boy~
+An elven boy is here shadowboxing.
+~
+This elven boy is swordfighting an imaginary partner with a stick.  His
+brown hair flies in his face, and he slashes the air with awkward motions. 
+He grins as you walk by and says, "Wanna fight with me?"  
+~
+Elf~
+AG J 500 S
+1 1 
+100 0 0 0 1d2+6 0d0+0 1d2+0 0
+0 0 0 0
+0 0 B Z
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#12802
+elven woman~
+an elven woman~
+An elven woman exchanges smiles with you.
+~
+This elven woman smiles a pleasant smile as she walks through the town. 
+Her manner is friendly, and she is dressed like a fine lady.  Her gait is
+elegant and she seems to be genuinely beautiful, inside and out.  
+~
+Elf~
+AG J 1000 S
+10 10 
+100 0 0 0 3d22+96 0d0+0 2d5+5 13
+0 0 0 0
+0 0 B Z
+8 8 2 0
+AHMV ABCDEFGHIJK M 0
+#12803
+an elven citizen~
+an elven citizen~
+An elven citizen walks past you.
+~
+The elven man brushes by you, his long, pale blond hair flowing behind
+him.  He seems to be in a bit of a rush, made obvious by his nice silk
+clothes in conjunction with his hurried pace.  
+~
+Elf~
+AG J 0 S
+10 0 
+100 0 0 0 3d22+96 10d1+0 2d5+2 17
+0 0 0 0
+0 0 B Z
+8 8 1 50
+AHMV ABCDEFGHIJK M 0
+#12804
+elven couple~
+an elven couple~
+An elven couple walks by you, holding hands.
+~
+This couple looks to be engaged in an intimate conversation as they walk
+by you.  Their hands are linked and the man's arm is around the lady's
+waist.  There is a look in her eyes that is of the purest bliss, and they
+walk side by side.  
+~
+Elf~
+AG J 1000 S
+10 10 
+100 0 0 0 5d30+161 10d10+100 2d5+5 0
+0 0 0 0
+0 0 B Z
+8 8 0 50
+AHMV ABCDEFGHIJK M 0
+#12809
+knight~
+a noble knight~
+One of Lady Caitlynne's knights is taking a break from practicing.
+~
+This knight has his visor and helmet off.  His brow is drenched in sweat
+from a hard practice session.  His eyes smile at you, just as his mouth
+does.  Black hair falls to his pointed ears.  He has a jousting pole in one
+hand, and he's leaning up against the protective fence with a cool glass of
+lemonade.  
+~
+Elf~
+AB J 1000 S
+5 5 
+100 0 0 0 1d17+42 0d0+0 2d3+2 15
+0 0 0 0
+0 0 B Z
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#12813
+lemonade vendor~
+A lemonade vendor~
+A lemonade vendor peddles his wares here.
+~
+This young elf sells lemonade and lemon stix.  He carries his wares in a
+box carried by a red strap around his neck.  He smiles at you, calling,
+'Lemon stix!  Lemonade!  ' 
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 1 10000
+AHMV ABCDEFGHIJK M 0
+#12816
+servant~
+an elven servant~
+A servant here waits on Lord and Lady Lightshade.
+~
+This smiling elf carries a silver tray with several delectable looking
+pastries and demitasse coffee cups.  He is dressed plainly, and carries a
+towel over one arm.  Blonde hair falls to his shoulders, and green eyes look
+out at you with a friendly demeanor.  
+~
+Elf~
+AB J 1000 S
+1 1 
+100 0 0 0 1d2+6 0d0+0 1d2+0 16
+0 0 0 0
+0 0 B Z
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#12823
+Rienne~
+Rienne~
+Rienne the Seamstress
+~
+This elven woman smiles at you, a tape measure around her neck.  Her
+blonde hair falls gracefully past her shoulders, and her hands are
+manicured.  She looks at you, smiles, and says, 'Hello I am Rienne!  Welcome
+to my shop!  ' 
+~
+Elf~
+ABd J 1000 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 2 10000
+AHMV ABCDEFGHIJK M 0
+#12825
+Kael~
+Kael~
+Kael the Tailor
+~
+This tall elven man greets you firmly with a handshake.  'I'm Kael, 'he
+says, 'Welcome to my shop!  ' His black hair is cut closely to his head, and
+his ice blue eyes twinkle.  
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 1 10000
+AHMV ABCDEFGHIJK M 0
+#12828
+Lillith~
+Lillith~
+Lillith the Barmaid
+~
+This lovely buxom elven woman wears bright colors and lots of silver
+chains.  She smiles at you and says, 'My name is Lillith, and welcome to
+Crossed 'Wiv Silver!  ' She points at several empty tables and beckons for
+you to sit down.  
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 2 10000
+AHMV ABCDEFGHIJK M 0
+#12830
+maiden~
+a beautiful elf~
+A beautiful elven maiden hands you a program.
+~
+This elven maiden smiles at you warmly.  'Welcome to the Amphitheatre! 
+Feel free to enjoy our beautiful gardens before the show!  ' she says to
+you.  'Only 3 coins for a ticket or program.  ' 
+~
+Elf~
+ABd J 1000 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 2 10000
+AHMV ABCDEFGHIJK M 0
+#12832
+footman~
+a footman~
+A footman stands guard at the city entrance.
+~
+This footman soldier nods at you civilly, telling you to go forward into
+the city.  He stands about 6' tall, with broad shoulders and blazing blue
+eyes.  He holds a long, sharp spear, which he uses to keep any and all
+problems from entering the peaceful Valley.  
+~
+Elf~
+ABd J 1000 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#12840
+gypsy man~
+A burly gypsy man~
+A burly gypsy man takes a break from the festivites
+~
+A large strong human with a joyous air about him sits among his fellow
+gypsy travelers.  He wears a pair of loose colourful pants and a silk vest
+that exposes a well defined hairy chest.  
+~
+Human~
+AB 0 1000 S
+45 45 
+100 0 0 0 10d80+675 0d0+0 5d9+22 17
+-18 -19 -17 -3
+U 0 H 0
+6 5 1 600
+AHMV ABCDEFGHIJK M 0
+#12841
+Draeke~
+Draeke~
+Draeke the Boatsman
+~
+This elven man smiles at you from behind the counter.  His long brown
+hair is pulled back in a ponytail, and his brown eyes twinkle.  'Aye,' he
+says, 'I'm Draeke.  Take yer pick of the boats there.  ' 
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 1 10000
+AHMV ABCDEFGHIJK M 0
+#12850
+Gypsy Girl~
+A sleeping gypsy girl.~
+A sleeping gypsy girl lays here on some pillows.
+~
+A beautifully tanned human girl dressed in fancy silks of all colors,
+sleeps here on a bed of pillows.  Her hair has been pulled back and tied
+with a silk.  Her face is half covered in a see-through veil, and she wears
+small anklets with tiny bells, and matching earrings.  
+~
+Human~
+AB R 1000 S
+45 45 
+100 0 0 0 10d158+830 0d0+0 5d9+22 16
+-18 -16 -17 -5
+U 0 0 PZ
+5 4 2 150
+AHMV ABCDEFGHIJK M 0
+#12872
+Makim~
+Makim~
+Makim the Jeweller
+~
+This elf smiles at you, with a twinkle in his eyes faintly resembling the
+jewels he sells.  He firmly shakes your hand and says, 'Hello hello I am
+Makim!  May I interest you in some fine gold or silver?  ' 
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 1 10000
+AHMV ABCDEFGHIJK M 0
+#12873
+Silver~
+Silver~
+Mistress Silver
+~
+This elven woman has beautiful silver hair that flows down to the floor. 
+Her silver eyes gleam in the candlelight, and flash with something
+mysterious.  She looks at you and the words, 'Hello I am Silver.  Make your
+choice.  ' 
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 2 10000
+AHMV ABCDEFGHIJK M 0
+#12874
+Adrienne~
+Adrienne~
+Adrienne the Gardener
+~
+This elven woman smiles at you in greeting.  Her green eyes sparkle, and
+she extends her hand to you.  'I'm Adrienne, sample the fruits of my garden!
+' she says to you, before assisting a clerk with the scales.  
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 2 10000
+AHMV ABCDEFGHIJK M 0
+#12875
+Dakia~
+Dakia~
+Dakia the Weaponsmistress
+~
+This elven woman looks tough as nails.  She wears a suit of chainmail and
+mithril plating.  She grins at you from behind the counter and places a
+bottle of oil down before extending her hand.  'I'm Dakia.  Take a look
+around and see what you like!  ' she says.  
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 2 10000
+AHMV ABCDEFGHIJK M 0
+#12876
+Kaeron~
+Kaeron~
+Kaeron the Baker
+~
+The elven lady's face is dotted with flour, and she wipes her hands with
+a towel before extending a hand in greeting.  'I am Kaeron,' she says,
+'Please, take your pick of the fine breads and pastries!  ' 
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 2 10000
+AHMV ABCDEFGHIJK M 0
+#12877
+Lorin~
+Lorin~
+Lorin the Butcher
+~
+This elven man has a kind face, although lined.  He wears a
+blood-spattered apron, and his clothes are faded.  He grins at you, wiping
+off his hands to greet.  'Hi I'm Lorin the butcher!  What can I do for you? 
+' he says, extending his hand.  
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 1 10000
+AHMV ABCDEFGHIJK M 0
+#12878
+Danzen~
+Danzen~
+Danzen the Waiter
+~
+This elven man smiles at you warmly with a mischevious glint in his eyes.
+His greying hair is cropped around his pointed ears.  He's wearing a white
+apron, and says to you, 'Welcome to the Backstage Pass!  I'm Danzen, and
+I'll be your waiter!  Can I get you a drink?  ' 
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 1 10000
+AHMV ABCDEFGHIJK M 0
+#12879
+Oreon~
+Oreon~
+Oreon the Armorer
+~
+This elven man looks up from welding, and removes a mask, revealing
+twinkling brown eyes.  His hair is mussed up from the helmet he wears,
+protecting him from the flying sparks.  He says to you, "I am Oreon, take a
+look around!"  
+~
+Elf~
+ABd J 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 A B Z
+8 8 1 10000
+AHMV ABCDEFGHIJK M 0
+#12880
+jakim man~
+Jakim~
+A tall gyspy man stands here, his arms folded across his chest.
+~
+This burly gypsy man is one of the few humans you've seen in the Valley. 
+His curly black hair falls shoulder length, and his eyes are so dark that
+inside the tent they look black.  He sports a beard and moustache, and he
+looks as if he could crush you in one blow.  
+~
+Human~
+AB 0 350 S
+50 50 
+100 0 0 0 10d169+900 0d0+0 5d10+25 13
+-22 -22 -22 -5
+AO A BH I
+8 8 1 400
+AHMV ABCDEFGHIJK M 0
+#12881
+teller mianna~
+Mianna~
+A fortune teller gazes at you over a crystal ball.
+~
+This woman stares at you with eyes that flash with a hint of silver as
+you look at her.  Her long black hair is covered with a scarf and she seems
+to not quite be sitting on the ground.  'Come child, let Mianna tell your
+fortune,' she says to you in a dark, rich voice.  
+~
+Human~
+ABd 0 0 S
+0 0 
+100 0 0 0 1000d1+0 0d0+0 0d0+0 0
+0 0 0 0
+0 AB 0 0
+8 8 2 10000
+AHMV ABCDEFGHIJK M 0
+#12883
+Alanna bellydancer girl~
+Alanna~
+A gypsy girl is here, dancing wildly.
+~
+This gypsy girl is young, and her skirts are flashing in brilliant
+colors.  She carries a tambourine, and the jingle accentuates her movement. 
+She wears hip bells, ankle bells, and wrist bells, which also add style to
+her dance.  She moves freely, and without any abandonment.  
+~
+Human~
+AB 0 350 S
+50 49 
+100 0 0 0 10d169+890 0d0+0 5d10+21 3
+-5 -5 -5 2
+0 BH S I
+8 8 2 375
+AHMV ABCDEFGHIJK M 0
+#12884
+Madama Yasmina~
+Madama Yasmina~
+A strong gyspy woman eyes you with a level stare.
+~
+This gyspy woman has part of her face covered with a veil, but she looks
+as if she could crush you in one blow.  Her long black hair is pulled back
+under a scarf, and her brown eyes flash in the light with an inner fire. 
+Her clothing is light and flexible, giving her great mobility should you try
+and come near the girls she protects.  
+~
+Human~
+AB 0 350 S
+50 50 
+100 0 0 0 10d169+900 1000d1+0 5d10+24 18
+-21 -21 -21 -5
+U BH S I
+8 8 2 1265
+AHMV ABCDEFGHIJK M 0
+#12886
+servant girl~
+a servant girl~
+A servant girl washes the floor, whistling to herself.
+~
+This elven girl has her hair pulled back in a ponytail.  She carries a
+mop, and a bucket of water rests at her feet.  Her clothes are plain, and
+she looks dishevled.  But she smiles at you congenially and goes back to
+mopping.  
+~
+Elf~
+AB J 0 S
+1 1 
+100 0 0 0 1d2+6 0d0+0 1d2+0 16
+0 0 0 0
+0 0 B Z
+8 8 2 0
+AHMV ABCDEFGHIJK M 0
+#12889
+chef~
+the manor chef~
+A chef is busily chopping vegetables.
+~
+This elven man wears a tall white hat.  He sports a white apron, stained
+with meat juices and greenery.  He looks up from chopping as you come in,
+and mutters a hello as he goes back to his work.  
+~
+Elf~
+AB J 1000 S
+3 3 
+100 0 0 0 1d6+24 0d0+0 1d3+2 25
+0 0 0 0
+0 0 B Z
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#12896
+street jester~
+a street jester~
+A street jester is here, entertaining a crowd.
+~
+A jester wearing bells all over his clothing is juggling brightly colored
+beanbags here.  His clothing is patched with squares of boldly colored cloth.
+His face his colored white, and he has small black triangles over and under
+his eyes.
+~
+Human~
+AB 0 0 S
+10 10 
+100 0 0 0 3d22+96 0d0+0 2d5+5 16
+4 4 4 7
+0 0 0 0
+8 8 1 10
+AHMV ABCDEFGHIJK M 0
+#12897
+bard~
+a bard~
+A bard plays a sweet tune on his lute.
+~
+This man strums softly on his lute, as people drift in and out of the tavern.
+His clothing is modest, but his blue eyes sparkle and shine as he sings his
+stories for the patrons.  He has a tiny star mark on his left cheek.
+~
+Human~
+AB 0 0 S
+15 15 
+100 0 0 0 5d30+161 0d0+0 3d8+5 16
+0 0 0 5
+0 0 0 0
+8 8 1 15
+AHMV ABCDEFGHIJK M 0
+#12898
+Lise~
+Lise~
+Lise patrols for public disturbances.
+~
+An elven maiden stands here, smiling at you.  Her blonde hair curls
+around her shoulders, and her blue eyes sparkle like the sun.  She is
+wearing light clothing, making it easy to move around without being heard. 
+She looks you over with a curious eye.  
+~
+Elf~
+AG DFJ 1000 S
+20 20 
+100 0 0 0 6d44+198 20d10+100 4d5+10 0
+0 0 0 0
+R 0 B Z
+8 8 2 40
+AHMV ABCDEFGHIJK M 0
+#12899
+fish~
+a school of fish~
+A school of fish swim by peacefully.
+~
+A school of fish swim by you.  They look like carp from here, but you
+can't be too sure.  
+~
+snake~
+AB 0 0 S
+5 5 
+100 0 0 0 1d17+42 0d0+0 2d3+2 10
+0 0 0 0
+0 0 L I
+8 8 0 0
+AGRXYbc ADEFKLQVX S 0
+#0
+
+
+
+#OBJECTS
+#12800
+fountain~
+a marble fountain~
+A marble fountain flows merrily here.~
+unknown~
+25 0 0
+0 0 0 0 0
+0 0 0 P
+#12801
+breeches~
+a pair of breeches~
+A pair of fine silk breeches lies here.~
+unknown~
+11 0 AF
+0 0 0 0 0
+0 2 30 P
+#12802
+hat~
+a three-cornered hat~
+A three cornered hat with a feather rests nicely here.~
+unknown~
+11 0 AE
+0 0 0 0 0
+0 2 30 P
+#12803
+shirt~
+a gentleman's silk shirt~
+A silk shirt is hung properly.~
+unknown~
+11 0 AD
+0 0 0 0 0
+0 2 30 P
+#12804
+boots~
+a fine pair of leather boots~
+A pair of fine leather boots wait for their owner.~
+unknown~
+11 0 AG
+0 0 0 0 0
+0 3 30 P
+#12805
+a silk jacket~
+a fine embroidered silk jacket~
+A silk jacket is carefully placed here.~
+unknown~
+11 0 AK
+0 0 0 0 0
+0 2 30 P
+#12806
+silk stockings~
+white silk stockings~
+A pair of white silk stockings is here.~
+unknown~
+11 0 AF
+0 0 0 0 0
+0 1 30 P
+#12807
+white boots~
+a pair of white leather button-up boots~
+A pair of boots are neatly placed here.~
+unknown~
+11 0 AG
+0 0 0 0 0
+0 3 30 P
+#12808
+garter belt~
+a white leather garter belt~
+A white leather garter belt is here.~
+unknown~
+11 0 AL
+0 0 0 0 0
+0 2 30 P
+#12809
+silk dress~
+a flowing silk dress~
+A flowing silk dress hangs neatly here.~
+unknown~
+11 0 AD
+0 0 0 0 0
+0 2 30 P
+#12810
+lace bodice~
+a lacy bodice~
+A lacy bodice is folded neatly here.~
+unknown~
+11 0 AK
+0 0 0 0 0
+0 2 30 P
+#12811
+a frosted glass~
+a frosted glass~
+A frosted glass is cold to the touch.~
+unknown~
+17 0 A
+CE CE BC 0 0
+0 3 5 P
+#12812
+lemon stick~
+a lemon stick~
+A lemon with a sugar stick in it has been left here.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12813
+bottle~
+a dark bottle~
+A bottle made of dark glass has been left here.~
+unknown~
+17 0 A
+A A C 0 0
+0 3 5 P
+#12814
+mug~
+a thick-cut glass mug~
+A thick-cut glass mug rests here.~
+unknown~
+17 0 A
+A A AB 0 0
+0 4 5 P
+#12815
+mixed nuts~
+a dish of mixed nuts~
+A small bowl sits here, waiting to be sampled from.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 10 P
+#12816
+goblet~
+a fancy goblet~
+A fancy goblet of metal lays here.~
+unknown~
+17 0 A
+CE CE 0 0 0
+0 4 5 P
+#12817
+platter~
+a platter of hot food~
+A dish of meat and potatoes looks appetizing.~
+unknown~
+19 0 A
+ABF 0 0 0 0
+0 3 15 P
+#12818
+chainmail~
+a suit of chainmail~
+A suit of chainmail has been left behind.~
+unknown~
+9 0 AD
+AB A B B 0
+0 7 120 P
+#12819
+boots~
+a pair of metal boots~
+A pair of metal boots lie here forgotten.~
+unknown~
+9 0 AG
+0 0 0 0 0
+0 8 50 P
+#12820
+pants~
+a pair of hard leather pants~
+A pair of hard leather pants have been dropped here.~
+unknown~
+9 0 AF
+B B B 0 0
+0 6 100 P
+#12821
+helmet~
+a metal helmet~
+A metal helmet lies here forgotten.~
+unknown~
+9 0 AE
+0 A 0 0 0
+0 7 50 P
+#12822
+cape~
+a scarlet cape~
+A scarlet cape is crumpled here.~
+unknown~
+9 A AK
+AB B B C 0
+0 3 150 P
+#12823
+dagger~
+a silver dagger~
+A silver dagger lies here.~
+unknown~
+5 0 AN
+B B B B 0
+0 3 100 P
+A
+19 1
+#12824
+sword~
+a silver two-handed sword~
+A silver sword has been left here.~
+unknown~
+5 0 ANPQRSTUVWXYZabcdef
+A B B AB F
+0 10 100 P
+A
+19 1
+#12825
+mace~
+a silver studded mace~
+A silver studded mace gleams brilliantly in the light.~
+unknown~
+5 0 AN
+C B B D 0
+0 9 100 P
+A
+19 1
+#12826
+axe~
+a silver bladed throwing axe~
+A silver bladed throwing axe is stuck in the ground.~
+unknown~
+5 0 AN
+AC B B ADE 0
+0 8 100 P
+A
+19 1
+#12827
+flail~
+a small silver flail~
+A small silver flail has been left behind.~
+unknown~
+5 0 AN
+BC B B D 0
+0 9 100 P
+A
+19 1
+#12828
+spear~
+a polished silver spear~
+A polished silver spear lies here, ready for combat.~
+unknown~
+5 0 AN
+AB B B ABD 0
+0 6 100 P
+A
+19 1
+#12829
+staff~
+a silver-tipped quarterstaff~
+A silver-tipped quarterstaff lies here.~
+unknown~
+5 0 AN
+D B B 0 0
+0 5 100 P
+A
+19 1
+#12830
+morningstar~
+a silver serrated morningstar~
+A silver morningstar lies here forgotten.~
+unknown~
+5 0 AN
+BC B B DE 0
+0 2 100 P
+A
+19 1
+#12831
+ring~
+an intricately patterned silver ring~
+A silver ring gleams brightly here.~
+unknown~
+9 0 AB
+B B B A 0
+0 1 75 P
+#12832
+necklace chain~
+a chain of fine silver~
+A delicate silver chain lies here.~
+unknown~
+9 0 AC
+A B B A 0
+0 1 75 P
+#12833
+ring~
+a heart-shaped diamond engagement ring~
+A diamond ring glitters here.~
+unknown~
+9 0 AB
+B B A AB 0
+0 1 90 P
+#12834
+bracelet~
+an onyx bracelet~
+An onyx bracelet lies here forgotten.~
+unknown~
+9 0 AM
+B A A B 0
+0 1 75 P
+#12835
+ring band~
+a silver wedding band~
+A silver wedding band lies here in the dust.~
+unknown~
+9 B AB
+A A B AB 0
+0 1 75 P
+#12836
+vial wings~
+a tiny vial stenciled with wings~
+A vial has been carelessly tossed here.~
+unknown~
+10 0 A
+10 56 0 0 0
+0 2 300 P
+#12837
+vial halo~
+a tiny vial stenciled with a halo~
+A vial lies here in the dust.~
+unknown~
+10 0 A
+10 3 0 0 0
+0 2 300 P
+#12838
+vial sphere~
+a tiny vial stenciled with a blue sphere~
+A vial has been dropped here.~
+unknown~
+10 0 A
+10 57 0 0 0
+0 2 300 P
+#12839
+vial shield~
+a tiny vial stenciled with a shield~
+A vial lies here forgotten.~
+unknown~
+10 0 A
+10 67 0 0 0
+0 2 300 P
+#12840
+vial starburst~
+a tiny vial stenciled with a starburst~
+A vial has been tossed here.~
+unknown~
+10 0 A
+10 81 0 0 0
+0 2 1000 P
+#12841
+vial cross~
+a tiny vial stenciled with a red cross~
+A vial lies carelessly dropped here.~
+unknown~
+10 0 A
+10 28 0 0 0
+0 2 300 P
+#12842
+vial telescope~
+a tiny vial stenciled with a telescope~
+A vial lies here in the dust.~
+unknown~
+10 0 A
+10 44 19 0 0
+0 2 1000 P
+#12843
+vial cloak~
+a tiny vial stenciled with a cloak~
+A vial has been tossed away here.~
+unknown~
+10 0 A
+10 29 0 0 0
+0 2 300 P
+#12844
+vial blood~
+a tiny vial stenciled with a drop of blood~
+A vial has been left behind.~
+unknown~
+10 0 A
+20 504 0 0 0
+0 2 1000 P
+#12845
+apple~
+an apple~
+A ripe apple looks good enough to eat.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12846
+orange~
+an orange~
+An orange lies here on the ground.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12847
+tomato~
+a tomato~
+A red tomato waits to be selected.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12848
+sack~
+a burlap sack~
+A burlap sack waits to be filled.~
+unknown~
+15 0 AO
+BCDE 0 0 0 0
+0 4 15 P
+#12849
+carrot~
+a carrot~
+A fresh carrot lies here, waiting to be chosen.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12850
+muffin~
+a cranapple muffin~
+A muffin has been dropped here carelessly.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12851
+cherry tart~
+a cherry tart~
+A cherry tart lies here, looking appetizing.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12852
+pie~
+a slice of apple pie~
+A slice of apple pie is here, steaming hot.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12853
+bread~
+a loaf of bread~
+A loaf of bread is nicely wrapped here.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 10 P
+#12854
+steak~
+a round steak~
+A round steak is ready to be grilled.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12855
+chicken~
+a cleaned chicken breast~
+A piece of chicken waits to be cooked.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12856
+turkey~
+a turkey leg~
+A leg of turkey has been browned to perfection.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12857
+lamb~
+a lamb steak~
+A loin chop of lamb, cut and grilled lays here.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 0 5 P
+#12858
+a china cup~
+a china cup~
+A delicately patterned china cup sits here.~
+unknown~
+17 0 A
+B B CD 0 0
+0 3 5 P
+#12859
+a tall glass~
+a tall glass~
+A tall clear glass waits to be filled.~
+unknown~
+17 0 A
+B B ABD 0 0
+0 3 5 P
+#12860
+cake~
+a tea cake~
+A delicately decortated tea cake rests on a china plate.~
+unknown~
+19 0 A
+CE 0 0 0 0
+0 2 5 P
+#12861
+kayak~
+an oaken kayak~
+A kayak rests here, ready for sailing.~
+unknown~
+22 0 A
+0 0 0 0 0
+0 50 75 P
+#12862
+gold key~
+a golden key~
+A tiny golden key lays here attached to a golden chain.~
+unknown~
+18 0 AO
+0 0 0 0 0
+0 1 120 P
+#12863
+star~
+a silver star~
+A silver star lies here shining in the dust.~
+unknown~
+18 0 AO
+0 0 0 0 0
+0 1 75 P
+#12864
+parchment scroll fortune~
+your fortune~
+A scroll of parchment with your fortune written on it lies here.~
+unknown~
+2 0 AO
+15 16 0 0 0
+0 1 150 P
+E
+fortune~
+This piece of parchment paper has several words written in a beautiful
+flowing script.  They fade in and out in a mystic sense, and reading them
+you feel secure that you are the path the gods intended for you.
+~
+#12865
+program~
+a program~
+A program reading, 'Amphitheatre, Caedemon's Valley' lies here.~
+unknown~
+8 0 AO
+0 0 0 0 0
+0 1 3 P
+#12866
+cherry table~
+a cherry table~
+An elegant cherry table awaits guests.~
+unknown~
+12 0 0
+0 0 0 0 0
+0 0 0 P
+#12867
+bookshelf~
+a majestic bookshelf~
+A bookshelf rests up again a wall, filled with books.~
+unknown~
+12 0 0
+0 0 0 0 0
+0 0 0 P
+E
+books~
+Many books lie in these bookcases.  To read one, type look <name>.
+ 
+Index
+----------
+The Theory of Magic <magic>
+Witches, Fact or Fiction? <witches>
+Plants that Heal <plants>
+A Guide to Fine Wine <wine>
+Gardening: A Manual <gardening>
+Ettiquette: A study of behavior <ettiquette>
+~
+#12868
+table~
+a heavy stone table~
+A heavy stone table sits on top of the door to the wine cellar.~
+unknown~
+12 0 0
+0 0 0 0 0
+0 0 0 P
+E
+table~
+This stone table is very rough cut, and fills the entire south wall of
+the winery.  The tabletop is stained with grape juice and there are several
+objects laid upon it which aid in the winemaking process.  
+~
+#12869
+a few posts~
+a few poles for grapes~
+Several posts support climbing grapevines.~
+unknown~
+12 0 0
+0 0 0 0 0
+0 0 0 P
+E
+posts~
+These wooden poles are linked together to make a frame.  Red and white
+grapes climb over there, twisting and turning their way along.  Once they
+are harvested, they will make fine wines for the Manor.  
+~
+#12870
+bucket~
+a bucket of water~
+A bucket filled with a murky-colored water rests on the floor.~
+unknown~
+8 0 AO
+0 0 0 0 0
+0 5 0 P
+#12872
+ticket~
+a small admission ticket~
+A little ticket lays here on the ground.~
+unknown~
+8 0 A
+0 0 0 0 0
+0 1 3 P
+#12883
+the fire ring~
+a fire ring~
+A fire ring blazes brightly here.~
+unknown~
+12 A 0
+0 0 0 0 0
+0 0 0 P
+#12899
+bottle~
+a bottle of Capt. Morgan's~
+A bottle of Capt. Morgan's Spiced Rum is here.~
+unknown~
+17 0 A
+BEF BEF C 0 0
+0 3 0 P
+#0
+
+
+
+#ROOMS
+#12800
+The Town Square~
+This is the Town Square of Caedemon's Valley.  The two intersecting
+streets are of fine cobblestone, and the middle fountain flows happily. 
+From here, Lilac Pass runs east and west.  Yaerlon Way runs north and south.
+A `Kplaque`w is mounted on the fountain here.  
+~
+0 1049616 1
+E
+plaque~
+---------------------------------------------------
+|                                                  |
+|                                                  |
+|                                                  |
+|     Caedemon's Valley built upon this soil       |
+|       founded by Caitlynne Lightshade            |
+|                                                  |
+|                                                  |
+|                                                  |
+----------------------------------------------------
+~
+D0
+(null)~
+~
+0 0 12801
+D1
+(null)~
+~
+0 0 12822
+D2
+(null)~
+~
+0 0 12829
+D3
+(null)~
+~
+0 0 12856
+S
+#12801
+Yaerlon Way~
+Yaerlon Way goes north and south from here.  To the south is the town
+square.  East of you is a shop with dresses in the window, obviously
+intended for the female gender.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12802
+D1
+(null)~
+~
+0 0 12823
+D2
+(null)~
+~
+0 0 12800
+S
+#12802
+Yaerlon Way~
+The cobblestone at your feet is cracked in places, but well worn.  This
+street runs north and south, heading to the moutains.  Loud music can be
+heard `Kwest`w of you, and there are pieces of bright cloth suspended from
+the tops of the `Ktents.  `w 
+~
+0 0 1
+E
+west~
+West from here you can see bright cloth hanging from tents.  There is loud
+music being played.
+~
+E
+tents~
+A group of tents are scattered west of here.  The tents are made out of
+canvas, and some you can see inside.  Long flaps allow entrance and exit
+to tents.
+~
+D0
+(null)~
+~
+0 0 12803
+D2
+(null)~
+~
+0 0 12801
+D3
+(null)~
+~
+0 0 12882
+S
+#12803
+Yaerlon Way~
+The mountains loom over your head here, as Yaerlon Way seems to end a
+short distance to the north.  To the south you can see the Town Square and
+the crowds of people.  To the east of you is a shop displaying fine men's
+clothing in the window.  
+~
+0 0 0
+D0
+(null)~
+~
+0 0 12804
+D1
+(null)~
+~
+0 0 12825
+D2
+(null)~
+~
+0 0 12802
+S
+#12804
+The Intersection of Lovers Lane and Yaerlon Way~
+Yaerlon Way ends here with the mountains blocking any further passage
+north.  Lovers Lane heads east towards the jousting grounds, and west
+towards a small camp.  Bright flashes of color can be seen in that
+direction.
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12805
+D2
+(null)~
+~
+0 0 12803
+D3
+(null)~
+~
+0 0 12863
+S
+#12805
+Lovers Lane~
+This cobblestone road runs east and west at the north end of Caedemon's
+Valley.  Shouting can be heard to the east, as well as the pounding of
+hooves.  Trees line the south side of the street, and the mountain stands
+magestically to the north.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12806
+D3
+(null)~
+~
+0 0 12804
+S
+#12806
+Lovers Lane~
+The cobblestone here is cracked in places, giving the street a well-worn
+appearance.  Southeast of here is a small tavern.  Westward the street fades
+into a smaller rock outcropping.  The mountain looms to the north.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12807
+D3
+(null)~
+~
+0 0 12805
+S
+#12807
+Lovers Lane~
+This cobblestone street runs east and west.  Loud shouts are more audible
+from the east.  South of here is a small tavern, lute music sweetly
+counterpointing the joist.  North, the mountain prevents travel, and west
+the street fades into the horizon.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12808
+D2
+(null)~
+~
+0 0 12828
+D3
+(null)~
+~
+0 0 12806
+S
+#12808
+The Intersection of Lovers Lane and Victory Avenue~
+The mountain curves gently here, cutting off Lovers Lane, and forcing a
+new pathway south.  Victory Avenue goes south to the joust from here. 
+Lovers Lane leads back west.  The mountain blocks the way north and east.  
+~
+0 0 1
+D2
+(null)~
+~
+0 0 12809
+D3
+(null)~
+~
+0 0 12807
+S
+#12809
+Northern Entrance to the Joust~
+This is the northern entrance to the jousting fields.  Looking east, the
+horses and riders prepare for Lady Caitlynne's Tournament.  South the street
+continues past the joust.  The cobblestone at your feet is well-worn, which
+lends charm to Caedemon's Valley.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12808
+D1
+(null)~
+~
+0 0 12810
+D2
+(null)~
+~
+0 0 12817
+S
+#12810
+The Joust~
+This is the spectator's are of the jousting fields.  Right now the
+knights are practicing for Lady Caitlynne's tournament.  You can see the
+regal viewing box where Lord Lightshade and Lady Caitlynne watch the joust
+to the east.  If you wait for a while, you might be able to reach it.  
+~
+0 0 2
+D1
+(null)~
+~
+0 0 12811
+D2
+(null)~
+~
+0 0 12813
+D3
+(null)~
+~
+0 0 12809
+S
+#12811
+The Joust~
+The knights fight their tournaments here, and use this part of the jousting
+fields as a practice place to keep in form.  Right now the knights seem to 
+be resting, but you better hurry -- who knows when they may resume their battle?
+The regal viewing box is southeast of here, and the spectator's area lies west.
+~
+0 0 2
+D2
+(null)~
+~
+0 0 12812
+D3
+(null)~
+~
+0 0 12810
+S
+#12812
+The Joust~
+This practice and tournament field is silent as the knights take a break
+from their practicing.  The regal viewing box is directly east, and the
+field ends south.  There is a protective fence blocking the way west.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 12811
+D1
+(null)~
+~
+0 0 12816
+D2
+(null)~
+~
+0 0 12815
+S
+#12813
+The Joust~
+This is the middle of the specatator's area. There is a lemonade vendor
+here offering thirsty specators refreshment from the hot sun. North and
+south there is more spectator area. A fence protects to the east.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 12810
+D2
+(null)~
+~
+0 0 12814
+S
+#12814
+The Joust~
+This spectator's area leads to the southern entrance to the jousting arena.
+North is a lemonade vendor, peddling his wares for the thirsy spectators.
+If you hurry, you may be able to cut across the playing area to the regal
+viewing box.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 12813
+D1
+(null)~
+~
+0 0 12815
+D3
+(null)~
+~
+0 0 12818
+S
+#12815
+The Joust~
+This is the southern end of the jousting arena.  The knights look as though
+they are getting ready to continue to practice, so it might be worth your
+while to move west to the specators area.
+~
+0 0 2
+D0
+(null)~
+~
+0 0 12812
+D3
+(null)~
+~
+0 0 12814
+S
+#12816
+The Regal Viewing Box~
+From here Lady Caitlynne and Lord Lightshade watch the joust.  There are
+two plush red velvet seats, and a table where they may enjoy refreshment.  A
+servant waits at hand to run errands for the Lord and Lady of the town.  The
+stairs go back west.  
+~
+0 0 0
+D3
+(null)~
+~
+0 0 12812
+S
+#12817
+Victory Avenue~
+This cobblestone street runs north and south past the joust.  You can't enter
+the jousting arena from here, but there are entrances north and south.  A
+small park begins west from here.
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12809
+D2
+(null)~
+~
+0 0 12818
+D3
+There is a white gate leading into the park.
+~
+gate~
+1 0 12826
+S
+#12818
+Southern Entrance to the Joust~
+This is the southern entrance to the jousting arena.  To the east lies the
+field of tournaments and you can see the knights from the street.  Victory
+Avenue continues north and south from here.
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12817
+D1
+(null)~
+~
+0 0 12814
+D2
+(null)~
+~
+0 0 12819
+S
+#12819
+Intersection of Lilac Pass and Victory Avenue~
+Here Lilac Pass begins to the west, as Victory Avenue ends here.  South
+is a grassy plain, where houses can be added to Caedemon's Valley.  North
+the mountain looms in the distance, and an entranceway just in front of you
+leads into the Joust.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12818
+D3
+(null)~
+~
+0 0 12820
+S
+#12820
+Lilac Pass~
+This pleasant street is lined with trees and passes through the center of
+town.  It's east west course leads from the Manor to the Joust.  Lilac
+bushes are dotted between the trees and give the street its name.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12819
+D3
+(null)~
+~
+0 0 12821
+S
+#12821
+Lilac Pass~
+Lilacs are abundant on this street.  North there is a small park where
+children can play.  Several couples stroll past you on their way to the
+theatre, which lies directly south.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12824
+D1
+(null)~
+~
+0 0 12820
+D3
+(null)~
+~
+0 0 12822
+S
+#12822
+Lilac Pass~
+Lilac Pass runs east to west as the main route through town.  Lady
+Caitlynne's lilacs bloom sweetly here in the spring and lend a sweet smell
+to the town.  Directly west of here is the Town Square of Caedemon's Valley.
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12821
+D3
+(null)~
+~
+0 0 12800
+S
+#12823
+M'Lady's Formal Affairs~
+This shop is clearly intended for the fairer of the two sexes.  Long
+skirts, petticoats and bodices line the shop's walls.  Everything here is
+lacy and adorned with ribbons.  There are also several pairs of shoes to
+select from.  
+~
+0 0 0
+D3
+(null)~
+~
+0 0 12801
+S
+#12824
+In the Public Park~
+Trellises with climbing roses decorate the entrance to the garden on this
+side.  A white wicker archway stands guard to the visitors who come to sit
+on the benches under the shade.  A fountain flows merrily east of here.  
+~
+0 0 2
+D0
+(null)~
+~
+0 0 12827
+D2
+(null)~
+~
+0 0 12821
+S
+#12825
+M'Lord's Taylor-Mayde Linens~
+This shop is filled with hand-crafted suits and jackets for the tasteful
+gentleman.  Wall to wall the fine silks glisten in the light.  The
+shopkeeper is ready to measure you for your own custom suit.  
+~
+0 0 0
+D3
+(null)~
+~
+0 0 12803
+S
+#12826
+In the Public Park~
+A white wooden gate is closed against the noise of the joust here.  A
+huge fountain is south.  The path in the park continues to the west.  Trees
+and roses are the predominant feature here, showing Lady Caitlynne's style
+of landscaping.  
+~
+0 0 2
+D1
+This white gate is closed against the noise from the Joust.
+~
+gate~
+1 0 12817
+D3
+(null)~
+~
+0 0 12827
+S
+#12827
+The Crossroads in the Park~
+The pathway in the park bends to the south here, curving gently around
+the central fountain.  Trees and roses adorn the benches and give the park a
+picturesque feel.  The cobblestones at your feet are well-worn but well
+kept, signifying the pride of the people in Caedemon's Valley.  
+~
+0 0 2
+D1
+(null)~
+~
+0 0 12826
+D2
+(null)~
+~
+0 0 12824
+S
+#12828
+Crossed Wiv' Silver~
+This tavern is alive with life, as the spectators of the joust frequent
+this cafe after the weekly tournament.  The tables and chairs are ornamented
+with intricate carvings.  A bard plays his lute on the small stage, the
+sweet music giving a pleasant change from the shouts of the joust.  
+~
+0 8 0
+D0
+(null)~
+~
+0 0 12807
+S
+#12829
+Yaerlon Way~
+Yaerlon Way runs north and south from here.  Just north of here is the
+town square of Caedemon's Valley.  The street is cobblestone, and it is
+well-kept despite the constant traffic.  There is a faint smell of lilacs in
+the air.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12800
+D2
+(null)~
+~
+0 0 12830
+S
+#12830
+Entrance to the Theatre~
+East of you is the entrance to the theatre of Caedemon's Valley.  A rose-
+covered trellis guards the opening, and a smiling young elven maiden offers
+to sell you a ticket and a program.  West is the Theatre Cafe and Yaerlon
+Way continues north and south.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12829
+D1
+(null)~
+~
+0 0 12864
+D2
+(null)~
+~
+0 0 12831
+D3
+(null)~
+~
+0 0 12878
+S
+#12831
+Yaerlon Way~
+Just south of here is a rather crowded intersection.  The gate into the
+city is just beyond that, and you can barely see it through the people. 
+There is a faint smell of lilacs on the breeze, and the street is well-
+kept.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12830
+D2
+(null)~
+~
+0 0 12832
+S
+#12832
+The Entrance to Caedemon's Valley~
+The massive entrance gate to Caedemon's Valley lies to the south.  Market
+Boulevard runs east and west, while Yaerlon Way leads you north to the town
+square.  The gate is a massive wooden door, flanked by twin archer's towers,
+that are flying flags with the symbol of the House Lightshade.  A wall leads
+around the city from the gate, following the Gaeine River.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12831
+D1
+(null)~
+~
+0 0 12833
+D2
+South of you is the massive gate leading to and from Caedemon's Valley.
+~
+gate~
+5 0 12842
+D3
+(null)~
+~
+0 0 12845
+S
+#12833
+Market Boulevard~
+This street is crowded with shoppers.  The main group of shops lies to
+the west of you, and to the east the crowd thins out.  Far to the east you
+can see a beautiful lake, and some boats sailing on it.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12834
+D3
+(null)~
+~
+0 0 12832
+S
+#12834
+Market Boulevard~
+North of you is the rose-covered stone wall which surrounds the theatre. 
+There is a lake in the distance east of you.  Market Boulevard continues
+both east and west.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12835
+D3
+(null)~
+~
+0 0 12833
+S
+#12835
+Market Boulevard~
+East of here is a quiet intersection.  Market Boulevard continues east
+and west.  The sweet smell of roses drifts in on the breeze from the wall
+surrounding the theatre.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12836
+D3
+(null)~
+~
+0 0 12834
+S
+#12836
+Intersection of Market Boulevard and Promenade~
+Market Boulevard and Promenade intersect here.  Travel to the east is
+prevented by a sparkling lake.  The Promenade gently winds around the lake
+to the north and Market Boulevard goes back east.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12837
+D3
+(null)~
+~
+0 0 12835
+S
+#12837
+Promenade~
+The promenade curves gently around Lake Sa'ippia, the resting point of
+the Gaeine River.  Several people are headed in the direction of some picnic
+areas at the lake.  North of here is the eastern exit of the theatre.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12838
+D2
+(null)~
+~
+0 0 12836
+S
+#12838
+The Theatre at the Promenade~
+A rose-covered trellis invites you into the theatre, and a smiling elven
+maiden offers to sell you a ticket and program.  The Promenade goes east and
+south of here, on its way around the lake.  
+~
+0 0 0
+D1
+(null)~
+~
+0 0 12839
+D2
+(null)~
+~
+0 0 12837
+D3
+(null)~
+~
+0 0 12868
+S
+#12839
+Promenade~
+The Promenade winds lazily around Lake Sa'ippia.  A little ways to the east
+you can see a dock with a couple of boats. Back to the west is the entrance
+to the theatre.
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12840
+D3
+(null)~
+~
+0 0 12838
+S
+#12840
+Promenade~
+The water on the lake sparkles from this viewpoint.  The mountains loom
+high across the lake, and the Promenade ends a short ways to the east.  Back
+to the west, the Promenade curves its way around the lake.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12841
+D3
+(null)~
+~
+0 0 12839
+S
+#12841
+The Docks~
+The Promenade ends here at the boat docks.  There is a place to rent a
+boat here, and an elven man smiles at you from behind a booth.  The
+Promenade goes back to the west, and the lake prevents travel to the east.  
+~
+0 0 1
+D2
+(null)~
+~
+0 0 12896
+D3
+(null)~
+~
+0 0 12840
+S
+#12842
+A covered bridge over the Gaeine River~
+You are standing on a white covered bridge which crosses the river
+Gaeine.  North of you is a massive gate, flanked by two towers.  There are
+flags flying on the towers, but you can't make out the symbols from here. 
+South is the way back into the forest.  
+~
+0 1049600 1
+D0
+North of you lies the gate into and out of Caedemon's Valley.
+~
+gate~
+5 0 12832
+D2
+(null)~
+~
+0 0 12843
+S
+#12843
+Edge of the Ko'anla Woods~
+You're standing at the edge of the woods, looking out over a clear,
+peaceful river.  North of you is a white covered bridge which leads to a
+city.  South leads you back into the woods.  
+~
+0 0 3
+D0
+(null)~
+~
+0 0 12842
+D2
+(null)~
+~
+0 0 12844
+S
+#12844
+In the Woods~
+The woods are peaceful here.  You can hear the sounds of a river to the
+north.  South takes you back deeper into the heart of the forest.  Signs of
+life are scattered about.  
+~
+0 0 3
+D0
+(null)~
+~
+0 0 12843
+S
+#12845
+Market Boulevard~
+Market Boulevard teems with life, mostly because this section of the
+street is home to several shops.  North of you here is the butcher.  East is
+the gate into the city, and the street continues west.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12877
+D1
+(null)~
+~
+0 0 12832
+D3
+(null)~
+~
+0 0 12846
+S
+#12846
+Market Boulevard~
+There is a small group of shoppers here, watching a street jester.  The
+bakery is to the north, and the street continues east and west from here. 
+The cobblestone is much more worn than anywhere else in the Valley.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12876
+D1
+(null)~
+~
+0 0 12845
+D3
+(null)~
+~
+0 0 12847
+S
+#12847
+Market Boulevard~
+Market Boulevard goes east and west from here.  North of you is a small
+fruits and vegetables stand.  West is a busy intersection and the road
+disappears to the east as far as you can see.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12874
+D1
+(null)~
+~
+0 0 12846
+D3
+(null)~
+~
+0 0 12848
+S
+#12848
+The Intersection of Market Boulevard and Dancers Tryst~
+This is the intersection of Market Boulevard and Dancers Tryst.  Market
+Boulevard goes east from here, while Dancers Tryst heads to the north. 
+Passage west is blocked by the mountains, while south it is halted by a wall
+surrounding Caedemon's Valley.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12849
+D1
+(null)~
+~
+0 0 12847
+S
+#12849
+Dancers Tryst~
+Dancers Tryst heads north towards the mountains, past the Manor.  South
+of you is a busy intersection.  The cobblestone here is slightly worn, but
+very well-kept.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12850
+D2
+(null)~
+~
+0 0 12848
+S
+#12850
+Dancers Tryst~
+Directly east of here is a magic shop, and the entrance to Lord and Lady
+Lightshade's manor house is `Kwest`w.  Dancers Tryst heads north and south
+from here.  Far in the distance the mountain demands attention.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12851
+D1
+(null)~
+~
+0 0 12873
+D2
+(null)~
+~
+0 0 12849
+D3
+A tall black iron gate leads in to the Manor.
+~
+gate~
+6 12862 12885
+S
+#12851
+Dancers Tryst~
+Dancers Tryst runs north and south past the Manor and toward the northern
+mountains.  In the distance to the south, you can see the wall around the
+city.  A shop to the east catches your attention with gold and silver
+flashing in the window.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12852
+D1
+(null)~
+~
+0 0 12872
+D2
+(null)~
+~
+0 0 12850
+S
+#12852
+The Intersection of Lilac Pass and Dancers Tryst~
+Lilac Pass interesects here with Dancers Tryst.  Passage to the west is
+halted by a wall protecting the Manor house and grounds.  The cobblestone at
+your feet is well loved and well kept.  The wall is covered with climbing
+roses.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12857
+D1
+(null)~
+~
+0 0 12853
+D2
+(null)~
+~
+0 0 12851
+S
+#12853
+Lilac Pass~
+This cobblestone street is the main passageway through Caedemon's Valley,
+leading from the Manor to the Joust.  South is a building, but you can't get
+into it from here.  Lady Caitlynne has planted lilacs here, and they emit an
+intoxicating scent.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12854
+D3
+(null)~
+~
+0 0 12852
+S
+#12854
+Lilac Pass~
+Lilac Pass runs east and west from the Manor to the Joust.  Trees line
+the street and many couples sit in the shade.  Lady Caitlynne's lilacs lend
+a sweet smell to Caedemon's Valley, and provide a splash of color to the
+city in springtime.  To the south, His Lord's Weaponry shoppe sits on the
+side of the road.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12856
+D2
+(null)~
+~
+0 0 12875
+D3
+(null)~
+~
+0 0 12853
+S
+#12855
+The Winery~
+This building, though small, contains all the tools for making wine.  A
+door in the floor leads down into the wine cellar, but a table currently
+blocks the way of opening it.  The floor is earthen, and the stone walls
+keep the grapes cool as they ferment into the Manor's choice wines.  
+~
+0 8 0
+D2
+The winery exit is south.
+~
+winery~
+1 0 12895
+S
+#12856
+Lilac Pass~
+The scent of Lady Caitlynne's lilacs permeate the air as Lilac Pass
+continues east and west.  The town square is to the east, and the manor
+house can be seen in the distance to the west.  The cobblestone here is well
+kept.  To the south Her Lady's Armory shoppe shows finely crafted metal wear
+in the window.  
+~
+0 1057792 1
+D1
+(null)~
+~
+0 0 12800
+D2
+(null)~
+~
+0 0 12879
+D3
+(null)~
+~
+0 0 12854
+S
+#12857
+Dancers Tryst~
+Dancers Tryst runs along the wall protecting the Manor house and grounds.
+The cobblestone street is well-kept, and the air is a sweet mix of roses and
+lilacs.  The brick wall next to you is covered with climbing roses.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12858
+D2
+(null)~
+~
+0 0 12852
+S
+#12858
+Dancers Tryst~
+East of here is a peculiar encampment.  There are several tents with
+brightly colored strips of cloth hanging from them.  Loud calls and fast
+music can be heard.  The cobblestone at your feet is well kept, and the wall
+to the west is covered with climbing roses.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12859
+D1
+(null)~
+~
+0 0 12880
+D2
+(null)~
+~
+0 0 12857
+S
+#12859
+Dancers Tryst~
+Loud shouts rise from the camp to the east of you.  West the wall is
+covered with climbing roses.  The cobblestone at your feet is well worn but
+kept in good quality.  Dancers Tryst runs north to south at the west side of
+town.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12860
+D1
+(null)~
+~
+0 0 12883
+D2
+(null)~
+~
+0 0 12858
+S
+#12860
+The Intersection of Dancers Tryst and Lovers Lane~
+Here Dancers Tryst meets Lovers Lane and comes to an end at the foot of
+the mountain.  The cobblestone at the north end of town is a little cracked
+but still very well cared for.  South of here music being played at a
+furious pace can be heard.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12861
+D2
+(null)~
+~
+0 0 12859
+S
+#12861
+Lovers Lane~
+Lovers Lane runs east to west at the northen end of the valley.  It
+begins here and ends at the Joust on the other side of town.  The
+cobblestone at your feet has been well-cared for.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12862
+D3
+(null)~
+~
+0 0 12860
+S
+#12862
+Lovers Lane~
+This street runs east and west along the mountain.  South of here loud
+shouts blend with furious music and the sweet smell of incense.  The
+cobblestone at your feet is a little worn down.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12863
+D2
+(null)~
+~
+0 0 12884
+D3
+(null)~
+~
+0 0 12861
+S
+#12863
+Lovers Lane~
+Lovers Lane goes east and west from here.  A busy intersection is to the
+east.  The cobblestone at your feet is well worn, but well kept.  To the
+west loud shouts combine with furious music to create a flashy environment. 
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12804
+D3
+(null)~
+~
+0 0 12862
+S
+#12864
+The Amphitheatre~
+This ampitheatre is like a giant garden.  Vines of ivy tangle amidst the
+climbing roses, and a few weeping cherry trees complete the breathtaking
+landscape.  This appears to be a lobby of sorts, and you can see a small
+path south, leading to the stage.  
+~
+0 1057792 1
+D2
+(null)~
+~
+0 0 12865
+D3
+(null)~
+~
+0 0 12830
+S
+#12865
+The Amphitheatre~
+This small path is inlaid with grey stone as it makes its way through the
+flowers to the stage.  All around you the scent of roses is intoxicatingly
+beautiful.  The path contines to the north and east.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12864
+D1
+(null)~
+~
+0 0 12866
+S
+#12866
+The Amphitheatre~
+The roses go across the path here, and you have to step over them,
+admiring their beauty.  They are the same small pink tea roses that grow in
+Lady Caitlynne's yard at the Manor.  This is obviously her landscaping idea.
+~
+0 1057792 1
+D1
+(null)~
+~
+0 0 12867
+D3
+(null)~
+~
+0 0 12865
+S
+#12867
+The Amphitheatre~
+The path winds its way to the stage by heading north, past the eastern
+entrance.  All around you flower petals float gently to the ground on a
+slight breeze.  You can hear people to the north as they make their way to
+the stage for the performance.  
+~
+0 1057792 1
+D0
+(null)~
+~
+0 0 12868
+D3
+(null)~
+~
+0 0 12866
+S
+#12868
+The Amphitheatre~
+The first sight that hits you upon entering the Amphitheatre are the
+flowers.  Climbing roses intermixed with ivy and weeping cherry trees dot
+this grassy garden with pinks, white, and green.  There is a two way path
+here.  North takes you toward the stage, and south goes though the garden.  
+~
+0 1057792 1
+D0
+(null)~
+~
+0 0 12871
+D1
+(null)~
+~
+0 0 12838
+D2
+(null)~
+~
+0 0 12867
+S
+#12869
+The Amphitheatre Backstage~
+Backstage at the Amphitheatre is a simple white curtain suspended from
+the acoustical shell and supported by several posts in a circular shape. 
+There are several scripts for Shakespeare on a small table, as well as a
+rack of costumes.  
+~
+0 1057800 0
+D1
+(null)~
+~
+0 0 12870
+S
+#12870
+The Amphitheatre Stage~
+Here there is a small clearing.  There is a small wooden platform with a
+small acoustic shell surrounding its western, northern, and southern sides. 
+There's plenty of room for patrons to sit on blankets and watch the
+performances.  A small path leads around to backstage.  
+~
+0 1057792 1
+D1
+(null)~
+~
+0 0 12871
+D3
+(null)~
+~
+0 0 12869
+S
+#12871
+The Amphitheatre~
+The stage is west of you here, and the path through the flowers goes
+south.  From here you can see the stage and a small clearing where the
+patrons of the amphitheatre can bring blankets to sit and watch the show.  
+~
+0 1057792 1
+D2
+(null)~
+~
+0 0 12868
+D3
+(null)~
+~
+0 0 12870
+S
+#12872
+The Blue Diamond~
+This shop sparkles with golden and silver items.  Bracelets, necklaces,
+earrings...  Every type of jewelry imaginable.  Also on display are several
+jems and jeweled items.  The floor at your feet is tiled with marble, and
+the sterile white walls make this room look very elegant.  
+~
+0 8 0
+D3
+(null)~
+~
+0 0 12851
+S
+#12873
+Mistress Silver's Potions~
+This room is very dark.  The walls are painted black, and the ceiling is
+stenciled in silver stars.  There are no windows, but a bit of warm dim
+lighting glows from several silver candles scattered about the room.  The
+room smells of sweet vanilla which seeps from several porceline incense jars
+placed around the shop.  
+~
+0 8 0
+D3
+(null)~
+~
+0 0 12850
+S
+#12874
+Fruits and Vegetables~
+This room smells of fresh fruits and vegetables.  Surrounding you on all
+sides are wooden bins, each bin containing a different type of fruit or
+vegetable.  A few metal scales sit in the middle of the floor, and several
+clerks wait to assist you.  
+~
+0 8 0
+D2
+(null)~
+~
+0 0 12847
+S
+#12875
+His Lord's Weaponry~
+This shop smells of oils and sandpaper.  Hammering is heard through the
+southern wall, and you can tell that is where the workroom is.  Items hang
+on the walls, axes, clubs, swords, daggers, basically every type of weapon
+imaginable.  The floor here is dirt, and the atmosphere has a very primal
+quality.  
+~
+0 8 0
+D0
+(null)~
+~
+0 0 12854
+S
+#12876
+The Bakery~
+This room is permeated with the scent of flour.  In fact the air here
+looks whitish and smells sweet.  A line of customers wait to buy delicious
+looking pastries and breads.  
+~
+0 8 0
+D2
+(null)~
+~
+0 0 12846
+S
+#12877
+The Butchery~
+This shop is filled with the sounds of chopping and the smell of blood. 
+A wooden table holds a variety of selections and they all look appetizing. 
+This shop is very loud, and you have a hard time ordering your meat, but you
+find yourself smiling nonetheless.  
+~
+0 8 0
+D2
+(null)~
+~
+0 0 12845
+S
+#12878
+The Backstage Pass~
+This is a spacious room, with windows on all sides allowing a pleasant
+view of the city.  The walls are white, and there are marble chairs with
+metal tables scattered about.  The atmosphere in here is pleasant, and you
+find that it is quite easy to forget your troubles, should you care to do so
+in this coffee shoppe.
+~
+0 8 0
+D1
+(null)~
+~
+0 0 12830
+S
+#12879
+Her Lady's Armory~
+This shop is marked by its neat appearance.  Unlike the weapons shop next
+door, this armory has a wooden floor and beige walls.  Several different
+plates and mail suits are on display, and an older male elf waits to assist
+you.  
+~
+0 8 0
+D0
+(null)~
+~
+0 0 12856
+S
+#12880
+Jakim the Strong~
+This tent is clearly where the gypsy men take their sleep.  Several sacks
+lay on the floor, and the strong smell of musk permeates the air.  A few men
+sit on the ground, and a burly gypsy man keeps watch.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12883
+D1
+(null)~
+~
+0 0 12881
+D3
+(null)~
+~
+0 0 12858
+S
+#12881
+The Fortune Teller~
+You've entered a tent that is mostly dark.  Stars are painted on the
+ceiling in a silvery color and add a sense of mysticism here.  Incense
+burns, giving the tent the sweet smell of jasmine and sandalwood.  A table
+sits in the middle of the tent.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12884
+D1
+(null)~
+~
+0 0 12882
+D3
+(null)~
+~
+0 0 12880
+S
+#12882
+The Gypsy Camp~
+This is the entrance to the gypsy encampment.  There are tents all around
+you and the sounds of the tambourine blend with the flurry of skirts from
+the dance.  Bright strips of cloth hang from the tents, giving this corner
+of the Valley a distinctly different look.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12802
+D3
+(null)~
+~
+0 0 12881
+S
+#12883
+The Fire Ring~
+This is where the gypsies gather for dancing and feasting.  A ring of
+stones dominates the area, and several metal poles are around it to rest
+meats on to roast.  The mountain is very close here.  
+~
+0 0 1
+D1
+(null)~
+~
+0 0 12884
+D2
+(null)~
+~
+0 0 12880
+D3
+(null)~
+~
+0 0 12859
+S
+#12884
+Madama Yasmina~
+This tent is very brightly decorated with tapestries.  A red and blue
+woven rug sits in the middle of the floor.  Beads hang from the ceiling and
+rattle as you enter.  Girls in veils and skirts rest on pillows around you,
+and a strong gypsy woman watches them with care.  
+~
+0 0 1
+D0
+(null)~
+~
+0 0 12862
+D2
+(null)~
+~
+0 0 12881
+D3
+(null)~
+~
+0 0 12883
+S
+#12885
+An Impressive Walkway~
+This impressive walkway is lined with trees and leads directly to the
+Manor house.  Lord Lightshade and Lady Caitlynne make their home here,
+overseeing the life and politics of Caedemon's Valley.  The house is
+directly west of here and the gate is back to the east.  A large frontdoor
+invites visitors to the Manor.  
+~
+0 0 1
+D1
+(null)~
+gate~
+6 12862 12850
+D3
+(null)~
+frontdoor~
+6 12862 12886
+S
+#12886
+The Foyer~
+This room is wide, with a vaulted ceiling with a skylight.  The tiles at
+your feet are marble and shine brightly.  The walls are white and exits are
+in all directions.  
+~
+0 8 0
+D0
+(null)~
+~
+0 0 12888
+D1
+The door to the house is closed, keeping unwanted noise out.
+~
+frontd(none)~
+6 12862 12885
+D2
+(null)~
+~
+0 0 12887
+D3
+(null)~
+~
+0 0 12890
+S
+#12887
+The Parlor~
+This is where Lady Caitlynne and Lord Lightshade entertain their guests. 
+It is also the library of Lord Lightshade.  Two walls are filled floor to
+ceiling with `Kbooks`w and the other two walls are painted pale green with a
+gold trim.  The floor is stained with a cherry stain.  
+~
+0 8 0
+E
+ettiquette~
+Lords and ladies should be on their best behavior at all times.  A lord
+must at all times be chivalrous towards a lady.  He must not kiss her lips
+in public, only the top of the hand.  He must never slouch.  A lord must
+open the door for a lady and pull her chair out at the dinner table.  A lady
+should at all times submit to the wishes of her lord, provided they are of a
+goodly manner.  A lady must never show any skin above her ankles when in
+public.  A lady must also at all times be generous, remembering that others
+are far less fortunate than herself.  A lady must be at all times a fine
+example to those around her.  
+~
+E
+magic~
+Magic is an interesting theory.  Many believe that magic derives from natural
+energies such as the elements.  The interesting thing about magic is that some
+just naturally excel at channeling the energies needed to perform it.  All
+magic requires energies to cast.  This energy is called mana.  Mana is used
+by the channeler to put the life into a set of words, arcane motions, runes,
+or rituals.  Magic can be good or bad.  But always remember that uncontrolled
+magic is very dangerous, so a young channeler should always practice away
+from other folks, so as not to harm anyone.
+~
+E
+witches~
+Witches, fact or fiction? Well, legend has it that witches are those folk
+who are natural channelers.  They have great magical powers, and are said
+to make off with children in the middle of the night.  Witches are said
+to be good or evil, and if you should meet one, it cannot be trusted.
+~
+E
+plants~
+Ginseng -- said to give energy to a person
+Chamomile -- soothes headaches
+Hibiscus -- sleep aid
+Slippery elm -- soothes sore throats
+Lemon/Orange/other citrus -- purges the body of disease
+~
+E
+wine~
+Wine is properly served room temperature.  The older the wine, the better
+the quality.  Red wines should be served with red meats, such as steak and
+veal.  White wines should be served with fish and poultry, as well as pork. 
+Blush wines go well with either or.  Wines should be kept down in a cellar
+where they can age and be kept cool and away from harsh lighting.  
+~
+E
+gardening~
+Plants need sunshine, soil, and water to grow.  Make sure your seeds are
+planted deep enough, so that the roots make a secure base for your plants.
+Also make sure to plant far enough apart so that your plants stay pure.
+Rotate your plants every few years to keep the soil good for planting in.
+~
+D0
+(null)~
+~
+0 0 12886
+D3
+(null)~
+~
+0 0 12891
+S
+#12888
+The Dining Room~
+This room is very spacious, with a vaulted ceiling.  There are windows
+all along the north wall, overlooking Lady Caitlynne's gardens.  In the
+center of the room is a huge cherry `Ktable`w, set for service of eight guests.
+There are two golden candlesticks and a white tablecloth on the table.  The
+walls are white with blue and gold trim, and the floor is cherry-stained. 
+In the windows on the north wall, you can see a pair of `Kelegant`w french
+doors.  
+~
+0 8 0
+E
+elegant~
+These doors are tall, almost floor to ceiling, with gold trim and shiny
+golden 's'-shaped handles. They overlook the gardens at the Manor, and are
+treated to keep the sun out as it sets.
+~
+E
+table~
+This table is huge, filling the center of the room.  A starch white tablecloth
+covers it, decorated with a pair of golden candlesticks containing blue candles
+and flowers cut fresh from Lady Caitlynne's garden.
+~
+D0
+Elegant french doors open into the gardens.
+~
+elegant~
+1 0 12894
+D2
+(null)~
+~
+0 0 12886
+D3
+(null)~
+~
+0 0 12889
+S
+#12889
+The Kitchen~
+This room is very clean.  A big wooden table dominates here, and pots and
+pans hang suspended from the ceiling over top of it.  Cabinets and counters
+line the walls, and a brick `Koven`w comprises the entire west wall.  A
+window here allows a pleasant view of the winery and vineyards.  
+~
+0 8 0
+E
+oven~
+This huge oven comprises the entire western wall.  A chimney rises from it,
+allowing smoke to exit the house, keeping the kitchen air breathable.
+An iron door opens and closes to a little bread oven over the larger one
+used for meats and soups.
+~
+D1
+(null)~
+~
+0 0 12888
+D2
+(null)~
+~
+0 0 12890
+S
+#12890
+The Foyer~
+This is the western part of the Manor's entrance hall.  A chandelier
+hangs overhead, and the floor is marble tile.  The walls are pale blue with
+a gold trim.  
+~
+0 8 0
+D0
+(null)~
+~
+0 0 12889
+D1
+(null)~
+~
+0 0 12886
+D2
+(null)~
+~
+0 0 12891
+S
+#12891
+The Hallway~
+The hallway runs north to south.  The walls are a pale blue and trimmed
+with gold.  The wood at your feet is stained with a cherry stain.  There is
+a beige woven rug on the floor.  
+~
+0 8 0
+D0
+(null)~
+~
+0 0 12890
+D1
+(null)~
+~
+0 0 12887
+D2
+(null)~
+~
+0 0 12892
+S
+#12892
+A Hallway~
+This hallway is stylish.  The walls are painted a light blue and trimmed
+with gold.  The floor is wooden with a cherry stain, and there are portraits
+of Lady Caitlynne and Lord Lightshade hanging on either side of a carved
+blue door.
+~
+0 8 0
+D0
+(null)~
+~
+0 0 12891
+D1
+(null)~
+bedroom~
+1 0 12893
+S
+#12893
+The Bedroom~
+This is an elegant room, dominated by a king-sized four poster canopy
+bed.  A highboy sits in a corner, and a dressing table holds a brush and
+comb.  A mirror hangs on one wall.  The room is beige, with blue trim, and
+the canopy and sheets on the bed are gold.  
+~
+0 8 0
+D3
+(null)~
+bedroom~
+1 0 12892
+S
+#12894
+The Vegetable Garden~
+This vegetable garden is lined with sweet smelling pink tea roses.  Row
+upon row of peas, corn, and carrots line the landscape, and provide the
+Manor with fresh vegetables.  There are also several fruit trees here
+including apple, pear, and plum.  
+~
+0 16 2
+D2
+Elegant french doors lead into the manor.
+~
+elegant~
+1 0 12888
+D3
+(null)~
+~
+0 0 12895
+S
+#12895
+The Vineyards~
+You are surrounded by grapevines, climbing on trellises and posts all
+around the vineyard.  Both red and white grapes are grown here, and a little
+building to the north seems to contain a sort of winery.  A sweet smell
+fills the air here.  
+~
+0 16 2
+D0
+(null)~
+winery~
+1 0 12855
+D1
+(null)~
+~
+0 0 12894
+S
+#12896
+On the Lake~
+The lake is calm and smooth as your boat glides over it.  You can see for
+miles in all directions and the city seems far away.  There is a sense of
+great peace here and it is very calm and quiet on the lake.  
+~
+0 0 7
+D0
+(null)~
+~
+0 0 12841
+D2
+(null)~
+~
+0 0 12897
+S
+#12897
+On the Lake~
+The lake is very peaceful here in the stillness.  Birds can be heard in
+the trees surrounding the lake and the water shimmers briefly.  It is very
+clear and looking down you can see schools of fish swim by.  
+~
+0 0 7
+D0
+(null)~
+~
+0 0 12896
+D1
+(null)~
+~
+0 0 12899
+D3
+(null)~
+~
+0 0 12898
+S
+#12898
+On the Lake~
+The lake is peaceful here, and the water is calm and still.  A few birds
+chirp and break the silence slightly.  You can see the city from here and it
+seems very very small.  
+~
+0 0 7
+D1
+(null)~
+~
+0 0 12897
+S
+#12899
+On the Lake~
+The mountains create a breathtaking landscape from this viewpoint on Lake
+Sa'ippia.  They loom over you like a giant.  The calm waters glisten and
+schools of fish dart beneath your boat.  
+~
+0 1056768 7
+D3
+(null)~
+~
+0 0 12897
+S
+#0
+
+
+
+#RESETS
+D 0 12817 3 0
+D 0 12826 1 0
+D 0 12832 2 0
+D 0 12842 0 0
+D 0 12850 3 2
+D 0 12855 2 0
+D 0 12885 1 2
+D 0 12885 3 2
+D 0 12886 1 2
+D 0 12888 0 0
+D 0 12892 1 0
+D 0 12893 3 0
+D 0 12894 2 0
+D 0 12895 0 0
+M 0 12803 0 12800 Load an elven citizen
+E 0 12803 0 5 A gentleman's silk shirt is loaded on the body of an elven citizen
+O 0 12800 0 12800 A marble fountain loaded to The Town Square
+M 0 12898 0 12800 Load Lise
+M 0 12800 0 12802 Load a young girl
+M 0 12800 0 12804 Load a young girl
+M 0 12802 3 12804 Load an elven woman
+M 0 12809 2 12811 Load a noble knight
+M 0 12809 2 12812 Load a noble knight
+M 0 12813 0 12813 Load A lemonade vendor
+G 0 12811 0 A frosted glass is given to A lemonade vendor
+G 0 12812 0 A lemon stick is given to A lemonade vendor
+M 0 12809 0 12815 Load a noble knight
+M 0 12816 0 12816 Load an elven servant
+M 0 12823 0 12823 Load Rienne
+G 0 12806 0 White silk stockings is given to Rienne
+G 0 12807 0 A pair of white leather button-up boots is given to Rienne
+G 0 12808 0 A white leather garter belt is given to Rienne
+G 0 12809 0 A flowing silk dress is given to Rienne
+G 0 12810 0 A lacy bodice is given to Rienne
+M 0 12825 0 12825 Load Kael
+G 0 12801 0 A pair of breeches is given to Kael
+G 0 12802 0 A three-cornered hat is given to Kael
+G 0 12803 0 A gentleman's silk shirt is given to Kael
+G 0 12804 0 A fine pair of leather boots is given to Kael
+G 0 12805 0 A fine embroidered silk jacket is given to Kael
+M 0 12828 0 12828 Load Lillith
+G 0 12813 0 A dark bottle is given to Lillith
+G 0 12814 0 A thick-cut glass mug is given to Lillith
+G 0 12815 0 A dish of mixed nuts is given to Lillith
+G 0 12816 0 A fancy goblet is given to Lillith
+G 0 12817 0 A platter of hot food is given to Lillith
+M 0 12897 0 12828 Load a bard
+M 0 12830 0 12830 Load a beautiful elf
+G 0 12865 0 A program is given to a beautiful elf
+G 0 12872 0 A small admission ticket is given to a beautiful elf
+M 0 12832 0 12832 Load a footman
+M 0 12803 7 12835 Load an elven citizen
+M 0 12804 3 12836 Load an elven couple
+M 0 12830 0 12838 Load a beautiful elf
+G 0 12865 0 A program is given to a beautiful elf
+G 0 12872 0 A small admission ticket is given to a beautiful elf
+M 0 12841 0 12841 Load Draeke
+G 0 12861 0 An oaken kayak is given to Draeke
+M 0 12800 0 12841 Load a young girl
+M 0 12800 3 12846 Load a young girl
+M 0 12896 0 12846 Load a street jester
+M 0 12802 2 12850 Load an elven woman
+O 0 12868 0 12855 A heavy stone table loaded to The Winery
+M 0 12803 2 12858 Load an elven citizen
+M 0 12801 3 12863 Load a young boy
+M 0 12872 0 12872 Load Makim
+G 0 12831 0 An intricately patterned silver ring is given to Makim
+G 0 12832 0 A chain of fine silver is given to Makim
+G 0 12833 0 A heart-shaped diamond engagement ring is given to Makim
+G 0 12834 0 An onyx bracelet is given to Makim
+G 0 12835 0 A silver wedding band is given to Makim
+M 0 12873 0 12873 Load Silver
+G 0 12836 0 A tiny vial stenciled with wings is given to Silver
+G 0 12837 0 A tiny vial stenciled with a halo is given to Silver
+G 0 12838 0 A tiny vial stenciled with a blue sphere is given to Silver
+G 0 12839 0 A tiny vial stenciled with a shield is given to Silver
+G 0 12840 0 A tiny vial stenciled with a starburst is given to Silver
+G 0 12841 0 A tiny vial stenciled with a red cross is given to Silver
+G 0 12842 0 A tiny vial stenciled with a telescope is given to Silver
+G 0 12843 0 A tiny vial stenciled with a cloak is given to Silver
+G 0 12844 0 A tiny vial stenciled with a drop of blood is given to Silver
+M 0 12874 0 12874 Load Adrienne
+G 0 12845 0 An apple is given to Adrienne
+G 0 12846 0 An orange is given to Adrienne
+G 0 12847 0 A tomato is given to Adrienne
+G 0 12848 0 A burlap sack is given to Adrienne
+G 0 12849 0 A carrot is given to Adrienne
+M 0 12875 0 12875 Load Dakia
+G 0 12823 0 A silver dagger is given to Dakia
+G 0 12824 0 A silver two-handed sword is given to Dakia
+G 0 12825 0 A silver studded mace is given to Dakia
+G 0 12826 0 A silver bladed throwing axe is given to Dakia
+G 0 12827 0 A small silver flail is given to Dakia
+G 0 12828 0 A polished silver spear is given to Dakia
+G 0 12829 0 A silver-tipped quarterstaff is given to Dakia
+G 0 12830 0 A silver serrated morningstar is given to Dakia
+M 0 12876 0 12876 Load Kaeron
+G 0 12850 0 A cranapple muffin is given to Kaeron
+G 0 12851 0 A cherry tart is given to Kaeron
+G 0 12852 0 A slice of apple pie is given to Kaeron
+G 0 12853 0 A loaf of bread is given to Kaeron
+M 0 12877 0 12877 Load Lorin
+G 0 12854 0 A round steak is given to Lorin
+G 0 12855 0 A cleaned chicken breast is given to Lorin
+G 0 12856 0 A turkey leg is given to Lorin
+G 0 12857 0 A lamb steak is given to Lorin
+M 0 12878 0 12878 Load Danzen
+G 0 12858 0 A china cup is given to Danzen
+G 0 12859 0 A tall glass is given to Danzen
+G 0 12860 0 A tea cake is given to Danzen
+M 0 12879 0 12879 Load Oreon
+G 0 12818 0 A suit of chainmail is given to Oreon
+G 0 12819 0 A pair of metal boots is given to Oreon
+G 0 12820 0 A pair of hard leather pants is given to Oreon
+G 0 12821 0 A metal helmet is given to Oreon
+G 0 12822 0 A scarlet cape is given to Oreon
+M 0 12880 0 12880 Load Jakim
+M 0 12840 5 12880 Load A burly gypsy man
+M 0 12881 0 12881 Load Mianna
+G 0 12862 0 A golden key is given to Mianna
+G 0 12863 0 A silver star is given to Mianna
+G 0 12864 0 Your fortune is given to Mianna
+M 0 12883 0 12883 Load Alanna
+O 0 12883 0 12883 A fire ring loaded to The Fire Ring
+M 0 12884 0 12884 Load Madama Yasmina
+M 0 12850 5 12884 Load A sleeping gypsy girl.
+M 0 12886 0 12886 Load a servant girl
+O 0 12870 0 12886 A bucket of water loaded to The Foyer
+O 0 12867 0 12887 A majestic bookshelf loaded to The Parlor
+O 0 12866 0 12888 A cherry table loaded to The Dining Room
+M 0 12889 0 12889 Load the manor chef
+O 0 12869 0 12895 A few poles for grapes loaded to The Vineyards
+M 0 12899 0 12897 Load a school of fish
+M 0 12899 0 12898 Load a school of fish
+M 0 12899 0 12899 Load a school of fish
+S
+
+
+
+#PROGS
+M 12880 20 CityGuard Load to: Jakim
+M 12884 20 CityGuard Load to: Madama Yasmina
+S
+
+
+
+#SHOPS
+12813 0 19 17 0 0 100 100 0 23
+12823 11 0 0 0 0 100 100 0 23
+12825 11 0 0 0 0 100 100 0 23
+12828 0 19 17 0 0 100 100 0 23
+12830 8 0 0 0 0 100 100 0 23
+12841 22 0 0 0 0 100 100 0 23
+12872 11 0 0 0 0 100 100 0 23
+12873 0 0 0 10 0 100 100 0 23
+12874 0 19 17 0 0 100 100 0 23
+12875 0 0 0 0 0 100 100 0 23
+12876 0 19 0 0 0 100 100 0 23
+12877 0 19 0 0 0 100 100 0 23
+12878 0 19 17 0 0 100 100 0 23
+12879 0 0 0 0 9 100 100 0 23
+12881 18 8 0 0 0 100 100 0 23
+0
+
+
+
+#$

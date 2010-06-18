@@ -1,0 +1,204 @@
+Release Notes for EmberMUD v0.9.46
+----------------------------------
+This is mostly a maintenance release with a handful of new stuff also
+thrown in.  This is probably the most stable EmberMUD release we've
+made to date, so hopefully everyone will upgrade! <grin>
+
+EmberMUD v0.9.47 is already well underway as Dorzak has made a ton
+of code additions for his MUD.  Once everything has been stabilized,
+I'll try to put together another release so that everyone can start
+playing with it as soon as possible.
+
+The official EmberMUD homepage 
+   http://www.embermud.org
+
+The EmberMUD project page (CVS access information available here)
+   http://sf.net/projects/embermud
+
+The EmberMUD Team
+   Zak      Kevin Williams      zak@embermud.org
+   Zane     EJ Wilburn          zane@embermud.org
+   Dorzak   Nathan Cookson      dorzak@earthlink.net
+
+Release Notes for EmberMUD v0.9.45
+----------------------------------
+I'm not even going to attempt to count the number of new features,
+changes, and bug fixes that are in v0.9.45 over v0.9.44...  Here 
+is a list of the highlights (this is nowhere near a complete 
+list - as usual, check the Changelog to see everything).
+
+  Socials and Helps can now be edited using OLC.
+
+  who format re-worked to compress the space used by AFK, PK, etc.
+
+  Furniture is now sittable, sleepable, etc.
+
+  Fixed several crash bugs in whois, switch, auctions, factions,
+    jail, wizgrant, clan channel, spouse channel, and other places.
+
+  Portal and Nexus code is in.
+
+  TRACK_IS_SKILL actually works now.
+
+  The OOC and GOSSIP channels can now be renamed.
+
+  Added lots of new configuration options to config.h
+
+  A new 'shell' command is available on Unix systems.  In the
+    default config.h, it is only available at MAX_LEVEL. Please
+    note that it's still considered somewhat unstable and may
+    crash your MUD.
+
+  Fix a bunch of bugs in resets.
+
+... Just do yourself a favor and read through the Changelog. 8-)
+
+PLEASE NOTE!!!!
+
+  If you are upgrading from EmberMUD v0.9.44a, you will need to 
+convert your area files to a new format.  The converter will be
+made available for download from our SourceForge site or on
+www.embermud.org.
+
+Release Notes for EmberMUD v0.9.44
+----------------------------------
+Along with EmberMUD v0.9.44 comes a couple of big new features.
+
+1) Factions
+2) Wizgrant/Wizrevoke
+
+I have written some detailed documenation on the new factions
+system and placed it in the doc dir.  Check it out and if you have
+any questions, feel free to e-mail an EmberMUD team member or better
+yet, get on the ember-admins mailing list.
+
+In order to get going with the new Wizgrant/Wizrevoke system, you
+will need to copy/paste the following section into at least one of
+your imms pfiles (in order to give them access to all of the imm
+commands):
+
+#IMM
+mpstat wizrevoke wizgrant disable pload
+punload at goto sockets wizhelp
+askill divorce marry murder clan
+advance award hotboot trust allow
+ban permban cut deny disconnect
+freeze reboot repop sinfo set
+shutdown wizlock force load newlock
+nochannels noemote noshout notell pecho
+pardon purge restore slay teleport
+transfer objcheck poofin poofout gecho
+holylight log memory mwhere owhere
+peace echo repeat return snoop
+stat string switch wizinvis jail
+vnum clone immtalk imotd beacon
+chaos aexits aentrances edit asave
+alist resets rlist splist sklist
+lastimm hotboo mortslay End
+
+Once someone has been set up in this way, they should be able to
+use wizgrant to assign commands to anyone that needs them.  Also,
+there is a 'wizgrant <name> all' option that allows you to give
+someone else access to all of the same commands that you have
+access to.
+
+Release Notes for EmberMUD v0.9.43
+----------------------------------
+Lancelight has joined the EmberMUD team!  He brings with him several
+new features (and a couple of bugfixes) for the MUD.  As always,
+check the Changelog for the full story, but here are the highlights:
+
+  * Custom marriage code
+  * Banking system for gold
+  * New imm commands 'askill', 'pload', and 'punload'
+  * All new ban code (including perm ban)
+  * Automated auction channel
+  * Jail system (for imms to toss players in prison)
+  * Rework of resets
+
+If you're an experienced Merc / ROM / Ember builder, It's of pretty 
+high importance that you understand the resets changes.  Please 
+check the Changelog for the details and make sure all of the
+builders on your MUD know what's going on.
+
+Release Notes for EmberMUD v0.9.42
+----------------------------------
+A few bugfixes -- many more to come.  I just got a fresh list from the
+boards on ShadowMyst...  If I can ever get out from under these bugs,
+I've got some great new features planned. <grin>
+
+Later,
+-Zak
+
+Release Notes for EmberMUD v0.9.41
+----------------------------------
+Lots of bugfixes, stability improvements, and performance increases.  The
+heart of the MUDProg parsing code has been ripped out and replaced. This
+is gonna require lots of testing, I'm afraid (although I have confidence
+in Zane's abilities... <smile>).
+
+As usual, the Changelog tells the tale in full detail.  The highlights
+include:
+
+  * Completely new MUDProg parser
+  * Several new MUDProg commands
+  * spec_procs NUKED and replaced with MUDProgs
+  * String handling converted to SSM 2.2 with Erwin's hash code.
+  * Created a config file (ember.cfg)
+
+There's lots more, so check the Changelog!
+
+Don't forget - you can join the EmberMUD mailing list by sending a message
+to majordomo@weasle.jebc5.k12.mo.us with "subscribe ember-admins" in the
+body.
+
+The official EmberMUD homepage (not updated in a LONG time) can be found
+at:  http://embermud.supernova.org/~embermud
+
+The official EmberMUD code project page (updated all the time) can now
+be found at:  http://www.embermud.cx
+
+Zane and I can also be reached at new e-mail addresses (the old ones do
+still work, tho):  zane@embermud.cx and zak@embermud.cx
+
+Later,
+-Zak
+
+Release Notes for EmberMUD v0.9.40
+----------------------------------
+WHAT?!?!  A new version of EmberMUD?!?!
+
+Yes, it's true.  The first new version since 1998.  Why after all this time?
+Well, during a moment of boredom, I downloaded the code and compiled it under
+Visual C++.  I immediately invited Zane to log in and re-live a bit of the
+past.  Well, right away we started running into nasty bugs and - well, some
+of them just HAD to be fixed.  I mean, the MUD was pretty much unusable in
+the state I found it.
+
+Now maybe it's true that no-one will ever use this code.  Go ahead, prove me
+wrong! <grin>  If I receive enough feedback on this release, we might just
+continue patching it up...
+
+In any case, it's really difficult for us to even look at this code anymore...
+Zane and I both are much better coders now than we were two years ago.  The
+temptation to rewrite large chunks of code is hard to resist, but we both
+know that the time requirements make that project completely unrealistic.
+
+ANYHOW, here's v0.9.40.  We've fixed some annoying bugs and changed some
+things we didn't like.  As usual, take a look at the Changelog for the
+details.  Feel free to contact Zane or I with any questions, comments, or
+suggestions!  Our current e-mail addresses are listed below as well as on 
+the EmberMUD hompeage (which is now hosted primarily at 
+http://members.tripod.com/~Zak0).
+
+Lastly, I'd like to thank Kira for donating her area "Caedemon's Valley".
+This, along with a pretty much full set of ROM 2.3-era areas, fulfills
+one of the requests I see most often (include areas in the EmberMUD dist).
+Kira's credits:  "tpb Kira, Jillian Bower, copyright 2000".  Her e-mail
+address is: nermalkitten@aol.com
+
+Oh, one more thing -- If you're compiling under Linux, you may or may not
+need to remove -lcrypt from the Makefile...  If you're running glibc,
+it's required.  If you're using an older Linux distribution that doesn't
+have glibc, you'll have to get rid of the -lcrypt in order to compile
+the MUD.

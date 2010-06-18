@@ -1,0 +1,20 @@
+
+        For those of you that take unzipped files from the internet 
+or work in DOS, you've probably noticed some strange characters at  
+the end of every line in your files when porting them over to Unix.  
+These are CR's (carriage returns), and can be easily gotten rid of
+by a number of methods.  The easiest way is to use the freeware zip
+program, if you have it available on your Unix platform (Most if not
+all Linux distributions come with this program).
+The -ll argument turns CR/LF into LF, thus eliminating the problems.
+As an example, zip -ll merc.zip merc.h creates the zip file merc.zip
+containing a CR stripped merc.h.  
+
+	The source code for the public domain zip and unzip programs
+is available many places, including most large Linux archives.  You
+should be able to compile it for whatever your own Unix is easily.
+
+	One other common bug are names that are all in caps.  To 
+fix this, use the -L option with the unzip program.  This will 
+make the file names extracted from the .zip archive all lower case.
+

@@ -1,0 +1,138 @@
+Documentation for Random Object Loader
+By Kyle Boyd (boyd1@proaxis.com)
+
+Hello, EmberMUD admin.  This document will explain how to enhance the random 
+object loader first being distributed with EmberMUD 0.31.  This system was first
+designed for use in MUDweiser, mudweiser.mudservices.com 9000, and has been
+distributed in other Ember versions to help contribute to the growing codebase.
+
+All of the changes you may need to make are in the "random.c" file.  One of the
+changes you may wish to make will be to add or remove something from one of the
+tables.  I'll go through each one seperately.  To add a line, just go to the
+appropriate table and add a new line in the style of the old ones.  What the values
+do in the lines is described below.
+
+const	struct rand_bag_material rand_bagmaterial_table[] =
+{
+	{ "large", TRUE, 125 },
+	{ "small", TRUE, 75 },
+	{ "of holding", FALSE, 180 },
+	{ "tiny", TRUE, 50 },
+	....
+	....
+	{ "with a large hole", FALSE, 25 }
+};
+
+The first value is the describing name.  The second is TRUE if the name is to be
+placed before the bag name, and FALSE if it is to be placed afterwards.  For example:
+If:
+{ "large", TRUE, 125 },
+is selected randomly, and container type "bag" is selected, the result will be "a large bag."
+If it was changed to { "large", FALSE, 125 }, the result would be "a bag large." 
+The number listed is a multiplier for how much the bag can carry.
+const	struct rand_bag_type rand_bag_table[] =
+{
+	{ "bag", 15, ITEM_HOLD },
+	{ "satchel", 25, ITEM_HOLD|ITEM_WEAR_ABOUT },
+	{ "belt", 20, ITEM_HOLD|ITEM_WEAR_WAIST},
+	{ "backpack", 30, ITEM_WEAR_ABOUT },
+	....
+	{ "satchel", 25, ITEM_HOLD|ITEM_WEAR_ABOUT },
+	{ "belt", 20, ITEM_HOLD|ITEM_WEAR_WAIST},
+};
+
+The first value is the name of the type of container.  The second is the default amount of
+weight that container can carry.  The third is a list seperated by |'s of the locations 
+other than ITEM_TAKE that the bag can be worn on.
+
+const	struct rand_weapon_type rand_weapon_table[] =
+{
+	{ "sword", 1, 1, WEAPON_SWORD },
+	{ "sword", 2, 1, WEAPON_SWORD },
+	....
+	{ "battleaxe", 0, 6, WEAPON_AXE },
+	{ "flail", 3, 3, WEAPON_FLAIL },
+	{ "whip", 2, 4, WEAPON_WHIP },
+	{ "halberd", 0, 6, WEAPON_POLEARM }
+};
+
+The first is the name of the weapon.  The next two numbers indicate the modifier to magic,
+and the modifier to damage, respectively.  The third is what weapon type the weapon is.
+
+const	struct rand_item_material rand_material_table[] =
+{
+	/* ***IMPORTANT*** Never assign 2 materials to the same level. */
+	/* don't put any more than 4 levels apart, either. */
+	/* also put them in order by levels, worst materials at top, best at bottom */
+	/* forgetting this shouldn't crash the mud, but it will get pretty messed up. */
+	{ "rusty", 0, 0, 0 * MAX_LEVEL / 100},
+	{ "wooden", 0, 1, 1 * MAX_LEVEL / 100},
+	{ "iron", 1, 0, 2 * MAX_LEVEL / 100},
+	{ "steel", 2, 1, 4 * MAX_LEVEL / 100},
+	{ "copper", 2, 2, 6 * MAX_LEVEL / 100},
+	{ "brass", 2, 3, 8 * MAX_LEVEL / 100},
+	{ "bronze", 3, 3, 10 * MAX_LEVEL / 100},
+	{ "silver", 4, 5, 14 * MAX_LEVEL / 100},
+	.....
+};
+
+The first is the material name, the second is it's armor modification, the third is it's
+magic modifier, and the last is the average level that material should load on.  The
+* MAX_LEVEL / 100 part is to keep the table up to date if MAX_LEVEL is ever changed.
+If you don't think you'll ever change it from 100, they can be taken out.  Anyway, when you
+add a new line, remember to follow the guidelines given in /**/'s.  Don't assign 2 materials
+to the same level, keep them in order from lowest to highest, top to bottom, and don't 
+seperate them by more than 4 levels.  If by any chance you do mess up, the mud shouldn't
+crash, but the random objects will be weird.
+
+const	struct rand_ring_type rand_ring_table[] =
+{
+	{ "dirty", 0, 0},
+	{ "small", 1, 0},
+	{ "sticky", 1, ITEM_NODROP },
+	{ "glowing", 3, ITEM_GLOW },
+	{ "dark", 3, ITEM_DARK|ITEM_ANTI_GOOD },
+	{ "holy", 4, ITEM_GLOW|ITEM_BLESS|ITEM_ANTI_EVIL},
+	....
+	{ "heavy", 2, 0}
+};
+
+The first value is the name, the second is the magic modifier, and the third is a list of
+item flags seperated by |'s.  The item flags are meant to complement the name, for instance
+the "holy" ring type is glowing, blessed, and anti-evil.
+
+const struct rand_armor_type rand_armor_table[] =
+{
+	{ "helmet",ITEM_WEAR_HEAD, 5, 0, PREF_A },
+	{ "suit armor",ITEM_WEAR_BODY, 5, 1, PREF_NONE  },
+	{ "robe", ITEM_WEAR_BODY, 2, 4, PREF_A },
+	{ "breastplate", ITEM_WEAR_BODY, 7, 1, PREF_A },
+	{ "plate", ITEM_WEAR_BODY, 6, 1, PREF_A },
+	{ "pants", ITEM_WEAR_LEGS, 3, 0, PREF_SOME  },
+	{ "greaves", ITEM_WEAR_LEGS, 6, 0, PREF_SOME  },
+	....
+	{ "amulet", ITEM_WEAR_NECK, 1, 3, PREF_AN },
+	{ "necklace", ITEM_WEAR_NECK, 1, 1, PREF_A },
+	{ "necklace", ITEM_WEAR_NECK, 1, 2, PREF_A }
+};
+
+The first value is, of course, the name, and the second is the wear location of the armor.
+The third value is the protection modifier, the fourth is the magic modifier.  The last one
+determines what to place in front of the object in the short and long descriptions.  For
+instance:
+a helmet
+suit armor
+some greaves
+an amulet
+This won't have much of an impact on the game if you get it wrong, but it'll make some
+descriptions look weird.
+
+Adding random objects to mobs
+
+To add a chance of random objects loading on a mob, enter "edit mob" mode.  There, the commands
+"chance", "number", and "types" will be used.  Chance is the chance out of 100 that one to 
+"number" objects of type "types" will be loaded when that mob is created for any reason.  
+Currently, there is no way to add random objects only to the reset of a specific mob.  I 
+suggest you make two identical mobs with different vnums and change the random values of one
+of them to suit you.
+

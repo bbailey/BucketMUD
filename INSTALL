@@ -1,0 +1,140 @@
+INSTALL Documentation for EmberMUD 0.9.47
+
+This document was prepared for the 0.9.47 release of the EmberMUD source
+code.  It will be updated as the code is updated.   In addition to the
+releases of EmberMUD, EmberMUD maintains a CVS repository on
+sourceforge.net.
+
+This is not intended to be the ONLY documentation you read, but sufficient
+to get you started, and an EmberMUD running.
+
+All OSes
+------------
+
+1.  Obtain the latest release or cvs code from the EmberMUD project.  It
+is plausible that you may run across this document seperate from the
+release, or a less than current version of EmberMUD.   The two locations
+to look are: http://www.embermud.org and
+http://sourceforge.net/projects/embermud.
+
+2.  Uncompress the archive if compressed.  In the case of Win32 versions
+this is generally zip, or the source code is often tar'd and gzipped.  For
+Windows, open with your favorite zip utility.   Winzip will handle tar.gz
+files.   For Unix, the following command should be used:
+
+tar -xvzf EmberMUD-0.9.47.tar.gz
+
+3.  This will create a EmberMUD directory with the current code in it.  If
+you wish to obtain a copy via CVS, we recomend following the directions on
+the sourceforge page for doing so.   Occasional requests will be honored
+to send a tar.gz of the current cvs code, if you ask Dorzak.
+
+4.  READ THE DOCUMENTATION.  It is recomended that your read the current
+versions README file, and look at the Changelog. The Changelog tracks
+changes to EmberMUD all the way back.
+
+5.  In the /src directory, edit the config.h options to suit how you would
+like your mud to be.  The options in here include MAX_LEVEL, how recall,
+pk, looting, channels, and lots more will be handled.  Before you go
+adding a snippet to turn on or off a feature, we recomend that you take a
+look at the options alread there in config.h
+
+6.  If using cygwin, or a server which does not include the crypt
+libraries, add the line -DNOCRYPT to the NOCRYPT line of the
+makefile.  Due to export restrictions not all version of Unix, Linux or
+related tools will include the crypt library for legal reasons.   All this
+essentially will do is affect if passwords are saved in clear text or
+encrypted in the pfiles.
+
+7.  Compile the MUD.
+
+    Unix
+    ----
+    Type make while in the source directory.
+
+    Windows With Cygwin
+    -------------------
+    Type make while in the source directory.
+
+    Windows with Microsoft Visual C++
+    ---------------------------------
+    1.  Double click on the Ember.dsp file. In the MSVC directory.
+        Then Push F7 to compile.
+    2.  Repeat for StarMUD.dsp in the StartMUD directory.
+
+    Windows with Borland C Builder
+    ------------------------------
+    This one allows you to compile a GUI control port to Ember.  Zak will
+    have to give the details to how to compile.
+
+
+8.  Start the MUD. 
+    
+    Unix
+    ----
+    In the src directory ls -l startup and make sure it is executable,
+    if it is not, type:
+      chmod u+x startup
+    If you are on a commercial server and are not going to use the 
+    default port of 9005, you should edit the port line in the startup
+    file.   This is especially important if you are hosted on a 
+    commercial server which may already have port 9005 assigned.
+    Then in the src directory type the following command, to start it in
+    the background, and not have it quite when you exit the server.   
+      nohup ./startup &
+
+    Win32 Compiled with Cygwin
+    --------------------------
+    Not sure of the differences, if any.
+
+    Win32 Compiled with MSVC++
+    --------------------------
+    Double click on the startmud.exe file in the src directory.
+
+    Win32 Compiled with BCB
+    -------------------------
+    Double Click on EmberGUI.exe I believe.
+
+
+9.  Log into the MUD and Create a character, then logout.
+
+10. Edit your pfile.  You will want to change the level to whatever you
+    set MAX_LEVEL to in config.h.  The default is 60.  In addition you
+    will want to replace the following:
+
+    #IMM
+    End
+    #END
+
+    with:
+#IMM
+mpstat wizrevoke wizgrant disable pload
+punload at goto sockets wizhelp
+askill divorce marry murder clan
+advance award hotboot trust allow
+ban permban cut deny disconnect
+freeze reboot repop sinfo set
+shutdown wizlock force load newlock
+nochannels noemote noshout notell pecho
+pardon purge restore slay teleport
+transfer objcheck poofin poofout gecho
+holylight log memory mwhere owhere
+peace echo repeat return snoop
+stat string switch wizinvis jail
+vnum clone immtalk imotd beacon
+chaos aexits aentrances edit asave
+alist resets rlist splist sklist
+lastimm hotboo mortslay End
+#END
+
+11.  Log into the MUD and you should be ready.
+
+
+The EmberMUD Team
+-----------------
+
+  Zak            Kevin Williams     zak@embermud.org
+  Zane           EJ Wilburn         zane@embermud.org
+  Lancelight     Ryan Coulombe      lance@embermud.org
+  Dorzak         Nathan Cookson     dorzak@embermud.org
+

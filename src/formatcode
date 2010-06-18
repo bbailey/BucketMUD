@@ -1,0 +1,4 @@
+#!/bin/bash
+# This will format all Ember's .c and .h files to our formatting standard.
+indent -kr -bl -bli -bls -nce -l80 -prs -sob -nut -ts4 *.c *.h Win32Common/*.c Win32Common/*.h Sleep/*.cpp StartMUD/*.cpp
+

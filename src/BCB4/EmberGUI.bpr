@@ -1,0 +1,168 @@
+# ---------------------------------------------------------------------------
+VERSION = BCB.04.04
+# ---------------------------------------------------------------------------
+!ifndef BCB
+BCB = $(MAKEDIR)\..
+!endif
+# ---------------------------------------------------------------------------
+PROJECT = ..\EmberGUI.exe
+OBJFILES = obj\EmberGUI.obj obj\EmberForm.obj obj\EmberThread.obj obj\EmberDialog.obj \
+  obj\update.obj obj\act_info.obj obj\act_move.obj obj\act_obj.obj \
+  obj\act_wiz.obj obj\bit.obj obj\board.obj obj\clan.obj obj\comm.obj \
+  obj\const.obj obj\db.obj obj\fight.obj obj\handler.obj obj\interp.obj \
+  obj\magic.obj obj\mem.obj obj\olc.obj obj\olc_act.obj obj\olc_save.obj \
+  obj\random.obj obj\save.obj obj\skills.obj obj\string.obj obj\act_comm.obj \
+  obj\win32util.obj obj\crypt_util.obj obj\mud_progs.obj obj\mprog_procs.obj \
+  obj\mprog_commands.obj obj\ssm.obj obj\auction.obj obj\ban.obj obj\bank.obj \
+  obj\class.obj obj\factions.obj obj\helpolc.obj obj\marry.obj obj\recycle.obj \
+  obj\socialolc.obj
+RESFILES = EmberGUI.res
+RESDEPEN = $(RESFILES) EmberForm.dfm EmberDialog.dfm
+LIBFILES =
+IDLGENFILES =
+IDLFILES =
+LIBRARIES = vcldbx40.lib vcldb40.lib vclx40.lib vcl40.lib
+SPARELIBS = vcl40.lib vclx40.lib vcldb40.lib vcldbx40.lib
+PACKAGES = vclx40.bpi vcl40.bpi vcldb40.bpi teeui40.bpi teedb40.bpi tee40.bpi dss40.bpi \
+  nmfast40.bpi inetdb40.bpi inet40.bpi
+PATHASM = .;
+PATHCPP = .;..;..\Win32Common
+PATHPAS = .;
+PATHRC = .;
+DEBUGLIBPATH = $(BCB)\lib\debug
+RELEASELIBPATH = $(BCB)\lib\release
+SYSDEFINES = NO_STRICT
+USERDEFINES = cbuilder;WIN32
+DEFFILE =
+# ---------------------------------------------------------------------------
+CFLAG1 = -I..\;..;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\Win32Common -O2 \
+  -Hc -H=$(BCB)\lib\vcl40.csm -w- -Ve -ff -a8 -5 -k- -vi \
+  -D$(SYSDEFINES);$(USERDEFINES) -c -b- -w-par -w-inl -Vx -tWM
+CFLAG2 =
+CFLAG3 =
+IDLCFLAGS = -I"..\" -I.. -I$(BCB)\projects -I$(BCB)\include -I$(BCB)\include\vcl \
+  -I..\Win32Common -src_suffixcpp -Dcbuilder -DWIN32
+PFLAGS = -U..\;..;..\win32common;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -I..\;..;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\Win32Common \
+  -N2obj -N0obj \
+  -AWinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE \
+  -Dcbuilder;WIN32 -$Y- -$V- -$L- -$D- -v -JPHNV -M -JPHNE
+RFLAGS = -i..\;..;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\Win32Common \
+  -Dcbuilder;WIN32
+AFLAGS = /i..\ /i.. /i$(BCB)\projects /i$(BCB)\include /i$(BCB)\include\vcl \
+  /i..\Win32Common /dcbuilder /dWIN32 /mx /w2 /zn
+LFLAGS = -L..\;..;..\win32common;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -S:0x800000 -aa -Tpe -x
+IFLAGS =
+LINKER = ilink32
+# ---------------------------------------------------------------------------
+ALLOBJ = c0w32.obj sysinit.obj $(OBJFILES)
+ALLRES = $(RESFILES)
+ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib
+# ---------------------------------------------------------------------------
+.autodepend
+
+!ifdef IDEOPTIONS
+
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1033
+CodePage=1252
+
+[Version Info Keys]
+FileVersion=1.0.0.0
+
+[HistoryLists\hlIncludePath]
+Count=4
+Item0=..\;..;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\Win32Common
+Item1=..\..\src;$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\;..\Win32Common
+Item2=$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl;..\;..\Win32Common
+Item3=$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=4
+Item0=..\;..;..\win32common;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\;..\win32common;..\..\src;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib
+Item2=..\win32common;..\..\src;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib
+Item3=$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlConditionals]
+Count=4
+Item0=cbuilder;WIN32
+Item1=cbuilder
+Item2=cbuilder;_RTLDLL
+Item3=cbuilder;_WINSOCK2API_
+
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE
+
+[HistoryLists\hlIntOutputDir]
+Count=2
+Item0=obj
+Item1=.\obj
+
+[HistoryLists\hlHostApplication]
+Count=1
+Item0=D:\ember\src\EmberGUI.exe
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=..\
+
+[Debugging]
+DebugSourceDirs=
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+InMemoryExe=0
+ShowInfoMsgs=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+!endif
+
+$(PROJECT): $(IDLGENFILES) $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(BCB)\BIN\$(LINKER) @&&!
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    ..\$(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES) 
+!
+
+.pas.hpp:
+    $(BCB)\BIN\dcc32 $(PFLAGS) { $** }
+
+.pas.obj:
+    $(BCB)\BIN\dcc32 $(PFLAGS) { $** }
+
+.cpp.obj:
+    $(BCB)\BIN\bcc32 $(CFLAG1) $(CFLAG2) -o$* $* 
+
+.c.obj:
+    $(BCB)\BIN\bcc32 $(CFLAG1) $(CFLAG2) -o$* $**
+
+.rc.res:
+    $(BCB)\BIN\brcc32 $(RFLAGS) $<
+#-----------------------------------------------------------------------------

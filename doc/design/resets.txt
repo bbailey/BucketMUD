@@ -1,0 +1,553 @@
+======================================================================
+
+          Project 'Dynamic World Automation' Design Document
+                           Revision 0.3
+
+======================================================================
+
+ Document Authors:
+   Dorzak - dorzak@earthlink.net
+   Zak    - zak@embermud.org
+
+======================================================================
+ Document Last Updated: 8/16/01
+======================================================================
+
+Project Overview
+----------------
+
+  The purpose of this project is primarily to correct the many flaws
+in the current EmberMUD resets system.  Also, the old ROM reset system
+is not as flexible as we would like.
+
+  The goals of the project include:
+
+    1) Create a new more flexible resets system.
+    2) Allow resets to be added, edited, and removed easily via OLC.
+    3) Allow resets to be "popped" according to a % chance.
+    4) Allow resets to be dependant on other resets' success or failure.
+    5) Allow viewing and editing of "max in areas" and "max in world"
+       attributes from inside the reset editor.
+    6) Allow for "items inside items" resets with dependencies and 
+       % chance as well.
+    7) Allow builders to safely move from room to room while editing 
+       a reset without changing what room's reset they are editing.
+    8) Create an area file format converter that will automatically
+       convert current EmberMUD format resets into the new format.
+
+  The project does not intend to do the following at this time:
+
+    1) Re-implement the currently flawed "random exit reset" code.
+
+Unresolved Issues
+-----------------
+
+  Solutions for these issues should be found before final
+  implementation:
+
+    1) How often do reset chances get evaluated?  Once per tick?
+       Once per pulse?  Is there some other variable in control?
+
+New 'resets' Command
+--------------------
+  Starting at the top, the output of the new 'resets' command should
+look something like this:
+
+   Resets for room #xxxxx - Room Description Here
+ --------------------------------------------------
+   # Type Chance Depends  Vnum  Description
+ --------------------------------------------------
+   1  obj   100%          1000  a small statue
+   2  obj    50%          1001  a small wooden chest
+   3  mob   100%      +2  2000  a wussy guard
+   4  obj   100%      -2  1002  a large wooden chest
+   5  mob   100%      -2  2001  a tough guard
+
+  This new format will probably need some explanation...  The number
+column should be self-explanatory.  The "type" column indicates the
+type of reset - 'obj' and 'mob' are the only types available presently.
+"Chance" represents the percent chance of a particular reset being
+"popped" on any given tick. ?1?  The values for "Depends" illustrate
+the various inter-dependencies between resets - more on dependencies
+below.  The "Vnum" and "Description" columns should be obvious to
+anyone familiar with the existing resets system.
+
+
+New OLC Commands
+----------------
+
+  Entering and exiting the reset editor will be accomplished similarly
+to how the other OLC editors are accessed presently.  A new OLC editor
+will need to be added with commands for manipulating reset properties
+and for adding/deleting "sub-resets".  
+
+  Getting into the reset editor will be accomplished by using one of
+the following commands:
+
+  > edit reset create <obj/mob>
+  > edit reset <reset #>
+
+---------
+remnants of old document (I ran out of time for my updating)
+---------
+
+Interface 
+----------- 
+comments are in <> commands are preceeded by %  
+
+  >edit reset 1 
+  >edit reset create obj 
+
+would give you the following screen.  
+
+Reset [ 1 ]   - <heirarchy the reset has within the room>
+Room  [ VNUM ] - Name of room <Room the reset is for> 
+Item  [ VNUM ] - Short description
+                 <changed 7/16/2001 forgot to put it in>
+Type  [ Obj ]  - <Obj/Door/Mob>
+Max Rm[     ]  - <Maximum # Allowed in Room> 
+Max Ar[     ]  - <Max allowed in areas> 
+Max Wd[     ]  - <Max allowed in the world> 
+Chance[     ]  - <Percent Chance of repopping> 
+Depend[     ]  - <What this reset requires to be or not to be loaded> 
+
+Slots <if a container>		Capacity 
+-------------------------------------------------------------------- 
+Slot  VNUM  Chance  Depends   <max cap>      Desc
+--------------------------------------------------------------------  
+1     1000    50	      <size of obj>  <short of item>   
+1     1001    25       "          "           "
+
+
+Commands in the object one would be:
+room     - change the room this reset will occur in, when creating
+           it, it defaults to the current  room <vnum> or
+           room current would work
+type     - defined when created - and effects the other options
+Maxroom  - set the max allowed in the room.  If this is not met,
+           on the next repop, an additional 
+	   1 is loaded
+Maxarea  - set the max allowed in the areas.  If this is not 
+           met, on the next repop, an addtional 1 is loaded
+Maxworld - set the max allowed in the world.   Stored in file 
+           for the whole world.   Automatically increments by 1 
+           when a reset for an item is made.  Can be incremented 
+           manually if desired.
+Chance   - percent chance of repopping.  On each repop, there is 
+           a percentage chance of succeeding
+Depend   - What vnum does this reset require or not require.
+deptype  - Does this reset only when the depend is met AND loads 
+           with it, or only when it is NOT slot
+slot <number> <vnum> <chance> <depend> 
+slot <number> 
+         - Slot will either add it to an existing slot if the 
+           number of an existing slot is given, if the first 
+           number is HIGHER than the existing number of slots, 
+           it brings the total number of slots to that number.
+slot <number> clear
+         - clears the current items from the specified slot
+
+Sample of a Mob Editing
+-----------------------
+
+comments are in <> commands are preceeded by >
+
+  >edit reset 1 
+  >edit reset create mob 
+
+Reset [ 1 ]   - <heirarchy the reset has within the areas>
+Room  [ VNUM ] - <Room the reset is for>
+Item  [ VNUM ] - <Added 7/16/2001, previous overlooked>
+Type  [ mob ]  - <Obj/Door/Mob>
+Max Rm[     ]  - <Maximum # Allowed in Room>
+Max Ar[     ]  - <Max allowed in areas>
+Max Wd[     ]  - <Max allowed in the world>
+Posit [     ]  - <Does the mob load sitting, sleeping, standing>
+Chance[     ]  - <Percent Chance of repopping>
+Depend[     ]  - <What this reset requires to be or not to be loaded>
+
+Short Descrip of Item <pulled when the vnum is set>
+Equipment
+--------------------------------------------------------------------
+Slot       #    VNUM    Chance  Depends    Short Description
+--------------------------------------------------------------------
+Light      1    1000      25               Rainbow Staff
+Light      2    1001      50         -1    Lantern
+Light            --       25               NOTHING
+Finger1          --      100               NOTHING
+Finger2          --      100               NOTHING
+Neck (1)   1    1003      50               Necklace
+Neck (1)   2    1004      50               Locket
+Neck (1)   2a   1005     100               Picture of Somebody
+Neck (2)         --      100               NOTHING
+Body             --      100               NOTHING
+Head             --      100               NOTHING   
+Legs             --      100               NOTHING
+Feet             --      100               NOTHING
+Hands            --      100               NOTHING
+Arms             --      100               NOTHING
+Shield           --      100               NOTHING
+About Body       --      100               NOTHING
+Waist            --      100               NOTHING
+Wrist            --      100               NOTHING
+Wielded          --      100               NOTHING
+Held             --      100               NOTHING
+Secondary        --      100               NOTHING
+
+Inventory                  Capacity
+---------------------------------------------------------------------
+Slot  VNUM   Chance  Dep   <max cap>            Desc	       
+---------------------------------------------------------------------
+  1   1000     50          <size of object>     <short of item>
+  2   1001     25            "             "                   "
+  1    --      25          NOTHING
+
+Commands in the object one would be:
+room 	 - change the room this reset will occur in, when 
+           creating, it defaults to the current room but could 
+           be changed:
+     	      >room <vnum>
+              >room current 
+type 	 - defined when created or shortly after
+              >type mob
+              >type obj
+              >type 
+         
+Maxroom  - set the max allowed in the room.  If this is not met, 
+           on the next repop, an additional 1 is loaded
+              >maxroom <number>
+Maxarea  - set the max allowed in the areas.  If this is not met,
+           on the next repop, an addtional 1 is loaded.
+              >maxarea <number>
+Maxworld - set the max allowed in the world.   Stored in file for
+           the whole world.   Automatically increments by 1
+           when a reset for an item is made.  Can be incremented 
+           manually if desired.
+              >maxworld <number>
+Chance   - percent chance of repopping.  On each repop, there is
+           a percentage chance of succeeding.
+              >chance <number>
+Position - position <resting, sitting, sleeping, standing> sets
+           what position the mob will be in when reset.
+              >position <sleeping>
+              >position <resting>
+              >position <standing>         
+Depend   - What vnum does this reset require or not require.
+              >depend <number>
+              >depend +<number>
+              >depend -<number>
+<equip location> <vnum> <chance> <depend> 
+         - if chances is less than 100 total an additional  
+           equip slot is shown.  If chance with current modifier 
+           would be >100 told illegal reset.
+<equip location> clear
+         - clears specified wear location of resets
+           Samples of equip commands:
+
+slot     - >slot <number> <vnum> <chance> <depends> 
+           >slot <number> 
+           Slot will either add it to an existing slot if the number of
+           an existing slot is given, if the first number is HIGHER than
+           the existing number of slots, it brings the total number of
+           slots to that number. 
+slot <number> clear - clears all items from the current slot
+
+
+Limitations
+--------------
+I still have not worked out how to do resets within resets.  
+However, as we discovered last night this functionality is 
+broken in the current ember implementation.   Quick way to
+completely corrupt the area file with the unchanged Ember reset 
+code for immort.are:
+goto a room in there.
+Add a reset for a backpack
+Add a reset for a bag in the backpack
+Add a reset for a pipeweed bread in the bag
+asave changed 
+
+The area file will loose the #RESET section and everything after 
+it, the mud will crash, and not reboot.
+
+
+
+Sample Sessions
+---------------
+>edit reset #
+
+Now editing reset #
+
+>edit reset create 
+
+If resets < # don't exist say:
+
+Now editing reset # (where the # is lowest number reset available, I think we can
+move type to being a toggle)
+
+>vnum <number>
+
+//Vnum exists as a at least two of the following: mob, object, or room.
+
+Please choose type first.
+
+or
+
+// If <number> is only 1 of the three, do:
+
+Vnum <number> is a mob, setting type to mob
+Vnum <number> is a mob, setting type to obj
+Vnum <number> is a mob, setting type to door
+
+// If type was not set above:
+
+>type obj
+>type mob
+>type door
+
+Type set to obj
+Type set to mob
+Type set to door
+
+// After setting type we would get
+
+>vnum <number>
+
+VNUM now set to <number>, <number's short descript>
+
+// The  following 3 commands applies only to objects  and mobs, doors
+// are currently not addressed in this document, but will be in the
+// near future. 
+// (7/16/2001 - Dorzak)
+
+>maxroom 5
+
+Maximum in room set to 5, up to 5 will repop in the room, 1 at a time.
+Max for this mob in world was updated to 30.
+ 
+>maxarea 10
+
+Maximum in the area has been set to 10
+
+// The maximum in the world can also be modified.  I have as a builder used a max
+// area and max world that was lower than the total of the room max's to force
+// some variation on where mobs repop.  I would like to have another place to edit
+// the max world besides each reset.  However, having the maxworld read for all of
+// an item from 1 location would resolve the issue that at least partially led
+// us to the need to redo resets.
+
+>maxworld 25
+ 
+Maximum in the world has been updated to 25
+
+>chance 100
+
+This object will repop 100% of the time.
+
+>depend 1
+
+ERROR: Chance of repopping is greater than 100%, please use +/- to designate type of
+dependency.
+
+>depend -1
+
+Reset will trigger 100% of the time when reset 1 does NOT.
+
+// The 100% is pulled from the chance above.
+
+>depend +1
+
+Resest will trigger 100% of the time when reset 1 DOES.
+
+// If we were to change the percentage for 1 and 2 (this one in the example) to 50%
+// each we would get:
+
+depend 1
+
+This reset has a 50/50% chance of repopping instead of reset 1
+
+// At this point the options for objects and mobs
+// diverge.  However, I will present objects first because the
+// slots for mobs inventory will be handled the same.
+
+//slot <number> <vnum> <chance> <depends>
+//slot <number> to create slots
+
+>slot 1 1000 25
+
+Slot 1 now loads 1000 - A short descript with a 25% chance.
+
+>slot 2 1001 25 +1
+
+Slot 2 now loads 1000 - A short descipt with a 25% chance,
+if Slot 1 has loaded.
+ 
+//Say we make slot 3 depend on slot 1 not occurring
+
+>slot 3 1002 50 -1
+
+Slot 3 now loads 1003 - A short descript with a 50% chance, 
+if slot 1 has NOT loaded.
+
+//If the main object being loaded is not a container we get
+
+This reset does not load a container, slots are not available.
+
+// If the main object, and the sub object are containers, we can
+// load an object within the container by doing a sub-slot
+// A subslot is accessed by a letter  for example is slot 2 is 
+// a container and loading on the main object
+
+slot 2a 1004 50 
+
+
+// Back to mobs.  Basically each wear-location will act as its
+// own set of slots, and the commands a will be the wear
+// location, we are going to use waist in the following examples
+ 
+//<wear-loc> <number> <vnum> <chance> <depends>
+//<wear-loc> <number> to create slots
+
+>waist 1 1000 25
+
+Waist  now loads 1000 - A short descript with a 25% chance.   
+
+>waist  2 1001 25 +1
+
+The Waist can only load 1 item at a time.  Dependency not 
+valid.
+
+//Say we make waist 2 depend on slot 1 not occurring
+
+>waist 2 1002 50 -1
+
+waist 2 now loads 1003 - A short descript with a 50% chance,
+if slot 1 has NOT loaded.
+
+
+// If the equipment is a container, we can load an object
+// within the container by doing a sub-slot
+// A subslot is accessed by a letter  for example is waist 2 is
+// a container and loading on the main object
+      
+waist 2a 1004 50
+
+----------------
+Area File Format
+----------------
+
+Note: This was cut and pasted in here from an e-mail from
+Zak.   It has not been adjusted/formatted yet.  Included so that
+we would have it in the record.
+
+ O <room_vnum> <chance> <depends> <obj_vnum> <max_in_room> <Y/N -has subs>
+   <slot> <chance> <depends> <obj_vnum>
+   <slot> <chance> <depends> <obj_vnum>
+   ...
+ #End
+
+ ===
+ Object Example
+ ===
+
+ Reset      : 1
+ Room       : 1000 - Some Room
+ Type       : obj
+ Vnum       : 5000 - a large chest
+ MaxInRoom  : 1
+ MaxInAreas : 0 - unlimited
+ MaxInWorld : 0 - unlimited
+ Chance     : 100%
+ Depends    : no dependancies
+
+ Slots:
+
+  sub# slot  chance depends vnum desc
+ ---------------------------------------
+     1 slot1    50%         1000 a small bag
+     2 slot1    25%         1001 a large bag
+     3 slot1    25%         ---- NOTHING
+     4 slot1a  100%      +1 2000 a lump of coal
+     5 slot1a  100%      +2 2001 a large diamond
+
+ ===
+
+ O 1000 100 0 5000 0 Y
+   1 50 0 1000
+   1 25 0 1001
+   1a 100 +1 2000
+   1a 100 +2 2001
+ #End
+
+
+ ===
+ Mob Example
+ ===
+
+  M <room_vnum> <chance> <depends> <mob_vnum> <position>
+    <max_in_room> <max_in_area> <max_in_world> <Y/N - has subs>
+    <wear_loc> <slot> <chance> <depends> <vnum>
+    <wear_loc> <slot> <chance> <depends> <vnum>
+    ...
+  #End
+ 
+  ===
+  Example
+  ===
+ 
+  Reset     : 1
+  Room      : 1000 - Some Room
+  Type      : mob
+  Vnum      : 5000 - a cityworker
+  Max Room  : 0 - unlimited
+  Max Area  : 0 - unlimited
+  Max World : 0 - unlimited
+  Position  : standing
+  Chance    : 100%
+  Depends   : 0 - no depends
+ 
+  Equipment:
+ 
+   Slot     #   Vnum Chance Depends  Description
+  --------------------------------------------------
+   light    1   1000   100%          a candle
+   finger1  2      -   100%          NOTHING
+   finger2  3      -   100%          NOTHING
+   neck1    4   1001    50%          a neck pouch
+   neck1   4a   1002   100%          an old coin
+   neck1    5   1003   100%      -4  a golden necklace
+   neck2    6      -   100%          NOTHING
+   body     7      -   100%          NOTHING
+   head     8      -   100%          NOTHING
+   legs     9      -   100%          NOTHING
+   feet    10      -   100%          NOTHING
+   hands   11      -   100%          NOTHING
+   arms    12      -   100%          NOTHING
+   shield  13      -   100%          NOTHING
+   about   14      -   100%          NOTHING
+   wield   15   1010    50%          a small dagger
+   wield   16      -    50%          NOTHING
+   hold    17      -   100%          NOTHING
+   second  18      -   100%          NOTHING
+ 
+  Inventory: (30kg max)
+ 
+   Slot#   Vnum Chance Depends  Description
+  ---------------------------------------------
+       1   5000   100%          a backpack
+      1a   5001    50%      +1  a quill
+      1b   5002    50%      +1  a parchment
+      1c   5003    50%      +1  an ink well (empty)
+      1d   5004    50%     -1c  an ink well (full)
+       2   5005   100%          a white handkerchief
+
+  ===
+ 
+  M 1000 100 0 5000 standing
+    0 0 0 Y
+    light 1 100 0 1000
+    neck1 4 50 0 1001
+    neck1 4a 100 0 1002
+    neck1 5 100 -4 1003
+    wield 15 50 0 1010
+  #End
+

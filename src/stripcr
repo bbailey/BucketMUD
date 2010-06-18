@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Strips all the DOS carriage returns from all the UNIX files.
+
+for i in $1 $2 $3 $4
+do sed -e s/// $i > tmpfile.out
+cat tmpfile.out > $i
+rm tmpfile.out
+done

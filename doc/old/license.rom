@@ -1,0 +1,30 @@
+In compiling this code, you have agreed to the following restrictions on
+any operating version of ROM code:
+
+1) following all guidelines in the diku license (contained in the file 
+   license.doc)
+2) following all guidelines in the Merc license (contained in the file
+   license.txt)
+3) The login message to your mud must contain a notice that it is based
+   on ROM code. Including Russ Taylor or Alander in the message, or in 
+   other credits, is optional
+4) Before opening a ROM-based mud, you must send email to the author
+   (rtaylor@cie-2.uoregon.edu), so that I can keep track of sites for
+   future code releases.
+5) Any use of the term Rivers of Mud remains the exclusive copyright of
+   Russ Taylor, this includes the sole right to release future versions 
+   of ROM source code, and the title Rivers of Mud as pertains to a mud.
+   Permission to use the name Rivers of Mud has been granted to Zump,
+   the current ROM implementer, his mud will remain the only one with
+   that privilige.  As a coder, you have full rights to release your own
+   derivatives of the ROM code, provided they follow the restrictions of
+   this license, contain all appropriate README and credits files, and are
+   properly labelled as being derivatives of the ROM 2.3 code (just as ROM
+   is itself a derivative of Gamma 0.0 and Merc 2.1 code).  
+
+(In English, this means that Alander is the only one allowed to release
+ROM source code, as apposed to ROM derived source code, and that you
+cannot call your mud ROM even though it uses ROM code)
+
+If you have any questions about this license, please send email to
+rtaylor@cie-2.uoregon.edu.  

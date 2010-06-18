@@ -1,0 +1,18 @@
+Warning: Public symbol '_extra_descr_free' defined in both module mem.c and db.c
+Warning: Public symbol '_help_last' defined in both module mem.c and db.c
+Warning: Public symbol '_buf' defined in both module olc.c and act_info.c
+Warning: Public symbol '_buf' defined in both module olc_act.c and act_info.c
+
+ Start         Length     Name                   Class
+ 0001:00000000 0000B042FH _TEXT                  CODE
+ 0002:00000000 000032E14H _DATA                  DATA
+ 0002:00032E14 000000000H _TLSCBA                TLSCBA
+ 0002:00032E14 000000126H _INIT_                 INITDATA
+ 0002:00032F3A 000000000H _INITEND_              INITDATA
+ 0002:00032F3A 00000003CH _EXIT_                 EXITDATA
+ 0002:00032F76 000000000H _EXITEND_              EXITDATA
+ 0002:00032F78 00000002AH CONST                  CONST
+ 0002:00032FA4 000042598H _BSS                   BSS
+ 0002:0007553C 000000000H _BSSEND                BSS
+ 0003:00000000 0000000ACH _TLS                   TLS
+ 0003:000000AC 000000000H _TLSEND                TLS
