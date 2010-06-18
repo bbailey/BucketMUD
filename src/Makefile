@@ -1,8 +1,9 @@
 CC      = gcc
 PROF    = -DLINUX
 NOCRYPT = 
-C_FLAGS = -Wall -ggdb -O3 $(PROF) $(NOCRYPT)
-L_FLAGS = -O2 $(PROF)
+OPT     = # -O2
+C_FLAGS = -Wall -ggdb $(OPT) $(PROF) $(NOCRYPT)
+L_FLAGS = $(OPT) $(PROF)
 
 O_FILES = act_comm.o	act_info.o	act_move.o \
           act_obj.o	act_wiz.o	auction.o \
