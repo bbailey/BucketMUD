@@ -19,6 +19,16 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
+#include <stdbool.h>
+#if defined(FALSE)
+#undef FALSE
+#endif
+#define FALSE false
+#if defined(TRUE)
+#undef TRUE
+#endif
+#define TRUE true
+
 /*
  * Accommodate old non-Ansi compilers.
  */
@@ -52,26 +62,14 @@ int system(  );
  * Short scalar types.
  * Diavolo reports AIX compiler has bugs with short types.
  */
-#if     !defined(FALSE)
-#define FALSE    0
-#endif
-
-#if     !defined(TRUE)
-#define TRUE     1
-#endif
-
 #if     defined(_AIX)
 #if     !defined(const)
 #define const
 #endif
 typedef int sh_int;
-typedef int bool;
 #define unix
 #else
 typedef short int sh_int;
-#if !defined(CPP)
-typedef unsigned char bool;
-#endif
 #endif
 
 /*
