@@ -448,7 +448,7 @@ struct mob_index_data {
     char *description;
     long act;
     long affected_by;
-    char newaff[( MAX_NEWAFF_BIT / 8 ) + ( MAX_NEWAFF_BIT % 8 ? 1 : 0 )];
+    char newaff[( MAX_NEWAFF_BIT / 8 ) + ( ((MAX_NEWAFF_BIT % 8) > 0) ? 1 : 0 )];
     sh_int alignment;
     sh_int level;
     sh_int hitroll;
@@ -546,7 +546,7 @@ struct char_data {
     long vuln_flags;
     sh_int invis_level;
     long affected_by;
-    char newaff[( MAX_NEWAFF_BIT / 8 ) + ( MAX_NEWAFF_BIT % 8 ? 1 : 0 )];
+    char newaff[( MAX_NEWAFF_BIT / 8 ) + ( ((MAX_NEWAFF_BIT % 8) > 0) ? 1 : 0 )];
     sh_int position;
     sh_int practice;
     sh_int train;
