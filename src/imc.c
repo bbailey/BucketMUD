@@ -2967,7 +2967,7 @@ void imc_parse_packet( const char *packet )
       IMCDISPOSE( p );
       return;
    }
-   ( *pfun ) ( p, packet );
+   ( *pfun ) ( p, (char *) packet );
 
    /*
     * This might seem slow, but we need to track muds who don't send is-alive packets 
@@ -5389,8 +5389,8 @@ IMC_CMD( imccommand )
    IMC_PACKET *p;
    IMC_CHANNEL *c;
 
-   argument = imcone_argument( argument, cmd );
-   argument = imcone_argument( argument, chan );
+   argument = (char *) imcone_argument( argument, cmd );
+   argument = (char *) imcone_argument( argument, chan );
 
    if( !cmd[0] || !chan[0] )
    {
@@ -5453,9 +5453,9 @@ IMC_CMD( imcsetup )
    int x;
    bool all = FALSE;
 
-   argument = imcone_argument( argument, imccmd );
-   argument = imcone_argument( argument, chan );
-   argument = imcone_argument( argument, arg1 );
+   argument = (char *) imcone_argument( argument, imccmd );
+   argument = (char *) imcone_argument( argument, chan );
+   argument = (char *) imcone_argument( argument, arg1 );
 
    if( imccmd[0] == '\0' || chan[0] == '\0' )
    {
@@ -5854,7 +5854,7 @@ IMC_CMD( imctell )
       return;
    }
 
-   argument = imcone_argument( argument, buf );
+   argument = (char *) imcone_argument( argument, buf );
 
    if( !argument || argument[0] == '\0' )
    {
@@ -6069,7 +6069,7 @@ IMC_CMD( imcfinger )
       return;
    }
 
-   argument = imcone_argument( argument, arg );
+   argument = (char *) imcone_argument( argument, arg );
 
    if( arg[0] == '\0' )
    {
@@ -6336,7 +6336,7 @@ IMC_CMD( imcconfig )
 {
    char arg1[SMST];
 
-   argument = imcone_argument( argument, arg1 );
+   argument = (char *) imcone_argument( argument, arg1 );
 
    if( arg1[0] == '\0' )
    {
@@ -6606,7 +6606,7 @@ IMC_CMD( imcignore )
    IMC_IGNORE *ign;
    char arg[SMST];
 
-   argument = imcone_argument( argument, arg );
+   argument = (char *) imcone_argument( argument, arg );
 
    if( arg[0] == '\0' )
    {
@@ -6673,7 +6673,7 @@ IMC_CMD( imcban )
    IMC_BAN *ban;
    char arg[SMST];
 
-   argument = imcone_argument( argument, arg );
+   argument = (char *) imcone_argument( argument, arg );
 
    if( arg[0] == '\0' )
    {
@@ -6731,7 +6731,7 @@ IMC_CMD( imc_deny_channel )
    CHAR_DATA *victim;
    IMC_CHANNEL *channel;
 
-   argument = imcone_argument( argument, vic_name );
+   argument = (char *) imcone_argument( argument, vic_name );
 
    if( vic_name[0] == '\0' || !argument || argument[0] == '\0' )
    {
@@ -6845,7 +6845,7 @@ IMC_CMD( imcpermset )
    char arg[SMST];
    int permvalue;
 
-   argument = imcone_argument( argument, arg );
+   argument = (char *) imcone_argument( argument, arg );
 
    if( arg[0] == '\0' )
    {
@@ -6945,7 +6945,7 @@ IMC_CMD( imcchanwho )
       return;
    }
 
-   argument = imcone_argument( argument, chan );
+   argument = (char *) imcone_argument( argument, chan );
 
    if( !( c = imc_findchannel( chan ) ) )
    {
@@ -6969,7 +6969,7 @@ IMC_CMD( imcchanwho )
    {
       while( argument[0] != '\0' )
       {
-         argument = imcone_argument( argument, mud );
+         argument = (char *) imcone_argument( argument, mud );
 
          if( !check_mud( ch, mud ) )
             continue;
@@ -6999,9 +6999,9 @@ IMC_CMD( imcremoteadmin )
    char pwd[LGST];
    IMC_PACKET *p;
 
-   argument = imcone_argument( argument, server );
-   argument = imcone_argument( argument, pwd );
-   argument = imcone_argument( argument, cmd );
+   argument = (char *) imcone_argument( argument, server );
+   argument = (char *) imcone_argument( argument, pwd );
+   argument = (char *) imcone_argument( argument, cmd );
 
    if( server[0] == '\0' || cmd[0] == '\0' )
    {
@@ -7147,8 +7147,8 @@ IMC_CMD( imccedit )
    char name[SMST], option[SMST];
    bool found = FALSE, aliasfound = FALSE;
 
-   argument = imcone_argument( argument, name );
-   argument = imcone_argument( argument, option );
+   argument = (char *) imcone_argument( argument, name );
+   argument = (char *) imcone_argument( argument, option );
 
    if( name[0] == '\0' || option[0] == '\0' )
    {
@@ -7363,8 +7363,8 @@ IMC_CMD( imchedit )
    char name[SMST], cmd[SMST];
    bool found = FALSE;
 
-   argument = imcone_argument( argument, name );
-   argument = imcone_argument( argument, cmd );
+   argument = (char *) imcone_argument( argument, name );
+   argument = (char *) imcone_argument( argument, cmd );
 
    if( name[0] == '\0' || cmd[0] == '\0' || !argument || argument[0] == '\0' )
    {
@@ -7480,10 +7480,9 @@ const char *imc_send_social( CHAR_DATA * ch, const char *argument, int telloptio
 #if defined(IMCEMBER)
 SOCIAL_DATA *find_social(const char *name) {
    SOCIALLIST_DATA *pSocial = NULL;
-   sh_int vnum;
 
    for ( pSocial = social_first; pSocial != NULL; pSocial = pSocial->next ) {
-      if ( is_name( name, pSocial->name ) ) {
+      if ( is_name( (char *) name, pSocial->name ) ) {
 	return pSocial;
       }
    }
@@ -8103,7 +8102,7 @@ bool imc_command_hook( CHAR_DATA * ch, const char *command, const char *argument
             return TRUE;
          }
 
-         ( *cmd->function ) ( ch, argument );
+         ( *cmd->function ) ( ch, (char *) argument );
          return TRUE;
       }
    }
