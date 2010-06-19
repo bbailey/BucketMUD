@@ -3565,7 +3565,7 @@ void spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo )
         for ( in_obj = obj; in_obj->in_obj != NULL; in_obj = in_obj->in_obj )
             ;
 
-        if ( in_obj->carried_by != NULL && can_see )
+        if ( in_obj->carried_by != NULL && can_see(ch, in_obj->carried_by) )
         {
             sprintf( buf, "%s carried by %s\n\r",
                      obj->short_descr, PERS( in_obj->carried_by, ch ) );

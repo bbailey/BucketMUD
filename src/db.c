@@ -2972,7 +2972,7 @@ char *fread_word( FILE * fp )
             if ( cEnd == ' ' )
                 ungetc( *pword, fp );
             *pword = '\0';
-            return word;
+            return (char *) word;
         }
     }
 

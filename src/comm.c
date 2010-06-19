@@ -990,7 +990,7 @@ void new_descriptor( int control )
     struct hostent *from;
 #endif
     int desc;
-    int size;
+    socklen_t size;
 #if defined(WIN32)
     int OptVal;
 #endif

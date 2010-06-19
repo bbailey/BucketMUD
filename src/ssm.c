@@ -524,16 +524,16 @@ char *fread_string_eol( FILE * fp )
     {
         len = ptr - buf;
 
-        ptr = temp_hash_find( buf );
+        ptr = (signed char *) temp_hash_find( (char *) buf );
         if ( ptr )
-            return str_dup( ptr );
+            return str_dup( (char *) ptr );
 
-        ptr = str_dup( buf );
-        temp_hash_add( ptr, len );
-        return ptr;
+        ptr = (signed char *) str_dup( (char *) buf );
+        temp_hash_add( (char *) ptr, len );
+        return (char *) ptr;
     }
 
-    return str_dup( buf );
+    return str_dup( (char *) buf );
 }
 
 /*
@@ -542,7 +542,7 @@ char *fread_string_eol( FILE * fp )
  */
 int temp_fread_string_eol( FILE * fp, char *outbuf )
 {
-    register signed char *ptr = outbuf;
+    register signed char *ptr = (signed char *) outbuf;
     register signed char c;
     bool bEOF = FALSE;
 
