@@ -31,8 +31,6 @@ DECLARE_DO_FUN( do_help );
 DECLARE_DO_FUN( do_todo );
 DECLARE_DO_FUN( do_save );
 
-char buf[MAX_STRING_LENGTH];
-
 char *const where_name[] = {
     WORN_LIGHT,
     WORN_FINGER,
@@ -75,6 +73,8 @@ extern bool can_use( CHAR_DATA * ch, int sn );
 
 char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
 {
+	static char buf[MAX_STRING_LENGTH];
+
     buf[0] = '\0';
 
     if ( IS_OBJ_STAT( obj, ITEM_INVIS ) )
