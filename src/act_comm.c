@@ -2544,7 +2544,7 @@ inform him that its not that easy ;) -Lancelight */
         send_to_char( "You're not DEAD yet.\n\r", ch );
         return;
     }
-    if ( IS_SET( ch->act, PLR_BUILDING ) );
+    if ( IS_SET( ch->act, PLR_BUILDING ) )
     {
         REMOVE_BIT( ch->act, PLR_BUILDING );
     }
