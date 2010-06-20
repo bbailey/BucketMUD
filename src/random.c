@@ -1025,9 +1025,9 @@ OBJ_DATA *make_rand_armor( sh_int level, bool ismagic )
                 combat_types[number_range( 0, TABLESIZE( combat_types ) - 1 )];
             paf->modifier = number_range( 1, level / 8 + 1 );
             break;
+        }
             if ( paf->location == APPLY_AC )
                 paf->modifier *= -1;
-        }
     }
     return obj;
 
