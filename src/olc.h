@@ -89,7 +89,6 @@ bool todoedit_text args( ( CHAR_DATA * ch, char *argument ) );
 bool todoedit_create args( ( CHAR_DATA * ch, char *argument ) );
 
 /* Command procedures needed ROM OLC */
-DECLARE_DO_FUN( do_help );
 DECLARE_SPELL_FUN( spell_null );
 
 /*

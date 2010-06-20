@@ -1604,7 +1604,6 @@ DECLARE_DO_FUN( do_olc );
 DECLARE_DO_FUN( do_asave );
 DECLARE_DO_FUN( do_alist );
 DECLARE_DO_FUN( do_resets );
-DECLARE_DO_FUN( do_sendinfo );
 DECLARE_DO_FUN( do_disable );
 
 /*

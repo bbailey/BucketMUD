@@ -37,37 +37,10 @@
 
 #include "interp.h"
 
-/* command procedures needed */
-DECLARE_DO_FUN( do_remove );
-DECLARE_DO_FUN( do_rstat );
-DECLARE_DO_FUN( do_mstat );
-DECLARE_DO_FUN( do_ostat );
-DECLARE_DO_FUN( do_rset );
-DECLARE_DO_FUN( do_mset );
-DECLARE_DO_FUN( do_oset );
-DECLARE_DO_FUN( do_sset );
-DECLARE_DO_FUN( do_mfind );
-DECLARE_DO_FUN( do_ofind );
-DECLARE_DO_FUN( do_rfind );
-DECLARE_DO_FUN( do_mpfind );
-DECLARE_DO_FUN( do_slookup );
-DECLARE_DO_FUN( do_mload );
-DECLARE_DO_FUN( do_oload );
-DECLARE_DO_FUN( do_force );
-DECLARE_DO_FUN( do_quit );
-DECLARE_DO_FUN( do_save );
-DECLARE_DO_FUN( do_look );
-DECLARE_DO_FUN( do_force );
-DECLARE_DO_FUN( do_pload );
-DECLARE_DO_FUN( do_punload );
-DECLARE_DO_FUN( do_wizgrant );
-DECLARE_DO_FUN( do_wizrevoke );
-DECLARE_DO_FUN( do_olevel );
-DECLARE_DO_FUN( do_mlevel );
-
 /*
  * Local functions.
  */
+static DECLARE_DO_FUN(do_rfind);
 ROOM_INDEX_DATA *find_location args( ( CHAR_DATA * ch, char *arg ) );
 
 extern int control;
@@ -702,8 +675,8 @@ void do_award( CHAR_DATA * ch, char *argument )
     if ( arg3[0] == 'o' )       /* objects */
     {
         OBJ_INDEX_DATA *pObjIndex;
-        int level = get_trust( ch );
         OBJ_DATA *obj;
+        level = get_trust( ch );
 
         if ( ( pObjIndex = get_obj_index( atoi( arg2 ) ) ) == NULL )
         {
@@ -2086,7 +2059,6 @@ void do_mfind( CHAR_DATA * ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
-    extern int top_mob_index;
     MOB_INDEX_DATA *pMobIndex;
     int vnum;
     int nMatch;
@@ -2137,7 +2109,6 @@ void do_ofind( CHAR_DATA * ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
-    extern int top_obj_index;
     OBJ_INDEX_DATA *pObjIndex;
     int vnum;
     int nMatch;
@@ -2182,11 +2153,10 @@ void do_ofind( CHAR_DATA * ch, char *argument )
     return;
 }
 
-void do_rfind( CHAR_DATA * ch, char *argument )
+static void do_rfind( CHAR_DATA * ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
-    extern int top_room;
     ROOM_INDEX_DATA *pRoomIndex;
     int vnum;
     int nMatch;
@@ -2738,7 +2708,7 @@ void do_return( CHAR_DATA * ch, char *argument )
 }
 
 /* trust levels for load and clone */
-bool obj_check( CHAR_DATA * ch, OBJ_DATA * obj )
+static bool obj_check( CHAR_DATA * ch, OBJ_DATA * obj )
 {
     if ( IS_TRUSTED( ch, GOD )
          || ( IS_TRUSTED( ch, IMMORTAL ) && obj->level <= 20
@@ -2755,7 +2725,7 @@ bool obj_check( CHAR_DATA * ch, OBJ_DATA * obj )
 }
 
 /* for clone, to insure that cloning goes many levels deep */
-void recursive_clone( CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * clone )
+static void recursive_clone( CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * clone )
 {
     OBJ_DATA *c_obj, *t_obj;
 

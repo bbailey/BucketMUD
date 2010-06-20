@@ -25,7 +25,6 @@
 
 #define L_HER LEVEL_HERO
 #define L_IMM LEVEL_IMMORTAL
-DECLARE_DO_FUN( do_help );
 
 /*
  
