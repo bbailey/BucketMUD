@@ -13,7 +13,9 @@ I can think of to do to them.
 
 #else
 
+#ifndef S_SPLINT_S
 #include <unistd.h>
+#endif
 
 #include <sys/time.h>
 

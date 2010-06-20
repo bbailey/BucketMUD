@@ -9,7 +9,9 @@
 #else
 #include <sys/types.h>
 #include <errno.h>
+#ifndef S_SPLINT_S
 #include <unistd.h>
+#endif
 #include <sys/time.h>
 #endif
 #include <ctype.h>

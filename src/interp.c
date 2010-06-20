@@ -25,7 +25,9 @@
 #include "interp.h"
 #ifndef WIN32
 
+#ifndef S_SPLINT_S
 #include <unistd.h>             /* unlink() */
+#endif
 
 #endif
 

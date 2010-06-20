@@ -23,7 +23,9 @@
 #include <netdb.h>
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef S_SPLINT_S
 #include <unistd.h>
+#endif
 #include <string.h>
 #include <signal.h>
 #include <errno.h>

@@ -152,7 +152,9 @@ int socket args( ( int domain, int type, int protocol ) );
 #endif
 
 #if     defined(apollo)
+#ifndef S_SPLINT_S
 #include <unistd.h>
+#endif
 void bzero args( ( char *b, int length ) );
 #endif
 

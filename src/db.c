@@ -32,7 +32,9 @@
 #include "interp.h"
 
 #if defined(unix)
+#ifndef S_SPLINT_S
 #include <unistd.h>
+#endif
 #include <sys/time.h>
 #include <sys/resource.h>
 /* extern int getrlimit(int resource, struct rlimit *rlp); */

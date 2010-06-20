@@ -136,7 +136,9 @@ typedef int MPROG_FUN args( ( void *arg ) );
 	-Kyle
  */
 #if defined(unix)
+#ifndef S_SPLINT_S
 #include <unistd.h>
+#endif
 #endif
 
 #include <stdarg.h>
