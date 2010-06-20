@@ -992,7 +992,9 @@ void new_descriptor( int control )
     struct hostent *from;
 #endif
     int desc;
+#ifndef S_SPLINT_S
     socklen_t size;
+#endif
 #if defined(WIN32)
     int OptVal;
 #endif

@@ -7500,6 +7500,7 @@ const char *imc_find_social( CHAR_DATA * ch, const char *sname, const char *pers
 #if defined(SMAUGSOCIAL)
    SOCIAL_DATA *social;
    int i = 0;
+   static char lcSocName[LGST];
 #else
    int cmd;
    bool found;
@@ -7509,7 +7510,6 @@ const char *imc_find_social( CHAR_DATA * ch, const char *sname, const char *pers
 
 #if defined(SMAUGSOCIAL)
    // lower-case the social name before asking the MUD
-   static char lcSocName[LGST];
    for (i = 0; i < LGST && sname[i] != '\0'; i++) {
        lcSocName[i] = tolower(sname[i]);
    }
