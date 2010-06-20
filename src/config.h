@@ -1935,7 +1935,7 @@ checked was inserted.   If you need that on for some reason, uncomment the above
 #define CFG_FACTION_SHOPKEEPER_MAX   0.65   /*  35% discount */
 
 /* Define this to enable the shell wiz-command. */
-#define CFG_SHELL_ENABLED
+#undef CFG_SHELL_ENABLED
 /* Set this if you want to restrict access to the shell wiz-command
  * trust >= CFG_SHELL_LEVEL will have access to the command. */
 #define CFG_SHELL_LEVEL MAX_LEVEL
