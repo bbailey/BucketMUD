@@ -2880,7 +2880,6 @@ void do_who( CHAR_DATA * ch, char *argument )
         {
         default:
             break;
-            {
         case MAX_LEVEL + 2:
                 Class = "IMP";
                 break;
@@ -2914,7 +2913,6 @@ void do_who( CHAR_DATA * ch, char *argument )
         case MAX_LEVEL - 8:
                 Class = "SKR";
                 break;
-            }
         }
 
         /*

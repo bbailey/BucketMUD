@@ -85,7 +85,7 @@ void advance_level( CHAR_DATA * ch )
     add_mana = add_mana * 9 / 10;
     add_move = add_move * 9 / 10;
 #ifdef BONUS_INCARNATIONS
-    if ( ch->incarnations != 0 );
+    if ( ch->incarnations != 0 )
     {
         add_hp = add_hp * ( 1 + ( ch->incarnations / 10 ) );
         add_mana = add_mana * ( 1 + ( ch->incarnations / 10 ) );
@@ -848,7 +848,7 @@ void char_update( void )
                     paf->level--;   /* spell strength fades with time */
             }
             else if ( paf->duration < 0 )
-                ;
+                continue;
             else
             {
                 if ( paf_next == NULL
@@ -874,7 +874,7 @@ void char_update( void )
                     npaf->level--;  /* spell strength fades with time */
             }
             else if ( npaf->duration < 0 )
-                ;
+                continue;
             else
             {
                 if ( npaf_next == NULL
@@ -1061,7 +1061,7 @@ void obj_update( void )
                     paf->level--;   /* spell strength fades with time */
             }
             else if ( paf->duration < 0 )
-                ;
+                continue;
             else
             {
                 if ( paf_next == NULL
@@ -1101,6 +1101,7 @@ void obj_update( void )
             break;
         case ITEM_POTION:
             message = "$p has evaporated from disuse.";
+	    break;
         case ITEM_PORTAL:
             message = "$p flickers momentarily before fading away.";
             break;

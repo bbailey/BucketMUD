@@ -1153,7 +1153,7 @@ void close_socket( DESCRIPTOR_DATA * dclose )
         {
             act( "$n has lost $s link.", ch, NULL, NULL, TO_ROOM );
             ch->pcdata->ticks = 1;
-            if ( IS_SET( ch->act, PLR_BUILDING ) );
+            if ( IS_SET( ch->act, PLR_BUILDING ) )
             {
                 REMOVE_BIT( ch->act, PLR_BUILDING );
             }
@@ -1804,7 +1804,7 @@ check_ban function.
 
         sprintf( log_buf, "%s@%s has connected.", ch->name, d->host );
         log_string( log_buf );
-        if ( IS_SET( ch->act, PLR_BUILDING ) );
+        if ( IS_SET( ch->act, PLR_BUILDING ) )
         {
             REMOVE_BIT( ch->act, PLR_BUILDING );
         }
@@ -2569,7 +2569,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
                 d->character = ch;
                 ch->desc = d;
                 ch->timer = 0;
-                if ( IS_SET( ch->act, PLR_BUILDING ) );
+                if ( IS_SET( ch->act, PLR_BUILDING ) )
                 {
                     REMOVE_BIT( ch->act, PLR_BUILDING );
                 }

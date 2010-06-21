@@ -526,7 +526,7 @@ char *format_string( char *oldstring /*, bool fSpace */  )
                 i++;
             }
         }
-        else if ( *rdesc == '\r' );
+        else if ( *rdesc == '\r' ) continue;
         else if ( *rdesc == ' ' )
         {
             if ( xbuf[i - 1] != ' ' )
