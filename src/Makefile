@@ -60,3 +60,11 @@ diff: clean
 update:
 	rm -f orignial/*
 	cp *.c *.h Makefile startup* original
+
+ifdef IMC
+splint:
+	splint -showcolumn $(PROF) -DIMC -DIMCROM -DIMCEMBER *.c
+else
+splint:
+	splint -showcolumn -DLINUX *.c
+endif
