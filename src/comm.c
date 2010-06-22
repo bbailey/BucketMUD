@@ -45,6 +45,7 @@
 #include <sys/time.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <crypt.h>
 #include <ctype.h>
 #include <errno.h>
 #include <stdio.h>
