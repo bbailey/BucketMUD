@@ -1012,8 +1012,7 @@ of combat. */
 #define CON_NOTE_EXPIRE                 21
 #define CON_NOTE_TEXT                   22
 #define CON_NOTE_FINISH                 23
-#define CON_SHELL                       24
-#define CON_BEGIN_REMORT                25
+#define CON_BEGIN_REMORT                24
 
 /***************************************************************************
  *                                                                         *
@@ -1927,14 +1926,6 @@ checked was inserted.   If you need that on for some reason, uncomment the above
 #define CFG_FACTION_SHOPKEEPER_75MAX 0.75   /*  25% discount */
 #define CFG_FACTION_SHOPKEEPER_90MAX 0.65   /*  35% discount */
 #define CFG_FACTION_SHOPKEEPER_MAX   0.65   /*  35% discount */
-
-/* Define this to enable the shell wiz-command. */
-#undef CFG_SHELL_ENABLED
-/* Set this if you want to restrict access to the shell wiz-command
- * trust >= CFG_SHELL_LEVEL will have access to the command. */
-#define CFG_SHELL_LEVEL MAX_LEVEL
-/* Set this to whatever you want do_shell to run. */
-#define SHELL_PATH "/bin/bash"
 
 /* This goes at the end :) */
 #endif

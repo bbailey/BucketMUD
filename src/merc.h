@@ -535,7 +535,6 @@ struct char_data {
     CHAR_DATA *next;
     CHAR_DATA *next_player;
     CHAR_DATA *next_in_room;
-    CHAR_DATA *next_in_shell;
     CHAR_DATA *master;
     CHAR_DATA *leader;
     CHAR_DATA *fighting;
@@ -625,7 +624,6 @@ struct char_data {
     int mpactnum;
     int mobinvis;
     sh_int jail_timer;
-    int fdpair[2];
     /* mob counter for a reset */
     sh_int *reset_count;
 };
@@ -1180,7 +1178,6 @@ extern CLAN_DATA *clan_last;
 extern BAN_DATA *ban_list;
 extern CHAR_DATA *char_list;
 extern CHAR_DATA *player_list;
-extern CHAR_DATA *shell_char_list;
 extern MPROG_DATA *mudprog_first;
 extern MPROG_DATA *mudprog_last;
 extern MPROG_GROUP *mprog_group_first;
@@ -1235,13 +1232,6 @@ extern SYS_CONFIG sysconfig;
 #define AD      AFFECT_DATA
 #define NEWAD   NEWAFFECT_DATA
 
-/* pty.c */
-int master_pty( char *ptyname );
-int slave_tty( char *ptyname, char *ttyname );
-
-/* route_io.c */
-int route_io( int fd1, int fd2 );
-
 /* act_comm.c */
 bool is_note_to args( ( CHAR_DATA * ch, NOTE_DATA * pnote ) );
 void check_sex args( ( CHAR_DATA * ch ) );
@@ -1251,7 +1241,6 @@ void nuke_pets args( ( CHAR_DATA * ch ) );
 void die_follower args( ( CHAR_DATA * ch ) );
 bool is_same_group args( ( CHAR_DATA * ach, CHAR_DATA * bch ) );
 
-extern bool reap_shells;
 extern const char echo_off_str[];
 extern const char echo_on_str[];
 extern const char go_ahead_str[];

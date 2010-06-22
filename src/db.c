@@ -62,7 +62,6 @@ PC_DATA *pcdata_free;
 char bug_buf[2 * MAX_INPUT_LENGTH];
 CHAR_DATA *char_list;
 CHAR_DATA *player_list = NULL;
-CHAR_DATA *shell_char_list = NULL;
 MPROG_DATA *mudprog_first;
 MPROG_DATA *mudprog_last;
 MPROG_GROUP *mprog_group_first;

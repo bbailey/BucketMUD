@@ -110,7 +110,6 @@ bool merc_down;                 /* Shutdown                      */
 bool wizlock;                   /* Game is wizlocked             */
 bool newlock;                   /* Game is newlocked             */
 bool chaos;                     /* Game in CHAOS!                */
-bool reap_shells = FALSE;
 bool silentmode;                /* Send no output to descriptors */
 char str_boot_time[MAX_INPUT_LENGTH];
 time_t current_time;            /* time of this pulse */
@@ -347,35 +346,12 @@ int init_socket( int port )
     return fd;
 }
 
-void sigchld_handler( int sig )
-{
-    pid_t child_pid;
-    int status;
-
-    if ( ( child_pid = wait( &status ) ) < 0 )
-    {
-        return;
-    }
-
-    reap_shells = TRUE;
-    return;
-}
-
 int game_loop( int control )
 {
     static struct timeval null_time;
     struct timeval last_time;
     bool color;
 
-    static struct sigaction sa;
-    sigemptyset( &sa.sa_mask );
-#ifndef SA_RESTART
-#define SA_RESTART 0
-#endif
-    sa.sa_flags = SA_RESTART;
-    sa.sa_handler = sigchld_handler;
-    if ( sigaction( SIGCHLD, &sa, 0 ) < 0 )
-        return -1;
     signal( SIGPIPE, SIG_IGN );
     gettimeofday( &last_time, NULL );
     current_time = ( time_t ) last_time.tv_sec;
@@ -415,57 +391,6 @@ int game_loop( int control )
         {
             perror( "Game_loop: select: poll" );
             exit( 1 );
-        }
-
-        /* Guess this is as good a place as any for shell reaping? */
-        if ( reap_shells )
-        {
-            CHAR_DATA *ch;
-            /* No one in the shell list?  Then don't reap shells anymore! */
-            if ( !shell_char_list )
-            {
-                reap_shells = FALSE;
-            }
-            else
-            {
-                /* Check the "in" pipe for each character in the list.
-                 * If any of them are readable, put them back into the game. */
-                for ( ch = shell_char_list; ch; ch = ch->next_in_shell )
-                {
-                    CHAR_DATA *prev;
-
-                    if ( can_read_descriptor( ch->fdpair[0] ) )
-                    {
-                        close( ch->fdpair[0] );
-                        if ( ch == shell_char_list )
-                        {
-                            shell_char_list = NULL;
-                        }
-                        else
-                        {
-                            for ( prev = shell_char_list;
-                                  prev && prev->next != ch; prev = prev->next );
-
-                            if ( prev )
-                            {
-                                prev->next = ch->next;
-                            }
-                            else
-                            {
-                                bug( "reap_shell: reaped char not found in the shell_char_list", 0 );
-                            }
-                        }
-                        ch->next = char_list;
-                        char_list = ch;
-                        ch->next_player = player_list;
-                        ch->next_in_shell = NULL;
-                        player_list = ch;
-                        send_to_char( "MUD I/O resumed.\n\r", ch );
-                        ch->desc->connected = CON_PLAYING;
-                        continue;
-                    }
-                }
-            }
         }
 
         /*
@@ -842,10 +767,6 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d, bool color )
     int iStart;
     bool bOverflow = FALSE;
 
-    /* Don't read from people in shells */
-    if ( d->connected == CON_SHELL )
-        return TRUE;
-
     /* Hold horses if pending command already. */
     if ( d->incomm[0] != '\0' )
         return TRUE;
@@ -926,10 +847,6 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d, bool color )
 void read_from_buffer( DESCRIPTOR_DATA * d, bool color )
 {
     int i, j, k;
-
-    /* Don't read from people in shells. */
-    if ( d->connected == CON_SHELL )
-        return;
 
     /*
      * Hold horses if pending command already.
@@ -1030,10 +947,6 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
     char buf[MAX_STRING_LENGTH];
     extern bool merc_down;
     bool color = TRUE;
-
-    /* If you're in a shell, then no output for you! */
-    if ( d->connected == CON_SHELL )
-        return TRUE;
 
     /*
      * Bust a prompt.
@@ -2087,8 +2000,6 @@ check_ban function.
         handle_con_note_finish( d, argument );
         break;
 
-    case CON_SHELL:
-        break;
     }
 
     return;

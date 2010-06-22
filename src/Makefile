@@ -15,8 +15,8 @@ O_FILES = act_comm.o	act_info.o	act_move.o \
 	  magic.o 	marry.o		mem.o \
           mprog_commands.o 		mprog_procs.o \
           mud_progs.o	olc.o           olc_act.o \
-	  olc_save.o	newbits.o 	pty.o	\
-      	  random.o	recycle.o       route_io.o \
+	  olc_save.o	newbits.o \
+      	  random.o	recycle.o \
     	  save.o	skills.o 	socialolc.o \
    	  ssm.o		string.o        todoolc.o \
   	  update.o	remort.o 
