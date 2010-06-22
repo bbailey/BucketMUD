@@ -1,9 +1,5 @@
 
-#if defined(WIN32)
-#include <windows.h>
-#else
 #include <sys/types.h>
-#endif
 #include <stdio.h>
 #include <string.h>
 #include <time.h>

@@ -1,9 +1,5 @@
 
-#if defined(WIN32)
-#include <time.h>
-#else
 #include <sys/time.h>
-#endif
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -36,11 +32,7 @@ HELP_DATA *new_help( void )
     if ( !pHelp )
     {
         bug( "new help: Call to alloc_perm failed!", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     pHelp->next = NULL;

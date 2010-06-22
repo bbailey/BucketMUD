@@ -15,9 +15,6 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
-#if defined(WIN32)
-#include <windows.h>
-#endif
 #include <sys/types.h>
 #include <ctype.h>
 #include <stdio.h>
@@ -88,9 +85,6 @@ void save_char_obj( CHAR_DATA * ch )
     char strsave[MAX_INPUT_LENGTH];
     char TempFile[MAX_INPUT_LENGTH];
     FILE *fp;
-/* #if !defined(WIN32)
-    char buf[MAX_STRING_LENGTH];
-#endif */
 
     /* No saving during CHAOS */
     if ( chaos )
@@ -115,13 +109,8 @@ void save_char_obj( CHAR_DATA * ch )
         {
             bug( "Save_char_obj: fopen", 0 );
             send_to_char( "Error saving!", ch );
-
-#if defined(cbuilder)
-            return -1;
-#else
             perror( strsave );
             return;
-#endif
         }
 
         fprintf( fp, "Lev %2d Trust %2d  %s%s\n",
@@ -182,16 +171,9 @@ void save_char_obj( CHAR_DATA * ch )
                  capitalize( ch->name ) );
         fclose( fp );
         /* move the file */
-#if defined(WIN32)
-        if ( !CopyFile( TempFile, strsave, 0 ) )
-            perror( "Save: CopyFile" );
-        if ( !DeleteFile( TempFile ) )
-            perror( "Save: DeleteFile" );
-#else
         rename( TempFile, strsave );
 /* sprintf( buf, "mv %s %s", TempFile, strsave );
         system( buf ); */
-#endif
     }
 
     fpReserve = fopen( NULL_FILE, "r" );

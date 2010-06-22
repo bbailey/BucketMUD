@@ -3,17 +3,12 @@
  *
  */
 
-#if defined(WIN32)
-#include <windows.h>
-#include <time.h>
-#else
 #include <sys/types.h>
 #include <errno.h>
 #ifndef S_SPLINT_S
 #include <unistd.h>
 #endif
 #include <sys/time.h>
-#endif
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,9 +1,5 @@
 /* Header for no real reason */
-#if defined(WIN32)
-#include <time.h>
-#else
 #include <sys/time.h>
-#endif
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -36,11 +32,7 @@ TODO_DATA *new_todo( void )
     if ( !pTodo )
     {
         bug( "new todo: Call to alloc_perm failed!", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     pTodo->next = NULL;

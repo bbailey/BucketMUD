@@ -42,17 +42,8 @@
  * -- Furey  26 Jan 1993
  */
 
-#if defined(WIN32)
-#include <windows.h>
-#else
 #include <sys/time.h>
 #include <sys/wait.h>
-#endif
-
-#if defined(cbuilder)
-#include <dir.h>
-#endif
-
 #include <sys/types.h>
 #include <ctype.h>
 #include <errno.h>
@@ -74,10 +65,6 @@ DECLARE_DO_FUN( do_afk );
 /*
  * Malloc debugging stuff.
  */
-#if defined(sun)
-#undef MALLOC_DEBUG
-#endif
-
 #if defined(MALLOC_DEBUG)
 #include <malloc.h>
 extern int malloc_debug args( ( int ) );
@@ -86,25 +73,12 @@ extern int malloc_verify args( ( void ) );
 
 /*
  * Signal handling.
- * Apollo has a problem with __attribute(atomic) in signal.h,
- *   I dance around it.
  */
-#if defined(apollo)
-#define __attribute(x)
-#endif
-
-#if defined(unix)
 #include <signal.h>
-#endif
-
-#if defined(apollo)
-#undef __attribute
-#endif
 
 /*
  * Socket and TCP/IP stuff.
  */
-#if     defined(unix)
 #include <fcntl.h>
 #include <netdb.h>
 #include <netinet/in.h>
@@ -115,162 +89,6 @@ const char echo_on_str[] = { IAC, WONT, TELOPT_ECHO, '\0' };
 const char go_ahead_str[] = { IAC, GA, '\0' };
 const char will_suppress_ga_str[] = { IAC, WILL, TELOPT_SGA, '\0' };
 const char wont_suppress_ga_str[] = { IAC, WONT, TELOPT_SGA, '\0' };
-#endif
-
-#if     defined(WIN32)
-#include "Win32Common\telnet.h"
-const char echo_off_str[] = { ( char ) IAC, ( char ) WILL, TELOPT_ECHO, '\0' };
-const char echo_on_str[] = { ( char ) IAC, ( char ) WONT, TELOPT_ECHO, '\0' };
-const char go_ahead_str[] = { ( char ) IAC, ( char ) GA, '\0' };
-const char will_suppress_ga_str[] =
-    { ( char ) IAC, ( char ) WILL, TELOPT_SGA, '\0' };
-const char wont_suppress_ga_str[] =
-    { ( char ) IAC, ( char ) WONT, TELOPT_SGA, '\0' };
-#endif
-
-#if	defined(cbuilder)
-extern void AddUser( CHAR_DATA * ch );
-extern void RemoveUser( CHAR_DATA * ch );
-extern bool MudDown;
-#endif
-
-/*
- * OS-dependent declarations.
- */
-#if     defined(_AIX)
-#include <sys/select.h>
-int accept args( ( int s, struct sockaddr * addr, int *addrlen ) );
-int bind args( ( int s, struct sockaddr * name, int namelen ) );
-void bzero args( ( char *b, int length ) );
-int getpeername args( ( int s, struct sockaddr * name, int *namelen ) );
-int getsockname args( ( int s, struct sockaddr * name, int *namelen ) );
-int gettimeofday args( ( struct timeval * tp, struct timezone * tzp ) );
-int listen args( ( int s, int backlog ) );
-int setsockopt args( ( int s, int level, int optname, void *optval,
-                       int optlen ) );
-int socket args( ( int domain, int type, int protocol ) );
-#endif
-
-#if     defined(apollo)
-#ifndef S_SPLINT_S
-#include <unistd.h>
-#endif
-void bzero args( ( char *b, int length ) );
-#endif
-
-#if     defined(__hpux)
-int accept args( ( int s, void *addr, int *addrlen ) );
-int bind args( ( int s, const void *addr, int addrlen ) );
-void bzero args( ( char *b, int length ) );
-int getpeername args( ( int s, void *addr, int *addrlen ) );
-int getsockname args( ( int s, void *name, int *addrlen ) );
-int gettimeofday args( ( struct timeval * tp, struct timezone * tzp ) );
-int listen args( ( int s, int backlog ) );
-int setsockopt args( ( int s, int level, int optname,
-                       const void *optval, int optlen ) );
-int socket args( ( int domain, int type, int protocol ) );
-#endif
-
-#if     defined(interactive)
-#include <net/errno.h>
-#include <sys/fnctl.h>
-#endif
-
-#if     defined(linux)
-int close args( ( int fd ) );
-/* int     getpeername     args( ( int s, struct sockaddr *name, int *namelen ) ); */
-/* int     getsockname     args( ( int s, struct sockaddr *name, int *namelen ) ); */
-int gettimeofday args( ( struct timeval * tp, struct timezone * tzp ) );
-/* int     listen          args( ( int s, int backlog ) ); */
-int select args( ( int width, fd_set * readfds, fd_set * writefds,
-                   fd_set * exceptfds, struct timeval * timeout ) );
-int socket args( ( int domain, int type, int protocol ) );
-#endif
-
-#if     defined(MIPS_OS)
-extern int errno;
-#endif
-
-#if     defined(NeXT)
-int close args( ( int fd ) );
-int fcntl args( ( int fd, int cmd, int arg ) );
-#if     !defined(htons)
-u_short htons args( ( u_short hostshort ) );
-#endif
-#if     !defined(ntohl)
-u_long ntohl args( ( u_long hostlong ) );
-#endif
-int read args( ( int fd, char *buf, int nbyte ) );
-int select args( ( int width, fd_set * readfds, fd_set * writefds,
-                   fd_set * exceptfds, struct timeval * timeout ) );
-int write args( ( int fd, char *buf, int nbyte ) );
-#endif
-
-#if     defined(sequent)
-int accept args( ( int s, struct sockaddr * addr, int *addrlen ) );
-int bind args( ( int s, struct sockaddr * name, int namelen ) );
-int close args( ( int fd ) );
-int fcntl args( ( int fd, int cmd, int arg ) );
-int getpeername args( ( int s, struct sockaddr * name, int *namelen ) );
-int getsockname args( ( int s, struct sockaddr * name, int *namelen ) );
-int gettimeofday args( ( struct timeval * tp, struct timezone * tzp ) );
-#if     !defined(htons)
-u_short htons args( ( u_short hostshort ) );
-#endif
-int listen args( ( int s, int backlog ) );
-#if     !defined(ntohl)
-u_long ntohl args( ( u_long hostlong ) );
-#endif
-int read args( ( int fd, char *buf, int nbyte ) );
-int select args( ( int width, fd_set * readfds, fd_set * writefds,
-                   fd_set * exceptfds, struct timeval * timeout ) );
-int setsockopt args( ( int s, int level, int optname, caddr_t optval,
-                       int optlen ) );
-int socket args( ( int domain, int type, int protocol ) );
-int write args( ( int fd, char *buf, int nbyte ) );
-#endif
-
-/* This includes Solaris Sys V as well */
-#if defined(sun)
-int accept args( ( int s, struct sockaddr * addr, int *addrlen ) );
-int bind args( ( int s, struct sockaddr * name, int namelen ) );
-void bzero args( ( char *b, int length ) );
-int close args( ( int fd ) );
-int getpeername args( ( int s, struct sockaddr * name, int *namelen ) );
-int getsockname args( ( int s, struct sockaddr * name, int *namelen ) );
-int gettimeofday args( ( struct timeval * tp, struct timezone * tzp ) );
-int listen args( ( int s, int backlog ) );
-int read args( ( int fd, char *buf, int nbyte ) );
-int select args( ( int width, fd_set * readfds, fd_set * writefds,
-                   fd_set * exceptfds, struct timeval * timeout ) );
-#if defined(SYSV)
-int setsockopt args( ( int s, int level, int optname,
-                       const char *optval, int optlen ) );
-#else
-int setsockopt args( ( int s, int level, int optname, void *optval,
-                       int optlen ) );
-#endif
-int socket args( ( int domain, int type, int protocol ) );
-int write args( ( int fd, char *buf, int nbyte ) );
-#endif
-
-#if defined(ultrix)
-int accept args( ( int s, struct sockaddr * addr, int *addrlen ) );
-int bind args( ( int s, struct sockaddr * name, int namelen ) );
-void bzero args( ( char *b, int length ) );
-int close args( ( int fd ) );
-int getpeername args( ( int s, struct sockaddr * name, int *namelen ) );
-int getsockname args( ( int s, struct sockaddr * name, int *namelen ) );
-int gettimeofday args( ( struct timeval * tp, struct timezone * tzp ) );
-int listen args( ( int s, int backlog ) );
-int read args( ( int fd, char *buf, int nbyte ) );
-int select args( ( int width, fd_set * readfds, fd_set * writefds,
-                   fd_set * exceptfds, struct timeval * timeout ) );
-int setsockopt args( ( int s, int level, int optname, void *optval,
-                       int optlen ) );
-int socket args( ( int domain, int type, int protocol ) );
-int write args( ( int fd, char *buf, int nbyte ) );
-#endif
 
 /*
  * Global variables.
@@ -322,11 +140,7 @@ args( ( int desc, char *txt, int length, bool color ) );
 bool check_parse_name args( ( char *name ) );
 bool check_reconnect args( ( DESCRIPTOR_DATA * d, char *name, bool fConn ) );
 bool check_playing args( ( DESCRIPTOR_DATA * d, char *name ) );
-#if defined(cbuilder)
-int embermain args( ( int argc, char **argv ) );
-#else
 int main args( ( int argc, char **argv ) );
-#endif
 void nanny args( ( DESCRIPTOR_DATA * d, char *argument ) );
 bool process_output args( ( DESCRIPTOR_DATA * d, bool fPrompt ) );
 void read_from_buffer args( ( DESCRIPTOR_DATA * d, bool color ) );
@@ -345,17 +159,11 @@ bool can_read_descriptor( int fd )
     FD_SET( fd, &R_SET );
     while ( select( fd + 1, &R_SET, 0, 0, &tzero ) < 0 )
     {
-#ifndef WIN32
         if ( errno == EINTR )
         {
             continue;
         }
         return FALSE;
-#else
-        int err = WSAGetLastError(  );
-        fprintf( stderr, "select winsock error\n" );
-        return FALSE;
-#endif
     }
 
     return ( bool ) FD_ISSET( fd, &R_SET );
@@ -370,11 +178,7 @@ int figure_difference( int points )
     return ( 0 );
 }
 
-#if defined(cbuilder)
-int embermain( int argc, char **argv )
-#else
 int main( int argc, char **argv )
-#endif
 {
     struct timeval now_time = { 0, 0 };
 
@@ -395,13 +199,6 @@ int main( int argc, char **argv )
      * Init time.
      */
 
-#if defined(cbuilder)
-/*
-    if (chdir("..\\area"))
-        chdir("..\\..\\area");
-*/
-#endif
-
     gettimeofday( &now_time, NULL );
     current_time = ( time_t ) now_time.tv_sec;
     strcpy( str_boot_time, get_curtime(  ) );
@@ -411,13 +208,8 @@ int main( int argc, char **argv )
      */
     if ( ( fpReserve = fopen( NULL_FILE, "r" ) ) == NULL )
     {
-#if defined(cbuilder)
-        log_string( "Error: fopen fpReserve" );
-        return -1;
-#else
         perror( NULL_FILE );
         exit( 1 );
-#endif
     }
 
     /*
@@ -429,23 +221,13 @@ int main( int argc, char **argv )
     {
         if ( !is_number( argv[1] ) )
         {
-#if defined(cbuilder)
-            logf_string( "Usage: %s [port #] %s", argv[0], argv[1] );
-            return -1;
-#else
             fprintf( stderr, "Usage: %s [port #]\n", argv[0] );
             exit( 1 );
-#endif
         }
         else if ( ( port = atoi( argv[1] ) ) <= 1024 )
         {
-#if defined(cbuilder)
-            log_string( "Port number must be above 1024." );
-            return -1;
-#else
             fprintf( stderr, "Port number must be above 1024.\n" );
             exit( 1 );
-#endif
         }
         if ( ( argc > 2 ) && ( argv[2] && argv[2][0] ) )
         {
@@ -482,29 +264,18 @@ int main( int argc, char **argv )
         return -1;
     }
     sprintf( log_buf, "EmberMUD is ready to rock on port %d.", port );
-#if defined(cbuilder)
-//  SetStatus("EmberMUD Running.");
-#endif
     update_last( "boot_db: done", "", "" );
     log_string( log_buf );
     if ( game_loop( control ) )
     {
         log_string( "Error: game_loop(), shutting down." );
-#if defined (WIN32)
-        closesocket( control );
-#else
         close( control );
-#endif
 #ifdef IMC
         imc_shutdown( FALSE );
 #endif
         return -1;
     }
-#if defined (WIN32)
-    closesocket( control );
-#else
     close( control );
-#endif
 #ifdef IMC
     imc_shutdown( FALSE );
 #endif
@@ -513,12 +284,8 @@ int main( int argc, char **argv )
      * That's all, folks.
      */
     log_string( "Normal termination of game." );
-#if defined(cbuilder)
-    return 0;
-#else
     exit( 0 );
     return 0;
-#endif
 }
 
 int init_socket( int port )
@@ -528,50 +295,18 @@ int init_socket( int port )
     int x = 1;
     int fd;
 
-#if defined(WIN32)
-    WSADATA wsaData;
-
-    wsaData.wVersion = 2;
-
-#if defined(cbuilder)
-    char wsaError[MAX_STRING_LENGTH];
-#endif
-
-    WSAStartup( MAKEWORD( 2, 2 ), &wsaData );
-#endif
     if ( ( fd = socket( AF_INET, SOCK_STREAM, 0 ) ) < 0 )
     {
-#if defined(cbuilder)
-        FormatMessage( FORMAT_MESSAGE_FROM_SYSTEM, NULL, WSAGetLastError(  ), 0,
-                       wsaError, MAX_STRING_LENGTH, NULL );
-        logf_string( "Init_socket: %s", wsaError );
-        merc_down = TRUE;
-        return -1;
-#else
         perror( "Init_socket: socket" );
         exit( 1 );
-#endif
     }
 
     if ( setsockopt( fd, SOL_SOCKET, SO_REUSEADDR,
                      ( char * ) &x, sizeof( x ) ) < 0 )
     {
-#if defined(cbuilder)
-        FormatMessage( FORMAT_MESSAGE_FROM_SYSTEM, NULL, WSAGetLastError(  ), 0,
-                       wsaError, MAX_STRING_LENGTH, NULL );
-        logf_string( "Init_socket: %s", wsaError );
-        closesocket( fd );
-        merc_down = TRUE;
-        return -1;
-#else
         perror( "Init_socket: SO_REUSEADDR" );
-#if defined(WIN32)
-        closesocket( fd );
-#else
         close( fd );
-#endif
         exit( 1 );
-#endif
     }
 
 #if defined(SO_DONTLINGER) && !defined(SYSV)
@@ -584,23 +319,9 @@ int init_socket( int port )
         if ( setsockopt( fd, SOL_SOCKET, SO_DONTLINGER,
                          ( char * ) &ld, sizeof( ld ) ) < 0 )
         {
-#if defined(cbuilder)
-            FormatMessage( FORMAT_MESSAGE_FROM_SYSTEM, NULL,
-                           WSAGetLastError(  ), 0, wsaError, MAX_STRING_LENGTH,
-                           NULL );
-            logf_string( "Init_socket: %s", wsaError );
-            closesocket( fd );
-            merc_down = TRUE;
-            return -1;
-#else
             perror( "Init_socket: SO_DONTLINGER" );
-#if defined(WIN32)
-            closesocket( fd );
-#else
             close( fd );
-#endif
             exit( 1 );
-#endif
         }
     }
 #endif
@@ -611,48 +332,21 @@ int init_socket( int port )
 
     if ( bind( fd, ( struct sockaddr * ) &sa, sizeof( sa ) ) < 0 )
     {
-#if defined(cbuilder)
-        FormatMessage( FORMAT_MESSAGE_FROM_SYSTEM, NULL, WSAGetLastError(  ), 0,
-                       wsaError, MAX_STRING_LENGTH, NULL );
-        logf_string( "Init_socket: %s", wsaError );
-        closesocket( fd );
-        merc_down = TRUE;
-        return -1;
-#else
         perror( "Init socket: bind" );
-#if defined(WIN32)
-        closesocket( fd );
-#else
         close( fd );
-#endif
         exit( 1 );
-#endif
     }
 
     if ( listen( fd, 3 ) < 0 )
     {
-#if defined(cbuilder)
-        FormatMessage( FORMAT_MESSAGE_FROM_SYSTEM, NULL, WSAGetLastError(  ), 0,
-                       wsaError, MAX_STRING_LENGTH, NULL );
-        logf_string( "Init_socket: %s", wsaError );
-        closesocket( fd );
-        merc_down = TRUE;
-        return -1;
-#else
         perror( "Init socket: listen" );
-#if defined(WIN32)
-        closesocket( fd );
-#else
         close( fd );
-#endif
         exit( 1 );
-#endif
     }
 
     return fd;
 }
 
-#if defined(unix)
 void sigchld_handler( int sig )
 {
     pid_t child_pid;
@@ -666,7 +360,6 @@ void sigchld_handler( int sig )
     reap_shells = TRUE;
     return;
 }
-#endif
 
 int game_loop( int control )
 {
@@ -674,7 +367,6 @@ int game_loop( int control )
     struct timeval last_time;
     bool color;
 
-#if defined(unix)
     static struct sigaction sa;
     sigemptyset( &sa.sa_mask );
 #ifndef SA_RESTART
@@ -685,7 +377,6 @@ int game_loop( int control )
     if ( sigaction( SIGCHLD, &sa, 0 ) < 0 )
         return -1;
     signal( SIGPIPE, SIG_IGN );
-#endif
     gettimeofday( &last_time, NULL );
     current_time = ( time_t ) last_time.tv_sec;
 
@@ -722,16 +413,10 @@ int game_loop( int control )
         if ( select( maxdesc + 1, &in_set, &out_set, &exc_set, &null_time ) <
              0 )
         {
-#if defined(cbuilder)
-            log_string( "Error: Game_loop: select: poll" );
-            return -1;
-#else
             perror( "Game_loop: select: poll" );
             exit( 1 );
-#endif
         }
 
-#ifndef WIN32
         /* Guess this is as good a place as any for shell reaping? */
         if ( reap_shells )
         {
@@ -782,7 +467,6 @@ int game_loop( int control )
                 }
             }
         }
-#endif
 
         /*
          * New connection?
@@ -802,10 +486,6 @@ int game_loop( int control )
                 FD_CLR( ( unsigned int ) d->descriptor, &out_set );
                 if ( d->character && d->character->level > 1 )
                     save_char_obj( d->character );
-#if defined(cbuilder)
-                if ( d->character && d->character->TNode )
-                    RemoveUser( d->character );
-#endif
                 d->outtop = 0;
                 close_socket( d );
             }
@@ -836,10 +516,6 @@ int game_loop( int control )
                     FD_CLR( ( unsigned int ) d->descriptor, &out_set );
                     if ( d->character != NULL && d->character->level > 1 )
                         save_char_obj( d->character );
-#if defined(cbuilder)
-                    if ( d->character && d->character->TNode )
-                        RemoveUser( d->character );
-#endif
                     d->outtop = 0;
                     close_socket( d );
                     continue;
@@ -902,22 +578,11 @@ int game_loop( int control )
                 {
                     if ( d->character != NULL && d->character->level > 1 )
                         save_char_obj( d->character );
-#if defined(cbuilder)
-                    if ( d->character && d->character->TNode )
-                        RemoveUser( d->character );
-#endif
                     d->outtop = 0;
                     close_socket( d );
                 }
             }
         }
-
-#if defined(cbuilder)
-        /*
-         * Checks for GUI commands, updates GUI stats.
-         */
-        update_gui(  );
-#endif
 
         /*
          * Synchronize to a clock.
@@ -935,10 +600,6 @@ int game_loop( int control )
                 1000000 / PULSE_PER_SECOND;
             secDelta =
                 ( ( int ) last_time.tv_sec ) - ( ( int ) now_time.tv_sec );
-#if defined(WIN32)
-            if ( usecDelta > 0 )
-                Sleep( UMIN( usecDelta, 250000 ) / 1000 );
-#else
             while ( usecDelta < 0 )
             {
                 usecDelta += 1000000;
@@ -959,20 +620,14 @@ int game_loop( int control )
                 stall_time.tv_sec = secDelta;
                 if ( select( 0, NULL, NULL, NULL, &stall_time ) < 0 )
                 {
-#if defined(cbuilder)
-                    log_string( "Error: Game_loop: select: stall" );
-                    return -1;
-#else
                     if ( errno != EINTR )
                     {
                         perror( "Game_loop: select: stall" );
                         exit( 1 );
                     }
 
-#endif
                 }
             }
-#endif
         }
 
         gettimeofday( &last_time, NULL );
@@ -995,9 +650,6 @@ void new_descriptor( int control )
 #ifndef S_SPLINT_S
     socklen_t size;
 #endif
-#if defined(WIN32)
-    int OptVal;
-#endif
 
     size = sizeof( sock );
     getsockname( control, ( struct sockaddr * ) &sock, &size );
@@ -1011,20 +663,11 @@ void new_descriptor( int control )
 #define FNDELAY O_NDELAY
 #endif
 
-#if defined(WIN32)
-    if ( setsockopt( desc, IPPROTO_TCP, TCP_NODELAY, ( char * ) &OptVal,
-                     sizeof( int ) ) )
-    {
-        perror( "New_descriptor: setsockopt: TCP_NODELAY" );
-        return;
-    }
-#else
     if ( fcntl( desc, F_SETFL, FNDELAY ) == -1 )
     {
         perror( "New_descriptor: fcntl: FNDELAY" );
         return;
     }
-#endif
 
     /*
      * Cons a new descriptor.
@@ -1185,11 +828,7 @@ void close_socket( DESCRIPTOR_DATA * dclose )
             bug( "Close_socket: dclose not found.", 0 );
     }
 
-#if defined(WIN32)
-    closesocket( dclose->descriptor );
-#else
     close( dclose->descriptor );
-#endif
     free_string( &dclose->host );
     /* RT socket leak fix -- I hope */
     free_mem( &dclose->outbuf );
@@ -1231,11 +870,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d, bool color )
 
         nBufSize = sizeof( d->inbuf ) - 10 - iStart;
 
-#if defined(WIN32)
-        nRead = recv( d->descriptor, d->inbuf + iStart, nBufSize, 0 );
-#else
         nRead = read( d->descriptor, d->inbuf + iStart, nBufSize );
-#endif
         if ( nRead > 0 )
         {
             iStart += nRead;
@@ -1263,10 +898,8 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d, bool color )
             log_string( "EOF encountered on read." );
             return FALSE;
         }
-#if defined(unix)
         else if ( errno == EWOULDBLOCK )
             break;
-#endif
         else
         {
             perror( "Read_from_descriptor" );
@@ -1545,19 +1178,11 @@ bool write_to_descriptor( int desc, char *txt, int length, bool color )
     for ( iStart = 0; iStart < length; iStart += nWrite )
     {
         nBlock = UMIN( length - iStart, sizeof( colorbuf ) );
-#if defined(WIN32)
-        if ( ( nWrite = send( desc, colorbuf + iStart, nBlock, 0 ) ) < 0 )
-        {
-            perror( "Write_to_descriptor" );
-            return FALSE;
-        }
-#else
         if ( ( nWrite = write( desc, colorbuf + iStart, nBlock ) ) < 0 )
         {
             perror( "Write_to_descriptor" );
             return FALSE;
         }
-#endif
     }
 
     return TRUE;
@@ -1594,10 +1219,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
     default:
         bug( "Nanny: bad d->connected %d.", d->connected );
-#if defined(cbuilder)
-        if ( d->character && d->character->TNode )
-            RemoveUser( d->character );
-#endif
         close_socket( d );
         return;
 
@@ -2358,10 +1979,6 @@ check_ban function.
         break;
 
     case CON_READ_MOTD:
-#if defined(cbuilder)
-        AddUser( ch );
-#endif
-
         write_to_buffer( d, "\n\rWelcome to EmberMUD.\n\r", 0 );
         /* Add to list of PCs and NPCs */
         ch->next = char_list;
@@ -2575,9 +2192,6 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
                 }
 
                 send_to_char( "Reconnecting.\n\r", ch );
-#if defined(cbuilder)
-                AddUser( ch );
-#endif
                 act( "$n has reconnected.", ch, NULL, NULL, TO_ROOM );
                 ch->pcdata->ticks = 0;
                 sprintf( log_buf, "%s@%s reconnected.", ch->name, d->host );

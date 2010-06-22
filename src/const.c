@@ -392,11 +392,7 @@ const struct pc_race_type pc_race_table[] = {
 
    Kyle
  */
-#if defined(cbuilder)
-struct class_type class_table[MAX_CLASS + 1] =
-#else
 struct class_type class_table[MAX_CLASS] =
-#endif
 {
     {
      "Mage", "Mag", STAT_INT, OBJ_VNUM_SCHOOL_DAGGER,
@@ -417,14 +413,6 @@ struct class_type class_table[MAX_CLASS] =
      "Warrior", "War", STAT_STR, OBJ_VNUM_SCHOOL_SWORD,
      {3022, 9633}, 75, 18, -10, 11, 15, FALSE,
      "warrior basics", "warrior default", FALSE}
-
-#if defined(cbuilder)
-    /* Class added solely for Win32 GUI Console Administration. -Zane */
-    , {
-       "Console", "Con", STAT_STR, OBJ_VNUM_SCHOOL_SWORD,
-       {3022, 9633}, 75, 18, -10, 11, 15, FALSE,
-       "warrior basics", "warrior default", FALSE}
-#endif
 };
 
 /*

@@ -29,48 +29,20 @@
 #endif
 #define TRUE true
 
-/*
- * Accommodate old non-Ansi compilers.
- */
-
-#if defined(WIN32)
-#include <stdio.h>
-#if defined(unix)
-#undef unix
-#endif
-#endif
-#if defined(TRADITIONAL)
-#define const
-#define args( list )                    ( )
-#define DECLARE_DO_FUN( fun )           void fun( )
-#define DECLARE_SPELL_FUN( fun )        void fun( )
-#define DECLARE_MPROG_FUN( fun )        int  fun( )
-#else
 #define args( list )                    list
 #define DECLARE_DO_FUN( fun )           DO_FUN    fun
 #define DECLARE_SPELL_FUN( fun )        SPELL_FUN fun
 #define DECLARE_MPROG_FUN( fun )        MPROG_FUN fun
-#endif
 
 /* system calls */
-#ifndef cbuilder
 int unlink(  );
 int system(  );
-#endif
 
 /*
  * Short scalar types.
  * Diavolo reports AIX compiler has bugs with short types.
  */
-#if     defined(_AIX)
-#if     !defined(const)
-#define const
-#endif
-typedef int sh_int;
-#define unix
-#else
 typedef short int sh_int;
-#endif
 
 /*
  * Structure types.
@@ -206,10 +178,8 @@ DECLARE_DO_FUN( do_board );
    I don't know why, but nothing happens when I remove it...
 	-Kyle
  */
-#if defined(unix)
 #ifndef S_SPLINT_S
 #include <unistd.h>
-#endif
 #endif
 
 #include <stdarg.h>
@@ -658,10 +628,6 @@ struct char_data {
     int fdpair[2];
     /* mob counter for a reset */
     sh_int *reset_count;
-#if defined(cbuilder)
-    void *TNode;
-#endif
-
 };
 
 struct mud_prog_act_list {
@@ -1188,11 +1154,7 @@ extern const struct con_app_type con_app[MAX_ATTAINABLE_STATS + 1];
 Askill command. 
 	-Lancelight
 */
-#if defined(cbuilder)
-extern struct class_type class_table[MAX_CLASS + 1];
-#else
 extern struct class_type class_table[MAX_CLASS];
-#endif
 
 extern const struct attack_type attack_table[];
 extern const struct race_type race_table[];
@@ -1260,92 +1222,6 @@ extern AUCTION_DATA auction_info;   /* Needed for autoauction -Lancelight */
 /* System configuration structure */
 
 extern SYS_CONFIG sysconfig;
-
-/*
- * OS-dependent declarations.
- * These are all very standard library functions,
- *   but some systems have incomplete or non-ansi header files.
- */
-
-#if     defined(_AIX)
-char *crypt args( ( const char *key, const char *salt ) );
-#endif
-
-#if     defined(apollo)
-int atoi args( ( const char *string ) );
-void *calloc args( ( unsigned nelem, size_t size ) );
-char *crypt args( ( const char *key, const char *salt ) );
-#endif
-
-#if     defined(hpux)
-char *crypt args( ( const char *key, const char *salt ) );
-#endif
-
-#if     defined(linux)
-char *crypt args( ( const char *key, const char *salt ) );
-#endif
-
-#if             defined(WIN32)
-
-int gettimeofday( struct timeval *, void * );   /* Second parameter is for compatibility with Unix GetTimeOfDay */
-void bzero( char *data, unsigned long length );
-char *crypt( char *key, char *salt );
-
-#define SIGTRAP -1              /* CBuilder doesn't have SIGTRAP, setting */
-            /* it to match SIG_ERR                                        */
-
-#endif
-
-#if             defined(cbuilder)
-void update_gui( void );        /* Update GUI stats and run GUI commands. */
-void SetStatus( char *Message );
-#endif
-
-#if     defined(MIPS_OS)
-char *crypt args( ( const char *key, const char *salt ) );
-#endif
-
-#if     defined(NeXT)
-char *crypt args( ( const char *key, const char *salt ) );
-#endif
-
-#if     defined(sequent)
-char *crypt args( ( const char *key, const char *salt ) );
-int fclose args( ( FILE * stream ) );
-int fprintf args( ( FILE * stream, const char *format, ... ) );
-int fread args( ( void *ptr, int size, int n, FILE * stream ) );
-int fseek args( ( FILE * stream, long offset, int ptrname ) );
-void perror args( ( const char *s ) );
-int ungetc args( ( int c, FILE * stream ) );
-#endif
-
-#if     defined(sun)
-char *crypt args( ( const char *key, const char *salt ) );
-int fclose args( ( FILE * stream ) );
-int fprintf args( ( FILE * stream, const char *format, ... ) );
-#if     defined(SYSV)
-siz_t fread args( ( void *ptr, size_t size, size_t n, FILE * stream ) );
-#else
-int fread args( ( void *ptr, int size, int n, FILE * stream ) );
-#endif
-int fseek args( ( FILE * stream, long offset, int ptrname ) );
-void perror args( ( const char *s ) );
-int ungetc args( ( int c, FILE * stream ) );
-#endif
-
-#if     defined(ultrix)
-char *crypt args( ( const char *key, const char *salt ) );
-#endif
-
-/*
- * The crypt(3) function is not available on some operating systems.
- * In particular, the U.S. Government prohibits its export from the
- * United States to foreign countries.
- * Turn on NOCRYPT to keep passwords in plain text.
- */
-#if     defined(NOCRYPT)
-#define crypt(s1, s2)   (s1)
-#endif
 
 /*
  * Our function prototypes.

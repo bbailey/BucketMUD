@@ -7,22 +7,12 @@ mud administrators being called names, as well as anything else
 I can think of to do to them.
 */
 
-#if defined(WIN32)
-
-#include <windows.h>
-
-#else
-
 #ifndef S_SPLINT_S
 #include <unistd.h>
 #endif
 
 #include <sys/time.h>
-
 #include <sys/resource.h>
-
-#endif
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

@@ -1,9 +1,5 @@
 
-#if defined(WIN32)
-#include <time.h>
-#else
 #include <sys/time.h>
-#endif
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -150,11 +146,7 @@ FACTIONLIST_DATA *new_faction( void )
     if ( !pFact )
     {
         bug( "new_faction: Call to alloc_perm failed!", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     faction_count++;
@@ -445,11 +437,7 @@ void load_factionaffs( FILE * fp )
     if ( !area_last )
     {
         bug( "Load_factionaffs: no #AREA seen yet.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     for ( ;; )
@@ -468,11 +456,7 @@ void load_factionaffs( FILE * fp )
         {
             bug( "Load_factionaffs: Bad mobile vnum %d in #FACTIONAFFS",
                  number );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
 
         number = fread_number( fp );
@@ -483,11 +467,7 @@ void load_factionaffs( FILE * fp )
         {
             bug( "Load_factionaffs: Bad faction vnum %d in #FACTIONAFFS",
                  number );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
 
         if ( pMob->faction_affs == NULL )
@@ -610,11 +590,7 @@ void fread_faction_standings( CHAR_DATA * ch, FILE * fp )
         if ( !pFact )
         {
             bug( "fread_faction_standings: Unknown faction vnum %d found in pfile!", number );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
 
         pFactPC = alloc_mem( sizeof( FACTIONPC_DATA ) );
@@ -622,11 +598,7 @@ void fread_faction_standings( CHAR_DATA * ch, FILE * fp )
         if ( !pFactPC )
         {
             bug( "fread_faction_standings: call to alloc_mem failed!", 0 );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
 
         pFactPC->faction = pFact;

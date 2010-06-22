@@ -15,9 +15,6 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
-#if defined(WIN32)
-#include <time.h>
-#endif
 #include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>

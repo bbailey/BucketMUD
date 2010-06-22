@@ -425,11 +425,7 @@ int mprog_isequal( void *vo )
     strtok( argument, "," );
     right = strtok( NULL, "," );
 
-#ifdef WIN32
-    return !stricmp( left, right );
-#else
     return !strcasecmp( left, right );
-#endif
 }
 
 int mprog_faction( void *vo )

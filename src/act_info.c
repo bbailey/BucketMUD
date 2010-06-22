@@ -9,11 +9,8 @@
 
 /* act_info.c */
 
-#if defined(WIN32)
-#include <time.h>
-#else
+#include <crypt.h>
 #include <sys/time.h>
-#endif
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -4032,7 +4029,6 @@ void do_finger( CHAR_DATA * ch, char *argument )
     }
     else
     {
-#if defined(unix)
         /* decompress if .gz file exists */
         sprintf( pfile, "%s/%s%s", sysconfig.player_dir, capitalize( arg ),
                  ".gz" );
@@ -4043,7 +4039,6 @@ void do_finger( CHAR_DATA * ch, char *argument )
             sprintf( buf, "gzip -dfq %s", pfile );
             system( buf );
         }
-#endif
         sprintf( pfile, "%s/%s", sysconfig.player_dir, capitalize( arg ) );
         if ( ( fp = fopen( pfile, "r" ) ) != NULL )
         {

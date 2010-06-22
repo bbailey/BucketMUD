@@ -16,13 +16,8 @@ NOTE: This code leaves the the IS_CHANGER stuff in do_give
  *      This is bank.c plus a patch file for other files.
  */
 
-#if defined(WIN32)
-#include <windows.h>
-#include <time.h>
-#else
 #include <sys/types.h>
 #include <sys/time.h>
-#endif
 #include <ctype.h>
 #include <stdio.h>
 #include <time.h>

@@ -2244,10 +2244,6 @@ void chaos_kill( CHAR_DATA * victim )
     extract_char( victim, TRUE );
     if ( d )
     {
-#if defined(cbuilder)
-        if ( d->character )
-            RemoveUser( d->character );
-#endif
         close_socket( d );
     }
     return;

@@ -24,11 +24,7 @@
  * ideas were used.                                                        *
  ***************************************************************************/
 
-#if defined(macintosh)
-#include <types.h>
-#else
 #include <sys/types.h>
-#endif
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -748,7 +744,6 @@ CEDIT( cedit_leader )
         send_to_char( "You must supply an argument.\n\r", ch );
         return FALSE;
     }
-#if defined(unix)
     /* decompress if .gz file exists */
     sprintf( buf, "%s/%s%s", sysconfig.player_dir, capitalize( argument ),
              ".gz" );
@@ -759,7 +754,6 @@ CEDIT( cedit_leader )
         sprintf( buf1, "gzip -dfq %s", buf );
         system( buf1 );
     }
-#endif
     sprintf( buf, "%s/%s", sysconfig.player_dir, capitalize( argument ) );
     if ( ( fp = fopen( buf, "r" ) ) != NULL )
     {

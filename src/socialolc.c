@@ -1,9 +1,5 @@
 
-#if defined(WIN32)
-#include <time.h>
-#else
 #include <sys/time.h>
-#endif
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -173,11 +169,7 @@ SOCIALLIST_DATA *new_social( void )
     if ( !pSocial )
     {
         bug( "new_social: Call to alloc_perm failed!", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     socials_count++;

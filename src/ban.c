@@ -25,12 +25,7 @@
 *	ROM license, in the file Rom24/doc/rom.license			   *
 ***************************************************************************/
 
-#if defined(WIN32)
-#include <windows.h>
-#include <time.h>
-#else
 #include <sys/time.h>
-#endif
 
 // #include <sys/types.h>
 #include <stdio.h>

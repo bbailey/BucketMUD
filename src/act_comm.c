@@ -9,11 +9,7 @@
 
 /* act_comm.c */
 
-#if defined(WIN32)
-#include <time.h>
-#else
 #include <sys/time.h>
-#endif
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -1603,10 +1599,6 @@ void add2last( char *format, char *message, CHAR_DATA * ch )
     static int last_length = 0;
     LAST_DATA *tmp;
 
-#if defined(cbuilder)
-    ChannelMessage( argument, ch );
-#endif
-
     if ( last_length == MAX_LAST_LENGTH )
     {
         tmp = flast;
@@ -1657,10 +1649,6 @@ void add2last_imm( char *format, char *message, CHAR_DATA * ch )
     static int last_imm_length = 0;
     LAST_DATA *tmp;
 
-#if defined(cbuilder)
-    ChannelMessage( argument, ch );
-#endif
-
     if ( last_imm_length == MAX_LAST_LENGTH )
     {
         tmp = flast_imm;
@@ -1707,10 +1695,6 @@ void add2last_admin( char *format, char *message, CHAR_DATA * ch )
     static int last_admin_length = 0;
     LAST_DATA *tmp;
 
-#if defined(cbuilder)
-    ChannelMessage( argument, ch );
-#endif
-
     if ( last_admin_length == MAX_LAST_LENGTH )
     {
         tmp = flast_admin;
@@ -1756,10 +1740,6 @@ void add2last_hero( char *format, char *message, CHAR_DATA * ch )
 {
     static int last_hero_length = 0;
     LAST_DATA *tmp;
-
-#if defined(cbuilder)
-    ChannelMessage( argument, ch );
-#endif
 
     if ( last_hero_length == MAX_LAST_LENGTH )
     {
@@ -2559,10 +2539,6 @@ inform him that its not that easy ;) -Lancelight */
     sprintf( log_buf, "%s has quit.", ch->name );
     log_string( log_buf );
 
-#if defined(cbuilder)
-    RemoveUser( ch );
-#endif
-
     /*
      * After extract_char the ch is no longer valid!
      */
@@ -2596,10 +2572,6 @@ inform him that its not that easy ;) -Lancelight */
             extract_char( tch, TRUE );
             if ( d )
             {
-#if defined(cbuilder)
-                if ( d->character )
-                    RemoveUser( d->character );
-#endif
                 close_socket( d );
             }
         }

@@ -9,16 +9,6 @@
 #define TRUE     1
 #endif
 
-#if     defined(_AIX)
-#if     !defined(const)
-#define const
-#endif
-#define unix
-#else
-#if !defined(CPP)
-#endif
-#endif
-
 /* ---- New AFF Bits ---- */
 #define MAX_NEWAFF_BIT              6
 /* ---- */

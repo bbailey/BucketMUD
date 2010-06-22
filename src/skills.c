@@ -1,10 +1,6 @@
 /* Code specifically for the new skill system */
 
-#if defined(WIN32)
-#include <time.h>
-#else
 #include <sys/time.h>
-#endif
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
@@ -213,11 +209,7 @@ int dgld_compare( const void *left, const void *right )
     DO_GAIN_LIST_DATA *one = (DO_GAIN_LIST_DATA*)left;
     DO_GAIN_LIST_DATA *two = (DO_GAIN_LIST_DATA*)right;
 
-#ifdef WIN32
-    return stricmp( one->name, two->name );
-#else
     return strcasecmp( one->name, two->name );
-#endif
 }
 
 /* used to get new skills */
@@ -660,11 +652,7 @@ int dsd_compare_name( const void* left, const void* right )
     DO_SKILLS_DATA *one = (DO_SKILLS_DATA*)left;
     DO_SKILLS_DATA *two = (DO_SKILLS_DATA*)right;
 
-#ifdef WIN32
-    return stricmp( one->name, two->name );
-#else
     return strcasecmp( one->name, two->name );
-#endif
 }
 
 int dsd_compare_lvl_name( const void* left, const void* right )

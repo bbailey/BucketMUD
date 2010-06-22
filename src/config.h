@@ -601,13 +601,7 @@ players that are not thieves. The second is the vnum of the thieves guild.
  * so players can go ahead and telnet to all the other descriptors.
  * Then we close it whenever we need to open a file (e.g. a save file).
  */
-#if defined(WIN32)
-#define NULL_FILE               "nul"   // To reserve one stream
-#endif
-
-#if defined(unix)
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
-#endif
 
 /*
  * Game parameters.

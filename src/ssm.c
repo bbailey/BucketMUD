@@ -33,9 +33,7 @@
 #include <time.h>
 #include "merc.h"
 
-#if !defined( ultrix )
 #include <memory.h>
-#endif
 
 #define intType        short int
 #define uintType       unsigned intType
@@ -44,9 +42,7 @@
 #define addrTypeSize ( sizeof( addrType ) )
 #define addrSizeMask ( sizeof( addrType ) - 1 )
 
-#if !defined( macintosh )
 extern int _filbuf args( ( FILE * ) );
-#endif
 
 typedef struct BE BufEntry;
 
@@ -120,13 +116,8 @@ void init_string_space(  )
     string_space = ( char * ) calloc( 1, MAX_STRING );
     if ( !string_space )
     {
-#if defined(cbuilder)
-        logf_string( "[SSM] Cant allocate shared string space." );
-        return -1;
-#else
         bug( "[SSM] Cant allocate shared string space.", 0 );
         exit( 1 );
-#endif
     }
 
     top_string = string_space + MAX_STRING - 1;
@@ -597,13 +588,8 @@ void temp_fread_string( FILE * fp, char *outbuf )
             break;
 
         case EOF:
-#if defined(cbuilder)
-            logf_string( "Fread_string: EOF" );
-            return -1;
-#else
             bug( "Fread_string: EOF", 0 );
             exit( 1 );
-#endif
             break;
 
         case '\n':

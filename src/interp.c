@@ -23,12 +23,9 @@
 #include <time.h>
 #include "merc.h"
 #include "interp.h"
-#ifndef WIN32
 
 #ifndef S_SPLINT_S
 #include <unistd.h>             /* unlink() */
-#endif
-
 #endif
 
 bool check_disabled( const struct cmd_type * command );

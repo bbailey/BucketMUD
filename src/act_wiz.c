@@ -23,9 +23,7 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
-#if !defined(WIN32)
 #include <sys/time.h>
-#endif
 #include <time.h>
 #include <sys/types.h>
 #include <stdio.h>
@@ -891,10 +889,6 @@ void do_disconnect( CHAR_DATA * ch, char *argument )
     {
         if ( d == victim->desc )
         {
-#if defined(cbuilder)
-            if ( d->character )
-                RemoveUser( d->character );
-#endif
             close_socket( d );
             send_to_char( "Ok.\n\r", ch );
             return;
@@ -931,10 +925,6 @@ void do_new_discon( CHAR_DATA * ch, char *argument )
     {
         if ( d->descriptor == sock_num )
         {
-#if defined(cbuilder)
-            if ( d->character )
-                RemoveUser( d->character );
-#endif
             close_socket( d );
             send_to_char( "Ok.\n\r", ch );
             return;
@@ -1012,10 +1002,6 @@ void do_echo( CHAR_DATA * ch, char *argument )
 
     sprintf( buff, "%s\n\r", argument );
     sprintf( buff2, "global> %s", buff );
-
-#if defined(cbuilder)
-    ChannelMessage( buff2, NULL );
-#endif
 
     for ( d = descriptor_list; d; d = d->next )
     {
@@ -2434,9 +2420,6 @@ void do_reboot( CHAR_DATA * ch, char *argument )
     extern bool merc_down;
     DESCRIPTOR_DATA *d, *d_next;
     extern bool chaos;
-#if defined(cbuilder)
-    extern bool Reboot;
-#endif
 
     if ( ( chaos ) && ( ch->Class != 4 ) )
     {
@@ -2466,17 +2449,9 @@ void do_reboot( CHAR_DATA * ch, char *argument )
     merc_down = TRUE;
     for ( d = descriptor_list; d != NULL; d = d_next )
     {
-#if defined(cbuilder)
-        if ( d->character )
-            RemoveUser( d->character );
-#endif
         d_next = d->next;
         close_socket( d );
     }
-
-#if defined(cbuilder)
-    Reboot = TRUE;
-#endif
 
     return;
 }
@@ -2533,10 +2508,6 @@ void do_shutdown( CHAR_DATA * ch, char *argument )
     merc_down = TRUE;
     for ( d = descriptor_list; d != NULL; d = d_next )
     {
-#if defined(cbuilder)
-        if ( d->character )
-            RemoveUser( d->character );
-#endif
         d_next = d->next;
         close_socket( d );
     }
@@ -3047,12 +3018,6 @@ void do_purge( CHAR_DATA * ch, char *argument )
 
         if ( d != NULL )
         {
-#if defined(cbuilder)
-            if ( d->character )
-            {
-                RemoveUser( d->character );
-            }
-#endif
             close_socket( d );
         }
 
@@ -5881,14 +5846,6 @@ void do_mlevel( CHAR_DATA * ch, char *argument )
 }
 
 #ifdef CFG_SHELL_ENABLED
-#if defined(WIN32)
-void do_shell( CHAR_DATA * ch, char *argument )
-{
-    send_to_char
-        ( "Sorry -- shell is not currently available under Windows.\n\r", ch );
-    return;
-}
-#else
 void do_shell( CHAR_DATA * ch, char *argument )
 {
     DESCRIPTOR_DATA *d;
@@ -6108,5 +6065,4 @@ void do_shell( CHAR_DATA * ch, char *argument )
     /* Exit this process.  MUD will take the user over from here. */
     exit( 0 );
 }
-#endif
 #endif

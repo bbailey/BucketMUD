@@ -22,16 +22,12 @@
 #include <ctype.h>
 #include <time.h>
 #include <sys/types.h>
-#if defined(WIN32)
-#include <process.h>
-#endif
 
 #include "merc.h"
 #include "olc.h"
 #include "db.h"
 #include "interp.h"
 
-#if defined(unix)
 #ifndef S_SPLINT_S
 #include <unistd.h>
 #endif
@@ -39,7 +35,6 @@
 #include <sys/resource.h>
 /* extern int getrlimit(int resource, struct rlimit *rlp); */
 /* extern int setrlimit(int resource, struct rlimit *rlp); */
-#endif
 
 extern int _filbuf args( ( FILE * ) );
 
@@ -255,17 +250,8 @@ void load_random_objs args( ( CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex ) );
 
 bool write_to_descriptor args( ( int desc, char *txt, int length ) );
 
-#if defined(WIN32)
-#define COPYOVER_FILE  ".\\CopyOver.tmp"
-#if defined(cbuilder)
-#define EXE_FILE       "..\\src\\embergui.exe"
-#else
-#define EXE_FILE       "..\\src\\ember.exe"
-#endif
-#else
 #define COPYOVER_FILE  "TEMP"
 #define EXE_FILE       "../src/ember"
-#endif
 
 extern int port, control;
 extern bool fCopyOver;
@@ -273,11 +259,6 @@ extern bool fCopyOver;
 void do_copyover( CHAR_DATA * ch, char *argument )
 {
 
-#if defined(WIN32)
-    send_to_char( "Sorry, copyover not yet available in the Win32 port.\n\r",
-                  ch );
-    return;
-#else
     char strPath[MAX_STRING_LENGTH];
     FILE *fp;
     DESCRIPTOR_DATA *d, *d_next;
@@ -375,7 +356,6 @@ void do_copyover( CHAR_DATA * ch, char *argument )
     send_to_char( "Copyover FAILED!\n\r", ch );
 
     /* Here you might want to reopen fpReserve */
-#endif
 }
 
 void init_descriptor( DESCRIPTOR_DATA * dnew, int desc )
@@ -418,13 +398,8 @@ void copyover_recover( void )
 
     if ( !fp )                  /* there are some descriptors open which will hang forever then ? */
     {
-#if defined(cbuilder)
-        logf_string( "Error: copyover_recover: fopen %s", COPYOVER_FILE );
-        return -1;
-#else
         perror( "copyover_recover:fopen" );
         exit( 1 );
-#endif
     }
 
     unlink( COPYOVER_FILE );    /* In case something crashes - doesn't prevent reading  */
@@ -497,9 +472,6 @@ void copyover_recover( void )
                      TO_ROOM );
             }
 
-#if defined(cbuilder)
-            AddUser( dnew->character );
-#endif
         }
 
     }
@@ -507,7 +479,6 @@ void copyover_recover( void )
     fCopyOver = FALSE;
 }
 
-#if defined(unix)
 /* RT max open files fix */
 
 void maxfilelimit(  )
@@ -518,17 +489,14 @@ void maxfilelimit(  )
     r.rlim_cur = r.rlim_max;
     setrlimit( RLIMIT_NOFILE, &r );
 }
-#endif
 
 /*
  * Big mama top level function.
  */
 int boot_db(  )
 {
-#if defined(unix)
     /* open file fix */
     maxfilelimit(  );
-#endif
 
     /*
      * Load config variables from config file
@@ -627,13 +595,8 @@ systems. -Lancelight */
 
         if ( ( fpList = fopen( strPath, "r" ) ) == NULL )
         {
-#if defined(cbuilder)
-            logf_string( "Error: fopen %s", sysconfig.area_list );
-            return -1;
-#else
             perror( sysconfig.area_list );
             exit( 1 );
-#endif
         }
 
         sprintf( strPath, "%s/%s", sysconfig.area_dir,
@@ -642,13 +605,8 @@ systems. -Lancelight */
         /* Load Mob/Obj/RoomProgs */
         if ( ( fpArea = fopen( strPath, "r" ) ) == NULL )
         {
-#if defined(cbuilder)
-            logf_string( "Error: fopen %s", sysconfig.mudprogs_file );
-            return -1;
-#else
             perror( strPath );
             exit( 1 );
-#endif
         }
         load_mudprogs( fpArea );
         fclose( fpArea );
@@ -659,13 +617,8 @@ systems. -Lancelight */
         /* Load factions */
         if ( ( fpArea = fopen( strPath, "r" ) ) == NULL )
         {
-#if defined(cbuilder)
-            logf_string( "Error: fopen %s", sysconfig.factions_file );
-            return -1;
-#else
             perror( strPath );
             exit( 1 );
-#endif
         }
 
         load_factions( fpArea );
@@ -676,13 +629,8 @@ systems. -Lancelight */
         /* Load Socials */
         if ( ( fpArea = fopen( strPath, "r" ) ) == NULL )
         {
-#if defined(cbuilder)
-            logf_string( "Error: fopen %s", sysconfig.socials_file );
-            return -1;
-#else
             perror( strPath );
             exit( 1 );
-#endif
         }
 
         load_socials( fpArea );
@@ -703,13 +651,8 @@ systems. -Lancelight */
                 sprintf( strPath, "%s/%s", sysconfig.area_dir, strArea );
                 if ( ( fpArea = fopen( strPath, "r" ) ) == NULL )
                 {
-#if defined(cbuilder)
-                    logf_string( "Error: fopen %s", strPath );
-                    return -1;
-#else
                     perror( strPath );
                     exit( 1 );
-#endif
                 }
             }
 
@@ -720,11 +663,7 @@ systems. -Lancelight */
                 if ( fread_letter( fpArea ) != '#' )
                 {
                     bug( "Boot_db: # not found.", 0 );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 word = fread_word( fpArea );
@@ -762,11 +701,7 @@ systems. -Lancelight */
                 else
                 {
                     bug( "Boot_db: bad section name.", 0 );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
             }
 
@@ -781,13 +716,8 @@ systems. -Lancelight */
         /* Load resets and shops only after everything else is loaded in */
         if ( ( fpList = fopen( strPath, "r" ) ) == NULL )
         {
-#if defined(cbuilder)
-            logf_string( "Error: fopen %s", strPath );
-            return -1;
-#else
             perror( strPath );
             exit( 1 );
-#endif
         }
 
         for ( ;; )
@@ -805,13 +735,8 @@ systems. -Lancelight */
                 sprintf( strPath, "%s/%s", sysconfig.area_dir, strArea );
                 if ( ( fpArea = fopen( strPath, "r" ) ) == NULL )
                 {
-#if defined(cbuilder)
-                    logf_string( "Error: fopen %s", strPath );
-                    return -1;
-#else
                     perror( strPath );
                     exit( 1 );
-#endif
                 }
             }
 
@@ -822,11 +747,7 @@ systems. -Lancelight */
                 if ( fread_letter( fpArea ) != '#' )
                 {
                     bug( "Boot_db: # not found.", 0 );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 word = fread_word( fpArea );
@@ -861,11 +782,7 @@ systems. -Lancelight */
                 else
                 {
                     bug( "Boot_db: bad section name.", 0 );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
             }
 
@@ -1022,11 +939,7 @@ void skip_section( FILE * fp, char *section )
         }
     }
     bug( "skip_section: Invalid section name.", 0 );
-#if defined(cbuilder)
-    return -1;
-#else
     exit( 1 );
-#endif
 }
 
 /*
@@ -1130,11 +1043,7 @@ void load_area( FILE * fp )
                                 && pArea->uvnum <= pTempArea->uvnum ) ) )
                     {
                         bug( "Overlapping vnum range!", pArea->name );
-#if defined(cbuilder)
-                        return -1;
-#else
                         exit( 1 );
-#endif
                     }
                 return;
             }
@@ -1276,11 +1185,7 @@ void load_resets( FILE * fp )
     if ( !area_last )
     {
         bug( "Load_resets: no #AREA seen yet.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     for ( ;; )
@@ -1315,11 +1220,7 @@ void load_resets( FILE * fp )
         {
         default:
             bug( "Load_resets: bad command '%c'.", letter );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
             break;
 
         case 'M':
@@ -1368,11 +1269,7 @@ void load_resets( FILE * fp )
                  || !IS_SET( pexit->rs_flags, EX_ISDOOR ) )
             {
                 bug( "Load_resets: 'D': exit %d not door.", pReset->arg2 );
-#if defined(cbuilder)
-                return -1;
-#else
                 exit( 1 );
-#endif
             }
 
             switch ( pReset->arg3 )
@@ -1450,11 +1347,7 @@ void load_resets( FILE * fp )
             if ( pReset->arg2 < 0 || pReset->arg2 > 6 ) /* Last Door. */
             {
                 bug( "Load_resets: 'R': bad exit %d.", pReset->arg2 );
-#if defined(cbuilder)
-                return -1;
-#else
                 exit( 1 );
-#endif
             }
 
             if ( ( pRoomIndex = get_room_index( pReset->vnum ) ) )
@@ -1477,11 +1370,7 @@ void load_rooms( FILE * fp )
     if ( area_last == NULL )
     {
         bug( "load_rooms: no #AREA seen yet.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     for ( ;; )
@@ -1495,11 +1384,7 @@ void load_rooms( FILE * fp )
         if ( letter != '#' )
         {
             bug( "Load_rooms: # not found.", 0 );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
 
         vnum = fread_number( fp );
@@ -1510,11 +1395,7 @@ void load_rooms( FILE * fp )
         if ( get_room_index( vnum ) != NULL )
         {
             bug( "Load_rooms: vnum %d duplicated.", vnum );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
         fBootDb = TRUE;
 
@@ -1549,11 +1430,7 @@ void load_rooms( FILE * fp )
                 if ( door < 0 || door > 5 )
                 {
                     bug( "Fread_rooms: vnum %d has bad door number.", vnum );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 pexit = alloc_perm( sizeof( *pexit ) );
@@ -1612,11 +1489,7 @@ void load_rooms( FILE * fp )
             else
             {
                 bug( "Load_rooms: vnum %d has flag not 'DES'.", vnum );
-#if defined(cbuilder)
-                return -1;
-#else
                 exit( 1 );
-#endif
             }
         }
 
@@ -2086,11 +1959,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     if ( pMobIndex == NULL )
     {
         bug( "Create_mobile: NULL pMobIndex.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     if ( char_free == NULL )
@@ -2301,11 +2170,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
     if ( pObjIndex == NULL )
     {
         bug( "Create_object: NULL pObjIndex.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     if ( obj_free == NULL )
@@ -2623,11 +2488,7 @@ MOB_INDEX_DATA *get_mob_index( int vnum )
     if ( fBootDb )
     {
         bug( "Get_mob_index: bad vnum %d.", vnum );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     return NULL;
@@ -2651,11 +2512,7 @@ OBJ_INDEX_DATA *get_obj_index( int vnum )
     if ( fBootDb )
     {
         bug( "Get_obj_index: bad vnum %d.", vnum );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     return NULL;
@@ -2679,11 +2536,7 @@ MPROG_DATA *get_mprog_by_vnum( int vnum )
     if ( fBootDb )
     {
         bug( "Get_Mprog_By_Vnum: bad vnum %d.", vnum );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     return NULL;
@@ -2707,11 +2560,7 @@ MPROG_GROUP *get_mprog_group_by_vnum( int vnum )
     if ( fBootDb )
     {
         bug( "Get_Mprog_Group_By_Vnum: bad vnum %d.", vnum );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     return NULL;
@@ -2735,11 +2584,7 @@ ROOM_INDEX_DATA *get_room_index( int vnum )
     if ( fBootDb )
     {
         bug( "Get_room_index: bad vnum %d.", vnum );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     return NULL;
@@ -2792,11 +2637,7 @@ int fread_number( FILE * fp )
     if ( !isdigit( c ) )
     {
         bug( "Fread_number: bad format.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     while ( isdigit( c ) )
@@ -2979,11 +2820,7 @@ char *fread_word( FILE * fp )
     }
 
     bug( "Fread_word: word too long.", 0 );
-#if defined(cbuilder)
-    return -1;
-#else
     exit( 1 );
-#endif
     return NULL;
 }
 
@@ -2999,11 +2836,7 @@ void *alloc_mem( int sMem )
     {
         perror( "malloc failure" );
         fprintf( stderr, "Malloc failure @ %s:%d\n", __FILE__, __LINE__ );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     return pMem;
@@ -3050,11 +2883,7 @@ void *alloc_perm( int sMem )
     if ( sMem > MAX_PERM_BLOCK )
     {
         bug( "Alloc_perm: %d too large.", sMem );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     if ( pMemPerm == NULL || iMemPerm + sMem > MAX_PERM_BLOCK )
@@ -3062,13 +2891,8 @@ void *alloc_perm( int sMem )
         iMemPerm = 0;
         if ( ( pMemPerm = calloc( 1, MAX_PERM_BLOCK ) ) == NULL )
         {
-#if defined(cbuilder)
-            log_string( "Error: Alloc_perm" );
-            return -1;
-#else
             perror( "Alloc_perm" );
             exit( 1 );
-#endif
         }
     }
 
@@ -3844,26 +3668,19 @@ void bug_trace( const char *str )
  * Writes a string to the log.
  */
 
-#if !defined(cbuilder)
 void log_string( const char *str )
 {
     char *strtime;
 
     strtime = ctime( &current_time );
     strtime[strlen( strtime ) - 1] = '\0';
-#if defined(WIN32)
-    fprintf( stdout, "%s :: %s\n", strtime, str );
-#else
     fprintf( stderr, "%s :: %s\n", strtime, str );
-#endif
     return;
 }
-#endif
 
 /*
  * Writes a string to the log accepting arguments
  */
-#if !defined(cbuilder)
 void logf_string( const char *str, ... )
 {
     char *strtime;
@@ -3877,14 +3694,9 @@ void logf_string( const char *str, ... )
     }
     strtime = ctime( &current_time );
     strtime[strlen( strtime ) - 1] = '\0';
-#if defined(WIN32)
-    fprintf( stdout, "%s :: %s\n", strtime, list );
-#else
     fprintf( stderr, "%s :: %s\n", strtime, list );
-#endif
     return;
 }
-#endif
 
 void update_last( char *line1, char *line2, char *line3 )
 {
@@ -4036,11 +3848,7 @@ void load_mudprogs( FILE * fp )
                 if ( letter != '#' )
                 {
                     bug( "Load_MudProgs: # not found.", 0 );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 vnum = fread_number( fp );
@@ -4051,11 +3859,7 @@ void load_mudprogs( FILE * fp )
                 if ( get_mprog_by_vnum( vnum ) != NULL )
                 {
                     bug( "Load_MudProgs: vnum %d duplicated.", vnum );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
                 fBootDb = TRUE;
 
@@ -4069,20 +3873,12 @@ void load_mudprogs( FILE * fp )
                 if ( pMudProg->trigger_type == ERROR_PROG )
                 {
                     bug( "Load_MudProgs: MudProg file type error" );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
                 else if ( pMudProg->trigger_type == IN_FILE_PROG )
                 {
                     bug( "Load_MudProgs: MudProg file contains a call to file." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 pMudProg->arglist = fread_string( fp );
@@ -4111,11 +3907,7 @@ void load_mudprogs( FILE * fp )
                 if ( letter != '#' )
                 {
                     bug( "Load_MudProgs: # not found.", 0 );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 vnum = fread_number( fp );
@@ -4126,11 +3918,7 @@ void load_mudprogs( FILE * fp )
                 if ( get_mprog_by_vnum( vnum ) != NULL )
                 {
                     bug( "Load_MudProgs: vnum %d duplicated.", vnum );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
                 fBootDb = TRUE;
 
@@ -4144,20 +3932,12 @@ void load_mudprogs( FILE * fp )
                 if ( pMudProg->trigger_type == ERROR_PROG )
                 {
                     bug( "Load_MudProgs: MudProg file type error" );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
                 else if ( pMudProg->trigger_type == IN_FILE_PROG )
                 {
                     bug( "Load_MudProgs: MudProg file contains a call to file." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 pMudProg->arglist = fread_string( fp );
@@ -4186,11 +3966,7 @@ void load_mudprogs( FILE * fp )
                 if ( letter != '#' )
                 {
                     bug( "Load_MudProgs: # not found.", 0 );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 vnum = fread_number( fp );
@@ -4201,11 +3977,7 @@ void load_mudprogs( FILE * fp )
                 if ( get_mprog_by_vnum( vnum ) != NULL )
                 {
                     bug( "Load_MudProgs: vnum %d duplicated.", vnum );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
                 fBootDb = TRUE;
 
@@ -4219,20 +3991,12 @@ void load_mudprogs( FILE * fp )
                 if ( pMudProg->trigger_type == ERROR_PROG )
                 {
                     bug( "Load_MudProgs: MudProg file type error" );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
                 else if ( pMudProg->trigger_type == IN_FILE_PROG )
                 {
                     bug( "Load_MudProgs: MudProg file contains a call to file." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 pMudProg->arglist = fread_string( fp );
@@ -4261,11 +4025,7 @@ void load_mudprogs( FILE * fp )
                 if ( letter != '#' )
                 {
                     bug( "Load_MudProgs: # not found.", 0 );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 vnum = fread_number( fp );
@@ -4276,11 +4036,7 @@ void load_mudprogs( FILE * fp )
                 if ( get_mprog_group_by_vnum( vnum ) != NULL )
                 {
                     bug( "Load_MudProgs: vnum %d duplicated.", vnum );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
                 fBootDb = TRUE;
 
@@ -4296,11 +4052,7 @@ void load_mudprogs( FILE * fp )
                            get_mprog_by_vnum( fread_number( fp ) ) ) == NULL )
                     {
                         bug( "Load_MudProgs: Prog group references invalid prog vnum." );
-#if defined(cbuilder)
-                        return -1;
-#else
                         exit( 1 );
-#endif
                     }
 
                     if ( pMprogGroup->prog_type == 0 )
@@ -4308,11 +4060,7 @@ void load_mudprogs( FILE * fp )
                     else if ( pMprogGroup->prog_type != pMudProg->prog_type )
                     {
                         bug( "Load_MudProgs: Prog group contains mixed prog types." );
-#if defined(cbuilder)
-                        return -1;
-#else
                         exit( 1 );
-#endif
                     }
 
                     pMprogList =
@@ -4343,11 +4091,7 @@ void load_mudprogs( FILE * fp )
         else
         {
             bug( "Load_MudProgs: bad section name.", 0 );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
     }
 }
@@ -4364,13 +4108,8 @@ int load_config_file( void )
 
     if ( ( fp = fopen( CONFIG_FILE, "r" ) ) == NULL )
     {
-#if defined(cbuilder)
-        logf_string( "Error: fopen %s", CONFIG_FILE );
-        return FALSE;
-#else
         perror( CONFIG_FILE );
         exit( 1 );
-#endif
     }
 
     while ( !bEOF )
@@ -4434,15 +4173,9 @@ int load_config_file( void )
                 else
                 {
                     /* Unknown line or section header */
-#if defined(cbuilder)
-                    logf_string
-                        ( "Error: load_config_file: Invalid variable name." );
-                    return FALSE;
-#else
                     bug( "Load_Config_File: Invalid variable name - '%s'.",
                          word );
                     exit( 1 );
-#endif
                 }
             }
         }
@@ -4518,28 +4251,17 @@ int load_config_file( void )
                 else
                 {
                     /* Unknown line or section header */
-#if defined(cbuilder)
-                    logf_string
-                        ( "Error: load_config_file: Invalid variable name." );
-                    return FALSE;
-#else
                     bug( "Load_Config_File: Invalid variable name - '%s'.",
                          word );
                     exit( 1 );
-#endif
                 }
             }
         }
         else
         {
             /* Unknown line or section header */
-#if defined(cbuilder)
-            logf_string( "Error: load_config_file: Invalid line encountered." );
-            return FALSE;
-#else
             bug( "Load_Config_File: Invalid line." );
             exit( 1 );
-#endif
         }
     }
 
@@ -4559,26 +4281,16 @@ char *get_config_value( char *inbuf, char *outbuf )
 
     if ( str_cmp( outbuf, "=" ) )
     {
-#if defined(cbuilder)
-        logf_string( "Error: get_config_value: Variable format erorr." );
-        return -1;
-#else
         perror( "get_config_value: Variable format error." );
         exit( 1 );
-#endif
     }
 
     inbuf = one_argument2( inbuf, outbuf );
 
     if ( *outbuf == '\0' )
     {
-#if defined(cbuilder)
-        logf_string( "Error: get_config_value: Variable format erorr." );
-        return -1;
-#else
         perror( "get_config_value: Variable format error." );
         exit( 1 );
-#endif
     }
 
     return outbuf;
@@ -4603,11 +4315,7 @@ void load_progs( FILE * fp )
     if ( !area_last )
     {
         bug( "Load_Progs: no #AREA seen yet.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     for ( ;; )
@@ -4642,11 +4350,7 @@ void load_progs( FILE * fp )
         {
         default:
             bug( "Load_Progs: bad prog type '%c'.", letter );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
             break;
 
         case 'M':
@@ -4658,11 +4362,7 @@ void load_progs( FILE * fp )
                 if ( pMudProg->prog_type != MOB_PROG )
                 {
                     bug( "Load_Progs: invalid prog type." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 assign_mobprog( pMobIndex, pMudProg, NULL );
@@ -4672,11 +4372,7 @@ void load_progs( FILE * fp )
                 if ( pMprogGroup->prog_type != MOB_PROG )
                 {
                     bug( "Load_Progs: invalid prog type." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 assign_mobprog( pMobIndex, NULL, pMprogGroup );
@@ -4692,11 +4388,7 @@ void load_progs( FILE * fp )
                 if ( pMudProg->prog_type != OBJ_PROG )
                 {
                     bug( "Load_Progs: invalid prog type." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 assign_objprog( pObjIndex, pMudProg, NULL );
@@ -4706,11 +4398,7 @@ void load_progs( FILE * fp )
                 if ( pMprogGroup->prog_type != OBJ_PROG )
                 {
                     bug( "Load_Progs: invalid prog type." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 assign_objprog( pObjIndex, NULL, pMprogGroup );
@@ -4726,11 +4414,7 @@ void load_progs( FILE * fp )
                 if ( pMudProg->prog_type != ROOM_PROG )
                 {
                     bug( "Load_Progs: invalid prog type." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 assign_roomprog( pRoomIndex, pMudProg, NULL );
@@ -4740,11 +4424,7 @@ void load_progs( FILE * fp )
                 if ( pMprogGroup->prog_type != ROOM_PROG )
                 {
                     bug( "Load_Progs: invalid prog type." );
-#if defined(cbuilder)
-                    return -1;
-#else
                     exit( 1 );
-#endif
                 }
 
                 assign_roomprog( pRoomIndex, NULL, pMprogGroup );
@@ -4769,11 +4449,7 @@ void load_mobiles( FILE * fp )
     if ( !area_last )           /* OLC */
     {
         bug( "Load_mobiles: no #AREA seen yet.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
 
     for ( ;; )
@@ -4786,11 +4462,7 @@ void load_mobiles( FILE * fp )
         if ( letter != '#' )
         {
             bug( "Load_mobiles: # not found.", 0 );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
 
         vnum = fread_number( fp );
@@ -4801,11 +4473,7 @@ void load_mobiles( FILE * fp )
         if ( get_mob_index( vnum ) != NULL )
         {
             bug( "Load_mobiles: vnum %d duplicated.", vnum );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
         fBootDb = TRUE;
 
@@ -4948,11 +4616,7 @@ void load_objects( FILE * fp )
     if ( !area_last )           /* OLC */
     {
         bug( "Load_objects: no #AREA seen yet.", 0 );
-#if defined(cbuilder)
-        return -1;
-#else
         exit( 1 );
-#endif
     }
     for ( ;; )
     {
@@ -4964,11 +4628,7 @@ void load_objects( FILE * fp )
         if ( letter != '#' )
         {
             bug( "Load_objects: # not found.", 0 );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
 
         vnum = fread_number( fp );
@@ -4979,11 +4639,7 @@ void load_objects( FILE * fp )
         if ( get_obj_index( vnum ) != NULL )
         {
             bug( "Load_objects: vnum %d duplicated.", vnum );
-#if defined(cbuilder)
-            return -1;
-#else
             exit( 1 );
-#endif
         }
         fBootDb = TRUE;
 

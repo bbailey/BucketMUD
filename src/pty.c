@@ -1,8 +1,4 @@
-#if defined(WIN32)
-#include <time.h>
-#else
 #include <sys/time.h>
-#endif
 #include <stdio.h>
 #include <fcntl.h>
 #include "merc.h"
