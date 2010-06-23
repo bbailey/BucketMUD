@@ -25,19 +25,19 @@
 #define MAX_DAMAGE_MESSAGE 35
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_emote );
-DECLARE_DO_FUN( do_berserk );
-DECLARE_DO_FUN( do_bash );
-DECLARE_DO_FUN( do_trip );
-DECLARE_DO_FUN( do_dirt );
-DECLARE_DO_FUN( do_flee );
-DECLARE_DO_FUN( do_kick );
-DECLARE_DO_FUN( do_blackjack );
-DECLARE_DO_FUN( do_disarm );
-DECLARE_DO_FUN( do_get );
-DECLARE_DO_FUN( do_recall );
-DECLARE_DO_FUN( do_yell );
-DECLARE_DO_FUN( do_sacrifice );
+void  do_emote  ( CHAR_DATA *ch, char *argument );
+void  do_berserk  ( CHAR_DATA *ch, char *argument );
+void  do_bash  ( CHAR_DATA *ch, char *argument );
+void  do_trip  ( CHAR_DATA *ch, char *argument );
+void  do_dirt  ( CHAR_DATA *ch, char *argument );
+void  do_flee  ( CHAR_DATA *ch, char *argument );
+void  do_kick  ( CHAR_DATA *ch, char *argument );
+void  do_blackjack  ( CHAR_DATA *ch, char *argument );
+void  do_disarm  ( CHAR_DATA *ch, char *argument );
+void  do_get  ( CHAR_DATA *ch, char *argument );
+void  do_recall  ( CHAR_DATA *ch, char *argument );
+void  do_yell  ( CHAR_DATA *ch, char *argument );
+void  do_sacrifice  ( CHAR_DATA *ch, char *argument );
 
 /*
  * Local functions.

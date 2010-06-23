@@ -5,7 +5,7 @@
 #include <time.h>
 #include "merc.h"
 
-DECLARE_DO_FUN( do_save );
+void  do_save  ( CHAR_DATA *ch, char *argument );
 
 void do_marry( CHAR_DATA * ch, char *argument )
 {

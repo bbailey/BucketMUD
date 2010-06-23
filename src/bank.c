@@ -26,7 +26,7 @@ NOTE: This code leaves the the IS_CHANGER stuff in do_give
 #include "merc.h"
 /*#include "recycle.h"*/
 /* command procedures needed */
-DECLARE_DO_FUN( do_help );
+void  do_help  ( CHAR_DATA *ch, char *argument );
 
 void do_account( CHAR_DATA * ch, char *argument )
 {

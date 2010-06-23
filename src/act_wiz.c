@@ -38,7 +38,7 @@
 /*
  * Local functions.
  */
-static DECLARE_DO_FUN(do_rfind);
+static void do_rfind ( CHAR_DATA *ch, char *argument );
 ROOM_INDEX_DATA *find_location  ( CHAR_DATA * ch, char *arg ) ;
 
 extern int control;

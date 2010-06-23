@@ -25,7 +25,7 @@
 #include <string.h>
 #include "merc.h"
 
-DECLARE_DO_FUN( do_auction );
+void  do_auction  ( CHAR_DATA *ch, char *argument );
 DECLARE_SPELL_FUN( spell_identify );
 void show_obj_stats( int sn, int level, CHAR_DATA * ch, void *vo );
 void auction_channel_bid(  );

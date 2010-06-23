@@ -22,11 +22,11 @@
 bool can_practice( CHAR_DATA * ch, long sn );
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_exits );
-DECLARE_DO_FUN( do_look );
-DECLARE_DO_FUN( do_help );
-DECLARE_DO_FUN( do_todo );
-DECLARE_DO_FUN( do_save );
+void  do_exits  ( CHAR_DATA *ch, char *argument );
+void  do_look  ( CHAR_DATA *ch, char *argument );
+void  do_help  ( CHAR_DATA *ch, char *argument );
+void  do_todo  ( CHAR_DATA *ch, char *argument );
+void  do_save  ( CHAR_DATA *ch, char *argument );
 
 char *const where_name[] =
 {

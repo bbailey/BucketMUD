@@ -33,8 +33,8 @@
 #include <stdarg.h>
 #include "merc.h"
 #include "olc.h"
-DECLARE_DO_FUN( do_look );
-DECLARE_DO_FUN( do_save );
+void  do_look  ( CHAR_DATA *ch, char *argument );
+void  do_save  ( CHAR_DATA *ch, char *argument );
 
 #define CEDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
 

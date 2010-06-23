@@ -26,7 +26,7 @@
 #include "olc.h"
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_return );
+void  do_return  ( CHAR_DATA *ch, char *argument );
 
 AFFECT_DATA *affect_free;
 NEWAFFECT_DATA *newaffect_free;

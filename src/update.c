@@ -26,8 +26,8 @@
 extern bool can_use( CHAR_DATA * ch, long sn );
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_quit );
-DECLARE_DO_FUN( do_say );       /* added for AUTO_HATE */
+void  do_quit  ( CHAR_DATA *ch, char *argument );
+void  do_say  ( CHAR_DATA *ch, char *argument );       /* added for AUTO_HATE */
 
 /*
  * Local functions.

@@ -24,12 +24,12 @@
 #include "magic.h"
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_split );
-DECLARE_DO_FUN( do_yell );
-DECLARE_DO_FUN( do_say );
-DECLARE_DO_FUN( do_brew );
-DECLARE_DO_FUN( do_scribe );
-DECLARE_DO_FUN( do_imprint );
+void  do_split  ( CHAR_DATA *ch, char *argument );
+void  do_yell  ( CHAR_DATA *ch, char *argument );
+void  do_say  ( CHAR_DATA *ch, char *argument );
+void  do_brew  ( CHAR_DATA *ch, char *argument );
+void  do_scribe  ( CHAR_DATA *ch, char *argument );
+void  do_imprint  ( CHAR_DATA *ch, char *argument );
 
 extern bool chaos;
 

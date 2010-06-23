@@ -57,11 +57,11 @@
 #include <math.h>
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_help );
-DECLARE_DO_FUN( do_look );
-DECLARE_DO_FUN( do_skills );
-DECLARE_DO_FUN( do_outfit );
-DECLARE_DO_FUN( do_afk );
+void  do_help  ( CHAR_DATA *ch, char *argument );
+void  do_look  ( CHAR_DATA *ch, char *argument );
+void  do_skills  ( CHAR_DATA *ch, char *argument );
+void  do_outfit  ( CHAR_DATA *ch, char *argument );
+void  do_afk  ( CHAR_DATA *ch, char *argument );
 
 /*
  * Malloc debugging stuff.

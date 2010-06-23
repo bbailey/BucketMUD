@@ -10,10 +10,10 @@
 #include <math.h>
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_groups );
-DECLARE_DO_FUN( do_help );
-DECLARE_DO_FUN( do_say );
-DECLARE_DO_FUN( do_set );
+void  do_groups  ( CHAR_DATA *ch, char *argument );
+void  do_help  ( CHAR_DATA *ch, char *argument );
+void  do_say  ( CHAR_DATA *ch, char *argument );
+void  do_set  ( CHAR_DATA *ch, char *argument );
 
 extern bool has_racial_skill( CHAR_DATA * ch, long sn );
 extern bool can_use( CHAR_DATA * ch, int sn );

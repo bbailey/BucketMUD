@@ -18,7 +18,7 @@
 #include "merc.h"
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_quit );
+void  do_quit  ( CHAR_DATA *ch, char *argument );
 
 extern void ChannelMessage( char *mesg, CHAR_DATA * ch );
 extern bool can_do_immcmd( CHAR_DATA * ch, char *cmd );

@@ -55,9 +55,9 @@ static struct track_queue_struct *queue_head = NULL, *queue_tail = NULL;
 /* end track */
 
 /* command procedures needed */
-DECLARE_DO_FUN( do_look );
-DECLARE_DO_FUN( do_recall );
-DECLARE_DO_FUN( do_stand );
+void  do_look  ( CHAR_DATA *ch, char *argument );
+void  do_recall  ( CHAR_DATA *ch, char *argument );
+void  do_stand  ( CHAR_DATA *ch, char *argument );
 
 char *const dir_name[] =
 {

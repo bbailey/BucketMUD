@@ -16,7 +16,7 @@
 #include "merc.h"
 #include "interp.h"
 
-DECLARE_DO_FUN( do_skill );
+void  do_skill  ( CHAR_DATA *ch, char *argument );
 
 /*
 
