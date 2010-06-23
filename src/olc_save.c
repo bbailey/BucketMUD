@@ -42,14 +42,6 @@
 extern void save_factionaffs( FILE * fp, AREA_DATA * pArea );
 
 /*
- *  Verbose writes reset data in plain english into the comments
- *  section of the resets.  It makes areas considerably larger but
- *  may aid in debugging.
- */
-
-#define VERBOSE
-
-/*
  * Local functions.
  */
 
@@ -701,7 +693,6 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
                         bug( "Save_resets: bad command %c.", pReset->command );
                         break;
 
-#if defined( VERBOSE )
                     case 'M':
                         if ( pReset->vnum < 0 || pReset->arg3 < 0 ) /* Allow <= -1 for infinate values in arg2 */
                         {
@@ -857,115 +848,6 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
                         }
                         break;
                     }
-#endif
-#if !defined( VERBOSE )
-                case 'M':
-                    if ( pReset->vnum < 0 ||
-                            pReset->arg2 < 0 || pReset->arg3 < 0 )
-                    {
-                        bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
-                        bug( "Save_resets: in file %s.  Reset not saved",
-                             pArea->filename );
-                        break;
-                    }
-                    pLastMob = get_mob_index( pReset->vnum );
-                    fprintf( fp, "M 0 %d %d %d\n",
-                             pReset->vnum, pReset->arg2, pReset->arg3 );
-                    if ( !pLastMob )
-                    {
-                        bug( "Save_resets: !NO_MOB! in [%s]", pArea->filename );
-                    }
-                    break;
-
-                case 'O':
-                    if ( pReset->vnum < 0 ||
-                            pReset->arg2 < 0 || pReset->arg3 < -1 )
-                    {
-                        bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
-                        bug( "Save_resets: in file %s.  Reset not saved",
-                             pArea->filename );
-                        break;
-                    }
-                    pLastObj = get_obj_index( pReset->vnum );
-                    pRoom = get_room_index( pReset->arg3 );
-                    fprintf( fp, "O 0 %d 0 %d\n", pReset->vnum, pReset->arg3 );
-                    if ( !pLastObj )
-                    {
-                        bug( "Save_resets: !NO_Obj! in [%s]", pArea->filename );
-                    }
-                    break;
-
-                case 'P':
-                    if ( pReset->vnum < 0 ||
-                            pReset->arg2 < 0 || pReset->arg3 < -1 )
-                    {
-                        bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
-                        bug( "Save_resets: in file %s.  Reset not saved",
-                             pArea->filename );
-                        break;
-                    }
-                    pLastObj = get_obj_index( pReset->vnum );
-                    fprintf( fp, "P 0 %d 0 %d\n", pReset->vnum, pReset->arg3 );
-                    if ( !pLastObj )
-                    {
-                        bug( "Save_resets: !NO_Obj! in [%s]", pArea->filename );
-                    }
-                    break;
-
-                case 'G':
-                    if ( pReset->vnum < 0 ||
-                            pReset->arg2 < 0 || pReset->arg3 < -1 )
-                    {
-                        bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
-                        bug( "Save_resets: in file %s.  Reset not saved",
-                             pArea->filename );
-                        break;
-                    }
-                    fprintf( fp, "G 0 %d 0\n", pReset->vnum );
-                    if ( !pLastMob )
-                    {
-                        bug( "Save_resets: !NO_MOB! in [%s]", pArea->filename );
-                    }
-                    break;
-
-                case 'E':
-                    if ( pReset->vnum < 0 ||
-                            pReset->arg2 < 0 || pReset->arg3 < -1 )
-                    {
-                        bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
-                        bug( "Save_resets: in file %s.  Reset not saved",
-                             pArea->filename );
-                        break;
-                    }
-                    fprintf( fp, "E 0 %d 0 %d\n", pReset->vnum, pReset->arg3 );
-                    if ( !pLastMob )
-                    {
-                        bug( "Save_resets: !NO_MOB! in [%s]", pArea->filename );
-                    }
-                    break;
-
-                case 'D':
-                    break;
-
-                case 'R':
-                    if ( pReset->vnum < 0 ||
-                            pReset->arg2 < 0 || pReset->arg3 < 0 )
-                    {
-                        bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
-                        bug( "Save_resets: in file %s.  Reset not saved",
-                             pArea->filename );
-                        break;
-                    }
-                    pRoom = get_room_index( pReset->vnum );
-                    fprintf( fp, "R 0 %d %d\n", pReset->vnum, pReset->arg2 );
-                    if ( !pRoom )
-                    {
-                        bug( "Save_resets: !NO_ROOM! in [%s]",
-                             pArea->filename );
-                    }
-                    break;
-                }
-#endif
             }
         }                       /* End if correct area */
     }                           /* End for pRoom */
