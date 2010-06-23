@@ -1,4 +1,4 @@
-/***************************************************************************   
+/***************************************************************************
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
  *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
  *                                                                         *
@@ -111,16 +111,16 @@ bool check_ban( char *site, int type )
             continue;
 
         if ( IS_SET( pban->ban_flags, BAN_PREFIX )
-             && IS_SET( pban->ban_flags, BAN_SUFFIX )
-             && strstr( pban->name, host ) != NULL )
+                && IS_SET( pban->ban_flags, BAN_SUFFIX )
+                && strstr( pban->name, host ) != NULL )
             return TRUE;
 
         if ( IS_SET( pban->ban_flags, BAN_PREFIX )
-             && !str_suffix( pban->name, host ) )
+                && !str_suffix( pban->name, host ) )
             return TRUE;
 
         if ( IS_SET( pban->ban_flags, BAN_SUFFIX )
-             && !str_prefix( pban->name, host ) )
+                && !str_prefix( pban->name, host ) )
             return TRUE;
     }
 
@@ -281,7 +281,7 @@ void do_allow( CHAR_DATA * ch, char *argument )
             if ( curr->level > get_trust( ch ) )
             {
                 send_to_char
-                    ( "You are not powerful enough to lift that ban.\n\r", ch );
+                ( "You are not powerful enough to lift that ban.\n\r", ch );
                 return;
             }
             if ( prev == NULL )

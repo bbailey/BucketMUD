@@ -46,7 +46,8 @@ extern int _filbuf args( ( FILE * ) );
 
 typedef struct BE BufEntry;
 
-struct BE {
+struct BE
+{
     BufEntry *next;
     uintType size;              /* size of the chunk (regardless of NULL CHAR) */
     intType usage;              /* how many pointers to the string */
@@ -60,7 +61,8 @@ struct BE {
  */
 typedef struct TH TempHash;
 
-struct TH {
+struct TH
+{
     TempHash *next;
     uintType len;
     char *str;
@@ -100,7 +102,7 @@ long MAX_STRING = MAX_CHUNKS * CHUNK_SIZE;
 int HEADER_SIZE;
 
 /*
- * Not sure what is a good value for MAX_FREE 
+ * Not sure what is a good value for MAX_FREE
  * If a dup fails str_dup will not defrag unless the number
  * of numFree >= MAX_FREE. numFree is NOT the current number of free blocks,
  * it is just a counter so defrag doesnt start dragging the game in the
@@ -143,7 +145,7 @@ void init_string_space(  )
 
     ssm_buf_free = ssm_buf_head;
     temp_string_hash = ( TempHash ** ) calloc( sizeof( TempHash * ),
-                                               MAX_KEY_HASH );
+                       MAX_KEY_HASH );
 }
 
 int defrag_heap(  )
@@ -239,7 +241,7 @@ char *str_dup( const char *str )
 
     rlen = len = ( int ) strlen( str ) + 1;
 
-    /* 
+    /*
      * Round up to machine dependant address size.
      * Don't remove this, because when the BufEntry struct is overlaid
      * the struct must be aligned correctly.
@@ -250,7 +252,7 @@ char *str_dup( const char *str )
 
     if ( ssm_buf_free )
     {
-      RETRY:
+RETRY:
         for ( ptr = ssm_buf_free; ptr; ptr = ptr->next )
             if ( ptr->usage == 0 && ptr->size >= len )
                 break;
@@ -298,7 +300,7 @@ char *str_dup( const char *str )
                 ssm_buf_free->usage--;  /* buf_free was skipped */
 
             for ( ssm_buf_free = ssm_buf_head; ssm_buf_free;
-                  ssm_buf_free = ssm_buf_free->next )
+                    ssm_buf_free = ssm_buf_free->next )
                 if ( ssm_buf_free->usage == 0 )
                     break;
         }
@@ -333,7 +335,7 @@ char *str_dup( const char *str )
  * Never call free/delete externally on a shared string.
  *
  * You must now pass a pointer to the string pointer you're wanting to free.  This
- * way free_string can set that pointer to NULL and not rely on the caller to 
+ * way free_string can set that pointer to NULL and not rely on the caller to
  * set the pointer to null after call free_string.  This method makes it so
  * no-one can free the same string twice (which was causing major string-space
  * corruption). -Zane
@@ -395,7 +397,7 @@ void free_string( char **strptr )
                     temp_string_hash[ihash] = ptr->next;
                 else
                     for ( walk = temp_string_hash[ihash]; walk;
-                          walk = walk->next )
+                            walk = walk->next )
                     {
                         if ( walk->next == ptr )
                         {
@@ -435,7 +437,7 @@ char *fread_string( FILE * fp )
     register char c;
     int len;
 
-/*    *status = 0;*/
+    /*    *status = 0;*/
 
     do
         c = getc( fp );
@@ -454,7 +456,7 @@ char *fread_string( FILE * fp )
 
         case EOF:
             bug( "Fread_string: EOF", 0 );
-/*	    	*status = 1; */
+            /*	    	*status = 1; */
             return NULL;
             break;
 

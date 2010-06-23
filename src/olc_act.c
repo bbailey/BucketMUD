@@ -39,7 +39,8 @@ char arg[MAX_INPUT_LENGTH];
 #define AEDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
 #define MPEDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
 #define MPGEDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
-struct olc_help_type {
+struct olc_help_type
+{
     char *command;
     const void *structure;
     char *desc;
@@ -66,7 +67,8 @@ bool show_version( CHAR_DATA * ch, char *argument )
  * This table contains help commands and a brief description of each.
  * ------------------------------------------------------------------
  */
-const struct olc_help_type help_table[] = {
+const struct olc_help_type help_table[] =
+{
     {"area", area_flags, "Area attributes."},
     {"room", room_flags, "Room attributes."},
     {"sector", sector_flags, "Sector types, terrain."},
@@ -86,7 +88,7 @@ const struct olc_help_type help_table[] = {
     {"liquid", liquid_flags, "Types of liquids."},
     {"mudprogs", mprog_type_flags, "Types of MudProgs."},
 
-/* ROM specific bits: */
+    /* ROM specific bits: */
 
     {"form", form_flags, "Mobile body form."},
     {"part", part_flags, "Mobile body parts."},
@@ -103,7 +105,7 @@ const struct olc_help_type help_table[] = {
 
     {"randobj", rnd_obj_flags, "Random object types."},
 
-/* Clans */
+    /* Clans */
 
     {"joinflags", clan_join_flags, "Clan join flags."},
     {"clanflags", clan_flags, "Clan flags."},
@@ -166,7 +168,7 @@ void show_skill_cmds( CHAR_DATA * ch, int tar )
             break;
 
         if ( !str_cmp( skill_table[sn].name, "reserved" )
-             || skill_table[sn].spell_fun == spell_null )
+                || skill_table[sn].spell_fun == spell_null )
             continue;
 
         if ( tar == -1 || skill_table[sn].target == tar )
@@ -222,7 +224,7 @@ bool show_help( CHAR_DATA * ch, char *argument )
     for ( cnt = 0; help_table[cnt].command[0]; cnt++ )
     {
         if ( arg[0] == help_table[cnt].command[0]
-             && !str_prefix( arg, help_table[cnt].command ) )
+                && !str_prefix( arg, help_table[cnt].command ) )
         {
             if ( help_table[cnt].structure == skill_table )
             {
@@ -495,7 +497,7 @@ REDIT( redit_olist )
         if ( ( pObjIndex = get_obj_index( vnum ) ) )
         {
             if ( fAll || is_name( arg, pObjIndex->name )
-                 || flag_value( type_flags, arg ) == pObjIndex->item_type )
+                    || flag_value( type_flags, arg ) == pObjIndex->item_type )
             {
                 found = TRUE;
                 dupl = remove_color( pObjIndex->short_descr );
@@ -514,10 +516,10 @@ REDIT( redit_olist )
         return FALSE;
     }
 
-/*
-    if ( col % 3 != 0 )
-	strcat( buf1, "\n\r" );
-*/
+    /*
+        if ( col % 3 != 0 )
+    	strcat( buf1, "\n\r" );
+    */
     send_to_char( buf1, ch );
     return FALSE;
 }
@@ -600,7 +602,7 @@ bool check_range( int lower, int upper )
          * lower < area < upper
          */
         if ( ( lower <= pArea->lvnum && pArea->lvnum <= upper )
-             || ( lower <= pArea->uvnum && pArea->uvnum <= upper ) )
+                || ( lower <= pArea->uvnum && pArea->uvnum <= upper ) )
             ++cnt;
 
         if ( cnt > 1 )
@@ -1305,13 +1307,13 @@ bool change_exit( CHAR_DATA * ch, char *argument, int door )
 
         pRoom->exit[door]->u1.to_room = get_room_index( value );    /* ROM OLC */
         pRoom->exit[door]->orig_door = door;
-/*	    pRoom->exit[door]->vnum = value;                Can't set vnum in ROM */
+        /*	    pRoom->exit[door]->vnum = value;                Can't set vnum in ROM */
 
         pRoom = get_room_index( value );
         door = rev_dir[door];
         pExit = new_exit(  );
         pExit->u1.to_room = ch->in_room;
-/*	    pExit->vnum             = ch->in_room->vnum;    Can't set vnum in ROM */
+        /*	    pExit->vnum             = ch->in_room->vnum;    Can't set vnum in ROM */
         pExit->orig_door = door;
         pRoom->exit[door] = pExit;
 
@@ -1364,7 +1366,7 @@ bool change_exit( CHAR_DATA * ch, char *argument, int door )
 
         pRoom->exit[door]->u1.to_room = get_room_index( value );    /* ROM OLC */
         pRoom->exit[door]->orig_door = door;
-/*	    pRoom->exit[door]->vnum = value;                 Can't set vnum in ROM */
+        /*	    pRoom->exit[door]->vnum = value;                 Can't set vnum in ROM */
 
         send_to_char( "One-way link established.\n\r", ch );
         return TRUE;
@@ -1381,8 +1383,8 @@ bool change_exit( CHAR_DATA * ch, char *argument, int door )
         if ( !pRoom->exit[door] )
         {
             send_to_char
-                ( "REdit:  Cannot make a key for a non-existant exit.\n\r",
-                  ch );
+            ( "REdit:  Cannot make a key for a non-existant exit.\n\r",
+              ch );
             return FALSE;
         }
 
@@ -1434,7 +1436,7 @@ bool change_exit( CHAR_DATA * ch, char *argument, int door )
             if ( !pRoom->exit[door] )
             {
                 send_to_char
-                    ( "REdit:  Cannot describe a non-existant exit.\n\r", ch );
+                ( "REdit:  Cannot describe a non-existant exit.\n\r", ch );
                 return FALSE;
             }
             string_append( ch, &pRoom->exit[door]->description );
@@ -1495,8 +1497,8 @@ bool change_exit( CHAR_DATA * ch, char *argument, int door )
     /* If we make it to here, user has typed an invalid command. */
 
     send_to_char
-        ( "That is not a valid exit command!  Type \"help exit\" for help.\n\r",
-          ch );
+    ( "That is not a valid exit command!  Type \"help exit\" for help.\n\r",
+      ch );
     return FALSE;
 }
 
@@ -1837,12 +1839,14 @@ REDIT( redit_mreset )
     return TRUE;
 }
 
-struct wear_type {
+struct wear_type
+{
     int wear_loc;
     int wear_bit;
 };
 
-const struct wear_type wear_table[] = {
+const struct wear_type wear_table[] =
+{
     {WEAR_NONE, ITEM_TAKE},
     {WEAR_LIGHT, ITEM_LIGHT},
     {WEAR_FINGER_L, ITEM_WEAR_FINGER},
@@ -1964,137 +1968,137 @@ REDIT( redit_oreset )
         /*
          * Load into object's inventory.
          */
-    if ( argument[0] == '\0'
-             && ( ( to_obj = get_obj_list( ch, arg2, pRoom->contents ) ) !=
-                      NULL ) )
-    {
-        pReset = new_reset_data(  );
-        pReset->command = 'P';
-        pReset->vnum = pObjIndex->vnum;
-        pReset->arg2 = 0;
-        pReset->arg3 = to_obj->pIndexData->vnum;
-        add_reset( pRoom, pReset, 0 /* Last slot */  );
-
-        newobj = create_object( pObjIndex, number_fuzzy( olevel ) );
-        newobj->cost = 0;
-        obj_to_obj( newobj, to_obj );
-
-        sprintf( output, "%s (%d) has been loaded into "
-                 "%s (%d) and added to resets.\n\r",
-                 capitalize( newobj->short_descr ),
-                 newobj->pIndexData->vnum,
-                 to_obj->short_descr, to_obj->pIndexData->vnum );
-        send_to_char( output, ch );
-    }
-    else
-        /*
-         * Load into mobile's inventory.
-         */
-    if ( ( to_mob = get_char_room( ch, arg2 ) ) != NULL )
-    {
-        int wear_loc;
-
-        /*
-         * Make sure the location on mobile is valid.
-         */
-        if ( ( wear_loc = flag_value( wear_loc_flags, argument ) ) == NO_FLAG )
+        if ( argument[0] == '\0'
+                && ( ( to_obj = get_obj_list( ch, arg2, pRoom->contents ) ) !=
+                     NULL ) )
         {
-            send_to_char( "REdit: Invalid wear_loc.  '? wear-loc'\n\r", ch );
-            return FALSE;
-        }
+            pReset = new_reset_data(  );
+            pReset->command = 'P';
+            pReset->vnum = pObjIndex->vnum;
+            pReset->arg2 = 0;
+            pReset->arg3 = to_obj->pIndexData->vnum;
+            add_reset( pRoom, pReset, 0 /* Last slot */  );
 
-        /*
-         * Disallow loading a sword(WEAR_WIELD) into WEAR_HEAD.
-         */
-        if ( !IS_SET( pObjIndex->wear_flags, wear_bit( wear_loc ) ) )
-        {
-            sprintf( output, "%s (%d) has wear flags: [%s]\n\r",
-                     capitalize( pObjIndex->short_descr ), pObjIndex->vnum,
-                     flag_string( wear_flags, pObjIndex->wear_flags ) );
-            send_to_char( output, ch );
-            return FALSE;
-        }
-
-        /*
-         * Can't load into same position.
-         */
-        if ( get_eq_char( to_mob, wear_loc ) )
-        {
-            send_to_char( "REdit:  Object already equipped.\n\r", ch );
-            return FALSE;
-        }
-
-        pReset = new_reset_data(  );
-        pReset->vnum = pObjIndex->vnum;
-        pReset->arg2 = wear_loc;
-        if ( pReset->arg2 == WEAR_NONE )
-            pReset->command = 'G';
-        else
-            pReset->command = 'E';
-        pReset->arg3 = wear_loc;
-
-        add_reset( pRoom, pReset, 0 /* Last slot */  );
-
-        olevel = URANGE( 0, to_mob->level - 2, LEVEL_HERO );
-        newobj = create_object( pObjIndex, number_fuzzy( olevel ) );
-
-        if ( to_mob->pIndexData->pShop )    /* Shop-keeper? */
-        {
-            switch ( pObjIndex->item_type )
-            {
-            default:
-                olevel = 0;
-                break;
-            case ITEM_PILL:
-                olevel = number_range( 0, 10 );
-                break;
-            case ITEM_POTION:
-                olevel = number_range( 0, 10 );
-                break;
-            case ITEM_SCROLL:
-                olevel = number_range( 5, 15 );
-                break;
-            case ITEM_WAND:
-                olevel = number_range( 10, 20 );
-                break;
-            case ITEM_STAFF:
-                olevel = number_range( 15, 25 );
-                break;
-            case ITEM_ARMOR:
-                olevel = number_range( 5, 15 );
-                break;
-            case ITEM_WEAPON:
-                if ( pReset->command == 'G' )
-                    olevel = number_range( 5, 15 );
-                else
-                    olevel = number_fuzzy( olevel );
-                break;
-            }
-
-            newobj = create_object( pObjIndex, olevel );
-            if ( pReset->arg2 == WEAR_NONE )
-                SET_BIT( newobj->extra_flags, ITEM_INVENTORY );
-        }
-        else
             newobj = create_object( pObjIndex, number_fuzzy( olevel ) );
+            newobj->cost = 0;
+            obj_to_obj( newobj, to_obj );
 
-        obj_to_char( newobj, to_mob );
-        if ( pReset->command == 'E' )
-            equip_char( to_mob, newobj, pReset->arg3 );
+            sprintf( output, "%s (%d) has been loaded into "
+                     "%s (%d) and added to resets.\n\r",
+                     capitalize( newobj->short_descr ),
+                     newobj->pIndexData->vnum,
+                     to_obj->short_descr, to_obj->pIndexData->vnum );
+            send_to_char( output, ch );
+        }
+        else
+            /*
+             * Load into mobile's inventory.
+             */
+            if ( ( to_mob = get_char_room( ch, arg2 ) ) != NULL )
+            {
+                int wear_loc;
 
-        sprintf( output, "%s (%d) has been loaded "
-                 "%s of %s (%d) and added to resets.\n\r",
-                 capitalize( pObjIndex->short_descr ),
-                 pObjIndex->vnum,
-                 flag_string( wear_loc_strings, pReset->arg3 ),
-                 to_mob->short_descr, to_mob->pIndexData->vnum );
-        send_to_char( output, ch );
-    }
-    else                        /* Display Syntax */
-    {
-        send_to_char( "REdit:  That mobile isn't here.\n\r", ch );
-        return FALSE;
-    }
+                /*
+                 * Make sure the location on mobile is valid.
+                 */
+                if ( ( wear_loc = flag_value( wear_loc_flags, argument ) ) == NO_FLAG )
+                {
+                    send_to_char( "REdit: Invalid wear_loc.  '? wear-loc'\n\r", ch );
+                    return FALSE;
+                }
+
+                /*
+                 * Disallow loading a sword(WEAR_WIELD) into WEAR_HEAD.
+                 */
+                if ( !IS_SET( pObjIndex->wear_flags, wear_bit( wear_loc ) ) )
+                {
+                    sprintf( output, "%s (%d) has wear flags: [%s]\n\r",
+                             capitalize( pObjIndex->short_descr ), pObjIndex->vnum,
+                             flag_string( wear_flags, pObjIndex->wear_flags ) );
+                    send_to_char( output, ch );
+                    return FALSE;
+                }
+
+                /*
+                 * Can't load into same position.
+                 */
+                if ( get_eq_char( to_mob, wear_loc ) )
+                {
+                    send_to_char( "REdit:  Object already equipped.\n\r", ch );
+                    return FALSE;
+                }
+
+                pReset = new_reset_data(  );
+                pReset->vnum = pObjIndex->vnum;
+                pReset->arg2 = wear_loc;
+                if ( pReset->arg2 == WEAR_NONE )
+                    pReset->command = 'G';
+                else
+                    pReset->command = 'E';
+                pReset->arg3 = wear_loc;
+
+                add_reset( pRoom, pReset, 0 /* Last slot */  );
+
+                olevel = URANGE( 0, to_mob->level - 2, LEVEL_HERO );
+                newobj = create_object( pObjIndex, number_fuzzy( olevel ) );
+
+                if ( to_mob->pIndexData->pShop )    /* Shop-keeper? */
+                {
+                    switch ( pObjIndex->item_type )
+                    {
+                    default:
+                        olevel = 0;
+                        break;
+                    case ITEM_PILL:
+                        olevel = number_range( 0, 10 );
+                        break;
+                    case ITEM_POTION:
+                        olevel = number_range( 0, 10 );
+                        break;
+                    case ITEM_SCROLL:
+                        olevel = number_range( 5, 15 );
+                        break;
+                    case ITEM_WAND:
+                        olevel = number_range( 10, 20 );
+                        break;
+                    case ITEM_STAFF:
+                        olevel = number_range( 15, 25 );
+                        break;
+                    case ITEM_ARMOR:
+                        olevel = number_range( 5, 15 );
+                        break;
+                    case ITEM_WEAPON:
+                        if ( pReset->command == 'G' )
+                            olevel = number_range( 5, 15 );
+                        else
+                            olevel = number_fuzzy( olevel );
+                        break;
+                    }
+
+                    newobj = create_object( pObjIndex, olevel );
+                    if ( pReset->arg2 == WEAR_NONE )
+                        SET_BIT( newobj->extra_flags, ITEM_INVENTORY );
+                }
+                else
+                    newobj = create_object( pObjIndex, number_fuzzy( olevel ) );
+
+                obj_to_char( newobj, to_mob );
+                if ( pReset->command == 'E' )
+                    equip_char( to_mob, newobj, pReset->arg3 );
+
+                sprintf( output, "%s (%d) has been loaded "
+                         "%s of %s (%d) and added to resets.\n\r",
+                         capitalize( pObjIndex->short_descr ),
+                         pObjIndex->vnum,
+                         flag_string( wear_loc_strings, pReset->arg3 ),
+                         to_mob->short_descr, to_mob->pIndexData->vnum );
+                send_to_char( output, ch );
+            }
+            else                        /* Display Syntax */
+            {
+                send_to_char( "REdit:  That mobile isn't here.\n\r", ch );
+                return FALSE;
+            }
 
     act( "$n has created $p!", ch, newobj, NULL, TO_ROOM );
     return TRUE;
@@ -2164,7 +2168,7 @@ void show_obj_values( CHAR_DATA * ch, OBJ_INDEX_DATA * obj )
         send_to_char( buf, ch );
         break;
 
-/* ARMOR for ROM */
+        /* ARMOR for ROM */
 
     case ITEM_ARMOR:
         sprintf( buf,
@@ -2176,9 +2180,9 @@ void show_obj_values( CHAR_DATA * ch, OBJ_INDEX_DATA * obj )
         send_to_char( buf, ch );
         break;
 
-/* WEAPON changed in ROM: */
-/* I had to split the output here, I have no idea why, but it helped -- Hugin */
-/* It somehow fixed a bug in showing scroll/pill/potions too ?! */
+        /* WEAPON changed in ROM: */
+        /* I had to split the output here, I have no idea why, but it helped -- Hugin */
+        /* It somehow fixed a bug in showing scroll/pill/potions too ?! */
     case ITEM_WEAPON:
         sprintf( buf, "[v0] Weapon class:   %s\n\r",
                  flag_string( weapon_class, obj->value[0] ) );
@@ -2349,7 +2353,7 @@ bool set_obj_values( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
         }
         break;
 
-/* ARMOR for ROM: */
+        /* ARMOR for ROM: */
 
     case ITEM_ARMOR:
         switch ( value_num )
@@ -2376,7 +2380,7 @@ bool set_obj_values( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
         }
         break;
 
-/* WEAPONS changed in ROM */
+        /* WEAPONS changed in ROM */
 
     case ITEM_WEAPON:
         switch ( value_num )
@@ -2421,7 +2425,7 @@ bool set_obj_values( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
             break;
         case 1:
             if ( ( value = flag_value( container_flags, argument ) )
-                 != NO_FLAG )
+                    != NO_FLAG )
                 TOGGLE_BIT( pObj->value[1], value );
             else
             {
@@ -2456,7 +2460,7 @@ bool set_obj_values( CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
         {
         default:
             do_help( ch, "ITEM_DRINK" );
-/* OLC		    do_help( ch, "liquids" );    */
+            /* OLC		    do_help( ch, "liquids" );    */
             return FALSE;
         case 0:
             send_to_char( "MAXIMUM AMOUT OF LIQUID HOURS SET.\n\r\n\r", ch );
@@ -2602,9 +2606,9 @@ OEDIT( oedit_show )
     }
 
     show_obj_values( ch, pObj );
-/* Only IMPs can see an object's clan.
-   This is because only IMPs can know the tre number of a clan.
- */
+    /* Only IMPs can see an object's clan.
+       This is because only IMPs can know the tre number of a clan.
+     */
     if ( get_trust( ch ) >= MAX_LEVEL && pObj->clan != 0 )
         printf_to_char( ch, "Clan: %d\n\r", pObj->clan );
 
@@ -2855,7 +2859,7 @@ OEDIT( oedit_clan )
 
     EDIT_OBJ( ch, pObj );
 
-/* We can't have low level gods knowing the actual numbers of the clans */
+    /* We can't have low level gods knowing the actual numbers of the clans */
     if ( get_trust( ch ) < MAX_LEVEL )
     {
         interpret( ch, "oclan" );   /* this _should_ produce an error message */
@@ -3229,7 +3233,7 @@ OEDIT( oedit_condition )
     int value;
 
     if ( argument[0] != '\0'
-         && ( value = atoi( argument ) ) >= 0 && ( value <= 100 ) )
+            && ( value = atoi( argument ) ) >= 0 && ( value <= 100 ) )
     {
         EDIT_OBJ( ch, pObj );
 
@@ -3278,7 +3282,7 @@ MEDIT( medit_show )
              pMob->level, pMob->alignment );
     send_to_char( buf, ch );
 
-/* ROM values: */
+    /* ROM values: */
 
     sprintf( buf, "Hitroll:     [%d]\n\r", pMob->hitroll );
     send_to_char( buf, ch );
@@ -3301,7 +3305,7 @@ MEDIT( medit_show )
     sprintf( buf, "Damage Type: [%s]\n\r", attack_table[pMob->dam_type].name );
     send_to_char( buf, ch );
 
-/* ROM values end */
+    /* ROM values end */
 
     sprintf( buf, "Affected by: [%s]\n\r",
              flag_string( affect_flags, pMob->affected_by ) );
@@ -3314,7 +3318,7 @@ MEDIT( medit_show )
     }
     send_to_char( "]\n\r", ch );
 
-/* ROM values: */
+    /* ROM values: */
 
     sprintf( buf,
              "Armor:       [pierce: %d  bash: %d  slash: %d  magic: %d]\n\r",
@@ -3374,7 +3378,7 @@ MEDIT( medit_show )
              flag_string( rnd_obj_flags, pMob->rnd_obj_types ) );
     send_to_char( buf, ch );
 
-/* ROM values end */
+    /* ROM values end */
 
     sprintf( buf, "Short descr: %s\n\rLong descr:\n\r%s",
              pMob->short_descr, pMob->long_descr );
@@ -3419,7 +3423,7 @@ MEDIT( medit_show )
     send_to_char( "\n\rFactions affected:\n\r", ch );
 
     for ( pFactAff = pMob->faction_affs;
-          pFactAff != NULL; pFactAff = pFactAff->next )
+            pFactAff != NULL; pFactAff = pFactAff->next )
     {
         printf_to_char( ch, "%s will be %s by %d points.\n\r",
                         pFactAff->faction->name,
@@ -3618,7 +3622,7 @@ MEDIT( medit_shop )
     if ( !str_cmp( command, "hours" ) )
     {
         if ( arg[0] == '\0' || !is_number( arg )
-             || argument[0] == '\0' || !is_number( argument ) )
+                || argument[0] == '\0' || !is_number( argument ) )
         {
             send_to_char( "Syntax:  shop hours [#opening] [#closing]\n\r", ch );
             return FALSE;
@@ -3641,7 +3645,7 @@ MEDIT( medit_shop )
     if ( !str_cmp( command, "profit" ) )
     {
         if ( arg[0] == '\0' || !is_number( arg )
-             || argument[0] == '\0' || !is_number( argument ) )
+                || argument[0] == '\0' || !is_number( argument ) )
         {
             send_to_char( "Syntax:  shop profit [#buying%] [#selling%]\n\r",
                           ch );
@@ -3727,7 +3731,7 @@ MEDIT( medit_shop )
         }
         else
             for ( pShop = pMob->pShop, cnt = 0; pShop;
-                  pShop = pShop_next, cnt++ )
+                    pShop = pShop_next, cnt++ )
             {
                 pShop_next = pShop->next;
                 if ( cnt + 1 == value )
@@ -4096,8 +4100,8 @@ MEDIT( medit_hitdice )
         *cp = '\0';
 
     if ( ( !is_number( num ) || atoi( num ) < 1 )
-         || ( !is_number( type ) || atoi( type ) < 1 )
-         || ( !is_number( bonus ) || atoi( bonus ) < 0 ) )
+            || ( !is_number( type ) || atoi( type ) < 1 )
+            || ( !is_number( bonus ) || atoi( bonus ) < 0 ) )
     {
         send_to_char( syntax, ch );
         return FALSE;
@@ -4153,8 +4157,8 @@ MEDIT( medit_manadice )
     }
 
     if ( ( !is_number( num ) || atoi( num ) < 1 )
-         || ( !is_number( type ) || atoi( type ) < 1 )
-         || ( !is_number( bonus ) || atoi( bonus ) < 0 ) )
+            || ( !is_number( type ) || atoi( type ) < 1 )
+            || ( !is_number( bonus ) || atoi( bonus ) < 0 ) )
     {
         send_to_char( syntax, ch );
         return FALSE;
@@ -4210,8 +4214,8 @@ MEDIT( medit_damdice )
     }
 
     if ( ( !is_number( num ) || atoi( num ) < 1 )
-         || ( !is_number( type ) || atoi( type ) < 1 )
-         || ( !is_number( bonus ) || atoi( bonus ) < 0 ) )
+            || ( !is_number( type ) || atoi( type ) < 1 )
+            || ( !is_number( bonus ) || atoi( bonus ) < 0 ) )
     {
         send_to_char( syntax, ch );
         return FALSE;
@@ -4498,8 +4502,8 @@ MPEDIT( mpedit_create )
                                 && str_prefix( argument, "roomprog" ) ) )
     {
         send_to_char
-            ( "Syntax:  edit mprog create [mobprog||objprog||roomprog]\n\r",
-              ch );
+        ( "Syntax:  edit mprog create [mobprog||objprog||roomprog]\n\r",
+          ch );
         return FALSE;
     }
 
@@ -4582,8 +4586,8 @@ MPEDIT( mpedit_delete )
                         if ( pList->mudprog->vnum == pMudProg->vnum )
                         {
                             send_to_char
-                                ( "This prog is in use, you cannot delete it.\n\r",
-                                  ch );
+                            ( "This prog is in use, you cannot delete it.\n\r",
+                              ch );
                             return FALSE;
                         }
                 nMatch++;
@@ -4599,8 +4603,8 @@ MPEDIT( mpedit_delete )
                         if ( pList->mudprog->vnum == pMudProg->vnum )
                         {
                             send_to_char
-                                ( "This prog is in use, you cannot delete it.\n\r",
-                                  ch );
+                            ( "This prog is in use, you cannot delete it.\n\r",
+                              ch );
                             return FALSE;
                         }
                 nMatch++;
@@ -4616,8 +4620,8 @@ MPEDIT( mpedit_delete )
                         if ( pList->mudprog->vnum == pMudProg->vnum )
                         {
                             send_to_char
-                                ( "This prog is in use, you cannot delete it.\n\r",
-                                  ch );
+                            ( "This prog is in use, you cannot delete it.\n\r",
+                              ch );
                             return FALSE;
                         }
                 nMatch++;
@@ -4627,14 +4631,14 @@ MPEDIT( mpedit_delete )
 
     /* Check groups */
     for ( pMprogGroup = mprog_group_first; pMprogGroup;
-          pMprogGroup = pMprogGroup->next )
+            pMprogGroup = pMprogGroup->next )
         if ( pMprogGroup->prog_type == pMudProg->prog_type )
             for ( pList = pMprogGroup->mudprogs; pList; pList = pList->next )
                 if ( pList->mudprog->vnum == pMudProg->vnum )
                 {
                     send_to_char
-                        ( "This prog belongs to a group, it cannot be deleted.\n\r",
-                          ch );
+                    ( "This prog belongs to a group, it cannot be deleted.\n\r",
+                      ch );
                     return FALSE;
                 }
 
@@ -4647,7 +4651,7 @@ MPEDIT( mpedit_delete )
     else
     {
         for ( pTempProg = mudprog_first; pTempProg->next != pMudProg;
-              pTempProg = pTempProg->next )
+                pTempProg = pTempProg->next )
             ;
 
         pTempProg->next = pMudProg->next;
@@ -4656,7 +4660,7 @@ MPEDIT( mpedit_delete )
     if ( mudprog_last == pMudProg )
     {
         for ( pTempProg = mudprog_first; !pTempProg->next;
-              pTempProg = pTempProg->next )
+                pTempProg = pTempProg->next )
             ;
 
         mudprog_last = pTempProg;
@@ -4727,7 +4731,7 @@ MPEDIT( mpedit_groups )
     }
 
     for ( pMprogGroup = mprog_group_first; pMprogGroup;
-          pMprogGroup = pMprogGroup->next )
+            pMprogGroup = pMprogGroup->next )
         if ( pMprogGroup->prog_type == pMudProg->prog_type )
             for ( pList = pMprogGroup->mudprogs; pList; pList = pList->next )
                 if ( pList->mudprog->vnum == pMudProg->vnum )
@@ -4797,7 +4801,7 @@ MPEDIT( mpedit_progtype )
     argument = one_argument( argument, arg );
 
     if ( !str_prefix( arg, "mobprog" ) || !str_prefix( arg, "roomprog" )
-         || !str_prefix( arg, "objprog" ) )
+            || !str_prefix( arg, "objprog" ) )
     {
         /*
          * Check to see if the prog is in use anywhere (or in any groups).
@@ -4814,12 +4818,12 @@ MPEDIT( mpedit_progtype )
                     {
                         if ( IS_SET( pMob->progtypes, pMudProg->trigger_type ) )
                             for ( pList = pMob->mudprogs; pList;
-                                  pList = pList->next )
+                                    pList = pList->next )
                                 if ( pList->mudprog->vnum == pMudProg->vnum )
                                 {
                                     send_to_char
-                                        ( "This prog is in use, you cannot change it's prog type.\n\r",
-                                          ch );
+                                    ( "This prog is in use, you cannot change it's prog type.\n\r",
+                                      ch );
                                     return FALSE;
                                 }
                         nMatch++;
@@ -4831,14 +4835,14 @@ MPEDIT( mpedit_progtype )
                     if ( ( pRoom = get_room_index( vnum ) ) != NULL )
                     {
                         if ( IS_SET
-                             ( pRoom->progtypes, pMudProg->trigger_type ) )
+                                ( pRoom->progtypes, pMudProg->trigger_type ) )
                             for ( pList = pRoom->mudprogs; pList;
-                                  pList = pList->next )
+                                    pList = pList->next )
                                 if ( pList->mudprog->vnum == pMudProg->vnum )
                                 {
                                     send_to_char
-                                        ( "This prog is in use, you cannot change it's prog type.\n\r",
-                                          ch );
+                                    ( "This prog is in use, you cannot change it's prog type.\n\r",
+                                      ch );
                                     return FALSE;
                                 }
                         nMatch++;
@@ -4851,12 +4855,12 @@ MPEDIT( mpedit_progtype )
                     {
                         if ( IS_SET( pObj->progtypes, pMudProg->trigger_type ) )
                             for ( pList = pObj->mudprogs; pList;
-                                  pList = pList->next )
+                                    pList = pList->next )
                                 if ( pList->mudprog->vnum == pMudProg->vnum )
                                 {
                                     send_to_char
-                                        ( "This prog is in use, you cannot change it's prog type.\n\r",
-                                          ch );
+                                    ( "This prog is in use, you cannot change it's prog type.\n\r",
+                                      ch );
                                     return FALSE;
                                 }
                         nMatch++;
@@ -4866,15 +4870,15 @@ MPEDIT( mpedit_progtype )
 
             /* Check groups */
             for ( pMprogGroup = mprog_group_first; pMprogGroup;
-                  pMprogGroup = pMprogGroup->next )
+                    pMprogGroup = pMprogGroup->next )
                 if ( pMprogGroup->prog_type == pMudProg->prog_type )
                     for ( pList = pMprogGroup->mudprogs; pList;
-                          pList = pList->next )
+                            pList = pList->next )
                         if ( pList->mudprog->vnum == pMudProg->vnum )
                         {
                             send_to_char
-                                ( "This prog belongs to a group, it's type cannot be changed.\n\r",
-                                  ch );
+                            ( "This prog belongs to a group, it's type cannot be changed.\n\r",
+                              ch );
                             return FALSE;
                         }
         }
@@ -4991,7 +4995,7 @@ MPEDIT( mpedit_triggertype )
                     if ( ( pRoom = get_room_index( vnum ) ) != NULL )
                     {
                         if ( IS_SET
-                             ( pRoom->progtypes, pMudProg->trigger_type ) )
+                                ( pRoom->progtypes, pMudProg->trigger_type ) )
                         {
                             REMOVE_BIT( pRoom->progtypes,
                                         pMudProg->trigger_type );
@@ -5055,11 +5059,11 @@ MPEDIT( mpedit_assign )
     argument = one_argument( argument, arg2 );
 
     if ( *arg1 == '\0' || *arg2 == '\0' || !is_number( arg1 )
-         || !is_number( arg2 ) )
+            || !is_number( arg2 ) )
     {
         send_to_char
-            ( "Syntax:  edit mprog assign <target vnum> <mudprog vnum>\n\r",
-              ch );
+        ( "Syntax:  edit mprog assign <target vnum> <mudprog vnum>\n\r",
+          ch );
         return FALSE;
     }
 
@@ -5073,8 +5077,8 @@ MPEDIT( mpedit_assign )
             if ( ( pMob = get_mob_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "The MudProg you specified is a MobProg and no mob matches the vnum you supplied.\n\r",
-                      ch );
+                ( "The MudProg you specified is a MobProg and no mob matches the vnum you supplied.\n\r",
+                  ch );
                 return FALSE;
             }
 
@@ -5087,8 +5091,8 @@ MPEDIT( mpedit_assign )
             if ( ( pObj = get_obj_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "The MudProg you specified is a ObjProg and no object matches the vnum you supplied.\n\r",
-                      ch );
+                ( "The MudProg you specified is a ObjProg and no object matches the vnum you supplied.\n\r",
+                  ch );
                 return FALSE;
             }
 
@@ -5101,8 +5105,8 @@ MPEDIT( mpedit_assign )
             if ( ( pRoom = get_room_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "The MudProg you specified is a RoomProg and no room matches the vnum you supplied.\n\r",
-                      ch );
+                ( "The MudProg you specified is a RoomProg and no room matches the vnum you supplied.\n\r",
+                  ch );
                 return FALSE;
             }
 
@@ -5119,8 +5123,8 @@ MPEDIT( mpedit_assign )
             if ( ( pMob = get_mob_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "The MudProg you specified is a MobProg and no mob matches the vnum you supplied.\n\r",
-                      ch );
+                ( "The MudProg you specified is a MobProg and no mob matches the vnum you supplied.\n\r",
+                  ch );
                 return FALSE;
             }
 
@@ -5133,8 +5137,8 @@ MPEDIT( mpedit_assign )
             if ( ( pObj = get_obj_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "The MudProg you specified is a ObjProg and no object matches the vnum you supplied.\n\r",
-                      ch );
+                ( "The MudProg you specified is a ObjProg and no object matches the vnum you supplied.\n\r",
+                  ch );
                 return FALSE;
             }
 
@@ -5147,8 +5151,8 @@ MPEDIT( mpedit_assign )
             if ( ( pRoom = get_room_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "The MudProg you specified is a RoomProg and no room matches the vnum you supplied.\n\r",
-                      ch );
+                ( "The MudProg you specified is a RoomProg and no room matches the vnum you supplied.\n\r",
+                  ch );
                 return FALSE;
             }
 
@@ -5185,11 +5189,11 @@ MPEDIT( mpedit_unassign )
     argument = one_argument( argument, arg2 );
 
     if ( *arg1 == '\0' || *arg2 == '\0' || !is_number( arg1 )
-         || !is_number( arg2 ) )
+            || !is_number( arg2 ) )
     {
         send_to_char
-            ( "Syntax:  edit mprog unassign <target vnum> <mudprog vnum>\n\r",
-              ch );
+        ( "Syntax:  edit mprog unassign <target vnum> <mudprog vnum>\n\r",
+          ch );
         return FALSE;
     }
 
@@ -5203,15 +5207,15 @@ MPEDIT( mpedit_unassign )
             if ( ( pMob = get_mob_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "No matching MudProg is assigned to this mob.\n\r", ch );
+                ( "No matching MudProg is assigned to this mob.\n\r", ch );
                 return FALSE;
             }
 
             if ( !unassign_mobprog( pMob, pMudProg, NULL ) )
             {
                 send_to_char
-                    ( "MudProg is part of a group assigned to that mob, please remove the group"
-                      " or remove the Prog from that group.\n\r", ch );
+                ( "MudProg is part of a group assigned to that mob, please remove the group"
+                  " or remove the Prog from that group.\n\r", ch );
                 return FALSE;
             }
 
@@ -5223,16 +5227,16 @@ MPEDIT( mpedit_unassign )
             if ( ( pObj = get_obj_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "No matching MudProg is assigned to this object.\n\r",
-                      ch );
+                ( "No matching MudProg is assigned to this object.\n\r",
+                  ch );
                 return FALSE;
             }
 
             if ( !unassign_objprog( pObj, pMudProg, NULL ) )
             {
                 send_to_char
-                    ( "MudProg is part of a group assigned to that mob, please remove the group"
-                      " or remove the Prog from that group.\n\r", ch );
+                ( "MudProg is part of a group assigned to that mob, please remove the group"
+                  " or remove the Prog from that group.\n\r", ch );
                 return FALSE;
             }
 
@@ -5244,15 +5248,15 @@ MPEDIT( mpedit_unassign )
             if ( ( pRoom = get_room_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "No matching MudProg is assigned to this room.\n\r", ch );
+                ( "No matching MudProg is assigned to this room.\n\r", ch );
                 return FALSE;
             }
 
             if ( !unassign_roomprog( pRoom, pMudProg, NULL ) )
             {
                 send_to_char
-                    ( "MudProg is part of a group assigned to that mob, please remove the group"
-                      " or remove the Prog from that group.\n\r", ch );
+                ( "MudProg is part of a group assigned to that mob, please remove the group"
+                  " or remove the Prog from that group.\n\r", ch );
                 return FALSE;
             }
 
@@ -5268,7 +5272,7 @@ MPEDIT( mpedit_unassign )
             if ( ( pMob = get_mob_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "No matching MudProg is assigned to this mob.\n\r", ch );
+                ( "No matching MudProg is assigned to this mob.\n\r", ch );
                 return FALSE;
             }
 
@@ -5281,8 +5285,8 @@ MPEDIT( mpedit_unassign )
             if ( ( pObj = get_obj_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "No matching MudProg is assigned to this object.\n\r",
-                      ch );
+                ( "No matching MudProg is assigned to this object.\n\r",
+                  ch );
                 return FALSE;
             }
 
@@ -5295,7 +5299,7 @@ MPEDIT( mpedit_unassign )
             if ( ( pRoom = get_room_index( targetvnum ) ) == NULL )
             {
                 send_to_char
-                    ( "No matching MudProg is assigned to this room.\n\r", ch );
+                ( "No matching MudProg is assigned to this room.\n\r", ch );
                 return FALSE;
             }
 
@@ -5401,8 +5405,8 @@ MPGEDIT( mpgedit_add )
     if ( pProg->prog_type != pGroup->prog_type && pGroup->mudprogs )
     {
         send_to_char
-            ( "Unable to add MudProg, MudProg Group contains Progs of a different type.\n\r",
-              ch );
+        ( "Unable to add MudProg, MudProg Group contains Progs of a different type.\n\r",
+          ch );
         return FALSE;
     }
     else
@@ -5430,13 +5434,13 @@ MPGEDIT( mpgedit_add )
                 iFound = 0;
 
                 for ( pGroupList = pMob->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     if ( pGroupList->mprog_group->vnum == pGroup->vnum )
                     {
                         iFound = 0;
 
                         for ( pList = pMob->mudprogs; pList;
-                              pList = pList->next )
+                                pList = pList->next )
                             if ( pList->mudprog->vnum == pProg->vnum )
                                 iFound = 1;
 
@@ -5462,13 +5466,13 @@ MPGEDIT( mpgedit_add )
             if ( ( pRoom = get_room_index( vnum ) ) != NULL )
             {
                 for ( pGroupList = pRoom->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     if ( pGroupList->mprog_group->vnum == pGroup->vnum )
                     {
                         iFound = 0;
 
                         for ( pList = pRoom->mudprogs; pList;
-                              pList = pList->next )
+                                pList = pList->next )
                             if ( pList->mudprog->vnum == pProg->vnum )
                                 iFound = 1;
 
@@ -5494,13 +5498,13 @@ MPGEDIT( mpgedit_add )
             if ( ( pObj = get_obj_index( vnum ) ) != NULL )
             {
                 for ( pGroupList = pObj->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     if ( pGroupList->mprog_group->vnum == pGroup->vnum )
                     {
                         iFound = 0;
 
                         for ( pList = pObj->mudprogs; pList;
-                              pList = pList->next )
+                                pList = pList->next )
                             if ( pList->mudprog->vnum == pProg->vnum )
                                 iFound = 1;
 
@@ -5524,8 +5528,8 @@ MPGEDIT( mpgedit_add )
 
     if ( updated )
         send_to_char
-            ( "Prog added to group and existing obj/mob/rooms updated.\n\r",
-              ch );
+        ( "Prog added to group and existing obj/mob/rooms updated.\n\r",
+          ch );
     else
         send_to_char( "Prog added to group.\n\r", ch );
 
@@ -5543,12 +5547,12 @@ MPGEDIT( mpgedit_create )
     }
 
     if ( *argument == '\0' && !str_prefix( argument, "mobprog" )
-         && !str_prefix( argument, "objprog" )
-         && !str_prefix( argument, "roomprog" ) )
+            && !str_prefix( argument, "objprog" )
+            && !str_prefix( argument, "roomprog" ) )
     {
         send_to_char
-            ( "Syntax:  edit mpgroup create [mobprog||objprog||roomprog]\n\r",
-              ch );
+        ( "Syntax:  edit mpgroup create [mobprog||objprog||roomprog]\n\r",
+          ch );
         return FALSE;
     }
 
@@ -5629,8 +5633,8 @@ MPGEDIT( mpgedit_delete )
                     if ( pList->mprog_group->vnum == pMprogGroup->vnum )
                     {
                         send_to_char
-                            ( "This group is in use, you cannot delete it.\n\r",
-                              ch );
+                        ( "This group is in use, you cannot delete it.\n\r",
+                          ch );
                         return FALSE;
                     }
                 nMatch++;
@@ -5645,8 +5649,8 @@ MPGEDIT( mpgedit_delete )
                     if ( pList->mprog_group->vnum == pMprogGroup->vnum )
                     {
                         send_to_char
-                            ( "This group is in use, you cannot delete it.\n\r",
-                              ch );
+                        ( "This group is in use, you cannot delete it.\n\r",
+                          ch );
                         return FALSE;
                     }
                 nMatch++;
@@ -5661,8 +5665,8 @@ MPGEDIT( mpgedit_delete )
                     if ( pList->mprog_group->vnum == pMprogGroup->vnum )
                     {
                         send_to_char
-                            ( "This prog is in use, you cannot delete it.\n\r",
-                              ch );
+                        ( "This prog is in use, you cannot delete it.\n\r",
+                          ch );
                         return FALSE;
                     }
                 nMatch++;
@@ -5679,7 +5683,7 @@ MPGEDIT( mpgedit_delete )
     else
     {
         for ( pTempGroup = mprog_group_first; pTempGroup->next != pMprogGroup;
-              pTempGroup = pTempGroup->next )
+                pTempGroup = pTempGroup->next )
             ;
 
         pTempGroup->next = pMprogGroup->next;
@@ -5688,7 +5692,7 @@ MPGEDIT( mpgedit_delete )
     if ( mprog_group_last == pMprogGroup )
     {
         for ( pTempGroup = mprog_group_first; !pTempGroup->next;
-              pTempGroup = pTempGroup->next )
+                pTempGroup = pTempGroup->next )
             ;
 
         mprog_group_last = pTempGroup;
@@ -5736,8 +5740,8 @@ MPGEDIT( mpgedit_name )
     if ( str_len( argument ) > 20 )
     {
         send_to_char
-            ( "MudProg Group name cannot be longer than 20 characters.\n\r",
-              ch );
+        ( "MudProg Group name cannot be longer than 20 characters.\n\r",
+          ch );
         return FALSE;
     }
 
@@ -5791,7 +5795,7 @@ MPGEDIT( mpgedit_remove )
             else
             {
                 for ( pInnerList = pGroup->mudprogs; pInnerList->next != pList;
-                      pInnerList = pInnerList->next )
+                        pInnerList = pInnerList->next )
                     ;
 
                 pInnerList->next = pList->next;
@@ -5825,7 +5829,7 @@ MPGEDIT( mpgedit_remove )
                 iFound = 0;
 
                 for ( pGroupList = pMob->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     if ( pGroupList->mprog_group->vnum == pGroup->vnum )
                         iFound = 1;
 
@@ -5837,9 +5841,9 @@ MPGEDIT( mpgedit_remove )
                     iFound = 0;
 
                     for ( pGroupList = pMob->mprog_groups; pGroupList;
-                          pGroupList = pGroupList->next )
+                            pGroupList = pGroupList->next )
                         for ( pList = pGroupList->mprog_group->mudprogs; pList;
-                              pList = pList->next )
+                                pList = pList->next )
                             if ( pList->mudprog->vnum == progvnum )
                                 iFound++;
 
@@ -5847,8 +5851,8 @@ MPGEDIT( mpgedit_remove )
                     if ( iFound < 1 )
                     {
                         for ( pList = pMob->mudprogs;
-                              pList && pList->mudprog->vnum != progvnum;
-                              pList = pList->next )
+                                pList && pList->mudprog->vnum != progvnum;
+                                pList = pList->next )
                             ;
 
                         if ( pList == pMob->mudprogs )
@@ -5856,8 +5860,8 @@ MPGEDIT( mpgedit_remove )
                         else
                         {
                             for ( pInnerList = pMob->mudprogs;
-                                  pInnerList->next != pList;
-                                  pInnerList = pInnerList->next )
+                                    pInnerList->next != pList;
+                                    pInnerList = pInnerList->next )
                                 ;
 
                             pInnerList->next = pList->next;
@@ -5879,7 +5883,7 @@ MPGEDIT( mpgedit_remove )
                 iFound = 0;
 
                 for ( pGroupList = pRoom->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     if ( pGroupList->mprog_group->vnum == pGroup->vnum )
                         iFound = 1;
 
@@ -5891,9 +5895,9 @@ MPGEDIT( mpgedit_remove )
                     iFound = 0;
 
                     for ( pGroupList = pRoom->mprog_groups; pGroupList;
-                          pGroupList = pGroupList->next )
+                            pGroupList = pGroupList->next )
                         for ( pList = pGroupList->mprog_group->mudprogs; pList;
-                              pList = pList->next )
+                                pList = pList->next )
                             if ( pList->mudprog->vnum == progvnum )
                                 iFound++;
 
@@ -5901,8 +5905,8 @@ MPGEDIT( mpgedit_remove )
                     if ( iFound == 1 )
                     {
                         for ( pList = pRoom->mudprogs;
-                              pList && pList->mudprog->vnum != progvnum;
-                              pList = pList->next )
+                                pList && pList->mudprog->vnum != progvnum;
+                                pList = pList->next )
                             ;
 
                         if ( pList == pRoom->mudprogs )
@@ -5910,8 +5914,8 @@ MPGEDIT( mpgedit_remove )
                         else
                         {
                             for ( pInnerList = pRoom->mudprogs;
-                                  pInnerList->next != pList;
-                                  pInnerList = pInnerList->next )
+                                    pInnerList->next != pList;
+                                    pInnerList = pInnerList->next )
                                 ;
 
                             pInnerList->next = pList->next;
@@ -5933,7 +5937,7 @@ MPGEDIT( mpgedit_remove )
                 iFound = 0;
 
                 for ( pGroupList = pObj->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     if ( pGroupList->mprog_group->vnum == pGroup->vnum )
                         iFound = 1;
 
@@ -5945,9 +5949,9 @@ MPGEDIT( mpgedit_remove )
                     iFound = 0;
 
                     for ( pGroupList = pObj->mprog_groups; pGroupList;
-                          pGroupList = pGroupList->next )
+                            pGroupList = pGroupList->next )
                         for ( pList = pGroupList->mprog_group->mudprogs; pList;
-                              pList = pList->next )
+                                pList = pList->next )
                             if ( pList->mudprog->vnum == progvnum )
                                 iFound++;
 
@@ -5955,8 +5959,8 @@ MPGEDIT( mpgedit_remove )
                     if ( iFound == 1 )
                     {
                         for ( pList = pObj->mudprogs;
-                              pList && pList->mudprog->vnum != progvnum;
-                              pList = pList->next )
+                                pList && pList->mudprog->vnum != progvnum;
+                                pList = pList->next )
                             ;
 
                         if ( pList == pObj->mudprogs )
@@ -5964,8 +5968,8 @@ MPGEDIT( mpgedit_remove )
                         else
                         {
                             for ( pInnerList = pObj->mudprogs;
-                                  pInnerList->next != pList;
-                                  pInnerList = pInnerList->next )
+                                    pInnerList->next != pList;
+                                    pInnerList = pInnerList->next )
                                 ;
 
                             pInnerList->next = pList->next;
@@ -5983,8 +5987,8 @@ MPGEDIT( mpgedit_remove )
 
     if ( updated )
         send_to_char
-            ( "Prog removed from group and existing obj/mob/rooms updated.\n\r",
-              ch );
+        ( "Prog removed from group and existing obj/mob/rooms updated.\n\r",
+          ch );
     else
         send_to_char( "Prog removed from group.\n\r", ch );
 

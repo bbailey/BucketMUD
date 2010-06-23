@@ -44,7 +44,8 @@ extern bool can_use( CHAR_DATA * ch, long sn );
                           (IS_SAME_AREA((x), TOROOM((x),(y)))))
 #endif
 
-struct track_queue_struct {
+struct track_queue_struct
+{
     ROOM_INDEX_DATA *room;
     char dir;
     struct track_queue_struct *next;
@@ -58,15 +59,18 @@ DECLARE_DO_FUN( do_look );
 DECLARE_DO_FUN( do_recall );
 DECLARE_DO_FUN( do_stand );
 
-char *const dir_name[] = {
+char *const dir_name[] =
+{
     "north", "east", "south", "west", "up", "down"
 };
 
-const sh_int rev_dir[] = {
+const sh_int rev_dir[] =
+{
     2, 3, 0, 1, 5, 4
 };
 
-const sh_int movement_loss[SECT_MAX] = {
+const sh_int movement_loss[SECT_MAX] =
+{
     1, 2, 2, 3, 4, 6, 4, 1, 6, 10, 6
 };
 
@@ -141,22 +145,22 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
 
     in_room = ch->in_room;
     if ( ( pexit = in_room->exit[door] ) == NULL
-         || ( to_room = pexit->u1.to_room ) == NULL
-         || !can_see_room( ch, pexit->u1.to_room ) )
+            || ( to_room = pexit->u1.to_room ) == NULL
+            || !can_see_room( ch, pexit->u1.to_room ) )
     {
         send_to_char( "Alas, you cannot go that way.\n\r", ch );
         return;
     }
 
     if ( IS_SET( pexit->exit_info, EX_CLOSED )
-         && IS_SET( pexit->exit_info, EX_HIDDEN ) )
+            && IS_SET( pexit->exit_info, EX_HIDDEN ) )
     {
         send_to_char( "Alas, you cannot go that way.\n\r", ch );
         return;
     }
 
     if ( IS_SET( pexit->exit_info, EX_CLOSED )
-         && !IS_AFFECTED( ch, AFF_PASS_DOOR ) )
+            && !IS_AFFECTED( ch, AFF_PASS_DOOR ) )
     {
         act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
         act( "$n tries unsuccessfully to walk through the $d.", ch, NULL,
@@ -165,8 +169,8 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
     }
 
     if ( IS_SET( pexit->exit_info, EX_CLOSED )
-         && IS_SET( pexit->exit_info, EX_PASSPROOF )
-         && IS_AFFECTED( ch, AFF_PASS_DOOR ) )
+            && IS_SET( pexit->exit_info, EX_PASSPROOF )
+            && IS_AFFECTED( ch, AFF_PASS_DOOR ) )
 
     {
         act( "A magical force prevents you from passing through the $d.", ch,
@@ -177,7 +181,7 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
     }
 
     if ( IS_AFFECTED( ch, AFF_CHARM )
-         && ch->master != NULL && in_room == ch->master->in_room )
+            && ch->master != NULL && in_room == ch->master->in_room )
     {
         send_to_char( "What?  And leave your beloved master?\n\r", ch );
         return;
@@ -199,7 +203,7 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
             for ( iGuild = 0; iGuild < MAX_GUILD; iGuild++ )
             {
                 if ( iClass != ch->Class
-                     && to_room->vnum == class_table[iClass].guild[iGuild] )
+                        && to_room->vnum == class_table[iClass].guild[iGuild] )
                 {
                     send_to_char( "You aren't allowed in there.\n\r", ch );
                     return;
@@ -208,7 +212,7 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
         }
 
         if ( in_room->sector_type == SECT_AIR
-             || to_room->sector_type == SECT_AIR )
+                || to_room->sector_type == SECT_AIR )
         {
             if ( !IS_AFFECTED( ch, AFF_FLYING ) && !IS_IMMORTAL( ch ) )
             {
@@ -218,8 +222,8 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
         }
 
         if ( ( in_room->sector_type == SECT_WATER_NOSWIM
-               || to_room->sector_type == SECT_WATER_NOSWIM )
-             && !IS_AFFECTED( ch, AFF_FLYING ) )
+                || to_room->sector_type == SECT_WATER_NOSWIM )
+                && !IS_AFFECTED( ch, AFF_FLYING ) )
         {
             OBJ_DATA *obj;
             bool found;
@@ -248,7 +252,7 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
         }
 
         move = movement_loss[UMIN( SECT_MAX - 1, in_room->sector_type )]
-            + movement_loss[UMIN( SECT_MAX - 1, to_room->sector_type )];
+               + movement_loss[UMIN( SECT_MAX - 1, to_room->sector_type )];
 
         move /= 2;              /* i.e. the average */
 
@@ -263,7 +267,7 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
     }
 
     if ( !IS_AFFECTED( ch, AFF_SNEAK )
-         && ( IS_NPC( ch ) || !IS_SET( ch->act, PLR_WIZINVIS ) ) )
+            && ( IS_NPC( ch ) || !IS_SET( ch->act, PLR_WIZINVIS ) ) )
     {
 #ifdef DRUNK_MOVE
         if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
@@ -277,7 +281,7 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
     char_from_room( ch );
     char_to_room( ch, to_room );
     if ( !IS_AFFECTED( ch, AFF_SNEAK )
-         && ( IS_NPC( ch ) || !IS_SET( ch->act, PLR_WIZINVIS ) ) )
+            && ( IS_NPC( ch ) || !IS_SET( ch->act, PLR_WIZINVIS ) ) )
     {
 #ifdef DRUNK_MOVE
         if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
@@ -298,14 +302,14 @@ void move_char( CHAR_DATA * ch, int door, bool follow )
         fch_next = fch->next_in_room;
 
         if ( fch->master == ch && IS_AFFECTED( fch, AFF_CHARM )
-             && fch->position < POS_STANDING )
+                && fch->position < POS_STANDING )
             do_stand( fch, "" );
 
         if ( fch->master == ch && fch->position == POS_STANDING )
         {
 
             if ( IS_SET( ch->in_room->room_flags, ROOM_LAW )
-                 && ( IS_NPC( fch ) && IS_SET( fch->act, ACT_AGGRESSIVE ) ) )
+                    && ( IS_NPC( fch ) && IS_SET( fch->act, ACT_AGGRESSIVE ) ) )
             {
                 act( "You can't bring $N into the city.",
                      ch, NULL, fch, TO_CHAR );
@@ -396,8 +400,8 @@ int find_door( CHAR_DATA * ch, char *arg )
         for ( door = 0; door <= 5; door++ )
         {
             if ( ( pexit = ch->in_room->exit[door] ) != NULL
-                 && IS_SET( pexit->exit_info, EX_ISDOOR )
-                 && pexit->keyword != NULL && is_name( arg, pexit->keyword ) )
+                    && IS_SET( pexit->exit_info, EX_ISDOOR )
+                    && pexit->keyword != NULL && is_name( arg, pexit->keyword ) )
                 return door;
         }
         act( "I see no $T here.", ch, NULL, arg, TO_CHAR );
@@ -488,8 +492,8 @@ void do_open( CHAR_DATA * ch, char *argument )
 
         /* open the other side */
         if ( ( to_room = pexit->u1.to_room ) != NULL
-             && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
-             && pexit_rev->u1.to_room == ch->in_room )
+                && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
+                && pexit_rev->u1.to_room == ch->in_room )
         {
             CHAR_DATA *rch;
 
@@ -562,8 +566,8 @@ void do_close( CHAR_DATA * ch, char *argument )
 
         /* close the other side */
         if ( ( to_room = pexit->u1.to_room ) != NULL
-             && ( pexit_rev = to_room->exit[rev_dir[door]] ) != 0
-             && pexit_rev->u1.to_room == ch->in_room )
+                && ( pexit_rev = to_room->exit[rev_dir[door]] ) != 0
+                && pexit_rev->u1.to_room == ch->in_room )
         {
             CHAR_DATA *rch;
 
@@ -673,8 +677,8 @@ void do_lock( CHAR_DATA * ch, char *argument )
 
         /* lock the other side */
         if ( ( to_room = pexit->u1.to_room ) != NULL
-             && ( pexit_rev = to_room->exit[rev_dir[door]] ) != 0
-             && pexit_rev->u1.to_room == ch->in_room )
+                && ( pexit_rev = to_room->exit[rev_dir[door]] ) != 0
+                && pexit_rev->u1.to_room == ch->in_room )
         {
             SET_BIT( pexit_rev->exit_info, EX_LOCKED );
         }
@@ -767,8 +771,8 @@ void do_unlock( CHAR_DATA * ch, char *argument )
 
         /* unlock the other side */
         if ( ( to_room = pexit->u1.to_room ) != NULL
-             && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
-             && pexit_rev->u1.to_room == ch->in_room )
+                && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
+                && pexit_rev->u1.to_room == ch->in_room )
         {
             REMOVE_BIT( pexit_rev->exit_info, EX_LOCKED );
         }
@@ -806,7 +810,7 @@ void do_pick( CHAR_DATA * ch, char *argument )
     }
 
     if ( !IS_NPC( ch )
-         && number_percent(  ) > ch->pcdata->learned[gsn_pick_lock] )
+            && number_percent(  ) > ch->pcdata->learned[gsn_pick_lock] )
     {
         send_to_char( "You failed.\n\r", ch );
         check_improve( ch, gsn_pick_lock, FALSE, 2 );
@@ -885,8 +889,8 @@ void do_pick( CHAR_DATA * ch, char *argument )
 
         /* pick the other side */
         if ( ( to_room = pexit->u1.to_room ) != NULL
-             && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
-             && pexit_rev->u1.to_room == ch->in_room )
+                && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
+                && pexit_rev->u1.to_room == ch->in_room )
         {
             REMOVE_BIT( pexit_rev->exit_info, EX_LOCKED );
         }
@@ -915,9 +919,9 @@ void do_stand( CHAR_DATA * ch, char *argument )
             return;
         }
         if ( obj->item_type != ITEM_FURNITURE
-             || ( !IS_SET( obj->value[2], STAND_AT )
-                  && !IS_SET( obj->value[2], STAND_ON )
-                  && !IS_SET( obj->value[2], STAND_IN ) ) )
+                || ( !IS_SET( obj->value[2], STAND_AT )
+                     && !IS_SET( obj->value[2], STAND_ON )
+                     && !IS_SET( obj->value[2], STAND_IN ) ) )
         {
             send_to_char( "You can't seem to find a place to stand.\n\r", ch );
             return;
@@ -1035,16 +1039,16 @@ void do_rest( CHAR_DATA * ch, char *argument )
     if ( obj != NULL )
     {
         if ( obj->item_type != ITEM_FURNITURE
-             || ( !IS_SET( obj->value[2], REST_ON )
-                  && !IS_SET( obj->value[2], REST_IN )
-                  && !IS_SET( obj->value[2], REST_AT ) ) )
+                || ( !IS_SET( obj->value[2], REST_ON )
+                     && !IS_SET( obj->value[2], REST_IN )
+                     && !IS_SET( obj->value[2], REST_AT ) ) )
         {
             send_to_char( "You can't rest on that.\n\r", ch );
             return;
         }
 
         if ( obj != NULL && ch->on != obj
-             && count_users( obj ) >= obj->value[0] )
+                && count_users( obj ) >= obj->value[0] )
         {
             act_new( "There's no more room on $p.", ch, obj, NULL, TO_CHAR,
                      POS_DEAD );
@@ -1176,16 +1180,16 @@ void do_sit( CHAR_DATA * ch, char *argument )
     if ( obj != NULL )
     {
         if ( obj->item_type != ITEM_FURNITURE
-             || ( !IS_SET( obj->value[2], SIT_ON )
-                  && !IS_SET( obj->value[2], SIT_IN )
-                  && !IS_SET( obj->value[2], SIT_AT ) ) )
+                || ( !IS_SET( obj->value[2], SIT_ON )
+                     && !IS_SET( obj->value[2], SIT_IN )
+                     && !IS_SET( obj->value[2], SIT_AT ) ) )
         {
             send_to_char( "You can't sit on that.\n\r", ch );
             return;
         }
 
         if ( obj != NULL && ch->on != obj
-             && count_users( obj ) >= obj->value[0] )
+                && count_users( obj ) >= obj->value[0] )
         {
             act_new( "There's no more room on $p.", ch, obj, NULL, TO_CHAR,
                      POS_DEAD );
@@ -1312,9 +1316,9 @@ void do_sleep( CHAR_DATA * ch, char *argument )
                 return;
             }
             if ( obj->item_type != ITEM_FURNITURE
-                 || ( !IS_SET( obj->value[2], SLEEP_ON )
-                      && !IS_SET( obj->value[2], SLEEP_IN )
-                      && !IS_SET( obj->value[2], SLEEP_AT ) ) )
+                    || ( !IS_SET( obj->value[2], SLEEP_ON )
+                         && !IS_SET( obj->value[2], SLEEP_IN )
+                         && !IS_SET( obj->value[2], SLEEP_AT ) ) )
             {
                 send_to_char( "You can't sleep on that!\n\r", ch );
                 return;
@@ -1417,8 +1421,8 @@ void do_sneak( CHAR_DATA * ch, char *argument )
     affect_strip( ch, gsn_sneak );
 
     if ( can_use( ch, gsn_sneak )
-         && ( IS_NPC( ch )
-              || number_percent(  ) < ch->pcdata->learned[gsn_sneak] ) )
+            && ( IS_NPC( ch )
+                 || number_percent(  ) < ch->pcdata->learned[gsn_sneak] ) )
     {
         check_improve( ch, gsn_sneak, TRUE, 3 );
         af.type = gsn_sneak;
@@ -1443,8 +1447,8 @@ void do_hide( CHAR_DATA * ch, char *argument )
         REMOVE_BIT( ch->affected_by, AFF_HIDE );
 
     if ( can_use( ch, gsn_hide )
-         && ( IS_NPC( ch )
-              || number_percent(  ) < ch->pcdata->learned[gsn_hide] ) )
+            && ( IS_NPC( ch )
+                 || number_percent(  ) < ch->pcdata->learned[gsn_hide] ) )
     {
         SET_BIT( ch->affected_by, AFF_HIDE );
         check_improve( ch, gsn_hide, TRUE, 3 );
@@ -1485,8 +1489,8 @@ void do_recall( CHAR_DATA * ch, char *argument )
     if ( ch->level > RECALL_LEVEL && !IS_IMMORTAL( ch ) )
     {
         send_to_char
-            ( "Dont be such a coward, find your way home on your own.\n\r",
-              ch );
+        ( "Dont be such a coward, find your way home on your own.\n\r",
+          ch );
         return;
     }
     act( "$n prays for transportation!", ch, 0, 0, TO_ROOM );
@@ -1511,7 +1515,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
     }
 
     if ( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
-         || IS_AFFECTED( ch, AFF_CURSE ) )
+            || IS_AFFECTED( ch, AFF_CURSE ) )
     {
         send_to_char( "The gods have forsaken you.\n\r", ch );
         return;
@@ -1738,7 +1742,7 @@ bool check_web( CHAR_DATA * ch )
     int orig_dur;
 
     if IS_IMMORTAL
-        ( ch ) return TRUE;
+    ( ch ) return TRUE;
 
     af = affect_find( ch->affected, skill_lookup( "web" ) );
     orig_dur = ( af->level / 3 );
@@ -1925,7 +1929,7 @@ void do_track( CHAR_DATA * ch, char *argument )
 #ifdef TRACK_IS_SKILL
 
     if ( !IS_NPC( ch )
-         && ch->level < skill_table[gsn_track].skill_level[ch->Class] )
+            && ch->level < skill_table[gsn_track].skill_level[ch->Class] )
     {
         send_to_char( "You don't know how to read tracks or scat.\n\r", ch );
         return;
@@ -1969,7 +1973,7 @@ void do_track( CHAR_DATA * ch, char *argument )
             int counter;
 
             if ( !IS_NPC( ch )
-                 && number_percent(  ) > ch->pcdata->learned[gsn_track] )
+                    && number_percent(  ) > ch->pcdata->learned[gsn_track] )
                 for ( counter = 0; counter < 50; counter++ )
                 {
                     dir = number_door(  );

@@ -70,7 +70,8 @@ void free_ban( BAN_DATA * ban )
 BUFFER *buf_free;
 
 /* buffer sizes */
-const int buf_size[MAX_BUF_LIST] = {
+const int buf_size[MAX_BUF_LIST] =
+{
     16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384
 };
 

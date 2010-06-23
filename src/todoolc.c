@@ -11,7 +11,8 @@
 TODO_DATA *todo_first = NULL;
 TODO_DATA *todo_last = NULL;
 
-const struct olc_cmd_type todoedit_table[] = {
+const struct olc_cmd_type todoedit_table[] =
+{
     {"show", todoedit_show},
     {"create", todoedit_create},
     {"keyword", todoedit_keyword},
@@ -89,8 +90,8 @@ void do_todoedit( CHAR_DATA * ch, char *argument )
     if ( argall[0] == '\0' )
     {
         send_to_char
-            ( "Syntax: edit todo createtodo\nSyntax: edit todo <keyword>\n\r",
-              ch );
+        ( "Syntax: edit todo createtodo\nSyntax: edit todo <keyword>\n\r",
+          ch );
         return;
     }
 

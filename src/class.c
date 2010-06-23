@@ -1,4 +1,4 @@
-/* Online setting of skill/spell levels, 
+/* Online setting of skill/spell levels,
  * (c) 1996 Erwin S. Andreasen <erwin@pip.dknet.dk>
  *
  */
@@ -18,10 +18,10 @@
 
 DECLARE_DO_FUN( do_skill );
 
-/* 
+/*
 
   Class table levels loading/saving
-  
+
 */
 
 /* Save this class */

@@ -14,7 +14,8 @@ FACTIONLIST_DATA *faction_last = NULL;
 
 sh_int faction_count = 0;
 
-const struct olc_cmd_type factionedit_table[] = {
+const struct olc_cmd_type factionedit_table[] =
+{
     {"show", factedit_show},
     {"create", factedit_create},
     {"name", factedit_name},
@@ -358,14 +359,14 @@ bool factedit_name( CHAR_DATA * ch, char *argument )
     if ( strlen( argument ) != str_len( argument ) )
     {
         send_to_char
-            ( "ERROR!  Color codes are not allowed in faction names.\n\r", ch );
+        ( "ERROR!  Color codes are not allowed in faction names.\n\r", ch );
         return FALSE;
     }
 
     if ( strlen( argument ) > 20 )
     {
         send_to_char
-            ( "ERROR!  Faction names must be 20 characters or less.\n\r", ch );
+        ( "ERROR!  Faction names must be 20 characters or less.\n\r", ch );
         return FALSE;
     }
 
@@ -480,7 +481,7 @@ void load_factionaffs( FILE * fp )
         else
         {
             for ( pFactAff = pMob->faction_affs; pFactAff->next != NULL;
-                  pFactAff = pFactAff->next );
+                    pFactAff = pFactAff->next );
             pFactAff->next = alloc_mem( sizeof( FACTIONAFF_DATA ) );
             pFactAff->next->faction = pFact;
             pFactAff->next->change = fread_number( fp );
@@ -510,17 +511,17 @@ void affect_factions( CHAR_DATA * ch, CHAR_DATA * victim )
     }
 
     for ( pFactAff = victim->pIndexData->faction_affs;
-          pFactAff != NULL; pFactAff = pFactAff->next )
+            pFactAff != NULL; pFactAff = pFactAff->next )
     {
         group_leader = ( ch->leader != NULL ) ? ch->leader : ch;
 
         for ( group_ch = player_list; group_ch != NULL;
-              group_ch = group_ch->next )
+                group_ch = group_ch->next )
         {
             if ( is_same_group( group_ch, ch ) )
             {
                 for ( pFactPC = group_ch->pcdata->faction_standings;
-                      pFactPC != NULL; pFactPC = pFactPC->next )
+                        pFactPC != NULL; pFactPC = pFactPC->next )
                 {
                     if ( pFactPC->faction == pFactAff->faction )
                         break;
@@ -630,7 +631,7 @@ void fwrite_faction_standings( CHAR_DATA * ch, FILE * fp )
     fprintf( fp, "#FACTIONS\n" );
 
     for ( pFactPC = ch->pcdata->faction_standings;
-          pFactPC != NULL; pFactPC = pFactPC->next )
+            pFactPC != NULL; pFactPC = pFactPC->next )
     {
         count++;
 
@@ -704,7 +705,7 @@ void show_faction_standings( CHAR_DATA * ch, char *argument )
                     "`K----------------------------------------------------------------------\n\r" );
 
     for ( pFactPC = ch->pcdata->faction_standings;
-          pFactPC != NULL; pFactPC = pFactPC->next )
+            pFactPC != NULL; pFactPC = pFactPC->next )
     {
         sprintf( buf, "`w%-20s   ", pFactPC->faction->name );
         buffer = add_to_buf( buffer, buf );
@@ -817,15 +818,15 @@ sh_int consider_factions( CHAR_DATA * ch, CHAR_DATA * victim, bool show )
         return 0;
     }
 
-    /* Loop through all faction decreases on the victim and average 
+    /* Loop through all faction decreases on the victim and average
      * the matching values on the ch */
     for ( pFactAff = victim->pIndexData->faction_affs;
-          pFactAff != NULL; pFactAff = pFactAff->next )
+            pFactAff != NULL; pFactAff = pFactAff->next )
     {
         if ( pFactAff->change < 0 )
         {
             for ( pFactPC = ch->pcdata->faction_standings;
-                  pFactPC != NULL; pFactPC = pFactPC->next )
+                    pFactPC != NULL; pFactPC = pFactPC->next )
             {
                 if ( pFactPC->faction == pFactAff->faction )
                 {
@@ -871,7 +872,7 @@ void set_faction( CHAR_DATA * ch, CHAR_DATA * victim, sh_int vnum,
     }
 
     if ( ( value > CFG_FACTION_MAX_VALUE )
-         || ( value < CFG_FACTION_MIN_VALUE ) )
+            || ( value < CFG_FACTION_MIN_VALUE ) )
     {
         printf_to_char( ch, "Faction values must be in the range %d to %d\n\r",
                         CFG_FACTION_MIN_VALUE, CFG_FACTION_MAX_VALUE );
@@ -879,7 +880,7 @@ void set_faction( CHAR_DATA * ch, CHAR_DATA * victim, sh_int vnum,
     }
 
     for ( pFactPC = victim->pcdata->faction_standings;
-          pFactPC != NULL; pFactPC = pFactPC->next )
+            pFactPC != NULL; pFactPC = pFactPC->next )
     {
         if ( pFactPC->faction == pFact )
         {
@@ -947,7 +948,7 @@ void faction_stat( CHAR_DATA * ch, CHAR_DATA * victim )
         buffer = add_to_buf( buffer, buf );
 
         for ( pFactAff = victim->pIndexData->faction_affs;
-              pFactAff != NULL; pFactAff = pFactAff->next )
+                pFactAff != NULL; pFactAff = pFactAff->next )
         {
             sprintf( buf, "%s will be %s by %d points\n\r",
                      pFactAff->faction->name,
@@ -964,7 +965,7 @@ void faction_stat( CHAR_DATA * ch, CHAR_DATA * victim )
                         "`K----------------------------------------------------------------------\n\r" );
 
         for ( pFactPC = victim->pcdata->faction_standings;
-              pFactPC != NULL; pFactPC = pFactPC->next )
+                pFactPC != NULL; pFactPC = pFactPC->next )
         {
             sprintf( buf, "%-20s   %s [%d]\n\r", pFactPC->faction->name,
                      faction_con_msg( pFactPC->value ), pFactPC->value );
@@ -993,7 +994,7 @@ void mpchangefaction( CHAR_DATA * ch, char *argument, bool silent )
     argument = one_argument( argument, arg2 );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' || !is_number( arg2 )
-         || !is_number( argument ) )
+            || !is_number( argument ) )
     {
         bug( "mpchangefaction: incorrect syntax" );
         return;
@@ -1020,7 +1021,7 @@ void mpchangefaction( CHAR_DATA * ch, char *argument, bool silent )
     }
 
     for ( pFactPC = victim->pcdata->faction_standings;
-          pFactPC != NULL; pFactPC = pFactPC->next )
+            pFactPC != NULL; pFactPC = pFactPC->next )
     {
         if ( pFactPC->faction == pFact )
             break;
@@ -1094,7 +1095,7 @@ void do_factionfind( CHAR_DATA * ch, char *argument )
     for ( pFact = faction_first; pFact != NULL; pFact = pFact->next )
     {
         if ( ( is_name( argument, pFact->name ) )
-             || ( !str_cmp( argument, "all" ) ) )
+                || ( !str_cmp( argument, "all" ) ) )
         {
             sprintf( buf, "%5d %-s\n\r", pFact->vnum, pFact->name );
             buffer = add_to_buf( buffer, buf );
@@ -1150,7 +1151,7 @@ bool medit_faction( CHAR_DATA * ch, char *argument )
     EDIT_MOB( ch, pMob );
 
     for ( pFactAff = pMob->faction_affs;
-          pFactAff != NULL; pFactAff = pFactAff->next )
+            pFactAff != NULL; pFactAff = pFactAff->next )
     {
         if ( pFactAff->faction == pFact )
             break;
@@ -1210,7 +1211,7 @@ bool medit_faction( CHAR_DATA * ch, char *argument )
         }
 
         for ( tmp = pMob->faction_affs; tmp->next != pFactAff;
-              tmp = tmp->next );
+                tmp = tmp->next );
 
         tmp->next = pFactAff->next;
 
@@ -1291,24 +1292,24 @@ double faction_cost_multiplier( CHAR_DATA * ch, CHAR_DATA * keeper, bool buy )
         {
             if ( percentage >= -15 )
                 return ( 1 - ( CFG_FACTION_SHOPKEEPER_15MIN - 1 ) ) <
-                    0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_15MIN - 1 ) );
+                       0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_15MIN - 1 ) );
             if ( percentage >= -30 )
                 return ( 1 - ( CFG_FACTION_SHOPKEEPER_30MIN - 1 ) ) <
-                    0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_30MIN - 1 ) );
+                       0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_30MIN - 1 ) );
             if ( percentage >= -45 )
                 return ( 1 - ( CFG_FACTION_SHOPKEEPER_45MIN - 1 ) ) <
-                    0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_45MIN - 1 ) );
+                       0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_45MIN - 1 ) );
             if ( percentage >= -60 )
                 return ( 1 - ( CFG_FACTION_SHOPKEEPER_60MIN - 1 ) ) <
-                    0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_60MIN - 1 ) );
+                       0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_60MIN - 1 ) );
             if ( percentage >= -75 )
                 return ( 1 - ( CFG_FACTION_SHOPKEEPER_75MIN - 1 ) ) <
-                    0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_75MIN - 1 ) );
+                       0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_75MIN - 1 ) );
             if ( percentage >= -90 )
                 return ( 1 - ( CFG_FACTION_SHOPKEEPER_90MIN - 1 ) ) <
-                    0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_90MIN - 1 ) );
+                       0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_90MIN - 1 ) );
             return ( 1 - ( CFG_FACTION_SHOPKEEPER_MIN - 1 ) ) <
-                0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_MIN - 1 ) );
+                   0 ? 0 : ( 1 - ( CFG_FACTION_SHOPKEEPER_MIN - 1 ) );
         }
     }
 

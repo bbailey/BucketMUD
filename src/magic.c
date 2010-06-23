@@ -1,19 +1,19 @@
- /***************************************************************************
- *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
- *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
- *                                                                         *
- *  Merc Diku Mud improvments copyright (C) 1992, 1993 by Michael          *
- *  Chastain, Michael Quan, and Mitchell Tse.                              *
- *                                                                         *
- *  In order to use any part of this Merc Diku Mud, you must comply with   *
- *  both the original Diku license in 'license.doc' as well the Merc       *
- *  license in 'license.txt'.  In particular, you may not remove either of *
- *  these copyright notices.                                               *
- *                                                                         *
- *  Much time and thought has gone into this software and you are          *
- *  benefitting.  We hope that you share your changes too.  What goes      *
- *  around, comes around.                                                  *
- ***************************************************************************/
+/***************************************************************************
+*  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
+*  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
+*                                                                         *
+*  Merc Diku Mud improvments copyright (C) 1992, 1993 by Michael          *
+*  Chastain, Michael Quan, and Mitchell Tse.                              *
+*                                                                         *
+*  In order to use any part of this Merc Diku Mud, you must comply with   *
+*  both the original Diku license in 'license.doc' as well the Merc       *
+*  license in 'license.txt'.  In particular, you may not remove either of *
+*  these copyright notices.                                               *
+*                                                                         *
+*  Much time and thought has gone into this software and you are          *
+*  benefitting.  We hope that you share your changes too.  What goes      *
+*  around, comes around.                                                  *
+***************************************************************************/
 
 #include <sys/types.h>
 #include <stdio.h>
@@ -45,7 +45,7 @@ int skill_lookup( const char *name )
         if ( skill_table[sn].name == NULL )
             break;
         if ( LOWER( name[0] ) == LOWER( skill_table[sn].name[0] )
-             && !str_prefix( name, skill_table[sn].name ) )
+                && !str_prefix( name, skill_table[sn].name ) )
             return sn;
     }
 
@@ -91,12 +91,14 @@ void say_spell( CHAR_DATA * ch, int sn )
     int iSyl;
     int length;
 
-    struct syl_type {
+    struct syl_type
+    {
         char *old;
         char *new;
     };
 
-    static const struct syl_type syl_table[] = {
+    static const struct syl_type syl_table[] =
+    {
         {" ", " "},
         {"ar", "abra"},
         {"au", "kada"},
@@ -134,7 +136,7 @@ void say_spell( CHAR_DATA * ch, int sn )
     for ( pName = skill_table[sn].name; *pName != '\0'; pName += length )
     {
         for ( iSyl = 0; ( length = strlen( syl_table[iSyl].old ) ) != 0;
-              iSyl++ )
+                iSyl++ )
         {
             if ( !str_prefix( syl_table[iSyl].old, pName ) )
             {
@@ -289,14 +291,14 @@ void do_cast( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->in_room->room_flags, ROOM_NOMAGIC ) )
     {
         send_to_char
-            ( "You are unable to summon the means to cast the spell.\n\r", ch );
+        ( "You are unable to summon the means to cast the spell.\n\r", ch );
         return;
     }
 
     if ( ( sn = skill_lookup( arg ) ) < 0
-         || skill_table[sn].spell_fun == spell_null
-         || ( !IS_NPC( ch )
-              && ch->level < skill_table[sn].skill_level[ch->Class] ) )
+            || skill_table[sn].spell_fun == spell_null
+            || ( !IS_NPC( ch )
+                 && ch->level < skill_table[sn].skill_level[ch->Class] ) )
     {
         send_to_char( "You don't know any spells of that name.\n\r", ch );
         return;
@@ -348,13 +350,13 @@ void do_cast( CHAR_DATA * ch, char *argument )
                 return;
             }
         }
-/*
-        if ( ch == victim )
-        {
-            send_to_char( "You can't do that to yourself.\n\r", ch );
-            return;
-        }
-*/
+        /*
+                if ( ch == victim )
+                {
+                    send_to_char( "You can't do that to yourself.\n\r", ch );
+                    return;
+                }
+        */
 
         if ( !IS_NPC( ch ) )
         {
@@ -459,7 +461,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
     }
 
     if ( skill_table[sn].target == TAR_CHAR_OFFENSIVE
-         && victim != ch && victim->master != ch )
+            && victim != ch && victim->master != ch )
     {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
@@ -502,8 +504,8 @@ void do_mpsilentcast( CHAR_DATA * ch, char *argument )
     }
 
     if ( ( sn = skill_lookup( arg ) ) < 0
-         || ( !IS_NPC( ch )
-              && ch->level < skill_table[sn].skill_level[ch->Class] ) )
+            || ( !IS_NPC( ch )
+                 && ch->level < skill_table[sn].skill_level[ch->Class] ) )
     {
         send_to_char( "You don't know any spells of that name.\n\r", ch );
         return;
@@ -555,13 +557,13 @@ void do_mpsilentcast( CHAR_DATA * ch, char *argument )
                 return;
             }
         }
-/*
-        if ( ch == victim )
-        {
-            send_to_char( "You can't do that to yourself.\n\r", ch );
-            return;
-        }
-*/
+        /*
+                if ( ch == victim )
+                {
+                    send_to_char( "You can't do that to yourself.\n\r", ch );
+                    return;
+                }
+        */
 
         if ( !IS_NPC( ch ) )
         {
@@ -602,8 +604,8 @@ void do_mpsilentcast( CHAR_DATA * ch, char *argument )
     case TAR_CHAR_SELF:
         if ( arg2[0] != '\0' && !is_name( arg2, ch->name ) )
         {
-/*	    send_to_char( "You cannot cast this spell on another.\n\r", ch );
-	    return;*/
+            /*	    send_to_char( "You cannot cast this spell on another.\n\r", ch );
+            	    return;*/
             if ( ( victim = get_char_room( ch, arg2 ) ) == NULL )
             {
                 send_to_char( "They aren't here.\n\r", ch );
@@ -662,7 +664,7 @@ void do_mpsilentcast( CHAR_DATA * ch, char *argument )
     }
 
     if ( skill_table[sn].target == TAR_CHAR_OFFENSIVE
-         && victim != ch && victim->master != ch )
+            && victim != ch && victim->master != ch )
     {
         if ( IS_NPC( ch ) && ch->pIndexData->vnum == MOB_VNUM_SUPERMOB )
         {
@@ -755,7 +757,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim,
     ( *skill_table[sn].spell_fun ) ( sn, level, ch, vo );
 
     if ( skill_table[sn].target == TAR_CHAR_OFFENSIVE
-         && victim != ch && victim->master != ch )
+            && victim != ch && victim->master != ch )
     {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
@@ -860,9 +862,9 @@ void do_spellup( CHAR_DATA * ch, char *argument )
             act( "$n has given you an immortal spellup.", ch, NULL, victim,
                  TO_VICT );
 
-/*      sprintf(buf, "\n\r\n\rYou have been given an Immortal spellup from %s\n\r",  ch->name 
-);
-      send_to_char(buf, victim);*/
+            /*      sprintf(buf, "\n\r\n\rYou have been given an Immortal spellup from %s\n\r",  ch->name
+            );
+                  send_to_char(buf, victim);*/
         }
         sprintf( buf, "\n\r\n\rAll active players spelled up.\n\r" );
         send_to_char( buf, ch );
@@ -900,9 +902,9 @@ void do_spellup( CHAR_DATA * ch, char *argument )
     sn = skill_lookup( "armor" );
     spell( sn, level, ch, victim );
 
-/*      spell = spell_stone_skin;
-      sn = skill_lookup("stone skin");
-      spell(sn,level,ch,victim); */
+    /*      spell = spell_stone_skin;
+          sn = skill_lookup("stone skin");
+          spell(sn,level,ch,victim); */
 
     spell = spell_invis;
     sn = skill_lookup( "invis" );
@@ -930,8 +932,8 @@ void do_spellup( CHAR_DATA * ch, char *argument )
 
     act( "$n has given you an immortal spellup.", ch, NULL, victim, TO_VICT );
 
-/* sprintf(buf, "\n\r\n\rYou have been given an Immortal spellup from %s\n\r",  ch->name );
-send_to_char(buf, victim); */
+    /* sprintf(buf, "\n\r\n\rYou have been given an Immortal spellup from %s\n\r",  ch->name );
+    send_to_char(buf, victim); */
     sprintf( buf, "\n\r\n\rYou have given %s an Immortal spellup.\n\r",
              victim->name );
     send_to_char( buf, ch );
@@ -1033,7 +1035,8 @@ void spell_blindness( int sn, int level, CHAR_DATA * ch, void *vo )
 void spell_burning_hands( int sn, int level, CHAR_DATA * ch, void *vo )
 {
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-    static const sh_int dam_each[] = {
+    static const sh_int dam_each[] =
+    {
         0,
         0, 0, 0, 0, 14, 17, 20, 23, 26, 29,
         29, 29, 30, 30, 31, 31, 32, 32, 33, 33,
@@ -1085,7 +1088,7 @@ void spell_call_lightning( int sn, int level, CHAR_DATA * ch, void *vo )
         if ( vch->in_room == ch->in_room )
         {
             if ( vch != ch
-                 && ( IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) ) )
+                    && ( IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) ) )
                 damage( ch, vch, NULL,
                         saves_spell( level, vch ) ? dam / 2 : dam, sn,
                         DAM_LIGHTNING );
@@ -1093,7 +1096,7 @@ void spell_call_lightning( int sn, int level, CHAR_DATA * ch, void *vo )
         }
 
         if ( vch->in_room->area == ch->in_room->area
-             && IS_OUTSIDE( vch ) && IS_AWAKE( vch ) )
+                && IS_OUTSIDE( vch ) && IS_AWAKE( vch ) )
             send_to_char( "Lightning flashes in the sky.\n\r", vch );
     }
 
@@ -1140,7 +1143,7 @@ void spell_calm( int sn, int level, CHAR_DATA * ch, void *vo )
                 return;
 
             if ( IS_AFFECTED( vch, AFF_CALM ) || IS_AFFECTED( vch, AFF_BERSERK )
-                 || is_affected( vch, skill_lookup( "frenzy" ) ) )
+                    || is_affected( vch, skill_lookup( "frenzy" ) ) )
                 return;
 
             send_to_char( "A wave of calm passes over you.\n\r", vch );
@@ -1172,9 +1175,9 @@ void spell_cancellation( int sn, int level, CHAR_DATA * ch, void *vo )
 
     level += 2;
 
-/* Commenting out part so that npc's may cancel players
- * this is so the healer can cast cancellation.
- */
+    /* Commenting out part so that npc's may cancel players
+     * this is so the healer can cast cancellation.
+     */
     if ( ( !IS_NPC( ch ) && IS_NPC( victim ) && !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) /* ||
                                                                                                                ( IS_NPC( ch ) && !IS_NPC( victim ) ) */  )
     {
@@ -1383,7 +1386,7 @@ void spell_chain_lightning( int sn, int level, CHAR_DATA * ch, void *vo )
     {
         found = FALSE;
         for ( tmp_vict = ch->in_room->people;
-              tmp_vict != NULL; tmp_vict = next_vict )
+                tmp_vict != NULL; tmp_vict = next_vict )
         {
             next_vict = tmp_vict->next_in_room;
             if ( !is_safe_spell( ch, tmp_vict, TRUE ) && tmp_vict != last_vict )
@@ -1474,10 +1477,10 @@ void spell_charm_person( int sn, int level, CHAR_DATA * ch, void *vo )
     }
 
     if ( IS_AFFECTED( victim, AFF_CHARM )
-         || IS_AFFECTED( ch, AFF_CHARM )
-         || level < victim->level
-         || IS_SET( victim->imm_flags, IMM_CHARM )
-         || saves_spell( level, victim ) )
+            || IS_AFFECTED( ch, AFF_CHARM )
+            || level < victim->level
+            || IS_SET( victim->imm_flags, IMM_CHARM )
+            || saves_spell( level, victim ) )
     {
         return;
     }
@@ -1485,7 +1488,7 @@ void spell_charm_person( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( IS_SET( victim->in_room->room_flags, ROOM_LAW ) )
     {
         send_to_char
-            ( "The mayor does not allow charming in the city limits.\n\r", ch );
+        ( "The mayor does not allow charming in the city limits.\n\r", ch );
         return;
     }
 
@@ -1516,7 +1519,8 @@ void spell_charm_person( int sn, int level, CHAR_DATA * ch, void *vo )
 void spell_chill_touch( int sn, int level, CHAR_DATA * ch, void *vo )
 {
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-    static const sh_int dam_each[] = {
+    static const sh_int dam_each[] =
+    {
         0,
         0, 0, 6, 7, 8, 9, 12, 13, 13, 13,
         14, 14, 14, 15, 15, 15, 16, 16, 16, 17,
@@ -1553,7 +1557,8 @@ void spell_chill_touch( int sn, int level, CHAR_DATA * ch, void *vo )
 void spell_colour_spray( int sn, int level, CHAR_DATA * ch, void *vo )
 {
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-    static const sh_int dam_each[] = {
+    static const sh_int dam_each[] =
+    {
         0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         30, 35, 40, 45, 50, 55, 55, 55, 56, 57,
@@ -1694,7 +1699,7 @@ void spell_cure_critical( int sn, int level, CHAR_DATA * ch, void *vo )
     int heal;
 
     if ( ( !IS_IMMORTAL( ch ) && !IS_NPC( ch ) && IS_NPC( victim ) &&
-           !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) )
+            !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) )
     {
         send_to_char( "Why would you want to do that?\n\r", ch );
         return;
@@ -1753,7 +1758,7 @@ void spell_cure_light( int sn, int level, CHAR_DATA * ch, void *vo )
     int heal;
 
     if ( ( !IS_IMMORTAL( ch ) && !IS_NPC( ch ) && IS_NPC( victim ) &&
-           !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) )
+            !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) )
     {
         send_to_char( "Why would you want to do that?\n\r", ch );
         return;
@@ -1810,7 +1815,7 @@ void spell_cure_serious( int sn, int level, CHAR_DATA * ch, void *vo )
     int heal;
 
     if ( ( !IS_IMMORTAL( ch ) && !IS_NPC( ch ) && IS_NPC( victim ) &&
-           !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) )
+            !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) )
     {
         send_to_char( "Why would you want to do that?\n\r", ch );
         return;
@@ -2176,8 +2181,8 @@ void spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo )
     }
 
     if ( IS_AFFECTED( victim, AFF_SANCTUARY )
-         && !saves_dispel( level, victim->level, -1 )
-         && !is_affected( victim, skill_lookup( "sanctuary" ) ) )
+            && !saves_dispel( level, victim->level, -1 )
+            && !is_affected( victim, skill_lookup( "sanctuary" ) ) )
     {
         REMOVE_BIT( victim->affected_by, AFF_SANCTUARY );
         act( "The white aura around $n's body vanishes.",
@@ -2721,7 +2726,8 @@ void spell_energy_drain( int sn, int level, CHAR_DATA * ch, void *vo )
 void spell_fireball( int sn, int level, CHAR_DATA * ch, void *vo )
 {
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-    static const sh_int dam_each[] = {
+    static const sh_int dam_each[] =
+    {
         0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 30, 35, 40, 45, 50, 55,
@@ -2859,8 +2865,8 @@ void spell_frenzy( int sn, int level, CHAR_DATA * ch, void *vo )
     }
 
     if ( ( IS_GOOD( ch ) && !IS_GOOD( victim ) ) ||
-         ( IS_NEUTRAL( ch ) && !IS_NEUTRAL( victim ) ) ||
-         ( IS_EVIL( ch ) && !IS_EVIL( victim ) ) )
+            ( IS_NEUTRAL( ch ) && !IS_NEUTRAL( victim ) ) ||
+            ( IS_EVIL( ch ) && !IS_EVIL( victim ) ) )
     {
         act( "Your god doesn't seem to like $N", ch, NULL, victim, TO_CHAR );
         return;
@@ -2897,24 +2903,24 @@ void spell_gate( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( ( ( victim = get_char_world( ch, target_name ) ) == NULL ) )
     {
         send_to_char
-            ( "A disturbance in the planar fabric prevents your transportation.\n\r",
-              ch );
+        ( "A disturbance in the planar fabric prevents your transportation.\n\r",
+          ch );
         return;
     }
     if ( NOSUMMONFULL == 1 )
     {
         if ( ( victim = get_char_world( ch, target_name ) ) == NULL || victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level >= level + 3 || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )  /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
-             || IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) )
-             || ( !IS_NPC( victim )
-                  && IS_SET( victim->in_room->room_flags, ROOM_LAW ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
+                || IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) )
+                || ( !IS_NPC( victim )
+                     && IS_SET( victim->in_room->room_flags, ROOM_LAW ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your transponsportation",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your transponsportation",
+              ch );
             return;
         }
     }
@@ -2922,23 +2928,23 @@ void spell_gate( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch
-             || victim->in_room == NULL
-             || !can_see_room( ch, victim->in_room )
-             || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
-             || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE )
-             || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY )
-             || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
-             || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
-             || IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC )
-             || IS_SET( ch->in_room->room_flags, ROOM_NOMAGIC )
-             || victim->level >= ch->level + NOSUMMONLEVELMOB
-             || ( chaos )
-             || IS_SET( victim->imm_flags, IMM_SUMMON )
-             || saves_spell( level, victim ) )
+                || victim->in_room == NULL
+                || !can_see_room( ch, victim->in_room )
+                || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
+                || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE )
+                || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY )
+                || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
+                || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
+                || IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC )
+                || IS_SET( ch->in_room->room_flags, ROOM_NOMAGIC )
+                || victim->level >= ch->level + NOSUMMONLEVELMOB
+                || ( chaos )
+                || IS_SET( victim->imm_flags, IMM_SUMMON )
+                || saves_spell( level, victim ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your transportation.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your transportation.\n\r",
+              ch );
             return;
         }
     }
@@ -2947,14 +2953,14 @@ void spell_gate( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level >= ch->level + NOSUMMONLEVELNONPK || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )   /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your transportation.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your transportation.\n\r",
+              ch );
             return;
         }
     }
@@ -2962,15 +2968,15 @@ void spell_gate( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( NOSUMMONPKSAME == 1 && IS_SET( victim->act, PLR_KILLER ) )
     {
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level > ch->level + NOSUMMONLEVELPK || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )   /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
-                  && victim->level > ch->level + NOSUMMONLEVELPK )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
+                     && victim->level > ch->level + NOSUMMONLEVELPK )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your transportation.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your transportation.\n\r",
+              ch );
             return;
         }
     }
@@ -2978,16 +2984,16 @@ void spell_gate( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || ( chaos ) || ( ch->level > ( victim->level + NOSUMMONLEVELPK ) || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )    /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
-                  && ( ch->level > ( victim->level + NOSUMMONLEVELPK )
-                       || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
+                     && ( ch->level > ( victim->level + NOSUMMONLEVELPK )
+                          || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your transportation.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your transportation.\n\r",
+              ch );
             return;
         }
 
@@ -3046,21 +3052,21 @@ void spell_nexus( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( ( ( victim = get_char_world( ch, target_name ) ) == NULL ) )
     {
         send_to_char
-            ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
-              ch );
+        ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
+          ch );
         return;
     }
     if ( NOSUMMONFULL == 1 )
     {
         if ( ( victim = get_char_world( ch, target_name ) ) == NULL || victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level >= level + 3 || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )  /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your  portal from opening.",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your  portal from opening.",
+              ch );
             return;
         }
     }
@@ -3068,23 +3074,23 @@ void spell_nexus( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch
-             || victim->in_room == NULL
-             || !can_see_room( ch, victim->in_room )
-             || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
-             || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE )
-             || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY )
-             || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
-             || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC ) )
-             || ( IS_SET( ch->in_room->room_flags, ROOM_NOMAGIC ) )
-             || victim->level >= ch->level + NOSUMMONLEVELMOB
-             || ( chaos )
-             || IS_SET( victim->imm_flags, IMM_SUMMON )
-             || saves_spell( level, victim ) )
+                || victim->in_room == NULL
+                || !can_see_room( ch, victim->in_room )
+                || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
+                || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE )
+                || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY )
+                || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
+                || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC ) )
+                || ( IS_SET( ch->in_room->room_flags, ROOM_NOMAGIC ) )
+                || victim->level >= ch->level + NOSUMMONLEVELMOB
+                || ( chaos )
+                || IS_SET( victim->imm_flags, IMM_SUMMON )
+                || saves_spell( level, victim ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
+              ch );
             return;
         }
     }
@@ -3093,14 +3099,14 @@ void spell_nexus( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level >= ch->level + NOSUMMONLEVELNONPK || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )   /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
+              ch );
             return;
         }
     }
@@ -3108,15 +3114,15 @@ void spell_nexus( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( NOSUMMONPKSAME == 1 && IS_SET( victim->act, PLR_KILLER ) )
     {
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level > ch->level + NOSUMMONLEVELPK || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )   /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
-                  && victim->level > ch->level + NOSUMMONLEVELPK )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
+                     && victim->level > ch->level + NOSUMMONLEVELPK )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
+              ch );
             return;
         }
     }
@@ -3124,16 +3130,16 @@ void spell_nexus( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || ( chaos ) || ( ch->level > ( victim->level + NOSUMMONLEVELPK ) || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )    /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
-                  && ( ch->level > ( victim->level + NOSUMMONLEVELPK )
-                       || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
+                     && ( ch->level > ( victim->level + NOSUMMONLEVELPK )
+                          || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your portal from opening.\n\r",
+              ch );
             return;
         }
 
@@ -3143,7 +3149,7 @@ void spell_nexus( int sn, int level, CHAR_DATA * ch, void *vo )
     act( "$n waves his hands and a portal appears out of thin air.", ch, NULL,
          NULL, TO_ROOM );
     send_to_char
-        ( "As you wave your hands, a portal appears in front of you.\n\r", ch );
+    ( "As you wave your hands, a portal appears in front of you.\n\r", ch );
 
 }
 
@@ -3194,7 +3200,7 @@ void spell_haste( int sn, int level, CHAR_DATA * ch, void *vo )
     AFFECT_DATA af;
 
     if ( is_affected( victim, sn ) || IS_AFFECTED( victim, AFF_HASTE )
-         || IS_SET( victim->off_flags, OFF_FAST ) )
+            || IS_SET( victim->off_flags, OFF_FAST ) )
     {
         if ( victim == ch )
             send_to_char( "You can't move any faster!\n\r", ch );
@@ -3226,7 +3232,7 @@ void spell_heal( int sn, int level, CHAR_DATA * ch, void *vo )
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
 
     if ( ( !IS_IMMORTAL( ch ) && !IS_NPC( ch ) && IS_NPC( victim ) &&
-           !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) )
+            !( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim ) ) )
     {
         send_to_char( "Why would you want to do that?\n\r", ch );
         return;
@@ -3268,8 +3274,8 @@ void spell_holy_word( int sn, int level, CHAR_DATA * ch, void *vo )
         vch_next = vch->next_in_room;
 
         if ( ( IS_GOOD( ch ) && IS_GOOD( vch ) ) ||
-             ( IS_EVIL( ch ) && IS_EVIL( vch ) ) ||
-             ( IS_NEUTRAL( ch ) && IS_NEUTRAL( vch ) ) )
+                ( IS_EVIL( ch ) && IS_EVIL( vch ) ) ||
+                ( IS_NEUTRAL( ch ) && IS_NEUTRAL( vch ) ) )
         {
             send_to_char( "You feel full more powerful.\n\r", vch );
             spell_frenzy( frenzy_num, level, ch, ( void * ) vch );
@@ -3518,7 +3524,8 @@ void spell_know_alignment( int sn, int level, CHAR_DATA * ch, void *vo )
 void spell_lightning_bolt( int sn, int level, CHAR_DATA * ch, void *vo )
 {
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-    static const sh_int dam_each[] = {
+    static const sh_int dam_each[] =
+    {
         0,
         0, 0, 0, 0, 0, 0, 0, 0, 25, 28,
         31, 34, 37, 40, 40, 41, 42, 42, 43, 44,
@@ -3555,8 +3562,8 @@ void spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo )
     for ( obj = object_list; obj != NULL; obj = obj->next )
     {
         if ( !can_see_obj( ch, obj ) || !is_name( target_name, obj->name )
-             || ( !IS_IMMORTAL( ch ) && number_percent(  ) > 2 * level )
-             || ch->level < obj->level )
+                || ( !IS_IMMORTAL( ch ) && number_percent(  ) > 2 * level )
+                || ch->level < obj->level )
             continue;
 
         found = TRUE;
@@ -3604,19 +3611,19 @@ void spell_magic_missile( int sn, int level, CHAR_DATA * ch, void *vo )
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
     int dam;
 
-/*  static const sh_int dam_each[] = 
-    {
-	 0,
-	 3,  3,  4,  4,  5,	 6,  6,  6,  6,  6,
-	 7,  7,  7,  7,  7,	 8,  8,  8,  8,  8,
-	 9,  9,  9,  9,  9,	10, 10, 10, 10, 10,
-	11, 11, 11, 11, 11,	12, 12, 12, 12, 12,
-	13, 13, 13, 13, 13,	14, 14, 14, 14, 14
-    };
+    /*  static const sh_int dam_each[] =
+        {
+    	 0,
+    	 3,  3,  4,  4,  5,	 6,  6,  6,  6,  6,
+    	 7,  7,  7,  7,  7,	 8,  8,  8,  8,  8,
+    	 9,  9,  9,  9,  9,	10, 10, 10, 10, 10,
+    	11, 11, 11, 11, 11,	12, 12, 12, 12, 12,
+    	13, 13, 13, 13, 13,	14, 14, 14, 14, 14
+        };
 
-    level	= UMIN(level, sizeof(dam_each)/sizeof(dam_each[0]) - 1);
-    level	= UMAX(0, level);
-    dam		= number_range( dam_each[level] / 2, dam_each[level] * 2 ); */
+        level	= UMIN(level, sizeof(dam_each)/sizeof(dam_each[0]) - 1);
+        level	= UMAX(0, level);
+        dam		= number_range( dam_each[level] / 2, dam_each[level] * 2 ); */
     if ( level > 25 )
         dam = dice( 3, 6 );
     /*else */
@@ -3641,7 +3648,7 @@ void spell_mass_healing( int sn, int level, CHAR_DATA * ch, void *vo )
     for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
     {
         if ( ( IS_NPC( ch ) && IS_NPC( gch ) ) ||
-             ( !IS_NPC( ch ) && !IS_NPC( gch ) ) )
+                ( !IS_NPC( ch ) && !IS_NPC( gch ) ) )
         {
             spell_heal( heal_num, level, ch, ( void * ) gch );
             spell_refresh( refresh_num, level, ch, ( void * ) gch );
@@ -3713,7 +3720,7 @@ void spell_plague( int sn, int level, CHAR_DATA * ch, void *vo )
     AFFECT_DATA af;
 
     if ( saves_spell( level, victim ) ||
-         ( IS_NPC( victim ) && IS_SET( victim->act, ACT_UNDEAD ) ) )
+            ( IS_NPC( victim ) && IS_SET( victim->act, ACT_UNDEAD ) ) )
     {
         if ( ch == victim )
             send_to_char( "You feel momentarily ill, but it passes.\n\r", ch );
@@ -3731,8 +3738,8 @@ void spell_plague( int sn, int level, CHAR_DATA * ch, void *vo )
     affect_join( victim, &af );
 
     send_to_char
-        ( "You scream in agony as plague sores erupt from your skin.\n\r",
-          victim );
+    ( "You scream in agony as plague sores erupt from your skin.\n\r",
+      victim );
     act( "$n screams in agony as plague sores erupt from $s skin.", victim,
          NULL, NULL, TO_ROOM );
 }
@@ -3822,7 +3829,7 @@ void spell_remove_curse( int sn, int level, CHAR_DATA * ch, void *vo )
             continue;
 
         if ( IS_OBJ_STAT( obj, ITEM_NODROP )
-             || IS_OBJ_STAT( obj, ITEM_NOREMOVE ) )
+                || IS_OBJ_STAT( obj, ITEM_NOREMOVE ) )
         {                       /* attempt to remove curse */
             if ( !saves_dispel( level, obj->level, 0 ) )
             {
@@ -3840,10 +3847,10 @@ void spell_remove_curse( int sn, int level, CHAR_DATA * ch, void *vo )
     }
 
     for ( obj = victim->carrying; ( obj != NULL && !found );
-          obj = obj->next_content )
+            obj = obj->next_content )
     {
         if ( IS_OBJ_STAT( obj, ITEM_NODROP )
-             || IS_OBJ_STAT( obj, ITEM_NOREMOVE ) )
+                || IS_OBJ_STAT( obj, ITEM_NOREMOVE ) )
         {                       /* attempt to remove curse */
             if ( !saves_dispel( level, obj->level, 0 ) )
             {
@@ -3915,7 +3922,8 @@ void spell_shield( int sn, int level, CHAR_DATA * ch, void *vo )
 void spell_shocking_grasp( int sn, int level, CHAR_DATA * ch, void *vo )
 {
     CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-    static const int dam_each[] = {
+    static const int dam_each[] =
+    {
         0,
         0, 0, 0, 0, 0, 0, 20, 25, 29, 33,
         36, 39, 39, 39, 40, 40, 41, 41, 42, 42,
@@ -3943,8 +3951,8 @@ void spell_sleep( int sn, int level, CHAR_DATA * ch, void *vo )
     AFFECT_DATA af;
 
     if ( IS_AFFECTED( victim, AFF_SLEEP )
-         || ( IS_NPC( victim ) && IS_SET( victim->act, ACT_UNDEAD ) )
-         || level < victim->level || saves_spell( level, victim ) )
+            || ( IS_NPC( victim ) && IS_SET( victim->act, ACT_UNDEAD ) )
+            || level < victim->level || saves_spell( level, victim ) )
         return;
 
     af.type = sn;
@@ -3999,20 +4007,20 @@ void spell_summon( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( ( ( victim = get_char_world( ch, target_name ) ) == NULL ) )
     {
         send_to_char
-            ( "A disturbance in the planar fabric prevents your summons.\n\r",
-              ch );
+        ( "A disturbance in the planar fabric prevents your summons.\n\r",
+          ch );
         return;
     }
     if ( NOSUMMONFULL == 1 )
     {
         if ( ( victim = get_char_world( ch, target_name ) ) == NULL || victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level >= level + 3 || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )  /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your summons.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your summons.\n\r",
+              ch );
             return;
         }
     }
@@ -4020,21 +4028,21 @@ void spell_summon( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch
-             || victim->in_room == NULL
-             || !can_see_room( ch, victim->in_room )
-             || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
-             || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE )
-             || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY )
-             || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
-             || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
-             || victim->level >= ch->level + NOSUMMONLEVELMOB
-             || ( chaos )
-             || IS_SET( victim->imm_flags, IMM_SUMMON )
-             || saves_spell( level, victim ) )
+                || victim->in_room == NULL
+                || !can_see_room( ch, victim->in_room )
+                || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
+                || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE )
+                || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY )
+                || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
+                || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
+                || victim->level >= ch->level + NOSUMMONLEVELMOB
+                || ( chaos )
+                || IS_SET( victim->imm_flags, IMM_SUMMON )
+                || saves_spell( level, victim ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your summons.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your summons.\n\r",
+              ch );
             return;
         }
     }
@@ -4043,13 +4051,13 @@ void spell_summon( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level >= ch->level + NOSUMMONLEVELNONPK || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )   /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your summons.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your summons.\n\r",
+              ch );
             return;
         }
     }
@@ -4057,16 +4065,16 @@ void spell_summon( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( NOSUMMONPKSAME == 1 && IS_SET( victim->act, PLR_KILLER ) )
     {
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || victim->level > ch->level + NOSUMMONLEVELPK || ( chaos ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )   /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
-                  && victim->level > ch->level + NOSUMMONLEVELPK )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
+                     && victim->level > ch->level + NOSUMMONLEVELPK )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your summons.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your summons.\n\r",
+              ch );
             return;
         }
     }
@@ -4074,17 +4082,17 @@ void spell_summon( int sn, int level, CHAR_DATA * ch, void *vo )
     {
 
         if ( victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_SAFE ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || ( chaos ) || ( ch->level > ( victim->level + NOSUMMONLEVELPK ) || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO )    /* NOT trust */
-             || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
-             || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
-                  && ( ch->level > ( victim->level + NOSUMMONLEVELPK )
-                       || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
-             || ( IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC ) )
-             || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+                || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_SUMMON ) )
+                || ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOSUMMON )
+                     && ( ch->level > ( victim->level + NOSUMMONLEVELPK )
+                          || victim->level > ( ch->level + NOSUMMONLEVELPK ) ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+                || ( IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC ) )
+                || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
         {
             send_to_char
-                ( "A disturbance in the planar fabric prevents your summons.\n\r",
-                  ch );
+            ( "A disturbance in the planar fabric prevents your summons.\n\r",
+              ch );
             return;
         }
 
@@ -4106,12 +4114,12 @@ void spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo )
     extern bool chaos;
 
     if ( victim->in_room == NULL
-         || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
-         || ( !IS_NPC( ch ) && victim->fighting != NULL )
-         || ( chaos )
-         || ( victim != ch
-              && ( saves_spell( level, victim )
-                   || saves_spell( level, victim ) ) ) )
+            || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
+            || ( !IS_NPC( ch ) && victim->fighting != NULL )
+            || ( chaos )
+            || ( victim != ch
+                 && ( saves_spell( level, victim )
+                      || saves_spell( level, victim ) ) ) )
     {
         send_to_char( "You failed.\n\r", ch );
         return;
@@ -4122,9 +4130,9 @@ void spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo )
         pRoomIndex = get_room_index( number_range( 0, 65535 ) );
         if ( pRoomIndex != NULL )
             if ( can_see_room( ch, pRoomIndex )
-                 && !IS_SET( pRoomIndex->room_flags, ROOM_PRIVATE )
-                 && !IS_SET( pRoomIndex->room_flags, ROOM_SOLITARY )
-                 && !IS_SET( pRoomIndex->room_flags, ROOM_NOTELEPORT ) )
+                    && !IS_SET( pRoomIndex->room_flags, ROOM_PRIVATE )
+                    && !IS_SET( pRoomIndex->room_flags, ROOM_SOLITARY )
+                    && !IS_SET( pRoomIndex->room_flags, ROOM_NOTELEPORT ) )
                 break;
     }
 
@@ -4197,8 +4205,8 @@ void spell_word_of_recall( int sn, int level, CHAR_DATA * ch, void *vo )
     }
 
     if ( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
-         || IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC )
-         || IS_AFFECTED( victim, AFF_CURSE ) )
+            || IS_SET( victim->in_room->room_flags, ROOM_NOMAGIC )
+            || IS_AFFECTED( victim, AFF_CURSE ) )
     {
         send_to_char( "Spell failed.\n\r", victim );
         return;
@@ -4301,7 +4309,7 @@ void spell_fire_breath( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( number_percent(  ) < 2 * level && !saves_spell( level, victim ) )
     {
         for ( obj_lose = victim->carrying; obj_lose != NULL;
-              obj_lose = obj_next )
+                obj_lose = obj_next )
         {
             char *msg;
 
@@ -4376,7 +4384,7 @@ void spell_frost_breath( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( number_percent(  ) < 2 * level && !saves_spell( level, victim ) )
     {
         for ( obj_lose = victim->carrying; obj_lose != NULL;
-              obj_lose = obj_next )
+                obj_lose = obj_next )
         {
             char *msg;
 
@@ -4538,11 +4546,11 @@ void spell_multi_missile( int sn, int level, CHAR_DATA * ch, void *vo )
     {
         found = FALSE;
         for ( tmp_vict = ch->in_room->people;
-              tmp_vict != NULL; tmp_vict = next_vict )
+                tmp_vict != NULL; tmp_vict = next_vict )
         {
             next_vict = tmp_vict->next_in_room;
             if ( !is_safe_spell( ch, tmp_vict, TRUE ) && tmp_vict != last_vict
-                 && num_missile > 0 )
+                    && num_missile > 0 )
             {
                 found = TRUE;
                 last_vict = tmp_vict;
@@ -4658,11 +4666,11 @@ void spell_holyfire( int sn, int level, CHAR_DATA * ch, void *vo )
     {
         found = FALSE;
         for ( tmp_vict = ch->in_room->people;
-              tmp_vict != NULL; tmp_vict = next_vict )
+                tmp_vict != NULL; tmp_vict = next_vict )
         {
             next_vict = tmp_vict->next_in_room;
             if ( !is_safe_spell( ch, tmp_vict, TRUE ) && tmp_vict != last_vict
-                 && num_blast > 0 )
+                    && num_blast > 0 )
             {
                 found = TRUE;
                 last_vict = tmp_vict;
@@ -4745,11 +4753,11 @@ void spell_ice_storm( int sn, int level, CHAR_DATA * ch, void *vo )
     {
         found = FALSE;
         for ( tmp_vict = ch->in_room->people;
-              tmp_vict != NULL; tmp_vict = next_vict )
+                tmp_vict != NULL; tmp_vict = next_vict )
         {
             next_vict = tmp_vict->next_in_room;
             if ( !is_safe_spell( ch, tmp_vict, TRUE ) && tmp_vict != last_vict
-                 && num_blast > 0 )
+                    && num_blast > 0 )
             {
                 found = TRUE;
                 last_vict = tmp_vict;
@@ -4810,8 +4818,8 @@ void spell_vision( int sn, int level, CHAR_DATA * ch, void *vo )
     ROOM_INDEX_DATA *original;
 
     if ( ( victim = get_char_world( ch, target_name ) ) == NULL || victim == ch || victim->in_room == NULL || !can_see_room( ch, victim->in_room ) || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE ) || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY ) || victim->level >= level + 3 || ( !IS_NPC( victim ) && victim->level >= LEVEL_HERO ) /* NOT trust */
-         || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_MENTAL ) )
-         || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
+            || ( IS_NPC( victim ) && IS_SET( victim->imm_flags, IMM_MENTAL ) )
+            || ( IS_NPC( victim ) && saves_spell( level, victim ) ) )
     {
         send_to_char( "There is a disturbance in the ether.\n\r", ch );
         return;
@@ -4935,8 +4943,8 @@ void spell_energize( int sn, int level, CHAR_DATA * ch, void *vo )
     if ( ch == victim )
     {
         send_to_char
-            ( "ZAP!! You short circuit, maybe you should target someone else.\n\r",
-              ch );
+        ( "ZAP!! You short circuit, maybe you should target someone else.\n\r",
+          ch );
         ch->hit -= 5;           /* modify the damage as you see fit */
         return;
     }
@@ -4966,8 +4974,8 @@ void spell_life_drain( int sn, int level, CHAR_DATA * ch, void
     if ( saves_spell( level, victim ) )
     {
         send_to_char
-            ( "You feel a momentary chill, as your heart lurches in your chest.\n\r",
-              victim );
+        ( "You feel a momentary chill, as your heart lurches in your chest.\n\r",
+          victim );
         return;
     }
 
@@ -5029,8 +5037,8 @@ void spell_remove_align( int sn, int level, CHAR_DATA * ch, void *vo )
         return;
     }
     if ( IS_OBJ_STAT( obj, ITEM_ANTI_EVIL )
-         || IS_OBJ_STAT( obj, ITEM_ANTI_NEUTRAL )
-         || IS_OBJ_STAT( obj, ITEM_ANTI_GOOD ) )
+            || IS_OBJ_STAT( obj, ITEM_ANTI_NEUTRAL )
+            || IS_OBJ_STAT( obj, ITEM_ANTI_GOOD ) )
     {                           /* attempt to remove curse */
         if ( !saves_dispel( level, obj->level, 0 ) )
         {
@@ -5057,7 +5065,8 @@ void spell_knock( int sn, int level, CHAR_DATA * ch, void *vo )
     int chance = 0;
     int door = 0;
 
-    const sh_int rev_dir[] = {
+    const sh_int rev_dir[] =
+    {
         2, 3, 0, 1, 5, 4, 9, 8, 7, 6
     };
 
@@ -5101,7 +5110,7 @@ void spell_knock( int sn, int level, CHAR_DATA * ch, void *vo )
 
         chance =
             ch->level / 5 + get_curr_stat( ch, STAT_INT ) + get_skill( ch,
-                                                                       sn ) / 5;
+                    sn ) / 5;
 
         act( "You cast knock on the $d, and try to open the $d!",
              ch, NULL, pexit->keyword, TO_CHAR );
@@ -5120,14 +5129,14 @@ void spell_knock( int sn, int level, CHAR_DATA * ch, void *vo )
 
             /* open the other side */
             if ( ( to_room = pexit->u1.to_room ) != NULL
-                 && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
-                 && pexit_rev->u1.to_room == ch->in_room )
+                    && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
+                    && pexit_rev->u1.to_room == ch->in_room )
             {
                 CHAR_DATA *rch;
                 REMOVE_BIT( pexit_rev->exit_info, EX_CLOSED );
                 REMOVE_BIT( pexit_rev->exit_info, EX_LOCKED );
                 for ( rch = to_room->people; rch != NULL;
-                      rch = rch->next_in_room )
+                        rch = rch->next_in_room )
                     act( "The $d opens.", rch, NULL, pexit_rev->keyword,
                          TO_CHAR );
             }
@@ -5148,7 +5157,7 @@ void spell_knock( int sn, int level, CHAR_DATA * ch, void *vo )
 }
 
 /*
-brew.c by Jason Huang (huangjac@netcom.com) 
+brew.c by Jason Huang (huangjac@netcom.com)
 */
 
 void spell_imprint( int sn, int level, CHAR_DATA * ch, void *vo )
@@ -5198,7 +5207,7 @@ void spell_imprint( int sn, int level, CHAR_DATA * ch, void *vo )
     ch->mana -= mana;
     obj->value[sp_slot] = sn;
 
-    /* Making it successively harder to pack more spells into potions or 
+    /* Making it successively harder to pack more spells into potions or
        scrolls - JH */
 
     switch ( sp_slot )

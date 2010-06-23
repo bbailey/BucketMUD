@@ -106,18 +106,19 @@ typedef int MPROG_FUN args( ( void *arg ) );
 #define MAX_BOARD 	  5
 
 #define DEFAULT_BOARD 0         /* default board is board #0 in the boards      */
-                        /* It should be readable by everyone!           */
+/* It should be readable by everyone!           */
 
 #define MAX_LINE_LENGTH 255     /* enforce a max length of 80 on text lines, reject longer lines */
-                           /* This only applies in the Body of the note */
-                /* Changed to 255 -Lancelight */
+/* This only applies in the Body of the note */
+/* Changed to 255 -Lancelight */
 
 #define MAX_NOTE_TEXT (4*MAX_STRING_LENGTH - 1000)
 
 #define BOARD_NOTFOUND -1       /* Error code from board_lookup() and board_number */
 
 /* Data about a board */
-struct board_data {
+struct board_data
+{
     char *short_name;           /* Max 8 chars */
     char *long_name;            /* Explanatory text, should be no more than 40 ? chars */
 
@@ -198,7 +199,8 @@ struct do_skills_data
     int learned;
 };
 
-struct clan_data {
+struct clan_data
+{
     CLAN_DATA *next;
     sh_int number;
     char *name;
@@ -222,7 +224,8 @@ struct clan_data {
 };
 
 /* Local TODO structures -Lancelight */
-struct todo_data {
+struct todo_data
+{
     TODO_DATA *next;
     sh_int level;
     char *keyword;
@@ -230,7 +233,8 @@ struct todo_data {
 };
 
 /* one disabled command */
-struct disabled_data {
+struct disabled_data
+{
     DISABLED_DATA *next;        /* pointer to next node */
     struct cmd_type const *command; /* pointer to the command struct */
     char *disabled_by;          /* name of disabler */
@@ -240,7 +244,8 @@ struct disabled_data {
  * Drunk struct
  */
 
-struct struckdrunk {
+struct struckdrunk
+{
     int min_drunk_level;
     int number_of_rep;
     char *replacement[11];
@@ -250,7 +255,8 @@ struct struckdrunk {
  * Site ban structure.
  * Added for the new ban functions. -Lancelight
  */
-struct ban_data {
+struct ban_data
+{
     BAN_DATA *next;
     bool valid;
     int ban_flags;
@@ -260,7 +266,8 @@ struct ban_data {
 
 /* The next couple of buffer structs were added for recyle.h -Lancelight */
 
-struct buf_type {
+struct buf_type
+{
     BUFFER *next;
     bool valid;
     sh_int state;               /* error state of the buffer */
@@ -280,14 +287,16 @@ char *buf_string args( ( BUFFER * buffer ) );
 /* Class function needed by db.c -Lancelight*/
 void load_classes( void );
 
-struct time_info_data {
+struct time_info_data
+{
     int hour;
     int day;
     int month;
     int year;
 };
 
-struct weather_data {
+struct weather_data
+{
     int mmhg;
     int change;
     int sky;
@@ -297,7 +306,8 @@ struct weather_data {
 /*
  * Descriptor (channel) structure.
  */
-struct descriptor_data {
+struct descriptor_data
+{
     DESCRIPTOR_DATA *next;
     DESCRIPTOR_DATA *snoop_by;
     CHAR_DATA *character;
@@ -321,42 +331,48 @@ struct descriptor_data {
     int editor;                 /* OLC */
 };
 
-/*Auction Structure. 
+/*Auction Structure.
 Uncomment silver_held if you use dual monatry systems -Lancelight*/
 
-struct auction_data {
+struct auction_data
+{
     OBJ_DATA *item;
     CHAR_DATA *owner;
     CHAR_DATA *high_bidder;
     sh_int status;
     sh_int oldtimer;
     long current_bid;
-/*        long            silver_held;*/
+    /*        long            silver_held;*/
     long gold_held;
 };
 /*
  * Attribute bonus structures.
  */
-struct str_app_type {
+struct str_app_type
+{
     sh_int tohit;
     sh_int todam;
     sh_int carry;
     sh_int wield;
 };
 
-struct int_app_type {
+struct int_app_type
+{
     sh_int learn;
 };
 
-struct wis_app_type {
+struct wis_app_type
+{
     sh_int practice;
 };
 
-struct dex_app_type {
+struct dex_app_type
+{
     sh_int defensive;
 };
 
-struct con_app_type {
+struct con_app_type
+{
     sh_int hitp;
     sh_int shock;
 };
@@ -364,14 +380,16 @@ struct con_app_type {
 /*
  * Help table types.
  */
-struct help_data {
+struct help_data
+{
     HELP_DATA *next;
     sh_int level;
     char *keyword;
     char *text;
 };
 
-struct shop_data {
+struct shop_data
+{
     SHOP_DATA *next;            /* Next shop in list            */
     sh_int keeper;              /* Vnum of shop keeper mob      */
     sh_int buy_type[MAX_TRADE]; /* Item types shop will buy     */
@@ -381,7 +399,8 @@ struct shop_data {
     sh_int close_hour;          /* First closing hour           */
 };
 
-struct class_type {
+struct class_type
+{
     char *name;                 /* the full name of the class */
     char who_name[4];           /* Three-letter name for 'who'  */
     sh_int attr_prime;          /* Prime attribute              */
@@ -398,12 +417,14 @@ struct class_type {
     bool remort_class;          /* is this a remort only class? */
 };
 
-struct attack_type {
+struct attack_type
+{
     char *name;                 /* name and message */
     int damage;                 /* damage class */
 };
 
-struct race_type {
+struct race_type
+{
     char *name;                 /* call name of the race */
     bool pc_race;               /* can be chosen by pcs */
     long act;                   /* act bits for the race */
@@ -432,7 +453,8 @@ struct pc_race_type             /* additional data for pc races */
 /*
  * Data structure for notes.
  */
-struct note_data {
+struct note_data
+{
     NOTE_DATA *next;
     char *sender;
     char *date;
@@ -446,7 +468,8 @@ struct note_data {
 /*
  * An affect.
  */
-struct affect_data {
+struct affect_data
+{
     AFFECT_DATA *next;
     sh_int type;
     sh_int level;
@@ -456,7 +479,8 @@ struct affect_data {
     int bitvector;
 };
 
-struct newaffect_data {
+struct newaffect_data
+{
     NEWAFFECT_DATA *next;
     sh_int type;
     sh_int level;
@@ -469,7 +493,8 @@ struct newaffect_data {
 /*
  * A kill structure (indexed by level).
  */
-struct kill_data {
+struct kill_data
+{
     sh_int number;
     sh_int killed;
 };
@@ -478,7 +503,8 @@ struct kill_data {
  * Prototype for a mob.
  * This is the in-memory version of #MOBILES.
  */
-struct mob_index_data {
+struct mob_index_data
+{
     MOB_INDEX_DATA *next;
     SHOP_DATA *pShop;
     AREA_DATA *area;            /* OLC */
@@ -531,7 +557,8 @@ extern OBJ_INDEX_DATA *obj_last;
 /*
  * One character (PC or NPC).
  */
-struct char_data {
+struct char_data
+{
     CHAR_DATA *next;
     CHAR_DATA *next_player;
     CHAR_DATA *next_in_room;
@@ -628,7 +655,8 @@ struct char_data {
     sh_int *reset_count;
 };
 
-struct mud_prog_act_list {
+struct mud_prog_act_list
+{
     MPROG_ACT_LIST *next;
     char *buf;
     CHAR_DATA *ch;
@@ -636,7 +664,8 @@ struct mud_prog_act_list {
     void *vo;
 };
 
-struct mud_prog_data {
+struct mud_prog_data
+{
     MPROG_DATA *next;
     char *name;
     char *description;
@@ -647,7 +676,8 @@ struct mud_prog_data {
     char *comlist;
 };
 
-struct mud_prog_group {
+struct mud_prog_group
+{
     MPROG_GROUP *next;
     MPROG_LIST *mudprogs;
     char *name;
@@ -656,19 +686,22 @@ struct mud_prog_group {
     int prog_type;
 };
 
-struct mud_prog_list {
+struct mud_prog_list
+{
     MPROG_LIST *next;
     MPROG_DATA *mudprog;
 };
 
-struct mud_prog_group_list {
+struct mud_prog_group_list
+{
     MPROG_GROUP_LIST *next;
     MPROG_GROUP *mprog_group;
 };
 
 extern bool MOBtrigger;
 
-struct hate_data {
+struct hate_data
+{
     char *name;
     CHAR_DATA *who;
 };
@@ -676,7 +709,8 @@ struct hate_data {
 /*
  * Data which only PC's have.
  */
-struct pc_data {
+struct pc_data
+{
     PC_DATA *next;
     BUFFER *buffer;             /* Added for recycle.h -Lancelight */
     QUEUE_DATA *fmessage;
@@ -736,7 +770,8 @@ struct pc_data {
 };
 
 /* Data for generating characters -- only used during generation */
-struct gen_data {
+struct gen_data
+{
     GEN_DATA *next;
     bool skill_chosen[MAX_SKILL];
     bool group_chosen[MAX_GROUP];
@@ -744,7 +779,8 @@ struct gen_data {
 };
 
 /* Message queue data */
-struct queue_data {
+struct queue_data
+{
     QUEUE_DATA *next;
     char *text;
     char *sender;
@@ -754,7 +790,8 @@ struct queue_data {
 };
 
 /* Last Messages list */
-struct last_data {
+struct last_data
+{
     LAST_DATA *next;
     char *msg;                  /* Text being stored.   */
     char *format;               /* act() format.        */
@@ -764,7 +801,8 @@ struct last_data {
 };
 
 /* A structure to hold all configuration variables read in from the config file */
-struct system_config {
+struct system_config
+{
     /* Directories */
     char *area_dir;
     char *player_dir;
@@ -793,7 +831,8 @@ struct system_config {
     char *disable_file;
 };
 
-struct liq_type {
+struct liq_type
+{
     char *liq_name;
     char *liq_color;
     sh_int liq_affect[3];
@@ -802,7 +841,8 @@ struct liq_type {
 /*
  * Extra description data for a room or object.
  */
-struct extra_descr_data {
+struct extra_descr_data
+{
     EXTRA_DESCR_DATA *next;     /* Next in list                     */
     char *keyword;              /* Keyword in look/examine          */
     char *description;          /* What to see                      */
@@ -811,7 +851,8 @@ struct extra_descr_data {
 /*
  * Prototype for an object.
  */
-struct obj_index_data {
+struct obj_index_data
+{
     OBJ_INDEX_DATA *next;
     EXTRA_DESCR_DATA *extra_descr;
     AFFECT_DATA *affected;
@@ -840,7 +881,8 @@ struct obj_index_data {
 /*
  * One object.
  */
-struct obj_data {
+struct obj_data
+{
     OBJ_DATA *next;
     OBJ_DATA *next_content;
     OBJ_DATA *contains;
@@ -875,8 +917,10 @@ struct obj_data {
 /*
  * Exit data.
  */
-struct exit_data {
-    union {
+struct exit_data
+{
+    union
+    {
         ROOM_INDEX_DATA *to_room;
         sh_int vnum;
     } u1;
@@ -892,7 +936,7 @@ struct exit_data {
 /*
  * Reset commands:
  *   '*': comment
- *   'M': read a mobile 
+ *   'M': read a mobile
  *   'O': read an object
  *   'P': put object in object
  *   'G': give object to mobile
@@ -905,7 +949,8 @@ struct exit_data {
 /*
  * Area-reset definition.
  */
-struct reset_data {
+struct reset_data
+{
     RESET_DATA *next;
     char command;
     sh_int vnum;
@@ -917,7 +962,8 @@ struct reset_data {
 /*
  * Area definition.
  */
-struct area_data {
+struct area_data
+{
     AREA_DATA *next;
     RESET_DATA *reset_first;
     RESET_DATA *reset_last;
@@ -937,7 +983,8 @@ struct area_data {
 /*
  * Room type.
  */
-struct room_index_data {
+struct room_index_data
+{
     ROOM_INDEX_DATA *next;
     RESET_DATA *reset_first;    /* OLC */
     RESET_DATA *reset_last;     /* OLC */
@@ -962,7 +1009,8 @@ struct room_index_data {
 /*
  * Skills include spells as a particular case.
  */
-struct skill_type {
+struct skill_type
+{
     char *name;                 /* Name of skill                */
     sh_int skill_level[MAX_CLASS];  /* Level needed by class        */
     sh_int rating[MAX_CLASS];   /* How hard it is to learn      */
@@ -977,7 +1025,8 @@ struct skill_type {
     char *msg_off;              /* Wear off message             */
 };
 
-struct group_type {
+struct group_type
+{
     char *name;
     sh_int rating[MAX_CLASS];
     char *spells[MAX_IN_GROUP];
@@ -1126,7 +1175,8 @@ void save_disabled args( ( void ) );
  * Structure for a social in the socials table.
  */
 
-struct social_type {
+struct social_type
+{
     char name[20];
     char *char_no_arg;
     char *others_no_arg;
@@ -1149,7 +1199,7 @@ extern const struct dex_app_type dex_app[MAX_ATTAINABLE_STATS + 1];
 extern const struct con_app_type con_app[MAX_ATTAINABLE_STATS + 1];
 
 /* I removed the const from both of these entries to accomodate the new
-Askill command. 
+Askill command.
 	-Lancelight
 */
 extern struct class_type class_table[MAX_CLASS];
@@ -1671,13 +1721,15 @@ extern const struct flag_type clan_flags[];
 extern const struct flag_type clan_join_flags[];
 extern const struct flag_type rnd_obj_flags[];
 
-struct rand_bag_material {
+struct rand_bag_material
+{
     char *name;
     bool isprefix;              /* before or after the type.name? */
     sh_int size;                /* is the material big or small? */
 };
 
-struct rand_bag_type {
+struct rand_bag_type
+{
     char *name;
     sh_int capacity;            /* big or small? */
     long wear_loc;              /* can it be worn? */
@@ -1686,18 +1738,20 @@ struct rand_bag_type {
 /* struct rand_light_type
  * {
  *  char *  name;
- *  sh_int  duration;       
+ *  sh_int  duration;
  * };
  */
 
-struct rand_weapon_type {
+struct rand_weapon_type
+{
     char *name;
     sh_int magic_mod;
     sh_int damage_mod;
     sh_int weapon_type;
 };
 
-struct rand_armor_type {
+struct rand_armor_type
+{
     char *name;
     sh_int wearloc;
     sh_int protect_mod;         /* + or - AC ? */
@@ -1705,14 +1759,16 @@ struct rand_armor_type {
     sh_int p_type;
 };
 
-struct rand_item_material {
+struct rand_item_material
+{
     char *name;
     sh_int coolness;            /* better AC for armor, better damroll for weapons, etc. */
     sh_int magic_mod;
     sh_int level;               /* level where this material is normal (i.e. iron is 1, dilithium is 80, etc.) */
 };
 
-struct rand_ring_type {
+struct rand_ring_type
+{
     char *name;
     sh_int coolness;            /* "exquisite gold" rings are cooler than "dirty copper" */
     long extra_flags;           /* if it's "glowing" set it to glow, etc. */

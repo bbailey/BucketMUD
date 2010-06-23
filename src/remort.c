@@ -82,19 +82,19 @@ void do_remort( CHAR_DATA * ch, char *argument )
                      capitalize( ch->name ) );
             stop_fighting( ch, TRUE );
             send_to_char
-                ( "You have chosen to remort.  You will now be dropped in at the race\n\r",
-                  ch );
+            ( "You have chosen to remort.  You will now be dropped in at the race\n\r",
+              ch );
             send_to_char
-                ( "selection section of character creation, and will be allowed to choose from\n\r",
-                  ch );
+            ( "selection section of character creation, and will be allowed to choose from\n\r",
+              ch );
             send_to_char( "a wider selection of races and classes.\n\r\n\r",
                           ch );
             send_to_char
-                ( "In the unlikely event that you are disconnected or the MUD\n\r",
-                  ch );
+            ( "In the unlikely event that you are disconnected or the MUD\n\r",
+              ch );
             send_to_char
-                ( "crashes while you are creating your character, create a new character\n\r",
-                  ch );
+            ( "crashes while you are creating your character, create a new character\n\r",
+              ch );
             send_to_char( "as normal and write a note to 'immortal'.\n\r", ch );
             send_to_char( "\n\r[Hit Enter to Continue]\n\r", ch );
             /*    wiznet( "$N has remorted.", ch, NULL, 0, 0, 0 ); */

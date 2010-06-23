@@ -36,7 +36,7 @@ extern void parse_command_var( char var, char *outbuf );
  * MudProgs Command table.
  *
  * Format:  { <proc name>,    <proc pointer>,    <arg type> },
- * 
+ *
  * Argtype can be one of:
  *
  *     'C'  - Character Pointer (CHAR_DATA *)
@@ -44,7 +44,7 @@ extern void parse_command_var( char var, char *outbuf );
  *     'I'  - Numeric Value
  *     'S'  - String (char *)
  *     'N'  - No args
- * 
+ *
  * Execproc guarantees that the proper argument type is passed to avoid
  * crashes.  If you specify the wrong argtype here and expect a different argtype
  * in your proc then you will crash.  All arguments passed to these procs are of
@@ -53,7 +53,8 @@ extern void parse_command_var( char var, char *outbuf );
  * -Zane
  */
 
-const struct mprog_cmd_type mprog_cmd_table[] = {
+const struct mprog_cmd_type mprog_cmd_table[] =
+{
     {"alignment", mprog_alignment, 'C'},
     {"clan", mprog_clan, 'C'},
     {"class", mprog_class, 'C'},
@@ -477,7 +478,7 @@ int mprog_faction( void *vo )
     }
 
     for ( pFactPC = victim->pcdata->faction_standings;
-          pFactPC != NULL; pFactPC = pFactPC->next )
+            pFactPC != NULL; pFactPC = pFactPC->next )
     {
         if ( pFactPC->faction == pFact )
             break;

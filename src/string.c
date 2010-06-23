@@ -26,8 +26,8 @@ char *line_delete args( ( char *orig, int line ) );
 
 /*
    The line_replace, count_lines, and line_delete functions
-   were provided by Thanatos (Jonathan Rose).  I wrote the new 
-   line_add and show_line_numbers functions and modified the 
+   were provided by Thanatos (Jonathan Rose).  I wrote the new
+   line_add and show_line_numbers functions and modified the
    string_add function.  --Kyle Boyd
 */
 
@@ -108,7 +108,7 @@ int count_lines( const char *orig )
 
 /*****************************************************************************
  Name:		line_delete
- Purpose:	deletes one line of text 
+ Purpose:	deletes one line of text
  Called by:	string_add(string.c) (aedit_builder)olc_act.c.
  ****************************************************************************/
 char *line_delete( char *orig, int line )
@@ -534,8 +534,8 @@ char *format_string( char *oldstring /*, bool fSpace */  )
         else if ( *rdesc == ')' )
         {
             if ( xbuf[i - 1] == ' ' && xbuf[i - 2] == ' ' &&
-                 ( xbuf[i - 3] == '.' || xbuf[i - 3] == '?'
-                   || xbuf[i - 3] == '!' ) )
+                    ( xbuf[i - 3] == '.' || xbuf[i - 3] == '?'
+                      || xbuf[i - 3] == '!' ) )
             {
                 xbuf[i - 2] = *rdesc;
                 xbuf[i - 1] = ' ';
@@ -551,8 +551,8 @@ char *format_string( char *oldstring /*, bool fSpace */  )
         else if ( *rdesc == '.' || *rdesc == '?' || *rdesc == '!' )
         {
             if ( xbuf[i - 1] == ' ' && xbuf[i - 2] == ' ' &&
-                 ( xbuf[i - 3] == '.' || xbuf[i - 3] == '?'
-                   || xbuf[i - 3] == '!' ) )
+                    ( xbuf[i - 3] == '.' || xbuf[i - 3] == '?'
+                      || xbuf[i - 3] == '!' ) )
             {
                 xbuf[i - 2] = *rdesc;
                 if ( *( rdesc + 1 ) != '\"' )
@@ -677,7 +677,7 @@ char *first_arg( char *argument, char *arg_first, bool fCase )
 
     cEnd = ' ';
     if ( *argument == '\'' || *argument == '"'
-         || *argument == '%' || *argument == '(' )
+            || *argument == '%' || *argument == '(' )
     {
         if ( *argument == '(' )
         {
@@ -797,7 +797,7 @@ void show_line_numbers( CHAR_DATA * ch, char *string )
              * \n\n
              */
             if ( ( *string == '\n' && *( string + 1 ) == '\r' )
-                 || ( *string == '\r' && *( string + 1 ) == '\n' ) )
+                    || ( *string == '\r' && *( string + 1 ) == '\n' ) )
                 string += 2;
             else
                 string++;

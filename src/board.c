@@ -27,41 +27,42 @@
 #define L_IMM LEVEL_IMMORTAL
 
 /*
- 
+
  Note Board system, (c) 1995-96 Erwin S. Andreasen, erwin@pip.dknet.dk
  =====================================================================
- 
+
  Basically, the notes are split up into several boards. The boards do not
  exist physically, they can be read anywhere and in any position.
- 
+
  Each of the note boards has its own file. Each of the boards can have its own
  "rights": who can read/write.
- 
+
  Each character has an extra field added, namele the timestamp of the last note
  read by him/her on a certain board.
- 
+
  The note entering system is changed too, making it more interactive. When
  entering a note, a character is put AFK and into a special CON_ state.
  Everything typed goes into the note.
- 
+
  For the immortals it is possible to purge notes based on age. An Archive
  options is available which moves the notes older than X days into a special
  board. The file of this board should then be moved into some other directory
  during e.g. the startup script and perhaps renamed depending on date.
- 
+
  Note that write_level MUST be >= read_level or else there will be strange
  output in certain functions.
- 
+
  Board DEFAULT_BOARD must be at least readable by *everyone*.
- 
+
 */
 
 #define L_SUP (MAX_LEVEL - 1)   /* if not already defined */
 
-BOARD_DATA boards[MAX_BOARD] = {
+BOARD_DATA boards[MAX_BOARD] =
+{
 
     {"General", "General discussion", 0, 2, "all", DEF_INCLUDE, 21, NULL,
-     FALSE},
+        FALSE},
     {"Ideas", "Suggestion for improvement", 0, 2, "all", DEF_NORMAL, 60, NULL,
      FALSE},
     {"Announce", "Announcements from Immortals", 0, L_IMM, "all", DEF_NORMAL,
@@ -426,23 +427,23 @@ bool is_note_to( CHAR_DATA * ch, NOTE_DATA * note )
         return TRUE;
 
     if ( ( get_trust( ch ) == MAX_LEVEL )
-         && ( is_full_name( "imp", note->to_list )
-              || is_full_name( "imps", note->to_list )
-              || is_full_name( "implementor", note->to_list )
-              || is_full_name( "implementors", note->to_list ) ) )
+            && ( is_full_name( "imp", note->to_list )
+                 || is_full_name( "imps", note->to_list )
+                 || is_full_name( "implementor", note->to_list )
+                 || is_full_name( "implementors", note->to_list ) ) )
         return TRUE;
 
     if ( ( get_trust( ch ) >= ( MAX_LEVEL - 3 ) )
-         && ( is_full_name( "admin", note->to_list )
-              || is_full_name( "admins", note->to_list )
-              || is_full_name( "administrators", note->to_list )
-              || is_full_name( "administration", note->to_list ) ) )
+            && ( is_full_name( "admin", note->to_list )
+                 || is_full_name( "admins", note->to_list )
+                 || is_full_name( "administrators", note->to_list )
+                 || is_full_name( "administration", note->to_list ) ) )
         return TRUE;
 
     if ( ( ch->pcdata->clan >= 1 )
-         && ( is_full_name( "clan", note->to_list )
-              || is_full_name( "clans", note->to_list )
-              || is_full_name( "clanned", note->to_list ) ) )
+            && ( is_full_name( "clan", note->to_list )
+                 || is_full_name( "clans", note->to_list )
+                 || is_full_name( "clanned", note->to_list ) ) )
         return TRUE;
 
     if ( ch->pcdata->clan >= 1 )
@@ -461,7 +462,7 @@ bool is_note_to( CHAR_DATA * ch, NOTE_DATA * note )
 
     /* Allow a note to e.g. 40 to send to characters level 40 and above */
     if ( is_number( note->to_list )
-         && get_trust( ch ) >= atoi( note->to_list ) )
+            && get_trust( ch ) >= atoi( note->to_list ) )
         return TRUE;
 
     return FALSE;
@@ -482,7 +483,7 @@ int unread_notes( CHAR_DATA * ch, BOARD_DATA * board )
 
     for ( note = board->note_first; note; note = note->next )
         if ( is_note_to( ch, note )
-             && ( ( long ) last_read < ( long ) note->date_stamp ) )
+                && ( ( long ) last_read < ( long ) note->date_stamp ) )
             count++;
 
     return count;
@@ -511,8 +512,8 @@ static void do_nwrite( CHAR_DATA * ch, char *argument )
     if ( ch->pcdata->in_progress && ( !ch->pcdata->in_progress->text ) )
     {
         send_to_char
-            ( "Note in progress cancelled because you did not manage to write any text \n\r"
-              "before losing link.\n\r\n\r", ch );
+        ( "Note in progress cancelled because you did not manage to write any text \n\r"
+          "before losing link.\n\r\n\r", ch );
         free_note( ch->pcdata->in_progress );
         ch->pcdata->in_progress = NULL;
     }
@@ -586,9 +587,9 @@ static void do_nwrite( CHAR_DATA * ch, char *argument )
         send_to_char( ch->pcdata->in_progress->text, ch );
 
         send_to_char
-            ( "\n\rEnter text. Type `W~`w or `WEND`w on an empty line to end note.\n\r"
-              "=======================================================\n\r",
-              ch );
+        ( "\n\rEnter text. Type `W~`w or `WEND`w on an empty line to end note.\n\r"
+          "=======================================================\n\r",
+          ch );
 
         ch->desc->connected = CON_NOTE_TEXT;
 
@@ -1216,10 +1217,10 @@ void handle_con_note_finish( DESCRIPTOR_DATA * d, char *argument )
         d->connected = CON_NOTE_TEXT;
         break;
 
-/* I stole these routines from string.c and modified them a litte bit to
-give the note editor some useful functionality. It now has word wrapping,
-replacement ability, and no longer needs the 80 character limit to keep
-things nice and neat because of the new word wrap.  -Lancelight */
+        /* I stole these routines from string.c and modified them a litte bit to
+        give the note editor some useful functionality. It now has word wrapping,
+        replacement ability, and no longer needs the 80 character limit to keep
+        things nice and neat because of the new word wrap.  -Lancelight */
     case 'r':                  /* Format the text */
         argument = one_argument( argument, arg );
         argument = first_arg( argument, arg2, FALSE );

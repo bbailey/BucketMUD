@@ -18,7 +18,8 @@
 /*
  * Structure for a command in the command lookup table.
  */
-struct cmd_type {
+struct cmd_type
+{
     char *const name;
     DO_FUN *do_fun;
     sh_int position;
@@ -27,7 +28,8 @@ struct cmd_type {
     bool show;
 };
 
-struct immcmd_type {
+struct immcmd_type
+{
     char *cmd;
     IMMCMD_TYPE *next;
 };

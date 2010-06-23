@@ -172,7 +172,7 @@ void do_mobstat( CHAR_DATA * ch, char *argument )
         send_to_char( buf, ch );
 
         for ( pGroupList = pMob->mprog_groups; pGroupList;
-              pGroupList = pGroupList->next )
+                pGroupList = pGroupList->next )
             show_mpgroup( ch, pGroupList->mprog_group );
 
         for ( pList = pMob->mudprogs; pList; pList = pList->next )
@@ -182,9 +182,9 @@ void do_mobstat( CHAR_DATA * ch, char *argument )
             iFound = 0;
 
             for ( pGroupList = pMob->mprog_groups; pGroupList;
-                  pGroupList = pGroupList->next )
+                    pGroupList = pGroupList->next )
                 for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                      pInnerList; pInnerList = pInnerList->next )
+                        pInnerList; pInnerList = pInnerList->next )
                     if ( pInnerList->mudprog->vnum == mprg->vnum )
                         iFound = 1;
 
@@ -221,7 +221,7 @@ void do_roomstat( CHAR_DATA * ch, char *argument )
     }
 
     if ( ch->in_room != location
-         && room_is_private( location ) && get_trust( ch ) < MAX_LEVEL )
+            && room_is_private( location ) && get_trust( ch ) < MAX_LEVEL )
     {
         send_to_char( "That room is private right now.\n\r", ch );
         return;
@@ -245,12 +245,12 @@ void do_roomstat( CHAR_DATA * ch, char *argument )
     send_to_char( buf, ch );
 
     send_to_char
-        ( "`K-------------------------------------------------------------------------------`w\n\r",
-          ch );
+    ( "`K-------------------------------------------------------------------------------`w\n\r",
+      ch );
     *buf = '\0';
 
     for ( pGroupList = location->mprog_groups; pGroupList;
-          pGroupList = pGroupList->next )
+            pGroupList = pGroupList->next )
         show_mpgroup( ch, pGroupList->mprog_group );
 
     for ( pList = location->mudprogs; pList; pList = pList->next )
@@ -260,9 +260,9 @@ void do_roomstat( CHAR_DATA * ch, char *argument )
         iFound = 0;
 
         for ( pGroupList = location->mprog_groups; pGroupList;
-              pGroupList = pGroupList->next )
+                pGroupList = pGroupList->next )
             for ( pInnerList = pGroupList->mprog_group->mudprogs; pInnerList;
-                  pInnerList = pInnerList->next )
+                    pInnerList = pInnerList->next )
                 if ( pInnerList->mudprog->vnum == mprg->vnum )
                     iFound = 1;
 
@@ -331,7 +331,7 @@ void do_objstat( CHAR_DATA * ch, char *argument )
         send_to_char( buf, ch );
 
         for ( pGroupList = oIndex->mprog_groups; pGroupList;
-              pGroupList = pGroupList->next )
+                pGroupList = pGroupList->next )
             show_mpgroup( ch, pGroupList->mprog_group );
 
         for ( pList = oIndex->mudprogs; pList; pList = pList->next )
@@ -341,9 +341,9 @@ void do_objstat( CHAR_DATA * ch, char *argument )
             iFound = 0;
 
             for ( pGroupList = oIndex->mprog_groups; pGroupList;
-                  pGroupList = pGroupList->next )
+                    pGroupList = pGroupList->next )
                 for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                      pInnerList; pInnerList = pInnerList->next )
+                        pInnerList; pInnerList = pInnerList->next )
                     if ( pInnerList->mudprog->vnum == mprg->vnum )
                         iFound = 1;
 
@@ -453,7 +453,7 @@ void do_mpasound( CHAR_DATA * ch, char *argument )
         EXIT_DATA *pexit;
 
         if ( ( pexit = was_in_room->exit[door] ) != NULL
-             && pexit->u1.to_room != NULL && pexit->u1.to_room != was_in_room )
+                && pexit->u1.to_room != NULL && pexit->u1.to_room != was_in_room )
         {
             ch->in_room = pexit->u1.to_room;
             MOBtrigger = FALSE;
@@ -517,7 +517,7 @@ void do_mpkill( CHAR_DATA * ch, char *argument )
 }
 
 /* lets the mobile destroy an object in its inventory
-   it can also destroy a worn object and it can destroy 
+   it can also destroy a worn object and it can destroy
    items using all.xxxxx or just plain all of them */
 
 void do_mpjunk( CHAR_DATA * ch, char *argument )
@@ -984,9 +984,9 @@ void do_mptransfer( CHAR_DATA * ch, char *argument )
         for ( d = descriptor_list; d != NULL; d = d->next )
         {
             if ( d->connected == CON_PLAYING
-                 && d->character != ch
-                 && d->character->in_room != NULL
-                 && can_see( ch, d->character ) )
+                    && d->character != ch
+                    && d->character->in_room != NULL
+                    && can_see( ch, d->character ) )
             {
                 sprintf( buf, "%s %s", d->character->name, arg2 );
                 do_mptransfer( ch, buf );
@@ -1112,7 +1112,7 @@ void do_mpforce( CHAR_DATA * ch, char *argument )
             vch_next = vch->next;
 
             if ( vch->in_room == ch->in_room
-                 && get_trust( vch ) < get_trust( ch ) && can_see( ch, vch ) )
+                    && get_trust( vch ) < get_trust( ch ) && can_see( ch, vch ) )
             {
                 interpret( vch, argument );
             }
@@ -1172,7 +1172,7 @@ void do_mpsilentforce( CHAR_DATA * ch, char *argument )
             for ( cmd = ( struct cmd_type * ) cmd_table; *cmd->name; cmd++ )
             {
                 if ( ( *argument == *cmd->name )
-                     && ( !str_prefix( argument, cmd->name ) ) )
+                        && ( !str_prefix( argument, cmd->name ) ) )
                 {
                     if ( cmd->imm )
                     {
@@ -1185,7 +1185,7 @@ void do_mpsilentforce( CHAR_DATA * ch, char *argument )
             }
 
             if ( vch->in_room == ch->in_room
-                 && get_trust( vch ) < get_trust( ch ) && can_see( ch, vch ) )
+                    && get_trust( vch ) < get_trust( ch ) && can_see( ch, vch ) )
             {
                 silentmode = TRUE;
                 interpret( vch, argument );
@@ -1216,7 +1216,7 @@ void do_mpsilentforce( CHAR_DATA * ch, char *argument )
         for ( cmd = ( struct cmd_type * ) cmd_table; *cmd->name; cmd++ )
         {
             if ( ( *argument == *cmd->name )
-                 && !str_prefix( argument, cmd->name ) )
+                    && !str_prefix( argument, cmd->name ) )
             {
                 if ( cmd->imm )
                 {
@@ -1307,7 +1307,7 @@ void do_mpfollowpath( CHAR_DATA * ch, char *argument )
 
     /* If we're fighting, unconcious(or worse) or not moving at all just exit */
     if ( ch->fighting != NULL || !pMob->path_move
-         || ch->position < POS_SLEEPING )
+            || ch->position < POS_SLEEPING )
         return;
 
     switch ( argument[pMob->path_pos] )
@@ -1358,13 +1358,13 @@ void do_mpfollowpath( CHAR_DATA * ch, char *argument )
         break;
 
     case 'O':
-/*		do_unlock( ch, "gate" ); */
+        /*		do_unlock( ch, "gate" ); */
         do_open( ch, "gate" );
         break;
 
     case 'C':
         do_close( ch, "gate" );
-/*		do_lock( ch, "gate" ); */
+        /*		do_lock( ch, "gate" ); */
         break;
 
     case '.':
@@ -1433,7 +1433,7 @@ void do_mpclean( CHAR_DATA * ch, char *argument )
             continue;
 
         if ( trash->item_type == ITEM_DRINK_CON
-             || trash->item_type == ITEM_TRASH || trash->cost < value )
+                || trash->item_type == ITEM_TRASH || trash->cost < value )
         {
             act( "$n picks up some trash.", ch, NULL, NULL, TO_ROOM );
             obj_from_room( trash );
@@ -1472,7 +1472,7 @@ void do_mprandomsocial( CHAR_DATA * ch, char *argument )
             RandomSOCIAL_picked = TRUE;
         }
 
-/* use to be argument */
+    /* use to be argument */
     if ( argument == '\0' )
     {
         if ( str_cmp( RandomSOCIAL->others_no_arg, "none" ) )
@@ -1520,8 +1520,8 @@ void do_mprandomsocial( CHAR_DATA * ch, char *argument )
         }
 
         if ( IS_NPC( victim )
-             && !IS_AFFECTED( victim, AFF_CHARM )
-             && IS_AWAKE( victim ) && victim->desc == NULL )
+                && !IS_AFFECTED( victim, AFF_CHARM )
+                && IS_AWAKE( victim ) && victim->desc == NULL )
         {
             switch ( number_bits( 4 ) )
             {

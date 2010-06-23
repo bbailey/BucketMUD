@@ -1,6 +1,7 @@
 #include "newbits.h"
 
-const struct newaff_table_struct newaff_table[MAX_NEWAFF_BIT] = {   /* This table MUST be kept in the correct order */
+const struct newaff_table_struct newaff_table[MAX_NEWAFF_BIT] =     /* This table MUST be kept in the correct order */
+{
     {NEWAFF_GHOST_FLY, "ghostfly", FALSE},
     {NEWAFF_GHOST_NOCHAN, "ghostnochan", FALSE},
     {NEWAFF_GHOST_PASSDOOR, "ghostpassdoor", FALSE},

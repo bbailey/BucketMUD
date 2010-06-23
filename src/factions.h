@@ -20,7 +20,8 @@ extern FACTIONLIST_DATA *faction_last;
 extern const struct olc_cmd_type factionedit_table[];
 
 /* Struct for list of factions available in the MUD */
-struct factionlist_data {
+struct factionlist_data
+{
     sh_int vnum;
     char *name;
     char *increase_msg;
@@ -29,14 +30,16 @@ struct factionlist_data {
 };
 
 /* Struct for list of factions affected when a char is killed */
-struct factionaff_data {
+struct factionaff_data
+{
     FACTIONLIST_DATA *faction;
     sh_int change;
     FACTIONAFF_DATA *next;
 };
 
 /* Struct for list of current faction values for a player */
-struct factionpc_data {
+struct factionpc_data
+{
     FACTIONLIST_DATA *faction;
     sh_int value;
     FACTIONPC_DATA *next;

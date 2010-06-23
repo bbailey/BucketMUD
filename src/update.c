@@ -123,9 +123,9 @@ void gain_exp( CHAR_DATA * ch, int gain )
         return;
 
     /* XP tuner here.  Makes it easier for us to adjust how fast people are leveling. -Zane */
-    /* Commented out here.  If we modify it here, they see their exp 
+    /* Commented out here.  If we modify it here, they see their exp
        awards in an unmodified amount, but gain the modified amount.
-       Players notice.  Moved to part of the xp_compute sections 
+       Players notice.  Moved to part of the xp_compute sections
        - Dorzak 11/28/2001 */
     /*  if ( gain > 0 ) */
     /*      gain = ( int ) ( gain * EXP_MULTIPLIER ); */
@@ -185,7 +185,7 @@ int hit_gain( CHAR_DATA * ch )
         gain += class_table[ch->Class].hp_max - 10;
         number = number_percent(  );
         if ( can_use( ch, gsn_fast_healing )
-             && number < ch->pcdata->learned[gsn_fast_healing] )
+                && number < ch->pcdata->learned[gsn_fast_healing] )
         {
             gain += number * gain / 100;
             if ( ch->hit < ch->max_hit )
@@ -420,7 +420,7 @@ void mobile_update( void )
             continue;
 
         if ( ch->in_room->area->nplayer > 0
-             || IS_SET( ch->act, ACT_UPDATE_ALWAYS ) )
+                || IS_SET( ch->act, ACT_UPDATE_ALWAYS ) )
         {
             mprog_random_trigger( ch );
             /* If ch dies or changes
@@ -436,7 +436,7 @@ void mobile_update( void )
 
         /* Scavenge */
         if ( IS_SET( ch->act, ACT_SCAVENGER )
-             && ch->in_room->contents != NULL && number_bits( 6 ) == 0 )
+                && ch->in_room->contents != NULL && number_bits( 6 ) == 0 )
         {
             OBJ_DATA *obj;
             OBJ_DATA *obj_best;
@@ -447,7 +447,7 @@ void mobile_update( void )
             for ( obj = ch->in_room->contents; obj; obj = obj->next_content )
             {
                 if ( CAN_WEAR( obj, ITEM_TAKE ) && can_loot( ch, obj )
-                     && obj->cost > max && obj->cost > 0 )
+                        && obj->cost > max && obj->cost > 0 )
                 {
                     obj_best = obj;
                     max = obj->cost;
@@ -471,9 +471,9 @@ void mobile_update( void )
             {
 
                 if ( is_hating( ch, rch )
-                     && ch->pIndexData->vnum != MOB_VNUM_SUPERMOB 
-                     && ( can_see ( ch, rch ) )
-                     && ( ch != rch ) )
+                        && ch->pIndexData->vnum != MOB_VNUM_SUPERMOB
+                        && ( can_see ( ch, rch ) )
+                        && ( ch != rch ) )
                 {
                     do_say( ch,
                             "Do you think you could just waltz back in here?\n\r" );
@@ -486,14 +486,14 @@ void mobile_update( void )
 #endif
         /* Wander */
         if ( !IS_SET( ch->act, ACT_SENTINEL )
-             && number_bits( 4 ) == 0
-             && ( door = number_bits( 5 ) ) <= 5
-             && ( pexit = ch->in_room->exit[door] ) != NULL
-             && pexit->u1.to_room != NULL
-             && !IS_SET( pexit->exit_info, EX_CLOSED )
-             && !IS_SET( pexit->u1.to_room->room_flags, ROOM_NO_MOB )
-             && ( !IS_SET( ch->act, ACT_STAY_AREA )
-                  || pexit->u1.to_room->area == ch->in_room->area ) )
+                && number_bits( 4 ) == 0
+                && ( door = number_bits( 5 ) ) <= 5
+                && ( pexit = ch->in_room->exit[door] ) != NULL
+                && pexit->u1.to_room != NULL
+                && !IS_SET( pexit->exit_info, EX_CLOSED )
+                && !IS_SET( pexit->u1.to_room->room_flags, ROOM_NO_MOB )
+                && ( !IS_SET( ch->act, ACT_STAY_AREA )
+                     || pexit->u1.to_room->area == ch->in_room->area ) )
         {
             move_char( ch, door, FALSE );
             if ( ch->position < POS_STANDING )
@@ -580,7 +580,7 @@ void weather_update( void )
 
     case SKY_CLOUDLESS:
         if ( weather_info.mmhg < 990
-             || ( weather_info.mmhg < 1010 && number_bits( 2 ) == 0 ) )
+                || ( weather_info.mmhg < 1010 && number_bits( 2 ) == 0 ) )
         {
             strcat( buf, "The sky is getting cloudy.\n\r" );
             weather_info.sky = SKY_CLOUDY;
@@ -589,7 +589,7 @@ void weather_update( void )
 
     case SKY_CLOUDY:
         if ( weather_info.mmhg < 970
-             || ( weather_info.mmhg < 990 && number_bits( 2 ) == 0 ) )
+                || ( weather_info.mmhg < 990 && number_bits( 2 ) == 0 ) )
         {
             strcat( buf, "It starts to rain.\n\r" );
             weather_info.sky = SKY_RAINING;
@@ -610,7 +610,7 @@ void weather_update( void )
         }
 
         if ( weather_info.mmhg > 1030
-             || ( weather_info.mmhg > 1010 && number_bits( 2 ) == 0 ) )
+                || ( weather_info.mmhg > 1010 && number_bits( 2 ) == 0 ) )
         {
             strcat( buf, "The rain stopped.\n\r" );
             weather_info.sky = SKY_CLOUDY;
@@ -619,7 +619,7 @@ void weather_update( void )
 
     case SKY_LIGHTNING:
         if ( weather_info.mmhg > 1010
-             || ( weather_info.mmhg > 990 && number_bits( 2 ) == 0 ) )
+                || ( weather_info.mmhg > 990 && number_bits( 2 ) == 0 ) )
         {
             strcat( buf, "The lightning has stopped.\n\r" );
             weather_info.sky = SKY_RAINING;
@@ -634,9 +634,9 @@ void weather_update( void )
         {
             if ( d->connected == CON_PLAYING && IS_OUTSIDE( d->character )
 #ifdef NO_OLC_WEATHER
-                 && d->pString == NULL
+                    && d->pString == NULL
 #endif
-                 && IS_AWAKE( d->character ) )
+                    && IS_AWAKE( d->character ) )
                 send_to_char( buf, d->character );
         }
     }
@@ -711,8 +711,8 @@ void char_update( void )
             if ( !IS_NPC( ch ) && ( JAIL_RELEASE_RECALL == 1 ) )
             {
                 send_to_char
-                    ( "`Wand you are being teleported back to `Grecall`W.`w\n",
-                      ch );
+                ( "`Wand you are being teleported back to `Grecall`W.`w\n",
+                  ch );
                 char_from_room( ch );
                 ch->jail_timer = 0;
                 char_to_room( ch, get_room_index( blarg ) );
@@ -729,8 +729,8 @@ void char_update( void )
             else
             {
                 send_to_char
-                    ( "`Wand you are being teleported back to your room.\n",
-                      ch );
+                ( "`Wand you are being teleported back to your room.\n",
+                  ch );
                 char_from_room( ch );
                 ch->jail_timer = 0;
                 char_to_room( ch, get_room_index( blarg ) );
@@ -751,7 +751,7 @@ void char_update( void )
         if ( !IS_NPC( ch ) && ch->pcdata->ticks == 0 )
         {
             if ( !IS_NPC( ch ) && ch->pcdata->tick == 1 && ch->desc->editor == 0
-                 && ch->desc->pString == NULL && ch->desc->connected == 0 )
+                    && ch->desc->pString == NULL && ch->desc->connected == 0 )
             {
                 send_to_char( "\n\r", ch );
             }
@@ -793,7 +793,7 @@ void char_update( void )
             OBJ_DATA *obj;
 
             if ( ( obj = get_eq_char( ch, WEAR_LIGHT ) ) != NULL
-                 && obj->item_type == ITEM_LIGHT && obj->value[2] > 0 )
+                    && obj->item_type == ITEM_LIGHT && obj->value[2] > 0 )
             {
                 if ( --obj->value[2] == 0 && ch->in_room != NULL )
                 {
@@ -849,7 +849,7 @@ void char_update( void )
             else
             {
                 if ( paf_next == NULL
-                     || paf_next->type != paf->type || paf_next->duration > 0 )
+                        || paf_next->type != paf->type || paf_next->duration > 0 )
                 {
                     if ( paf->type > 0 && skill_table[paf->type].msg_off )
                     {
@@ -875,8 +875,8 @@ void char_update( void )
             else
             {
                 if ( npaf_next == NULL
-                     || npaf_next->type != npaf->type
-                     || npaf_next->duration > 0 )
+                        || npaf_next->type != npaf->type
+                        || npaf_next->duration > 0 )
                 {
                     if ( npaf->type > 0 && skill_table[npaf->type].msg_off )
                     {
@@ -930,7 +930,7 @@ void char_update( void )
             plague.bitvector = AFF_PLAGUE;
 
             for ( vch = ch->in_room->people; vch != NULL;
-                  vch = vch->next_in_room )
+                    vch = vch->next_in_room )
             {
                 switch ( check_immune( vch, DAM_DISEASE ) )
                 {
@@ -952,8 +952,8 @@ void char_update( void )
                 }
 
                 if ( save != 0 && !saves_spell( save, vch )
-                     && !IS_IMMORTAL( vch ) && !IS_AFFECTED( vch, AFF_PLAGUE )
-                     && number_bits( 4 ) == 0 )
+                        && !IS_IMMORTAL( vch ) && !IS_AFFECTED( vch, AFF_PLAGUE )
+                        && number_bits( 4 ) == 0 )
                 {
                     send_to_char( "You feel hot and feverish.\n\r", vch );
                     act( "$n shivers and looks very ill.", vch, NULL, NULL,
@@ -1011,7 +1011,7 @@ void regen_update( void )
         ch_next = ch->next;
 
         if ( ch->position >= POS_STUNNED
-             && IS_AFFECTED( ch, AFF_REGENERATION ) )
+                && IS_AFFECTED( ch, AFF_REGENERATION ) )
         {
             if ( ch->hit < ch->max_hit )
                 ch->hit += hit_gain( ch );
@@ -1040,7 +1040,7 @@ void obj_update( void )
         obj_next = obj->next;
 
         if ( obj->carried_by
-             || ( obj->in_room && obj->in_room->area->nplayer > 0 ) )
+                || ( obj->in_room && obj->in_room->area->nplayer > 0 ) )
         {
             oprog_random_trigger( obj );
             if ( !obj )
@@ -1062,7 +1062,7 @@ void obj_update( void )
             else
             {
                 if ( paf_next == NULL
-                     || paf_next->type != paf->type || paf_next->duration > 0 )
+                        || paf_next->type != paf->type || paf_next->duration > 0 )
                 {
                     if ( paf->type > 0 && skill_table[paf->type].msg_off )
                     {
@@ -1098,7 +1098,7 @@ void obj_update( void )
             break;
         case ITEM_POTION:
             message = "$p has evaporated from disuse.";
-	    break;
+            break;
         case ITEM_PORTAL:
             message = "$p flickers momentarily before fading away.";
             break;
@@ -1107,7 +1107,7 @@ void obj_update( void )
         if ( obj->carried_by != NULL )
         {
             if ( IS_NPC( obj->carried_by )
-                 && obj->carried_by->pIndexData->pShop != NULL )
+                    && obj->carried_by->pIndexData->pShop != NULL )
                 obj->carried_by->gold += obj->cost / 5;
             else
                 act( message, obj->carried_by, obj, NULL, TO_CHAR );
@@ -1193,31 +1193,31 @@ void aggr_update( void )
          * What is someone triggers an act prog then runs out of the room?  The TriggeredBy is then
          * set and the mob/obj/room will try to act like that player is still in the room.  If you want
          * delayed triggers then maybe we should get a command queue system put in. - Zane */
-/*	if ( IS_NPC( wch ) && wch->mpactnum > 0
-	    && wch->in_room->area->nplayer > 0 )
-	{
+        /*	if ( IS_NPC( wch ) && wch->mpactnum > 0
+        	    && wch->in_room->area->nplayer > 0 )
+        	{
 
-	    MPROG_ACT_LIST * tmp_act, *tmp2_act;
-	    for ( tmp_act = wch->mpact; tmp_act != NULL;
-		 tmp_act = tmp_act->next )
-	    {
-		 mprog_wordlist_check( tmp_act->buf,wch, tmp_act->ch,
-				      tmp_act->obj, tmp_act->vo, ACT_PROG, MOB_PROG );
-		 free_string( &tmp_act->buf );
-	    }
-	    for ( tmp_act = wch->mpact; tmp_act != NULL; tmp_act = 
-tmp2_act )
-	    {
-		 tmp2_act = tmp_act->next;
-		 free_mem( &tmp_act );
-	    }
-	    wch->mpactnum = 0;
-	    wch->mpact    = NULL; 
-	}*/
+        	    MPROG_ACT_LIST * tmp_act, *tmp2_act;
+        	    for ( tmp_act = wch->mpact; tmp_act != NULL;
+        		 tmp_act = tmp_act->next )
+        	    {
+        		 mprog_wordlist_check( tmp_act->buf,wch, tmp_act->ch,
+        				      tmp_act->obj, tmp_act->vo, ACT_PROG, MOB_PROG );
+        		 free_string( &tmp_act->buf );
+        	    }
+        	    for ( tmp_act = wch->mpact; tmp_act != NULL; tmp_act =
+        tmp2_act )
+        	    {
+        		 tmp2_act = tmp_act->next;
+        		 free_mem( &tmp_act );
+        	    }
+        	    wch->mpactnum = 0;
+        	    wch->mpact    = NULL;
+        	}*/
 
         if ( wch->level >= LEVEL_IMMORTAL || !wch->in_room
-/*	||   wch->in_room->area->empty *//* How can the area be in it if this player is in that area? - Zane */
-             || IS_SET( wch->in_room->room_flags, ROOM_SAFE ) )
+                /*	||   wch->in_room->area->empty *//* How can the area be in it if this player is in that area? - Zane */
+                || IS_SET( wch->in_room->room_flags, ROOM_SAFE ) )
             continue;
 
         for ( ch = wch->in_room->people; ch != NULL; ch = ch_next )
@@ -1225,13 +1225,13 @@ tmp2_act )
             ch_next = ch->next_in_room;
 
             if ( !IS_NPC( ch )
-                 || !IS_SET( ch->act, ACT_AGGRESSIVE )
-                 || ch->fighting
-                 || IS_AFFECTED( ch, AFF_CALM )
-                 || IS_AFFECTED( ch, AFF_CHARM )
-                 || !IS_AWAKE( ch )
-                 || ( IS_SET( ch->act, ACT_WIMPY ) && IS_AWAKE( wch ) )
-                 || !can_see( ch, wch ) || number_bits( 1 ) == 0 )
+                    || !IS_SET( ch->act, ACT_AGGRESSIVE )
+                    || ch->fighting
+                    || IS_AFFECTED( ch, AFF_CALM )
+                    || IS_AFFECTED( ch, AFF_CHARM )
+                    || !IS_AWAKE( ch )
+                    || ( IS_SET( ch->act, ACT_WIMPY ) && IS_AWAKE( wch ) )
+                    || !can_see( ch, wch ) || number_bits( 1 ) == 0 )
                 continue;
 
             /*
@@ -1244,10 +1244,10 @@ tmp2_act )
             for ( vch = wch->in_room->people; vch != NULL; vch = vch->next )
             {
                 if ( !IS_NPC( vch )
-                     && vch->level < LEVEL_IMMORTAL
-                     && ch->level >= vch->level - 5
-                     && ( !IS_SET( ch->act, ACT_WIMPY ) || !IS_AWAKE( vch ) )
-                     && can_see( ch, vch ) )
+                        && vch->level < LEVEL_IMMORTAL
+                        && ch->level >= vch->level - 5
+                        && ( !IS_SET( ch->act, ACT_WIMPY ) || !IS_AWAKE( vch ) )
+                        && can_see( ch, vch ) )
                     count++;
             }
 
@@ -1260,10 +1260,10 @@ tmp2_act )
                 vch_next = vch->next_in_room;
 
                 if ( !IS_NPC( vch )
-                     && vch->level < LEVEL_IMMORTAL
-                     && ch->level >= vch->level - 5
-                     && ( !IS_SET( ch->act, ACT_WIMPY ) || !IS_AWAKE( vch ) )
-                     && can_see( ch, vch ) && ++count == random )
+                        && vch->level < LEVEL_IMMORTAL
+                        && ch->level >= vch->level - 5
+                        && ( !IS_SET( ch->act, ACT_WIMPY ) || !IS_AWAKE( vch ) )
+                        && can_see( ch, vch ) && ++count == random )
                 {
                     victim = vch;
                     break;
@@ -1305,7 +1305,7 @@ void update_handler( void )
         update_last( "Update:", "area", "" );
         area_update(  );
     }
-/* Lets update the auction channel. -Lancelight */
+    /* Lets update the auction channel. -Lancelight */
     if ( --pulse_auction <= 0 )
     {
         pulse_auction = PULSE_AUCTION;

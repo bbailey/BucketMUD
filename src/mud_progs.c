@@ -1,19 +1,19 @@
- /***************************************************************************
- *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
- *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
- *                                                                         *
- *  Merc Diku Mud improvments copyright (C) 1992, 1993 by Michael          *
- *  Chastain, Michael Quan, and Mitchell Tse.                              *
- *                                                                         *
- *  In order to use any part of this Merc Diku Mud, you must comply with   *
- *  both the original Diku license in 'license.doc' as well the Merc       *
- *  license in 'license.txt'.  In particular, you may not remove either of *
- *  these copyright notices.                                               *
- *                                                                         *
- *  Much time and thought has gone into this software and you are          *
- *  benefitting.  We hope that you share your changes too.  What goes      *
- *  around, comes around.                                                  *
- ***************************************************************************/
+/***************************************************************************
+*  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
+*  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
+*                                                                         *
+*  Merc Diku Mud improvments copyright (C) 1992, 1993 by Michael          *
+*  Chastain, Michael Quan, and Mitchell Tse.                              *
+*                                                                         *
+*  In order to use any part of this Merc Diku Mud, you must comply with   *
+*  both the original Diku license in 'license.doc' as well the Merc       *
+*  license in 'license.txt'.  In particular, you may not remove either of *
+*  these copyright notices.                                               *
+*                                                                         *
+*  Much time and thought has gone into this software and you are          *
+*  benefitting.  We hope that you share your changes too.  What goes      *
+*  around, comes around.                                                  *
+***************************************************************************/
 
 /***************************************************************************
  * MudProgs has been completely rewritten by Zane.  The only thing that    *
@@ -549,7 +549,7 @@ int exec_proc( char *procname, int intarg, char *chararg )
 
     for ( cmd = 0; mprog_cmd_table[cmd].name[0] != '\0'; cmd++ )
         if ( procname[0] == mprog_cmd_table[cmd].name[0]
-             && !str_cmp( procname, mprog_cmd_table[cmd].name ) )
+                && !str_cmp( procname, mprog_cmd_table[cmd].name ) )
         {
             found = TRUE;
             break;
@@ -1242,7 +1242,7 @@ void mprog_get_MostEvilFighter( void )
 }
 
 /*
- * Use the constant seperator string to decide wether or not c is a 
+ * Use the constant seperator string to decide wether or not c is a
  * seperator
  */
 bool is_seperator( char c )
@@ -1283,14 +1283,14 @@ bool mprog_percent_check( int trigger_type )
         return FALSE;
 
     for ( pProgList = ProgSource->pIndexData->mudprogs; pProgList;
-          pProgList = pProgList->next )
+            pProgList = pProgList->next )
         if ( ( pProgList->mudprog->trigger_type & trigger_type )
-             && ( number_percent(  ) < atoi( pProgList->mudprog->arglist ) ) )
+                && ( number_percent(  ) < atoi( pProgList->mudprog->arglist ) ) )
         {
             executed = TRUE;
             mprog_driver( pProgList->mudprog->comlist );
             if ( trigger_type != GREET_PROG && trigger_type != ALL_GREET_PROG
-                 && trigger_type != ENTER_PROG )
+                    && trigger_type != ENTER_PROG )
                 break;
         }
 
@@ -1350,9 +1350,9 @@ void mprog_wordlist_check( char *arg, int trigger_type, int prog_type )
                 list += 2;
                 while ( ( start = strstr( dupl, list ) ) )
                     if ( ( start == dupl || *( start - 1 ) == ' ' )
-                         && ( *( end = start + strlen( list ) ) == ' '
-                              || *end == '\n'
-                              || *end == '\r' || *end == '\0' ) )
+                            && ( *( end = start + strlen( list ) ) == ' '
+                                 || *end == '\n'
+                                 || *end == '\r' || *end == '\0' ) )
                     {
                         if ( prog_type == OBJ_PROG )
                         {
@@ -1381,9 +1381,9 @@ void mprog_wordlist_check( char *arg, int trigger_type, int prog_type )
                 for ( ; word[0] != '\0'; list = one_argument( list, word ) )
                     while ( ( start = strstr( dupl, word ) ) )
                         if ( ( start == dupl || *( start - 1 ) == ' ' )
-                             && ( *( end = start + strlen( word ) ) == ' '
-                                  || *end == '\n'
-                                  || *end == '\r' || *end == '\0' ) )
+                                && ( *( end = start + strlen( word ) ) == ' '
+                                     || *end == '\n'
+                                     || *end == '\r' || *end == '\0' ) )
                         {
                             if ( prog_type == OBJ_PROG )
                             {
@@ -1457,7 +1457,7 @@ void mprog_bribe_trigger( CHAR_DATA * mob, CHAR_DATA * ch, int amount )
 
         for ( pList = mob->pIndexData->mudprogs; pList; pList = pList->next )
             if ( ( pList->mudprog->trigger_type & BRIBE_PROG )
-                 && ( amount >= atoi( pList->mudprog->arglist ) ) )
+                    && ( amount >= atoi( pList->mudprog->arglist ) ) )
             {
                 ProgSource = mob;
                 ProgTriggeredBy = ch;
@@ -1531,7 +1531,7 @@ void mprog_fightgroup_trigger( CHAR_DATA * mob )
         ProgSource = mob;
 
         for ( victim = mob->in_room->people; victim;
-              victim = victim->next_in_room )
+                victim = victim->next_in_room )
         {
             if ( victim != mob && victim->fighting == mob )
             {
@@ -1561,8 +1561,8 @@ void mprog_give_trigger( CHAR_DATA * mob, CHAR_DATA * ch, OBJ_DATA * obj )
             one_argument( pList->mudprog->arglist, buf );
 
             if ( ( pList->mudprog->trigger_type & GIVE_PROG )
-                 && ( ( !str_cmp( obj->name, pList->mudprog->arglist ) )
-                      || ( !str_cmp( "all", buf ) ) ) )
+                    && ( ( !str_cmp( obj->name, pList->mudprog->arglist ) )
+                         || ( !str_cmp( "all", buf ) ) ) )
             {
                 ProgSource = mob;
                 ProgTriggeredBy = ch;
@@ -1586,8 +1586,8 @@ void mprog_greet_trigger( CHAR_DATA * ch )
 
     for ( vmob = ch->in_room->people; vmob; vmob = vmob->next_in_room )
         if ( IS_NPC( vmob ) && ch != vmob && can_see( vmob, ch )
-             && ( !vmob->fighting ) && IS_AWAKE( vmob )
-             && ( vmob->pIndexData->progtypes & GREET_PROG ) )
+                && ( !vmob->fighting ) && IS_AWAKE( vmob )
+                && ( vmob->pIndexData->progtypes & GREET_PROG ) )
         {
             ProgSource = vmob;
             ProgTriggeredBy = ch;
@@ -1619,8 +1619,8 @@ void mprog_hitprcnt_trigger( CHAR_DATA * mob, CHAR_DATA * ch )
 
         for ( pList = mob->pIndexData->mudprogs; pList; pList = pList->next )
             if ( ( pList->mudprog->trigger_type & HITPRCNT_PROG )
-                 && ( ( 100 * mob->hit / mob->max_hit ) <
-                      atoi( pList->mudprog->arglist ) ) )
+                    && ( ( 100 * mob->hit / mob->max_hit ) <
+                         atoi( pList->mudprog->arglist ) ) )
             {
                 ProgSource = mob;
                 ProgTriggeredBy = ch;
@@ -1689,14 +1689,14 @@ bool mprog_command_trigger( char *txt, CHAR_DATA * ch, char *extra )
     pMem = strdup( txt );
     argument = pMem;
 
-    /* First check for the command typed being a prefix of anything in 
+    /* First check for the command typed being a prefix of anything in
      * the regular command table, and expand it to the full command. */
 
     argument = one_argument( argument, arg );
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
         if ( arg[0] == cmd_table[cmd].name[0]
-             && !str_prefix( arg, cmd_table[cmd].name ) )
+                && !str_prefix( arg, cmd_table[cmd].name ) )
         {
             strncpy( arg, cmd_table[cmd].name, sizeof( arg ) );
             break;
@@ -1709,10 +1709,10 @@ bool mprog_command_trigger( char *txt, CHAR_DATA * ch, char *extra )
         if ( IS_NPC( vmob ) && ( vmob->pIndexData->progtypes & COMMAND_PROG ) )
         {
             for ( pList = vmob->pIndexData->mudprogs; pList;
-                  pList = pList->next )
+                    pList = pList->next )
             {
                 if ( ( pList->mudprog->trigger_type & COMMAND_PROG )
-                     && ( !str_cmp( pList->mudprog->arglist, arg ) ) )
+                        && ( !str_cmp( pList->mudprog->arglist, arg ) ) )
                 {
                     ProgSource = vmob;
                     ProgTriggeredBy = ch;
@@ -1731,10 +1731,10 @@ bool mprog_command_trigger( char *txt, CHAR_DATA * ch, char *extra )
         if ( obj->pIndexData->progtypes & COMMAND_PROG )
         {
             for ( pList = obj->pIndexData->mudprogs; pList;
-                  pList = pList->next )
+                    pList = pList->next )
             {
                 if ( ( pList->mudprog->trigger_type & COMMAND_PROG )
-                     && ( !str_cmp( pList->mudprog->arglist, arg ) ) )
+                        && ( !str_cmp( pList->mudprog->arglist, arg ) ) )
                 {
                     set_supermob( obj, OBJ_PROG );
                     ProgSource = supermob;
@@ -1756,10 +1756,10 @@ bool mprog_command_trigger( char *txt, CHAR_DATA * ch, char *extra )
         if ( obj->pIndexData->progtypes & COMMAND_PROG )
         {
             for ( pList = obj->pIndexData->mudprogs; pList;
-                  pList = pList->next )
+                    pList = pList->next )
             {
                 if ( ( pList->mudprog->trigger_type & COMMAND_PROG )
-                     && ( !str_cmp( pList->mudprog->arglist, arg ) ) )
+                        && ( !str_cmp( pList->mudprog->arglist, arg ) ) )
                 {
                     set_supermob( obj, OBJ_PROG );
                     ProgSource = supermob;
@@ -1783,7 +1783,7 @@ bool mprog_command_trigger( char *txt, CHAR_DATA * ch, char *extra )
         for ( pList = room->mudprogs; pList; pList = pList->next )
         {
             if ( ( pList->mudprog->trigger_type & COMMAND_PROG )
-                 && ( !str_cmp( pList->mudprog->arglist, arg ) ) )
+                    && ( !str_cmp( pList->mudprog->arglist, arg ) ) )
             {
                 set_supermob( room, ROOM_PROG );
                 ProgSource = supermob;
@@ -2019,7 +2019,7 @@ void oprog_random_trigger( OBJ_DATA * obj )
 }
 
 /*
- * in wear_obj, between each successful equip_char 
+ * in wear_obj, between each successful equip_char
  * the subsequent return
  */
 void oprog_wear_trigger( CHAR_DATA * ch, OBJ_DATA * obj )
@@ -2063,7 +2063,7 @@ bool oprog_use_trigger( CHAR_DATA * ch, OBJ_DATA * obj, CHAR_DATA * vict,
 }
 
 /*
- * call in remove_obj, right after unequip_char   
+ * call in remove_obj, right after unequip_char
  * do a if(!ch) return right after, and return TRUE (?)
  * if !ch
  */
@@ -2348,14 +2348,16 @@ void oprog_hit_trigger( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj )
  *                                                                                 *
  ***********************************************************************************/
 
-struct operator_type {
+struct operator_type
+{
     char token;
     char *tag;
     size_t taglen;
     int precedence;
 };
 
-static struct operator_type verbs[] = {
+static struct operator_type verbs[] =
+{
     {'+', "+", 1, 2},
     {'-', "-", 1, 3},
     {'*', "*", 1, 4},
@@ -2380,9 +2382,9 @@ static char op_stack[256];      /* Operator stack       */
 static double arg_stack[256];   /* Argument stack       */
 static char token[256];         /* Token buffer         */
 static int op_sptr,             /* op_stack pointer     */
- arg_sptr,                      /* arg_stack pointer    */
- parens,                        /* Nesting level        */
- state;                         /* 0 = Awaiting expression
+arg_sptr,                      /* arg_stack pointer    */
+parens,                        /* Nesting level        */
+state;                         /* 0 = Awaiting expression
                                    1 = Awaiting operator
                                  */
 static int do_op( void );
@@ -2432,7 +2434,7 @@ int evaluate( char *line, double *val )
             if ( NULL != ( str = get_exp( ptr ) ) )
             {
                 if ( NULL != ( op = get_op( str ) ) &&
-                     strlen( str ) == op->taglen )
+                        strlen( str ) == op->taglen )
                 {
                     push_op( op->token );
                     ptr += op->taglen;
@@ -2449,7 +2451,7 @@ int evaluate( char *line, double *val )
                 else
                 {
                     if ( 0.0 == ( arg = strtod( str, &endptr ) ) &&
-                         NULL == strchr( str, '0' ) )
+                            NULL == strchr( str, '0' ) )
                     {
                         return Error_;
                     }

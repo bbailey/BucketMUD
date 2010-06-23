@@ -23,7 +23,7 @@ DECLARE_DO_FUN( do_quit );
 extern void ChannelMessage( char *mesg, CHAR_DATA * ch );
 extern bool can_do_immcmd( CHAR_DATA * ch, char *cmd );
 extern bool check_social
-args( ( CHAR_DATA * ch, char *command, char *argument ) );
+    args( ( CHAR_DATA * ch, char *command, char *argument ) );
 
 /*
  * Local functions.
@@ -86,8 +86,8 @@ void do_delete( CHAR_DATA * ch, char *argument )
 
     send_to_char( "Type delete again to confirm this command.\n\r", ch );
     send_to_char
-        ( "WARNING: this command is irreversible and your character will be permanently gone.\n\r",
-          ch );
+    ( "WARNING: this command is irreversible and your character will be permanently gone.\n\r",
+      ch );
     send_to_char( "Typing delete with an argument will undo delete status.\n\r",
                   ch );
     ch->pcdata->confirm_delete = TRUE;
@@ -159,7 +159,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
 #ifdef USE_HEROTALK
 
     if ( ( IS_HERO( ch ) || IS_SET( ch->act, PLR_REMORT ) )
-         && ( can_do_immcmd( ch, "herotalk" ) ) )
+            && ( can_do_immcmd( ch, "herotalk" ) ) )
     {
         send_to_char( "`Kh`We`Kr`Ko`Wt`Ka`Wl`Kk`W `K `w     ", ch );
         if ( !IS_SET( ch->comm, COMM_NOHERO ) )
@@ -347,7 +347,7 @@ void do_gossip( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOCHANNELS ) )
     {
         send_to_char
-            ( "The gods have revoked all of your channel priviliges!\n\r", ch );
+        ( "The gods have revoked all of your channel priviliges!\n\r", ch );
         return;
     }
 
@@ -366,10 +366,10 @@ void do_gossip( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( victim != ch &&
-                 d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_NOGOSSIP ) &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) )
+                    d->connected == CON_PLAYING &&
+                    !IS_SET( victim->comm, COMM_NOGOSSIP ) &&
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) )
             {
                 act_new( CFG_GOS, ch, argument, victim, TO_VICT, MIN_POS_GOS );
             }
@@ -393,7 +393,7 @@ void do_gocial( CHAR_DATA * ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
-/*    int cmd; */
+    /*    int cmd; */
     bool found;
     char arg[MAX_INPUT_LENGTH];
     DESCRIPTOR_DATA *d;
@@ -478,9 +478,9 @@ void do_gocial( CHAR_DATA * ch, char *argument )
             CHAR_DATA *vch;
             vch = d->original ? d->original : d->character;
             if ( d->connected == CON_PLAYING &&
-                 d->character != ch &&
-                 !IS_SET( vch->comm, COMM_NOGOC ) &&
-                 !IS_SET( vch->comm, COMM_QUIET ) )
+                    d->character != ch &&
+                    !IS_SET( vch->comm, COMM_NOGOC ) &&
+                    !IS_SET( vch->comm, COMM_QUIET ) )
             {
                 act_new( buf, ch, NULL, vch, TO_VICT, POS_DEAD );
             }
@@ -501,9 +501,9 @@ void do_gocial( CHAR_DATA * ch, char *argument )
             CHAR_DATA *vch;
             vch = d->original ? d->original : d->character;
             if ( d->connected == CON_PLAYING &&
-                 d->character != ch &&
-                 !IS_SET( vch->comm, COMM_NOGOC ) &&
-                 !IS_SET( vch->comm, COMM_QUIET ) )
+                    d->character != ch &&
+                    !IS_SET( vch->comm, COMM_NOGOC ) &&
+                    !IS_SET( vch->comm, COMM_QUIET ) )
             {
                 act_new( buf, ch, NULL, vch, TO_VICT, POS_DEAD );
             }
@@ -658,10 +658,10 @@ void do_gocial( CHAR_DATA * ch, char *argument )
             CHAR_DATA *vch;
             vch = d->original ? d->original : d->character;
             if ( d->connected == CON_PLAYING &&
-                 d->character != ch &&
-                 d->character != victim &&
-                 !IS_SET( vch->comm, COMM_NOGOC ) &&
-                 !IS_SET( vch->comm, COMM_QUIET ) )
+                    d->character != ch &&
+                    d->character != victim &&
+                    !IS_SET( vch->comm, COMM_NOGOC ) &&
+                    !IS_SET( vch->comm, COMM_QUIET ) )
             {
                 act_new( buf, ch, NULL, vch, TO_VICT, POS_DEAD );
             }
@@ -713,7 +713,7 @@ void do_music( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOCHANNELS ) )
     {
         send_to_char
-            ( "The gods have revoked all of your channel priviliges!\n\r", ch );
+        ( "The gods have revoked all of your channel priviliges!\n\r", ch );
         return;
     }
     /* Make the words drunk if needed */
@@ -729,10 +729,10 @@ void do_music( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( victim != ch &&
-                 d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_NOMUSIC ) &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) )
+                    d->connected == CON_PLAYING &&
+                    !IS_SET( victim->comm, COMM_NOMUSIC ) &&
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) )
             {
                 act_new( CFG_MUS, ch, argument, victim, TO_VICT, MIN_POS_MUS );
             }
@@ -774,8 +774,8 @@ void do_question( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOQUESTION ) )
     {
         send_to_char
-            ( "`0Cannot send to the Q/A channel when you have it turned off!\n\r",
-              ch );
+        ( "`0Cannot send to the Q/A channel when you have it turned off!\n\r",
+          ch );
         return;
     }
 
@@ -783,8 +783,8 @@ void do_question( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_QUIET ) )
     {
         send_to_char
-            ( "`0Cannot send to the Q/A channel without turning off quiet mode!\n\r",
-              ch );
+        ( "`0Cannot send to the Q/A channel without turning off quiet mode!\n\r",
+          ch );
         return;
     }
 
@@ -811,10 +811,10 @@ void do_question( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( victim != ch &&
-                 d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_NOQUESTION ) &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) )
+                    d->connected == CON_PLAYING &&
+                    !IS_SET( victim->comm, COMM_NOQUESTION ) &&
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) )
             {
                 act_new( CFG_QUESTION, ch, argument, victim, TO_VICT,
                          MIN_POS_QA );
@@ -852,8 +852,8 @@ void do_answer( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOQUESTION ) )
     {
         send_to_char
-            ( "`0Cannot send to the Q/A channel when you have it turned off!\n\r",
-              ch );
+        ( "`0Cannot send to the Q/A channel when you have it turned off!\n\r",
+          ch );
         return;
     }
 
@@ -861,8 +861,8 @@ void do_answer( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_QUIET ) )
     {
         send_to_char
-            ( "`0Cannot send to the Q/A channel without turning off quiet mode!\n\r",
-              ch );
+        ( "`0Cannot send to the Q/A channel without turning off quiet mode!\n\r",
+          ch );
         return;
     }
 
@@ -889,10 +889,10 @@ void do_answer( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( victim != ch &&
-                 d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_NOQUESTION ) &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) )
+                    d->connected == CON_PLAYING &&
+                    !IS_SET( victim->comm, COMM_NOQUESTION ) &&
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) )
             {
                 act_new( CFG_ANSWER, ch, argument, victim, TO_VICT,
                          MIN_POS_QA );
@@ -946,7 +946,7 @@ void do_ooc( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOCHANNELS ) )
     {
         send_to_char
-            ( "The gods have revoked all of your channel priviliges!\n\r", ch );
+        ( "The gods have revoked all of your channel priviliges!\n\r", ch );
         return;
     }
 
@@ -968,10 +968,10 @@ void do_ooc( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( victim != ch &&
-                 d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_NO_OOC ) &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) )
+                    d->connected == CON_PLAYING &&
+                    !IS_SET( victim->comm, COMM_NO_OOC ) &&
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) )
             {
                 act_new( CFG_OOC, ch, argument, victim, TO_VICT, MIN_POS_OOC );
             }
@@ -1008,8 +1008,8 @@ void do_immtalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOWIZ ) )
     {
         send_to_char
-            ( "`0Cannot send to the Immortal channel when you have it turned off!\n\r",
-              ch );
+        ( "`0Cannot send to the Immortal channel when you have it turned off!\n\r",
+          ch );
         return;
     }
 
@@ -1017,8 +1017,8 @@ void do_immtalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_QUIET ) )
     {
         send_to_char
-            ( "`0Cannot send to the Immortal channel without turning off quiet mode!\n\r",
-              ch );
+        ( "`0Cannot send to the Immortal channel without turning off quiet mode!\n\r",
+          ch );
         return;
     }
 
@@ -1026,7 +1026,7 @@ void do_immtalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOCHANNELS ) )
     {
         send_to_char
-            ( "The gods have revoked all of your channel priviliges!\n\r", ch );
+        ( "The gods have revoked all of your channel priviliges!\n\r", ch );
         return;
     }
 
@@ -1039,11 +1039,11 @@ void do_immtalk( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( victim != ch &&
-                 d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_NOWIZ ) &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) &&
-                 can_do_immcmd( victim, "immtalk" ) )
+                    d->connected == CON_PLAYING &&
+                    !IS_SET( victim->comm, COMM_NOWIZ ) &&
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) &&
+                    can_do_immcmd( victim, "immtalk" ) )
             {
                 act_new( CFG_IMM, ch, argument, victim, TO_VICT, POS_DEAD );
             }
@@ -1081,8 +1081,8 @@ void do_admintalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOADMIN ) )
     {
         send_to_char
-            ( "`0Cannot send to the Admin channel when you have it turned off!\n\r",
-              ch );
+        ( "`0Cannot send to the Admin channel when you have it turned off!\n\r",
+          ch );
         return;
     }
 
@@ -1090,8 +1090,8 @@ void do_admintalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_QUIET ) )
     {
         send_to_char
-            ( "`0Cannot send to the Admin channel without turning off quiet mode!\n\r",
-              ch );
+        ( "`0Cannot send to the Admin channel without turning off quiet mode!\n\r",
+          ch );
         return;
     }
 
@@ -1099,7 +1099,7 @@ void do_admintalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOCHANNELS ) )
     {
         send_to_char
-            ( "The gods have revoked all of your channel priviliges!\n\r", ch );
+        ( "The gods have revoked all of your channel priviliges!\n\r", ch );
         return;
     }
 
@@ -1112,11 +1112,11 @@ void do_admintalk( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( victim != ch &&
-                 d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_NOADMIN ) &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) &&
-                 can_do_immcmd( victim, "admintalk" ) )
+                    d->connected == CON_PLAYING &&
+                    !IS_SET( victim->comm, COMM_NOADMIN ) &&
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) &&
+                    can_do_immcmd( victim, "admintalk" ) )
             {
                 act_new( CFG_ADMIN, ch, argument, victim, TO_VICT, POS_DEAD );
             }
@@ -1154,8 +1154,8 @@ void do_herotalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOHERO ) )
     {
         send_to_char
-            ( "`0Cannot send to the HERO channel when you have it turned off!\n\r",
-              ch );
+        ( "`0Cannot send to the HERO channel when you have it turned off!\n\r",
+          ch );
         return;
     }
 
@@ -1163,8 +1163,8 @@ void do_herotalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_QUIET ) )
     {
         send_to_char
-            ( "`0Cannot send to the HERO channel without turning off quiet mode!\n\r",
-              ch );
+        ( "`0Cannot send to the HERO channel without turning off quiet mode!\n\r",
+          ch );
         return;
     }
 
@@ -1172,7 +1172,7 @@ void do_herotalk( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->comm, COMM_NOCHANNELS ) )
     {
         send_to_char
-            ( "The gods have revoked all of your channel priviliges!\n\r", ch );
+        ( "The gods have revoked all of your channel priviliges!\n\r", ch );
         return;
     }
 
@@ -1185,11 +1185,11 @@ void do_herotalk( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( victim != ch &&
-                 d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_NOHERO ) &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) &&
-                 can_do_immcmd( victim, "herotalk" ) )
+                    d->connected == CON_PLAYING &&
+                    !IS_SET( victim->comm, COMM_NOHERO ) &&
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) &&
+                    can_do_immcmd( victim, "herotalk" ) )
             {
                 act_new( CFG_HERO, ch, argument, victim, TO_VICT, POS_DEAD );
             }
@@ -1269,9 +1269,9 @@ void do_shout( CHAR_DATA * ch, char *argument )
         CHAR_DATA *victim = d->character;
 
         if ( victim != ch &&
-             d->connected == CON_PLAYING &&
-             !IS_SET( victim->comm, COMM_DEAF ) &&
-             !IS_SET( victim->comm, COMM_QUIET ) )
+                d->connected == CON_PLAYING &&
+                !IS_SET( victim->comm, COMM_DEAF ) &&
+                !IS_SET( victim->comm, COMM_QUIET ) )
         {
             act_new( CFG_SHOUT, ch, argument, victim, TO_VICT, MIN_POS_SHOUT );
         }
@@ -1309,9 +1309,9 @@ void do_sendinfo( CHAR_DATA * ch, char *argument )
         if ( victim )
         {
             if ( d->connected == CON_PLAYING &&
-                 !IS_SET( victim->comm, COMM_DEAF ) &&
-                 !IS_SET( victim->comm, COMM_NOINFO ) &&
-                 !IS_SET( victim->comm, COMM_QUIET ) )
+                    !IS_SET( victim->comm, COMM_DEAF ) &&
+                    !IS_SET( victim->comm, COMM_NOINFO ) &&
+                    !IS_SET( victim->comm, COMM_QUIET ) )
             {
                 act_new( CFG_INFO, ch, argument, victim, TO_VICT, POS_DEAD );
             }
@@ -1369,7 +1369,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
      * -- Furey
      */
     if ( ( victim = get_char_world( ch, arg ) ) == NULL
-         || ( IS_NPC( victim ) && victim->in_room != ch->in_room ) )
+            || ( IS_NPC( victim ) && victim->in_room != ch->in_room ) )
     {
         send_to_char( "They aren't here.\n\r", ch );
         return;
@@ -1382,7 +1382,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
 
         /* Dead link may be because of switch - check that too */
         for ( d = descriptor_list; d != NULL && d->original != victim;
-              d = d->next );
+                d = d->next );
 
         if ( d )
         {
@@ -1413,7 +1413,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
     }
 
     if ( ( IS_SET( victim->comm, COMM_QUIET )
-           || ( IS_SET( victim->comm, COMM_TELLOFF ) ) ) && !IS_IMMORTAL( ch ) )
+            || ( IS_SET( victim->comm, COMM_TELLOFF ) ) ) && !IS_IMMORTAL( ch ) )
     {
         act( "$E is not receiving tells, but your message has been recorded.",
              ch, 0, victim, TO_CHAR );
@@ -1521,7 +1521,7 @@ void add2queue( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
     return;
 #endif
     if IS_NPC
-        ( ch ) return;
+    ( ch ) return;
 
     if ( victim->pcdata->message == NULL )
     {
@@ -1553,7 +1553,7 @@ void add2tell( CHAR_DATA * ch, CHAR_DATA * victim, bool group, char *argument )
     return;
 #endif
     if IS_NPC
-        ( ch ) return;          /* not for NPCs */
+    ( ch ) return;          /* not for NPCs */
 
     if ( victim->pcdata == NULL )
         return;
@@ -1790,7 +1790,7 @@ void do_messages( CHAR_DATA * ch, char *argument )
     char *sender = NULL;
 
     if IS_NPC
-        ( ch ) return;
+    ( ch ) return;
 
     if ( ch->pcdata->fmessage == NULL )
     {
@@ -1869,7 +1869,7 @@ void do_tq( CHAR_DATA * ch, char *argument )
     char *sender = NULL;
 
     if IS_NPC
-        ( ch ) return;
+    ( ch ) return;
 
     if ( ch->pcdata->ftell_q == NULL )
     {
@@ -2170,11 +2170,11 @@ void do_yell( CHAR_DATA * ch, char *argument )
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
         if ( d->character != ch &&
-             d->connected == CON_PLAYING &&
-             d->character->in_room != NULL &&
-             d->character->in_room->area == ch->in_room->area &&
-             !IS_SET( d->character->comm, COMM_QUIET ) &&
-             !IS_SET( d->character->comm, COMM_DEAF ) )
+                d->connected == CON_PLAYING &&
+                d->character->in_room != NULL &&
+                d->character->in_room->area == ch->in_room->area &&
+                !IS_SET( d->character->comm, COMM_QUIET ) &&
+                !IS_SET( d->character->comm, COMM_DEAF ) )
         {
             act_new( CFG_YELL, ch, argument, d->character, TO_VICT,
                      MIN_POS_YELL );
@@ -2228,214 +2228,216 @@ void do_info( CHAR_DATA * ch )
 /*
  * All the posing stuff.
  */
-struct pose_table_type {
+struct pose_table_type
+{
     char *message[2 * MAX_CLASS];
 };
 
-const struct pose_table_type pose_table[] = {
+const struct pose_table_type pose_table[] =
+{
     {
-     {
-      "You sizzle with energy.",
-      "$n sizzles with energy.",
-      "You feel very holy.",
-      "$n looks very holy.",
-      "You perform a small card trick.",
-      "$n performs a small card trick.",
-      "You show your bulging muscles.",
-      "$n shows $s bulging muscles."}
-     },
+        {
+            "You sizzle with energy.",
+            "$n sizzles with energy.",
+            "You feel very holy.",
+            "$n looks very holy.",
+            "You perform a small card trick.",
+            "$n performs a small card trick.",
+            "You show your bulging muscles.",
+            "$n shows $s bulging muscles."}
+    },
 
     {
-     {
-      "You turn into a butterfly, then return to your normal shape.",
-      "$n turns into a butterfly, then returns to $s normal shape.",
-      "You nonchalantly turn wine into water.",
-      "$n nonchalantly turns wine into water.",
-      "You wiggle your ears alternately.",
-      "$n wiggles $s ears alternately.",
-      "You crack nuts between your fingers.",
-      "$n cracks nuts between $s fingers."}
-     },
+        {
+            "You turn into a butterfly, then return to your normal shape.",
+            "$n turns into a butterfly, then returns to $s normal shape.",
+            "You nonchalantly turn wine into water.",
+            "$n nonchalantly turns wine into water.",
+            "You wiggle your ears alternately.",
+            "$n wiggles $s ears alternately.",
+            "You crack nuts between your fingers.",
+            "$n cracks nuts between $s fingers."}
+    },
 
     {
-     {
-      "Blue sparks fly from your fingers.",
-      "Blue sparks fly from $n's fingers.",
-      "A halo appears over your head.",
-      "A halo appears over $n's head.",
-      "You nimbly tie yourself into a knot.",
-      "$n nimbly ties $mself into a knot.",
-      "You grizzle your teeth and look mean.",
-      "$n grizzles $s teeth and looks mean."}
-     },
+        {
+            "Blue sparks fly from your fingers.",
+            "Blue sparks fly from $n's fingers.",
+            "A halo appears over your head.",
+            "A halo appears over $n's head.",
+            "You nimbly tie yourself into a knot.",
+            "$n nimbly ties $mself into a knot.",
+            "You grizzle your teeth and look mean.",
+            "$n grizzles $s teeth and looks mean."}
+    },
 
     {
-     {
-      "Little red lights dance in your eyes.",
-      "Little red lights dance in $n's eyes.",
-      "You recite words of wisdom.",
-      "$n recites words of wisdom.",
-      "You juggle with daggers, apples, and eyeballs.",
-      "$n juggles with daggers, apples, and eyeballs.",
-      "You hit your head, and your eyes roll.",
-      "$n hits $s head, and $s eyes roll."}
-     },
+        {
+            "Little red lights dance in your eyes.",
+            "Little red lights dance in $n's eyes.",
+            "You recite words of wisdom.",
+            "$n recites words of wisdom.",
+            "You juggle with daggers, apples, and eyeballs.",
+            "$n juggles with daggers, apples, and eyeballs.",
+            "You hit your head, and your eyes roll.",
+            "$n hits $s head, and $s eyes roll."}
+    },
 
     {
-     {
-      "A slimy green monster appears before you and bows.",
-      "A slimy green monster appears before $n and bows.",
-      "Deep in prayer, you levitate.",
-      "Deep in prayer, $n levitates.",
-      "You steal the underwear off every person in the room.",
-      "Your underwear is gone!  $n stole it!",
-      "Crunch, crunch -- you munch a bottle.",
-      "Crunch, crunch -- $n munches a bottle."}
-     },
+        {
+            "A slimy green monster appears before you and bows.",
+            "A slimy green monster appears before $n and bows.",
+            "Deep in prayer, you levitate.",
+            "Deep in prayer, $n levitates.",
+            "You steal the underwear off every person in the room.",
+            "Your underwear is gone!  $n stole it!",
+            "Crunch, crunch -- you munch a bottle.",
+            "Crunch, crunch -- $n munches a bottle."}
+    },
 
     {
-     {
-      "You turn everybody into a little pink elephant.",
-      "You are turned into a little pink elephant by $n.",
-      "An angel consults you.",
-      "An angel consults $n.",
-      "The dice roll ... and you win again.",
-      "The dice roll ... and $n wins again.",
-      "... 98, 99, 100 ... you do pushups.",
-      "... 98, 99, 100 ... $n does pushups."}
-     },
+        {
+            "You turn everybody into a little pink elephant.",
+            "You are turned into a little pink elephant by $n.",
+            "An angel consults you.",
+            "An angel consults $n.",
+            "The dice roll ... and you win again.",
+            "The dice roll ... and $n wins again.",
+            "... 98, 99, 100 ... you do pushups.",
+            "... 98, 99, 100 ... $n does pushups."}
+    },
 
     {
-     {
-      "A small ball of light dances on your fingertips.",
-      "A small ball of light dances on $n's fingertips.",
-      "Your body glows with an unearthly light.",
-      "$n's body glows with an unearthly light.",
-      "You count the money in everyone's pockets.",
-      "Check your money, $n is counting it.",
-      "Arnold Schwarzenegger admires your physique.",
-      "Arnold Schwarzenegger admires $n's physique."}
-     },
+        {
+            "A small ball of light dances on your fingertips.",
+            "A small ball of light dances on $n's fingertips.",
+            "Your body glows with an unearthly light.",
+            "$n's body glows with an unearthly light.",
+            "You count the money in everyone's pockets.",
+            "Check your money, $n is counting it.",
+            "Arnold Schwarzenegger admires your physique.",
+            "Arnold Schwarzenegger admires $n's physique."}
+    },
 
     {
-     {
-      "Smoke and fumes leak from your nostrils.",
-      "Smoke and fumes leak from $n's nostrils.",
-      "A spot light hits you.",
-      "A spot light hits $n.",
-      "You balance a pocket knife on your tongue.",
-      "$n balances a pocket knife on your tongue.",
-      "Watch your feet, you are juggling granite boulders.",
-      "Watch your feet, $n is juggling granite boulders."}
-     },
+        {
+            "Smoke and fumes leak from your nostrils.",
+            "Smoke and fumes leak from $n's nostrils.",
+            "A spot light hits you.",
+            "A spot light hits $n.",
+            "You balance a pocket knife on your tongue.",
+            "$n balances a pocket knife on your tongue.",
+            "Watch your feet, you are juggling granite boulders.",
+            "Watch your feet, $n is juggling granite boulders."}
+    },
 
     {
-     {
-      "The light flickers as you rap in magical languages.",
-      "The light flickers as $n raps in magical languages.",
-      "Everyone levitates as you pray.",
-      "You levitate as $n prays.",
-      "You produce a coin from everyone's ear.",
-      "$n produces a coin from your ear.",
-      "Oomph!  You squeeze water out of a granite boulder.",
-      "Oomph!  $n squeezes water out of a granite boulder."}
-     },
+        {
+            "The light flickers as you rap in magical languages.",
+            "The light flickers as $n raps in magical languages.",
+            "Everyone levitates as you pray.",
+            "You levitate as $n prays.",
+            "You produce a coin from everyone's ear.",
+            "$n produces a coin from your ear.",
+            "Oomph!  You squeeze water out of a granite boulder.",
+            "Oomph!  $n squeezes water out of a granite boulder."}
+    },
 
     {
-     {
-      "Your head disappears.",
-      "$n's head disappears.",
-      "A cool breeze refreshes you.",
-      "A cool breeze refreshes $n.",
-      "You step behind your shadow.",
-      "$n steps behind $s shadow.",
-      "You pick your teeth with a spear.",
-      "$n picks $s teeth with a spear."}
-     },
+        {
+            "Your head disappears.",
+            "$n's head disappears.",
+            "A cool breeze refreshes you.",
+            "A cool breeze refreshes $n.",
+            "You step behind your shadow.",
+            "$n steps behind $s shadow.",
+            "You pick your teeth with a spear.",
+            "$n picks $s teeth with a spear."}
+    },
 
     {
-     {
-      "A fire elemental singes your hair.",
-      "A fire elemental singes $n's hair.",
-      "The sun pierces through the clouds to illuminate you.",
-      "The sun pierces through the clouds to illuminate $n.",
-      "Your eyes dance with greed.",
-      "$n's eyes dance with greed.",
-      "Everyone is swept off their foot by your hug.",
-      "You are swept off your feet by $n's hug."}
-     },
+        {
+            "A fire elemental singes your hair.",
+            "A fire elemental singes $n's hair.",
+            "The sun pierces through the clouds to illuminate you.",
+            "The sun pierces through the clouds to illuminate $n.",
+            "Your eyes dance with greed.",
+            "$n's eyes dance with greed.",
+            "Everyone is swept off their foot by your hug.",
+            "You are swept off your feet by $n's hug."}
+    },
 
     {
-     {
-      "The sky changes color to match your eyes.",
-      "The sky changes color to match $n's eyes.",
-      "The ocean parts before you.",
-      "The ocean parts before $n.",
-      "You deftly steal everyone's weapon.",
-      "$n deftly steals your weapon.",
-      "Your karate chop splits a tree.",
-      "$n's karate chop splits a tree."}
-     },
+        {
+            "The sky changes color to match your eyes.",
+            "The sky changes color to match $n's eyes.",
+            "The ocean parts before you.",
+            "The ocean parts before $n.",
+            "You deftly steal everyone's weapon.",
+            "$n deftly steals your weapon.",
+            "Your karate chop splits a tree.",
+            "$n's karate chop splits a tree."}
+    },
 
     {
-     {
-      "The stones dance to your command.",
-      "The stones dance to $n's command.",
-      "A thunder cloud kneels to you.",
-      "A thunder cloud kneels to $n.",
-      "The Grey Mouser buys you a beer.",
-      "The Grey Mouser buys $n a beer.",
-      "A strap of your armor breaks over your mighty thews.",
-      "A strap of $n's armor breaks over $s mighty thews."}
-     },
+        {
+            "The stones dance to your command.",
+            "The stones dance to $n's command.",
+            "A thunder cloud kneels to you.",
+            "A thunder cloud kneels to $n.",
+            "The Grey Mouser buys you a beer.",
+            "The Grey Mouser buys $n a beer.",
+            "A strap of your armor breaks over your mighty thews.",
+            "A strap of $n's armor breaks over $s mighty thews."}
+    },
 
     {
-     {
-      "The heavens and grass change colour as you smile.",
-      "The heavens and grass change colour as $n smiles.",
-      "The Burning Man speaks to you.",
-      "The Burning Man speaks to $n.",
-      "Everyone's pocket explodes with your fireworks.",
-      "Your pocket explodes with $n's fireworks.",
-      "A boulder cracks at your frown.",
-      "A boulder cracks at $n's frown."}
-     },
+        {
+            "The heavens and grass change colour as you smile.",
+            "The heavens and grass change colour as $n smiles.",
+            "The Burning Man speaks to you.",
+            "The Burning Man speaks to $n.",
+            "Everyone's pocket explodes with your fireworks.",
+            "Your pocket explodes with $n's fireworks.",
+            "A boulder cracks at your frown.",
+            "A boulder cracks at $n's frown."}
+    },
 
     {
-     {
-      "Everyone's clothes are transparent, and you are laughing.",
-      "Your clothes are transparent, and $n is laughing.",
-      "An eye in a pyramid winks at you.",
-      "An eye in a pyramid winks at $n.",
-      "Everyone discovers your dagger a centimeter from their eye.",
-      "You discover $n's dagger a centimeter from your eye.",
-      "Mercenaries arrive to do your bidding.",
-      "Mercenaries arrive to do $n's bidding."}
-     },
+        {
+            "Everyone's clothes are transparent, and you are laughing.",
+            "Your clothes are transparent, and $n is laughing.",
+            "An eye in a pyramid winks at you.",
+            "An eye in a pyramid winks at $n.",
+            "Everyone discovers your dagger a centimeter from their eye.",
+            "You discover $n's dagger a centimeter from your eye.",
+            "Mercenaries arrive to do your bidding.",
+            "Mercenaries arrive to do $n's bidding."}
+    },
 
     {
-     {
-      "A black hole swallows you.",
-      "A black hole swallows $n.",
-      "Valentine Michael Smith offers you a glass of water.",
-      "Valentine Michael Smith offers $n a glass of water.",
-      "Where did you go?",
-      "Where did $n go?",
-      "Four matched Percherons bring in your chariot.",
-      "Four matched Percherons bring in $n's chariot."}
-     },
+        {
+            "A black hole swallows you.",
+            "A black hole swallows $n.",
+            "Valentine Michael Smith offers you a glass of water.",
+            "Valentine Michael Smith offers $n a glass of water.",
+            "Where did you go?",
+            "Where did $n go?",
+            "Four matched Percherons bring in your chariot.",
+            "Four matched Percherons bring in $n's chariot."}
+    },
 
     {
-     {
-      "The world shimmers in time with your whistling.",
-      "The world shimmers in time with $n's whistling.",
-      "The great gods give you a staff.",
-      "The great gods give $n a staff.",
-      "Click.",
-      "Click.",
-      "Atlas asks you to relieve him.",
-      "Atlas asks $n to relieve him."}
-     }
+        {
+            "The world shimmers in time with your whistling.",
+            "The world shimmers in time with $n's whistling.",
+            "The great gods give you a staff.",
+            "The great gods give $n a staff.",
+            "Click.",
+            "Click.",
+            "Atlas asks you to relieve him.",
+            "Atlas asks $n to relieve him."}
+    }
 };
 
 void do_pose( CHAR_DATA * ch, char *argument )
@@ -2510,8 +2512,8 @@ void do_quit( CHAR_DATA * ch, char *argument )
         return;
     }
 
-/* Is the player trying to leave while his auction is still goin? Lets
-inform him that its not that easy ;) -Lancelight */
+    /* Is the player trying to leave while his auction is still goin? Lets
+    inform him that its not that easy ;) -Lancelight */
 
     if ( auction_info.high_bidder == ch || auction_info.owner == ch )
     {
@@ -2566,7 +2568,7 @@ inform him that its not that easy ;) -Lancelight */
         d_next = d->next;
         tch = d->original ? d->original : d->character;
 
-/*      if ((tch) && (!strcmp(tch->name,name)) && (ch != tch)) */
+        /*      if ((tch) && (!strcmp(tch->name,name)) && (ch != tch)) */
         if ( ( tch ) && ( !strcmp( tch->name, name ) ) )
         {
             extract_char( tch, TRUE );
@@ -2606,7 +2608,7 @@ void do_save( CHAR_DATA * ch, char *argument )
 
 void do_follow( CHAR_DATA * ch, char *argument )
 {
-/* RT changed to allow unlimited following and follow the NOFOLLOW rules */
+    /* RT changed to allow unlimited following and follow the NOFOLLOW rules */
     char arg[MAX_INPUT_LENGTH];
 
     CHAR_DATA *victim;
@@ -2643,7 +2645,7 @@ void do_follow( CHAR_DATA * ch, char *argument )
     }
 
     if ( !IS_NPC( victim ) && IS_SET( victim->act, PLR_NOFOLLOW )
-         && !IS_HERO( ch ) )
+            && !IS_HERO( ch ) )
     {
         act( "$N doesn't seem to want any followers.\n\r",
              ch, NULL, victim, TO_CHAR );
@@ -2810,7 +2812,7 @@ void do_order( CHAR_DATA * ch, char *argument )
         och_next = och->next_in_room;
 
         if ( IS_AFFECTED( och, AFF_CHARM )
-             && och->master == ch && ( fAll || och == victim ) )
+                && och->master == ch && ( fAll || och == victim ) )
         {
             found = TRUE;
             strcpy( cmd_vi, argument );
@@ -2872,8 +2874,8 @@ void do_order( CHAR_DATA * ch, char *argument )
          * their's to some random string.
          */
         send_to_char
-            ( "The warders of this land have a perverse delight in poetic justice./n/r",
-              ch );
+        ( "The warders of this land have a perverse delight in poetic justice./n/r",
+          ch );
         interpret( ch, argument );
     }
 
@@ -3042,7 +3044,7 @@ void do_split( CHAR_DATA * ch, char *argument )
     for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
     {
         if ( gch != ch && is_same_group( gch, ch )
-             && !IS_AFFECTED( gch, AFF_CHARM ) )
+                && !IS_AFFECTED( gch, AFF_CHARM ) )
         {
             act( buf, ch, NULL, gch, TO_VICT );
             gch->gold += share;
@@ -3184,37 +3186,37 @@ void do_spousetalk( CHAR_DATA * ch, char *argument )
          * notify the sender.
          */
         if ( victim != ch && d->connected == CON_PLAYING &&
-             is_name( victim->pcdata->spouse, ch->name ) )
+                is_name( victim->pcdata->spouse, ch->name ) )
         {
             if ( IS_SET( victim->comm, COMM_NOSPOUSETALK ) )
             {
                 send_to_char
-                    ( "Your spouse has their spouse channel turned off, maybe you two should talk?\n\r",
-                      ch );
+                ( "Your spouse has their spouse channel turned off, maybe you two should talk?\n\r",
+                  ch );
                 return;
             }
 
             if ( IS_SET( victim->comm, COMM_DEAF ) )
             {
                 send_to_char
-                    ( "Your spouse is having a hearing problem at the moment.\n\r",
-                      ch );
+                ( "Your spouse is having a hearing problem at the moment.\n\r",
+                  ch );
                 return;
             }
 
             if ( IS_SET( victim->comm, COMM_QUIET ) )
             {
                 send_to_char
-                    ( "Your spouse is currently being punished by the gods, no communication is allowed.\n\r",
-                      ch );
+                ( "Your spouse is currently being punished by the gods, no communication is allowed.\n\r",
+                  ch );
                 return;
             }
 
             if ( IS_NPC( victim ) )
             {
                 send_to_char
-                    ( "How in the world did you get married to THAT??\n\r",
-                      ch );
+                ( "How in the world did you get married to THAT??\n\r",
+                  ch );
                 return;
             }
 
@@ -3238,6 +3240,6 @@ void do_spousetalk( CHAR_DATA * ch, char *argument )
 
     /* The spouse wasn't found, let the user know */
     send_to_char
-        ( "Your spouse isn't currently online, please try again later.\n\r",
-          ch );
+    ( "Your spouse isn't currently online, please try again later.\n\r",
+      ch );
 }

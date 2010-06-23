@@ -38,8 +38,9 @@ DECLARE_DO_FUN( do_save );
 
 #define CEDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
 
-const struct olc_cmd_type cedit_table[] = {
-/*  {   command		    function	    }, */
+const struct olc_cmd_type cedit_table[] =
+{
+    /*  {   command		    function	    }, */
     {"create", cedit_create},
     {"leader", cedit_leader},
     {"sponsor", cedit_sponsor},
@@ -51,11 +52,11 @@ const struct olc_cmd_type cedit_table[] = {
     {"recall", cedit_recall},
     {"joinflags", cedit_joinflags},
     {"clanflags", cedit_clanflags},
-/* To be implemented later... */
-/* These will add clan-specific skills and commands. */
-/* 
-    {   "skill",		cedit_skill     },
-*/
+    /* To be implemented later... */
+    /* These will add clan-specific skills and commands. */
+    /*
+        {   "skill",		cedit_skill     },
+    */
     {"rank", cedit_rank},
     {"cost", cedit_cost},
     {"?", show_help},
@@ -99,10 +100,10 @@ void save_clans( void )
         fprintf( fp, "%d\n", clan->cost_gold );
         fprintf( fp, "%d\n", clan->recall_room );
         fprintf( fp, "%d\n", clan->clan_fund );
-        /* The reason that all of these fprintf functions have a letter to start off 
+        /* The reason that all of these fprintf functions have a letter to start off
            with is in case the MAX_* change, so the lines will be identifyable as what
            they are, since the number of them may change.
-           Note: if you DECREASE the MAX_*'s, you'll need to edit the clans file and 
+           Note: if you DECREASE the MAX_*'s, you'll need to edit the clans file and
            remove the excess lines.  -Kyle */
         for ( i = 0; i < MAX_CLAN_MEMBERS; i++ )
         {
@@ -131,8 +132,8 @@ void save_clans( void )
     return;
 }
 
-/* Read in str as the next string of fp.  
-Free it if there's a string there already. 
+/* Read in str as the next string of fp.
+Free it if there's a string there already.
 	-Kyle */
 #define GETSTR( str )  if ( str != NULL ) \
 				{  \
@@ -189,7 +190,7 @@ void load_clans( FILE * fp )
                         if ( x == ( i - 1 ) )
                             continue;
                         if ( !str_cmp
-                             ( clan->members[i - 1], clan->members[x] ) )
+                                ( clan->members[i - 1], clan->members[x] ) )
                         {
                             free_string( &clan->members[i - 1] );
                             clan->members[i - 1] = str_dup( "" );
@@ -225,8 +226,8 @@ void load_clans( FILE * fp )
  * name stays with it.
  * - Daniel Anderson
  */
-/* This was originally a new "log_string" function by Rahl. 
-   I changed the name of the file it records and added printf-like stuff. 
+/* This was originally a new "log_string" function by Rahl.
+   I changed the name of the file it records and added printf-like stuff.
    -Kyle */
 void clan_log( CLAN_DATA * clan, char *str, ... )
 {
@@ -239,7 +240,7 @@ void clan_log( CLAN_DATA * clan, char *str, ... )
     FILE *tempfile;
     char param[4 * MAX_STRING_LENGTH];
 
-/* Thanks to Tyrluk of MornMUD for showing me how to do this... -Kyle */
+    /* Thanks to Tyrluk of MornMUD for showing me how to do this... -Kyle */
     {
         va_list args;
 
@@ -260,9 +261,9 @@ void clan_log( CLAN_DATA * clan, char *str, ... )
             buf[i] = '-';
     }
 
-/* The log for clan #1 will look like: 
-   ../clan/1.01-31-99
-   This log will be accesable to clan leaders. -Kyle */
+    /* The log for clan #1 will look like:
+       ../clan/1.01-31-99
+       This log will be accesable to clan leaders. -Kyle */
 
     sprintf( temp, "%s/%d.", sysconfig.clan_dir, clan->number );
     strcat( temp, buf );
@@ -494,9 +495,9 @@ CEDIT( cedit_show )
         printf_to_char( ch, "Rank %d:[%30s]\n\r", i + 1,
                         clan->rank[i][0] == '\0' ? "None" : clan->rank[i] );
     }
-/*
-	printf_to_char( ch, "Command: [%s]\n\rSkill:   [%s]\n\r", clan->command, clan->skill );
-*/
+    /*
+    	printf_to_char( ch, "Command: [%s]\n\rSkill:   [%s]\n\r", clan->command, clan->skill );
+    */
     printf_to_char( ch, "Clan flags: [%s]\n\r",
                     flag_string( clan_flags, clan->clan_flags ) );
     printf_to_char( ch, "Join flags: [%s]\n\r",
@@ -808,7 +809,7 @@ CEDIT( cedit_joinflags )
         if ( ( value = flag_value( clan_join_flags, argument ) ) != NO_FLAG )
         {
             if ( value == CLAN_NO_PK
-                 && IS_SET( clan->join_flags, CLAN_REQ_PK ) )
+                    && IS_SET( clan->join_flags, CLAN_REQ_PK ) )
             {
                 clan->join_flags ^= CLAN_REQ_PK;
             }
@@ -856,20 +857,20 @@ bool can_ch_join( CHAR_DATA * ch, CLAN_DATA * clan, bool is_petitioning )
     }
 
     if ( ( IS_SET( clan->join_flags, CLAN_ANTI_MAGE )
-           && ch->Class == CLASS_MAGE )
-         || ( IS_SET( clan->join_flags, CLAN_ANTI_CLERIC )
-              && ch->Class == CLASS_CLERIC )
-         || ( IS_SET( clan->join_flags, CLAN_ANTI_WARRIOR )
-              && ch->Class == CLASS_WARRIOR )
-         || ( IS_SET( clan->join_flags, CLAN_ANTI_THIEF )
-              && ch->Class == CLASS_THIEF ) )
+            && ch->Class == CLASS_MAGE )
+            || ( IS_SET( clan->join_flags, CLAN_ANTI_CLERIC )
+                 && ch->Class == CLASS_CLERIC )
+            || ( IS_SET( clan->join_flags, CLAN_ANTI_WARRIOR )
+                 && ch->Class == CLASS_WARRIOR )
+            || ( IS_SET( clan->join_flags, CLAN_ANTI_THIEF )
+                 && ch->Class == CLASS_THIEF ) )
     {
         send_to_char( "This clan does not allow your class to join.\n\r", ch );
         return FALSE;
     }
 
     if ( IS_SET( clan->join_flags, CLAN_REQ_PK )
-         && !IS_SET( ch->act, PLR_KILLER ) )
+            && !IS_SET( ch->act, PLR_KILLER ) )
     {
         send_to_char( "You must be a player killer to join this clan.\n\r",
                       ch );
@@ -878,13 +879,13 @@ bool can_ch_join( CHAR_DATA * ch, CLAN_DATA * clan, bool is_petitioning )
     }
 
     if ( IS_SET( clan->join_flags, CLAN_NO_PK )
-         && IS_SET( ch->act, PLR_KILLER ) )
+            && IS_SET( ch->act, PLR_KILLER ) )
     {
         send_to_char( "You may not be a player killer and join this clan.\n\r",
                       ch );
         send_to_char
-            ( "Ask a high level god to remove your killer flag if you still wish to join.\n\r",
-              ch );
+        ( "Ask a high level god to remove your killer flag if you still wish to join.\n\r",
+          ch );
         return FALSE;
     }
 
@@ -976,9 +977,9 @@ void do_show( CHAR_DATA * ch, char *argument )
         for ( clan = clan_first; clan != NULL; clan = clan->next )
         {
             if ( IS_SET( clan->clan_flags, CLAN_ACTIVE )
-                 && ( !IS_SET( clan->clan_flags, CLAN_SECRET )
-                      || IS_IMMORTAL( ch ) )
-                 && clan->num_members < MAX_CLAN_MEMBERS )
+                    && ( !IS_SET( clan->clan_flags, CLAN_SECRET )
+                         || IS_IMMORTAL( ch ) )
+                    && clan->num_members < MAX_CLAN_MEMBERS )
             {
                 num++;
                 printf_to_char( ch, "[%3d] %s\n\r", num, clan->name );
@@ -1000,12 +1001,12 @@ void do_show( CHAR_DATA * ch, char *argument )
         for ( clan = clan_first; clan != NULL; clan = clan->next )
         {
             if ( ( IS_SET( clan->clan_flags, CLAN_INACTIVE )
-                   && ( !IS_SET( clan->clan_flags, CLAN_SECRET )
-                        || IS_IMMORTAL( ch ) ) )
-                 ||
-                 ( ( IS_SET( clan->clan_flags, CLAN_ACTIVE )
-                     && !IS_SET( clan->clan_flags, CLAN_SECRET )
-                     && clan->num_members >= MAX_CLAN_MEMBERS ) ) )
+                    && ( !IS_SET( clan->clan_flags, CLAN_SECRET )
+                         || IS_IMMORTAL( ch ) ) )
+                    ||
+                    ( ( IS_SET( clan->clan_flags, CLAN_ACTIVE )
+                        && !IS_SET( clan->clan_flags, CLAN_SECRET )
+                        && clan->num_members >= MAX_CLAN_MEMBERS ) ) )
             {
                 num++;
                 printf_to_char( ch, "[%3d] %s\n\r", num, clan->name );
@@ -1027,9 +1028,9 @@ void do_show( CHAR_DATA * ch, char *argument )
         for ( clan = clan_first; clan != NULL; clan = clan->next )
         {
             if ( ( !IS_SET( clan->clan_flags, CLAN_SECRET )
-                   && ( IS_SET( clan->clan_flags, CLAN_ACTIVE )
-                        || IS_SET( clan->clan_flags, CLAN_INACTIVE ) ) )
-                 || IS_IMMORTAL( ch ) )
+                    && ( IS_SET( clan->clan_flags, CLAN_ACTIVE )
+                         || IS_SET( clan->clan_flags, CLAN_INACTIVE ) ) )
+                    || IS_IMMORTAL( ch ) )
             {
                 num++;
                 printf_to_char( ch, "[%3d] %s\n\r", num, clan->name );
@@ -1114,8 +1115,8 @@ void do_join( CHAR_DATA * ch, char *argument )
         send_to_char( "\n\rTo see this list again, type 'show active'.\n\r",
                       ch );
         send_to_char
-            ( "To join a clan, type JOIN followed by the number of the clan.\n\r",
-              ch );
+        ( "To join a clan, type JOIN followed by the number of the clan.\n\r",
+          ch );
         ch->pcdata->join_status = JOIN_SEE_LIST;
         return;
     case JOIN_SEE_LIST:
@@ -1136,8 +1137,8 @@ void do_join( CHAR_DATA * ch, char *argument )
         for ( clan = clan_first; clan != NULL; clan = clan->next )
         {
             if ( IS_SET( clan->clan_flags, CLAN_ACTIVE )
-                 && !IS_SET( clan->clan_flags, CLAN_SECRET )
-                 && clan->num_members < MAX_CLAN_MEMBERS )
+                    && !IS_SET( clan->clan_flags, CLAN_SECRET )
+                    && clan->num_members < MAX_CLAN_MEMBERS )
             {
                 i++;
                 if ( num == i )
@@ -1200,8 +1201,8 @@ void do_join( CHAR_DATA * ch, char *argument )
         for ( clan = clan_first; clan != NULL; clan = clan->next )
         {
             if ( IS_SET( clan->clan_flags, CLAN_ACTIVE )
-                 && !IS_SET( clan->clan_flags, CLAN_SECRET )
-                 && clan->num_members < MAX_CLAN_MEMBERS )
+                    && !IS_SET( clan->clan_flags, CLAN_SECRET )
+                    && clan->num_members < MAX_CLAN_MEMBERS )
             {
                 i++;
                 if ( num == i )
@@ -1237,8 +1238,8 @@ void do_join( CHAR_DATA * ch, char *argument )
     case JOIN_PETITIONING:
         send_to_char( "You are currently petitioning to join a clan.\n\r", ch );
         send_to_char
-            ( "If you are refused, then you may use the JOIN command again.\n\r",
-              ch );
+        ( "If you are refused, then you may use the JOIN command again.\n\r",
+          ch );
         return;
     case JOIN_DECIDING:
         send_to_char( "You have already been invited to join a clan.\n\r", ch );
@@ -1324,8 +1325,8 @@ void do_petition( CHAR_DATA * ch, char *argument )
     if ( victim->pcdata->clan_ch != ch && victim->pcdata->clan_ch != NULL )
     {
         send_to_char
-            ( "That person is currently being petitioned by someone else.\n\r",
-              ch );
+        ( "That person is currently being petitioned by someone else.\n\r",
+          ch );
         return;
     }
 
@@ -1351,10 +1352,10 @@ void do_petition( CHAR_DATA * ch, char *argument )
     }
 
     if ( victim->pcdata->clan_rank > RANK_CAN_ACCEPT
-         || victim->pcdata->clan_rank < 1 )
+            || victim->pcdata->clan_rank < 1 )
     {
         send_to_char
-            ( "That person is not of sufficient rank to accept you.\n\r", ch );
+        ( "That person is not of sufficient rank to accept you.\n\r", ch );
         return;
     }
 
@@ -1393,7 +1394,7 @@ void do_accept( CHAR_DATA * ch, char *argument )
         return;
 
     if ( ch->pcdata->join_status != JOIN_DECIDING
-         && ch->pcdata->join_status != JOIN_CONSIDERING )
+            && ch->pcdata->join_status != JOIN_CONSIDERING )
     {
         send_to_char( "What, exactly, are you trying to accept?\n\r", ch );
         return;
@@ -1432,8 +1433,8 @@ void do_accept( CHAR_DATA * ch, char *argument )
     {
         send_to_char( "You cannot afford to join that clan!\n\r", ch );
         send_to_char
-            ( "Use DECLINE to turn them down or go get more gold fast.\n\r",
-              ch );
+        ( "Use DECLINE to turn them down or go get more gold fast.\n\r",
+          ch );
         return;
     }
     clan_log( clan, "%s accepts membership.", ch->name );
@@ -1462,7 +1463,7 @@ void do_decline( CHAR_DATA * ch, char *argument )
         return;
 
     if ( ch->pcdata->join_status != JOIN_DECIDING
-         && ch->pcdata->join_status != JOIN_CONSIDERING )
+            && ch->pcdata->join_status != JOIN_CONSIDERING )
     {
         send_to_char( "What, exactly, are you trying to decline?\n\r", ch );
         return;
@@ -1507,8 +1508,8 @@ void do_offer( CHAR_DATA * ch, char *argument )
     if ( ch->pcdata->clan == 0 )
     {
         send_to_char
-            ( "You can't offer membership in a clan if you are clanless!\n\r",
-              ch );
+        ( "You can't offer membership in a clan if you are clanless!\n\r",
+          ch );
         return;
     }
 
@@ -1539,21 +1540,21 @@ void do_offer( CHAR_DATA * ch, char *argument )
     if ( ch->pcdata->clan_rank < 1 || ch->pcdata->clan_rank > RANK_CAN_ACCEPT )
     {
         send_to_char
-            ( "You are not of high enough rank to offer membership to anyone.\n\r",
-              ch );
+        ( "You are not of high enough rank to offer membership to anyone.\n\r",
+          ch );
         return;
     }
 
     if ( victim->pcdata->join_status > JOIN_SEE_LIST )
     {
         send_to_char
-            ( "That player is considering membership in another clan.\n\r",
-              ch );
+        ( "That player is considering membership in another clan.\n\r",
+          ch );
         send_to_char( "Better make them change their mind, fast! :)\n\r", ch );
         return;
     }
 
-    /* The reason the "That person is ineligable to join your clan." message is 
+    /* The reason the "That person is ineligable to join your clan." message is
        everywhere is to preserve the secretness of the secret clans. */
 
     if ( victim->pcdata->clan != 0 )
@@ -1577,27 +1578,27 @@ void do_offer( CHAR_DATA * ch, char *argument )
     }
 
     if ( ( IS_SET( clan->join_flags, CLAN_ANTI_MAGE )
-           && victim->Class == CLASS_MAGE )
-         || ( IS_SET( clan->join_flags, CLAN_ANTI_CLERIC )
-              && victim->Class == CLASS_CLERIC )
-         || ( IS_SET( clan->join_flags, CLAN_ANTI_WARRIOR )
-              && victim->Class == CLASS_WARRIOR )
-         || ( IS_SET( clan->join_flags, CLAN_ANTI_THIEF )
-              && victim->Class == CLASS_THIEF ) )
+            && victim->Class == CLASS_MAGE )
+            || ( IS_SET( clan->join_flags, CLAN_ANTI_CLERIC )
+                 && victim->Class == CLASS_CLERIC )
+            || ( IS_SET( clan->join_flags, CLAN_ANTI_WARRIOR )
+                 && victim->Class == CLASS_WARRIOR )
+            || ( IS_SET( clan->join_flags, CLAN_ANTI_THIEF )
+                 && victim->Class == CLASS_THIEF ) )
     {
         send_to_char( "That person is ineligable to join your clan.\n\r", ch );
         return;
     }
 
     if ( IS_SET( clan->join_flags, CLAN_REQ_PK )
-         && !IS_SET( victim->act, PLR_KILLER ) )
+            && !IS_SET( victim->act, PLR_KILLER ) )
     {
         send_to_char( "That person is ineligable to join your clan.\n\r", ch );
         return;
     }
 
     if ( IS_SET( clan->join_flags, CLAN_NO_PK )
-         && IS_SET( victim->act, PLR_KILLER ) )
+            && IS_SET( victim->act, PLR_KILLER ) )
     {
         send_to_char( "That person is ineligable to join your clan.\n\r", ch );
         return;
@@ -1705,12 +1706,12 @@ void do_promote( CHAR_DATA * ch, char *argument )
         if ( str_cmp( ch->name, clan->leader ) )
         {
             if ( ( ch->pcdata->clan_rank == 2 && victim->pcdata->clan_rank < 4 )
-                 || ( ch->pcdata->clan_rank == 1
-                      && victim->pcdata->clan_rank < 3 ) )
+                    || ( ch->pcdata->clan_rank == 1
+                         && victim->pcdata->clan_rank < 3 ) )
             {
                 send_to_char
-                    ( "Only the clan leader, an IMP, or a higher rank can promote them.\n\r",
-                      ch );
+                ( "Only the clan leader, an IMP, or a higher rank can promote them.\n\r",
+                  ch );
                 return;
             }
         }
@@ -1768,11 +1769,11 @@ void do_clan( CHAR_DATA * ch, char *argument )
             return;
         }
         send_to_char
-            ( "`wNumber Name                           Status               Fund\n\r",
-              ch );
+        ( "`wNumber Name                           Status               Fund\n\r",
+          ch );
         send_to_char
-            ( "`K====== ============================== ==================== ==========`w\n\r",
-              ch );
+        ( "`K====== ============================== ==================== ==========`w\n\r",
+          ch );
         for ( clan = clan_first; clan != NULL; clan = clan->next )
         {
             printf_to_char( ch, "%6d %30s %20s %10d\n\r", clan->number,
@@ -1780,7 +1781,7 @@ void do_clan( CHAR_DATA * ch, char *argument )
                                                      clan->clan_flags ),
                             clan->clan_fund );
             if ( clan->num_members < clan->max_members
-                 && IS_SET( clan->clan_flags, CLAN_ACTIVE ) )
+                    && IS_SET( clan->clan_flags, CLAN_ACTIVE ) )
                 recruit++;
             if ( IS_SET( clan->clan_flags, CLAN_ACTIVE ) )
                 active++;
@@ -1874,8 +1875,8 @@ void do_clan( CHAR_DATA * ch, char *argument )
             if ( !can_ch_join( victim, clan, TRUE ) == FALSE )
             {
                 send_to_char
-                    ( "WARNING!  This player does not meet the requirements of that clan!\n\r",
-                      ch );
+                ( "WARNING!  This player does not meet the requirements of that clan!\n\r",
+                  ch );
             }
 
             victim->pcdata->clan = clan->number;
@@ -2094,7 +2095,7 @@ void do_clantalk( CHAR_DATA * ch, char *argument )
         argument = makedrunk( argument, ch );
 #endif
 
-    /* 
+    /*
      * Loop through the players that are online and send the clan message to
      * fellow clan members.
      */
@@ -2111,9 +2112,9 @@ void do_clantalk( CHAR_DATA * ch, char *argument )
                                                 ch->pcdata->clan )
                                               || IS_SET( victim->comm,
                                                          COMM_SNOOP_CLAN ) )
-             && !IS_SET( victim->comm, COMM_DEAF )
-             && !IS_SET( victim->comm, COMM_QUIET )
-             && !IS_SET( victim->comm, COMM_NOCLAN ) )
+                && !IS_SET( victim->comm, COMM_DEAF )
+                && !IS_SET( victim->comm, COMM_QUIET )
+                && !IS_SET( victim->comm, COMM_NOCLAN ) )
         {
             printf_to_char( victim, "`B%s`R<`w%s`R>`w %s`w\n\r",
                             clan->whoname[0] !=
@@ -2137,7 +2138,7 @@ void do_resign( CHAR_DATA * ch, char *argument )
     if ( ch->pcdata->clan == 0 )
     {
         send_to_char
-            ( "You're not in a clan, so how can you resign from one?\n\r", ch );
+        ( "You're not in a clan, so how can you resign from one?\n\r", ch );
         return;
     }
 
@@ -2146,15 +2147,15 @@ void do_resign( CHAR_DATA * ch, char *argument )
     if ( !str_cmp( clan->leader, ch->name ) || !str_cmp( clan->god, ch->name ) )
     {
         send_to_char
-            ( "You cannot resign from this clan, you're too high ranked!\n\r",
-              ch );
+        ( "You cannot resign from this clan, you're too high ranked!\n\r",
+          ch );
         return;
     }
 
     if ( ch->pcdata->join_status != JOIN_RESIGNING )
     {
         send_to_char
-            ( "You are attempting to remove yourself from your clan.\n\r", ch );
+        ( "You are attempting to remove yourself from your clan.\n\r", ch );
         send_to_char( "Please type RESIGN again to confirm.\n\r", ch );
         ch->pcdata->join_status = JOIN_RESIGNING;
         return;
@@ -2273,7 +2274,7 @@ void do_crecall( CHAR_DATA * ch, char *argument )
     }
 
     if ( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL )
-         || IS_AFFECTED( ch, AFF_CURSE ) )
+            || IS_AFFECTED( ch, AFF_CURSE ) )
     {
         send_to_char( "The gods have forsaken you.\n\r", ch );
         return;
@@ -2390,13 +2391,13 @@ void do_demote( CHAR_DATA * ch, char *argument )
         if ( str_cmp( ch->name, clan->leader ) )
         {
             if ( ( ch->pcdata->clan_rank == 2
-                   && victim->pcdata->clan_rank <= 3 )
-                 || ( ch->pcdata->clan_rank == 1
-                      && victim->pcdata->clan_rank <= 2 ) )
+                    && victim->pcdata->clan_rank <= 3 )
+                    || ( ch->pcdata->clan_rank == 1
+                         && victim->pcdata->clan_rank <= 2 ) )
             {
                 send_to_char
-                    ( "Only the clan leader, an IMP, or a higher rank can demote them.\n\r",
-                      ch );
+                ( "Only the clan leader, an IMP, or a higher rank can demote them.\n\r",
+                  ch );
                 return;
             }
         }

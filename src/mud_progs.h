@@ -43,7 +43,8 @@ extern int ExecMudProgID;
 /*
  * Structure for a command in the command lookup table.
  */
-struct mprog_cmd_type {
+struct mprog_cmd_type
+{
     char *const name;
     MPROG_FUN *mprog_fun;
     char argtype;

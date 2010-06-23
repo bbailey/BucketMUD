@@ -51,7 +51,8 @@ bool fLogAll = FALSE;
 /*
  * Command table.
  */
-const struct cmd_type cmd_table[] = {
+const struct cmd_type cmd_table[] =
+{
     /*
      * Common movement commands.
      */
@@ -61,7 +62,7 @@ const struct cmd_type cmd_table[] = {
     {"west", do_west, POS_STANDING, 0, LOG_NEVER, 0},
     {"up", do_up, POS_STANDING, 0, LOG_NEVER, 0},
     {"down", do_down, POS_STANDING, 0, LOG_NEVER, 0},
-/* Enter a portal */
+    /* Enter a portal */
     {"enter", do_enter, POS_STANDING, 0, LOG_NORMAL, 1},
     /*
      * Common other commands.
@@ -143,7 +144,7 @@ const struct cmd_type cmd_table[] = {
     {"score", do_score, POS_DEAD, 0, LOG_NORMAL, 1},
     {"scan", do_scan, POS_RESTING, 0, LOG_NORMAL, 1},
     {"search", do_search, POS_STANDING, 0, LOG_NORMAL, 1},
-/*    { "show",         do_show,        POS_DEAD,        0,  LOG_NORMAL, 1 }, */
+    /*    { "show",         do_show,        POS_DEAD,        0,  LOG_NORMAL, 1 }, */
     {"skills", do_skills, POS_DEAD, 0, LOG_NORMAL, 1},
     {"socials", do_socialfind, POS_DEAD, 0, LOG_NORMAL, 1},
     {"spells", do_spells, POS_DEAD, 0, LOG_NORMAL, 1},
@@ -314,9 +315,9 @@ const struct cmd_type cmd_table[] = {
     {"email", do_email, POS_DEAD, 0, LOG_NORMAL, 1},
     {"mversion", do_version, POS_DEAD, 0, LOG_NORMAL, 1},
 
-/*
-     * Clan commands!
-     */
+    /*
+         * Clan commands!
+         */
     {"promote", do_promote, POS_RESTING, 0, LOG_NORMAL, 1},
     {"clan", do_clan, POS_DEAD, 1, LOG_NORMAL, 1},
     {"show", do_show, POS_RESTING, 0, LOG_NORMAL, 1},
@@ -583,7 +584,7 @@ void interpret( CHAR_DATA * ch, char *argument )
     for ( cmd = ( struct cmd_type * ) cmd_table; *cmd->name; cmd++ )
     {
         if ( *command == LOWER( *cmd->name )
-             && !str_prefix( command, cmd->name ) )
+                && !str_prefix( command, cmd->name ) )
         {
             /* if the command is an imm command but the char can't
              * execute it, keep searching */
@@ -617,7 +618,7 @@ void interpret( CHAR_DATA * ch, char *argument )
      * Log and snoop.
      */
     if ( ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_LOG ) )
-         || fLogAll || cmd->log == LOG_ALWAYS )
+            || fLogAll || cmd->log == LOG_ALWAYS )
     {
         sprintf( log_buf, "Log %s: %s", ch->name, logline );
         log_string( log_buf );
@@ -638,18 +639,18 @@ void interpret( CHAR_DATA * ch, char *argument )
          */
         if ( !check_social( ch, command, argument )
 #ifdef IMC
-        &&   !imc_command_hook( ch, command, argument )
+                &&   !imc_command_hook( ch, command, argument )
 #endif
-	)
+           )
             send_to_char( "Huh?\n\r", ch );
         return;
     }
     else /* a normal valid command.. check if it is disabled */
-    if ( check_disabled( cmd ) )
-    {
-        send_to_char( "This command has been temporarily disabled.\n\r", ch );
-        return;
-    }
+        if ( check_disabled( cmd ) )
+        {
+            send_to_char( "This command has been temporarily disabled.\n\r", ch );
+            return;
+        }
 
     /*
      * Character not in position for command?
@@ -703,7 +704,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
-/*    struct social_type *cmd;*/
+    /*    struct social_type *cmd;*/
     SOCIALLIST_DATA *cmd;
     bool found;
 
@@ -803,8 +804,8 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
         }
 
         if ( !IS_NPC( ch ) && IS_NPC( victim )
-             && !IS_AFFECTED( victim, AFF_CHARM )
-             && IS_AWAKE( victim ) && victim->desc == NULL )
+                && !IS_AFFECTED( victim, AFF_CHARM )
+                && IS_AWAKE( victim ) && victim->desc == NULL )
         {
             switch ( number_bits( 4 ) )
             {
@@ -1031,13 +1032,13 @@ void chk_command( CHAR_DATA * ch, char *argument )
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
         if ( command[0] == cmd_table[cmd].name[0]
-             && !str_prefix( command, cmd_table[cmd].name ) )
+                && !str_prefix( command, cmd_table[cmd].name ) )
         {
             /* if the command is an imm command but the char can't
                execute it, keep searching. */
 
             if ( ( cmd_table[cmd].imm )
-                 && ( !can_do_immcmd( ch, cmd_table[cmd].name ) ) )
+                    && ( !can_do_immcmd( ch, cmd_table[cmd].name ) ) )
             {
                 continue;
             }
@@ -1158,7 +1159,7 @@ void do_wizhelp( CHAR_DATA * ch, char *argument )
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
         if ( cmd_table[cmd].imm && can_do_immcmd( ch, cmd_table[cmd].name )
-             && cmd_table[cmd].show )
+                && cmd_table[cmd].show )
         {
             sprintf( buf, "%s%-12s`w",
                      check_disabled( &cmd_table[cmd] ) ? "`K-" : "`w ",
@@ -1222,8 +1223,8 @@ void mpinterpret( CHAR_DATA * ch, char *argument )
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
         if ( command[0] == cmd_table[cmd].name[0]
-             && !str_prefix( command, cmd_table[cmd].name )
-             && !cmd_table[cmd].imm )
+                && !str_prefix( command, cmd_table[cmd].name )
+                && !cmd_table[cmd].imm )
         {
             found = TRUE;
             break;
@@ -1349,8 +1350,8 @@ void do_disable( CHAR_DATA * ch, char *argument )
         if ( cmd_table[i].imm && ( !can_do_immcmd( ch, cmd_table[i].name ) ) )
         {
             send_to_char
-                ( "You do not have access to that command; you cannot disable it.\n\r",
-                  ch );
+            ( "You do not have access to that command; you cannot disable it.\n\r",
+              ch );
             return;
         }
 

@@ -92,7 +92,7 @@ void save_char_obj( CHAR_DATA * ch )
 
     if ( IS_NPC( ch ) )
         return;
-/* This was added for the Win95 version.*/
+    /* This was added for the Win95 version.*/
 
     sprintf( TempFile, "%s/%d", sysconfig.player_temp, rand(  ) );
 
@@ -144,7 +144,7 @@ void save_char_obj( CHAR_DATA * ch )
         fprintf( fp, "#IMM\n" );
 
         for ( tmpcmd = ch->pcdata->immcmdlist; tmpcmd != NULL;
-              tmpcmd = tmpcmd->next )
+                tmpcmd = tmpcmd->next )
         {
             c++;
             fprintf( fp, "%s ", tmpcmd->cmd );
@@ -172,8 +172,8 @@ void save_char_obj( CHAR_DATA * ch )
         fclose( fp );
         /* move the file */
         rename( TempFile, strsave );
-/* sprintf( buf, "mv %s %s", TempFile, strsave );
-        system( buf ); */
+        /* sprintf( buf, "mv %s %s", TempFile, strsave );
+                system( buf ); */
     }
 
     fpReserve = fopen( NULL_FILE, "r" );
@@ -326,7 +326,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         for ( pos = 0; pos < MAX_ALIAS; pos++ )
         {
             if ( ch->pcdata->alias[pos] == NULL
-                 || ch->pcdata->alias_sub[pos] == NULL )
+                    || ch->pcdata->alias_sub[pos] == NULL )
                 break;
 
             fprintf( fp, "Alias %s %s~\n", ch->pcdata->alias[pos],
@@ -416,7 +416,7 @@ void fwrite_pet( CHAR_DATA * pet, FILE * fp )
     if ( pet->comm != 0 )
         fprintf( fp, "Comm %ld\n", pet->comm );
     fprintf( fp, "Pos  %d\n", pet->position =
-             POS_FIGHTING ? POS_STANDING : pet->position );
+                 POS_FIGHTING ? POS_STANDING : pet->position );
     if ( pet->saving_throw != 0 )
         fprintf( fp, "Save %d\n", pet->saving_throw );
     if ( pet->alignment != pet->pIndexData->alignment )
@@ -520,10 +520,10 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
         fprintf( fp, "Time %d\n", obj->timer );
     fprintf( fp, "Cost %d\n", obj->cost );
     if ( obj->value[0] != obj->pIndexData->value[0]
-         || obj->value[1] != obj->pIndexData->value[1]
-         || obj->value[2] != obj->pIndexData->value[2]
-         || obj->value[3] != obj->pIndexData->value[3]
-         || obj->value[4] != obj->pIndexData->value[4] )
+            || obj->value[1] != obj->pIndexData->value[1]
+            || obj->value[2] != obj->pIndexData->value[2]
+            || obj->value[3] != obj->pIndexData->value[3]
+            || obj->value[4] != obj->pIndexData->value[4] )
         fprintf( fp, "Val  %d %d %d %d %d\n",
                  obj->value[0], obj->value[1], obj->value[2], obj->value[3],
                  obj->value[4] );
@@ -635,7 +635,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name )
     ch->affected_by = 0;
     ch->newaff[0] = 0;
     ch->act = PLR_NOSUMMON
-        | PLR_AUTOEXIT | PLR_AUTOLOOT | PLR_AUTOSAC | PLR_AUTOGOLD;
+              | PLR_AUTOEXIT | PLR_AUTOLOOT | PLR_AUTOSAC | PLR_AUTOGOLD;
     ch->comm = COMM_COMBINE | COMM_PROMPT;
     ch->invis_level = 0;
     ch->practice = 0;
@@ -671,7 +671,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name )
     ch->pcdata->security = 0;   /* OLC */
     ch->pcdata->prompt =
         str_dup( "%i`K/`W%H`w HP %n`K/`W%M`w MP %w`K/`W%V`w MV `K> " );
-/*    ch->pcdata->clan			= 0; */
+    /*    ch->pcdata->clan			= 0; */
     ch->beep = TRUE;
     ch->anonymous = FALSE;
     ch->pcdata->recall_room = get_room_index( ROOM_VNUM_TEMPLE );
@@ -915,7 +915,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             }
 
             if ( !str_cmp( word, "Affect" ) || !str_cmp( word, "Aff" )
-                 || !str_cmp( word, "AffD" ) )
+                    || !str_cmp( word, "AffD" ) )
             {
                 AFFECT_DATA *paf;
 
@@ -954,7 +954,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
             }
             if ( !str_cmp( word, "NewAffect" ) || !str_cmp( word, "NewAff" )
-                 || !str_cmp( word, "NewAffD" ) )
+                    || !str_cmp( word, "NewAffD" ) )
             {
                 NEWAFFECT_DATA *npaf;
 
@@ -987,8 +987,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 npaf->modifier = fread_number( fp );
                 npaf->location = fread_number( fp );
                 npaf->bitvector = fread_number( fp );
-/*		npaf->next	= ch->newaff[0];
-		ch->newaff	= npaf;*/
+                /*		npaf->next	= ch->newaff[0];
+                		ch->newaff	= npaf;*/
                 fMatch = TRUE;
                 break;
             }
@@ -1128,7 +1128,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             }
 
             if ( !str_cmp( word, "HpManaMovePerm" )
-                 || !str_cmp( word, "HMVP" ) )
+                    || !str_cmp( word, "HMVP" ) )
             {
                 ch->pcdata->perm_hit = fread_number( fp );
                 ch->pcdata->perm_mana = fread_number( fp );
@@ -1144,7 +1144,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "Invi", ch->invis_level, fread_number( fp ) );
             KEY( "Inca", ch->incarnations, fread_number( fp ) );
 #ifdef IMC
-            if( ( fMatch = imc_loadchar( ch, fp, word ) ) )
+            if ( ( fMatch = imc_loadchar( ch, fp, word ) ) )
                 break;
 #endif
             break;
@@ -1205,7 +1205,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
         case 'R':
-            /* KEY( "Race",        ch->race,    
+            /* KEY( "Race",        ch->race,
                race_lookup(fread_string( fp )) ); */
             if ( !str_cmp( word, "Race" ) )
             {
@@ -1284,8 +1284,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                 ch->pcdata->title = fread_string( fp );
                 if ( ch->pcdata->title[0] != '.' && ch->pcdata->title[0] != ','
-                     && ch->pcdata->title[0] != '!'
-                     && ch->pcdata->title[0] != '?' )
+                        && ch->pcdata->title[0] != '!'
+                        && ch->pcdata->title[0] != '?' )
                 {
                     sprintf( buf, " %s", ch->pcdata->title );
                     free_string( &ch->pcdata->title );
@@ -1612,7 +1612,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
 
         case 'A':
             if ( !str_cmp( word, "Affect" ) || !str_cmp( word, "Aff" )
-                 || !str_cmp( word, "AffD" ) )
+                    || !str_cmp( word, "AffD" ) )
             {
                 AFFECT_DATA *paf;
 

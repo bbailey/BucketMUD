@@ -183,7 +183,7 @@ int main( int argc, char **argv )
     struct timeval now_time = { 0, 0 };
 
 #ifdef IMC
-   int imcsocket = -1;
+    int imcsocket = -1;
 #endif
 
     fCopyOver = FALSE;
@@ -388,7 +388,7 @@ int game_loop( int control )
         }
 
         if ( select( maxdesc + 1, &in_set, &out_set, &exc_set, &null_time ) <
-             0 )
+                0 )
         {
             perror( "Game_loop: select: poll" );
             exit( 1 );
@@ -498,7 +498,7 @@ int game_loop( int control )
             d_next = d->next;
 
             if ( ( d->fcommand || d->outtop > 0 )
-                 && FD_ISSET( d->descriptor, &out_set ) )
+                    && FD_ISSET( d->descriptor, &out_set ) )
             {
                 if ( !process_output( d, TRUE ) )
                 {
@@ -640,7 +640,7 @@ void new_descriptor( int control )
         sprintf( log_buf, "Sock.sinaddr:  %s", buf );
         log_string( log_buf );
 
-        /* 
+        /*
          * If NO_RDNS is defined don't try to look up the host name by IP.
          * Documented in config.h
          */
@@ -717,8 +717,8 @@ void close_socket( DESCRIPTOR_DATA * dclose )
 
         /* If ch is writing note or playing, just lose link otherwise clear char */
         if ( ( dclose->connected == CON_PLAYING ) ||
-             ( ( dclose->connected >= CON_NOTE_TO ) &&
-               ( dclose->connected <= CON_NOTE_FINISH ) ) )
+                ( ( dclose->connected >= CON_NOTE_TO ) &&
+                  ( dclose->connected <= CON_NOTE_FINISH ) ) )
         {
             act( "$n has lost $s link.", ch, NULL, NULL, TO_ROOM );
             ch->pcdata->ticks = 1;
@@ -901,26 +901,26 @@ void read_from_buffer( DESCRIPTOR_DATA * d, bool color )
     /*
      * Deal with bozos with #repeat 1000 ...
      */
-/*
-    if ( k > 1 || d->incomm[0] == '!' )
-    {
-	if ( d->incomm[0] != '!' && strcmp( d->incomm, d->inlast ) )
-	{
-	    d->repeat = 0;
-	}
-	else
-	{
-	    if ( ++d->repeat >= 25 )
-	    {
-		sprintf( log_buf, "%s input spamming!", d->host );
-		log_string( log_buf );
-		write_to_descriptor( d->descriptor,
-		    "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 , color);
-		strcpy( d->incomm, "quit" );
-	    }
-	}
-    }
-*/
+    /*
+        if ( k > 1 || d->incomm[0] == '!' )
+        {
+    	if ( d->incomm[0] != '!' && strcmp( d->incomm, d->inlast ) )
+    	{
+    	    d->repeat = 0;
+    	}
+    	else
+    	{
+    	    if ( ++d->repeat >= 25 )
+    	    {
+    		sprintf( log_buf, "%s input spamming!", d->host );
+    		log_string( log_buf );
+    		write_to_descriptor( d->descriptor,
+    		    "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 , color);
+    		strcpy( d->incomm, "quit" );
+    	    }
+    	}
+        }
+    */
 
     /*
      * Do '!' substitution.
@@ -1180,12 +1180,12 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         fOld = load_char_obj( d, argument );
         ch = d->character;
 
-/* I just could NOT get the check_ban function from the rom ban.c file to
-work, so I got fed up with it and wrote some new ban checks. They are not
-the best in the world, but it was alot quicker then writting a new
-check_ban function.  
-		-Lancelight 
-*/
+        /* I just could NOT get the check_ban function from the rom ban.c file to
+        work, so I got fed up with it and wrote some new ban checks. They are not
+        the best in the world, but it was alot quicker then writting a new
+        check_ban function.
+        		-Lancelight
+        */
 
         for ( pban = ban_list; pban != NULL; pban = pban->next )
         {
@@ -1193,7 +1193,7 @@ check_ban function.
             if ( !str_suffix( ( pban->name ), d->host ) )
             {
                 if ( IS_SET( pban->ban_flags, BAN_PERMANENT )
-                     || IS_SET( pban->ban_flags, BAN_ALL ) )
+                        || IS_SET( pban->ban_flags, BAN_ALL ) )
                 {
                     write_to_buffer( d,
                                      "Your site has been banned from this mud.\n\r",
@@ -1282,23 +1282,23 @@ check_ban function.
                 }
 
             }
-/*
-    for ( pban = ban_list; pban != NULL; pban = pban->next )
-    {
-	if ( !str_suffix( pban->name, d->host ) && 
-	     (pban->ban_flags,BAN_NEWBIES))
-	    {
-		write_to_buffer(d,
-		    "New players are not allowed from your site.\n\r",0);
-		close_socket(d);
-		return;
-	    }
-	else 
-		write_to_buffer(d,
-		    "I dont work.\n\r",0);
-	
-	
-}*/
+            /*
+                for ( pban = ban_list; pban != NULL; pban = pban->next )
+                {
+            	if ( !str_suffix( pban->name, d->host ) &&
+            	     (pban->ban_flags,BAN_NEWBIES))
+            	    {
+            		write_to_buffer(d,
+            		    "New players are not allowed from your site.\n\r",0);
+            		close_socket(d);
+            		return;
+            	    }
+            	else
+            		write_to_buffer(d,
+            		    "I dont work.\n\r",0);
+
+
+            }*/
             sprintf( buf, "Did I get that right, %s (Y/N)? ", argument );
             write_to_buffer( d, buf, 0 );
             d->connected = CON_CONFIRM_NEW_NAME;
@@ -1356,11 +1356,11 @@ check_ban function.
         }
         break;
 
-/* RT's code for breaking link sucked... you could cheat and duplicate all your gear. 
-   This version disconnects the old character and prompts you to re-enter your name 
-   password.  This way you won't have loaded the pfile containing objects and such
-   which you may have dropped on the ground, resulting in two copies of any object,
-   even special or quest objects. -- Kyle */
+        /* RT's code for breaking link sucked... you could cheat and duplicate all your gear.
+           This version disconnects the old character and prompts you to re-enter your name
+           password.  This way you won't have loaded the pfile containing objects and such
+           which you may have dropped on the ground, resulting in two copies of any object,
+           even special or quest objects. -- Kyle */
 
     case CON_BREAK_CONNECT:
         switch ( *argument )
@@ -1486,8 +1486,8 @@ check_ban function.
             if ( !race_table[race].pc_race )
                 break;
             if ( !race_table[race].remort_race ||
-                 ( race_table[race].remort_race
-                   && IS_SET( ch->act, PLR_REMORT ) ) )
+                    ( race_table[race].remort_race
+                      && IS_SET( ch->act, PLR_REMORT ) ) )
             {
 
                 write_to_buffer( d, race_table[race].name, 0 );
@@ -1520,8 +1520,8 @@ check_ban function.
         race = race_lookup( argument );
 
         if ( race == 0 || !race_table[race].pc_race
-             || ( race_table[race].remort_race
-                  && !IS_SET( ch->act, PLR_REMORT ) ) )
+                || ( race_table[race].remort_race
+                     && !IS_SET( ch->act, PLR_REMORT ) ) )
         {
             write_to_buffer( d, "That is not a valid race.\n\r", 0 );
             write_to_buffer( d, "The following races are available:\n\r  ", 0 );
@@ -1530,8 +1530,8 @@ check_ban function.
                 if ( !race_table[race].pc_race )
                     break;
                 if ( !race_table[race].remort_race ||
-                     ( race_table[race].remort_race
-                       && IS_SET( ch->act, PLR_REMORT ) ) )
+                        ( race_table[race].remort_race
+                          && IS_SET( ch->act, PLR_REMORT ) ) )
                 {
                     write_to_buffer( d, race_table[race].name, 0 );
                     write_to_buffer( d, " ", 1 );
@@ -1592,7 +1592,7 @@ check_ban function.
 
     case CON_GET_STATS:
         if ( ( rolled == TRUE ) && atoi( argument ) < 5
-             && atoi( argument ) >= 0 )
+                && atoi( argument ) >= 0 )
             switch ( argument[0] )
             {
             case '0':
@@ -1610,11 +1610,11 @@ check_ban function.
                 for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
                 {
                     if ( !class_table[iClass].remort_class ||
-                         ( class_table[iClass].remort_class
-                           && IS_SET( ch->act, PLR_REMORT ) ) )
+                            ( class_table[iClass].remort_class
+                              && IS_SET( ch->act, PLR_REMORT ) ) )
                     {
                         if ( iClass > 0
-                             && str_cmp( class_table[iClass].name, "Console" ) )
+                                && str_cmp( class_table[iClass].name, "Console" ) )
                             strcat( buf, " " );
                         if ( str_cmp( class_table[iClass].name, "Console" ) )
                             strcat( buf, class_table[iClass].name );
@@ -1745,8 +1745,8 @@ check_ban function.
         iClass = class_lookup( argument );
 
         if ( iClass == -1 || !str_cmp( argument, "console" )
-             || ( class_table[iClass].remort_class
-                  && !IS_SET( ch->act, PLR_REMORT ) ) )
+                || ( class_table[iClass].remort_class
+                     && !IS_SET( ch->act, PLR_REMORT ) ) )
         {
             write_to_buffer( d,
                              "That's not a class.\n\rWhat IS your class? ", 0 );
@@ -1850,8 +1850,8 @@ check_ban function.
 
         if ( !parse_gen_groups( ch, argument ) )
             send_to_char
-                ( "Choices are: list,learned,premise,add,drop,info,help, and done.\n\r",
-                  ch );
+            ( "Choices are: list,learned,premise,add,drop,info,help, and done.\n\r",
+              ch );
 
         do_help( ch, "menu choice" );
         break;
@@ -2015,9 +2015,9 @@ bool check_parse_name( char *name )
      * Reserved words.
      */
     if ( is_exact_name
-         ( name, "all auto immortal self someone something the you fuck shit" )
-         || is_name( name, "fuck" ) || is_name( name, "shit" )
-         || is_name( name, "imm" ) )
+            ( name, "all auto immortal self someone something the you fuck shit" )
+            || is_name( name, "fuck" ) || is_name( name, "shit" )
+            || is_name( name, "imm" ) )
         return FALSE;
 
     /*
@@ -2063,7 +2063,7 @@ bool check_parse_name( char *name )
         for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
         {
             for ( pMobIndex = mob_index_hash[iHash];
-                  pMobIndex != NULL; pMobIndex = pMobIndex->next )
+                    pMobIndex != NULL; pMobIndex = pMobIndex->next )
             {
                 if ( is_exact_name( name, pMobIndex->player_name ) )
                     return FALSE;
@@ -2085,7 +2085,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
     for ( ch = player_list; ch != NULL; ch = ch->next_player )
     {
         if ( ( !fConn || ch->desc == NULL )
-             && !str_cmp( d->character->name, ch->name ) )
+                && !str_cmp( d->character->name, ch->name ) )
         {
             if ( fConn == FALSE )
             {
@@ -2112,8 +2112,8 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
                 /* Inform the character of a note in progress and the possbility of continuation! */
                 if ( ch->pcdata->in_progress )
                     send_to_char
-                        ( "You have a note in progress. Type NWRITE to continue it.\n\r",
-                          ch );
+                    ( "You have a note in progress. Type NWRITE to continue it.\n\r",
+                      ch );
             }
             return TRUE;
         }
@@ -2132,11 +2132,11 @@ bool check_playing( DESCRIPTOR_DATA * d, char *name )
     for ( dold = descriptor_list; dold; dold = dold->next )
     {
         if ( dold != d
-             && dold->character != NULL
-             && dold->connected != CON_GET_NAME
-             && dold->connected != CON_GET_OLD_PASSWORD
-             && !str_cmp( name, dold->original
-                          ? dold->original->name : dold->character->name ) )
+                && dold->character != NULL
+                && dold->connected != CON_GET_NAME
+                && dold->connected != CON_GET_OLD_PASSWORD
+                && !str_cmp( name, dold->original
+                             ? dold->original->name : dold->character->name ) )
         {
             write_to_buffer( d,
                              "That character is already playing.\n\rDisconnect that player? ",
@@ -2152,10 +2152,10 @@ bool check_playing( DESCRIPTOR_DATA * d, char *name )
 void stop_idling( CHAR_DATA * ch )
 {
     if ( ch == NULL
-         || ch->desc == NULL
-         || ch->desc->connected != CON_PLAYING
-         || ch->was_in_room == NULL
-         || ch->in_room != get_room_index( ROOM_VNUM_LIMBO ) )
+            || ch->desc == NULL
+            || ch->desc->connected != CON_PLAYING
+            || ch->was_in_room == NULL
+            || ch->in_room != get_room_index( ROOM_VNUM_LIMBO ) )
         return;
 
     ch->timer = 0;
@@ -2233,7 +2233,7 @@ void show_string( struct descriptor_data *d, char *input )
     for ( scan = buffer;; scan++, d->showstr_point++ )
     {
         if ( ( ( *scan = *d->showstr_point ) == '\n' || *scan == '\r' )
-             && ( toggle = -toggle ) < 0 )
+                && ( toggle = -toggle ) < 0 )
             lines++;
 
         else if ( !*scan || ( show_lines > 0 && lines >= show_lines ) )
@@ -2418,29 +2418,29 @@ char *act_new( const char *format, CHAR_DATA * ch, const void *arg1,
         }
 
         to = vch;
-/*        to = vch->in_room->people;*/
+        /*        to = vch->in_room->people;*/
     }
 
     /* room progs & obj progs */
     if ( MOBtrigger && type != TO_CHAR && type != TO_VICT && to )
     {
-/*        OBJ_DATA *to_obj; *//* FIXME! - Zane */
+        /*        OBJ_DATA *to_obj; *//* FIXME! - Zane */
         txt = act_string( format, NULL, ch, arg1, arg2 );
         /* FIXME! - Zane */
-/*        if ( IS_SET( to->in_room->progtypes, ACT_PROG ) )
-            rprog_act_trigger( txt, to->in_room, ch, (OBJ_DATA *)arg1, (void *)arg2 );
-        for ( to_obj = to->in_room->contents; to_obj;
-              to_obj = to_obj->next_content )
-            if ( IS_SET(to_obj->pIndexData->progtypes, ACT_PROG) )
-               oprog_act_trigger(txt, to_obj, ch, (OBJ_DATA *)arg1, (void *)arg2);*/
+        /*        if ( IS_SET( to->in_room->progtypes, ACT_PROG ) )
+                    rprog_act_trigger( txt, to->in_room, ch, (OBJ_DATA *)arg1, (void *)arg2 );
+                for ( to_obj = to->in_room->contents; to_obj;
+                      to_obj = to_obj->next_content )
+                    if ( IS_SET(to_obj->pIndexData->progtypes, ACT_PROG) )
+                       oprog_act_trigger(txt, to_obj, ch, (OBJ_DATA *)arg1, (void *)arg2);*/
     }
 
     for ( ; to; to = ( type == TO_CHAR || type == TO_VICT )
-          ? NULL : to->next_in_room )
+                     ? NULL : to->next_in_room )
     {
         if ( ( !to->desc && ( IS_NPC( to ) &&
                               !IS_SET( to->pIndexData->progtypes, ACT_PROG ) ) )
-             || to->position < min_pos )
+                || to->position < min_pos )
             continue;
 
         if ( type == TO_CHAR && to != ch )
@@ -2463,8 +2463,8 @@ char *act_new( const char *format, CHAR_DATA * ch, const void *arg1,
         rprog_act_trigger( txt, ch );
 
         /* FIXME! - Zane */
-/*        if (MOBtrigger)
-               mprog_act_trigger( txt, to, ch, (OBJ_DATA *)arg1, vch );*/
+        /*        if (MOBtrigger)
+                       mprog_act_trigger( txt, to, ch, (OBJ_DATA *)arg1, vch );*/
 
     }
 
@@ -2944,8 +2944,8 @@ int roll_stat( int base_bonus, int stat_max )
             min_roll = roll;
     }
 
-    /* 
-     * Discard the lowest roll of the four and return the total plus the base_bonus 
+    /*
+     * Discard the lowest roll of the four and return the total plus the base_bonus
      * If the result is less than 1 return 1
      */
     return UMAX( total - min_roll + base_bonus, 1 );

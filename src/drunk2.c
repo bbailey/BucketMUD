@@ -39,10 +39,11 @@
 
 char *makedrunk( char *string, CHAR_DATA * ch )
 {
-/* This structure defines all changes for a character */
-    struct struckdrunk drunk[] = {
+    /* This structure defines all changes for a character */
+    struct struckdrunk drunk[] =
+    {
         {3, 10,
-         {"a", "a", "a", "A", "aa", "ah", "Ah", "ao", "aw", "oa", "ahhhh"}},
+            {"a", "a", "a", "A", "aa", "ah", "Ah", "ao", "aw", "oa", "ahhhh"}},
         {8, 5,
          {"b", "b", "b", "B", "B", "vb"}},
         {3, 5,

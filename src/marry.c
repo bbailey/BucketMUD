@@ -47,27 +47,27 @@ void do_marry( CHAR_DATA * ch, char *argument )
         if ( victim == victim2 )
         {
             send_to_char
-                ( "I don't think marrying someone to themselves is a very good idea.\n\r",
-                  ch );
+            ( "I don't think marrying someone to themselves is a very good idea.\n\r",
+              ch );
             return;
         }
 
         if ( IS_NPC( victim ) || IS_NPC( victim2 ) )
         {
             send_to_char
-                ( "I don't think they want to be Married to the Mob.\n\r", ch );
+            ( "I don't think they want to be Married to the Mob.\n\r", ch );
             return;
         }
 
         if ( !IS_SET( victim->act, PLR_CONSENT )
-             || !IS_SET( victim2->act, PLR_CONSENT ) )
+                || !IS_SET( victim2->act, PLR_CONSENT ) )
         {
             send_to_char( "They do not give consent.\n\r", ch );
             return;
         }
 
         if ( !is_name( victim->pcdata->spouse, "(none)" )
-             || !is_name( victim2->pcdata->spouse, "(none)" ) )
+                || !is_name( victim2->pcdata->spouse, "(none)" ) )
         {
             send_to_char( "They are already married! \n\r", ch );
             return;
@@ -141,8 +141,8 @@ void do_divorce( CHAR_DATA * ch, char *argument )
         if ( victim == victim2 )
         {
             send_to_char
-                ( "I don't think divorcing someone without the other knowing is a very good idea.\n\r",
-                  ch );
+            ( "I don't think divorcing someone without the other knowing is a very good idea.\n\r",
+              ch );
             return;
         }
 
@@ -154,7 +154,7 @@ void do_divorce( CHAR_DATA * ch, char *argument )
         }
 
         if ( !IS_SET( victim->act, PLR_CONSENT )
-             || !IS_SET( victim2->act, PLR_CONSENT ) )
+                || !IS_SET( victim2->act, PLR_CONSENT ) )
         {
             send_to_char( "They do not give consent.\n\r", ch );
             return;

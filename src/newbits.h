@@ -23,7 +23,8 @@ int IS_NEWAFF_SET( char *b, int bit );
 void SET_NEWAFF( char *b, int bit );
 void REMOVE_NEWAFF( char *b, int bit );
 
-struct newaff_table_struct {
+struct newaff_table_struct
+{
     int bit;
     char *name;
     int settable;

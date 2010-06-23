@@ -76,12 +76,12 @@ void free_reset_data( RESET_DATA * pReset )
     return;
 }
 
- /*
-  *  Removes all color codes from the given string and returns a
-  *  A string with no color codes.  Used for proper string formating
-  *
-  *    -Thanatos
-  */
+/*
+ *  Removes all color codes from the given string and returns a
+ *  A string with no color codes.  Used for proper string formating
+ *
+ *    -Thanatos
+ */
 char *remove_color( const char *str )
 {
     char *nocolor;
@@ -237,7 +237,7 @@ AREA_DATA *new_area( void )
 
     pArea->next = NULL;
     pArea->name = str_dup( "New area" );
-/*    pArea->recall           =   ROOM_VNUM_TEMPLE;      ROM OLC */
+    /*    pArea->recall           =   ROOM_VNUM_TEMPLE;      ROM OLC */
     pArea->area_flags = AREA_ADDED;
     pArea->security = 1;
     pArea->builders = str_dup( "None" );
@@ -390,11 +390,11 @@ void free_room_index( ROOM_INDEX_DATA * pRoom )
         free_reset_data( pReset );
 
     for ( pMprogList = pRoom->mudprogs; pMprogList;
-          pMprogList = pMprogList->next )
+            pMprogList = pMprogList->next )
         free_mem( &pMprogList );
 
     for ( pMprogGroupList = pRoom->mprog_groups; pMprogGroupList;
-          pMprogGroupList = pMprogGroupList->next )
+            pMprogGroupList = pMprogGroupList->next )
         free_mem( &pMprogGroupList );
 
     pRoom->next = room_index_free;
@@ -559,11 +559,11 @@ void free_obj_index( OBJ_INDEX_DATA * pObj )
         free_extra_descr( pExtra );
 
     for ( pMprogList = pObj->mudprogs; pMprogList;
-          pMprogList = pMprogList->next )
+            pMprogList = pMprogList->next )
         free_mem( &pMprogList );
 
     for ( pMprogGroupList = pObj->mprog_groups; pMprogGroupList;
-          pMprogGroupList = pMprogGroupList->next )
+            pMprogGroupList = pMprogGroupList->next )
         free_mem( &pMprogGroupList );
 
     pObj->next = obj_index_free;
@@ -648,11 +648,11 @@ void free_mob_index( MOB_INDEX_DATA * pMob )
     free_shop( pMob->pShop );
 
     for ( pMprogList = pMob->mudprogs; pMprogList;
-          pMprogList = pMprogList->next )
+            pMprogList = pMprogList->next )
         free_mem( &pMprogList );
 
     for ( pMprogGroupList = pMob->mprog_groups; pMprogGroupList;
-          pMprogGroupList = pMprogGroupList->next )
+            pMprogGroupList = pMprogGroupList->next )
         free_mem( &pMprogGroupList );
 
     pMob->next = mob_index_free;

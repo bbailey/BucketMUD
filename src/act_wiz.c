@@ -4,7 +4,7 @@
  * Ported to EmberMUD by Thanatos and Tyrluk of ToED                      *
  * (Temple of Eternal Death)                                              *
  * Tyrluk   - morn@telmaron.com or dajy@mindspring.com                    *
- * Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com              * 
+ * Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com              *
  **************************************************************************/
 /***************************************************************************
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
@@ -217,8 +217,8 @@ void do_jail( CHAR_DATA * ch, char *argument )
         if ( !IS_NPC( victim ) && ( JAIL_RELEASE_RECALL == 1 ) )
         {
             send_to_char
-                ( "`Wand you are being teleported back to `Grecall`W.`w\n\r",
-                  victim );
+            ( "`Wand you are being teleported back to `Grecall`W.`w\n\r",
+              victim );
             send_to_char( "Jail Lifted\n\r", ch );
             char_from_room( victim );
             victim->jail_timer = 0;
@@ -234,8 +234,8 @@ void do_jail( CHAR_DATA * ch, char *argument )
         else
         {
             send_to_char
-                ( "`Wand you are being teleported to the front gates of the jail.`w\n\r",
-                  victim );
+            ( "`Wand you are being teleported to the front gates of the jail.`w\n\r",
+              victim );
             send_to_char( "Jail Lifted\n\r", ch );
             char_from_room( victim );
             char_to_room( victim, get_room_index( blarg ) );
@@ -312,7 +312,7 @@ void do_jail( CHAR_DATA * ch, char *argument )
     return;
 }
 
- /* equips a character */
+/* equips a character */
 void do_outfit( CHAR_DATA * ch, char *argument )
 {
     OBJ_DATA *obj;
@@ -387,13 +387,13 @@ void do_award( CHAR_DATA * ch, char *argument )
     }
 
     if ( strncmp( arg3, "alignment", strlen( arg3 ) )
-         && strncmp( arg3, "experience", strlen( arg3 ) )
-         && strncmp( arg3, "gold", strlen( arg3 ) )
-         && strncmp( arg3, "qp", strlen( arg3 ) )
-         && strncmp( arg3, "object", strlen( arg3 ) ) )
+            && strncmp( arg3, "experience", strlen( arg3 ) )
+            && strncmp( arg3, "gold", strlen( arg3 ) )
+            && strncmp( arg3, "qp", strlen( arg3 ) )
+            && strncmp( arg3, "object", strlen( arg3 ) ) )
     {
         send_to_char
-            ( "Valid types: alignment, experience, gold, qp, object.\n\r", ch );
+        ( "Valid types: alignment, experience, gold, qp, object.\n\r", ch );
         send_to_char( "NOTE: Substitute the object's VNUM for the amount.\n\r",
                       ch );
         return;
@@ -433,8 +433,8 @@ void do_award( CHAR_DATA * ch, char *argument )
         if ( value < -2000 || value > 2000 )
         {
             send_to_char
-                ( "You can only alter someone's alignment by -2000 to 2000 points.\n\r",
-                  ch );
+            ( "You can only alter someone's alignment by -2000 to 2000 points.\n\r",
+              ch );
             return;
         }
 
@@ -486,8 +486,8 @@ void do_award( CHAR_DATA * ch, char *argument )
         if ( value < -2000 || value > 100 )
         {
             send_to_char
-                ( "You can only alter someone's quest points by -2000 to 100 points.\n\r",
-                  ch );
+            ( "You can only alter someone's quest points by -2000 to 100 points.\n\r",
+              ch );
             return;
         }
 
@@ -557,13 +557,13 @@ void do_award( CHAR_DATA * ch, char *argument )
         if ( value < -1000000 || value > 1000000 )
         {
             send_to_char
-                ( "You can only award between -1000000 and 1000000 experience.\n\r",
-                  ch );
+            ( "You can only award between -1000000 and 1000000 experience.\n\r",
+              ch );
             return;
         }
 
         if ( victim->exp < 0 && value < 0
-             && victim->exp < ( ( -1 * maxlong ) - value ) )
+                && victim->exp < ( ( -1 * maxlong ) - value ) )
         {
             value = ( -1 * maxlong ) - victim->exp;
             victim->exp = ( -1 * maxlong );
@@ -617,8 +617,8 @@ void do_award( CHAR_DATA * ch, char *argument )
         if ( value < -9999999 || value > 9999999 )
         {
             send_to_char
-                ( "You can only award between -9999999 and 9999999 gold.\n\r",
-                  ch );
+            ( "You can only award between -9999999 and 9999999 gold.\n\r",
+              ch );
             return;
         }
 
@@ -685,7 +685,7 @@ void do_award( CHAR_DATA * ch, char *argument )
         obj = create_object( pObjIndex, level );
 
         if ( victim->carry_number + get_obj_number( obj ) >
-             can_carry_n( victim ) )
+                can_carry_n( victim ) )
         {
             sprintf( buf,
                      "Alas, %s is carrying too many items to receive that.\n\r",
@@ -696,7 +696,7 @@ void do_award( CHAR_DATA * ch, char *argument )
         }
 
         if ( victim->carry_weight + get_obj_weight( obj ) >
-             can_carry_w( victim ) )
+                can_carry_w( victim ) )
         {
             sprintf( buf, "Alas, that is too heavy for %s to carry.\n\r",
                      victim->name );
@@ -916,7 +916,7 @@ void do_new_discon( CHAR_DATA * ch, char *argument )
     if ( !is_number( arg ) )
     {
         send_to_char
-            ( "Argument must be numeric, use sockets to find number.\n\r", ch );
+        ( "Argument must be numeric, use sockets to find number.\n\r", ch );
         return;
     }
     sock_num = atoi( arg );
@@ -1030,7 +1030,7 @@ void do_recho( CHAR_DATA * ch, char *argument )
     for ( d = descriptor_list; d; d = d->next )
     {
         if ( d->connected == CON_PLAYING
-             && d->character->in_room == ch->in_room )
+                && d->character->in_room == ch->in_room )
         {
             if ( get_trust( d->character ) >= get_trust( ch ) )
                 send_to_char( "local> ", d->character );
@@ -1062,7 +1062,7 @@ void do_pecho( CHAR_DATA * ch, char *argument )
     }
 
     if ( get_trust( victim ) >= get_trust( ch )
-         && get_trust( ch ) != MAX_LEVEL )
+            && get_trust( ch ) != MAX_LEVEL )
         send_to_char( "personal> ", victim );
 
     send_to_char( argument, victim );
@@ -1081,14 +1081,14 @@ ROOM_INDEX_DATA *find_location( CHAR_DATA * ch, char *arg )
         return get_room_index( atoi( arg ) );
 
     if ( ( ( victim = get_char_world( ch, arg ) ) != NULL ) && ( !IS_NPC( victim )  /* +1 */
-                                                                 ||
-                                                                 ( IS_NPC
-                                                                   ( victim )
-                                                                   &&
-                                                                   ( victim->
-                                                                     pIndexData->
-                                                                     vnum !=
-                                                                     MOB_VNUM_SUPERMOB ) ) ) )
+            ||
+            ( IS_NPC
+              ( victim )
+              &&
+              ( victim->
+                pIndexData->
+                vnum !=
+                MOB_VNUM_SUPERMOB ) ) ) )
         return victim->in_room;
 
     if ( ( obj = get_obj_world( ch, arg ) ) != NULL )
@@ -1120,9 +1120,9 @@ void do_transfer( CHAR_DATA * ch, char *argument )
         for ( d = descriptor_list; d != NULL; d = d->next )
         {
             if ( d->connected == CON_PLAYING
-                 && d->character != ch
-                 && d->character->in_room != NULL
-                 && can_see( ch, d->character ) )
+                    && d->character != ch
+                    && d->character->in_room != NULL
+                    && can_see( ch, d->character ) )
             {
                 sprintf( buf, "%s %s", d->character->name, arg2 );
                 do_transfer( ch, buf );
@@ -1421,7 +1421,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
     }
 
     if ( ch->in_room != location && room_is_private( location ) &&
-         get_trust( ch ) < MAX_LEVEL )
+            get_trust( ch ) < MAX_LEVEL )
     {
         send_to_char( "That room is private right now.\n\r", ch );
         return;
@@ -1504,7 +1504,7 @@ void do_repeat( CHAR_DATA * ch, char *argument )
     argument = one_argument( argument, buf );
 
     if ( strlen( buf ) < 1 || ( count = atoi( buf ) ) < 1
-         || strlen( argument ) < 1 )
+            || strlen( argument ) < 1 )
     {
         send_to_char( "Syntax:  repeat <count> <command string>\r\n", ch );
         return;
@@ -2226,7 +2226,7 @@ void do_mpfind( CHAR_DATA * ch, char *argument )
     }
 
     for ( pMprogGroup = mprog_group_first; pMprogGroup;
-          pMprogGroup = pMprogGroup->next )
+            pMprogGroup = pMprogGroup->next )
     {
         if ( fAll || is_name( argument, pMprogGroup->name ) )
         {
@@ -2314,7 +2314,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
     for ( victim = char_list; victim != NULL; victim = victim->next )
     {
         if ( IS_NPC( victim )
-             && victim->in_room != NULL && is_name( argument, victim->name ) )
+                && victim->in_room != NULL && is_name( argument, victim->name ) )
         {
             found = TRUE;
             sprintf( buf, "[%5d] %-28s [%5d] %s\n\r",
@@ -2353,7 +2353,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
     for ( obj = object_list; obj != NULL; obj = obj->next )
     {
         if ( ( obj->in_room || obj->in_obj || obj->carried_by )
-             && is_name( argument, obj->name ) )
+                && is_name( argument, obj->name ) )
         {
             if ( obj->in_room )
             {
@@ -2424,7 +2424,7 @@ void do_reboot( CHAR_DATA * ch, char *argument )
     if ( ( chaos ) && ( ch->Class != 4 ) )
     {
         send_to_char
-            ( "Please remove `rC`RH`YA`RO`rS`w before rebooting.\n\r", ch );
+        ( "Please remove `rC`RH`YA`RO`rS`w before rebooting.\n\r", ch );
         return;
     }
     if ( IS_NPC( ch ) )
@@ -2457,7 +2457,7 @@ void do_reboot( CHAR_DATA * ch, char *argument )
 }
 
 /* Added to prevent my son, age 5, from hotbooting the mud by
- * typing hot 
+ * typing hot
  */
 void do_hotboo( CHAR_DATA * ch, char *argument )
 {
@@ -2482,7 +2482,7 @@ void do_shutdown( CHAR_DATA * ch, char *argument )
     if ( ( chaos ) && ( ch->Class != 4 ) )
     {
         send_to_char
-            ( "Please remove `rC`RH`YA`RO`rS`w before shutting down.\n\r", ch );
+        ( "Please remove `rC`RH`YA`RO`rS`w before shutting down.\n\r", ch );
         return;
     }
     if ( IS_NPC( ch ) )
@@ -2635,8 +2635,8 @@ void do_switch( CHAR_DATA * ch, char *argument )
     if ( ch->pcdata->tick > 0 )
     {
         send_to_char
-            ( "Mobs cannot use the tick option, so it has been turned off.\n\r",
-              ch );
+        ( "Mobs cannot use the tick option, so it has been turned off.\n\r",
+          ch );
     }
 
     ch->pcdata->tick = 0;
@@ -2665,8 +2665,8 @@ void do_return( CHAR_DATA * ch, char *argument )
     if ( IS_SET( ch->act, PLR_JAILED ) )
     {
         send_to_char
-            ( "You have been jailed and will remain so until your jail sentence as a mob has been completed\n\r",
-              ch );
+        ( "You have been jailed and will remain so until your jail sentence as a mob has been completed\n\r",
+          ch );
         return;
     }
 
@@ -2682,14 +2682,14 @@ void do_return( CHAR_DATA * ch, char *argument )
 static bool obj_check( CHAR_DATA * ch, OBJ_DATA * obj )
 {
     if ( IS_TRUSTED( ch, GOD )
-         || ( IS_TRUSTED( ch, IMMORTAL ) && obj->level <= 20
-              && obj->cost <= 1000 ) || ( IS_TRUSTED( ch, DEMI )
-                                          && obj->level <= 10
-                                          && obj->cost <= 500 )
-         || ( IS_TRUSTED( ch, ANGEL ) && obj->level <= 5
-              && obj->cost <= 250 ) || ( IS_TRUSTED( ch, AVATAR )
-                                         && obj->level == 0
-                                         && obj->cost <= 100 ) )
+            || ( IS_TRUSTED( ch, IMMORTAL ) && obj->level <= 20
+                 && obj->cost <= 1000 ) || ( IS_TRUSTED( ch, DEMI )
+                                             && obj->level <= 10
+                                             && obj->cost <= 500 )
+            || ( IS_TRUSTED( ch, ANGEL ) && obj->level <= 5
+                 && obj->cost <= 250 ) || ( IS_TRUSTED( ch, AVATAR )
+                                            && obj->level == 0
+                                            && obj->cost <= 100 ) )
         return TRUE;
     else
         return FALSE;
@@ -2767,7 +2767,7 @@ void do_clone( CHAR_DATA * ch, char *argument )
         if ( !obj_check( ch, obj ) )
         {
             send_to_char
-                ( "Your powers are not great enough for such a task.\n\r", ch );
+            ( "Your powers are not great enough for such a task.\n\r", ch );
             return;
         }
 
@@ -2795,13 +2795,13 @@ void do_clone( CHAR_DATA * ch, char *argument )
         }
 
         if ( ( mob->level > 20 && !IS_TRUSTED( ch, GOD ) )
-             || ( mob->level > 10 && !IS_TRUSTED( ch, IMMORTAL ) )
-             || ( mob->level > 5 && !IS_TRUSTED( ch, DEMI ) )
-             || ( mob->level > 0 && !IS_TRUSTED( ch, ANGEL ) )
-             || !IS_TRUSTED( ch, AVATAR ) )
+                || ( mob->level > 10 && !IS_TRUSTED( ch, IMMORTAL ) )
+                || ( mob->level > 5 && !IS_TRUSTED( ch, DEMI ) )
+                || ( mob->level > 0 && !IS_TRUSTED( ch, ANGEL ) )
+                || !IS_TRUSTED( ch, AVATAR ) )
         {
             send_to_char
-                ( "Your powers are not great enough for such a task.\n\r", ch );
+            ( "Your powers are not great enough for such a task.\n\r", ch );
             return;
         }
 
@@ -2954,7 +2954,7 @@ void do_purge( CHAR_DATA * ch, char *argument )
             vnext = victim->next_in_room;
 
             if ( IS_NPC( victim ) && !IS_SET( victim->act, ACT_NOPURGE )
-                 && victim != ch /* safety precaution */  )
+                    && victim != ch /* safety precaution */  )
             {
                 extract_char( victim, TRUE );
             }
@@ -3743,7 +3743,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
         send_to_char( "  race gold hp mana move practice align\n\r", ch );
         send_to_char( "  train thirst drunk full security recall\n\r", ch );
         send_to_char( "  vlower vupper whorace whoprefix\n\r", ch );
-/*      send_to_char( "    clan\n\r",ch ); */
+        /*      send_to_char( "    clan\n\r",ch ); */
         return;
     }
 
@@ -3754,11 +3754,11 @@ void do_mset( CHAR_DATA * ch, char *argument )
     }
 
     if ( ( victim != ch && !IS_NPC( victim ) )
-         && ( get_trust( ch ) <= get_trust( victim ) ) )
+            && ( get_trust( ch ) <= get_trust( victim ) ) )
     {
         send_to_char
-            ( "You cannot modify a character of equal or higher level.\n\r",
-              ch );
+        ( "You cannot modify a character of equal or higher level.\n\r",
+          ch );
         return;
     }
 
@@ -3843,8 +3843,8 @@ void do_mset( CHAR_DATA * ch, char *argument )
         if ( value < victim->pcdata->vnum_range[0] )
         {
             send_to_char
-                ( "Invalid VNUM.  The Vnum must be greater then the lower vnum.\n\r",
-                  ch );
+            ( "Invalid VNUM.  The Vnum must be greater then the lower vnum.\n\r",
+              ch );
             return;
         }
 
@@ -3875,7 +3875,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
         {
             sprintf( buf,
                      "Wisdom range is 3 to %d.\n\r", get_max_train( victim,
-                                                                    STAT_WIS ) );
+                             STAT_WIS ) );
             send_to_char( buf, ch );
             return;
         }
@@ -4139,7 +4139,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
         /* Why should IMPs have to have security 9 to change anything?
            Changed by Kyle to be less annoying to new IMPs.  */
         if ( ( value > ch->pcdata->security || value < 0 )
-             && get_trust( ch ) < MAX_LEVEL )
+                && get_trust( ch ) < MAX_LEVEL )
         {
             if ( ch->pcdata->security != 0 )
             {
@@ -4191,7 +4191,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
             return;
         }
         if ( !str_cmp( arg3, "normal" )
-             || !str_cmp( arg3, "default" ) || !str_cmp( arg3, "none" ) )
+                || !str_cmp( arg3, "default" ) || !str_cmp( arg3, "none" ) )
         {
             free_string( &victim->pcdata->who_race );
             send_to_char( "Race now shows the actual race.\n\r", ch );
@@ -4200,8 +4200,8 @@ void do_mset( CHAR_DATA * ch, char *argument )
         if ( str_len( arg3 ) > 10 )
         {
             send_to_char
-                ( "Too long, length is limited to 10 characters not counting color.\n\r",
-                  ch );
+            ( "Too long, length is limited to 10 characters not counting color.\n\r",
+              ch );
             return;
         }
         if ( str_len( arg3 ) < 10 )
@@ -4238,7 +4238,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
             return;
         }
         if ( !str_cmp( arg3, "normal" )
-             || !str_cmp( arg3, "default" ) || !str_cmp( arg3, "none" ) )
+                || !str_cmp( arg3, "default" ) || !str_cmp( arg3, "none" ) )
         {
             free_string( &victim->pcdata->who_prefix );
             send_to_char( "Prefix removed.\n\r", ch );
@@ -4247,8 +4247,8 @@ void do_mset( CHAR_DATA * ch, char *argument )
         if ( str_len( arg3 ) > 20 )
         {
             send_to_char
-                ( "Too long, length is limited to 20 characters not counting color.\n\r",
-                  ch );
+            ( "Too long, length is limited to 20 characters not counting color.\n\r",
+              ch );
             return;
         }
         free_string( &victim->pcdata->who_prefix );
@@ -4282,7 +4282,7 @@ void do_string( CHAR_DATA * ch, char *argument )
     strcpy( arg3, argument );
 
     if ( type[0] == '\0' || arg[0] == '\0' || arg2[0] == '\0'
-         || arg3[0] == '\0' )
+            || arg3[0] == '\0' )
     {
         send_to_char( "Syntax:\n\r", ch );
         send_to_char( "  string char <name> <field> <string>\n\r", ch );
@@ -4291,7 +4291,7 @@ void do_string( CHAR_DATA * ch, char *argument )
         send_to_char( "    fields: name short long extended\n\r", ch );
         send_to_char( "  For stringing extended descriptions:\n\r", ch );
         send_to_char
-            ( "    string obj <name> extended <keyword> <string>\n\r", ch );
+        ( "    string obj <name> extended <keyword> <string>\n\r", ch );
         return;
     }
 
@@ -4393,7 +4393,7 @@ void do_string( CHAR_DATA * ch, char *argument )
             if ( argument == NULL )
             {
                 send_to_char
-                    ( "Syntax: oset <object> ed <keyword> <string>\n\r", ch );
+                ( "Syntax: oset <object> ed <keyword> <string>\n\r", ch );
                 return;
             }
 
@@ -4740,7 +4740,8 @@ void do_force( CHAR_DATA * ch, char *argument )
     char arg_target[MAX_INPUT_LENGTH];
     char arg_name[MAX_INPUT_LENGTH];
     char arg_command[MAX_INPUT_LENGTH];
-    enum Targets {
+    enum Targets
+    {
         mob,
         player,
         all,
@@ -4753,8 +4754,8 @@ void do_force( CHAR_DATA * ch, char *argument )
     if ( arg_target[0] == '\0' || argument[0] == '\0' )
     {
         send_to_char
-            ( "Syntax:  force [mob|char] [name] [command]\n\r         force [all|players|gods] [command]\n\r",
-              ch );
+        ( "Syntax:  force [mob|char] [name] [command]\n\r         force [all|players|gods] [command]\n\r",
+          ch );
         return;
     }
 
@@ -4767,8 +4768,8 @@ void do_force( CHAR_DATA * ch, char *argument )
         if ( arg_name[0] == '\0' || argument[0] == '\0' )
         {
             send_to_char
-                ( "Syntax:  force [mob|char] [name] [command]\n\r         force [all|players|gods] [command]\n\r",
-                  ch );
+            ( "Syntax:  force [mob|char] [name] [command]\n\r         force [all|players|gods] [command]\n\r",
+              ch );
             return;
         }
     }
@@ -4781,8 +4782,8 @@ void do_force( CHAR_DATA * ch, char *argument )
         if ( arg_name[0] == '\0' || argument[0] == '\0' )
         {
             send_to_char
-                ( "Syntax:  force [mob|char] [name] [command]\n\r         force [all|players|gods] [command]\n\r",
-                  ch );
+            ( "Syntax:  force [mob|char] [name] [command]\n\r         force [all|players|gods] [command]\n\r",
+              ch );
             return;
         }
     }
@@ -4795,8 +4796,8 @@ void do_force( CHAR_DATA * ch, char *argument )
     else
     {
         send_to_char
-            ( "Syntax:  force [mob|char] [name] [command]\n\r         force [all|players|gods] [command]\n\r",
-              ch );
+        ( "Syntax:  force [mob|char] [name] [command]\n\r         force [all|players|gods] [command]\n\r",
+          ch );
         return;
     }
 
@@ -4854,7 +4855,7 @@ void do_force( CHAR_DATA * ch, char *argument )
             vch_next = vch->next;
 
             if ( !IS_NPC( vch ) && get_trust( vch ) < get_trust( ch )
-                 && vch->level < LEVEL_HERO )
+                    && vch->level < LEVEL_HERO )
             {
                 act( buf2, ch, NULL, vch, TO_VICT );
                 interpret( vch, argument );
@@ -4877,7 +4878,7 @@ void do_force( CHAR_DATA * ch, char *argument )
             vch_next = vch->next;
 
             if ( !IS_NPC( vch ) && get_trust( vch ) < get_trust( ch )
-                 && vch->level >= LEVEL_HERO )
+                    && vch->level >= LEVEL_HERO )
             {
                 act( buf2, ch, NULL, vch, TO_VICT );
                 interpret( vch, argument );
@@ -4963,7 +4964,7 @@ void do_invis( CHAR_DATA * ch, char *argument )
         if ( level < 2 || level > get_trust( ch ) )
         {
             send_to_char
-                ( "Invis level must be between 2 and your level.\n\r", ch );
+            ( "Invis level must be between 2 and your level.\n\r", ch );
             return;
         }
         else
@@ -5127,7 +5128,7 @@ void do_objcheck( CHAR_DATA * ch, char *argument )
 
     argument = one_argument( argument, arg );
     if ( argument[0] == '\0' ||
-         arg[0] == '\0' || !is_number( arg ) || !is_number( argument ) )
+            arg[0] == '\0' || !is_number( arg ) || !is_number( argument ) )
     {
         send_to_char( "Syntax: objcheck <low vnum> <high vnum>\n\r", ch );
         return;
@@ -5172,44 +5173,44 @@ void do_objcheck( CHAR_DATA * ch, char *argument )
         }
 
         if ( !str_cmp( obj->short_descr, "(no short description)" ) ||
-             obj->short_descr[0] == '\0' )
+                obj->short_descr[0] == '\0' )
         {
             printf_to_char( ch, "[%5d] No short description\n\r", obj->vnum );
             i++;
         }
 
         if ( !str_cmp( obj->description, "(no description)" ) ||
-             obj->description[0] == '\0' )
+                obj->description[0] == '\0' )
         {
             printf_to_char( ch, "[%5d] No long description\n\r", obj->vnum );
             i++;
         }
 
         if ( !( obj->wear_flags & ITEM_TAKE )
-             && obj->item_type != ITEM_FURNITURE
-             && obj->item_type != ITEM_FOUNTAIN
-             && obj->item_type != ITEM_CONTAINER )
+                && obj->item_type != ITEM_FURNITURE
+                && obj->item_type != ITEM_FOUNTAIN
+                && obj->item_type != ITEM_CONTAINER )
         {
             printf_to_char( ch, "[%5d] No take flag!\n\r", obj->vnum );
             i++;
         }
 
         if ( obj->item_type == ITEM_ARMOR
-             && ( obj->wear_flags == 0 || obj->wear_flags == ITEM_TAKE ) )
+                && ( obj->wear_flags == 0 || obj->wear_flags == ITEM_TAKE ) )
         {
             printf_to_char( ch, "[%5d] Unwearable armor\n\r", obj->vnum );
             i++;
         }
 
         if ( obj->item_type == ITEM_WEAPON
-             && ( obj->wear_flags == 0 || obj->wear_flags == ITEM_TAKE ) )
+                && ( obj->wear_flags == 0 || obj->wear_flags == ITEM_TAKE ) )
         {
             printf_to_char( ch, "[%5d] Unwieldable weapon\n\r", obj->vnum );
             i++;
         }
 
         if ( obj->item_type == ITEM_WEAPON
-             && obj->value[1] * obj->value[2] >= 150 )
+                && obj->value[1] * obj->value[2] >= 150 )
         {
             printf_to_char( ch, "[%5d] Huge damage dice, way too big.\n\r",
                             obj->vnum );
@@ -5347,7 +5348,7 @@ void do_aentrances( CHAR_DATA * ch, char *argument )
 
     /* Loop through all areas EXCEPT area */
     for ( other_area = area_first; other_area != NULL;
-          other_area = other_area->next )
+            other_area = other_area->next )
     {
         if ( other_area == area )
             continue;
@@ -5426,7 +5427,7 @@ void do_pload( CHAR_DATA * ch, char *argument )
     if ( !isChar )
     {
         send_to_char
-            ( "Load Who? Are you sure? I can't seem to find them.\n\r", ch );
+        ( "Load Who? Are you sure? I can't seem to find them.\n\r", ch );
         return;
     }
 
@@ -5476,8 +5477,8 @@ void do_punload( CHAR_DATA * ch, char *argument )
         return;
     }
 
-  /** Person is legitimatly logged on... was not ploaded.
-   */
+    /** Person is legitimatly logged on... was not ploaded.
+     */
     if ( victim->desc != NULL )
     {
         send_to_char( "I don't think that would be a good idea...\n\r", ch );
@@ -5556,7 +5557,7 @@ void do_wizgrant( CHAR_DATA * ch, char *argument )
         if ( !can_do_immcmd( ch, argument ) )
         {
             send_to_char
-                ( "You do not have access to grant that command!\n\r", ch );
+            ( "You do not have access to grant that command!\n\r", ch );
             return;
         }
     }
@@ -5665,15 +5666,15 @@ void do_wizrevoke( CHAR_DATA * ch, char *argument )
     if ( !can_do_immcmd( victim, argument ) )
     {
         send_to_char
-            ( "You cannot revoke access to a command that they don't have access to.\n\r",
-              ch );
+        ( "You cannot revoke access to a command that they don't have access to.\n\r",
+          ch );
         return;
     }
 
     if ( get_trust( ch ) <= get_trust( victim ) )
     {
         send_to_char
-            ( "That person is too powerful for you to wizrevoke!\n\r", ch );
+        ( "That person is too powerful for you to wizrevoke!\n\r", ch );
         return;
     }
 
@@ -5772,7 +5773,7 @@ void do_olevel( CHAR_DATA * ch, char *argument )
         for ( in_obj = obj; in_obj->in_obj != NULL; in_obj = in_obj->in_obj );
 
         if ( in_obj->carried_by != NULL && can_see( ch, in_obj->carried_by )
-             && in_obj->carried_by->in_room != NULL )
+                && in_obj->carried_by->in_room != NULL )
             sprintf( buf, "%3d) %s is carried by %s [Room %d]\n\r",
                      number, obj->short_descr, PERS( in_obj->carried_by,
                                                      ch ),

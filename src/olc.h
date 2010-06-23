@@ -26,7 +26,7 @@
  * Ported to EmberMUD by Thanatos and Tyrluk of ToED                      *
  * (Temple of Eternal Death)                                              *
  * Tyrluk   - morn@telmaron.com or dajy@mindspring.com                    *
- * Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com              * 
+ * Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com              *
  * Heavily modified by Zane (zane@supernova.org)                          *
  **************************************************************************/
 
@@ -59,7 +59,8 @@ typedef bool OLC_FUN args( ( CHAR_DATA * ch, char *argument ) );
 /*
  * Structure for an OLC editor command.
  */
-struct olc_cmd_type {
+struct olc_cmd_type
+{
     char *name;
     OLC_FUN *olc_fun;
 };
@@ -136,7 +137,8 @@ char *fix_string args( ( const char *str ) );
 /*
  * Structure for an OLC editor startup command.
  */
-struct editor_cmd_type {
+struct editor_cmd_type
+{
     char *name;
     DO_FUN *do_fun;
 };
@@ -144,7 +146,8 @@ struct editor_cmd_type {
 /*
  * This structure is used in bit.c to lookup flags and stats.
  */
-struct flag_type {
+struct flag_type
+{
     char *name;
     int bit;
     bool settable;
@@ -412,7 +415,8 @@ extern SOCIALLIST_DATA *social_last;
 extern const struct olc_cmd_type socialedit_table[];
 
 /* Struct for list of socials available in the MUD */
-struct sociallist_data {
+struct sociallist_data
+{
     sh_int vnum;
     char *name;
     char *char_no_arg;

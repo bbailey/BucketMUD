@@ -18,7 +18,7 @@
  * Ported to EmberMUD by Thanatos and Tyrluk of ToED      		          *
  * (Temple of Eternal Death)    			                     		  *
  * Tyrluk   - morn@telmaron.com or dajy@mindspring.com			          *
- * Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com              * 
+ * Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com              *
  * Heavily modified by Zane (zane@supernova.org)                          *
  **************************************************************************/
 
@@ -210,8 +210,9 @@ bool show_commands( CHAR_DATA * ch, char *argument )
 /*****************************************************************************
  *                           Interpreter Tables.                             *
  *****************************************************************************/
-const struct olc_cmd_type aedit_table[] = {
-/*  {   command		function	}, */
+const struct olc_cmd_type aedit_table[] =
+{
+    /*  {   command		function	}, */
 
     {"age", aedit_age},
     {"builder", aedit_builder}, /* s removed -- Hugin */
@@ -219,7 +220,7 @@ const struct olc_cmd_type aedit_table[] = {
     {"create", aedit_create},
     {"filename", aedit_file},
     {"name", aedit_name},
-/*  {   "recall",	aedit_recall	},   ROM OLC */
+    /*  {   "recall",	aedit_recall	},   ROM OLC */
     {"reset", aedit_reset},
     {"security", aedit_security},
     {"show", aedit_show},
@@ -233,8 +234,9 @@ const struct olc_cmd_type aedit_table[] = {
     {"", 0,}
 };
 
-const struct olc_cmd_type redit_table[] = {
-/*  {   command		function	}, */
+const struct olc_cmd_type redit_table[] =
+{
+    /*  {   command		function	}, */
 
     {"commands", show_commands},
     {"create", redit_create},
@@ -268,8 +270,9 @@ const struct olc_cmd_type redit_table[] = {
     {"", 0,}
 };
 
-const struct olc_cmd_type oedit_table[] = {
-/*  {   command		function	}, */
+const struct olc_cmd_type oedit_table[] =
+{
+    /*  {   command		function	}, */
 
     {"addaffect", oedit_addaffect},
     {"commands", show_commands},
@@ -301,8 +304,9 @@ const struct olc_cmd_type oedit_table[] = {
     {"", 0,}
 };
 
-const struct olc_cmd_type medit_table[] = {
-/*  {   command		function	}, */
+const struct olc_cmd_type medit_table[] =
+{
+    /*  {   command		function	}, */
 
     {"alignment", medit_align},
     {"commands", show_commands},
@@ -348,8 +352,9 @@ const struct olc_cmd_type medit_table[] = {
     {"", 0,}
 };
 
-const struct olc_cmd_type mpedit_table[] = {
-/*  {   command,		function	}, */
+const struct olc_cmd_type mpedit_table[] =
+{
+    /*  {   command,		function	}, */
 
     {"commands", show_commands},
     {"assign", mpedit_assign},
@@ -371,8 +376,9 @@ const struct olc_cmd_type mpedit_table[] = {
     {"", 0,}
 };
 
-const struct olc_cmd_type mpgedit_table[] = {
-/*  {   command		function	}, */
+const struct olc_cmd_type mpgedit_table[] =
+{
+    /*  {   command		function	}, */
 
     {"add", mpgedit_add},
     {"commands", show_commands},
@@ -600,15 +606,15 @@ void oedit( CHAR_DATA * ch, char *argument )
 
     if ( !str_cmp( command, "done" ) )
     {
-        /* 
+        /*
          * Check to make sure the damage type is set if the item is a weapon.
          * If it is, tell the user to set it and don't allow exiting the editor.
          */
         if ( pObj->item_type == ITEM_WEAPON && pObj->value[3] == 0 )
         {
             send_to_char
-                ( "OEdit: You must set the weapon's damage type (v3) before exiting.\n\r",
-                  ch );
+            ( "OEdit: You must set the weapon's damage type (v3) before exiting.\n\r",
+              ch );
             return;
         }
 
@@ -880,9 +886,9 @@ void do_mpedit( CHAR_DATA * ch, char *argument )
     }
 
     send_to_char
-        ( "Syntax:  edit mprog <vnum> or edit mprog create [mobprog||objprog||roomprog]\n\r"
-          "         edit mprog assign   <target vnum> <mudprog vnum>\n\r"
-          "         edit mprog unassign <target vnum> <mudprog vnum>\n\r", ch );
+    ( "Syntax:  edit mprog <vnum> or edit mprog create [mobprog||objprog||roomprog]\n\r"
+      "         edit mprog assign   <target vnum> <mudprog vnum>\n\r"
+      "         edit mprog unassign <target vnum> <mudprog vnum>\n\r", ch );
     return;
 }
 
@@ -928,13 +934,14 @@ void do_mpgedit( CHAR_DATA * ch, char *argument )
     }
 
     send_to_char
-        ( "Syntax:  edit mpgroup <vnum> or edit mpgroup create [mobprog||objprog||roomprog]\n\r",
-          ch );
+    ( "Syntax:  edit mpgroup <vnum> or edit mpgroup create [mobprog||objprog||roomprog]\n\r",
+      ch );
     return;
 }
 
-const struct editor_cmd_type editor_table[] = {
-/*  {   command		function	}, */
+const struct editor_cmd_type editor_table[] =
+{
+    /*  {   command		function	}, */
 
     {"area", do_aedit},
     {"room", do_redit},
@@ -964,13 +971,13 @@ void do_olc( CHAR_DATA * ch, char *argument )
     }
 #endif
 
-/*     if ( ch->pcdata &&
-       ( ch->in_room->vnum < ch->pcdata->vnum_range[0]
-       || ch->in_room->vnum > ch->pcdata->vnum_range[1] ) )
-       {
-          send_to_char( "You're not authorized to use this command here.\n\r", ch );
-          return;
-       }       */
+    /*     if ( ch->pcdata &&
+           ( ch->in_room->vnum < ch->pcdata->vnum_range[0]
+           || ch->in_room->vnum > ch->pcdata->vnum_range[1] ) )
+           {
+              send_to_char( "You're not authorized to use this command here.\n\r", ch );
+              return;
+           }       */
 
     argument = one_argument( argument, command );
 
@@ -1198,10 +1205,10 @@ void display_resets( CHAR_DATA * ch )
     final[0] = '\0';
 
     send_to_char
-        ( " No.  Loads    Description       Location         Vnum    Max  Description"
-          "\n\r"
-          "==== ======== ============= =================== ======== ===== ==========="
-          "\n\r", ch );
+    ( " No.  Loads    Description       Location         Vnum    Max  Description"
+      "\n\r"
+      "==== ======== ============= =================== ======== ===== ==========="
+      "\n\r", ch );
 
     for ( pReset = pRoom->reset_first; pReset; pReset = pReset->next )
     {
@@ -1253,7 +1260,7 @@ void display_resets( CHAR_DATA * ch )
 
                 pRoomIndexPrev = get_room_index( pRoomIndex->vnum - 1 );
                 if ( pRoomIndexPrev
-                     && IS_SET( pRoomIndexPrev->room_flags, ROOM_PET_SHOP ) )
+                        && IS_SET( pRoomIndexPrev->room_flags, ROOM_PET_SHOP ) )
                     final[5] = 'P';
             }
 
@@ -1444,13 +1451,13 @@ void do_resets( CHAR_DATA * ch, char *argument )
     char arg5[MAX_INPUT_LENGTH];
     RESET_DATA *pReset = NULL;
 
-/*    if ( ch->pcdata &&
-       ( ch->in_room->vnum < ch->pcdata->vnum_range[0]
-       || ch->in_room->vnum > ch->pcdata->vnum_range[1] ) )
-       {
-          send_to_char( "You're not authorized to use this command here.\n\r", ch );
-          return;
-       }    */
+    /*    if ( ch->pcdata &&
+           ( ch->in_room->vnum < ch->pcdata->vnum_range[0]
+           || ch->in_room->vnum > ch->pcdata->vnum_range[1] ) )
+           {
+              send_to_char( "You're not authorized to use this command here.\n\r", ch );
+              return;
+           }    */
 
     argument = one_argument( argument, arg );
     argument = one_argument( argument, arg2 );
@@ -1517,7 +1524,7 @@ void do_resets( CHAR_DATA * ch, char *argument )
                 RESET_DATA *prev = NULL;
 
                 for ( pReset = pRoom->reset_first; pReset;
-                      pReset = pReset->next )
+                        pReset = pReset->next )
                 {
                     if ( ++iReset == insert_loc )
                         break;
@@ -1537,8 +1544,8 @@ void do_resets( CHAR_DATA * ch, char *argument )
                     pRoom->reset_first = pRoom->reset_first->next;
 
                 for ( pRoom->reset_last = pRoom->reset_first;
-                      pRoom->reset_last->next;
-                      pRoom->reset_last = pRoom->reset_last->next );
+                        pRoom->reset_last->next;
+                        pRoom->reset_last = pRoom->reset_last->next );
             }
 
             free_reset_data( pReset );
@@ -1550,112 +1557,112 @@ void do_resets( CHAR_DATA * ch, char *argument )
              * Add a reset.
              * ------------
              */
-        if ( ( !str_cmp( arg2, "mob" ) && is_number( arg3 ) )
-                 || ( !str_cmp( arg2, "obj" ) && is_number( arg3 ) ) )
-        {
-            /*
-             * Check to see if the mob or object to be reset exists
-             * in the game.  This is added because of Rajic's fat 
-             * fingers - Dorzak Tempestuous Realms
-             */
-            if ( !str_cmp( arg2, "mob" ) )
+            if ( ( !str_cmp( arg2, "mob" ) && is_number( arg3 ) )
+                    || ( !str_cmp( arg2, "obj" ) && is_number( arg3 ) ) )
             {
-                MOB_INDEX_DATA *pMobIndex;
-                if ( ( pMobIndex = get_mob_index( atoi( arg3 ) ) ) == NULL )
-                {
-                    send_to_char( "No mob has that vnum.- Invalid Reset\n\r",
-                                  ch );
-                    return;
-                }
-            }
-            if ( !str_cmp( arg2, "obj" ) )
-            {
-                OBJ_INDEX_DATA *pObjIndex;
-                if ( ( pObjIndex = get_obj_index( atoi( arg3 ) ) ) == NULL )
-                {
-                    send_to_char( "No object has that vnum.\n\r", ch );
-                    return;
-                }
-            }
-
-            /*
-             * Check for Mobile reset.
-             * -----------------------
-             */
-            if ( !str_cmp( arg2, "mob" ) )
-            {
-                pReset = new_reset_data(  );
-                pReset->command = 'M';
-                pReset->vnum = atoi( arg3 );
-                pReset->arg2 = is_number( arg4 ) ? atoi( arg4 ) : 1;    /* Max # */
-                pReset->arg3 = ch->in_room->vnum;
-            }
-            else
                 /*
-                 * Check for Object reset.
+                 * Check to see if the mob or object to be reset exists
+                 * in the game.  This is added because of Rajic's fat
+                 * fingers - Dorzak Tempestuous Realms
+                 */
+                if ( !str_cmp( arg2, "mob" ) )
+                {
+                    MOB_INDEX_DATA *pMobIndex;
+                    if ( ( pMobIndex = get_mob_index( atoi( arg3 ) ) ) == NULL )
+                    {
+                        send_to_char( "No mob has that vnum.- Invalid Reset\n\r",
+                                      ch );
+                        return;
+                    }
+                }
+                if ( !str_cmp( arg2, "obj" ) )
+                {
+                    OBJ_INDEX_DATA *pObjIndex;
+                    if ( ( pObjIndex = get_obj_index( atoi( arg3 ) ) ) == NULL )
+                    {
+                        send_to_char( "No object has that vnum.\n\r", ch );
+                        return;
+                    }
+                }
+
+                /*
+                 * Check for Mobile reset.
                  * -----------------------
                  */
-            if ( !str_cmp( arg2, "obj" ) )
-            {
-                pReset = new_reset_data(  );
-                pReset->vnum = atoi( arg3 );
-                /*
-                 * Inside another object.
-                 * ----------------------
-                 */
-                if ( !str_prefix( arg4, "inside" ) )
+                if ( !str_cmp( arg2, "mob" ) )
                 {
-                    pReset->command = 'P';
-                    pReset->arg2 = 0;
-                    pReset->arg3 = is_number( arg5 ) ? atoi( arg5 ) : 1;
-                }
-                else
-                    /*
-                     * Inside the room.
-                     * ----------------
-                     */
-                if ( !str_cmp( arg4, "room" ) )
-                {
-                    pReset->command = 'O';
-                    pReset->arg2 = 0;
+                    pReset = new_reset_data(  );
+                    pReset->command = 'M';
+                    pReset->vnum = atoi( arg3 );
+                    pReset->arg2 = is_number( arg4 ) ? atoi( arg4 ) : 1;    /* Max # */
                     pReset->arg3 = ch->in_room->vnum;
                 }
                 else
                     /*
-                     * Into a Mobile's inventory.
-                     * --------------------------
+                     * Check for Object reset.
+                     * -----------------------
                      */
-                {
-                    if ( flag_value( wear_loc_flags, arg4 ) == NO_FLAG )
+                    if ( !str_cmp( arg2, "obj" ) )
                     {
-                        send_to_char( "Resets: '? wear-loc'\n\r", ch );
-                        return;
+                        pReset = new_reset_data(  );
+                        pReset->vnum = atoi( arg3 );
+                        /*
+                         * Inside another object.
+                         * ----------------------
+                         */
+                        if ( !str_prefix( arg4, "inside" ) )
+                        {
+                            pReset->command = 'P';
+                            pReset->arg2 = 0;
+                            pReset->arg3 = is_number( arg5 ) ? atoi( arg5 ) : 1;
+                        }
+                        else
+                            /*
+                             * Inside the room.
+                             * ----------------
+                             */
+                            if ( !str_cmp( arg4, "room" ) )
+                            {
+                                pReset->command = 'O';
+                                pReset->arg2 = 0;
+                                pReset->arg3 = ch->in_room->vnum;
+                            }
+                            else
+                                /*
+                                 * Into a Mobile's inventory.
+                                 * --------------------------
+                                 */
+                            {
+                                if ( flag_value( wear_loc_flags, arg4 ) == NO_FLAG )
+                                {
+                                    send_to_char( "Resets: '? wear-loc'\n\r", ch );
+                                    return;
+                                }
+
+                                pReset->arg3 = flag_value( wear_loc_flags, arg4 );
+                                if ( pReset->arg3 == WEAR_NONE )
+                                    pReset->command = 'G';
+                                else
+                                    pReset->command = 'E';
+                            }
                     }
 
-                    pReset->arg3 = flag_value( wear_loc_flags, arg4 );
-                    if ( pReset->arg3 == WEAR_NONE )
-                        pReset->command = 'G';
-                    else
-                        pReset->command = 'E';
-                }
+                SET_BIT( ch->in_room->area->area_flags, AREA_CHANGED );
+
+                add_reset( ch->in_room, pReset, atoi( arg ) );
+                send_to_char( "Reset added.\n\r", ch );
             }
-
-            SET_BIT( ch->in_room->area->area_flags, AREA_CHANGED );
-
-            add_reset( ch->in_room, pReset, atoi( arg ) );
-            send_to_char( "Reset added.\n\r", ch );
-        }
-        else
-        {
-            send_to_char( "Syntax: RESET <number> OBJ <vnum> <wear_loc>\n\r",
-                          ch );
-            send_to_char( "        RESET <number> OBJ <vnum> in <vnum>\n\r",
-                          ch );
-            send_to_char( "        RESET <number> OBJ <vnum> room\n\r", ch );
-            send_to_char( "        RESET <number> MOB <vnum> [<max #>]\n\r",
-                          ch );
-            send_to_char( "        RESET <number> DELETE\n\r", ch );
-        }
+            else
+            {
+                send_to_char( "Syntax: RESET <number> OBJ <vnum> <wear_loc>\n\r",
+                              ch );
+                send_to_char( "        RESET <number> OBJ <vnum> in <vnum>\n\r",
+                              ch );
+                send_to_char( "        RESET <number> OBJ <vnum> room\n\r", ch );
+                send_to_char( "        RESET <number> MOB <vnum> [<max #>]\n\r",
+                              ch );
+                send_to_char( "        RESET <number> DELETE\n\r", ch );
+            }
     }
 
     return;
@@ -1704,7 +1711,7 @@ int get_new_mprog_vnum( void )
             vnum = pMudProg->vnum;
 
     for ( pMprogGroup = mprog_group_first; pMprogGroup;
-          pMprogGroup = pMprogGroup->next )
+            pMprogGroup = pMprogGroup->next )
         if ( pMprogGroup->vnum > vnum )
             vnum = pMprogGroup->vnum;
 

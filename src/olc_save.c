@@ -26,7 +26,7 @@
  * Ported to EmberMUD by Thanatos and Tyrluk of ToED      		          *
  * (Temple of Eternal Death)    			                     		  *
  * Tyrluk   - morn@telmaron.com or dajy@mindspring.com			          *
- * Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com              * 
+ * Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com              *
  * Heavily modified by Zane (zane@supernova.org)                          *
  **************************************************************************/
 
@@ -103,7 +103,7 @@ void save_area_list(  )
      */
     fprintf( fp, "%s\n", sysconfig.help_file );
     fprintf( fp, "%s\n", sysconfig.todo_file );
-/*	fprintf( fp, "social.are\n" );*//* ROM OLC */
+    /*	fprintf( fp, "social.are\n" );*//* ROM OLC */
     fprintf( fp, "%s\n", sysconfig.clans_file );
 
     for ( pArea = area_first; pArea; pArea = pArea->next )
@@ -121,7 +121,7 @@ void save_area_list(  )
  * ROM OLC
  * Used in save_mobile and save_object below.  Writes
  * flags on the form fread_flag reads.
- * 
+ *
  * buf[] must hold at least 32+1 characters.
  *
  * -- Hugin
@@ -277,11 +277,11 @@ void save_object( FILE * fp, OBJ_INDEX_DATA * pObjIndex )
     fprintf( fp, "%s ", fwrite_flag( pObjIndex->extra_flags, buf ) );
     fprintf( fp, "%s\n", fwrite_flag( pObjIndex->wear_flags, buf ) );
 
-/*
- *  Using fwrite_flag to write most values gives a strange
- *  looking area file, consider making a case for each
- *  item type later.
- */
+    /*
+     *  Using fwrite_flag to write most values gives a strange
+     *  looking area file, consider making a case for each
+     *  item type later.
+     */
 
     switch ( pObjIndex->item_type )
     {
@@ -411,7 +411,7 @@ void save_rooms( FILE * fp, AREA_DATA * pArea )
     for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
     {
         for ( pRoomIndex = room_index_hash[iHash]; pRoomIndex;
-              pRoomIndex = pRoomIndex->next )
+                pRoomIndex = pRoomIndex->next )
         {
             if ( pRoomIndex->area == pArea )
             {
@@ -430,52 +430,52 @@ void save_rooms( FILE * fp, AREA_DATA * pArea )
                 for ( door = 0; door < MAX_DIR; door++ )    /* I hate this! */
                 {
                     if ( ( pExit = pRoomIndex->exit[door] )
-                         && pExit->u1.to_room )
+                            && pExit->u1.to_room )
                     {
                         int locks = 0;
                         if ( IS_SET( pExit->rs_flags, EX_ISDOOR )
-                             && ( !IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
-/* ROM OLC */
-                             && ( !IS_SET( pExit->rs_flags, EX_HIDDEN ) )
-                             && ( !IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
+                                /* ROM OLC */
+                                && ( !IS_SET( pExit->rs_flags, EX_HIDDEN ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
                             locks = 1;
                         if ( IS_SET( pExit->rs_flags, EX_ISDOOR )
-                             && ( IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
-                             && ( !IS_SET( pExit->rs_flags, EX_HIDDEN ) )
-                             && ( !IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
+                                && ( IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_HIDDEN ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
                             locks = 2;
-/* Removed for ROM OLC *//*added back by Thexder */
+                        /* Removed for ROM OLC *//*added back by Thexder */
                         if ( IS_SET( pExit->rs_flags, EX_ISDOOR )
-                             && ( !IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
-                             && ( IS_SET( pExit->rs_flags, EX_HIDDEN ) )
-                             && ( IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
+                                && ( IS_SET( pExit->rs_flags, EX_HIDDEN ) )
+                                && ( IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
                             locks = 3;
                         if ( IS_SET( pExit->rs_flags, EX_ISDOOR )
-                             && ( IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
-                             && ( IS_SET( pExit->rs_flags, EX_HIDDEN ) )
-                             && ( IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
+                                && ( IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
+                                && ( IS_SET( pExit->rs_flags, EX_HIDDEN ) )
+                                && ( IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
                             locks = 4;
                         if ( IS_SET( pExit->rs_flags, EX_ISDOOR )
-                             && ( !IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
-                             && ( !IS_SET( pExit->rs_flags, EX_HIDDEN ) )
-                             && ( IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_HIDDEN ) )
+                                && ( IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
                             locks = 5;
                         if ( IS_SET( pExit->rs_flags, EX_ISDOOR )
-                             && ( IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
-                             && ( !IS_SET( pExit->rs_flags, EX_HIDDEN ) )
-                             && ( IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
+                                && ( IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_HIDDEN ) )
+                                && ( IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
                             locks = 6;
                         if ( IS_SET( pExit->rs_flags, EX_ISDOOR )
-                             && ( !IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
-                             && ( IS_SET( pExit->rs_flags, EX_HIDDEN ) )
-                             && ( !IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
+                                && ( IS_SET( pExit->rs_flags, EX_HIDDEN ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
                             locks = 7;
                         if ( IS_SET( pExit->rs_flags, EX_ISDOOR )
-                             && ( IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
-                             && ( IS_SET( pExit->rs_flags, EX_HIDDEN ) )
-                             && ( !IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
+                                && ( IS_SET( pExit->rs_flags, EX_PICKPROOF ) )
+                                && ( IS_SET( pExit->rs_flags, EX_HIDDEN ) )
+                                && ( !IS_SET( pExit->rs_flags, EX_PASSPROOF ) ) )
                             locks = 8;
-/* ROM OLC */
+                        /* ROM OLC */
 
                         fprintf( fp, "D%d\n", pExit->orig_door );
                         fprintf( fp, "%s~\n",
@@ -520,7 +520,7 @@ void save_mudprogs_area( FILE * fp, AREA_DATA * pArea )
             {
                 /* Write the Prog Groups */
                 for ( pGroupList = pMobIndex->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     fprintf( fp, "M %d %d %s Load to: %s\n", pMobIndex->vnum,
                              pGroupList->mprog_group->vnum,
                              pGroupList->mprog_group->name,
@@ -534,11 +534,11 @@ void save_mudprogs_area( FILE * fp, AREA_DATA * pArea )
                     iFound = 0;
 
                     for ( pGroupList = pMobIndex->mprog_groups; pGroupList;
-                          pGroupList = pGroupList->next )
+                            pGroupList = pGroupList->next )
                         for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                              pInnerList; pInnerList = pInnerList->next )
+                                pInnerList; pInnerList = pInnerList->next )
                             if ( pList->mudprog->vnum ==
-                                 pInnerList->mudprog->vnum )
+                                    pInnerList->mudprog->vnum )
                                 iFound = 1;
 
                     if ( !iFound )
@@ -556,7 +556,7 @@ void save_mudprogs_area( FILE * fp, AREA_DATA * pArea )
             {
                 /* Write the Prog Groups */
                 for ( pGroupList = pRoom->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     fprintf( fp, "R %d %d %s Load to: %s\n", pRoom->vnum,
                              pGroupList->mprog_group->vnum,
                              pGroupList->mprog_group->name, pRoom->name );
@@ -569,11 +569,11 @@ void save_mudprogs_area( FILE * fp, AREA_DATA * pArea )
                     iFound = 0;
 
                     for ( pGroupList = pRoom->mprog_groups; pGroupList;
-                          pGroupList = pGroupList->next )
+                            pGroupList = pGroupList->next )
                         for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                              pInnerList; pInnerList = pInnerList->next )
+                                pInnerList; pInnerList = pInnerList->next )
                             if ( pList->mudprog->vnum ==
-                                 pInnerList->mudprog->vnum )
+                                    pInnerList->mudprog->vnum )
                                 iFound = 1;
 
                     if ( !iFound )
@@ -591,7 +591,7 @@ void save_mudprogs_area( FILE * fp, AREA_DATA * pArea )
             {
                 /* Write the Prog Groups */
                 for ( pGroupList = pObj->mprog_groups; pGroupList;
-                      pGroupList = pGroupList->next )
+                        pGroupList = pGroupList->next )
                     fprintf( fp, "O %d %d %s Load to: %s\n", pObj->vnum,
                              pGroupList->mprog_group->vnum,
                              pGroupList->mprog_group->name, pObj->short_descr );
@@ -604,11 +604,11 @@ void save_mudprogs_area( FILE * fp, AREA_DATA * pArea )
                     iFound = 0;
 
                     for ( pGroupList = pObj->mprog_groups; pGroupList;
-                          pGroupList = pGroupList->next )
+                            pGroupList = pGroupList->next )
                         for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                              pInnerList; pInnerList = pInnerList->next )
+                                pInnerList; pInnerList = pInnerList->next )
                             if ( pList->mudprog->vnum ==
-                                 pInnerList->mudprog->vnum )
+                                    pInnerList->mudprog->vnum )
                                 iFound = 1;
 
                     if ( !iFound )
@@ -641,23 +641,23 @@ void save_door_resets( FILE * fp, AREA_DATA * pArea )
     for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
     {
         for ( pRoomIndex = room_index_hash[iHash]; pRoomIndex;
-              pRoomIndex = pRoomIndex->next )
+                pRoomIndex = pRoomIndex->next )
         {
             if ( pRoomIndex->area == pArea )
             {
                 for ( door = 0; door < MAX_DIR; door++ )
                 {
                     if ( ( pExit = pRoomIndex->exit[door] )
-                         && pExit->u1.to_room
-                         && ( IS_SET( pExit->rs_flags, EX_CLOSED )
-                              || IS_SET( pExit->rs_flags, EX_LOCKED ) ) )
+                            && pExit->u1.to_room
+                            && ( IS_SET( pExit->rs_flags, EX_CLOSED )
+                                 || IS_SET( pExit->rs_flags, EX_LOCKED ) ) )
                     {
                         if IS_SET
-                            ( pExit->rs_flags, EX_CLOSED ) flags = 0;
+                        ( pExit->rs_flags, EX_CLOSED ) flags = 0;
                         if IS_SET
-                            ( pExit->rs_flags, EX_LOCKED ) flags = 1;
+                        ( pExit->rs_flags, EX_LOCKED ) flags = 1;
                         if IS_SET
-                            ( pExit->rs_flags, EX_PICKPROOF ) flags = 2;
+                        ( pExit->rs_flags, EX_PICKPROOF ) flags = 2;
                         fprintf( fp, "D 0 %d %d %d\n",
                                  pRoomIndex->vnum, pExit->orig_door, flags );
                     }
@@ -693,7 +693,7 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
             if ( pRoom->area == pArea )
             {
                 for ( pReset = pRoom->reset_first; pReset;
-                      pReset = pReset->next )
+                        pReset = pReset->next )
                 {
                     switch ( pReset->command )
                     {
@@ -727,7 +727,7 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
 
                     case 'O':
                         if ( pReset->vnum < 0 ||
-                             pReset->arg2 < 0 || pReset->arg3 < -1 )
+                                pReset->arg2 < 0 || pReset->arg3 < -1 )
                         {
                             bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                             bug( "Save_resets: in file %s.  Reset not saved",
@@ -756,7 +756,7 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
 
                     case 'P':
                         if ( pReset->vnum < 0 ||
-                             pReset->arg2 < 0 || pReset->arg3 < -1 )
+                                pReset->arg2 < 0 || pReset->arg3 < -1 )
                         {
                             bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                             bug( "Save_resets: in file %s.  Reset not saved",
@@ -780,7 +780,7 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
 
                     case 'G':
                         if ( pReset->vnum < 0 ||
-                             pReset->arg2 < 0 || pReset->arg3 < -1 )
+                                pReset->arg2 < 0 || pReset->arg3 < -1 )
                         {
                             bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                             bug( "Save_resets: in file %s.  Reset not saved",
@@ -811,7 +811,7 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
 
                     case 'E':
                         if ( pReset->vnum < 0 ||
-                             pReset->arg2 < 0 || pReset->arg3 < -1 )
+                                pReset->arg2 < 0 || pReset->arg3 < -1 )
                         {
                             bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                             bug( "Save_resets: in file %s.  Reset not saved",
@@ -838,7 +838,7 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
 
                     case 'R':
                         if ( pReset->vnum < 0 ||
-                             pReset->arg2 < 0 || pReset->arg3 < 0 )
+                                pReset->arg2 < 0 || pReset->arg3 < 0 )
                         {
                             bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                             bug( "Save_resets: in file %s.  Reset not saved",
@@ -859,9 +859,9 @@ void save_resets( FILE * fp, AREA_DATA * pArea )
                     }
 #endif
 #if !defined( VERBOSE )
-case 'M':
+                case 'M':
                     if ( pReset->vnum < 0 ||
-                         pReset->arg2 < 0 || pReset->arg3 < 0 )
+                            pReset->arg2 < 0 || pReset->arg3 < 0 )
                     {
                         bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                         bug( "Save_resets: in file %s.  Reset not saved",
@@ -877,9 +877,9 @@ case 'M':
                     }
                     break;
 
-case 'O':
+                case 'O':
                     if ( pReset->vnum < 0 ||
-                         pReset->arg2 < 0 || pReset->arg3 < -1 )
+                            pReset->arg2 < 0 || pReset->arg3 < -1 )
                     {
                         bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                         bug( "Save_resets: in file %s.  Reset not saved",
@@ -895,9 +895,9 @@ case 'O':
                     }
                     break;
 
-case 'P':
+                case 'P':
                     if ( pReset->vnum < 0 ||
-                         pReset->arg2 < 0 || pReset->arg3 < -1 )
+                            pReset->arg2 < 0 || pReset->arg3 < -1 )
                     {
                         bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                         bug( "Save_resets: in file %s.  Reset not saved",
@@ -912,9 +912,9 @@ case 'P':
                     }
                     break;
 
-case 'G':
+                case 'G':
                     if ( pReset->vnum < 0 ||
-                         pReset->arg2 < 0 || pReset->arg3 < -1 )
+                            pReset->arg2 < 0 || pReset->arg3 < -1 )
                     {
                         bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                         bug( "Save_resets: in file %s.  Reset not saved",
@@ -928,9 +928,9 @@ case 'G':
                     }
                     break;
 
-case 'E':
+                case 'E':
                     if ( pReset->vnum < 0 ||
-                         pReset->arg2 < 0 || pReset->arg3 < -1 )
+                            pReset->arg2 < 0 || pReset->arg3 < -1 )
                     {
                         bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                         bug( "Save_resets: in file %s.  Reset not saved",
@@ -944,12 +944,12 @@ case 'E':
                     }
                     break;
 
-case 'D':
+                case 'D':
                     break;
 
-case 'R':
+                case 'R':
                     if ( pReset->vnum < 0 ||
-                         pReset->arg2 < 0 || pReset->arg3 < 0 )
+                            pReset->arg2 < 0 || pReset->arg3 < 0 )
                     {
                         bug( "Save_resets: Bad Reset data: vnum(%d) arg2(%d) arg3(%d)", pReset->vnum, pReset->arg2, pReset->arg3 );
                         bug( "Save_resets: in file %s.  Reset not saved",
@@ -992,7 +992,7 @@ void save_shops( FILE * fp, AREA_DATA * pArea )
     for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
     {
         for ( pMobIndex = mob_index_hash[iHash]; pMobIndex;
-              pMobIndex = pMobIndex->next )
+                pMobIndex = pMobIndex->next )
         {
             if ( pMobIndex && pMobIndex->area == pArea && pMobIndex->pShop )
             {
@@ -1042,7 +1042,7 @@ void save_area( AREA_DATA * pArea )
     fprintf( fp, "Builders    %s~\n", fix_string( pArea->builders ) );
     fprintf( fp, "VNUMs       %d %d\n", pArea->lvnum, pArea->uvnum );
     fprintf( fp, "Security    %d\n", pArea->security );
-/*    fprintf( fp, "Recall      %d\n",         pArea->recall );  ROM OLC */
+    /*    fprintf( fp, "Recall      %d\n",         pArea->recall );  ROM OLC */
     fprintf( fp, "End\n\n\n\n" );
 
     save_mobiles( fp, pArea );
@@ -1196,7 +1196,7 @@ void do_asave( CHAR_DATA * ch, char *argument )
     /*------------------- */
 
     if ( !str_cmp( "mudprogs", arg ) || !str_cmp( "progs", arg )
-         || !str_cmp( "mprogs", arg ) )
+            || !str_cmp( "mprogs", arg ) )
     {
         save_mudprogs(  );
         send_to_char( "MudProgs file saved!\n\r", ch );
@@ -1207,7 +1207,7 @@ void do_asave( CHAR_DATA * ch, char *argument )
     /* -------------------------------------- */
 
     if ( ( !str_cmp( "world", arg ) || !str_cmp( "all", arg ) )
-         && IS_IMMORTAL( ch ) )
+            && IS_IMMORTAL( ch ) )
     {
         save_area_list(  );
         save_todo(  );
@@ -1464,7 +1464,7 @@ void save_mudprogs( void )
 
     fprintf( fp, "#PROGGROUPS\n" );
     for ( pMprogGroup = mprog_group_first; pMprogGroup;
-          pMprogGroup = pMprogGroup->next )
+            pMprogGroup = pMprogGroup->next )
     {
         fprintf( fp, "#%d\n%s~\n%s~\n", pMprogGroup->vnum, pMprogGroup->name,
                  pMprogGroup->description );

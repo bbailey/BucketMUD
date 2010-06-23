@@ -31,7 +31,7 @@ DECLARE_DO_FUN( do_help );
 void do_account( CHAR_DATA * ch, char *argument )
 {
     long gold = 0;              /* silver = 0 */
-/*   int diff, bonus = 0;*/
+    /*   int diff, bonus = 0;*/
     char buf[MAX_STRING_LENGTH];
     char const *Class = class_table[ch->Class].name;
 
@@ -41,7 +41,7 @@ void do_account( CHAR_DATA * ch, char *argument )
      * No chainmail, No service!
      */
     if ( ( IS_NPC( ch ) || IS_SET( ch->act, ACT_PET ) )
-         || ( IS_IMMORTAL( ch ) ) )
+            || ( IS_IMMORTAL( ch ) ) )
     {
         send_to_char( "Only players need money!\n\r", ch );
         return;
@@ -81,13 +81,13 @@ void do_deposit( CHAR_DATA * ch, char *argument )
      * No chainmail, No service!
      */
     if ( ( IS_NPC( ch ) || IS_SET( ch->act, ACT_PET ) )
-         || ( IS_IMMORTAL( ch ) ) )
+            || ( IS_IMMORTAL( ch ) ) )
     {
         send_to_char( "Only players need money!\n\r", ch );
         return;
     }
     if ( ch->in_room != get_room_index( ROOM_VNUM_BANK )
-         && str_cmp( Class, "thief" ) )
+            && str_cmp( Class, "thief" ) )
     {
         send_to_char( "You must be in the Bank to deposit.\n\r", ch );
         return;
@@ -123,8 +123,8 @@ void do_deposit( CHAR_DATA * ch, char *argument )
                 act( "A thief lurks in the shadows here.", ch, NULL, NULL,
                      TO_ROOM );
                 send_to_char
-                    ( "GBS: You aren't allowed in Here, you'd better go!\n\r",
-                      ch );
+                ( "GBS: You aren't allowed in Here, you'd better go!\n\r",
+                  ch );
                 return;
             }
             else
@@ -136,10 +136,10 @@ void do_deposit( CHAR_DATA * ch, char *argument )
                     if ( amount <= 0 )
                     {
                         send_to_char
-                            ( "GBS: To deposit you must give money!\n\r", ch );
+                        ( "GBS: To deposit you must give money!\n\r", ch );
                         send_to_char
-                            ( "     For more information Type 'Bank'.\n\r",
-                              ch );
+                        ( "     For more information Type 'Bank'.\n\r",
+                          ch );
                         return;
                     }
                     if ( !str_cmp( arg2, "gold" ) )
@@ -147,8 +147,8 @@ void do_deposit( CHAR_DATA * ch, char *argument )
                         if ( ch->gold < amount )
                         {
                             send_to_char
-                                ( "GBS: You don't have that much gold.\n\r",
-                                  ch );
+                            ( "GBS: You don't have that much gold.\n\r",
+                              ch );
                             return;
                         }
                         else
@@ -191,7 +191,7 @@ void do_deposit( CHAR_DATA * ch, char *argument )
                 act( "A raider is Here to kill the Guildmaster.", ch, NULL,
                      NULL, TO_ROOM );
                 send_to_char
-                    ( "You aren't allowed in Here, you'd better go!\n\r", ch );
+                ( "You aren't allowed in Here, you'd better go!\n\r", ch );
                 return;
             }
             else
@@ -204,11 +204,11 @@ void do_deposit( CHAR_DATA * ch, char *argument )
                     {
 
                         send_to_char
-                            ( "THIEF: To deposit you must give money!\n\r",
-                              ch );
+                        ( "THIEF: To deposit you must give money!\n\r",
+                          ch );
                         send_to_char
-                            ( "       For more information Type 'Bank'.\n\r",
-                              ch );
+                        ( "       For more information Type 'Bank'.\n\r",
+                          ch );
                         return;
                     }
                     if ( !str_cmp( arg2, "gold" ) )
@@ -216,8 +216,8 @@ void do_deposit( CHAR_DATA * ch, char *argument )
                         if ( ch->gold < amount )
                         {
                             send_to_char
-                                ( "THIEF: You don't have that much gold.\n\r",
-                                  ch );
+                            ( "THIEF: You don't have that much gold.\n\r",
+                              ch );
                             return;
                         }
                         else
@@ -233,29 +233,29 @@ void do_deposit( CHAR_DATA * ch, char *argument )
                             return;
                         }
                     }
-/*               if(!str_cmp( arg2, "silver"))
-               {
-                  if (ch->silver < amount)
-                  {
-                     send_to_char("THIEF: You don't have that much silver.\n\r",ch);
-                     return;
-                  }
-                  else
-                  {
-                     ch->pcdata->silver_bank += amount;
-                     ch->silver -= amount;
-                     act("$n hides silver under a bedroll.", ch,NULL,NULL, TO_ROOM);
-                     sprintf( buf, "THIEF: You have hidden %ld Silver.\n\r   Bedroll: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
-                     send_to_char( buf, ch);
-                     return;
-                  }
-               } */
+                    /*               if(!str_cmp( arg2, "silver"))
+                                   {
+                                      if (ch->silver < amount)
+                                      {
+                                         send_to_char("THIEF: You don't have that much silver.\n\r",ch);
+                                         return;
+                                      }
+                                      else
+                                      {
+                                         ch->pcdata->silver_bank += amount;
+                                         ch->silver -= amount;
+                                         act("$n hides silver under a bedroll.", ch,NULL,NULL, TO_ROOM);
+                                         sprintf( buf, "THIEF: You have hidden %ld Silver.\n\r   Bedroll: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
+                                         send_to_char( buf, ch);
+                                         return;
+                                      }
+                                   } */
                 }
                 else
                 {
                     send_to_char
-                        ( "You might want to tell me what you want to deposit. For all I know, you might be trying to deposit your mothers ashes.\n\r",
-                          ch );
+                    ( "You might want to tell me what you want to deposit. For all I know, you might be trying to deposit your mothers ashes.\n\r",
+                      ch );
                 }
             }
         }
@@ -281,13 +281,13 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
      * No chainmail, No service!
      */
     if ( ( IS_NPC( ch ) || IS_SET( ch->act, ACT_PET ) )
-         || ( IS_IMMORTAL( ch ) ) )
+            || ( IS_IMMORTAL( ch ) ) )
     {
         send_to_char( "Only players need money!\n\r", ch );
         return;
     }
     if ( ch->in_room != get_room_index( ROOM_VNUM_BANK )
-         && str_cmp( Class, "thief" ) )
+            && str_cmp( Class, "thief" ) )
     {
         send_to_char( "You must be in the Bank to withdraw.\n\r", ch );
         return;
@@ -323,7 +323,7 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
                 act( "A thief lurks in the shadows here.", ch, NULL, NULL,
                      TO_ROOM );
                 send_to_char
-                    ( "You aren't allowed in Here, you'd better go!\n\r", ch );
+                ( "You aren't allowed in Here, you'd better go!\n\r", ch );
                 return;
             }
             else
@@ -335,8 +335,8 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
                     if ( amount <= 0 )
                     {
                         send_to_char
-                            ( "GBS: To withdraw you must give an amount!\n\r",
-                              ch );
+                        ( "GBS: To withdraw you must give an amount!\n\r",
+                          ch );
                         send_to_char( "     For information Type 'Bank'.\n\r",
                                       ch );
                         return;
@@ -346,8 +346,8 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
                         if ( ch->pcdata->gold_bank < amount )
                         {
                             send_to_char
-                                ( "GBS: You don't have that much gold squirreled away.\n\r",
-                                  ch );
+                            ( "GBS: You don't have that much gold squirreled away.\n\r",
+                              ch );
                             return;
                         }
                         else
@@ -363,29 +363,29 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
                             return;
                         }
                     }
-/*               if(!str_cmp( arg2, "silver"))
-               {
-                  if (ch->pcdata->silver_bank < amount)
-                  {
-                     send_to_char("GBS: You don't have that much silver squirreled away.\n\r",ch);
-                     return;
-                  }
-                  else
-                  {
-                     ch->pcdata->silver_bank -= amount;
-                     ch->silver += amount;
-                     act("$n withdraws silver from $s account.", ch,NULL,NULL, TO_ROOM);
-                     sprintf( buf, "GBS: You have withdrawn %ld Silver.\n\r   Account: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
-                     send_to_char( buf, ch);
-                     return;
-                  }
-               }*/
+                    /*               if(!str_cmp( arg2, "silver"))
+                                   {
+                                      if (ch->pcdata->silver_bank < amount)
+                                      {
+                                         send_to_char("GBS: You don't have that much silver squirreled away.\n\r",ch);
+                                         return;
+                                      }
+                                      else
+                                      {
+                                         ch->pcdata->silver_bank -= amount;
+                                         ch->silver += amount;
+                                         act("$n withdraws silver from $s account.", ch,NULL,NULL, TO_ROOM);
+                                         sprintf( buf, "GBS: You have withdrawn %ld Silver.\n\r   Account: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
+                                         send_to_char( buf, ch);
+                                         return;
+                                      }
+                                   }*/
                 }
                 else
                 {
                     send_to_char
-                        ( "Are you trying to withdraw gold? Or corpses?\n\r",
-                          ch );
+                    ( "Are you trying to withdraw gold? Or corpses?\n\r",
+                      ch );
                 }
             }
         }
@@ -396,7 +396,7 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
                 act( "A raider is Here to kill the Guildmaster.", ch, NULL,
                      NULL, TO_ROOM );
                 send_to_char
-                    ( "You aren't allowed in Here, you'd better go!\n\r", ch );
+                ( "You aren't allowed in Here, you'd better go!\n\r", ch );
                 return;
             }
             else
@@ -408,8 +408,8 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
                     if ( amount <= 0 )
                     {
                         send_to_char
-                            ( "THIEF: To withdraw you must give an amount!\n\r",
-                              ch );
+                        ( "THIEF: To withdraw you must give an amount!\n\r",
+                          ch );
                         return;
                     }
                     if ( !str_cmp( arg2, "gold" ) )
@@ -417,8 +417,8 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
                         if ( ch->pcdata->gold_bank < amount )
                         {
                             send_to_char
-                                ( "THIEF: You don't have that much gold squirreled away.\n\r",
-                                  ch );
+                            ( "THIEF: You don't have that much gold squirreled away.\n\r",
+                              ch );
                             return;
                         }
                         else
@@ -434,29 +434,29 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
                             return;
                         }
                     }
-/*               if(!str_cmp( arg2, "silver"))
-               {
-                  if (ch->pcdata->silver_bank < amount)
-                  {
-                     send_to_char("THIEF: You don't have that much silver squirreled away.\n\r",ch);
-                     return;
-                  }
-                  else
-                  {
-                     ch->pcdata->silver_bank -= amount;
-                     ch->silver += amount;
-                     act("$n grabs silver from under a bedroll.", ch,NULL,NULL, TO_ROOM);
-                     sprintf( buf, "THIEF: You have grabbed %ld Silver.\n\r   Bedroll: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
-                     send_to_char( buf, ch);
-                     return;
-                  }
-               }*/
+                    /*               if(!str_cmp( arg2, "silver"))
+                                   {
+                                      if (ch->pcdata->silver_bank < amount)
+                                      {
+                                         send_to_char("THIEF: You don't have that much silver squirreled away.\n\r",ch);
+                                         return;
+                                      }
+                                      else
+                                      {
+                                         ch->pcdata->silver_bank -= amount;
+                                         ch->silver += amount;
+                                         act("$n grabs silver from under a bedroll.", ch,NULL,NULL, TO_ROOM);
+                                         sprintf( buf, "THIEF: You have grabbed %ld Silver.\n\r   Bedroll: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
+                                         send_to_char( buf, ch);
+                                         return;
+                                      }
+                                   }*/
                 }
                 else
                 {
                     send_to_char
-                        ( "I will give you nothing if you dont tell me what you want!\n\r",
-                          ch );
+                    ( "I will give you nothing if you dont tell me what you want!\n\r",
+                      ch );
                 }
             }
         }
@@ -473,7 +473,7 @@ void do_withdraw( CHAR_DATA * ch, char *argument )
 void do_bank( CHAR_DATA * ch, char *argument )
 {
     send_to_char
-        ( " In order to use the bank, you must first be at the bank. Once your at the\n\r  bank, you can type withdraw, account or deposit. Since the bank does not want\n\r to do business with thieving people, thieves and the like must depend on their\n\r guild masters in order to store their loot.\n\r",
-          ch );
+    ( " In order to use the bank, you must first be at the bank. Once your at the\n\r  bank, you can type withdraw, account or deposit. Since the bank does not want\n\r to do business with thieving people, thieves and the like must depend on their\n\r guild masters in order to store their loot.\n\r",
+      ch );
     return;
 }

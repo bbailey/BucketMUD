@@ -13,7 +13,8 @@ SOCIALLIST_DATA *social_last = NULL;
 
 sh_int socials_count = 0;
 
-const struct olc_cmd_type socialedit_table[] = {
+const struct olc_cmd_type socialedit_table[] =
+{
     {"show", socialedit_show},
     {"create", socialedit_create},
     {"name", socialedit_name},
@@ -217,17 +218,17 @@ void do_socialedit( CHAR_DATA * ch, char *argument )
     argument = one_argument( argument, arg );
     vnum = atoi( arg );
     for ( pSocial = social_first; pSocial != NULL; pSocial = pSocial->next )
-/*    if ( is_number( arg ) )*/
+        /*    if ( is_number( arg ) )*/
         if ( is_name( arg, pSocial->name ) || atoi( arg ) == pSocial->vnum )
         {
 
-/*	pSocial = get_social_by_vnum( vnum );
-	
-	if ( !pSocial )
-	{
-	    send_to_char( "That social number does not exist!\n\r", ch );
-	    return;
-	}*/
+            /*	pSocial = get_social_by_vnum( vnum );
+
+            	if ( !pSocial )
+            	{
+            	    send_to_char( "That social number does not exist!\n\r", ch );
+            	    return;
+            	}*/
 
             ch->desc->pEdit = ( void * ) pSocial;
             ch->desc->editor = ED_SOCIAL;
@@ -405,7 +406,7 @@ bool socialedit_name( CHAR_DATA * ch, char *argument )
     if ( strlen( argument ) != str_len( argument ) )
     {
         send_to_char
-            ( "ERROR!  Color codes are not allowed in social names.\n\r", ch );
+        ( "ERROR!  Color codes are not allowed in social names.\n\r", ch );
         return FALSE;
     }
 
@@ -651,7 +652,7 @@ void do_socialfind( CHAR_DATA * ch, char *argument )
     for ( pSocial = social_first; pSocial != NULL; pSocial = pSocial->next )
     {
         if ( ( is_name( argument, pSocial->name ) )
-             || ( !str_cmp( argument, "all" ) ) )
+                || ( !str_cmp( argument, "all" ) ) )
         {
             count++;
             if ( IS_IMMORTAL( ch ) )

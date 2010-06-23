@@ -53,16 +53,16 @@
 #define COLOR_TELL  RED
 
 /*
- * Additionally, the names of four of the channels 
+ * Additionally, the names of four of the channels
  * can be changed (be sure to change above too).
  */
 #define CFG_OOC_NAME "OOC"
 #define CFG_GOS_NAME "GOSSIP"
 #define CFG_MUS_NAME "MUSIC"
 #define CFG_GOC_NAME "GOCIAL"
-/* 
- * Drunk.  Here is where you can define whether a channel is 
- * going to check for drunk status.  If it is defined here, the 
+/*
+ * Drunk.  Here is where you can define whether a channel is
+ * going to check for drunk status.  If it is defined here, the
  * channel will check.  The only one off by default is tells.
  * Also you can turn on or off drunk movement.
  */
@@ -80,10 +80,10 @@
 #define CLANTALK_DRUNK
 #define DRUNK_MOVE
 
-/* These values describe how the "Auction Info" command works. You can 
-comment/un-comment just about anything and everything as far as 
-showing/hiding stats goes for an item. They are pretty self explanatory. 
-By default the auction info will list the "Short descr, Level, Type, Extra 
+/* These values describe how the "Auction Info" command works. You can
+comment/un-comment just about anything and everything as far as
+showing/hiding stats goes for an item. They are pretty self explanatory.
+By default the auction info will list the "Short descr, Level, Type, Extra
 Keywords, and Weapon Types."
 -Lancelight
 */
@@ -106,7 +106,7 @@ Keywords, and Weapon Types."
 /* The following allows will only take affect if you have defined the
 allow item type above!!!! */
 
-/* #define ALLOW_SCROLL_POTION_PILL *//* This shows the level and spells 
+/* #define ALLOW_SCROLL_POTION_PILL *//* This shows the level and spells
    of a scroll/pill/potion */
 /* #define ALLOW_WAND_STAFF *//* This shows all the stats of a wand/staff */
 #define ALLOW_WEAPON            /*This must be on for the weapon allows to work */
@@ -148,11 +148,11 @@ allow item type above!!!! */
 
 /*
  * These settings determine the minimum position to use certain
- * channels, and to use tells.  Some people like to dampen all 
+ * channels, and to use tells.  Some people like to dampen all
  * RP related communication while sleeping, other prefer to let
  * players talk while sleeping, these allow you to decide for
  * your individual MUD.  These are in the process of being
- * implemented.  Currently they are only defined, and not 
+ * implemented.  Currently they are only defined, and not
  * used.
  */
 
@@ -176,7 +176,7 @@ cp. */
 #define CP_PENALTY      35
 #define CP_TRAIN_MIN    30
 
-/* The next item has to do with auto_hatred.   Auto_hatred makes it so 
+/* The next item has to do with auto_hatred.   Auto_hatred makes it so
    that if you attack a mob, it will remember you forever (or until imm
    peace command is used in the same room with them).  If you don't want
    to use it, uncomment #undef AUTO_HATE, and comment out #def AUTO_HATE
@@ -199,7 +199,7 @@ cp. */
 
 /* The next has to do with selling multiples of the same item, or when
    a shopkeeper already has at least 1 of something.  Set to 0 if you
-   only want your shopkeepers buying 1 of an item. 
+   only want your shopkeepers buying 1 of an item.
 */
 
 #define MORE_COST_MULTIPLIER  .75
@@ -262,11 +262,11 @@ NOSUMMONLEVELPK) then define NOSUMMONPKSAME to 1)
 #define NOSUMMONLEVELPK 5
 #define NOSUMMONPKSAME 0
 #define NOSUMMONLEVELNONPK 5    /* This is not the same as the above 2!!
-                                   Read the above examples for reasons why */
+Read the above examples for reasons why */
 
 /*  This has to do with a way to buy for free.  You buy a bunch of stuff
  *  from the shopkeeper then kill him.  You get your gold back and then
- *  some.  
+ *  some.
  */
 
 #define SHOPKEEPER_NOSTEAL
@@ -277,21 +277,21 @@ stats that they can have (Str, Con, Int, Dex, Wis). The default is set to
 have values HIGHER then 30, make sure you edit the const.c Stat tables to
 reflect the higher values. Also remember to edit races that will be using
 the higher values. Remeber only use 25 or 30 unless you edit
-the tables in const.c or you will get errors all over const.c 
+the tables in const.c or you will get errors all over const.c
 -Lancelight*/
 
 #define MAX_ATTAINABLE_STATS 25
 
 /* Another stat item.  This defines the penalty for re-rolling your stats
- * if you don't like the first roll.  This defines how close it is possible to 
- * role stats to the max stat in the pc race table.   When rolling stats it 
- * was being penalized by 5 which meant if your race could get a 22 in DEX, 
- * the highest you could roll during creation was 18.   With this you can 
- * adjust that number.  This was suggested by Zak on the mailing list.  This 
+ * if you don't like the first roll.  This defines how close it is possible to
+ * role stats to the max stat in the pc race table.   When rolling stats it
+ * was being penalized by 5 which meant if your race could get a 22 in DEX,
+ * the highest you could roll during creation was 18.   With this you can
+ * adjust that number.  This was suggested by Zak on the mailing list.  This
  * number should be positive because it is subtracted from the value that is rolled.
  *
  * Default is 0 or the penalty is OFF.
- 
+
    - Dorzak 7/19/2001 */
 
 #define REROLL_PENALTY   0
@@ -315,7 +315,7 @@ the tables in const.c or you will get errors all over const.c
 #define ONLY_DAGGER_BS
 
 /* MAX_COUNTER_PERCENTAGE
- * 
+ *
  * If the skill check on a counter-attack succeeds then we roll a 1d100
  * die and check against MAX_COUNTER_PERCENTAGE to see if we proceed with
  * the counter attack.  The default is 20 (or 20%), this means that if a
@@ -331,8 +331,8 @@ the tables in const.c or you will get errors all over const.c
 
 #define MAX_COUNTER_PERCENTAGE      20
 
-   /* This is if you want to allow players to convert trains into practices
-      the opposite of gain convert. */
+/* This is if you want to allow players to convert trains into practices
+   the opposite of gain convert. */
 /* #define CAN_GAIN_REVERT */
 #undef CAN_GAIN_REVERT
 #define CAN_GAIN_CONVERT
@@ -461,35 +461,35 @@ turn it on.
 runs. -Lancelight*/
 
 #define LOOTING_CHANCE 10       /* gives a 1 to 10 chance of getting an item from
-                                   whoever the player killed. The higher the number,
-                                   the less of a chance the killer has of getting an
-                                   item from the poor victim. -Lancelight */
+whoever the player killed. The higher the number,
+the less of a chance the killer has of getting an
+item from the poor victim. -Lancelight */
 #define LOOTING_ALLOWED 1       /* Change this to 0 if you do not want to allow player
-                                   looting at all.
-                                   1 = Use random Looting
-                                   2 = Allow full looting
-                                   FULL corpse Looting. I do NOT recommend setting this
-                                   unless you know that your players can handle it. */
+looting at all.
+1 = Use random Looting
+    2 = Allow full looting
+        FULL corpse Looting. I do NOT recommend setting this
+            unless you know that your players can handle it. */
 
-/* The following defines will determine how the jail systems acts. The 1st
-2 determine how the jail releases people. It can either release them to a
-certain vnum, or to a players recall room. Currently it defaults to the
-players recall room. But if you want it to go to a certian room, then
-set JAIL_RELEASE_RECALL to 0, and give JAIL_RELEASE_VNUM the vnum u want
-it to release to.
+            /* The following defines will determine how the jail systems acts. The 1st
+            2 determine how the jail releases people. It can either release them to a
+            certain vnum, or to a players recall room. Currently it defaults to the
+            players recall room. But if you want it to go to a certian room, then
+            set JAIL_RELEASE_RECALL to 0, and give JAIL_RELEASE_VNUM the vnum u want
+            it to release to.
 
-The next couple defines, determines what the jail command will do to the player,
-like if they can wear items, whether it removes them, what channels they
-can talk on and what commands they can do while in jail. To turn something
-on, give it a 1. To turn it off, give it a 0.
- -Lancelight */
+            The next couple defines, determines what the jail command will do to the player,
+            like if they can wear items, whether it removes them, what channels they
+            can talk on and what commands they can do while in jail. To turn something
+            on, give it a 1. To turn it off, give it a 0.
+             -Lancelight */
 
-/* IMPORTANT NOTE!!!:
-Remember, if you change ANYTHING here, you must do a complete re-compile.
-dont compile just the affected object file or else you will find that the
-changes will not work.
--Lancelight
-*/
+            /* IMPORTANT NOTE!!!:
+            Remember, if you change ANYTHING here, you must do a complete re-compile.
+            dont compile just the affected object file or else you will find that the
+            changes will not work.
+            -Lancelight
+            */
 #define JAIL_RELEASE_VNUM 3001
 #define JAIL_RELEASE_RECALL 1
 
@@ -506,26 +506,26 @@ changes will not work.
 #define JAIL_CAN_SAC 0          /* Can they junk/sac items in jail */
 #define JAIL_CAN_DONATE 0       /* Can they donate EQ while in jail */
 
-/* The below email define should be used for sending email to the mud
-admin to request that they be permitted to play on the mud from their
-site. They will only get this msg if you have set something like ban
-foo.com permit. When a char logs in who does not have the permit flag,
-they will recieve a msg where to send email to. This includes new players
-aswell. Feel free to use this anyplace else in the mud aswell.
--Lancelight
-*/
+            /* The below email define should be used for sending email to the mud
+            admin to request that they be permitted to play on the mud from their
+            site. They will only get this msg if you have set something like ban
+            foo.com permit. When a char logs in who does not have the permit flag,
+            they will recieve a msg where to send email to. This includes new players
+            aswell. Feel free to use this anyplace else in the mud aswell.
+            -Lancelight
+            */
 
 #define MUD_ADMIN_EMAIL	"mudadmin@whatever.com"
 
-/* This vnums are for use with the banking system. The 1st one is for
-players that are not thieves. The second is the vnum of the thieves guild.
--Lancelight
-*/
+            /* This vnums are for use with the banking system. The 1st one is for
+            players that are not thieves. The second is the vnum of the thieves guild.
+            -Lancelight
+            */
 
 #define ROOM_VNUM_BANK        3008
 #define ROOM_VNUM_BANK_THIEF  3029
 
-/* Color defines for use in config.h primarily */
+            /* Color defines for use in config.h primarily */
 #define GREY          "`w"
 #define WHITE         "`W"
 #define GREEN         "`G"
@@ -543,7 +543,7 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define DARK_GREY     "`K"
 #define BLACK         "`k"
 
-/* RT ASCII conversions -- used so we can have letters in this file */
+            /* RT ASCII conversions -- used so we can have letters in this file */
 
 #define A                       1
 #define B                       2
@@ -580,36 +580,36 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define dd                      536870912
 #define ee                      1073741824
 
-/*
- * String and memory management parameters.
- */
+            /*
+             * String and memory management parameters.
+             */
 
-/*
- * The Max_Key_Hash should always be a prime number that's at least 20%
- * or more larger than the number of unique strings you're loading in.
- * Use the mem command in the mud to determine how many non-unique
- * strings are being loaded and guess at the number of duplicates. :)
- * -Zane
- */
+            /*
+             * The Max_Key_Hash should always be a prime number that's at least 20%
+             * or more larger than the number of unique strings you're loading in.
+             * Use the mem command in the mud to determine how many non-unique
+             * strings are being loaded and guess at the number of duplicates. :)
+             * -Zane
+             */
 #define MAX_KEY_HASH            65413
 #define MAX_STRING_LENGTH        4096
 #define MAX_INPUT_LENGTH          256
 #define PAGELEN                    22
 
-/*
- * The NULL_FILE is held open so that we have a stream handle in reserve,
- * so players can go ahead and telnet to all the other descriptors.
- * Then we close it whenever we need to open a file (e.g. a save file).
- */
+            /*
+             * The NULL_FILE is held open so that we have a stream handle in reserve,
+             * so players can go ahead and telnet to all the other descriptors.
+             * Then we close it whenever we need to open a file (e.g. a save file).
+             */
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
 
-/*
- * Game parameters.
- * Increase the max'es if you add more of something.
- * Adjust the pulse numbers to suit yourself.
- */
+            /*
+             * Game parameters.
+             * Increase the max'es if you add more of something.
+             * Adjust the pulse numbers to suit yourself.
+             */
 #define MAX_CREATION_POINTS        10   /* Not enforced, but used in some calculations */
-                                       /* Namely the max CP cost for a skill/spell */
+            /* Namely the max CP cost for a skill/spell */
 #define MAX_SOCIALS               256
 #define MAX_SKILL                 200
 #define MAX_GROUP                  36
@@ -621,8 +621,8 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define MAX_EXP            2147483647
 #define MAX_CHUNKS                 80   /* Used in ssm.c */
 #define MAX_OUTPUT_BUFFER       32000
-/* Allows you to tune how easy/hard it is to level.  For instance 0.75 would give you only
- * 75% of the exp you'd normally get from any task basically making it 25% hard to level - Zane */
+            /* Allows you to tune how easy/hard it is to level.  For instance 0.75 would give you only
+             * 75% of the exp you'd normally get from any task basically making it 25% hard to level - Zane */
 #define EXP_MULTIPLIER				1
 #define MAX_ATTACK_TYPE            32
 #define MAX_LAST_LENGTH            20   /*How long can the last list be? */
@@ -650,7 +650,7 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define HERO                    LEVEL_HERO
 
 #ifdef IMC
-   #include "imc.h"
+#include "imc.h"
 #endif
 
 #define CLASS_MAGE              0
@@ -659,9 +659,9 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define CLASS_WARRIOR           3
 #define CLASS_CONSOLE           4
 
-/*
- * Per-class stuff.
- */
+            /*
+             * Per-class stuff.
+             */
 
 #define MAX_GUILD       2
 #define MAX_STATS       5
@@ -671,11 +671,11 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define STAT_DEX        3
 #define STAT_CON        4
 
-/********************************************************
- *                                                      *
- * Clan stuff  -- By Kyle Boyd                          *
- *                                                      *
- ********************************************************/
+            /********************************************************
+             *                                                      *
+             * Clan stuff  -- By Kyle Boyd                          *
+             *                                                      *
+             ********************************************************/
 
 #define MAX_CLAN                   10
 #define MAX_CLAN_MEMBERS           30
@@ -683,7 +683,7 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define MIN_CLAN_LEVEL             15
 #define RANK_CAN_ACCEPT             3
 
-/* Clan anti-flags */
+            /* Clan anti-flags */
 #define CLAN_ANTI_MAGE          (A)
 #define CLAN_ANTI_CLERIC        (B)
 #define CLAN_ANTI_THIEF         (C)
@@ -693,7 +693,7 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define CLAN_REQ_PK             (J)
 #define CLAN_NO_PK              (K)
 
-/* Clan flags */
+            /* Clan flags */
 #define CLAN_CREATING           (A) /* just made... not available to chars */
 #define CLAN_ACTIVE             (B) /* Actively recruiting */
 #define CLAN_INACTIVE           (C) /* Not recruiting */
@@ -703,7 +703,7 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define CLAN_PRIVATE            (G) /* Members not displayed on the who list except to each other. */
 #define CLAN_SECRET             (H) /* Only members and IMPs even know about this clan. */
 
-/* Flags for joining a clan */
+            /* Flags for joining a clan */
 #define JOIN_START              0   /* Not trying to join a clan */
 #define JOIN_SEE_LIST           1   /* Starts trying to join, so show char the list */
 #define JOIN_CONFIRM            2   /* make sure char is joining the right clan */
@@ -713,13 +713,13 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define JOIN_DECIDING           6   /* char is deciding to accept or decline an offer to join */
 #define JOIN_RESIGNING          7   /* char needs to confirm resignation */
 
-/*********** End Clan Configs ************/
+            /*********** End Clan Configs ************/
 
-/********************************************************
- *                                                      *
- * Mob/Room/Obj Progs                                   *
- *                                                      *
- ********************************************************/
+            /********************************************************
+             *                                                      *
+             * Mob/Room/Obj Progs                                   *
+             *                                                      *
+             ********************************************************/
 
 #define ERROR_PROG             -1
 #define IN_FILE_PROG            0
@@ -755,16 +755,16 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define HIT_PROG				aa  /*                      oprogs  */
 #define FIGHTGROUP_PROG         bb  /* mprogs                       */
 
-/* Prog Types */
+            /* Prog Types */
 #define MOB_PROG					A
 #define OBJ_PROG					B
 #define ROOM_PROG					C
 
-/********* End Mob/Room/Obj Progs **********/
+            /********* End Mob/Room/Obj Progs **********/
 
-/*
- * Time and weather stuff.
- */
+            /*
+             * Time and weather stuff.
+             */
 #define SUN_DARK                    0
 #define SUN_RISE                    1
 #define SUN_LIGHT                   2
@@ -775,20 +775,20 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define SKY_RAINING                 2
 #define SKY_LIGHTNING               3
 
-/*
- * Well known mob virtual numbers.
- * Defined in #MOBILES.
- */
+            /*
+             * Well known mob virtual numbers.
+             * Defined in #MOBILES.
+             */
 #define MOB_VNUM_FIDO              3090
 #define MOB_VNUM_CITYGUARD         3060
 #define MOB_VNUM_VAMPIRE           3404
 
-/* for newly created characters - Kyle */
+            /* for newly created characters - Kyle */
 #define STARTING_PRACTICES 5
 #define STARTING_TRAINS 1
 #define STARTING_TITLE "the newbie"
 
-/*Spicey "consider" comments*/
+            /*Spicey "consider" comments*/
 
 #define CON_MSG1 "$N can kiss his ass goodbye!"
 #define CON_MSG2 "You can smell $N's fear as he knows your strength."
@@ -798,24 +798,24 @@ players that are not thieves. The second is the vnum of the thieves guild.
 #define CON_MSG6 "$N will chew you up and spit you out."
 #define CON_MSG7 "$N will open up a whole case of whoop-ass on you."
 
-/* Define this if you want a some 'Different' and a few more damage
-messages. 
-THIS IS ONLY FOR DAMAGE_BY_NUMBER !!!!!!!!!!!! Do NOT turn it on unless
-you have DAMAGE_BY_NUMBER on aswell or freaky things may
-happen. DAMAGE_BY_NUMBER is on by default so you shouldnt need to worry
-about that unless you have changed it.
- -Lancelight*/
+            /* Define this if you want a some 'Different' and a few more damage
+            messages.
+            THIS IS ONLY FOR DAMAGE_BY_NUMBER !!!!!!!!!!!! Do NOT turn it on unless
+            you have DAMAGE_BY_NUMBER on aswell or freaky things may
+            happen. DAMAGE_BY_NUMBER is on by default so you shouldnt need to worry
+            about that unless you have changed it.
+             -Lancelight*/
 
-/*
-#define EXTRA_DAMAGE_MSGS
-*/
+            /*
+            #define EXTRA_DAMAGE_MSGS
+            */
 
-/* These are some example extra damage msg's. It gives you more options
-then the default
-messages, aswell as some messages that are unique to Ember and not ROM
-style. They aren't
-the prettiest things in the world, but its something to enhance the look
-of combat. */
+            /* These are some example extra damage msg's. It gives you more options
+            then the default
+            messages, aswell as some messages that are unique to Ember and not ROM
+            style. They aren't
+            the prettiest things in the world, but its something to enhance the look
+            of combat. */
 
 #define CFG_DAM0   "miss"
 #define CFG_DAM0S  "misses"
@@ -965,29 +965,29 @@ of combat. */
 #define CFG1_DAM_HUGE  "do UNSPEAKABLE things to"
 #define CFG1_DAM_HUGES "does UNSPEAKABLE things to"
 
-/*
- * TO types for act.
- */
+            /*
+             * TO types for act.
+             */
 #define TO_ROOM             0
 #define TO_NOTVICT          1
 #define TO_VICT             2
 #define TO_CHAR             3
 
-/*
- * Shop types.
- */
+            /*
+             * Shop types.
+             */
 #define MAX_TRADE        5
 
-/*
-* supermob vnums...used for room progs and
-* eventually object progs
-*/
+            /*
+            * supermob vnums...used for room progs and
+            * eventually object progs
+            */
 #define MOB_VNUM_SUPERMOB       4
 #define ROOM_VNUM_SUPERMOB      4
 
-/*
- * Connected state for a channel.
- */
+            /*
+             * Connected state for a channel.
+             */
 #define CON_PLAYING                      0
 #define CON_GET_NAME                     1
 #define CON_GET_OLD_PASSWORD             2
@@ -1014,17 +1014,17 @@ of combat. */
 #define CON_NOTE_FINISH                 23
 #define CON_BEGIN_REMORT                24
 
-/***************************************************************************
- *                                                                         *
- *                   VALUES OF INTEREST TO AREA BUILDERS                   *
- *                   (Start of section ... start here)                     *
- *                                                                         *
- ***************************************************************************/
+            /***************************************************************************
+             *                                                                         *
+             *                   VALUES OF INTEREST TO AREA BUILDERS                   *
+             *                   (Start of section ... start here)                     *
+             *                                                                         *
+             ***************************************************************************/
 
-/*
- * ACT bits for mobs.
- * Used in #MOBILES.
- */
+            /*
+             * ACT bits for mobs.
+             * Used in #MOBILES.
+             */
 #define ACT_IS_NPC              (A) /* Auto set for mobs    */
 #define ACT_SENTINEL            (B) /* Stays in one room    */
 #define ACT_SCAVENGER           (C) /* Picks up objects     */
@@ -1048,7 +1048,7 @@ of combat. */
 #define ACT_UPDATE_ALWAYS       (cc)
 #define ACT_NO_KILL             (dd)
 
-/* damage classes */
+            /* damage classes */
 #define DAM_NONE                0
 #define DAM_BASH                1
 #define DAM_PIERCE              2
@@ -1068,7 +1068,7 @@ of combat. */
 #define DAM_OTHER               16
 #define DAM_HARM                17
 
-/* OFF bits for mobiles */
+            /* OFF bits for mobiles */
 #define OFF_AREA_ATTACK         (A)
 #define OFF_BACKSTAB            (B)
 #define OFF_BASH                (C)
@@ -1091,13 +1091,13 @@ of combat. */
 #define ASSIST_GUARD            (T)
 #define ASSIST_VNUM             (U)
 
-/* return values for check_imm */
+            /* return values for check_imm */
 #define IS_NORMAL               0
 #define IS_IMMUNE               1
 #define IS_RESISTANT            2
 #define IS_VULNERABLE           3
 
-/* IMM bits for mobs */
+            /* IMM bits for mobs */
 #define IMM_SUMMON              (A)
 #define IMM_CHARM               (B)
 #define IMM_MAGIC               (C)
@@ -1118,7 +1118,7 @@ of combat. */
 #define IMM_DROWNING            (R)
 #define IMM_LIGHT               (S)
 
-/* RES bits for mobs */
+            /* RES bits for mobs */
 #define RES_CHARM               (B)
 #define RES_MAGIC               (C)
 #define RES_WEAPON              (D)
@@ -1138,7 +1138,7 @@ of combat. */
 #define RES_DROWNING            (R)
 #define RES_LIGHT               (S)
 
-/* VULN bits for mobs */
+            /* VULN bits for mobs */
 #define VULN_MAGIC              (C)
 #define VULN_WEAPON             (D)
 #define VULN_BASH               (E)
@@ -1160,14 +1160,14 @@ of combat. */
 #define VULN_SILVER             (Y)
 #define VULN_IRON               (Z)
 
-/* body form */
+            /* body form */
 #define FORM_EDIBLE             (A)
 #define FORM_POISON             (B)
 #define FORM_MAGICAL            (C)
 #define FORM_INSTANT_DECAY      (D)
 #define FORM_OTHER              (E) /* defined by material bit */
 
-/* actual form */
+            /* actual form */
 #define FORM_ANIMAL             (G)
 #define FORM_SENTIENT           (H)
 #define FORM_UNDEAD             (I)
@@ -1192,7 +1192,7 @@ of combat. */
 #define FORM_FISH               (bb)
 #define FORM_COLD_BLOOD         (cc)
 
-/* body parts */
+            /* body parts */
 #define PART_HEAD               (A)
 #define PART_ARMS               (B)
 #define PART_LEGS               (C)
@@ -1210,17 +1210,17 @@ of combat. */
 #define PART_FINS               (O)
 #define PART_WINGS              (P)
 #define PART_TAIL               (Q)
-/* for combat */
+            /* for combat */
 #define PART_CLAWS              (U)
 #define PART_FANGS              (V)
 #define PART_HORNS              (W)
 #define PART_SCALES             (X)
 #define PART_TUSKS              (Y)
 
-/*
- * Bits for 'affected_by'.
- * Used in #MOBILES.
- */
+            /*
+             * Bits for 'affected_by'.
+             * Used in #MOBILES.
+             */
 #define AFF_BLIND               (A)
 #define AFF_INVISIBLE           (B)
 #define AFF_DETECT_EVIL         (C)
@@ -1254,26 +1254,26 @@ of combat. */
 #define AFF_REGENERATION        (cc)
 #define AFF_WEB                 (dd)
 
-/*
- * Sex.
- * Used in #MOBILES.
- */
+            /*
+             * Sex.
+             * Used in #MOBILES.
+             */
 #define SEX_NEUTRAL                   0
 #define SEX_MALE                      1
 #define SEX_FEMALE                    2
 
-/* AC types */
+            /* AC types */
 #define AC_PIERCE                       0
 #define AC_BASH                         1
 #define AC_SLASH                        2
 #define AC_EXOTIC                       3
 
-/* dice */
+            /* dice */
 #define DICE_NUMBER                     0
 #define DICE_TYPE                       1
 #define DICE_BONUS                      2
 
-/* size */
+            /* size */
 #define SIZE_TINY                       0
 #define SIZE_SMALL                      1
 #define SIZE_MEDIUM                     2
@@ -1281,10 +1281,10 @@ of combat. */
 #define SIZE_HUGE                       4
 #define SIZE_GIANT                      5
 
-/*
- * Well known object virtual numbers.
- * Defined in #OBJECTS.
- */
+            /*
+             * Well known object virtual numbers.
+             * Defined in #OBJECTS.
+             */
 #define OBJ_VNUM_MONEY_ONE            2
 #define OBJ_VNUM_MONEY_SOME           3
 
@@ -1314,11 +1314,11 @@ of combat. */
 #define OBJ_VNUM_EMPTY_VIAL        3399
 
 #define OBJ_VNUM_PORTAL       3392  /* This is the vnum of the portal
-                                       created using the Nexus Spell */
-/*
- * Item types.
- * Used in #OBJECTS.
- */
+            created using the Nexus Spell */
+            /*
+             * Item types.
+             * Used in #OBJECTS.
+             */
 #define ITEM_LIGHT                    1
 #define ITEM_SCROLL                   2
 #define ITEM_WAND                     3
@@ -1344,7 +1344,7 @@ of combat. */
 #define ITEM_MAP                     28
 #define ITEM_PORTAL                  29
 
-/* furniture flags */
+            /* furniture flags */
 #define STAND_AT		(A)
 #define STAND_ON		(B)
 #define STAND_IN		(C)
@@ -1361,10 +1361,10 @@ of combat. */
 #define PUT_ON			(N)
 #define PUT_IN			(O)
 #define PUT_INSIDE		(P)
-/*
- * Extra flags.
- * Used in #OBJECTS.
- */
+            /*
+             * Extra flags.
+             * Used in #OBJECTS.
+             */
 #define ITEM_GLOW               (A)
 #define ITEM_HUM                (B)
 #define ITEM_DARK               (C)
@@ -1390,23 +1390,23 @@ of combat. */
 #define ITEM_ANTI_NEUTER          (Z)
 #define ITEM_ANTI_FEMALE          (aa)
 #define ITEM_ROT_PLAYER_DEATH     (bb)
-/*
- * Added for Random Object code
- */
+            /*
+             * Added for Random Object code
+             */
 #define ITEM_PLAIN_ARMOR      (A)
 #define ITEM_MAGIC_ARMOR      (B)
 #define ITEM_RAND_RING        (C)
-/* #define ITEM_MAGIC_ITEM    (D) */
+            /* #define ITEM_MAGIC_ITEM    (D) */
 #define ITEM_PLAIN_WEAPON     (E)
 #define ITEM_MAGIC_WEAPON     (F)
 #define ITEM_RAND_CONTAINER   (G)
-/* #define ITEM_RAND_LIGHT    (H) */
+            /* #define ITEM_RAND_LIGHT    (H) */
 #define ITEM_RAND_ANY (I)
 
-/*
- * Wear flags.
- * Used in #OBJECTS.
- */
+            /*
+             * Wear flags.
+             * Used in #OBJECTS.
+             */
 #define ITEM_TAKE               (A)
 #define ITEM_WEAR_FINGER        (B)
 #define ITEM_WEAR_NECK          (C)
@@ -1424,7 +1424,7 @@ of combat. */
 #define ITEM_HOLD               (O)
 #define ITEM_TWO_HANDS          (P)
 
-/* weapon class */
+            /* weapon class */
 #define WEAPON_EXOTIC           0
 #define WEAPON_SWORD            1
 #define WEAPON_DAGGER           2
@@ -1435,7 +1435,7 @@ of combat. */
 #define WEAPON_WHIP             7
 #define WEAPON_POLEARM          8
 
-/* weapon types */
+            /* weapon types */
 #define WEAPON_FLAMING          (A)
 #define WEAPON_FROST            (B)
 #define WEAPON_VAMPIRIC         (C)
@@ -1443,10 +1443,10 @@ of combat. */
 #define WEAPON_VORPAL           (E)
 #define WEAPON_TWO_HANDS        (F)
 
-/*
- * Apply types (for affects).
- * Used in #OBJECTS.
- */
+            /*
+             * Apply types (for affects).
+             * Used in #OBJECTS.
+             */
 #define APPLY_NONE                    0
 #define APPLY_STR                     1
 #define APPLY_DEX                     2
@@ -1474,19 +1474,19 @@ of combat. */
 #define APPLY_SAVING_SPELL           24
 #define APPLY_ALIGN                  25
 
-/*
- * Values for containers (value[1]).
- * Used in #OBJECTS.
- */
+            /*
+             * Values for containers (value[1]).
+             * Used in #OBJECTS.
+             */
 #define CONT_CLOSEABLE                1
 #define CONT_PICKPROOF                2
 #define CONT_CLOSED                   4
 #define CONT_LOCKED                   8
 
-/*
- * Well known room virtual numbers.
- * Defined in #ROOMS.
- */
+            /*
+             * Well known room virtual numbers.
+             * Defined in #ROOMS.
+             */
 #define ROOM_VNUM_LIMBO               2
 #define ROOM_VNUM_CHAT             1200
 #define ROOM_VNUM_TEMPLE           3001
@@ -1494,10 +1494,10 @@ of combat. */
 #define ROOM_VNUM_SCHOOL           3700
 #define ROOM_VNUM_DONATE           "3300"
 
-/*
- * Room flags.
- * Used in #ROOMS.
- */
+            /*
+             * Room flags.
+             * Used in #ROOMS.
+             */
 #define ROOM_DARK               (A)
 #define ROOM_NO_MOB             (C)
 #define ROOM_INDOORS            (D)
@@ -1518,10 +1518,10 @@ of combat. */
 #define ROOM_MARK               (V)
 #define ROOM_NOMAGIC            (W)
 #define ROOM_ADMIN_ONLY         (X)
-/*
- * Directions.
- * Used in #ROOMS.
- */
+            /*
+             * Directions.
+             * Used in #ROOMS.
+             */
 #define DIR_NORTH                     0
 #define DIR_EAST                      1
 #define DIR_SOUTH                     2
@@ -1529,10 +1529,10 @@ of combat. */
 #define DIR_UP                        4
 #define DIR_DOWN                      5
 
-/*
- * Exit flags.
- * Used in #ROOMS.
- */
+            /*
+             * Exit flags.
+             * Used in #ROOMS.
+             */
 #define EX_ISDOOR                     1
 #define EX_CLOSED                     2
 #define EX_LOCKED                     4
@@ -1540,10 +1540,10 @@ of combat. */
 #define EX_PASSPROOF                 16
 #define EX_HIDDEN                    32
 
-/*
- * Sector types.
- * Used in #ROOMS.
- */
+            /*
+             * Sector types.
+             * Used in #ROOMS.
+             */
 #define SECT_INSIDE                   0
 #define SECT_CITY                     1
 #define SECT_FIELD                    2
@@ -1557,10 +1557,10 @@ of combat. */
 #define SECT_DESERT                  10
 #define SECT_MAX                     11
 
-/*
- * Equpiment wear locations.
- * Used in #RESETS.
- */
+            /*
+             * Equpiment wear locations.
+             * Used in #RESETS.
+             */
 #define WEAR_NONE                    -1
 #define WEAR_LIGHT                    0
 #define WEAR_FINGER_L                 1
@@ -1583,18 +1583,18 @@ of combat. */
 #define WEAR_SECOND_WIELD            18
 #define MAX_WEAR                     19
 
-/*********** End Area Builder Values ***********/
+            /*********** End Area Builder Values ***********/
 
-/*
- * Conditions.
- */
+            /*
+             * Conditions.
+             */
 #define COND_DRUNK                    0
 #define COND_FULL                     1
 #define COND_THIRST                   2
 
-/*
- * Positions.
- */
+            /*
+             * Positions.
+             */
 #define POS_DEAD                      0
 #define POS_MORTAL                    1
 #define POS_INCAP                     2
@@ -1605,13 +1605,13 @@ of combat. */
 #define POS_FIGHTING                  7
 #define POS_STANDING                  8
 
-/*
- * ACT bits for players.
- */
+            /*
+             * ACT bits for players.
+             */
 #define PLR_IS_NPC              (A) /* Don't EVER set.      */
 #define PLR_BOUGHT_PET          (B)
 
-/* RT auto flags */
+            /* RT auto flags */
 #define PLR_AUTOASSIST          (C)
 #define PLR_AUTOEXIT            (D)
 #define PLR_AUTOLOOT            (E)
@@ -1623,14 +1623,14 @@ of combat. */
 #define PLR_BUILDING		 (K)
 #define PLR_REMORT               (L)
 #define PLR_REMORTING            (M)
-/* RT personal flags */
+            /* RT personal flags */
 #define PLR_HOLYLIGHT           (N)
 #define PLR_WIZINVIS            (O)
 #define PLR_CANLOOT             (P)
 #define PLR_NOSUMMON            (Q)
 #define PLR_NOFOLLOW            (R)
 #define PLR_COLOR               (S)
-/* Flag for ConsoleChar - Win32 - Zane */
+            /* Flag for ConsoleChar - Win32 - Zane */
 #define PLR_CONSOLE             (aa)
 
 #define PLR_AFK               (bb)
@@ -1638,19 +1638,19 @@ of combat. */
 #define PLR_CAN_EDIT            (dd)
 #define PLR_NO_ANNOUNCE         (ee)
 
-/* 2 bits reserved, U-V */
-/* Permit from Banned sites flag */
+            /* 2 bits reserved, U-V */
+            /* Permit from Banned sites flag */
 
 #define PLR_PERMIT		(T)
 
-/* penalty flags */
+            /* penalty flags */
 #define PLR_LOG                 (W)
 #define PLR_DENY                (X)
 #define PLR_FREEZE              (Y)
 #define PLR_THIEF               (Z)
 #define PLR_KILLER              (aa)
 
-/* RT comm flags -- may be used on both mobs and chars */
+            /* RT comm flags -- may be used on both mobs and chars */
 #define COMM_QUIET              (A)
 #define COMM_DEAF               (B)
 #define COMM_NOWIZ              (C)
@@ -1662,7 +1662,7 @@ of combat. */
 #define COMM_NOCLAN             (I)
 #define COMM_SNOOP_CLAN         (J)
 #define COMM_NOMUSIC            (K)
-/* display flags */
+            /* display flags */
 #define COMM_COMPACT            (L)
 #define COMM_BRIEF              (M)
 #define COMM_PROMPT             (N)
@@ -1671,40 +1671,40 @@ of combat. */
 #define COMM_NOSPOUSETALK       (Q)
 #define COMM_NOADMIN            (R)
 #define COMM_NOHERO             (S)
-/* penalties */
+            /* penalties */
 #define COMM_NOEMOTE            (T)
 #define COMM_NOSHOUT            (U)
 #define COMM_NOTELL             (V)
 #define COMM_NOCHANNELS         (W)
-/* Console Visible flag for Win32 - Zane */
+            /* Console Visible flag for Win32 - Zane */
 #define VIS_CONSOLE                             (X)
 #define COMM_NOGOC              (Y)
 #define COMM_TELLOFF            (Z)
 
-/*
- * Liquids.
- */
+            /*
+             * Liquids.
+             */
 #define LIQ_WATER        0
 #define LIQ_MAX         16
 
-/*
- * Types of attacks.
- * Must be non-overlapping with spell/skill types,
- * but may be arbitrary beyond that.
- */
+            /*
+             * Types of attacks.
+             * Must be non-overlapping with spell/skill types,
+             * but may be arbitrary beyond that.
+             */
 #define TYPE_UNDEFINED               -1
 #define TYPE_HIT                     1000
 
-/*
- *  Target types.
- */
+            /*
+             *  Target types.
+             */
 #define TAR_IGNORE                  0
 #define TAR_CHAR_OFFENSIVE          1
 #define TAR_CHAR_DEFENSIVE          2
 #define TAR_CHAR_SELF               3
 #define TAR_OBJ_INV                 4
 
-/* These are needed for the ban.c file. -Lancelight */
+            /* These are needed for the ban.c file. -Lancelight */
 
 #define BAN_SUFFIX              A
 #define BAN_PREFIX              B
@@ -1713,180 +1713,180 @@ of combat. */
 #define BAN_PERMIT              E
 #define BAN_PERMANENT           F
 
-/*
- * Object defined in limbo.are
- * Used in save.c to load objects that don't exist.
- */
+            /*
+             * Object defined in limbo.are
+             * Used in save.c to load objects that don't exist.
+             */
 #define OBJ_VNUM_DUMMY  1
 
 #define MAX_DIR 6
 #define NO_FLAG -99             /* Must not be used in flags or stats. */
 
-/* You can define or not define TRACK_THOUGH_DOORS, above, depending on
-   whether or not you want track to find paths which lead through closed
-   or hidden doors.
-*/
+            /* You can define or not define TRACK_THOUGH_DOORS, above, depending on
+               whether or not you want track to find paths which lead through closed
+               or hidden doors.
+            */
 
 #define TRACK_THROUGH_DOORS
 #define TRACK_IS_SKILL
-/* #undef TRACK_IS_SKILL */
+            /* #undef TRACK_IS_SKILL */
 
 #define TRACK_NO_PATH          -1
 #define TRACK_ALREADY_THERE    -2
 #define TRACK_ERROR            -3
 
-/*
- * Area flags.
- */
+            /*
+             * Area flags.
+             */
 #define         AREA_NONE       0
 #define         AREA_CHANGED    1   /* Area has been modified. */
 #define         AREA_ADDED      2   /* Area has been added to. */
 #define         AREA_LOADING    4   /* Used for counting in db.c */
 
-/* Begin other config options.
-   A large amount of thes options are turned off to start with.
-   Next to each one is a brief description of what changes when
-   the option is enabled or disabled.  When one of these options
-   is changed, it is usually best to recompile all the object files
-   and not just the ones affected.   - Kyle 
- */
+            /* Begin other config options.
+               A large amount of thes options are turned off to start with.
+               Next to each one is a brief description of what changes when
+               the option is enabled or disabled.  When one of these options
+               is changed, it is usually best to recompile all the object files
+               and not just the ones affected.   - Kyle
+             */
 
-/*
-#define DISABLE_MESSAGE_QUEUEING
- */
-/* This disables the add2queue and add2tell functions.
-   If you enounter crashes after a certain amount of tells have been
-   told, enable this option.
- */
+            /*
+            #define DISABLE_MESSAGE_QUEUEING
+             */
+            /* This disables the add2queue and add2tell functions.
+               If you enounter crashes after a certain amount of tells have been
+               told, enable this option.
+             */
 
-/*
-#define REQUIRE_EDIT_PERMISSION
- */
-/* This actives a command called "setedit" and makes it so all players
-   not at MAX_LEVEL cannot use the edit command unless an IMP uses setedit
-   on them first.  Use this option if you don't want unauthorized building going on.
- */
+            /*
+            #define REQUIRE_EDIT_PERMISSION
+             */
+            /* This actives a command called "setedit" and makes it so all players
+               not at MAX_LEVEL cannot use the edit command unless an IMP uses setedit
+               on them first.  Use this option if you don't want unauthorized building going on.
+             */
 
-/*
-#define REQUIRE_MUDPROG_PERMISSION
- */
-/* Same as REQUIRE_EDIT_PERMISSION, but only for MudProgs.  This way, only
-   approved players can create mprogs.  This is useful to prevent crashes and 
-   abuse of mprogs by some uneducated or beginning imms.  The IMP command is
-   "setprog".
- */
+            /*
+            #define REQUIRE_MUDPROG_PERMISSION
+             */
+            /* Same as REQUIRE_EDIT_PERMISSION, but only for MudProgs.  This way, only
+               approved players can create mprogs.  This is useful to prevent crashes and
+               abuse of mprogs by some uneducated or beginning imms.  The IMP command is
+               "setprog".
+             */
 
-/*
-#define HEAVY_DEBUG
- */
-/* This option uses a HUGE amount of disk access, so it will probably lag your mud
-   unless you have extremely fast disk access time.  Enabling this causes the mud to
-   record what it does before it does it in certain critical functions, namely interpret()
-   and the XXXX_update functions.  If you do not have a debugger or your debugger is not
-   producing usable results then try enabling this.  It will create a ####.last file in the
-   log directory, where #### is the number of the current log file.  It is a small file
-   and will be only 3 lines long at all times.  However, it will be updated over 30 times
-   per second.  When the mud crashes, check the most recent ####.last file and it will tell
-   you what the mud was doing at the time of the crash.  This alternative to log all will
-   not spam the log files like log all, remains set over crashes, and will tell you if the
-   mud crashes doing something besides interpreting a command.  -Kyle
- */
+            /*
+            #define HEAVY_DEBUG
+             */
+            /* This option uses a HUGE amount of disk access, so it will probably lag your mud
+               unless you have extremely fast disk access time.  Enabling this causes the mud to
+               record what it does before it does it in certain critical functions, namely interpret()
+               and the XXXX_update functions.  If you do not have a debugger or your debugger is not
+               producing usable results then try enabling this.  It will create a ####.last file in the
+               log directory, where #### is the number of the current log file.  It is a small file
+               and will be only 3 lines long at all times.  However, it will be updated over 30 times
+               per second.  When the mud crashes, check the most recent ####.last file and it will tell
+               you what the mud was doing at the time of the crash.  This alternative to log all will
+               not spam the log files like log all, remains set over crashes, and will tell you if the
+               mud crashes doing something besides interpreting a command.  -Kyle
+             */
 
-/*
-#define SKILL_DEBUG
-*/
+            /*
+            #define SKILL_DEBUG
+            */
 
-/* A while back a line to send something to a character whenever their skills are
-checked was inserted.   If you need that on for some reason, uncomment the above line
-*/
+            /* A while back a line to send something to a character whenever their skills are
+            checked was inserted.   If you need that on for some reason, uncomment the above line
+            */
 
 #define ANNOUNCE_CONNECTIONS
-/* Defining this sets the option to announce the entry into the mud of players via the
-   info channel.  Wizinvis imms are not announced. */
+            /* Defining this sets the option to announce the entry into the mud of players via the
+               info channel.  Wizinvis imms are not announced. */
 
 #ifdef ANNOUNCE_CONNECTIONS
 #define IMMS_CAN_HIDE
-/* With this set, immediately after entering their password and while viweing the imotd,
-   any immortal can type "hidden" to prevent themselves from being announced.
- */
+            /* With this set, immediately after entering their password and while viweing the imotd,
+               any immortal can type "hidden" to prevent themselves from being announced.
+             */
 #endif
 
-/*
-#define NO_MOB_NAMES
- */
-/* With this defined, characters may not name themselves after mobs.
-   note: this does not prevent a builder from naming a mob after a player
-   and making that character unusable.
- */
+            /*
+            #define NO_MOB_NAMES
+             */
+            /* With this defined, characters may not name themselves after mobs.
+               note: this does not prevent a builder from naming a mob after a player
+               and making that character unusable.
+             */
 
-/*
-#define USE_MORGUE
-#define ROOM_VNUM_MORGUE 3001
- */
-/* Set this to send all player corpses to the morgue when a player dies.  Room
-   3001 is the temple, so you should probably create your own morgue and set 
-   ROOM_VNUM_MORGUE to its vnum.
- */
+            /*
+            #define USE_MORGUE
+            #define ROOM_VNUM_MORGUE 3001
+             */
+            /* Set this to send all player corpses to the morgue when a player dies.  Room
+               3001 is the temple, so you should probably create your own morgue and set
+               ROOM_VNUM_MORGUE to its vnum.
+             */
 
 #define DAMAGE_BY_AMOUNT
 
-/* The mud defaults to showing damage messages based on the amount of damage done.
-   If you with to have the mud show damage messages based on the percentage of total HP taken off the mob/player rather than
-   the amount done, then comment out #define DAMAGE_BY_AMOUNT.
- */
+            /* The mud defaults to showing damage messages based on the amount of damage done.
+               If you with to have the mud show damage messages based on the percentage of total HP taken off the mob/player rather than
+               the amount done, then comment out #define DAMAGE_BY_AMOUNT.
+             */
 
-/*
-#define SHOW_DAMAGE_TO_CHARS
-*/
+            /*
+            #define SHOW_DAMAGE_TO_CHARS
+            */
 
-/* With this defined, characters see exactly how much damage they do to a mob.
-   From experience, most players really like this feature.  However, many mud
-   administrators do not like it.  It's your choice.
- */
+            /* With this defined, characters see exactly how much damage they do to a mob.
+               From experience, most players really like this feature.  However, many mud
+               administrators do not like it.  It's your choice.
+             */
 
 #define NO_OLC_WEATHER
-/* This option disables weather while a character is in string_append mode.
- */
+            /* This option disables weather while a character is in string_append mode.
+             */
 
-/* Set FACTION_EDIT_LEVEL to whatever level you want imms to have access
- * to faction OLC */
+            /* Set FACTION_EDIT_LEVEL to whatever level you want imms to have access
+             * to faction OLC */
 #define FACTION_EDIT_LEVEL MAX_LEVEL
 
-/* Set SOCIAL_EDIT_LEVEL to whatever level you want imms to have access
- * to social OLC */
+            /* Set SOCIAL_EDIT_LEVEL to whatever level you want imms to have access
+             * to social OLC */
 #define SOCIAL_EDIT_LEVEL MAX_LEVEL
 
-/* Set HELP_EDIT_LEVEL to whatever level you want imms to have access
- * to help OLC */
+            /* Set HELP_EDIT_LEVEL to whatever level you want imms to have access
+             * to help OLC */
 #define HELP_EDIT_LEVEL MAX_LEVEL
 
-/* Set TODO_EDIT_LEVEL to whatever level you want imms to have access
- * to help OLC */
+            /* Set TODO_EDIT_LEVEL to whatever level you want imms to have access
+             * to help OLC */
 #define TODO_EDIT_LEVEL MAX_LEVEL
 
-/* With this defined, the amount of faction change will be shown.  Comment
- * it out if you don't like it. */
+            /* With this defined, the amount of faction change will be shown.  Comment
+             * it out if you don't like it. */
 #define FACTION_SHOW_CHANGE_AMOUNT
 
-/* Set CFG_FACTION_INITIAL_VALUE to whatever you want players' factions to
- * default to if a default isn't found for the player's race. */
+            /* Set CFG_FACTION_INITIAL_VALUE to whatever you want players' factions to
+             * default to if a default isn't found for the player's race. */
 #define CFG_FACTION_INITIAL_VALUE 0
 
-/* Set CFG_FACTION_MAX_VALUE and CFG_FACTION_MIN_VALUE to whatever you want.
- * (keep in mind that 32000 and -32000 are the absolute max and min due
- *  to use of short int in the code) */
+            /* Set CFG_FACTION_MAX_VALUE and CFG_FACTION_MIN_VALUE to whatever you want.
+             * (keep in mind that 32000 and -32000 are the absolute max and min due
+             *  to use of short int in the code) */
 #define CFG_FACTION_MAX_VALUE 1000
 #define CFG_FACTION_MIN_VALUE -1000
 
-/* Set this to 0 to use only text descriptions for factions
- * Set this to 1 to use both text and numeric descriptions for factions
- * Set this to 2 to use only numeric descriptions for factions */
+            /* Set this to 0 to use only text descriptions for factions
+             * Set this to 1 to use both text and numeric descriptions for factions
+             * Set this to 2 to use only numeric descriptions for factions */
 #define CFG_FACTION_MESSAGES 1
 
-/* Consider message for 0% faction */
+            /* Consider message for 0% faction */
 #define CFG_FACTION_CON_0 "feels indifferent towards you"
 
-/* Consider messages for factions (within percent of maximum) */
+            /* Consider messages for factions (within percent of maximum) */
 #define CFG_FACTION_CON_15MAX "feels relatively indifferent towards you"
 #define CFG_FACTION_CON_30MAX "gives you a friendly look"
 #define CFG_FACTION_CON_45MAX "looks your way amiably"
@@ -1895,7 +1895,7 @@ checked was inserted.   If you need that on for some reason, uncomment the above
 #define CFG_FACTION_CON_90MAX "feels a great kinship towards you"
 #define CFG_FACTION_CON_MAX   "worships the ground you walk on"
 
-/* Consider messages for factions (within percent of minimum) */
+            /* Consider messages for factions (within percent of minimum) */
 #define CFG_FACTION_CON_15MIN "feels relatively indifferent towards you"
 #define CFG_FACTION_CON_30MIN "has a slight distaste for you"
 #define CFG_FACTION_CON_45MIN "looks your way apprehesively"
@@ -1904,14 +1904,14 @@ checked was inserted.   If you need that on for some reason, uncomment the above
 #define CFG_FACTION_CON_90MIN "has a great hatred for you"
 #define CFG_FACTION_CON_MIN   "loathes you"
 
-/* Set this to the faction percentage at which you want shopkeepers 
- * to refuse to deal with a person */
+            /* Set this to the faction percentage at which you want shopkeepers
+             * to refuse to deal with a person */
 #define CFG_FACTION_SHOPKEEPER_ABSOLUTE_MIN -75
 
-/* These multipliers affect the cost of an item based upon your faction
- * standing with the shopkeeper.  Note: If a shopkeeper gives someone
- * a discount when they buy from him, he'll also offer the same percent 
- * more when that person sells to him. */
+            /* These multipliers affect the cost of an item based upon your faction
+             * standing with the shopkeeper.  Note: If a shopkeeper gives someone
+             * a discount when they buy from him, he'll also offer the same percent
+             * more when that person sells to him. */
 #define CFG_FACTION_SHOPKEEPER_MIN   3  /* 200% mark-up  */
 #define CFG_FACTION_SHOPKEEPER_90MIN 2.5    /* 150% mark-up  */
 #define CFG_FACTION_SHOPKEEPER_75MIN 2  /* 100% mark-up  */
@@ -1927,5 +1927,5 @@ checked was inserted.   If you need that on for some reason, uncomment the above
 #define CFG_FACTION_SHOPKEEPER_90MAX 0.65   /*  35% discount */
 #define CFG_FACTION_SHOPKEEPER_MAX   0.65   /*  35% discount */
 
-/* This goes at the end :) */
+            /* This goes at the end :) */
 #endif

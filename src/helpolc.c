@@ -11,7 +11,8 @@
 HELP_DATA *help_first = NULL;
 HELP_DATA *help_last = NULL;
 
-const struct olc_cmd_type helpsedit_table[] = {
+const struct olc_cmd_type helpsedit_table[] =
+{
     {"show", helpsedit_show},
     {"create", helpsedit_create},
     {"keyword", helpsedit_keyword},
@@ -89,8 +90,8 @@ void do_helpedit( CHAR_DATA * ch, char *argument )
     if ( argall[0] == '\0' )
     {
         send_to_char
-            ( "Syntax: edit help createhelp\nSyntax: edit help <keyword>\n\r",
-              ch );
+        ( "Syntax: edit help createhelp\nSyntax: edit help <keyword>\n\r",
+          ch );
         return;
     }
 

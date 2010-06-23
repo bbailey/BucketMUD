@@ -202,7 +202,8 @@ void load_bans args( ( void ) );
 #define                 MAX_MEM_LIST    11
 
 void *rgFreeList[MAX_MEM_LIST];
-const int rgSizeList[MAX_MEM_LIST] = {
+const int rgSizeList[MAX_MEM_LIST] =
+{
     16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768 - 64
 };
 
@@ -303,21 +304,21 @@ void do_copyover( CHAR_DATA * ch, char *argument )
         else
         {
             fprintf( fp, "%d %s %s\n", d->descriptor, och->name, d->host );
-/*                      if (IS_SET(och->act,PLR_QUESTOR));
-			{
-				REMOVE_BIT(ch->act,PLR_QUESTOR);
-				ch->countdown = 0;
-				ch->nextquest = 0;
-				ch->questmob = 0;
-				ch->questobj = 0;
-				ch->questgiver = NULL;
-			}*//*Auto-Quest not implemented yet */
-/*                      if (och->level == 1)
-			{
-				write_to_descriptor (d->descriptor, "Since you are level one, and level one characters do not save, you gain a free level!\n\r", 0);
-				advance_level (och);
-				och->level++;
-			} */
+            /*                      if (IS_SET(och->act,PLR_QUESTOR));
+            			{
+            				REMOVE_BIT(ch->act,PLR_QUESTOR);
+            				ch->countdown = 0;
+            				ch->nextquest = 0;
+            				ch->questmob = 0;
+            				ch->questobj = 0;
+            				ch->questgiver = NULL;
+            			}*//*Auto-Quest not implemented yet */
+            /*                      if (och->level == 1)
+            			{
+            				write_to_descriptor (d->descriptor, "Since you are level one, and level one characters do not save, you gain a free level!\n\r", 0);
+            				advance_level (och);
+            				och->level++;
+            			} */
             save_char_obj( och );
             write_to_descriptor( d->descriptor, buf, sizeof( buf ) );
         }
@@ -327,7 +328,7 @@ void do_copyover( CHAR_DATA * ch, char *argument )
     fclose( fp );
 
 #ifdef IMC
-   imc_hotboot();
+    imc_hotboot();
 #endif
 
     /* Close reserve and other always-open files and release other resources */
@@ -339,10 +340,10 @@ void do_copyover( CHAR_DATA * ch, char *argument )
     sprintf( buf, "%d", port );
     sprintf( buf2, "%d", control );
 #ifdef IMC
-    if( this_imcmud )
-       snprintf( buf3, 100, "%d", this_imcmud->desc );
+    if ( this_imcmud )
+        snprintf( buf3, 100, "%d", this_imcmud->desc );
     else
-       strncpy( buf3, "-1", 100 );
+        strncpy( buf3, "-1", 100 );
 #else
     strncpy( buf3, "-1", 100 );
 #endif
@@ -373,11 +374,11 @@ void init_descriptor( DESCRIPTOR_DATA * dnew, int desc )
     dnew->outsize = 2000;
     dnew->outbuf = alloc_mem( dnew->outsize );
 
-/*     {
-	int i;
-	for (i = 0;i < MAX_HISTORY;i++)
-	dnew->hist_cmd[i][0] = '\0';
-     } */
+    /*     {
+    	int i;
+    	for (i = 0;i < MAX_HISTORY;i++)
+    	dnew->hist_cmd[i][0] = '\0';
+         } */
 }
 
 /* Recover from a copyover - load players */
@@ -411,8 +412,8 @@ void copyover_recover( void )
 
         /* Write something, and check if it goes error-free */
         if ( !write_to_descriptor
-             ( desc, "\n\rThe earth reforms, new to you as you know it...\n\r",
-               52 ) )
+                ( desc, "\n\rThe earth reforms, new to you as you know it...\n\r",
+                  52 ) )
         {
             close( desc );      /* nope */
             continue;
@@ -517,7 +518,7 @@ int boot_db(  )
     {
         init_mm(  );
     }
-/* Set the auction channel to NULL and get it ready for use. -Lancelight */
+    /* Set the auction channel to NULL and get it ready for use. -Lancelight */
 
     auction_info.item = NULL;
     auction_info.owner = NULL;
@@ -525,8 +526,8 @@ int boot_db(  )
     auction_info.current_bid = 0;
     auction_info.status = 0;
     auction_info.gold_held = 0;
-/*    auction_info.silver_held    = 0; Uncoment this for dual monatary
-systems. -Lancelight */
+    /*    auction_info.silver_held    = 0; Uncoment this for dual monatary
+    systems. -Lancelight */
 
     /*
      * Set time and weather.
@@ -693,8 +694,8 @@ systems. -Lancelight */
                     load_rooms( fpArea );
                 else if ( !str_cmp( word, "SHOPS" ) )
                     skip_section( fpArea, word );
-/*				else if ( !str_cmp( word,
-"SOCIALS"  ) ) load_socials  (fpArea);*/
+                /*				else if ( !str_cmp( word,
+                "SOCIALS"  ) ) load_socials  (fpArea);*/
                 else if ( !str_cmp( word, "FACTIONAFFS" ) )
                     skip_section( fpArea, word );
                 else
@@ -774,8 +775,8 @@ systems. -Lancelight */
                     skip_section( fpArea, word );   /*load_rooms   (fpArea) */
                 else if ( !str_cmp( word, "SHOPS" ) )
                     load_shops( fpArea );
-/*				else if ( !str_cmp( word,
-"SOCIALS"  ) ) skip_section (fpArea,word);*//*load_socials (fpArea) */
+                /*				else if ( !str_cmp( word,
+                "SOCIALS"  ) ) skip_section (fpArea,word);*//*load_socials (fpArea) */
                 else if ( !str_cmp( word, "FACTIONAFFS" ) )
                     load_factionaffs( fpArea );
                 else
@@ -869,7 +870,7 @@ void skip_section( FILE * fp, char *section )
         }
     }
     if ( !str_cmp( section, "MOBILES" ) || !str_cmp( section, "OBJECTS" )
-         || !str_cmp( section, "ROOMS" ) )
+            || !str_cmp( section, "ROOMS" ) )
     {
         for ( ;; )
         {
@@ -914,16 +915,16 @@ void skip_section( FILE * fp, char *section )
             fread_to_eol( fp );
         }
     }
-/*	if (!str_cmp( section, "SOCIALS" ))
-	{
-		for ( ; ; )
-		{
-			word = fread_word( fp );
-			if ( !strcmp( word, "#0" ) )
-				return;
-			fread_to_eol( fp );
-		}
-	}*/
+    /*	if (!str_cmp( section, "SOCIALS" ))
+    	{
+    		for ( ; ; )
+    		{
+    			word = fread_word( fp );
+    			if ( !strcmp( word, "#0" ) )
+    				return;
+    			fread_to_eol( fp );
+    		}
+    	}*/
 
     if ( !str_cmp( section, "CLANS" ) )
     {
@@ -996,7 +997,7 @@ void load_area( FILE * fp )
     pArea->lvnum = 0;
     pArea->uvnum = 0;
     pArea->area_flags = 0;
-/*  pArea->recall       = ROOM_VNUM_TEMPLE;        ROM OLC */
+    /*  pArea->recall       = ROOM_VNUM_TEMPLE;        ROM OLC */
 
     for ( ;; )
     {
@@ -1033,13 +1034,13 @@ void load_area( FILE * fp )
 
                 /* Check to ensure we have unique vnums. */
                 for ( pTempArea = area_first; pTempArea;
-                      pTempArea = pTempArea->next )
+                        pTempArea = pTempArea->next )
                     if ( pTempArea->vnum != pArea->vnum
-                         &&
-                         ( ( pArea->lvnum >= pTempArea->lvnum
-                             && pArea->lvnum <= pTempArea->uvnum )
-                           || ( pArea->uvnum >= pTempArea->lvnum
-                                && pArea->uvnum <= pTempArea->uvnum ) ) )
+                            &&
+                            ( ( pArea->lvnum >= pTempArea->lvnum
+                                && pArea->lvnum <= pTempArea->uvnum )
+                              || ( pArea->uvnum >= pTempArea->lvnum
+                                   && pArea->uvnum <= pTempArea->uvnum ) ) )
                     {
                         bug( "Overlapping vnum range!", pArea->name );
                         exit( 1 );
@@ -1050,11 +1051,11 @@ void load_area( FILE * fp )
         case 'B':
             SKEY( "Builders", pArea->builders );
             break;
-/* removed for ROM OLC
-	    case 'R':
-			KEY( "Recall", pArea->recall, fread_number( fp ) );
-			break;
-*/
+            /* removed for ROM OLC
+            	    case 'R':
+            			KEY( "Recall", pArea->recall, fread_number( fp ) );
+            			break;
+            */
         }
     }
 }
@@ -1123,12 +1124,12 @@ void load_todo( FILE * fp )
         if ( pTodo->keyword[0] == '$' )
             break;
         pTodo->text = fread_string( fp );
-/*
-	if ( !str_cmp( pTodo->keyword, "greeting" ) )
-	    help_greeting = pHelp->text;
-       
-       if (!str_cmp(pHelp->keyword, "ansigreet"))
-	 ansi_greeting = pHelp->text;*/
+        /*
+        	if ( !str_cmp( pTodo->keyword, "greeting" ) )
+        	    help_greeting = pHelp->text;
+
+               if (!str_cmp(pHelp->keyword, "ansigreet"))
+        	 ansi_greeting = pHelp->text;*/
 
         if ( todo_first == NULL )
             todo_first = pTodo;
@@ -1204,11 +1205,12 @@ void load_resets( FILE * fp )
 
         pReset = alloc_perm( sizeof( *pReset ) );
         pReset->command = letter;
-        /* if_flag */ fread_number( fp );
+        /* if_flag */
+        fread_number( fp );
         pReset->vnum = fread_number( fp );
         pReset->arg2 = fread_number( fp );
         pReset->arg3 = ( letter == 'G' || letter == 'R' )
-            ? 0 : fread_number( fp );
+                       ? 0 : fread_number( fp );
         fread_to_eol( fp );
 
         /*
@@ -1262,10 +1264,10 @@ void load_resets( FILE * fp )
             pRoomIndex = get_room_index( pReset->vnum );
 
             if ( pReset->arg2 < 0
-                 || pReset->arg2 > 5
-                 || !pRoomIndex
-                 || !( pexit = pRoomIndex->exit[pReset->arg2] )
-                 || !IS_SET( pexit->rs_flags, EX_ISDOOR ) )
+                    || pReset->arg2 > 5
+                    || !pRoomIndex
+                    || !( pexit = pRoomIndex->exit[pReset->arg2] )
+                    || !IS_SET( pexit->rs_flags, EX_ISDOOR ) )
             {
                 bug( "Load_resets: 'D': exit %d not door.", pReset->arg2 );
                 exit( 1 );
@@ -1406,7 +1408,8 @@ void load_rooms( FILE * fp )
         pRoomIndex->vnum = vnum;
         pRoomIndex->name = fread_string( fp );
         pRoomIndex->description = fread_string( fp );
-        /* Area number */ fread_number( fp );
+        /* Area number */
+        fread_number( fp );
         pRoomIndex->room_flags = fread_flag( fp );
         pRoomIndex->sector_type = fread_number( fp );
         pRoomIndex->light = 0;
@@ -1561,7 +1564,7 @@ void fix_exits( void )
     for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
     {
         for ( pRoomIndex = room_index_hash[iHash];
-              pRoomIndex != NULL; pRoomIndex = pRoomIndex->next )
+                pRoomIndex != NULL; pRoomIndex = pRoomIndex->next )
         {
             bool fexit;
 
@@ -1571,7 +1574,7 @@ void fix_exits( void )
                 if ( ( pexit = pRoomIndex->exit[door] ) != NULL )
                 {
                     if ( pexit->u1.vnum <= 0
-                         || get_room_index( pexit->u1.vnum ) == NULL )
+                            || get_room_index( pexit->u1.vnum ) == NULL )
                         pexit->u1.to_room = NULL;
                     else
                     {
@@ -1588,15 +1591,15 @@ void fix_exits( void )
     for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
     {
         for ( pRoomIndex = room_index_hash[iHash];
-              pRoomIndex != NULL; pRoomIndex = pRoomIndex->next )
+                pRoomIndex != NULL; pRoomIndex = pRoomIndex->next )
         {
             for ( door = 0; door <= 5; door++ )
             {
                 if ( ( pexit = pRoomIndex->exit[door] ) != NULL
-                     && ( to_room = pexit->u1.to_room ) != NULL
-                     && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
-                     && pexit_rev->u1.to_room != pRoomIndex
-                     && ( pRoomIndex->vnum < 1200 || pRoomIndex->vnum > 1299 ) )
+                        && ( to_room = pexit->u1.to_room ) != NULL
+                        && ( pexit_rev = to_room->exit[rev_dir[door]] ) != NULL
+                        && pexit_rev->u1.to_room != pRoomIndex
+                        && ( pRoomIndex->vnum < 1200 || pRoomIndex->vnum > 1299 ) )
                 {
                     sprintf( buf, "Fix_exits: %d:%d -> %d:%d -> %d.",
                              pRoomIndex->vnum, door,
@@ -1630,7 +1633,7 @@ void area_update( void )
          * Note: Mud School resets every 3 minutes (not 15).
          */
         if ( ( !pArea->empty && ( pArea->nplayer == 0 || pArea->age >= 15 ) )
-             || pArea->age >= 31 )
+                || pArea->age >= 31 )
         {
             ROOM_INDEX_DATA *pRoomIndex;
 
@@ -1668,11 +1671,11 @@ void reset_room( ROOM_INDEX_DATA * pRoom )
     {
         EXIT_DATA *pExit;
         if ( ( pExit = pRoom->exit[iExit] )
-             /*  && !IS_SET( pExit->exit_info, EX_BASHED )   ROM OLC */  )
+                /*  && !IS_SET( pExit->exit_info, EX_BASHED )   ROM OLC */  )
         {
             pExit->exit_info = pExit->rs_flags;
             if ( ( pExit->u1.to_room != NULL )
-                 && ( ( pExit = pExit->u1.to_room->exit[rev_dir[iExit]] ) ) )
+                    && ( ( pExit = pExit->u1.to_room->exit[rev_dir[iExit]] ) ) )
             {
                 /* nail the other side */
                 pExit->exit_info = pExit->rs_flags;
@@ -1743,8 +1746,8 @@ void reset_room( ROOM_INDEX_DATA * pRoom )
                     pRoomIndexPrev = get_room_index( pRoom->vnum - 1 );
 
                     if ( pRoomIndexPrev
-                         && IS_SET( pRoomIndexPrev->room_flags,
-                                    ROOM_PET_SHOP ) )
+                            && IS_SET( pRoomIndexPrev->room_flags,
+                                       ROOM_PET_SHOP ) )
                     {
                         SET_BIT( pMob->act, ACT_PET );
                     }
@@ -1771,7 +1774,7 @@ void reset_room( ROOM_INDEX_DATA * pRoom )
             }
 
             if ( pRoom->area->nplayer > 0
-                 || count_obj_list( pObjIndex, pRoom->contents ) > 0 )
+                    || count_obj_list( pObjIndex, pRoom->contents ) > 0 )
             {
                 break;
             }
@@ -1797,8 +1800,8 @@ void reset_room( ROOM_INDEX_DATA * pRoom )
             }
 
             if ( pRoom->area->nplayer > 0
-                 || !( LastObj = get_obj_type( pObjToIndex ) )
-                 || count_obj_list( pObjIndex, LastObj->contains ) > 0 )
+                    || !( LastObj = get_obj_type( pObjToIndex ) )
+                    || count_obj_list( pObjIndex, LastObj->contains ) > 0 )
             {
                 break;
             }
@@ -1872,17 +1875,17 @@ void reset_room( ROOM_INDEX_DATA * pRoom )
                  * Commented out limit code because even though the limit was
                  * being calculated it wasn't being used.  -Zane
                  */
-/*               int limit;
+                /*               int limit;
 
-			   if (pReset->arg2 > 50 *//* old format */
-/*				   || pReset->arg2 == -1 *//* no limit *//*)  
-   {
-   limit = 9999;
-   }
-   else
-   {
-   limit = pReset->arg2;
-   } */
+                			   if (pReset->arg2 > 50 *//* old format */
+                /*				   || pReset->arg2 == -1 *//* no limit *//*)
+                   {
+                   limit = 9999;
+                   }
+                   else
+                   {
+                   limit = pReset->arg2;
+                   } */
 
                 pObj =
                     create_object( pObjIndex,
@@ -1992,11 +1995,11 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     mob->damroll = pMobIndex->damage[DICE_BONUS];
     mob->max_hit = dice( pMobIndex->hit[DICE_NUMBER],
                          pMobIndex->hit[DICE_TYPE] )
-        + pMobIndex->hit[DICE_BONUS];
+                   + pMobIndex->hit[DICE_BONUS];
     mob->hit = mob->max_hit;
     mob->max_mana = dice( pMobIndex->mana[DICE_NUMBER],
                           pMobIndex->mana[DICE_TYPE] )
-        + pMobIndex->mana[DICE_BONUS];
+                    + pMobIndex->mana[DICE_BONUS];
     mob->mana = mob->max_mana;
     mob->damage[DICE_NUMBER] = pMobIndex->damage[DICE_NUMBER];
     mob->damage[DICE_TYPE] = pMobIndex->damage[DICE_TYPE];
@@ -2263,7 +2266,7 @@ void clone_object( OBJ_DATA * parent, OBJ_DATA * clone )
 {
     int i;
     AFFECT_DATA *paf;
-/*    EXTRA_DESCR_DATA *ed,*ed_new; */
+    /*    EXTRA_DESCR_DATA *ed,*ed_new; */
 
     if ( parent == NULL || clone == NULL )
         return;
@@ -2292,17 +2295,17 @@ void clone_object( OBJ_DATA * parent, OBJ_DATA * clone )
         affect_to_obj( clone, paf );
 
     /* extended desc */
-/*
-    for (ed = parent->extra_descr; ed != NULL; ed = ed->next);
-    {
-	ed_new              = alloc_perm( sizeof(*ed_new) );
+    /*
+        for (ed = parent->extra_descr; ed != NULL; ed = ed->next);
+        {
+    	ed_new              = alloc_perm( sizeof(*ed_new) );
 
-	ed_new->keyword         = str_dup( ed->keyword);
-	ed_new->description     = str_dup( ed->description );
-	ed_new->next            = clone->extra_descr;
-	clone->extra_descr      = ed_new;
-    }
-*/
+    	ed_new->keyword         = str_dup( ed->keyword);
+    	ed_new->description     = str_dup( ed->description );
+    	ed_new->next            = clone->extra_descr;
+    	clone->extra_descr      = ed_new;
+        }
+    */
 
 }
 
@@ -2420,7 +2423,7 @@ void free_char( CHAR_DATA * ch )
         for ( i = 0; i < MAX_ALIAS; i++ )
         {
             if ( ch->pcdata->alias[i] == NULL
-                 || ch->pcdata->alias_sub[i] == NULL )
+                    || ch->pcdata->alias_sub[i] == NULL )
                 break;
 
             free_string( &ch->pcdata->alias[i] );
@@ -2478,7 +2481,7 @@ MOB_INDEX_DATA *get_mob_index( int vnum )
     MOB_INDEX_DATA *pMobIndex;
 
     for ( pMobIndex = mob_index_hash[vnum % MAX_KEY_HASH];
-          pMobIndex != NULL; pMobIndex = pMobIndex->next )
+            pMobIndex != NULL; pMobIndex = pMobIndex->next )
     {
         if ( pMobIndex->vnum == vnum )
             return pMobIndex;
@@ -2502,7 +2505,7 @@ OBJ_INDEX_DATA *get_obj_index( int vnum )
     OBJ_INDEX_DATA *pObjIndex;
 
     for ( pObjIndex = obj_index_hash[vnum % MAX_KEY_HASH];
-          pObjIndex != NULL; pObjIndex = pObjIndex->next )
+            pObjIndex != NULL; pObjIndex = pObjIndex->next )
     {
         if ( pObjIndex->vnum == vnum )
             return pObjIndex;
@@ -2526,7 +2529,7 @@ MPROG_DATA *get_mprog_by_vnum( int vnum )
     MPROG_DATA *pMudProg;
 
     for ( pMudProg = mudprog_first; pMudProg != NULL;
-          pMudProg = pMudProg->next )
+            pMudProg = pMudProg->next )
     {
         if ( pMudProg->vnum == vnum )
             return pMudProg;
@@ -2550,7 +2553,7 @@ MPROG_GROUP *get_mprog_group_by_vnum( int vnum )
     MPROG_GROUP *pMprogGroup;
 
     for ( pMprogGroup = mprog_group_first; pMprogGroup != NULL;
-          pMprogGroup = pMprogGroup->next )
+            pMprogGroup = pMprogGroup->next )
     {
         if ( pMprogGroup->vnum == vnum )
             return pMprogGroup;
@@ -2574,7 +2577,7 @@ ROOM_INDEX_DATA *get_room_index( int vnum )
     ROOM_INDEX_DATA *pRoomIndex;
 
     for ( pRoomIndex = room_index_hash[vnum % MAX_KEY_HASH];
-          pRoomIndex != NULL; pRoomIndex = pRoomIndex->next )
+            pRoomIndex != NULL; pRoomIndex = pRoomIndex->next )
     {
         if ( pRoomIndex->vnum == vnum )
             return pRoomIndex;
@@ -2918,11 +2921,11 @@ unsigned int str_len( const char *str )
         str++;                  /* If there _IS_ a `, check next char */
         switch ( *str )
         {
-/* If it's \0, count the first ` and get outta here */
+            /* If it's \0, count the first ` and get outta here */
         case '\0':
             numb++;
             return numb;
-/* If it's a color code, skip over it */
+            /* If it's a color code, skip over it */
         case 'k':
         case 'K':
         case 'r':
@@ -2942,7 +2945,7 @@ unsigned int str_len( const char *str )
         case '0':
             str++;
             break;
-/* If it's not a color code, count the ` and the following char, and advance */
+            /* If it's not a color code, count the ` and the following char, and advance */
         default:
             numb++;
             numb++;
@@ -3080,8 +3083,8 @@ void do_memory( CHAR_DATA * ch, char *argument )
     send_to_char( buf, ch );
     sprintf( buf, "Helps   %5d\n\r", top_help );
     send_to_char( buf, ch );
-/*    sprintf( buf, "Socials %5d\n\r", social_count  ); send_to_char( buf,
-ch );*/
+    /*    sprintf( buf, "Socials %5d\n\r", social_count  ); send_to_char( buf,
+    ch );*/
     sprintf( buf, "Mobs    %5d\n\r", top_mob_index );
     send_to_char( buf, ch );
     sprintf( buf, "(in use)%5d\n\r", mobile_count );
@@ -3094,7 +3097,7 @@ ch );*/
     send_to_char( buf, ch );
     sprintf( buf, "Shops   %5d\n\r", top_shop );
     send_to_char( buf, ch );
-/*    sprintf( buf, "Clans   %5d\n\r", top_clan    ); send_to_char( buf, ch ); */
+    /*    sprintf( buf, "Clans   %5d\n\r", top_clan    ); send_to_char( buf, ch ); */
 
     sprintf( buf, "Strings %5d strings of %7d bytes (max %d).\n\r",
              nAllocString, sAllocString, MAX_STRING );
@@ -3359,7 +3362,7 @@ void init_mm(  )
     for ( iState = 2; iState < 55; iState++ )
     {
         piState[iState] = ( piState[iState - 1] + piState[iState - 2] )
-            & ( ( 1 << 30 ) - 1 );
+                          & ( ( 1 << 30 ) - 1 );
     }
     return;
 }
@@ -3606,7 +3609,7 @@ void bug( const char *str, ... )
 
         sprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
         log_string( buf );
-/*        info(NULL, INFOACT_CODER, NULL, buf); */
+        /*        info(NULL, INFOACT_CODER, NULL, buf); */
 
         sprintf( buf2, "%s/shutdown.txt", sysconfig.area_dir );
         if ( ( fp = fopen( buf2, "a" ) ) != NULL )
@@ -3625,16 +3628,16 @@ void bug( const char *str, ... )
         va_end( param );
     }
     log_string( buf );
-/*    info(NULL, INFOACT_CODER, NULL, buf); */
-/*
- *   fclose( fpReserve );
- *   if ( ( fp = fopen( BUG_FILE, "a" ) ) )
- *   {
- *	fprintf( fp, "%s\n", buf );
- *	fclose( fp );
- *   }
- *   fpReserve = fopen( NULL_FILE, "r" );
- */
+    /*    info(NULL, INFOACT_CODER, NULL, buf); */
+    /*
+     *   fclose( fpReserve );
+     *   if ( ( fp = fopen( BUG_FILE, "a" ) ) )
+     *   {
+     *	fprintf( fp, "%s\n", buf );
+     *	fclose( fp );
+     *   }
+     *   fpReserve = fopen( NULL_FILE, "r" );
+     */
     return;
 }
 
@@ -4048,7 +4051,7 @@ void load_mudprogs( FILE * fp )
                 while ( fread_letter( fp ) != '~' )
                 {
                     if ( ( pMudProg =
-                           get_mprog_by_vnum( fread_number( fp ) ) ) == NULL )
+                                get_mprog_by_vnum( fread_number( fp ) ) ) == NULL )
                     {
                         bug( "Load_MudProgs: Prog group references invalid prog vnum." );
                         exit( 1 );
@@ -4126,7 +4129,7 @@ int load_config_file( void )
         if ( !str_cmp( buf, "[Paths]" ) )
         {
             /*
-             * Read in each line of the section.  If a new section header is 
+             * Read in each line of the section.  If a new section header is
              * encountered then end this section.
              */
             while ( !bEOF )
@@ -4181,7 +4184,7 @@ int load_config_file( void )
         else if ( !str_cmp( buf, "[Files]" ) )
         {
             /*
-             * Read in each line of the section.  If a new section header is 
+             * Read in each line of the section.  If a new section header is
              * encountered then end this section.
              */
             while ( !bEOF )
@@ -4295,7 +4298,7 @@ char *get_config_value( char *inbuf, char *outbuf )
     return outbuf;
 }
 
-/* 
+/*
  * Assign a prog to a mob/obj/room.
  */
 void load_progs( FILE * fp )
@@ -4489,9 +4492,9 @@ void load_mobiles( FILE * fp )
         pMobIndex->description[0] = UPPER( pMobIndex->description[0] );
 
         pMobIndex->act = fread_flag( fp ) | ACT_IS_NPC
-            | race_table[pMobIndex->race].act;
+                         | race_table[pMobIndex->race].act;
         pMobIndex->affected_by = fread_flag( fp )
-            | race_table[pMobIndex->race].aff;
+                                 | race_table[pMobIndex->race].aff;
         pMobIndex->pShop = NULL;
         pMobIndex->alignment = fread_number( fp );
         letter = fread_letter( fp );
@@ -4505,9 +4508,11 @@ void load_mobiles( FILE * fp )
 
         /* read hit dice */
         pMobIndex->hit[DICE_NUMBER] = fread_number( fp );
-        /* 'd'          */ fread_letter( fp );
+        /* 'd'          */
+        fread_letter( fp );
         pMobIndex->hit[DICE_TYPE] = fread_number( fp );
-        /* '+'          */ fread_letter( fp );
+        /* '+'          */
+        fread_letter( fp );
         pMobIndex->hit[DICE_BONUS] = fread_number( fp );
 
         /* read mana dice */
@@ -4533,13 +4538,13 @@ void load_mobiles( FILE * fp )
 
         /* read flags and add in data from the race table */
         pMobIndex->off_flags = fread_flag( fp )
-            | race_table[pMobIndex->race].off;
+                               | race_table[pMobIndex->race].off;
         pMobIndex->imm_flags = fread_flag( fp )
-            | race_table[pMobIndex->race].imm;
+                               | race_table[pMobIndex->race].imm;
         pMobIndex->res_flags = fread_flag( fp )
-            | race_table[pMobIndex->race].res;
+                               | race_table[pMobIndex->race].res;
         pMobIndex->vuln_flags = fread_flag( fp )
-            | race_table[pMobIndex->race].vuln;
+                                | race_table[pMobIndex->race].vuln;
         /* vital statistics */
         pMobIndex->start_pos = fread_number( fp );
         pMobIndex->default_pos = fread_number( fp );
@@ -4577,8 +4582,8 @@ void load_mobiles( FILE * fp )
 
         pMobIndex->material = material_lookup( fread_word( fp ) );
 
-/*       pMobIndex->clan=letter-64; */
-/*       if (letter == 'S') pMobIndex->clan=0; */
+        /*       pMobIndex->clan=letter-64; */
+        /*       if (letter == 'S') pMobIndex->clan=0; */
         letter = fread_letter( fp );
 
         /* R indicates beginning of random object info. */
@@ -4780,7 +4785,7 @@ bool assign_mobprog( MOB_INDEX_DATA * pMob, MPROG_DATA * pMudProg,
     if ( pMudProg )
     {
         for ( pTempList = pMob->mudprogs; pTempList;
-              pTempList = pTempList->next )
+                pTempList = pTempList->next )
             if ( pTempList->mudprog->vnum == pMudProg->vnum )
                 iFound = 1;
 
@@ -4796,7 +4801,7 @@ bool assign_mobprog( MOB_INDEX_DATA * pMob, MPROG_DATA * pMudProg,
     else if ( pMprogGroup )
     {
         for ( pGroupList = pMob->mprog_groups; pGroupList;
-              pGroupList = pGroupList->next )
+                pGroupList = pGroupList->next )
             if ( pGroupList->mprog_group->vnum == pMprogGroup->vnum )
                 iFound = 1;
 
@@ -4808,12 +4813,12 @@ bool assign_mobprog( MOB_INDEX_DATA * pMob, MPROG_DATA * pMudProg,
             pGroupList->mprog_group = pMprogGroup;
 
             for ( pTempList = pMprogGroup->mudprogs; pTempList;
-                  pTempList = pTempList->next )
+                    pTempList = pTempList->next )
             {
                 iFound = 0;
 
                 for ( pInnerList = pMob->mudprogs; pInnerList;
-                      pInnerList = pInnerList->next )
+                        pInnerList = pInnerList->next )
                     if ( pInnerList->mudprog->vnum == pTempList->mudprog->vnum )
                         iFound = 1;
 
@@ -4846,7 +4851,7 @@ bool assign_objprog( OBJ_INDEX_DATA * pObj, MPROG_DATA * pMudProg,
     if ( pMudProg )
     {
         for ( pTempList = pObj->mudprogs; pTempList;
-              pTempList = pTempList->next )
+                pTempList = pTempList->next )
             if ( pTempList->mudprog->vnum == pMudProg->vnum )
                 iFound = 1;
 
@@ -4862,7 +4867,7 @@ bool assign_objprog( OBJ_INDEX_DATA * pObj, MPROG_DATA * pMudProg,
     else if ( pMprogGroup )
     {
         for ( pGroupList = pObj->mprog_groups; pGroupList;
-              pGroupList = pGroupList->next )
+                pGroupList = pGroupList->next )
             if ( pGroupList->mprog_group->vnum == pMprogGroup->vnum )
                 iFound = 1;
 
@@ -4874,12 +4879,12 @@ bool assign_objprog( OBJ_INDEX_DATA * pObj, MPROG_DATA * pMudProg,
             pGroupList->mprog_group = pMprogGroup;
 
             for ( pTempList = pMprogGroup->mudprogs; pTempList;
-                  pTempList = pTempList->next )
+                    pTempList = pTempList->next )
             {
                 iFound = 0;
 
                 for ( pInnerList = pObj->mudprogs; pInnerList;
-                      pInnerList = pInnerList->next )
+                        pInnerList = pInnerList->next )
                     if ( pInnerList->mudprog->vnum == pTempList->mudprog->vnum )
                         iFound = 1;
 
@@ -4912,7 +4917,7 @@ bool assign_roomprog( ROOM_INDEX_DATA * pRoom, MPROG_DATA * pMudProg,
     if ( pMudProg )
     {
         for ( pTempList = pRoom->mudprogs; pTempList;
-              pTempList = pTempList->next )
+                pTempList = pTempList->next )
             if ( pTempList->mudprog->vnum == pMudProg->vnum )
                 iFound = 1;
 
@@ -4928,7 +4933,7 @@ bool assign_roomprog( ROOM_INDEX_DATA * pRoom, MPROG_DATA * pMudProg,
     else if ( pMprogGroup )
     {
         for ( pGroupList = pRoom->mprog_groups; pGroupList;
-              pGroupList = pGroupList->next )
+                pGroupList = pGroupList->next )
             if ( pGroupList->mprog_group->vnum == pMprogGroup->vnum )
                 iFound = 1;
 
@@ -4940,12 +4945,12 @@ bool assign_roomprog( ROOM_INDEX_DATA * pRoom, MPROG_DATA * pMudProg,
             pGroupList->mprog_group = pMprogGroup;
 
             for ( pTempList = pMprogGroup->mudprogs; pTempList;
-                  pTempList = pTempList->next )
+                    pTempList = pTempList->next )
             {
                 iFound = 0;
 
                 for ( pInnerList = pRoom->mudprogs; pInnerList;
-                      pInnerList = pInnerList->next )
+                        pInnerList = pInnerList->next )
                     if ( pInnerList->mudprog->vnum == pTempList->mudprog->vnum )
                         iFound = 1;
 
@@ -4979,8 +4984,8 @@ bool unassign_mobprog( MOB_INDEX_DATA * pMob, MPROG_DATA * pMudProg,
     if ( pMudProg )
     {
         for ( pTempList = pMob->mudprogs;
-              pTempList && pTempList->mudprog->vnum != pMudProg->vnum;
-              pTempList = pTempList->next )
+                pTempList && pTempList->mudprog->vnum != pMudProg->vnum;
+                pTempList = pTempList->next )
             ;
 
         if ( pTempList )
@@ -4988,9 +4993,9 @@ bool unassign_mobprog( MOB_INDEX_DATA * pMob, MPROG_DATA * pMudProg,
             iFound = 0;
 
             for ( pGroupList = pMob->mprog_groups; pGroupList;
-                  pGroupList = pGroupList->next )
+                    pGroupList = pGroupList->next )
                 for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                      pInnerList; pInnerList = pInnerList->next )
+                        pInnerList; pInnerList = pInnerList->next )
                     if ( pInnerList->mudprog->vnum == pMudProg->vnum )
                         iFound = 1;
 
@@ -5003,8 +5008,8 @@ bool unassign_mobprog( MOB_INDEX_DATA * pMob, MPROG_DATA * pMudProg,
                 else
                 {
                     for ( pInnerList = pMob->mudprogs;
-                          pInnerList->next != pTempList;
-                          pInnerList = pInnerList->next )
+                            pInnerList->next != pTempList;
+                            pInnerList = pInnerList->next )
                         ;
 
                     pInnerList->next = pTempList->next;
@@ -5016,8 +5021,8 @@ bool unassign_mobprog( MOB_INDEX_DATA * pMob, MPROG_DATA * pMudProg,
     else if ( pMprogGroup )
     {
         for ( pGroupList = pMob->mprog_groups; pGroupList
-              && pGroupList->mprog_group->vnum != pMprogGroup->vnum;
-              pGroupList = pGroupList->next )
+                && pGroupList->mprog_group->vnum != pMprogGroup->vnum;
+                pGroupList = pGroupList->next )
             ;
 
         if ( pGroupList )
@@ -5027,15 +5032,15 @@ bool unassign_mobprog( MOB_INDEX_DATA * pMob, MPROG_DATA * pMudProg,
             else
             {
                 for ( pGInnerList = pMob->mprog_groups;
-                      pGInnerList->next != pGroupList;
-                      pGInnerList = pGInnerList->next )
+                        pGInnerList->next != pGroupList;
+                        pGInnerList = pGInnerList->next )
                     ;
 
                 pGInnerList->next = pGroupList->next;
             }
 
             for ( pTempList = pGroupList->mprog_group->mudprogs; pTempList;
-                  pTempList = pTempList->next )
+                    pTempList = pTempList->next )
                 unassign_mobprog( pMob, pTempList->mudprog, NULL );
 
             free_mem( &pGroupList );
@@ -5061,8 +5066,8 @@ bool unassign_objprog( OBJ_INDEX_DATA * pObj, MPROG_DATA * pMudProg,
     if ( pMudProg )
     {
         for ( pTempList = pObj->mudprogs;
-              pTempList && pTempList->mudprog->vnum != pMudProg->vnum;
-              pTempList = pTempList->next )
+                pTempList && pTempList->mudprog->vnum != pMudProg->vnum;
+                pTempList = pTempList->next )
             ;
 
         if ( pTempList )
@@ -5070,9 +5075,9 @@ bool unassign_objprog( OBJ_INDEX_DATA * pObj, MPROG_DATA * pMudProg,
             iFound = 0;
 
             for ( pGroupList = pObj->mprog_groups; pGroupList;
-                  pGroupList = pGroupList->next )
+                    pGroupList = pGroupList->next )
                 for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                      pInnerList; pInnerList = pInnerList->next )
+                        pInnerList; pInnerList = pInnerList->next )
                     if ( pInnerList->mudprog->vnum == pMudProg->vnum )
                         iFound = 1;
 
@@ -5085,8 +5090,8 @@ bool unassign_objprog( OBJ_INDEX_DATA * pObj, MPROG_DATA * pMudProg,
                 else
                 {
                     for ( pInnerList = pObj->mudprogs;
-                          pInnerList->next != pTempList;
-                          pInnerList = pInnerList->next )
+                            pInnerList->next != pTempList;
+                            pInnerList = pInnerList->next )
                         ;
 
                     pInnerList->next = pTempList->next;
@@ -5098,8 +5103,8 @@ bool unassign_objprog( OBJ_INDEX_DATA * pObj, MPROG_DATA * pMudProg,
     else if ( pMprogGroup )
     {
         for ( pGroupList = pObj->mprog_groups; pGroupList
-              && pGroupList->mprog_group->vnum != pMprogGroup->vnum;
-              pGroupList = pGroupList->next )
+                && pGroupList->mprog_group->vnum != pMprogGroup->vnum;
+                pGroupList = pGroupList->next )
             ;
 
         if ( pGroupList )
@@ -5109,15 +5114,15 @@ bool unassign_objprog( OBJ_INDEX_DATA * pObj, MPROG_DATA * pMudProg,
             else
             {
                 for ( pGInnerList = pObj->mprog_groups;
-                      pGInnerList->next != pGroupList;
-                      pGInnerList = pGInnerList->next )
+                        pGInnerList->next != pGroupList;
+                        pGInnerList = pGInnerList->next )
                     ;
 
                 pGInnerList->next = pGroupList->next;
             }
 
             for ( pTempList = pGroupList->mprog_group->mudprogs; pTempList;
-                  pTempList = pTempList->next )
+                    pTempList = pTempList->next )
                 unassign_objprog( pObj, pTempList->mudprog, NULL );
 
             free_mem( &pGroupList );
@@ -5143,8 +5148,8 @@ bool unassign_roomprog( ROOM_INDEX_DATA * pRoom, MPROG_DATA * pMudProg,
     if ( pMudProg )
     {
         for ( pTempList = pRoom->mudprogs;
-              pTempList && pTempList->mudprog->vnum != pMudProg->vnum;
-              pTempList = pTempList->next )
+                pTempList && pTempList->mudprog->vnum != pMudProg->vnum;
+                pTempList = pTempList->next )
             ;
 
         if ( pTempList )
@@ -5152,9 +5157,9 @@ bool unassign_roomprog( ROOM_INDEX_DATA * pRoom, MPROG_DATA * pMudProg,
             iFound = 0;
 
             for ( pGroupList = pRoom->mprog_groups; pGroupList;
-                  pGroupList = pGroupList->next )
+                    pGroupList = pGroupList->next )
                 for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                      pInnerList; pInnerList = pInnerList->next )
+                        pInnerList; pInnerList = pInnerList->next )
                     if ( pInnerList->mudprog->vnum == pMudProg->vnum )
                         iFound = 1;
 
@@ -5167,8 +5172,8 @@ bool unassign_roomprog( ROOM_INDEX_DATA * pRoom, MPROG_DATA * pMudProg,
                 else
                 {
                     for ( pInnerList = pRoom->mudprogs;
-                          pInnerList->next != pTempList;
-                          pInnerList = pInnerList->next )
+                            pInnerList->next != pTempList;
+                            pInnerList = pInnerList->next )
                         ;
 
                     pInnerList->next = pTempList->next;
@@ -5180,8 +5185,8 @@ bool unassign_roomprog( ROOM_INDEX_DATA * pRoom, MPROG_DATA * pMudProg,
     else if ( pMprogGroup )
     {
         for ( pGroupList = pRoom->mprog_groups; pGroupList
-              && pGroupList->mprog_group->vnum != pMprogGroup->vnum;
-              pGroupList = pGroupList->next )
+                && pGroupList->mprog_group->vnum != pMprogGroup->vnum;
+                pGroupList = pGroupList->next )
             ;
 
         if ( pGroupList )
@@ -5191,15 +5196,15 @@ bool unassign_roomprog( ROOM_INDEX_DATA * pRoom, MPROG_DATA * pMudProg,
             else
             {
                 for ( pGInnerList = pRoom->mprog_groups;
-                      pGInnerList->next != pGroupList;
-                      pGInnerList = pGInnerList->next )
+                        pGInnerList->next != pGroupList;
+                        pGInnerList = pGInnerList->next )
                     ;
 
                 pGInnerList->next = pGroupList->next;
             }
 
             for ( pTempList = pGroupList->mprog_group->mudprogs; pTempList;
-                  pTempList = pTempList->next )
+                    pTempList = pTempList->next )
                 unassign_roomprog( pRoom, pTempList->mudprog, NULL );
 
             free_mem( &pGroupList );

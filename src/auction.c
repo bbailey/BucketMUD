@@ -259,7 +259,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
 
 #ifdef ALLOW_EXTRA_DESCR_KEYWORDS
             if ( obj->extra_descr != NULL
-                 || obj->pIndexData->extra_descr != NULL )
+                    || obj->pIndexData->extra_descr != NULL )
             {
                 EXTRA_DESCR_DATA *ed;
                 send_to_char( "`RExtra description keywords: `W'", ch );
@@ -272,7 +272,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
                 }
 
                 for ( ed = obj->pIndexData->extra_descr; ed != NULL;
-                      ed = ed->next )
+                        ed = ed->next )
                 {
                     send_to_char( ed->keyword, ch );
                     if ( ed->next != NULL )
@@ -294,7 +294,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
 
             if ( !obj->enchanted )
                 for ( paf = obj->pIndexData->affected; paf != NULL; paf =
-                      paf->next )
+                            paf->next )
                 {
                     sprintf( buf,
                              "`RAffects `W%s `Rby `W%d, `Rlevel `W%d.`w\n\r",
@@ -456,8 +456,8 @@ void auction_channel_once(  )
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if ( d->connected == CON_PLAYING &&
-             !IS_SET( victim->comm, COMM_NOAUCTION ) &&
-             !IS_SET( victim->comm, COMM_QUIET ) )
+                !IS_SET( victim->comm, COMM_NOAUCTION ) &&
+                !IS_SET( victim->comm, COMM_QUIET ) )
         {
             act_new( buf, auction_info.high_bidder, auction_info.item, victim,
                      TO_VICT, MIN_POS_AUCTION );
@@ -482,8 +482,8 @@ void auction_channel_twice(  )
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if ( d->connected == CON_PLAYING &&
-             !IS_SET( victim->comm, COMM_NOAUCTION ) &&
-             !IS_SET( victim->comm, COMM_QUIET ) )
+                !IS_SET( victim->comm, COMM_NOAUCTION ) &&
+                !IS_SET( victim->comm, COMM_QUIET ) )
         {
             act_new( buf, auction_info.high_bidder, auction_info.item, victim,
                      TO_VICT, MIN_POS_AUCTION );
@@ -508,8 +508,8 @@ void auction_channel_bid(  )
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if ( d->connected == CON_PLAYING &&
-             !IS_SET( victim->comm, COMM_NOAUCTION ) &&
-             !IS_SET( victim->comm, COMM_QUIET ) )
+                !IS_SET( victim->comm, COMM_NOAUCTION ) &&
+                !IS_SET( victim->comm, COMM_QUIET ) )
         {
             act_new( buf, auction_info.high_bidder, auction_info.item, victim,
                      TO_VICT, MIN_POS_AUCTION );
@@ -530,8 +530,8 @@ void auction_channel_begin(  )
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if ( d->connected == CON_PLAYING &&
-             !IS_SET( victim->comm, COMM_NOAUCTION ) &&
-             !IS_SET( victim->comm, COMM_QUIET ) )
+                !IS_SET( victim->comm, COMM_NOAUCTION ) &&
+                !IS_SET( victim->comm, COMM_QUIET ) )
         {
             act_new( CFG_AUC_BEGIN, auction_info.owner, auction_info.item,
                      victim, TO_VICT, MIN_POS_AUCTION );
@@ -556,9 +556,9 @@ void auction_channel_sell(  )
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if ( victim != auction_info.high_bidder &&
-             d->connected == CON_PLAYING &&
-             !IS_SET( victim->comm, COMM_NOAUCTION ) &&
-             !IS_SET( victim->comm, COMM_QUIET ) )
+                d->connected == CON_PLAYING &&
+                !IS_SET( victim->comm, COMM_NOAUCTION ) &&
+                !IS_SET( victim->comm, COMM_QUIET ) )
         {
             act_new( buf, auction_info.high_bidder, auction_info.item, victim,
                      TO_VICT, MIN_POS_AUCTION );
@@ -589,8 +589,8 @@ void auction_channel_remove(  )
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if ( d->connected == CON_PLAYING &&
-             !IS_SET( victim->comm, COMM_NOAUCTION ) &&
-             !IS_SET( victim->comm, COMM_QUIET ) )
+                !IS_SET( victim->comm, COMM_NOAUCTION ) &&
+                !IS_SET( victim->comm, COMM_QUIET ) )
         {
             act_new( CFG_AUC_REMOVE, auction_info.owner, auction_info.item,
                      victim, TO_VICT, MIN_POS_AUCTION );
@@ -622,8 +622,8 @@ void show_obj_stats( int sn, int level, CHAR_DATA * ch, void *vo )
              "Object '%s' is type %s, extra flags %s.\n\rWeight is %d, value is %d, level is %d.\n\r",
              obj->name,
              item_type_name( obj ), extra_bit_name( obj->extra_flags ),
-/*	extra2_bit_name( obj->extra2_flags ),*//* To be added later.-Lancelight */
-/*	extra3_bit_name( obj->extra3_flags ),*/
+             /*	extra2_bit_name( obj->extra2_flags ),*//* To be added later.-Lancelight */
+             /*	extra3_bit_name( obj->extra3_flags ),*/
              obj->weight, obj->cost, obj->level );
     send_to_char( buf, ch );
 
