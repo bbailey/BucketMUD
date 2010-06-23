@@ -24,7 +24,7 @@
 #include "merc.h"
 #include "interp.h"
 
-extern int _filbuf args( ( FILE * ) );
+extern int _filbuf  ( FILE * ) ;
 extern bool chaos;
 
 /* This is called by ban.c -Lancelight */
@@ -66,14 +66,13 @@ extern bool fCopyOver;
 /*
  * Local functions.
  */
-void fwrite_char args( ( CHAR_DATA * ch, FILE * fp ) );
-void fwrite_obj args( ( CHAR_DATA * ch, OBJ_DATA * obj,
-                        FILE * fp, int iNest ) );
-void fwrite_pet args( ( CHAR_DATA * pet, FILE * fp ) );
-void fread_char args( ( CHAR_DATA * ch, FILE * fp ) );
-void fread_pet args( ( CHAR_DATA * ch, FILE * fp ) );
-void fread_obj args( ( CHAR_DATA * ch, FILE * fp ) );
-void fread_imm args( ( CHAR_DATA * ch, FILE * fp ) );
+void fwrite_char  ( CHAR_DATA * ch, FILE * fp ) ;
+void fwrite_obj  ( CHAR_DATA * ch, OBJ_DATA * obj,                 FILE * fp, int iNest ) ;
+void fwrite_pet  ( CHAR_DATA * pet, FILE * fp ) ;
+void fread_char  ( CHAR_DATA * ch, FILE * fp ) ;
+void fread_pet  ( CHAR_DATA * ch, FILE * fp ) ;
+void fread_obj  ( CHAR_DATA * ch, FILE * fp ) ;
+void fread_imm  ( CHAR_DATA * ch, FILE * fp ) ;
 
 /*
  * Save a character and inventory.

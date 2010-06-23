@@ -42,34 +42,30 @@ DECLARE_DO_FUN( do_sacrifice );
 /*
  * Local functions.
  */
-void check_assist args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool check_block args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool check_dodge args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void check_killer args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool check_parry args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void dam_message args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam,
-                         int dt, bool immune ) );
-void death_cry args( ( CHAR_DATA * ch ) );
-void group_gain args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-int xp_compute args( ( CHAR_DATA * gch, CHAR_DATA * victim,
-                       int total_levels, int members ) );
-int hit_xp_compute args( ( CHAR_DATA * gch, CHAR_DATA * victim,
-                           int total_levels, int members, int dam ) );
-int cast_xp_compute args( ( CHAR_DATA * gch, CHAR_DATA * victim,
-                            int total_levels, int members, int dam ) );
-bool is_safe args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void make_corpse args( ( CHAR_DATA * ch ) );
-void make_pk_corpse args( ( CHAR_DATA * ch ) );
+void check_assist  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
+bool check_block  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
+bool check_dodge  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
+void check_killer  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
+bool check_parry  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
+void dam_message  ( CHAR_DATA * ch, CHAR_DATA * victim, int dam,                int dt, bool immune ) ;
+void death_cry  ( CHAR_DATA * ch ) ;
+void group_gain  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
+int xp_compute  ( CHAR_DATA * gch, CHAR_DATA * victim,                   int total_levels, int members ) ;
+int hit_xp_compute  ( CHAR_DATA * gch, CHAR_DATA * victim,                 int total_levels, int members, int dam ) ;
+int cast_xp_compute  ( CHAR_DATA * gch, CHAR_DATA * victim,              int total_levels, int members, int dam ) ;
+bool is_safe  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
+void make_corpse  ( CHAR_DATA * ch ) ;
+void make_pk_corpse  ( CHAR_DATA * ch ) ;
 void one_hit
-args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dt ) );
-void mob_hit args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt ) );
-void chaos_kill args( ( CHAR_DATA * victim ) );
-void pk_kill args( ( CHAR_DATA * victim ) );
-void raw_kill args( ( CHAR_DATA * victim ) );
-void set_fighting args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dt ) ;
+void mob_hit  ( CHAR_DATA * ch, CHAR_DATA * victim, int dt ) ;
+void chaos_kill  ( CHAR_DATA * victim ) ;
+void pk_kill  ( CHAR_DATA * victim ) ;
+void raw_kill  ( CHAR_DATA * victim ) ;
+void set_fighting  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
 void disarm
-args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * target_weapon ) );
-void chaos_log args( ( CHAR_DATA * ch, char *argument ) );
+( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * target_weapon ) ;
+void chaos_log  ( CHAR_DATA * ch, char *argument ) ;
 bool vorpal_kill( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
                   int dam_type );
 extern bool chaos;

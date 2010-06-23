@@ -112,7 +112,7 @@ const struct olc_help_type help_table[] =
     {"", 0, ""}
 };
 
-char *mprog_type_to_name args( ( int type ) );
+char *mprog_type_to_name( int type );
 
 /*****************************************************************************
  Name:		show_flag_cmds

@@ -34,7 +34,7 @@ DISABLED_DATA *disabled_first;
 
 #define END_MARKER    "END"     /* for load_disabled() and save_disabled() */
 
-bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
+bool check_social  ( CHAR_DATA * ch, char *command, char *argument ) ;
 
 /*
  * Command logging types.

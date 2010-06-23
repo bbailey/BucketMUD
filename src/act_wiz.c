@@ -39,7 +39,7 @@
  * Local functions.
  */
 static DECLARE_DO_FUN(do_rfind);
-ROOM_INDEX_DATA *find_location args( ( CHAR_DATA * ch, char *arg ) );
+ROOM_INDEX_DATA *find_location  ( CHAR_DATA * ch, char *arg ) ;
 
 extern int control;
 extern bool write_to_descriptor( int, char *, int, bool );

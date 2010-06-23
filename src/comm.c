@@ -68,8 +68,8 @@ DECLARE_DO_FUN( do_afk );
  */
 #if defined(MALLOC_DEBUG)
 #include <malloc.h>
-extern int malloc_debug args( ( int ) );
-extern int malloc_verify args( ( void ) );
+extern int malloc_debug  ( int ) ;
+extern int malloc_verify  ( void ) ;
 #endif
 
 /*
@@ -127,26 +127,26 @@ char last_file[MAX_INPUT_LENGTH];
 /*
  * OS-dependent local functions.
  */
-int game_loop args( ( int control ) );
-int init_socket args( ( int port ) );
-void new_descriptor args( ( int control ) );
-bool read_from_descriptor args( ( DESCRIPTOR_DATA * d, bool color ) );
+int game_loop  ( int control ) ;
+int init_socket  ( int port ) ;
+void new_descriptor  ( int control ) ;
+bool read_from_descriptor  ( DESCRIPTOR_DATA * d, bool color ) ;
 bool write_to_descriptor
-args( ( int desc, char *txt, int length, bool color ) );
+( int desc, char *txt, int length, bool color ) ;
 
 /*
  * Other local functions (OS-independent).
  */
-bool check_parse_name args( ( char *name ) );
-bool check_reconnect args( ( DESCRIPTOR_DATA * d, char *name, bool fConn ) );
-bool check_playing args( ( DESCRIPTOR_DATA * d, char *name ) );
-int main args( ( int argc, char **argv ) );
-void nanny args( ( DESCRIPTOR_DATA * d, char *argument ) );
-bool process_output args( ( DESCRIPTOR_DATA * d, bool fPrompt ) );
-void read_from_buffer args( ( DESCRIPTOR_DATA * d, bool color ) );
-void stop_idling args( ( CHAR_DATA * ch ) );
-char *doparseprompt args( ( CHAR_DATA * ch ) );
-int roll_stat args( ( int base_bonus, int stat_max ) );
+bool check_parse_name  ( char *name ) ;
+bool check_reconnect  ( DESCRIPTOR_DATA * d, char *name, bool fConn ) ;
+bool check_playing  ( DESCRIPTOR_DATA * d, char *name ) ;
+int main  ( int argc, char **argv ) ;
+void nanny  ( DESCRIPTOR_DATA * d, char *argument ) ;
+bool process_output  ( DESCRIPTOR_DATA * d, bool fPrompt ) ;
+void read_from_buffer  ( DESCRIPTOR_DATA * d, bool color ) ;
+void stop_idling  ( CHAR_DATA * ch ) ;
+char *doparseprompt  ( CHAR_DATA * ch ) ;
+int roll_stat  ( int base_bonus, int stat_max ) ;
 
 bool can_read_descriptor( int fd )
 {

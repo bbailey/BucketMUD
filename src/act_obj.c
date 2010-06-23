@@ -37,11 +37,11 @@ extern bool chaos;
  * Local functions.
  */
 #define CD CHAR_DATA
-bool remove_obj args( ( CHAR_DATA * ch, int iWear, bool fReplace ) );
-void wear_obj args( ( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace ) );
-CD *find_keeper args( ( CHAR_DATA * ch ) );
+bool remove_obj  ( CHAR_DATA * ch, int iWear, bool fReplace ) ;
+void wear_obj  ( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace ) ;
+CD *find_keeper  ( CHAR_DATA * ch ) ;
 int get_cost
-args( ( CHAR_DATA * ch, CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy ) );
+( CHAR_DATA * ch, CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy ) ;
 #undef  CD
 
 /* RT part of the corpse looting code */

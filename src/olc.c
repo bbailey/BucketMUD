@@ -36,8 +36,8 @@ char buf[MAX_STRING_LENGTH];
 /*
  * Local functions.
  */
-AREA_DATA *get_area_data args( ( int vnum ) );
-int get_new_mprog_vnum args( ( void ) );
+AREA_DATA *get_area_data  ( int vnum ) ;
+int get_new_mprog_vnum  ( void ) ;
 
 /* Executed from comm.c.  Minimizes compiling when changes are made. */
 bool run_olc_editor( DESCRIPTOR_DATA * d )

@@ -22,8 +22,7 @@ DECLARE_DO_FUN( do_quit );
 
 extern void ChannelMessage( char *mesg, CHAR_DATA * ch );
 extern bool can_do_immcmd( CHAR_DATA * ch, char *cmd );
-extern bool check_social
-    args( ( CHAR_DATA * ch, char *command, char *argument ) );
+extern bool check_social ( CHAR_DATA * ch, char *command, char *argument );
 
 /*
  * Local functions.

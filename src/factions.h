@@ -46,31 +46,31 @@ struct factionpc_data
 };
 
 /* Function prototypes */
-void load_factionaffs args( ( FILE * fp ) );
-void load_factions args( ( FILE * fp ) );
-void save_factions args( ( void ) );
-void factionedit args( ( CHAR_DATA * ch, char *argument ) );
-FACTIONLIST_DATA *new_faction args( ( void ) );
-FACTIONLIST_DATA *get_faction_by_vnum args( ( sh_int vnum ) );
-bool factedit_show args( ( CHAR_DATA * ch, char *argument ) );
-bool factedit_create args( ( CHAR_DATA * ch, char *argument ) );
-bool factedit_name args( ( CHAR_DATA * ch, char *argument ) );
-bool factedit_increase args( ( CHAR_DATA * ch, char *argument ) );
-bool factedit_decrease args( ( CHAR_DATA * ch, char *argument ) );
-bool medit_faction args( ( CHAR_DATA * ch, char *argument ) );
-void affect_factions args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void fread_faction_standings args( ( CHAR_DATA * ch, FILE * fp ) );
-void fwrite_faction_standings args( ( CHAR_DATA * ch, FILE * fp ) );
-void free_faction_standings args( ( FACTIONPC_DATA * pFactPC ) );
-char *faction_con_msg args( ( sh_int value ) );
-sh_int faction_percentage args( ( sh_int value ) );
+void load_factionaffs  ( FILE * fp ) ;
+void load_factions  ( FILE * fp ) ;
+void save_factions  ( void ) ;
+void factionedit  ( CHAR_DATA * ch, char *argument ) ;
+FACTIONLIST_DATA *new_faction  ( void ) ;
+FACTIONLIST_DATA *get_faction_by_vnum  ( sh_int vnum ) ;
+bool factedit_show  ( CHAR_DATA * ch, char *argument ) ;
+bool factedit_create  ( CHAR_DATA * ch, char *argument ) ;
+bool factedit_name  ( CHAR_DATA * ch, char *argument ) ;
+bool factedit_increase  ( CHAR_DATA * ch, char *argument ) ;
+bool factedit_decrease  ( CHAR_DATA * ch, char *argument ) ;
+bool medit_faction  ( CHAR_DATA * ch, char *argument ) ;
+void affect_factions  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
+void fread_faction_standings  ( CHAR_DATA * ch, FILE * fp ) ;
+void fwrite_faction_standings  ( CHAR_DATA * ch, FILE * fp ) ;
+void free_faction_standings  ( FACTIONPC_DATA * pFactPC ) ;
+char *faction_con_msg  ( sh_int value ) ;
+sh_int faction_percentage  ( sh_int value ) ;
 sh_int consider_factions
-args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool show ) );
+( CHAR_DATA * ch, CHAR_DATA * victim, bool show ) ;
 void set_faction
-args( ( CHAR_DATA * ch, CHAR_DATA * victim, sh_int vnum, sh_int value ) );
-void faction_stat args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+( CHAR_DATA * ch, CHAR_DATA * victim, sh_int vnum, sh_int value ) ;
+void faction_stat  ( CHAR_DATA * ch, CHAR_DATA * victim ) ;
 double faction_cost_multiplier
-args( ( CHAR_DATA * ch, CHAR_DATA * keeper, bool buy ) );
-char *add_to_buf args( ( char *buffer, char *txt ) );
+( CHAR_DATA * ch, CHAR_DATA * keeper, bool buy ) ;
+char *add_to_buf  ( char *buffer, char *txt ) ;
 
 #endif

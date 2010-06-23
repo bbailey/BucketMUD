@@ -37,7 +37,7 @@ char thetime[7];
 /*
  * Local functions.
  */
-void affect_modify args( ( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd ) );
+void affect_modify  ( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd ) ;
 
 /* get_date() - Return current date in mm/dd/yy format */
 char *get_curdate(  )

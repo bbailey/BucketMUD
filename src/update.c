@@ -32,15 +32,15 @@ DECLARE_DO_FUN( do_say );       /* added for AUTO_HATE */
 /*
  * Local functions.
  */
-int hit_gain args( ( CHAR_DATA * ch ) );
-int mana_gain args( ( CHAR_DATA * ch ) );
-int move_gain args( ( CHAR_DATA * ch ) );
-void mobile_update args( ( void ) );
-void weather_update args( ( void ) );
-void char_update args( ( void ) );
-void regen_update args( ( void ) );
-void obj_update args( ( void ) );
-void aggr_update args( ( void ) );
+int hit_gain  ( CHAR_DATA * ch ) ;
+int mana_gain  ( CHAR_DATA * ch ) ;
+int move_gain  ( CHAR_DATA * ch ) ;
+void mobile_update  ( void ) ;
+void weather_update  ( void ) ;
+void char_update  ( void ) ;
+void regen_update  ( void ) ;
+void obj_update  ( void ) ;
+void aggr_update  ( void ) ;
 
 /* used for saving */
 

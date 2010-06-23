@@ -41,17 +41,17 @@ I can think of to do to them.
 #define	PREF_NONE	4
 #define	MSL	(MAX_STRING_LENGTH)
 
-void wear_rand_obj args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );
-OBJ_DATA *make_rand_armor args( ( sh_int level, bool ismagic ) );
-OBJ_DATA *make_random_obj args( ( sh_int level, long posible_types ) );
-OBJ_DATA *make_rand_ring args( ( sh_int level ) );
-OBJ_DATA *make_rand_weapon args( ( sh_int level, bool ismagic ) );
-OBJ_DATA *make_rand_bag args( ( sh_int level ) );
+void wear_rand_obj  ( CHAR_DATA * ch, OBJ_DATA * obj ) ;
+OBJ_DATA *make_rand_armor  ( sh_int level, bool ismagic ) ;
+OBJ_DATA *make_random_obj  ( sh_int level, long posible_types ) ;
+OBJ_DATA *make_rand_ring  ( sh_int level ) ;
+OBJ_DATA *make_rand_weapon  ( sh_int level, bool ismagic ) ;
+OBJ_DATA *make_rand_bag  ( sh_int level ) ;
 /*
-OBJ_DATA * make_rand_magic	args( ( sh_int level ) );
-OBJ_DATA * make_rand_light	args( ( sh_int level ) );
+OBJ_DATA * make_rand_magic	 ( sh_int level ) ;
+OBJ_DATA * make_rand_light	 ( sh_int level ) ;
 */
-int get_random_material args( ( sh_int level ) );
+int get_random_material  ( sh_int level ) ;
 
 void load_random_objs( CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex )
 {

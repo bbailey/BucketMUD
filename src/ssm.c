@@ -42,7 +42,7 @@
 #define addrTypeSize ( sizeof( addrType ) )
 #define addrSizeMask ( sizeof( addrType ) - 1 )
 
-extern int _filbuf args( ( FILE * ) );
+extern int _filbuf  ( FILE * ) ;
 
 typedef struct BE BufEntry;
 

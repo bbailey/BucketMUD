@@ -31,7 +31,7 @@ DECLARE_DO_FUN( do_look );
 /*
  * Local functions.
  */
-void say_spell args( ( CHAR_DATA * ch, int sn ) );
+void say_spell  ( CHAR_DATA * ch, int sn ) ;
 
 /*
  * Lookup a skill by name.

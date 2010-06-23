@@ -77,9 +77,9 @@ const sh_int movement_loss[SECT_MAX] =
 /*
  * Local functions.
  */
-int find_door args( ( CHAR_DATA * ch, char *arg ) );
-bool has_key args( ( CHAR_DATA * ch, int key ) );
-bool check_web args( ( CHAR_DATA * ch ) );
+int find_door  ( CHAR_DATA * ch, char *arg ) ;
+bool has_key  ( CHAR_DATA * ch, int key ) ;
+bool check_web  ( CHAR_DATA * ch ) ;
 
 void move_char( CHAR_DATA * ch, int door, bool follow )
 {

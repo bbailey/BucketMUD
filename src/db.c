@@ -36,7 +36,7 @@
 /* extern int getrlimit(int resource, struct rlimit *rlp); */
 /* extern int setrlimit(int resource, struct rlimit *rlp); */
 
-extern int _filbuf args( ( FILE * ) );
+extern int _filbuf  ( FILE * ) ;
 
 /*
  * Globals.
@@ -149,9 +149,9 @@ sh_int gsn_scribe;
 MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
 OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
 ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
-int load_config_file args( ( void ) );
-char *get_config_value args( ( char *inbuf, char *outbuf ) );
-MPROG_DATA *new_mudprog args( ( void ) );
+int load_config_file  ( void ) ;
+char *get_config_value  ( char *inbuf, char *outbuf ) ;
+MPROG_DATA *new_mudprog  ( void ) ;
 MPROG_DATA *mprog_free;
 MPROG_GROUP *mprog_group_free;
 AREA_DATA *area_first;
@@ -184,15 +184,15 @@ int mobile_count = 0;
  * MudProg locals
 */
 
-int mprog_name_to_type args( ( char *name ) );
-void load_mudprogs args( ( FILE * fp ) );
-void load_progs args( ( FILE * fp ) );
+int mprog_name_to_type  ( char *name ) ;
+void load_mudprogs  ( FILE * fp ) ;
+void load_progs  ( FILE * fp ) ;
 
 /* Ban Locals
  * -Lancelight
  */
 
-void load_bans args( ( void ) );
+void load_bans  ( void ) ;
 
 /*
  * Memory management.
@@ -227,28 +227,28 @@ void boot_done( void );
 /*
  * Local booting procedures.
 */
-void init_mm args( ( void ) );
-void skip_section args( ( FILE * fp, char *section ) );
-void load_clans args( ( FILE * fp ) );
-void load_area args( ( FILE * fp ) );   /* OLC */
-void load_helps args( ( FILE * fp ) );
-void load_todo args( ( FILE * fp ) );
-void load_mobiles args( ( FILE * fp ) );
-void load_objects args( ( FILE * fp ) );
-void load_resets args( ( FILE * fp ) );
-void load_rooms args( ( FILE * fp ) );
-void load_shops args( ( FILE * fp ) );
-void load_socials args( ( FILE * fp ) );
-void fix_exits args( ( void ) );
-void init_supermob args( ( void ) );
-void reset_area args( ( AREA_DATA * pArea ) );
-void load_random_objs args( ( CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex ) );
+void init_mm  ( void ) ;
+void skip_section  ( FILE * fp, char *section ) ;
+void load_clans  ( FILE * fp ) ;
+void load_area  ( FILE * fp ) ;   /* OLC */
+void load_helps  ( FILE * fp ) ;
+void load_todo  ( FILE * fp ) ;
+void load_mobiles  ( FILE * fp ) ;
+void load_objects  ( FILE * fp ) ;
+void load_resets  ( FILE * fp ) ;
+void load_rooms  ( FILE * fp ) ;
+void load_shops  ( FILE * fp ) ;
+void load_socials  ( FILE * fp ) ;
+void fix_exits  ( void ) ;
+void init_supermob  ( void ) ;
+void reset_area  ( AREA_DATA * pArea ) ;
+void load_random_objs  ( CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex ) ;
 
 #define MSL MAX_STRING_LENGTH
 #define MIL MAX_INPUT_LENGTH
 /* This is the handy CH() macro. I think that it was Tom Adriansen (sp?) */
 
-bool write_to_descriptor args( ( int desc, char *txt, int length ) );
+bool write_to_descriptor  ( int desc, char *txt, int length ) ;
 
 #define COPYOVER_FILE  "TEMP"
 #define EXE_FILE       "../src/ember"
@@ -263,7 +263,7 @@ void do_copyover( CHAR_DATA * ch, char *argument )
     FILE *fp;
     DESCRIPTOR_DATA *d, *d_next;
     char buf[100], buf2[100], buf3[100];
-    int close args( ( int fd ) );
+    int close  ( int fd ) ;
     if ( IS_NPC( ch ) )
     {
         send_to_char( "Mobs dont need to be hotbooting the mud.\n", ch );
@@ -390,7 +390,7 @@ void copyover_recover( void )
     char name[100];
     char host[MSL];
     int desc;
-    int close args( ( int fd ) );
+    int close  ( int fd ) ;
     bool fOld;
 
     sprintf( buf, "%s/%s", sysconfig.area_dir, COPYOVER_FILE );

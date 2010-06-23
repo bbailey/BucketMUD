@@ -43,7 +43,7 @@
  * Local functions.
  */
 
-char *mprog_type_to_name args( ( int type ) );
+char *mprog_type_to_name  ( int type ) ;
 
 SOCIALLIST_DATA *RandomSOCIAL = NULL;
 void mprog_get_RandomSOCIAL( void );

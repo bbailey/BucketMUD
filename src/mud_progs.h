@@ -29,7 +29,7 @@
 /*
  * Semi-locals
  */
-void *mprog_get_actor args( ( char *arg, char type ) );
+void *mprog_get_actor  ( char *arg, char type ) ;
 
 extern CHAR_DATA *ProgSource;
 extern CHAR_DATA *ProgTriggeredBy;

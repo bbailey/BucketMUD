@@ -19,10 +19,10 @@
 #include <time.h>
 #include "merc.h"
 
-void show_line_numbers args( ( CHAR_DATA * ch, char *oldstring ) );
-char *line_replace args( ( char *orig, int line, char *arg3 ) );
-int count_lines args( ( const char *orig ) );
-char *line_delete args( ( char *orig, int line ) );
+void show_line_numbers  ( CHAR_DATA * ch, char *oldstring ) ;
+char *line_replace  ( char *orig, int line, char *arg3 ) ;
+int count_lines  ( const char *orig ) ;
+char *line_delete  ( char *orig, int line ) ;
 
 /*
    The line_replace, count_lines, and line_delete functions

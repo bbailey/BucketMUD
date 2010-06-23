@@ -53,7 +53,7 @@
 /*
  * New typedefs.
  */
-typedef bool OLC_FUN args( ( CHAR_DATA * ch, char *argument ) );
+typedef bool OLC_FUN  ( CHAR_DATA * ch, char *argument ) ;
 #define DECLARE_OLC_FUN( fun )	OLC_FUN    fun
 
 /*
@@ -71,23 +71,23 @@ extern const struct olc_cmd_type helpsedit_table[];
 extern const struct olc_cmd_type todoedit_table[];
 
 /* Function prototypes */
-void helpsedit args( ( CHAR_DATA * ch, char *argument ) );
-HELP_DATA *new_help args( ( void ) );
-HELP_DATA *get_help args( ( char *argument ) );
-bool helpsedit_show args( ( CHAR_DATA * ch, char *argument ) );
-bool helpsedit_keyword args( ( CHAR_DATA * ch, char *argument ) );
-bool helpsedit_level args( ( CHAR_DATA * ch, char *argument ) );
-bool helpsedit_text args( ( CHAR_DATA * ch, char *argument ) );
-bool helpsedit_create args( ( CHAR_DATA * ch, char *argument ) );
+void helpsedit  ( CHAR_DATA * ch, char *argument ) ;
+HELP_DATA *new_help  ( void ) ;
+HELP_DATA *get_help  ( char *argument ) ;
+bool helpsedit_show  ( CHAR_DATA * ch, char *argument ) ;
+bool helpsedit_keyword  ( CHAR_DATA * ch, char *argument ) ;
+bool helpsedit_level  ( CHAR_DATA * ch, char *argument ) ;
+bool helpsedit_text  ( CHAR_DATA * ch, char *argument ) ;
+bool helpsedit_create  ( CHAR_DATA * ch, char *argument ) ;
 
-void todoedit args( ( CHAR_DATA * ch, char *argument ) );
-HELP_DATA *new_help args( ( void ) );
-HELP_DATA *get_help args( ( char *argument ) );
-bool todoedit_show args( ( CHAR_DATA * ch, char *argument ) );
-bool todoedit_keyword args( ( CHAR_DATA * ch, char *argument ) );
-bool todoedit_level args( ( CHAR_DATA * ch, char *argument ) );
-bool todoedit_text args( ( CHAR_DATA * ch, char *argument ) );
-bool todoedit_create args( ( CHAR_DATA * ch, char *argument ) );
+void todoedit  ( CHAR_DATA * ch, char *argument ) ;
+HELP_DATA *new_help  ( void ) ;
+HELP_DATA *get_help  ( char *argument ) ;
+bool todoedit_show  ( CHAR_DATA * ch, char *argument ) ;
+bool todoedit_keyword  ( CHAR_DATA * ch, char *argument ) ;
+bool todoedit_level  ( CHAR_DATA * ch, char *argument ) ;
+bool todoedit_text  ( CHAR_DATA * ch, char *argument ) ;
+bool todoedit_create  ( CHAR_DATA * ch, char *argument ) ;
 
 /* Command procedures needed ROM OLC */
 DECLARE_SPELL_FUN( spell_null );
@@ -112,22 +112,22 @@ DECLARE_SPELL_FUN( spell_null );
 /*
  * Interpreter Prototypes
  */
-void aedit args( ( CHAR_DATA * ch, char *argument ) );
-void redit args( ( CHAR_DATA * ch, char *argument ) );
-void medit args( ( CHAR_DATA * ch, char *argument ) );
-void oedit args( ( CHAR_DATA * ch, char *argument ) );
-void tedit args( ( CHAR_DATA * ch, char *argument ) );
-void hedit args( ( CHAR_DATA * ch, char *argument ) );
-void mpedit args( ( CHAR_DATA * ch, char *argument ) );
-void mpgedit args( ( CHAR_DATA * ch, char *argument ) );
-void cedit args( ( CHAR_DATA * ch, char *argument ) );
-void save_clans args( ( void ) );
-void save_area_list args( ( void ) );
-void save_area args( ( AREA_DATA * pArea ) );
-void save_todo args( ( void ) );
-void save_helps args( ( void ) );
-void save_mudprogs args( ( void ) );
-char *fix_string args( ( const char *str ) );
+void aedit  ( CHAR_DATA * ch, char *argument ) ;
+void redit  ( CHAR_DATA * ch, char *argument ) ;
+void medit  ( CHAR_DATA * ch, char *argument ) ;
+void oedit  ( CHAR_DATA * ch, char *argument ) ;
+void tedit  ( CHAR_DATA * ch, char *argument ) ;
+void hedit  ( CHAR_DATA * ch, char *argument ) ;
+void mpedit  ( CHAR_DATA * ch, char *argument ) ;
+void mpgedit  ( CHAR_DATA * ch, char *argument ) ;
+void cedit  ( CHAR_DATA * ch, char *argument ) ;
+void save_clans  ( void ) ;
+void save_area_list  ( void ) ;
+void save_area  ( AREA_DATA * pArea ) ;
+void save_todo  ( void ) ;
+void save_helps  ( void ) ;
+void save_mudprogs  ( void ) ;
+char *fix_string  ( const char *str ) ;
 
 /*
  * OLC Constants
@@ -156,12 +156,11 @@ struct flag_type
 /*
  * Utils.
  */
-AREA_DATA *get_vnum_area args( ( int vnum ) );
-AREA_DATA *get_area_data args( ( int vnum ) );
-int flag_value args( ( const struct flag_type * flag_table, char *argument ) );
-char *flag_string args( ( const struct flag_type * flag_table, int bits ) );
-void add_reset args( ( ROOM_INDEX_DATA * room,
-                       RESET_DATA * pReset, int index ) );
+AREA_DATA *get_vnum_area  ( int vnum ) ;
+AREA_DATA *get_area_data  ( int vnum ) ;
+int flag_value  ( const struct flag_type * flag_table, char *argument ) ;
+char *flag_string  ( const struct flag_type * flag_table, int bits ) ;
+void add_reset ( ROOM_INDEX_DATA * room, RESET_DATA * pReset, int index );
 
 /*
  * Interpreter Table Prototypes
@@ -188,10 +187,10 @@ DECLARE_DO_FUN( do_cedit );
 /*
  * General Functions
  */
-bool show_commands args( ( CHAR_DATA * ch, char *argument ) );
-bool show_help args( ( CHAR_DATA * ch, char *argument ) );
-bool edit_done args( ( CHAR_DATA * ch ) );
-bool show_version args( ( CHAR_DATA * ch, char *argument ) );
+bool show_commands  ( CHAR_DATA * ch, char *argument ) ;
+bool show_help  ( CHAR_DATA * ch, char *argument ) ;
+bool edit_done  ( CHAR_DATA * ch ) ;
+bool show_version  ( CHAR_DATA * ch, char *argument ) ;
 
 /*
  * Area Editor Prototypes
@@ -366,43 +365,43 @@ DECLARE_OLC_FUN( cedit_clanflags );
  */
 /* mem.c - memory prototypes. */
 #define ED	EXTRA_DESCR_DATA
-RESET_DATA *new_reset_data args( ( void ) );
-void free_reset_data args( ( RESET_DATA * pReset ) );
-AREA_DATA *new_area args( ( void ) );
-void free_area args( ( AREA_DATA * pArea ) );
-EXIT_DATA *new_exit args( ( void ) );
-void free_exit args( ( EXIT_DATA * pExit ) );
-ED *new_extra_descr args( ( void ) );
-void free_extra_descr args( ( ED * pExtra ) );
-ROOM_INDEX_DATA *new_room_index args( ( void ) );
-void free_room_index args( ( ROOM_INDEX_DATA * pRoom ) );
-AFFECT_DATA *new_affect args( ( void ) );
-NEWAFFECT_DATA *new_newaffect args( ( void ) );
-void free_affect args( ( AFFECT_DATA * pAf ) );
-SHOP_DATA *new_shop args( ( void ) );
-void free_shop args( ( SHOP_DATA * pShop ) );
-OBJ_INDEX_DATA *new_obj_index args( ( void ) );
-void free_obj_index args( ( OBJ_INDEX_DATA * pObj ) );
-MOB_INDEX_DATA *new_mob_index args( ( void ) );
-void free_mob_index args( ( MOB_INDEX_DATA * pMob ) );
+RESET_DATA *new_reset_data  ( void ) ;
+void free_reset_data  ( RESET_DATA * pReset ) ;
+AREA_DATA *new_area  ( void ) ;
+void free_area  ( AREA_DATA * pArea ) ;
+EXIT_DATA *new_exit  ( void ) ;
+void free_exit  ( EXIT_DATA * pExit ) ;
+ED *new_extra_descr  ( void ) ;
+void free_extra_descr  ( ED * pExtra ) ;
+ROOM_INDEX_DATA *new_room_index  ( void ) ;
+void free_room_index  ( ROOM_INDEX_DATA * pRoom ) ;
+AFFECT_DATA *new_affect  ( void ) ;
+NEWAFFECT_DATA *new_newaffect  ( void ) ;
+void free_affect  ( AFFECT_DATA * pAf ) ;
+SHOP_DATA *new_shop  ( void ) ;
+void free_shop  ( SHOP_DATA * pShop ) ;
+OBJ_INDEX_DATA *new_obj_index  ( void ) ;
+void free_obj_index  ( OBJ_INDEX_DATA * pObj ) ;
+MOB_INDEX_DATA *new_mob_index  ( void ) ;
+void free_mob_index  ( MOB_INDEX_DATA * pMob ) ;
 /* Olc.c */
-int mprog_count args( ( MOB_INDEX_DATA * pMob ) );
-MPROG_DATA *edit_mprog args( ( CHAR_DATA * ch, MOB_INDEX_DATA * pMobProg ) );
-void delete_mprog args( ( CHAR_DATA * ch, int pnum ) );
+int mprog_count  ( MOB_INDEX_DATA * pMob ) ;
+MPROG_DATA *edit_mprog  ( CHAR_DATA * ch, MOB_INDEX_DATA * pMobProg ) ;
+void delete_mprog  ( CHAR_DATA * ch, int pnum ) ;
 
-int rprog_count args( ( ROOM_INDEX_DATA * pRoom ) );
-MPROG_DATA *edit_rprog args( ( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomProg ) );
-void delete_rprog args( ( CHAR_DATA * ch, int pnum ) );
-void show_rprog args( ( CHAR_DATA * ch, MPROG_DATA * pRoomProg ) );
-int oprog_count args( ( OBJ_INDEX_DATA * pObj ) );
-MPROG_DATA *edit_oprog args( ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObjProg ) );
-void delete_oprog args( ( CHAR_DATA * ch, int pnum ) );
-void show_oprog args( ( CHAR_DATA * ch, MPROG_DATA * pObjProg ) );
+int rprog_count  ( ROOM_INDEX_DATA * pRoom ) ;
+MPROG_DATA *edit_rprog  ( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomProg ) ;
+void delete_rprog  ( CHAR_DATA * ch, int pnum ) ;
+void show_rprog  ( CHAR_DATA * ch, MPROG_DATA * pRoomProg ) ;
+int oprog_count  ( OBJ_INDEX_DATA * pObj ) ;
+MPROG_DATA *edit_oprog  ( CHAR_DATA * ch, OBJ_INDEX_DATA * pObjProg ) ;
+void delete_oprog  ( CHAR_DATA * ch, int pnum ) ;
+void show_oprog  ( CHAR_DATA * ch, MPROG_DATA * pObjProg ) ;
 /* Clan.c */
-CLAN_DATA *new_clan args( ( void ) );
-CLAN_DATA *get_clan args( ( int clannum ) );
-char *fwrite_flag args( ( long flags, char buf[] ) );
-void clan_log args( ( CLAN_DATA * clan, char *str, ... ) );
+CLAN_DATA *new_clan  ( void ) ;
+CLAN_DATA *get_clan  ( int clannum ) ;
+char *fwrite_flag  ( long flags, char buf[] ) ;
+void clan_log  ( CLAN_DATA * clan, char *str, ... ) ;
 
 DECLARE_DO_FUN( do_socialedit );
 DECLARE_DO_FUN( do_socialfind );
@@ -431,22 +430,22 @@ struct sociallist_data
 };
 
 /* Function prototypes */
-void load_socials args( ( FILE * fp ) );
-void save_socials args( ( void ) );
-void socialedit args( ( CHAR_DATA * ch, char *argument ) );
-SOCIALLIST_DATA *new_social args( ( void ) );
-SOCIALLIST_DATA *get_social_by_vnum args( ( sh_int vnum ) );
-bool socialedit_show args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_create args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_name args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_chnoarg args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_othersnoarg args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_chfound args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_othersfound args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_victfound args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_chnotfound args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_chauto args( ( CHAR_DATA * ch, char *argument ) );
-bool socialedit_othersauto args( ( CHAR_DATA * ch, char *argument ) );
+void load_socials  ( FILE * fp ) ;
+void save_socials  ( void ) ;
+void socialedit  ( CHAR_DATA * ch, char *argument ) ;
+SOCIALLIST_DATA *new_social  ( void ) ;
+SOCIALLIST_DATA *get_social_by_vnum  ( sh_int vnum ) ;
+bool socialedit_show  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_create  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_name  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_chnoarg  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_othersnoarg  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_chfound  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_othersfound  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_victfound  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_chnotfound  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_chauto  ( CHAR_DATA * ch, char *argument ) ;
+bool socialedit_othersauto  ( CHAR_DATA * ch, char *argument ) ;
 
 #undef	ED
 
