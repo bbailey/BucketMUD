@@ -30,7 +30,7 @@
 #include "merc.h"
 #include "mud_progs.h"
 
-extern void parse_command_var( char var, char *outbuf );
+extern void parse_command_var(char var, char *outbuf);
 
 /*
  * MudProgs Command table.
@@ -98,301 +98,301 @@ const struct mprog_cmd_type mprog_cmd_table[] =
     {"", 0, 0,}
 };
 
-int mprog_alignment( void *vo )
+int mprog_alignment(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( CHAR_DATA * ) vo )->alignment;
+    return ((CHAR_DATA *) vo)->alignment;
 }
 
-int mprog_clan( void *vo )
+int mprog_clan(void *vo)
 {
-    CHAR_DATA *ch = ( CHAR_DATA * ) vo;
+    CHAR_DATA *ch = (CHAR_DATA *) vo;
 
-    if ( !ch )
+    if (!ch)
         return FALSE;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return FALSE;
 
     return ch->pcdata->clan;
 }
 
-int mprog_class( void *vo )
+int mprog_class(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( CHAR_DATA * ) vo )->Class;
+    return ((CHAR_DATA *) vo)->Class;
 }
 
-int mprog_crimethief( void *vo )
+int mprog_crimethief(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return IS_SET( ( ( CHAR_DATA * ) vo )->act, PLR_THIEF );
+    return IS_SET(((CHAR_DATA *) vo)->act, PLR_THIEF);
 }
 
-int mprog_fightinroom( void *vo )
+int mprog_fightinroom(void *vo)
 {
     CHAR_DATA *ch;
 
-    if ( !ProgSource->in_room )
+    if (!ProgSource->in_room)
         return FALSE;
 
-    for ( ch = ProgSource->in_room->people; ch; ch = ch->next_in_room )
-        if ( ch->fighting )
+    for (ch = ProgSource->in_room->people; ch; ch = ch->next_in_room)
+        if (ch->fighting)
             return TRUE;
 
     return FALSE;
 }
 
-int mprog_getrand( void *vo )
+int mprog_getrand(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return number_range( 1, *( ( int * ) vo ) );
+    return number_range(1, *((int *) vo));
 }
 
-int mprog_goldamount( void *vo )
+int mprog_goldamount(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( CHAR_DATA * ) vo )->gold;
+    return ((CHAR_DATA *) vo)->gold;
 }
 
-int mprog_hasmemory( void *vo )
+int mprog_hasmemory(void *vo)
 {
-    if ( ProgSource->memory )
+    if (ProgSource->memory)
         return TRUE;
     else
         return FALSE;
 }
 
-int mprog_hitpercent( void *vo )
+int mprog_hitpercent(void *vo)
 {
-    CHAR_DATA *ch = ( CHAR_DATA * ) vo;
+    CHAR_DATA *ch = (CHAR_DATA *) vo;
 
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ch->hit / ch->max_hit ) * 100;
+    return (ch->hit / ch->max_hit) * 100;
 }
 
-int mprog_hour( void *vo )
+int mprog_hour(void *vo)
 {
     return time_info.hour;
 }
 
-int mprog_immune( void *vo )
+int mprog_immune(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return check_immune( ( CHAR_DATA * ) vo,
-                         attack_table[ProgObjectSource->value[3]].damage );
+    return check_immune((CHAR_DATA *) vo,
+                        attack_table[ProgObjectSource->value[3]].damage);
 }
 
-int mprog_isawake( void *vo )
+int mprog_isawake(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return IS_AWAKE( ( ( CHAR_DATA * ) vo ) );
+    return IS_AWAKE(((CHAR_DATA *) vo));
 }
 
-int mprog_ischarmed( void *vo )
+int mprog_ischarmed(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return IS_SET( ( ( CHAR_DATA * ) vo )->affected_by, AFF_CHARM );
+    return IS_SET(((CHAR_DATA *) vo)->affected_by, AFF_CHARM);
 }
 
-int mprog_isfight( void *vo )
+int mprog_isfight(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    if ( ( ( CHAR_DATA * ) vo )->fighting )
+    if (((CHAR_DATA *) vo)->fighting)
         return TRUE;
 
     return FALSE;
 }
 
-int mprog_isfollow( void *vo )
+int mprog_isfollow(void *vo)
 {
-    CHAR_DATA *ch = ( CHAR_DATA * ) vo;
+    CHAR_DATA *ch = (CHAR_DATA *) vo;
 
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ch->master != NULL && ch->master->in_room == ch->in_room );
+    return (ch->master != NULL && ch->master->in_room == ch->in_room);
 }
 
-int mprog_isimmort( void *vo )
+int mprog_isimmort(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( get_trust( ( CHAR_DATA * ) vo ) >= LEVEL_IMMORTAL );
+    return (get_trust((CHAR_DATA *) vo) >= LEVEL_IMMORTAL);
 }
 
-int mprog_isgood( void *vo )
+int mprog_isgood(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return IS_GOOD( ( ( CHAR_DATA * ) vo ) );
+    return IS_GOOD(((CHAR_DATA *) vo));
 }
 
-int mprog_isnpc( void *vo )
+int mprog_isnpc(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( IS_NPC( ( CHAR_DATA * ) vo ) );
+    return (IS_NPC((CHAR_DATA *) vo));
 }
 
-int mprog_ispc( void *vo )
+int mprog_ispc(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( !IS_NPC( ( CHAR_DATA * ) vo ) );
+    return (!IS_NPC((CHAR_DATA *) vo));
 }
 
-int mprog_level( void *vo )
+int mprog_level(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( CHAR_DATA * ) vo )->level;
+    return ((CHAR_DATA *) vo)->level;
 }
 
-int mprog_memory( void *vo )
+int mprog_memory(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    if ( !ProgSource->memory || ProgSource->memory == ProgSource )
+    if (!ProgSource->memory || ProgSource->memory == ProgSource)
         return FALSE;
 
-    return ( ProgSource->memory == vo );
+    return (ProgSource->memory == vo);
 }
 
-int mprog_mobvnum( void *vo )
+int mprog_mobvnum(void *vo)
 {
-    CHAR_DATA *ch = ( CHAR_DATA * ) vo;
+    CHAR_DATA *ch = (CHAR_DATA *) vo;
 
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return ch->pIndexData->vnum;
 
     return FALSE;
 }
 
-int mprog_objvnum( void *vo )
+int mprog_objvnum(void *vo)
 {
-    OBJ_DATA *obj = ( OBJ_DATA * ) vo;
+    OBJ_DATA *obj = (OBJ_DATA *) vo;
 
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
     return obj->pIndexData->vnum;
 }
 
-int mprog_objtype( void *vo )
+int mprog_objtype(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( OBJ_DATA * ) vo )->item_type;
+    return ((OBJ_DATA *) vo)->item_type;
 }
 
-int mprog_objval0( void *vo )
+int mprog_objval0(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( OBJ_DATA * ) vo )->value[0];
+    return ((OBJ_DATA *) vo)->value[0];
 }
 
-int mprog_objval1( void *vo )
+int mprog_objval1(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( OBJ_DATA * ) vo )->value[1];
+    return ((OBJ_DATA *) vo)->value[1];
 }
 
-int mprog_objval2( void *vo )
+int mprog_objval2(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( OBJ_DATA * ) vo )->value[2];
+    return ((OBJ_DATA *) vo)->value[2];
 }
 
-int mprog_objval3( void *vo )
+int mprog_objval3(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( OBJ_DATA * ) vo )->value[3];
+    return ((OBJ_DATA *) vo)->value[3];
 }
 
-int mprog_position( void *vo )
+int mprog_position(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( CHAR_DATA * ) vo )->position;
+    return ((CHAR_DATA *) vo)->position;
 }
 
-int mprog_rand( void *vo )
+int mprog_rand(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( number_percent(  ) <= *( ( int * ) vo ) );
+    return (number_percent() <= *((int *) vo));
 }
 
-int mprog_roomvnum( void *vo )
+int mprog_roomvnum(void *vo)
 {
-    if ( !ProgSource->in_room )
+    if (!ProgSource->in_room)
         return FALSE;
 
     return ProgSource->in_room->vnum;
 }
 
-int mprog_sex( void *vo )
+int mprog_sex(void *vo)
 {
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    return ( ( CHAR_DATA * ) vo )->sex;
+    return ((CHAR_DATA *) vo)->sex;
 }
 
-int mprog_sgetrand( void *vo )
+int mprog_sgetrand(void *vo)
 {
     static int lastarg = 0;
     static int lastrand = 0;
     static int lastprogid = 0;
-    int arg = *( ( int * ) vo );
+    int arg = *((int *) vo);
 
-    if ( !vo )
+    if (!vo)
         return FALSE;
 
-    if ( arg != lastarg || lastprogid != ExecMudProgID )
+    if (arg != lastarg || lastprogid != ExecMudProgID)
     {
-        lastrand = number_range( 1, arg );
+        lastrand = number_range(1, arg);
         lastprogid = ExecMudProgID;
         lastarg = arg;
     }
@@ -400,91 +400,91 @@ int mprog_sgetrand( void *vo )
     return lastrand;
 }
 
-int mprog_sreset( void *vo )
+int mprog_sreset(void *vo)
 {
     ExecMudProgID++;
 
     return TRUE;
 }
 
-int mprog_isequal( void *vo )
+int mprog_isequal(void *vo)
 {
-    char *argument = ( char * ) vo;
+    char *argument = (char *) vo;
     char left[MAX_INPUT_LENGTH];
     char *right;
 
-    if ( argument == NULL )
+    if (argument == NULL)
         return FALSE;
 
     /* The left argument must be a variable... */
-    if ( *argument == '$' )
-        parse_command_var( *( ++argument ), left );
+    if (*argument == '$')
+        parse_command_var(*(++argument), left);
     else
         return FALSE;
 
     /* The right argument should be a string... */
-    strtok( argument, "," );
-    right = strtok( NULL, "," );
+    strtok(argument, ",");
+    right = strtok(NULL, ",");
 
-    return !strcasecmp( left, right );
+    return !strcasecmp(left, right);
 }
 
-int mprog_faction( void *vo )
+int mprog_faction(void *vo)
 {
     FACTIONLIST_DATA *pFact;
     FACTIONPC_DATA *pFactPC;
     CHAR_DATA *victim;
-    char *argument = ( char * ) vo;
+    char *argument = (char *) vo;
     int vnum;
 
-    if ( *argument == '$' )
+    if (*argument == '$')
     {
-        victim = mprog_get_actor( strtok( argument, "," ), 'C' );
-        if ( !victim )
+        victim = mprog_get_actor(strtok(argument, ","), 'C');
+        if (!victim)
         {
-            bug( "mprog_faction: Couldn't find victim %s", argument );
+            bug("mprog_faction: Couldn't find victim %s", argument);
             return 0;
         }
     }
     else
     {
-        victim = get_char_world( ProgSource, strtok( argument, "," ) );
-        if ( !victim )
+        victim = get_char_world(ProgSource, strtok(argument, ","));
+        if (!victim)
         {
-            bug( "mprog_faction: Couldn't find victim %s", argument );
+            bug("mprog_faction: Couldn't find victim %s", argument);
             return 0;
         }
     }
 
-    argument += strlen( argument ) + 1;
+    argument += strlen(argument) + 1;
 
-    if ( !is_number( argument ) )
+    if (!is_number(argument))
     {
-        bug( "mprog_faction: bad argument syntax '%s'.", argument );
+        bug("mprog_faction: bad argument syntax '%s'.", argument);
         return 0;
     }
 
-    vnum = atoi( argument );
+    vnum = atoi(argument);
 
-    if ( IS_NPC( victim ) )
+    if (IS_NPC(victim))
         return 0;
 
-    pFact = get_faction_by_vnum( ( sh_int ) vnum );
+    pFact = get_faction_by_vnum((sh_int) vnum);
 
-    if ( !pFact )
+    if (!pFact)
     {
-        bug( "mprog_faction: No such faction vnum %s", argument );
+        bug("mprog_faction: No such faction vnum %s", argument);
         return 0;
     }
 
-    for ( pFactPC = victim->pcdata->faction_standings;
-            pFactPC != NULL; pFactPC = pFactPC->next )
+    for (pFactPC = victim->pcdata->faction_standings;
+            pFactPC != NULL; pFactPC = pFactPC->next)
     {
-        if ( pFactPC->faction == pFact )
+        if (pFactPC->faction == pFact)
             break;
     }
 
-    if ( !pFactPC )
+    if (!pFactPC)
     {
         return CFG_FACTION_INITIAL_VALUE;
     }
@@ -492,37 +492,37 @@ int mprog_faction( void *vo )
     return pFactPC->value;
 }
 
-int mprog_isname( void *vo )
+int mprog_isname(void *vo)
 {
     CHAR_DATA *victim;
-    char *argument = ( char * ) vo;
+    char *argument = (char *) vo;
 
-    if ( *argument == '$' )
+    if (*argument == '$')
     {
-        victim = mprog_get_actor( strtok( argument, "," ), 'C' );
-        if ( !victim )
+        victim = mprog_get_actor(strtok(argument, ","), 'C');
+        if (!victim)
         {
-            bug( "mprog_isname: Couldn't find victim %s", argument );
+            bug("mprog_isname: Couldn't find victim %s", argument);
             return 0;
         }
     }
     else
     {
-        victim = get_char_world( ProgSource, strtok( argument, "," ) );
-        if ( !victim )
+        victim = get_char_world(ProgSource, strtok(argument, ","));
+        if (!victim)
         {
-            bug( "mprog_isname: Couldn't find victim %s", argument );
+            bug("mprog_isname: Couldn't find victim %s", argument);
             return 0;
         }
     }
 
-    argument += strlen( argument ) + 1;
+    argument += strlen(argument) + 1;
 
-    if ( !( *argument ) )
+    if (!(*argument))
     {
-        bug( "mprog_isname: Bad argument syntax." );
+        bug("mprog_isname: Bad argument syntax.");
         return 0;
     }
 
-    return is_name( argument, victim->name );
+    return is_name(argument, victim->name);
 }

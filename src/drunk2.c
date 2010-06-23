@@ -37,13 +37,14 @@
 /* Modified and enhanced for envy(2) by the Maniac from Mythran */
 /* Further mods/upgrades for ROM 2.4 by Kohl Desenee */
 
-char *makedrunk( char *string, CHAR_DATA * ch )
+char *makedrunk(char *string, CHAR_DATA * ch)
 {
     /* This structure defines all changes for a character */
     struct struckdrunk drunk[] =
     {
         {3, 10,
-            {"a", "a", "a", "A", "aa", "ah", "Ah", "ao", "aw", "oa", "ahhhh"}},
+            {"a", "a", "a", "A", "aa", "ah", "Ah", "ao", "aw", "oa",
+                "ahhhh"}},
         {8, 5,
          {"b", "b", "b", "B", "B", "vb"}},
         {3, 5,
@@ -93,7 +94,8 @@ char *makedrunk( char *string, CHAR_DATA * ch )
         {3, 2,
          {"y", "y", "Y"}},
         {2, 9,
-         {"z", "z", "ZzzZz", "Zzz", "Zsszzsz", "szz", "sZZz", "ZSz", "zZ", "Z"}}
+         {"z", "z", "ZzzZz", "Zzz", "Zsszzsz", "szz", "sZZz", "ZSz", "zZ",
+          "Z"}}
     };
 
     char buf[1024];
@@ -103,44 +105,45 @@ char *makedrunk( char *string, CHAR_DATA * ch )
     int randomnum;
 
     /* Check how drunk a person is... */
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         drunklevel = 0;
     else
         drunklevel = ch->pcdata->condition[COND_DRUNK];
 
-    if ( drunklevel > 0 )
+    if (drunklevel > 0)
     {
         do
         {
-            temp = toupper( *string );
-            if ( ( temp >= 'A' ) && ( temp <= 'Z' ) )
+            temp = toupper(*string);
+            if ((temp >= 'A') && (temp <= 'Z'))
             {
-                if ( drunklevel > drunk[temp - 'A'].min_drunk_level )
+                if (drunklevel > drunk[temp - 'A'].min_drunk_level)
                 {
                     randomnum =
-                        number_range( 0, drunk[temp - 'A'].number_of_rep );
-                    strcpy( &buf[pos],
-                            drunk[temp - 'A'].replacement[randomnum] );
-                    pos += strlen( drunk[temp - 'A'].replacement[randomnum] );
+                        number_range(0, drunk[temp - 'A'].number_of_rep);
+                    strcpy(&buf[pos],
+                           drunk[temp - 'A'].replacement[randomnum]);
+                    pos +=
+                        strlen(drunk[temp - 'A'].replacement[randomnum]);
                 }
                 else
                     buf[pos++] = *string;
             }
             else
             {
-                if ( ( temp >= '0' ) && ( temp <= '9' ) )
+                if ((temp >= '0') && (temp <= '9'))
                 {
-                    temp = '0' + number_range( 0, 9 );
+                    temp = '0' + number_range(0, 9);
                     buf[pos++] = temp;
                 }
                 else
                     buf[pos++] = *string;
             }
         }
-        while ( *string++ );
-        buf[pos] = '\0';        /* Mark end of the string... */
-        strcpy( string, buf );
-        return ( string );
+        while (*string++);
+        buf[pos] = '\0';	/* Mark end of the string... */
+        strcpy(string, buf);
+        return (string);
     }
-    return ( string );
+    return (string);
 }

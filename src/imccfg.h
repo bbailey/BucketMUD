@@ -43,7 +43,7 @@
 #if defined(IMCUENVY)
 #define SMAUGSOCIAL
 #define SOCIAL_DATA SOC_INDEX_DATA
-SOC_INDEX_DATA *find_social( char *command );
+SOC_INDEX_DATA *find_social(char *command);
 #define first_descriptor descriptor_list
 #define CH_IMCRANK(ch)           (title_table[(ch)->class][(ch)->level][(ch)->sex == SEX_FEMALE ? 1 : 0])
 #endif
@@ -79,7 +79,7 @@ struct social_messg
  */
 
 extern struct social_messg *soc_mess_list;
-struct social_messg *find_social( const char *name );
+struct social_messg *find_social(const char *name);
 
 typedef struct social_messg SOCIAL_DATA;
 typedef struct char_data CHAR_DATA;
@@ -87,8 +87,8 @@ typedef struct descriptor_data DESCRIPTOR_DATA;
 
 extern const char *class_abbrevs[];
 
-const char *title_female( int chclass, int level );
-const char *title_male( int chclass, int level );
+const char *title_female(int chclass, int level);
+const char *title_male(int chclass, int level);
 
 #define first_descriptor         descriptor_list
 #define URANGE(a, b, c)          ((b) < (a) ? (a) : ((b) > (c) ? (c) : (b)))

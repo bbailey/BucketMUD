@@ -19,9 +19,9 @@
 #define NEWAFF_GHOST                5
 #define NEWAFF_BLACKJACK            6
 
-int IS_NEWAFF_SET( char *b, int bit );
-void SET_NEWAFF( char *b, int bit );
-void REMOVE_NEWAFF( char *b, int bit );
+int IS_NEWAFF_SET(char *b, int bit);
+void SET_NEWAFF(char *b, int bit);
+void REMOVE_NEWAFF(char *b, int bit);
 
 struct newaff_table_struct
 {

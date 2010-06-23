@@ -4,11 +4,11 @@
 #include "merc.h"
 #include "olc.h"
 
-void do_factionedit (CHAR_DATA * ch, char *argument);
-void do_factionfind (CHAR_DATA * ch, char *argument);
-void do_mpchangefaction (CHAR_DATA * ch, char *argument);
-void do_mpsilentchangefaction (CHAR_DATA * ch, char *argument);
-void show_faction_standings (CHAR_DATA * ch, char *argument);
+void do_factionedit(CHAR_DATA * ch, char *argument);
+void do_factionfind(CHAR_DATA * ch, char *argument);
+void do_mpchangefaction(CHAR_DATA * ch, char *argument);
+void do_mpsilentchangefaction(CHAR_DATA * ch, char *argument);
+void show_faction_standings(CHAR_DATA * ch, char *argument);
 
 typedef struct factionlist_data FACTIONLIST_DATA;
 typedef struct factionaff_data FACTIONAFF_DATA;
@@ -46,29 +46,30 @@ struct factionpc_data
 };
 
 /* Function prototypes */
-void load_factionaffs (FILE * fp);
-void load_factions (FILE * fp);
-void save_factions (void);
-void factionedit (CHAR_DATA * ch, char *argument);
-FACTIONLIST_DATA *new_faction (void);
-FACTIONLIST_DATA *get_faction_by_vnum (sh_int vnum);
-bool factedit_show (CHAR_DATA * ch, char *argument);
-bool factedit_create (CHAR_DATA * ch, char *argument);
-bool factedit_name (CHAR_DATA * ch, char *argument);
-bool factedit_increase (CHAR_DATA * ch, char *argument);
-bool factedit_decrease (CHAR_DATA * ch, char *argument);
-bool medit_faction (CHAR_DATA * ch, char *argument);
-void affect_factions (CHAR_DATA * ch, CHAR_DATA * victim);
-void fread_faction_standings (CHAR_DATA * ch, FILE * fp);
-void fwrite_faction_standings (CHAR_DATA * ch, FILE * fp);
-void free_faction_standings (FACTIONPC_DATA * pFactPC);
-char *faction_con_msg (sh_int value);
-sh_int faction_percentage (sh_int value);
-sh_int consider_factions (CHAR_DATA * ch, CHAR_DATA * victim, bool show);
+void load_factionaffs(FILE * fp);
+void load_factions(FILE * fp);
+void save_factions(void);
+void factionedit(CHAR_DATA * ch, char *argument);
+FACTIONLIST_DATA *new_faction(void);
+FACTIONLIST_DATA *get_faction_by_vnum(sh_int vnum);
+bool factedit_show(CHAR_DATA * ch, char *argument);
+bool factedit_create(CHAR_DATA * ch, char *argument);
+bool factedit_name(CHAR_DATA * ch, char *argument);
+bool factedit_increase(CHAR_DATA * ch, char *argument);
+bool factedit_decrease(CHAR_DATA * ch, char *argument);
+bool medit_faction(CHAR_DATA * ch, char *argument);
+void affect_factions(CHAR_DATA * ch, CHAR_DATA * victim);
+void fread_faction_standings(CHAR_DATA * ch, FILE * fp);
+void fwrite_faction_standings(CHAR_DATA * ch, FILE * fp);
+void free_faction_standings(FACTIONPC_DATA * pFactPC);
+char *faction_con_msg(sh_int value);
+sh_int faction_percentage(sh_int value);
+sh_int consider_factions(CHAR_DATA * ch, CHAR_DATA * victim, bool show);
 void set_faction
 (CHAR_DATA * ch, CHAR_DATA * victim, sh_int vnum, sh_int value);
-void faction_stat (CHAR_DATA * ch, CHAR_DATA * victim);
-double faction_cost_multiplier (CHAR_DATA * ch, CHAR_DATA * keeper, bool buy);
-char *add_to_buf (char *buffer, char *txt);
+void faction_stat(CHAR_DATA * ch, CHAR_DATA * victim);
+double faction_cost_multiplier(CHAR_DATA * ch, CHAR_DATA * keeper,
+                               bool buy);
+char *add_to_buf(char *buffer, char *txt);
 
 #endif

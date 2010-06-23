@@ -42,16 +42,16 @@
 #define addrTypeSize ( sizeof( addrType ) )
 #define addrSizeMask ( sizeof( addrType ) - 1 )
 
-extern int _filbuf  ( FILE * ) ;
+extern int _filbuf(FILE *);
 
 typedef struct BE BufEntry;
 
 struct BE
 {
     BufEntry *next;
-    uintType size;              /* size of the chunk (regardless of NULL CHAR) */
-    intType usage;              /* how many pointers to the string */
-    char buf[1];                /* chunk starts here */
+    uintType size;		/* size of the chunk (regardless of NULL CHAR) */
+    intType usage;		/* how many pointers to the string */
+    char buf[1];		/* chunk starts here */
 };
 
 /*
@@ -83,12 +83,12 @@ long sOverFlowString;
 int numFree;
 bool Full;
 
-char *str_dup( const char * );
-void free_string( char ** );
-char *fread_string( FILE * );
-void temp_hash_add( char *, const int );
-char *temp_hash_find( const char * );
-static unsigned long get_string_hash( register const char *key );
+char *str_dup(const char *);
+void free_string(char **);
+char *fread_string(FILE *);
+void temp_hash_add(char *, const int);
+char *temp_hash_find(const char *);
+static unsigned long get_string_hash(register const char *key);
 
 /*
  * ssm_buf_head points to start of shared space,
@@ -97,7 +97,7 @@ static unsigned long get_string_hash( register const char *key );
 BufEntry *ssm_buf_head = NULL, *ssm_buf_free = NULL;
 
 /* To allocate more memory increase MAX_CHUNKS in merc.h. */
-#define CHUNK_SIZE   0xfff0     /* DO NOT mess with this! */
+#define CHUNK_SIZE   0xfff0	/* DO NOT mess with this! */
 long MAX_STRING = MAX_CHUNKS * CHUNK_SIZE;
 int HEADER_SIZE;
 
@@ -110,31 +110,31 @@ int HEADER_SIZE;
  */
 #define MAX_FREE     1000
 
-void init_string_space(  )
+void init_string_space()
 {
     BufEntry *walk;
     int i;
 
-    string_space = ( char * ) calloc( 1, MAX_STRING );
-    if ( !string_space )
+    string_space = (char *) calloc(1, MAX_STRING);
+    if (!string_space)
     {
-        bug( "[SSM] Cant allocate shared string space.", 0 );
-        exit( 1 );
+        bug("[SSM] Cant allocate shared string space.", 0);
+        exit(1);
     }
 
     top_string = string_space + MAX_STRING - 1;
-    ssm_buf_head = ( BufEntry * ) string_space;
+    ssm_buf_head = (BufEntry *) string_space;
     HEADER_SIZE =
-        ( int ) ( ( char * ) &ssm_buf_head->buf[0] - ( char * ) ssm_buf_head );
+        (int) ((char *) &ssm_buf_head->buf[0] - (char *) ssm_buf_head);
 
     walk = ssm_buf_head;
-    for ( i = 0;; i++ )
+    for (i = 0;; i++)
     {
         walk->usage = 0;
         walk->size = CHUNK_SIZE - HEADER_SIZE;
-        if ( i < MAX_CHUNKS - 1 )
+        if (i < MAX_CHUNKS - 1)
         {
-            walk->next = ( BufEntry * ) ( ( char * ) walk + CHUNK_SIZE );
+            walk->next = (BufEntry *) ((char *) walk + CHUNK_SIZE);
             walk = walk->next;
             continue;
         }
@@ -144,11 +144,11 @@ void init_string_space(  )
     }
 
     ssm_buf_free = ssm_buf_head;
-    temp_string_hash = ( TempHash ** ) calloc( sizeof( TempHash * ),
-                       MAX_KEY_HASH );
+    temp_string_hash = (TempHash **) calloc(sizeof(TempHash *),
+                                            MAX_KEY_HASH);
 }
 
-int defrag_heap(  )
+int defrag_heap()
 {
     /*
      * Walk through the shared heap and merge adjacent free blocks.
@@ -165,20 +165,20 @@ int defrag_heap(  )
     int merges = 0;
     ssm_buf_free = 0;
 
-    for ( walk = ssm_buf_head, last_free = 0; walk; walk = next )
+    for (walk = ssm_buf_head, last_free = 0; walk; walk = next)
     {
         next = walk->next;
-        if ( walk->usage > 0 )
+        if (walk->usage > 0)
         {
             /* this block is in use so set last_free to NULL */
             last_free = 0;
             continue;
         }
-        else if ( !last_free )
+        else if (!last_free)
         {
             /* OK found a NEW free block, set last_free and move to next */
             last_free = walk;
-            if ( !ssm_buf_free )
+            if (!ssm_buf_free)
                 ssm_buf_free = walk;
 
             continue;
@@ -186,7 +186,7 @@ int defrag_heap(  )
         else
         {
             /* previous block free so merge walk into last_free and move on */
-            if ( ( long ) last_free->size + ( long ) walk->size <= CHUNK_SIZE )
+            if ((long) last_free->size + (long) walk->size <= CHUNK_SIZE)
             {
                 merges++;
                 last_free->size += walk->size + HEADER_SIZE;
@@ -198,10 +198,10 @@ int defrag_heap(  )
         }
     }
 
-    if ( merges )
-        bug( "[SSM] defrag_heap : made %d block merges.", merges );
+    if (merges)
+        bug("[SSM] defrag_heap : made %d block merges.", merges);
     else
-        bug( "[SSM] defrag_heap : resulted in 0 merges.", 0 );
+        bug("[SSM] defrag_heap : resulted in 0 merges.", 0);
 
     /* Start count over again */
     numFree = 0;
@@ -216,30 +216,30 @@ int defrag_heap(  )
  * freed. Upon bootup, there is a seperate hash table constructed in order
  * to do crunching, then the table is destroyed.
  */
-char *str_dup( const char *str )
+char *str_dup(const char *str)
 {
     BufEntry *ptr;
     char *str_new;
     int len;
     int rlen;
 
-    if ( !str || !*str )
+    if (!str || !*str)
         return &str_empty[0];
 
-    if ( str > string_space && str < top_string )
+    if (str > string_space && str < top_string)
     {
-        ptr = ( BufEntry * ) ( str - HEADER_SIZE );
-        if ( ptr->usage <= 0 )
+        ptr = (BufEntry *) (str - HEADER_SIZE);
+        if (ptr->usage <= 0)
         {
-            bug( "str_dup : invalid str", 0 );
-            bug( str, 0 );
+            bug("str_dup : invalid str", 0);
+            bug(str, 0);
         }
 
         ptr->usage++;
-        return ( char * ) str;
+        return (char *) str;
     }
 
-    rlen = len = ( int ) strlen( str ) + 1;
+    rlen = len = (int) strlen(str) + 1;
 
     /*
      * Round up to machine dependant address size.
@@ -247,45 +247,45 @@ char *str_dup( const char *str )
      * the struct must be aligned correctly.
      */
 
-    if ( ( len + HEADER_SIZE ) & addrSizeMask )
-        len += addrTypeSize - ( ( len + HEADER_SIZE ) & addrSizeMask );
+    if ((len + HEADER_SIZE) & addrSizeMask)
+        len += addrTypeSize - ((len + HEADER_SIZE) & addrSizeMask);
 
-    if ( ssm_buf_free )
+    if (ssm_buf_free)
     {
 RETRY:
-        for ( ptr = ssm_buf_free; ptr; ptr = ptr->next )
-            if ( ptr->usage == 0 && ptr->size >= len )
+        for (ptr = ssm_buf_free; ptr; ptr = ptr->next)
+            if (ptr->usage == 0 && ptr->size >= len)
                 break;
 
-        if ( !ptr )
+        if (!ptr)
         {
-            if ( numFree >= MAX_FREE )
+            if (numFree >= MAX_FREE)
             {
                 int merges;
 
-                bug( "[SSM] Attempting to optimize shared string heap.", 0 );
-                merges = defrag_heap(  );
+                bug("[SSM] Attempting to optimize shared string heap.", 0);
+                merges = defrag_heap();
 
                 /* goto is fine because defrag will return 0 next time */
-                if ( merges )
+                if (merges)
                     goto RETRY;
             }
 
-            str_new = ( char * ) malloc( rlen );
-            strcpy( str_new, str );
+            str_new = (char *) malloc(rlen);
+            strcpy(str_new, str);
             sOverFlowString += rlen;
             nOverFlowString++;
             return str_new;
         }
 
         /* If there is at least header size excess break it up */
-        else if ( ptr->size - len > HEADER_SIZE )
+        else if (ptr->size - len > HEADER_SIZE)
         {
             BufEntry *temp;
 
             /* WARNING! - DONT REMOVE THE CASTS BELOW! - Fusion */
-            temp = ( BufEntry * ) ( ( char * ) ptr + HEADER_SIZE + len );
-            temp->size = ptr->size - ( len + HEADER_SIZE );
+            temp = (BufEntry *) ((char *) ptr + HEADER_SIZE + len);
+            temp->size = ptr->size - (len + HEADER_SIZE);
             temp->next = ptr->next;
             temp->usage = 0;
             ptr->size = len;
@@ -296,31 +296,31 @@ RETRY:
         else
         {
             ptr->usage = 1;
-            if ( ptr != ssm_buf_free )
-                ssm_buf_free->usage--;  /* buf_free was skipped */
+            if (ptr != ssm_buf_free)
+                ssm_buf_free->usage--;	/* buf_free was skipped */
 
-            for ( ssm_buf_free = ssm_buf_head; ssm_buf_free;
-                    ssm_buf_free = ssm_buf_free->next )
-                if ( ssm_buf_free->usage == 0 )
+            for (ssm_buf_free = ssm_buf_head; ssm_buf_free;
+                    ssm_buf_free = ssm_buf_free->next)
+                if (ssm_buf_free->usage == 0)
                     break;
         }
 
-        str_new = ( char * ) &ptr->buf[0];
-        strcpy( str_new, str );
+        str_new = (char *) &ptr->buf[0];
+        strcpy(str_new, str);
         nAllocString++;
         sAllocString += ptr->size + HEADER_SIZE;
     }
     else
     {
         /* A one time toggle just for bugging purposes */
-        if ( !Full )
+        if (!Full)
         {
-            bug( "[SSM] The shared string heap is full!", 0 );
+            bug("[SSM] The shared string heap is full!", 0);
             Full = 1;
         }
 
-        str_new = ( char * ) malloc( rlen );
-        strcpy( str_new, str );
+        str_new = (char *) malloc(rlen);
+        strcpy(str_new, str);
         sOverFlowString += rlen;
         nOverFlowString++;
     }
@@ -341,72 +341,72 @@ RETRY:
  * corruption). -Zane
  *
  */
-void free_string( char **strptr )
+void free_string(char **strptr)
 {
     char *str;
     BufEntry *ptr;
 
     str = *strptr;
 
-    if ( !str )
+    if (!str)
         return;
 
-    if ( str == &str_empty[0] )
+    if (str == &str_empty[0])
     {
         *strptr = NULL;
         return;
     }
 
-    if ( str > string_space && str < top_string )
+    if (str > string_space && str < top_string)
     {
-        ptr = ( BufEntry * ) ( str - HEADER_SIZE );
+        ptr = (BufEntry *) (str - HEADER_SIZE);
 
-        if ( --ptr->usage > 0 )
+        if (--ptr->usage > 0)
         {
             *strptr = NULL;
             return;
         }
-        else if ( ptr->usage < 0 )
+        else if (ptr->usage < 0)
         {
             /* Undo the change we made above, avoid memory corruption if possible. */
             ptr->usage++;
-            bug( "SSM:free_string: multiple free or invalid string.", 0 );
-            bug( str, 0 );
+            bug("SSM:free_string: multiple free or invalid string.", 0);
+            bug(str, 0);
             *strptr = NULL;
             return;
         }
 
         numFree++;
-        sAllocString -= ( ptr->size + HEADER_SIZE );
+        sAllocString -= (ptr->size + HEADER_SIZE);
         nAllocString--;
 
-        if ( ssm_buf_free > ptr )
+        if (ssm_buf_free > ptr)
             ssm_buf_free = ptr;
 
-        if ( fBootDb )
+        if (fBootDb)
         {
             TempHash *ptr;
             TempHash *walk;
-            unsigned long ihash = get_string_hash( str );
+            unsigned long ihash = get_string_hash(str);
 
-            for ( ptr = temp_string_hash[ihash]; ptr; ptr = ptr->next )
+            for (ptr = temp_string_hash[ihash]; ptr; ptr = ptr->next)
             {
-                if ( ptr->str != str )
+                if (ptr->str != str)
                     continue;
-                else if ( ptr == temp_string_hash[ihash] )
+                else if (ptr == temp_string_hash[ihash])
                     temp_string_hash[ihash] = ptr->next;
                 else
-                    for ( walk = temp_string_hash[ihash]; walk;
-                            walk = walk->next )
+                    for (walk = temp_string_hash[ihash]; walk;
+                            walk = walk->next)
                     {
-                        if ( walk->next == ptr )
+                        if (walk->next == ptr)
                         {
                             walk->next = ptr->next;
                             break;
                         }
                     }
 
-                free( ptr );
+                free(ptr);
                 break;
             }
         }
@@ -414,13 +414,13 @@ void free_string( char **strptr )
         return;
     }
 
-    sOverFlowString -= strlen( str ) + 1;
+    sOverFlowString -= strlen(str) + 1;
     nOverFlowString--;
 
-    if ( sOverFlowString < 0 || nOverFlowString < 0 )
-        bug( "SSM:free_string: string free from outside SS space.", 0 );
+    if (sOverFlowString < 0 || nOverFlowString < 0)
+        bug("SSM:free_string: string free from outside SS space.", 0);
 
-    free( str );
+    free(str);
     *strptr = NULL;
     return;
 }
@@ -430,33 +430,33 @@ void free_string( char **strptr )
  * This replaces db.c fread_string
  * This is modified version of Furey's fread_string from Merc
  */
-char *fread_string( FILE * fp )
+char *fread_string(FILE * fp)
 {
     char buf[MAX_STRING_LENGTH * 4];
     register char *ptr = buf;
     register char c;
     int len;
 
-    /*    *status = 0;*/
+    /*    *status = 0; */
 
     do
-        c = getc( fp );
-    while ( isspace( c ) );
+        c = getc(fp);
+    while (isspace(c));
 
-    if ( ( *ptr++ = c ) == '~' )
+    if ((*ptr++ = c) == '~')
         return &str_empty[0];
 
-    for ( ;; )
+    for (;;)
     {
-        switch ( *ptr = getc( fp ) )
+        switch (*ptr = getc(fp))
         {
         default:
             ptr++;
             break;
 
         case EOF:
-            bug( "Fread_string: EOF", 0 );
-            /*	    	*status = 1; */
+            bug("Fread_string: EOF", 0);
+            /*          *status = 1; */
             return NULL;
             break;
 
@@ -470,25 +470,25 @@ char *fread_string( FILE * fp )
 
         case '~':
             *ptr = '\0';
-            if ( fBootDb )
+            if (fBootDb)
             {
                 len = ptr - buf;
 
-                ptr = temp_hash_find( buf );
-                if ( ptr )
-                    return str_dup( ptr );
+                ptr = temp_hash_find(buf);
+                if (ptr)
+                    return str_dup(ptr);
 
-                ptr = str_dup( buf );
-                temp_hash_add( ptr, len );
+                ptr = str_dup(buf);
+                temp_hash_add(ptr, len);
                 return ptr;
             }
 
-            return str_dup( buf );
+            return str_dup(buf);
         }
     }
 }
 
-char *fread_string_eol( FILE * fp )
+char *fread_string_eol(FILE * fp)
 {
     signed char buf[MAX_STRING_LENGTH * 4];
     register signed char *ptr = buf;
@@ -500,40 +500,40 @@ char *fread_string_eol( FILE * fp )
      * Read first char.
      */
     do
-        c = getc( fp );
-    while ( c == ' ' || c == '\t' );
+        c = getc(fp);
+    while (c == ' ' || c == '\t');
 
     *ptr = c;
 
-    while ( *ptr != '\n' && *ptr != '\r' && *ptr != EOF )
-        *++ptr = getc( fp );
+    while (*ptr != '\n' && *ptr != '\r' && *ptr != EOF)
+        *++ptr = getc(fp);
 
-    if ( ptr == buf )
+    if (ptr == buf)
         return &str_empty[0];
 
     *ptr = '\0';
 
-    if ( fBootDb )
+    if (fBootDb)
     {
         len = ptr - buf;
 
-        ptr = (signed char *) temp_hash_find( (char *) buf );
-        if ( ptr )
-            return str_dup( (char *) ptr );
+        ptr = (signed char *) temp_hash_find((char *) buf);
+        if (ptr)
+            return str_dup((char *) ptr);
 
-        ptr = (signed char *) str_dup( (char *) buf );
-        temp_hash_add( (char *) ptr, len );
+        ptr = (signed char *) str_dup((char *) buf);
+        temp_hash_add((char *) ptr, len);
         return (char *) ptr;
     }
 
-    return str_dup( (char *) buf );
+    return str_dup((char *) buf);
 }
 
 /*
  * Read string into user supplied buffer.
  * Modified version of fread_string_eol
  */
-int temp_fread_string_eol( FILE * fp, char *outbuf )
+int temp_fread_string_eol(FILE * fp, char *outbuf)
 {
     register signed char *ptr = (signed char *) outbuf;
     register signed char c;
@@ -544,15 +544,15 @@ int temp_fread_string_eol( FILE * fp, char *outbuf )
      * Read first char.
      */
     do
-        c = getc( fp );
-    while ( c == ' ' || c == '\t' );
+        c = getc(fp);
+    while (c == ' ' || c == '\t');
 
     *ptr = c;
 
-    while ( *ptr != '\n' && *ptr != '\r' && *ptr != EOF )
-        *++ptr = getc( fp );
+    while (*ptr != '\n' && *ptr != '\r' && *ptr != EOF)
+        *++ptr = getc(fp);
 
-    if ( *ptr == EOF )
+    if (*ptr == EOF)
         bEOF = TRUE;
 
     *ptr = '\0';
@@ -564,34 +564,34 @@ int temp_fread_string_eol( FILE * fp, char *outbuf )
  * Read string into user supplied buffer.
  * Modified version of Furey's fread_string
  */
-void temp_fread_string( FILE * fp, char *outbuf )
+void temp_fread_string(FILE * fp, char *outbuf)
 {
     char *ptr = outbuf;
     char c;
 
     do
     {
-        c = getc( fp );
+        c = getc(fp);
     }
-    while ( isspace( c ) );
+    while (isspace(c));
 
-    if ( ( *ptr++ = c ) == '~' )
+    if ((*ptr++ = c) == '~')
     {
         *outbuf = '\0';
         return;
     }
 
-    for ( ;; )
+    for (;;)
     {
-        switch ( *ptr = getc( fp ) )
+        switch (*ptr = getc(fp))
         {
         default:
             ptr++;
             break;
 
         case EOF:
-            bug( "Fread_string: EOF", 0 );
-            exit( 1 );
+            bug("Fread_string: EOF", 0);
+            exit(1);
             break;
 
         case '\n':
@@ -615,14 +615,14 @@ void temp_fread_string( FILE * fp, char *outbuf )
  *  and returns an unsigned long.
  *-------------------------------------------------------------*/
 
-static unsigned long get_string_hash( register const char *key )
+static unsigned long get_string_hash(register const char *key)
 {
     register unsigned long hash = 0, g;
 
-    while ( *key )
+    while (*key)
     {
-        hash = ( hash << 4 ) + *key++;
-        if ( ( g = hash & 0xF0000000 ) )
+        hash = (hash << 4) + *key++;
+        if ((g = hash & 0xF0000000))
             hash ^= g >> 24;
         hash &= ~g;
     }
@@ -631,21 +631,21 @@ static unsigned long get_string_hash( register const char *key )
 }
 
 /* Lookup the string in the boot-time hash table. */
-char *temp_hash_find( const char *str )
+char *temp_hash_find(const char *str)
 {
     TempHash *ptr;
     unsigned long ihash;
 
-    if ( !fBootDb || !*str )
+    if (!fBootDb || !*str)
         return 0;
 
-    ihash = get_string_hash( str );
+    ihash = get_string_hash(str);
 
-    for ( ptr = temp_string_hash[ihash]; ptr; ptr = ptr->next )
+    for (ptr = temp_string_hash[ihash]; ptr; ptr = ptr->next)
     {
-        if ( *ptr->str != *str )
+        if (*ptr->str != *str)
             continue;
-        else if ( strcmp( ptr->str, str ) )
+        else if (strcmp(ptr->str, str))
             continue;
         else
             return ptr->str;
@@ -659,17 +659,17 @@ char *temp_hash_find( const char *str )
  * String is still in the linked list structure but
  * reference is kept here for quick lookup at boot time;
  */
-void temp_hash_add( char *str, const int len )
+void temp_hash_add(char *str, const int len)
 {
     TempHash *add;
     unsigned long ihash;
 
-    if ( !fBootDb || !*str || ( str <= string_space && str >= top_string ) )
+    if (!fBootDb || !*str || (str <= string_space && str >= top_string))
         return;
 
-    ihash = get_string_hash( str );
+    ihash = get_string_hash(str);
 
-    add = ( TempHash * ) malloc( sizeof( TempHash ) );
+    add = (TempHash *) malloc(sizeof(TempHash));
     add->next = temp_string_hash[ihash];
     temp_string_hash[ihash] = add;
     add->len = len;
@@ -677,20 +677,20 @@ void temp_hash_add( char *str, const int len )
 }
 
 /* Free the temp boot string hash table */
-void boot_done( void )
+void boot_done(void)
 {
     TempHash *ptr, *next;
     int ihash;
 
-    for ( ihash = 0; ihash < MAX_KEY_HASH; ihash++ )
+    for (ihash = 0; ihash < MAX_KEY_HASH; ihash++)
     {
-        for ( ptr = temp_string_hash[ihash]; ptr; ptr = next )
+        for (ptr = temp_string_hash[ihash]; ptr; ptr = next)
         {
             next = ptr->next;
-            free( ptr );
+            free(ptr);
         }
     }
 
-    free( temp_string_hash );
-    temp_string_hash = 0;       /* Bug check in case someone accesses later */
+    free(temp_string_hash);
+    temp_string_hash = 0;	/* Bug check in case someone accesses later */
 }

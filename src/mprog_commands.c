@@ -43,19 +43,19 @@
  * Local functions.
  */
 
-char *mprog_type_to_name  ( int type ) ;
+char *mprog_type_to_name(int type);
 
 SOCIALLIST_DATA *RandomSOCIAL = NULL;
-void mprog_get_RandomSOCIAL( void );
+void mprog_get_RandomSOCIAL(void);
 bool RandomSOCIAL_picked;
 /* This routine transfers between alpha and numeric forms of the
  *  mud_prog bitvector types. It allows the words to show up in mpstat to
  *  make it just a hair bit easier to see what a mob should be doing.
  */
 
-char *mprog_type_to_name( int type )
+char *mprog_type_to_name(int type)
 {
-    switch ( type )
+    switch (type)
     {
     case IN_FILE_PROG:
         return "in_file_prog";
@@ -118,7 +118,7 @@ char *mprog_type_to_name( int type )
 
 /* do_mobstat: Show the mudprogs on a given mob.
  *             argument can be a vnum or a mob name. */
-void do_mobstat( CHAR_DATA * ch, char *argument )
+void do_mobstat(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     MPROG_LIST *pList;
@@ -132,74 +132,74 @@ void do_mobstat( CHAR_DATA * ch, char *argument )
 
     *buf = '\0';
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    if ( arg[0] == '\0' )
+    if (arg[0] == '\0')
     {
-        send_to_char( "MudProg stat whom?\n\r", ch );
+        send_to_char("MudProg stat whom?\n\r", ch);
         return;
     }
 
-    if ( !is_number( arg ) )
+    if (!is_number(arg))
     {
-        victim = get_char_world( ch, argument );
-        if ( victim )
+        victim = get_char_world(ch, argument);
+        if (victim)
             pMob = victim->pIndexData;
         else
         {
-            send_to_char( "No such creature.\n\r", ch );
+            send_to_char("No such creature.\n\r", ch);
             return;
         }
     }
-    else if ( ( pMob = get_mob_index( atoi( arg ) ) ) == NULL )
+    else if ((pMob = get_mob_index(atoi(arg))) == NULL)
     {
-        send_to_char( "No such creature.\n\r", ch );
+        send_to_char("No such creature.\n\r", ch);
         return;
     }
 
-    if ( pMob )
+    if (pMob)
     {
-        if ( !( pMob->progtypes ) )
+        if (!(pMob->progtypes))
         {
-            send_to_char( "That Mobile has no Programs set.\n\r", ch );
+            send_to_char("That Mobile has no Programs set.\n\r", ch);
             return;
         }
 
-        sprintf( buf, "`WName: `w%s`w.  `WVnum: `w%d`w.\n\r",
-                 pMob->player_name, pMob->vnum );
-        strcat( buf,
-                "`K------------------------------------------------------`w\n\r" );
-        send_to_char( buf, ch );
+        sprintf(buf, "`WName: `w%s`w.  `WVnum: `w%d`w.\n\r",
+                pMob->player_name, pMob->vnum);
+        strcat(buf,
+               "`K------------------------------------------------------`w\n\r");
+        send_to_char(buf, ch);
 
-        for ( pGroupList = pMob->mprog_groups; pGroupList;
-                pGroupList = pGroupList->next )
-            show_mpgroup( ch, pGroupList->mprog_group );
+        for (pGroupList = pMob->mprog_groups; pGroupList;
+                pGroupList = pGroupList->next)
+            show_mpgroup(ch, pGroupList->mprog_group);
 
-        for ( pList = pMob->mudprogs; pList; pList = pList->next )
+        for (pList = pMob->mudprogs; pList; pList = pList->next)
         {
             mprg = pList->mudprog;
 
             iFound = 0;
 
-            for ( pGroupList = pMob->mprog_groups; pGroupList;
-                    pGroupList = pGroupList->next )
-                for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                        pInnerList; pInnerList = pInnerList->next )
-                    if ( pInnerList->mudprog->vnum == mprg->vnum )
+            for (pGroupList = pMob->mprog_groups; pGroupList;
+                    pGroupList = pGroupList->next)
+                for (pInnerList = pGroupList->mprog_group->mudprogs;
+                        pInnerList; pInnerList = pInnerList->next)
+                    if (pInnerList->mudprog->vnum == mprg->vnum)
                         iFound = 1;
 
-            if ( !iFound )
-                show_mprog( ch, mprg );
+            if (!iFound)
+                show_mprog(ch, mprg);
         }
     }
     else
     {
-        send_to_char( "No such creature.\n\r", ch );
+        send_to_char("No such creature.\n\r", ch);
         return;
     }
 }
 
-void do_roomstat( CHAR_DATA * ch, char *argument )
+void do_roomstat(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
@@ -210,71 +210,71 @@ void do_roomstat( CHAR_DATA * ch, char *argument )
     ROOM_INDEX_DATA *location = NULL;
     int iFound;
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    location = ( !arg[0] ) ? ch->in_room : find_location( ch, arg );
+    location = (!arg[0]) ? ch->in_room : find_location(ch, arg);
 
-    if ( !location )
+    if (!location)
     {
-        send_to_char( "No such location.\n\r", ch );
+        send_to_char("No such location.\n\r", ch);
         return;
     }
 
-    if ( ch->in_room != location
-            && room_is_private( location ) && get_trust( ch ) < MAX_LEVEL )
+    if (ch->in_room != location
+            && room_is_private(location) && get_trust(ch) < MAX_LEVEL)
     {
-        send_to_char( "That room is private right now.\n\r", ch );
+        send_to_char("That room is private right now.\n\r", ch);
         return;
     }
 
-    if ( !location->progtypes )
+    if (!location->progtypes)
     {
-        send_to_char( "That Room has no Programs set.\n\r", ch );
+        send_to_char("That Room has no Programs set.\n\r", ch);
         return;
     }
 
-    sprintf( buf, "`WName: `w%s`w.\n\r`WArea: `w%s.\n\r",
-             location->name, location->area->name );
-    send_to_char( buf, ch );
+    sprintf(buf, "`WName: `w%s`w.\n\r`WArea: `w%s.\n\r",
+            location->name, location->area->name);
+    send_to_char(buf, ch);
 
-    sprintf( buf, "`WVnum: `w%d. `WSector: `w%d. `WLight: `w%d.\n\r",
-             location->vnum, location->sector_type, location->light );
-    send_to_char( buf, ch );
+    sprintf(buf, "`WVnum: `w%d. `WSector: `w%d. `WLight: `w%d.\n\r",
+            location->vnum, location->sector_type, location->light);
+    send_to_char(buf, ch);
 
-    sprintf( buf, "`WRoom Flags: `w%d.\n\r", location->room_flags );
-    send_to_char( buf, ch );
+    sprintf(buf, "`WRoom Flags: `w%d.\n\r", location->room_flags);
+    send_to_char(buf, ch);
 
     send_to_char
-    ( "`K-------------------------------------------------------------------------------`w\n\r",
-      ch );
+    ("`K-------------------------------------------------------------------------------`w\n\r",
+     ch);
     *buf = '\0';
 
-    for ( pGroupList = location->mprog_groups; pGroupList;
-            pGroupList = pGroupList->next )
-        show_mpgroup( ch, pGroupList->mprog_group );
+    for (pGroupList = location->mprog_groups; pGroupList;
+            pGroupList = pGroupList->next)
+        show_mpgroup(ch, pGroupList->mprog_group);
 
-    for ( pList = location->mudprogs; pList; pList = pList->next )
+    for (pList = location->mudprogs; pList; pList = pList->next)
     {
         mprg = pList->mudprog;
 
         iFound = 0;
 
-        for ( pGroupList = location->mprog_groups; pGroupList;
-                pGroupList = pGroupList->next )
-            for ( pInnerList = pGroupList->mprog_group->mudprogs; pInnerList;
-                    pInnerList = pInnerList->next )
-                if ( pInnerList->mudprog->vnum == mprg->vnum )
+        for (pGroupList = location->mprog_groups; pGroupList;
+                pGroupList = pGroupList->next)
+            for (pInnerList = pGroupList->mprog_group->mudprogs;
+                    pInnerList; pInnerList = pInnerList->next)
+                if (pInnerList->mudprog->vnum == mprg->vnum)
                     iFound = 1;
 
-        if ( !iFound )
-            show_mprog( ch, mprg );
+        if (!iFound)
+            show_mprog(ch, mprg);
 
     }
 
     return;
 }
 
-void do_objstat( CHAR_DATA * ch, char *argument )
+void do_objstat(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
@@ -288,77 +288,77 @@ void do_objstat( CHAR_DATA * ch, char *argument )
 
     *buf = '\0';
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    if ( !arg[0] )
+    if (!arg[0])
     {
-        send_to_char( "OProg stat what?\n\r", ch );
+        send_to_char("OProg stat what?\n\r", ch);
         return;
     }
 
-    if ( !is_number( arg ) )
+    if (!is_number(arg))
     {
-        obj = get_obj_world( ch, argument );
-        if ( obj )
+        obj = get_obj_world(ch, argument);
+        if (obj)
             oIndex = obj->pIndexData;
         else
         {
-            send_to_char( "No such object.\n\r", ch );
+            send_to_char("No such object.\n\r", ch);
             return;
         }
     }
     else
     {
-        if ( ( oIndex = get_obj_index( atoi( arg ) ) ) == NULL )
+        if ((oIndex = get_obj_index(atoi(arg))) == NULL)
         {
-            send_to_char( "No such object.\n\r", ch );
+            send_to_char("No such object.\n\r", ch);
             return;
         }
     }
 
-    if ( oIndex )
+    if (oIndex)
     {
-        if ( !oIndex->progtypes )
+        if (!oIndex->progtypes)
         {
-            send_to_char( "That object has no programs set.\n\r", ch );
+            send_to_char("That object has no programs set.\n\r", ch);
             return;
         }
 
-        sprintf( buf, "`WName: `w%s`w.  `WVnum: `w%d`w.\n\r",
-                 oIndex->name, oIndex->vnum );
-        strcat( buf,
-                "`K--------------------------------------------------------------------------------`w\n\r" );
-        send_to_char( buf, ch );
+        sprintf(buf, "`WName: `w%s`w.  `WVnum: `w%d`w.\n\r",
+                oIndex->name, oIndex->vnum);
+        strcat(buf,
+               "`K--------------------------------------------------------------------------------`w\n\r");
+        send_to_char(buf, ch);
 
-        for ( pGroupList = oIndex->mprog_groups; pGroupList;
-                pGroupList = pGroupList->next )
-            show_mpgroup( ch, pGroupList->mprog_group );
+        for (pGroupList = oIndex->mprog_groups; pGroupList;
+                pGroupList = pGroupList->next)
+            show_mpgroup(ch, pGroupList->mprog_group);
 
-        for ( pList = oIndex->mudprogs; pList; pList = pList->next )
+        for (pList = oIndex->mudprogs; pList; pList = pList->next)
         {
             mprg = pList->mudprog;
 
             iFound = 0;
 
-            for ( pGroupList = oIndex->mprog_groups; pGroupList;
-                    pGroupList = pGroupList->next )
-                for ( pInnerList = pGroupList->mprog_group->mudprogs;
-                        pInnerList; pInnerList = pInnerList->next )
-                    if ( pInnerList->mudprog->vnum == mprg->vnum )
+            for (pGroupList = oIndex->mprog_groups; pGroupList;
+                    pGroupList = pGroupList->next)
+                for (pInnerList = pGroupList->mprog_group->mudprogs;
+                        pInnerList; pInnerList = pInnerList->next)
+                    if (pInnerList->mudprog->vnum == mprg->vnum)
                         iFound = 1;
 
-            if ( !iFound )
-                show_mprog( ch, mprg );
+            if (!iFound)
+                show_mprog(ch, mprg);
         }
     }
     else
     {
-        send_to_char( "No such object.\n\r", ch );
+        send_to_char("No such object.\n\r", ch);
         return;
     }
 }
 
-void do_mpstat( CHAR_DATA * ch, char *argument )
+void do_mpstat(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     char *string;
@@ -366,98 +366,99 @@ void do_mpstat( CHAR_DATA * ch, char *argument )
     ROOM_INDEX_DATA *location = NULL;
     CHAR_DATA *victim = NULL;
 
-    string = one_argument( argument, arg );
+    string = one_argument(argument, arg);
 
-    if ( !arg[0] )
+    if (!arg[0])
     {
-        send_to_char( "Syntax:\n\r", ch );
-        send_to_char( "    mpstat obj <name>   OR   mpstat obj  <vnum>\n\r",
-                      ch );
-        send_to_char( "    mpstat mob <name>   OR   mpstat mob  <vnum>\n\r",
-                      ch );
-        send_to_char( "    mpstat room         OR   mpstat room <vnum>\n\r",
-                      ch );
+        send_to_char("Syntax:\n\r", ch);
+        send_to_char("    mpstat obj <name>   OR   mpstat obj  <vnum>\n\r",
+                     ch);
+        send_to_char("    mpstat mob <name>   OR   mpstat mob  <vnum>\n\r",
+                     ch);
+        send_to_char("    mpstat room         OR   mpstat room <vnum>\n\r",
+                     ch);
         return;
     }
 
     /* view a mob prog */
-    if ( !str_cmp( arg, "mob" ) )
+    if (!str_cmp(arg, "mob"))
     {
-        do_mobstat( ch, string );
+        do_mobstat(ch, string);
         return;
     }
 
     /* view a room prog */
-    if ( !str_cmp( arg, "room" ) )
+    if (!str_cmp(arg, "room"))
     {
-        do_roomstat( ch, string );
+        do_roomstat(ch, string);
         return;
     }
 
     /* view an obj prog */
-    if ( !str_cmp( arg, "obj" ) )
+    if (!str_cmp(arg, "obj"))
     {
-        do_objstat( ch, string );
+        do_objstat(ch, string);
         return;
     }
 
     /* do it the old way */
 
-    victim = get_char_world( ch, argument );
-    if ( victim != NULL )
+    victim = get_char_world(ch, argument);
+    if (victim != NULL)
     {
-        do_mobstat( ch, argument );
+        do_mobstat(ch, argument);
         return;
     }
 
-    obj = get_obj_world( ch, argument );
-    if ( obj != NULL )
+    obj = get_obj_world(ch, argument);
+    if (obj != NULL)
     {
-        do_objstat( ch, argument );
+        do_objstat(ch, argument);
         return;
     }
 
-    location = find_location( ch, argument );
-    if ( location != NULL )
+    location = find_location(ch, argument);
+    if (location != NULL)
     {
-        do_roomstat( ch, argument );
+        do_roomstat(ch, argument);
         return;
     }
 
-    send_to_char( "Nothing by that name found anywhere.\n\r", ch );
+    send_to_char("Nothing by that name found anywhere.\n\r", ch);
 }
 
 /* prints the argument to all the rooms aroud the mobile */
 
-void do_mpasound( CHAR_DATA * ch, char *argument )
+void do_mpasound(CHAR_DATA * ch, char *argument)
 {
 
     ROOM_INDEX_DATA *was_in_room;
     int door;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    if ( argument[0] == '\0' )
+    if (argument[0] == '\0')
     {
-        bug( "Mpasound - No argument: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpasound - No argument: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
     was_in_room = ch->in_room;
-    for ( door = 0; door <= 5; door++ )
+    for (door = 0; door <= 5; door++)
     {
         EXIT_DATA *pexit;
 
-        if ( ( pexit = was_in_room->exit[door] ) != NULL
-                && pexit->u1.to_room != NULL && pexit->u1.to_room != was_in_room )
+        if ((pexit = was_in_room->exit[door]) != NULL
+                && pexit->u1.to_room != NULL
+                && pexit->u1.to_room != was_in_room)
         {
             ch->in_room = pexit->u1.to_room;
             MOBtrigger = FALSE;
-            act( argument, ch, NULL, NULL, TO_ROOM );
+            act(argument, ch, NULL, NULL, TO_ROOM);
         }
     }
 
@@ -468,51 +469,52 @@ void do_mpasound( CHAR_DATA * ch, char *argument )
 
 /* lets the mobile kill any player or mobile without murder*/
 
-void do_mpkill( CHAR_DATA * ch, char *argument )
+void do_mpkill(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    if ( arg[0] == '\0' )
+    if (arg[0] == '\0')
     {
-        bug( "MpKill - no argument: vnum %d.", ch->pIndexData->vnum );
+        bug("MpKill - no argument: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( ( victim = get_char_room( ch, arg ) ) == NULL )
+    if ((victim = get_char_room(ch, arg)) == NULL)
     {
-        bug( "MpKill - Victim not in room: vnum %d.", ch->pIndexData->vnum );
+        bug("MpKill - Victim not in room: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( victim == ch )
+    if (victim == ch)
     {
-        bug( "MpKill - Bad victim to attack: vnum %d.", ch->pIndexData->vnum );
+        bug("MpKill - Bad victim to attack: vnum %d.",
+            ch->pIndexData->vnum);
         return;
     }
 
-    if ( IS_AFFECTED( ch, AFF_CHARM ) && ch->master == victim )
+    if (IS_AFFECTED(ch, AFF_CHARM) && ch->master == victim)
     {
-        bug( "MpKill - Charmed mob attacking master: vnum %d.",
-             ch->pIndexData->vnum );
+        bug("MpKill - Charmed mob attacking master: vnum %d.",
+            ch->pIndexData->vnum);
         return;
     }
 
-    if ( ch->position == POS_FIGHTING )
+    if (ch->position == POS_FIGHTING)
     {
-        bug( "MpKill - Already fighting: vnum %d", ch->pIndexData->vnum );
+        bug("MpKill - Already fighting: vnum %d", ch->pIndexData->vnum);
         return;
     }
 
-    multi_hit( ch, victim, TYPE_UNDEFINED );
+    multi_hit(ch, victim, TYPE_UNDEFINED);
     return;
 }
 
@@ -520,47 +522,47 @@ void do_mpkill( CHAR_DATA * ch, char *argument )
    it can also destroy a worn object and it can destroy
    items using all.xxxxx or just plain all of them */
 
-void do_mpjunk( CHAR_DATA * ch, char *argument )
+void do_mpjunk(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    if ( arg[0] == '\0' )
+    if (arg[0] == '\0')
     {
-        bug( "Mpjunk - No argument: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpjunk - No argument: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( str_cmp( arg, "all" ) && str_prefix( "all.", arg ) )
+    if (str_cmp(arg, "all") && str_prefix("all.", arg))
     {
-        if ( ( obj = get_obj_wear( ch, arg ) ) != NULL )
+        if ((obj = get_obj_wear(ch, arg)) != NULL)
         {
-            unequip_char( ch, obj );
-            extract_obj( obj );
+            unequip_char(ch, obj);
+            extract_obj(obj);
             return;
         }
-        if ( ( obj = get_obj_carry( ch, arg ) ) == NULL )
+        if ((obj = get_obj_carry(ch, arg)) == NULL)
             return;
-        extract_obj( obj );
+        extract_obj(obj);
     }
     else
-        for ( obj = ch->carrying; obj != NULL; obj = obj_next )
+        for (obj = ch->carrying; obj != NULL; obj = obj_next)
         {
             obj_next = obj->next_content;
-            if ( arg[3] == '\0' || is_name( &arg[4], obj->name ) )
+            if (arg[3] == '\0' || is_name(&arg[4], obj->name))
             {
-                if ( obj->wear_loc != WEAR_NONE )
-                    unequip_char( ch, obj );
-                extract_obj( obj );
+                if (obj->wear_loc != WEAR_NONE)
+                    unequip_char(ch, obj);
+                extract_obj(obj);
             }
         }
 
@@ -570,85 +572,86 @@ void do_mpjunk( CHAR_DATA * ch, char *argument )
 
 /* prints the message to everyone in the room other than the mob and victim */
 
-void do_mpechoaround( CHAR_DATA * ch, char *argument )
+void do_mpechoaround(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    argument = one_argument( argument, arg );
+    argument = one_argument(argument, arg);
 
-    if ( arg[0] == '\0' )
+    if (arg[0] == '\0')
     {
-        bug( "Mpechoaround - No argument:  vnum %d.", ch->pIndexData->vnum );
+        bug("Mpechoaround - No argument:  vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( !( victim = get_char_room( ch, arg ) ) )
+    if (!(victim = get_char_room(ch, arg)))
     {
-        bug( "Mpechoaround - victim does not exist: vnum %d.",
-             ch->pIndexData->vnum );
+        bug("Mpechoaround - victim does not exist: vnum %d.",
+            ch->pIndexData->vnum);
         return;
     }
 
-    act( argument, ch, NULL, victim, TO_NOTVICT );
+    act(argument, ch, NULL, victim, TO_NOTVICT);
     return;
 }
 
 /* prints the message to only the victim */
 
-void do_mpechoat( CHAR_DATA * ch, char *argument )
+void do_mpechoat(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    argument = one_argument( argument, arg );
+    argument = one_argument(argument, arg);
 
-    if ( arg[0] == '\0' || argument[0] == '\0' )
+    if (arg[0] == '\0' || argument[0] == '\0')
     {
-        bug( "Mpechoat - No argument:  vnum %d.", ch->pIndexData->vnum );
+        bug("Mpechoat - No argument:  vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( !( victim = get_char_room( ch, arg ) ) )
+    if (!(victim = get_char_room(ch, arg)))
     {
-        bug( "Mpechoat - victim does not exist: vnum %d.",
-             ch->pIndexData->vnum );
+        bug("Mpechoat - victim does not exist: vnum %d.",
+            ch->pIndexData->vnum);
         return;
     }
 
-    act( argument, ch, NULL, victim, TO_VICT );
+    act(argument, ch, NULL, victim, TO_VICT);
     return;
 }
 
 /* prints the message to the room at large */
 
-void do_mpecho( CHAR_DATA * ch, char *argument )
+void do_mpecho(CHAR_DATA * ch, char *argument)
 {
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    if ( argument[0] == '\0' )
+    if (argument[0] == '\0')
     {
-        bug( "Mpecho - called w/o argument: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpecho - called w/o argument: vnum %d.",
+            ch->pIndexData->vnum);
         return;
     }
 
-    act( argument, ch, NULL, NULL, TO_ROOM );
+    act(argument, ch, NULL, NULL, TO_ROOM);
     return;
 
 }
@@ -657,38 +660,38 @@ void do_mpecho( CHAR_DATA * ch, char *argument )
 are loaded into inventory.  you can specify a level with
 the load object portion as well. */
 
-void do_mpmload( CHAR_DATA * ch, char *argument )
+void do_mpmload(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     MOB_INDEX_DATA *pMobIndex;
     CHAR_DATA *victim;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    if ( arg[0] == '\0' || !is_number( arg ) )
+    if (arg[0] == '\0' || !is_number(arg))
     {
-        bug( "Mpmload - Bad vnum as arg: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpmload - Bad vnum as arg: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( ( pMobIndex = get_mob_index( atoi( arg ) ) ) == NULL )
+    if ((pMobIndex = get_mob_index(atoi(arg))) == NULL)
     {
-        bug( "Mpmload - Bad mob vnum: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpmload - Bad mob vnum: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    victim = create_mobile( pMobIndex );
-    char_to_room( victim, ch->in_room );
+    victim = create_mobile(pMobIndex);
+    char_to_room(victim, ch->in_room);
     return;
 }
 
-void do_mpoload( CHAR_DATA * ch, char *argument )
+void do_mpoload(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
@@ -696,57 +699,57 @@ void do_mpoload( CHAR_DATA * ch, char *argument )
     OBJ_DATA *obj;
     int level;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    argument = one_argument( argument, arg );
-    argument = one_argument( argument, arg2 );
+    argument = one_argument(argument, arg);
+    argument = one_argument(argument, arg2);
 
-    if ( arg[0] == '\0' || !is_number( arg ) )
+    if (arg[0] == '\0' || !is_number(arg))
     {
-        bug( "Mpoload - Bad syntax: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpoload - Bad syntax: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( arg2[0] == '\0' )
+    if (arg2[0] == '\0')
     {
-        level = get_trust( ch );
+        level = get_trust(ch);
     }
     else
     {
         /*
          * New feature from Alander.
          */
-        if ( !is_number( arg2 ) )
+        if (!is_number(arg2))
         {
-            bug( "Mpoload - Bad syntax: vnum %d.", ch->pIndexData->vnum );
+            bug("Mpoload - Bad syntax: vnum %d.", ch->pIndexData->vnum);
             return;
         }
-        level = atoi( arg2 );
-        if ( level < 0 || level > get_trust( ch ) )
+        level = atoi(arg2);
+        if (level < 0 || level > get_trust(ch))
         {
-            bug( "Mpoload - Bad level: vnum %d.", ch->pIndexData->vnum );
+            bug("Mpoload - Bad level: vnum %d.", ch->pIndexData->vnum);
             return;
         }
     }
 
-    if ( ( pObjIndex = get_obj_index( atoi( arg ) ) ) == NULL )
+    if ((pObjIndex = get_obj_index(atoi(arg))) == NULL)
     {
-        bug( "Mpoload - Bad vnum arg: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpoload - Bad vnum arg: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    obj = create_object( pObjIndex, level );
-    if ( CAN_WEAR( obj, ITEM_TAKE ) )
+    obj = create_object(pObjIndex, level);
+    if (CAN_WEAR(obj, ITEM_TAKE))
     {
-        obj_to_char( obj, ch );
+        obj_to_char(obj, ch);
     }
     else
     {
-        obj_to_room( obj, ch->in_room );
+        obj_to_room(obj, ch->in_room);
     }
 
     return;
@@ -757,195 +760,195 @@ void do_mpoload( CHAR_DATA * ch, char *argument )
    itself, but this had best be the last command in the MudProg
    otherwise ugly stuff will happen */
 
-void do_mppurge( CHAR_DATA * ch, char *argument )
+void do_mppurge(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
     OBJ_DATA *obj;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    if ( arg[0] == '\0' )
+    if (arg[0] == '\0')
     {
         /* 'purge' */
         CHAR_DATA *vnext;
         OBJ_DATA *obj_next;
 
-        for ( victim = ch->in_room->people; victim != NULL; victim = vnext )
+        for (victim = ch->in_room->people; victim != NULL; victim = vnext)
         {
             vnext = victim->next_in_room;
-            if ( IS_NPC( victim ) && victim != ch )
-                extract_char( victim, TRUE );
+            if (IS_NPC(victim) && victim != ch)
+                extract_char(victim, TRUE);
         }
 
-        for ( obj = ch->in_room->contents; obj != NULL; obj = obj_next )
+        for (obj = ch->in_room->contents; obj != NULL; obj = obj_next)
         {
             obj_next = obj->next_content;
-            extract_obj( obj );
+            extract_obj(obj);
         }
 
         return;
     }
 
-    if ( !( victim = get_char_room( ch, arg ) ) == '\0' )
+    if (!(victim = get_char_room(ch, arg)) == '\0')
     {
-        if ( ( obj = get_obj_here( ch, arg ) ) )
+        if ((obj = get_obj_here(ch, arg)))
         {
-            extract_obj( obj );
+            extract_obj(obj);
         }
         else
         {
-            bug( "Mppurge - Bad argument: vnum %d.", ch->pIndexData->vnum );
+            bug("Mppurge - Bad argument: vnum %d.", ch->pIndexData->vnum);
         }
         return;
     }
 
-    if ( !IS_NPC( victim ) )
+    if (!IS_NPC(victim))
     {
-        bug( "Mppurge - Purging a PC: vnum %d.", ch->pIndexData->vnum );
+        bug("Mppurge - Purging a PC: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    extract_char( victim, TRUE );
+    extract_char(victim, TRUE);
     return;
 }
 
 /* Allow mobiles to go wizinvis with programs -- SB */
 
-void do_mpinvis( CHAR_DATA * ch, char *argument )
+void do_mpinvis(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     sh_int level;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    argument = one_argument( argument, arg );
-    if ( arg[0] != '\0' )
+    argument = one_argument(argument, arg);
+    if (arg[0] != '\0')
     {
-        if ( !is_number( arg ) )
+        if (!is_number(arg))
         {
-            bug( "Mpinvis - Non numeric argument ", ch );
+            bug("Mpinvis - Non numeric argument ", ch);
             return;
         }
-        level = atoi( arg );
-        if ( level < 2 || level > MAX_LEVEL )
+        level = atoi(arg);
+        if (level < 2 || level > MAX_LEVEL)
         {
-            bug( "MPinvis - Invalid level ", ch );
+            bug("MPinvis - Invalid level ", ch);
             return;
         }
 
         ch->mobinvis = level;
-        printf_to_char( ch, "Mobinvis level set to %d.\n\r", level );
+        printf_to_char(ch, "Mobinvis level set to %d.\n\r", level);
         return;
     }
 
-    if ( ch->mobinvis < 2 )
+    if (ch->mobinvis < 2)
         ch->mobinvis = ch->level;
 
-    if ( IS_SET( ch->act, ACT_MOBINVIS ) )
+    if (IS_SET(ch->act, ACT_MOBINVIS))
     {
-        REMOVE_BIT( ch->act, ACT_MOBINVIS );
-        act( "$n slowly fades into existence.", ch, NULL, NULL, TO_ROOM );
-        send_to_char( "You slowly fade back into existence.\n\r", ch );
+        REMOVE_BIT(ch->act, ACT_MOBINVIS);
+        act("$n slowly fades into existence.", ch, NULL, NULL, TO_ROOM);
+        send_to_char("You slowly fade back into existence.\n\r", ch);
     }
     else
     {
-        SET_BIT( ch->act, ACT_MOBINVIS );
-        act( "$n slowly fades into thin air.", ch, NULL, NULL, TO_ROOM );
-        send_to_char( "You slowly vanish into thin air.\n\r", ch );
+        SET_BIT(ch->act, ACT_MOBINVIS);
+        act("$n slowly fades into thin air.", ch, NULL, NULL, TO_ROOM);
+        send_to_char("You slowly vanish into thin air.\n\r", ch);
     }
     return;
 }
 
 /* lets the mobile goto any location it wishes that is not private */
 
-void do_mpgoto( CHAR_DATA * ch, char *argument )
+void do_mpgoto(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     ROOM_INDEX_DATA *location;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    one_argument( argument, arg );
-    if ( arg[0] == '\0' )
+    one_argument(argument, arg);
+    if (arg[0] == '\0')
     {
-        bug( "Mpgoto - No argument: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpgoto - No argument: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( ( location = find_location( ch, arg ) ) == NULL )
+    if ((location = find_location(ch, arg)) == NULL)
     {
-        bug( "Mpgoto - No such location: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpgoto - No such location: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( ch->fighting != NULL )
-        stop_fighting( ch, TRUE );
+    if (ch->fighting != NULL)
+        stop_fighting(ch, TRUE);
 
-    char_from_room( ch );
-    char_to_room( ch, location );
+    char_from_room(ch);
+    char_to_room(ch, location);
 
     return;
 }
 
 /* lets the mobile do a command at another location. Very useful */
 
-void do_mpat( CHAR_DATA * ch, char *argument )
+void do_mpat(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     ROOM_INDEX_DATA *location;
     ROOM_INDEX_DATA *original;
     CHAR_DATA *wch;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    argument = one_argument( argument, arg );
+    argument = one_argument(argument, arg);
 
-    if ( arg[0] == '\0' || argument[0] == '\0' )
+    if (arg[0] == '\0' || argument[0] == '\0')
     {
-        bug( "Mpat - Bad argument: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpat - Bad argument: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( ( location = find_location( ch, arg ) ) == NULL )
+    if ((location = find_location(ch, arg)) == NULL)
     {
-        bug( "Mpat - No such location: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpat - No such location: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
     original = ch->in_room;
-    char_from_room( ch );
-    char_to_room( ch, location );
-    interpret( ch, argument );
+    char_from_room(ch);
+    char_to_room(ch, location);
+    interpret(ch, argument);
 
     /*
      * See if 'ch' still exists before continuing!
      * Handles 'at XXXX quit' case.
      */
-    for ( wch = char_list; wch != NULL; wch = wch->next )
+    for (wch = char_list; wch != NULL; wch = wch->next)
     {
-        if ( wch == ch )
+        if (wch == ch)
         {
-            char_from_room( ch );
-            char_to_room( ch, original );
+            char_from_room(ch);
+            char_to_room(ch, original);
             break;
         }
     }
@@ -956,7 +959,7 @@ void do_mpat( CHAR_DATA * ch, char *argument )
 /* lets the mobile transfer people.  the all argument transfers
    everyone in the current room to the specified location */
 
-void do_mptransfer( CHAR_DATA * ch, char *argument )
+void do_mptransfer(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
@@ -965,31 +968,31 @@ void do_mptransfer( CHAR_DATA * ch, char *argument )
     DESCRIPTOR_DATA *d;
     CHAR_DATA *victim;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
-    argument = one_argument( argument, arg );
-    argument = one_argument( argument, arg2 );
+    argument = one_argument(argument, arg);
+    argument = one_argument(argument, arg2);
 
-    if ( arg[0] == '\0' )
+    if (arg[0] == '\0')
     {
-        bug( "Mptransfer - Bad syntax: vnum %d.", ch->pIndexData->vnum );
+        bug("Mptransfer - Bad syntax: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( !str_cmp( arg, "all" ) )
+    if (!str_cmp(arg, "all"))
     {
-        for ( d = descriptor_list; d != NULL; d = d->next )
+        for (d = descriptor_list; d != NULL; d = d->next)
         {
-            if ( d->connected == CON_PLAYING
+            if (d->connected == CON_PLAYING
                     && d->character != ch
                     && d->character->in_room != NULL
-                    && can_see( ch, d->character ) )
+                    && can_see(ch, d->character))
             {
-                sprintf( buf, "%s %s", d->character->name, arg2 );
-                do_mptransfer( ch, buf );
+                sprintf(buf, "%s %s", d->character->name, arg2);
+                do_mptransfer(ch, buf);
             }
         }
         return;
@@ -998,70 +1001,72 @@ void do_mptransfer( CHAR_DATA * ch, char *argument )
     /*
      * Thanks to Grodyn for the optional location parameter.
      */
-    if ( arg2[0] == '\0' )
+    if (arg2[0] == '\0')
     {
         location = ch->in_room;
     }
     else
     {
-        if ( ( location = find_location( ch, arg2 ) ) == NULL )
+        if ((location = find_location(ch, arg2)) == NULL)
         {
-            bug( "Mptransfer - No such location: vnum %d.",
-                 ch->pIndexData->vnum );
+            bug("Mptransfer - No such location: vnum %d.",
+                ch->pIndexData->vnum);
             return;
         }
 
-        if ( room_is_private( location ) )
+        if (room_is_private(location))
         {
-            bug( "Mptransfer - Private room: vnum %d.", ch->pIndexData->vnum );
+            bug("Mptransfer - Private room: vnum %d.",
+                ch->pIndexData->vnum);
             return;
         }
     }
 
-    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    if ((victim = get_char_world(ch, arg)) == NULL)
     {
-        bug( "Mptransfer - No such person: vnum %d.", ch->pIndexData->vnum );
+        bug("Mptransfer - No such person: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( victim->in_room == NULL )
+    if (victim->in_room == NULL)
     {
-        bug( "Mptransfer - Victim in Limbo: vnum %d.", ch->pIndexData->vnum );
+        bug("Mptransfer - Victim in Limbo: vnum %d.",
+            ch->pIndexData->vnum);
         return;
     }
 
-    if ( victim->fighting != NULL )
-        stop_fighting( victim, TRUE );
+    if (victim->fighting != NULL)
+        stop_fighting(victim, TRUE);
 
-    char_from_room( victim );
-    char_to_room( victim, location );
+    char_from_room(victim);
+    char_to_room(victim, location);
 
     return;
 }
 
 /* Adds get_char_world(argument) to the mob's memory for later use in
  * do_mptrack, etc. */
-void do_mpremember( CHAR_DATA * ch, char *argument )
+void do_mpremember(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
 
     CHAR_DATA *vict;
 
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    if ( ( vict = get_char_world( ch, arg ) ) == NULL )
+    if ((vict = get_char_world(ch, arg)) == NULL)
     {
-        sprintf( buf,
-                 "mpremember - %s doesn't exist! Called by mobile vnum %d.",
-                 arg, ch->pIndexData->vnum );
-        bug( buf, 0 );
+        sprintf(buf,
+                "mpremember - %s doesn't exist! Called by mobile vnum %d.",
+                arg, ch->pIndexData->vnum);
+        bug(buf, 0);
         return;
     }
     else
@@ -1070,11 +1075,11 @@ void do_mpremember( CHAR_DATA * ch, char *argument )
 }
 
 /* Erases a mob's memory. */
-void do_mpforget( CHAR_DATA * ch, char *argument )
+void do_mpforget(CHAR_DATA * ch, char *argument)
 {
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
@@ -1085,36 +1090,36 @@ void do_mpforget( CHAR_DATA * ch, char *argument )
 /* lets the mobile force someone to do something.  must be mortal level
    and the all argument only affects those in the room with the mobile */
 
-void do_mpforce( CHAR_DATA * ch, char *argument )
+void do_mpforce(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    argument = one_argument( argument, arg );
+    argument = one_argument(argument, arg);
 
-    if ( arg[0] == '\0' || argument[0] == '\0' )
+    if (arg[0] == '\0' || argument[0] == '\0')
     {
-        bug( "Mpforce - Bad syntax: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpforce - Bad syntax: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( !str_cmp( arg, "all" ) )
+    if (!str_cmp(arg, "all"))
     {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
 
-        for ( vch = char_list; vch != NULL; vch = vch_next )
+        for (vch = char_list; vch != NULL; vch = vch_next)
         {
             vch_next = vch->next;
 
-            if ( vch->in_room == ch->in_room
-                    && get_trust( vch ) < get_trust( ch ) && can_see( ch, vch ) )
+            if (vch->in_room == ch->in_room
+                    && get_trust(vch) < get_trust(ch) && can_see(ch, vch))
             {
-                interpret( vch, argument );
+                interpret(vch, argument);
             }
         }
     }
@@ -1122,73 +1127,75 @@ void do_mpforce( CHAR_DATA * ch, char *argument )
     {
         CHAR_DATA *victim;
 
-        if ( ( victim = get_char_room( ch, arg ) ) == NULL )
+        if ((victim = get_char_room(ch, arg)) == NULL)
         {
-            bug( "Mpforce - No such victim: vnum %d.", ch->pIndexData->vnum );
+            bug("Mpforce - No such victim: vnum %d.",
+                ch->pIndexData->vnum);
             return;
         }
 
-        if ( victim == ch )
+        if (victim == ch)
         {
-            bug( "Mpforce - Forcing oneself: vnum %d.", ch->pIndexData->vnum );
+            bug("Mpforce - Forcing oneself: vnum %d.",
+                ch->pIndexData->vnum);
             return;
         }
 
-        interpret( victim, argument );
+        interpret(victim, argument);
     }
 
     return;
 }
 
-void do_mpsilentforce( CHAR_DATA * ch, char *argument )
+void do_mpsilentforce(CHAR_DATA * ch, char *argument)
 {
     extern bool silentmode;
     char arg[MAX_INPUT_LENGTH];
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    argument = one_argument( argument, arg );
+    argument = one_argument(argument, arg);
 
-    if ( arg[0] == '\0' || argument[0] == '\0' )
+    if (arg[0] == '\0' || argument[0] == '\0')
     {
-        bug( "Mpsilentforce - Bad syntax: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpsilentforce - Bad syntax: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( !str_cmp( arg, "all" ) )
+    if (!str_cmp(arg, "all"))
     {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
         struct cmd_type *cmd;
 
-        for ( vch = char_list; vch != NULL; vch = vch_next )
+        for (vch = char_list; vch != NULL; vch = vch_next)
         {
             vch_next = vch->next;
 
             /* Don't allow forcing imm commands */
-            for ( cmd = ( struct cmd_type * ) cmd_table; *cmd->name; cmd++ )
+            for (cmd = (struct cmd_type *) cmd_table; *cmd->name; cmd++)
             {
-                if ( ( *argument == *cmd->name )
-                        && ( !str_prefix( argument, cmd->name ) ) )
+                if ((*argument == *cmd->name)
+                        && (!str_prefix(argument, cmd->name)))
                 {
-                    if ( cmd->imm )
+                    if (cmd->imm)
                     {
-                        bug( "mpsilentforce - mob vnum %d",
-                             ch->pIndexData->vnum );
-                        bug( "mpsilentforce - cannot force wiz commands" );
+                        bug("mpsilentforce - mob vnum %d",
+                            ch->pIndexData->vnum);
+                        bug("mpsilentforce - cannot force wiz commands");
                         return;
                     }
                 }
             }
 
-            if ( vch->in_room == ch->in_room
-                    && get_trust( vch ) < get_trust( ch ) && can_see( ch, vch ) )
+            if (vch->in_room == ch->in_room
+                    && get_trust(vch) < get_trust(ch) && can_see(ch, vch))
             {
                 silentmode = TRUE;
-                interpret( vch, argument );
+                interpret(vch, argument);
                 silentmode = FALSE;
             }
         }
@@ -1198,173 +1205,174 @@ void do_mpsilentforce( CHAR_DATA * ch, char *argument )
         CHAR_DATA *victim;
         struct cmd_type *cmd;
 
-        if ( ( victim = get_char_room( ch, arg ) ) == NULL )
+        if ((victim = get_char_room(ch, arg)) == NULL)
         {
-            bug( "Mpsilentforce - No such victim: vnum %d.",
-                 ch->pIndexData->vnum );
+            bug("Mpsilentforce - No such victim: vnum %d.",
+                ch->pIndexData->vnum);
             return;
         }
 
-        if ( victim == ch )
+        if (victim == ch)
         {
-            bug( "Mpsilentforce - Forcing oneself: vnum %d.",
-                 ch->pIndexData->vnum );
+            bug("Mpsilentforce - Forcing oneself: vnum %d.",
+                ch->pIndexData->vnum);
             return;
         }
 
         /* Don't allow forcing wiz commands */
-        for ( cmd = ( struct cmd_type * ) cmd_table; *cmd->name; cmd++ )
+        for (cmd = (struct cmd_type *) cmd_table; *cmd->name; cmd++)
         {
-            if ( ( *argument == *cmd->name )
-                    && !str_prefix( argument, cmd->name ) )
+            if ((*argument == *cmd->name)
+                    && !str_prefix(argument, cmd->name))
             {
-                if ( cmd->imm )
+                if (cmd->imm)
                 {
-                    bug( "mpsilentforce - mob vnum %d", ch->pIndexData->vnum );
-                    bug( "mpsilentforce - cannot force wiz commands" );
+                    bug("mpsilentforce - mob vnum %d",
+                        ch->pIndexData->vnum);
+                    bug("mpsilentforce - cannot force wiz commands");
                     return;
                 }
             }
         }
 
         silentmode = TRUE;
-        interpret( victim, argument );
+        interpret(victim, argument);
         silentmode = FALSE;
     }
 
     return;
 }
 
-void do_mpdosilent( CHAR_DATA * ch, char *argument )
+void do_mpdosilent(CHAR_DATA * ch, char *argument)
 {
     extern bool silentmode;
     silentmode = TRUE;
-    interpret( ch, argument );
+    interpret(ch, argument);
     silentmode = FALSE;
     return;
 }
 
-void do_mpdefault( CHAR_DATA * ch, char *argument )
+void do_mpdefault(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        send_to_char( "Huh?\n\r", ch );
+        send_to_char("Huh?\n\r", ch);
         return;
     }
 
-    argument = one_argument( argument, arg );
+    argument = one_argument(argument, arg);
 
-    if ( arg[0] == '\0' || argument[0] == '\0' )
+    if (arg[0] == '\0' || argument[0] == '\0')
     {
-        bug( "Mpdefault - Bad syntax: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpdefault - Bad syntax: vnum %d.", ch->pIndexData->vnum);
         return;
     }
-    if ( ( victim = get_char_room( ch, arg ) ) == NULL )
+    if ((victim = get_char_room(ch, arg)) == NULL)
     {
-        bug( "Mpdefault - No such victim: vnum %d.", ch->pIndexData->vnum );
-        return;
-    }
-
-    if ( victim == ch )
-    {
-        bug( "Mpdefault - to oneself: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpdefault - No such victim: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    if ( IS_NPC( victim ) )
+    if (victim == ch)
     {
-        bug( "Mpdefault - npc victim: vnum %d.", ch->pIndexData->vnum );
+        bug("Mpdefault - to oneself: vnum %d.", ch->pIndexData->vnum);
         return;
     }
 
-    mpinterpret( victim, argument );
+    if (IS_NPC(victim))
+    {
+        bug("Mpdefault - npc victim: vnum %d.", ch->pIndexData->vnum);
+        return;
+    }
+
+    mpinterpret(victim, argument);
 
     return;
 }
 
 /* one_argumnet ruins the case so I do some funky stuff.  -Zane */
-void do_mpfollowpath( CHAR_DATA * ch, char *argument )
+void do_mpfollowpath(CHAR_DATA * ch, char *argument)
 {
     MOB_INDEX_DATA *pMob;
     char arg[MAX_STRING_LENGTH];
     char *arg2;
 
-    if ( ( pMob = ch->pIndexData ) == NULL )
+    if ((pMob = ch->pIndexData) == NULL)
         return;
 
-    arg2 = one_argument( argument, arg );
+    arg2 = one_argument(argument, arg);
 
-    if ( strlen( arg ) < 1 )
+    if (strlen(arg) < 1)
         return;
 
-    if ( !str_cmp( arg2, "restart" ) && !pMob->path_move )
+    if (!str_cmp(arg2, "restart") && !pMob->path_move)
     {
         pMob->path_move = TRUE;
         pMob->path_pos = 0;
     }
 
     /* If we're fighting, unconcious(or worse) or not moving at all just exit */
-    if ( ch->fighting != NULL || !pMob->path_move
-            || ch->position < POS_SLEEPING )
+    if (ch->fighting != NULL || !pMob->path_move
+            || ch->position < POS_SLEEPING)
         return;
 
-    switch ( argument[pMob->path_pos] )
+    switch (argument[pMob->path_pos])
     {
     case '0':
     case '1':
     case '2':
     case '3':
-        move_char( ch, argument[pMob->path_pos] - '0', FALSE );
+        move_char(ch, argument[pMob->path_pos] - '0', FALSE);
         break;
 
     case 'W':
         ch->position = POS_STANDING;
-        act( "$n awakens and groans loudly.", ch, NULL, NULL, TO_ROOM );
+        act("$n awakens and groans loudly.", ch, NULL, NULL, TO_ROOM);
         break;
 
     case 'S':
         ch->position = POS_SLEEPING;
-        act( "$n lies down and falls asleep.", ch, NULL, NULL, TO_ROOM );
+        act("$n lies down and falls asleep.", ch, NULL, NULL, TO_ROOM);
         break;
 
     case 'a':
-        act( "$n says 'Hello Honey!'", ch, NULL, NULL, TO_ROOM );
+        act("$n says 'Hello Honey!'", ch, NULL, NULL, TO_ROOM);
         break;
 
     case 'b':
-        act( "$n says 'What a view!  I must do something about that dump!'",
-             ch, NULL, NULL, TO_ROOM );
+        act("$n says 'What a view!  I must do something about that dump!'",
+            ch, NULL, NULL, TO_ROOM);
         break;
 
     case 'c':
-        act( "$n says 'Vandals!  Youngsters have no respect for anything!'",
-             ch, NULL, NULL, TO_ROOM );
+        act("$n says 'Vandals!  Youngsters have no respect for anything!'",
+            ch, NULL, NULL, TO_ROOM);
         break;
 
     case 'd':
-        act( "$n says 'Good day, citizens!'", ch, NULL, NULL, TO_ROOM );
+        act("$n says 'Good day, citizens!'", ch, NULL, NULL, TO_ROOM);
         break;
 
     case 'e':
-        act( "$n says 'I hereby declare the city of Midgaard open!'",
-             ch, NULL, NULL, TO_ROOM );
+        act("$n says 'I hereby declare the city of Midgaard open!'",
+            ch, NULL, NULL, TO_ROOM);
         break;
 
     case 'E':
-        act( "$n says 'I hereby declare the city of Midgaard closed!'",
-             ch, NULL, NULL, TO_ROOM );
+        act("$n says 'I hereby declare the city of Midgaard closed!'",
+            ch, NULL, NULL, TO_ROOM);
         break;
 
     case 'O':
-        /*		do_unlock( ch, "gate" ); */
-        do_open( ch, "gate" );
+        /*              do_unlock( ch, "gate" ); */
+        do_open(ch, "gate");
         break;
 
     case 'C':
-        do_close( ch, "gate" );
-        /*		do_lock( ch, "gate" ); */
+        do_close(ch, "gate");
+        /*              do_lock( ch, "gate" ); */
         break;
 
     case '.':
@@ -1374,7 +1382,7 @@ void do_mpfollowpath( CHAR_DATA * ch, char *argument )
 
     pMob->path_pos++;
 
-    if ( pMob->path_pos >= strlen( arg ) )
+    if (pMob->path_pos >= strlen(arg))
     {
         pMob->path_move = FALSE;
         pMob->path_pos = 0;
@@ -1382,62 +1390,62 @@ void do_mpfollowpath( CHAR_DATA * ch, char *argument )
     return;
 }
 
-void do_mpeatcorpse( CHAR_DATA * ch, char *argument )
+void do_mpeatcorpse(CHAR_DATA * ch, char *argument)
 {
     OBJ_DATA *corpse;
     OBJ_DATA *c_next;
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
 
-    if ( !IS_AWAKE( ch ) )
+    if (!IS_AWAKE(ch))
         return;
 
-    for ( corpse = ch->in_room->contents; corpse != NULL; corpse = c_next )
+    for (corpse = ch->in_room->contents; corpse != NULL; corpse = c_next)
     {
         c_next = corpse->next_content;
-        if ( corpse->item_type != ITEM_CORPSE_NPC )
+        if (corpse->item_type != ITEM_CORPSE_NPC)
             continue;
 
-        act( "$n savagely devours a corpse.", ch, NULL, NULL, TO_ROOM );
-        for ( obj = corpse->contains; obj; obj = obj_next )
+        act("$n savagely devours a corpse.", ch, NULL, NULL, TO_ROOM);
+        for (obj = corpse->contains; obj; obj = obj_next)
         {
             obj_next = obj->next_content;
-            obj_from_obj( obj );
-            obj_to_room( obj, ch->in_room );
+            obj_from_obj(obj);
+            obj_to_room(obj, ch->in_room);
         }
-        extract_obj( corpse );
+        extract_obj(corpse);
         return;
     }
 
     return;
 }
 
-void do_mpclean( CHAR_DATA * ch, char *argument )
+void do_mpclean(CHAR_DATA * ch, char *argument)
 {
     OBJ_DATA *trash;
     OBJ_DATA *trash_next;
     int value;
 
-    value = atoi( argument );
+    value = atoi(argument);
 
-    if ( value < 1 || strlen( argument ) == 0 )
+    if (value < 1 || strlen(argument) == 0)
         value = 10;
 
-    if ( !IS_AWAKE( ch ) )
+    if (!IS_AWAKE(ch))
         return;
 
-    for ( trash = ch->in_room->contents; trash != NULL; trash = trash_next )
+    for (trash = ch->in_room->contents; trash != NULL; trash = trash_next)
     {
         trash_next = trash->next_content;
-        if ( !IS_SET( trash->wear_flags, ITEM_TAKE ) || !can_loot( ch, trash ) )
+        if (!IS_SET(trash->wear_flags, ITEM_TAKE) || !can_loot(ch, trash))
             continue;
 
-        if ( trash->item_type == ITEM_DRINK_CON
-                || trash->item_type == ITEM_TRASH || trash->cost < value )
+        if (trash->item_type == ITEM_DRINK_CON
+                || trash->item_type == ITEM_TRASH || trash->cost < value)
         {
-            act( "$n picks up some trash.", ch, NULL, NULL, TO_ROOM );
-            obj_from_room( trash );
-            obj_to_char( trash, ch );
+            act("$n picks up some trash.", ch, NULL, NULL, TO_ROOM);
+            obj_from_room(trash);
+            obj_to_char(trash, ch);
             return;
         }
     }
@@ -1447,7 +1455,7 @@ void do_mpclean( CHAR_DATA * ch, char *argument )
 
 /* RT does socials */
 
-void do_mprandomsocial( CHAR_DATA * ch, char *argument )
+void do_mprandomsocial(CHAR_DATA * ch, char *argument)
 {
     CHAR_DATA *victim = NULL;
     SOCIALLIST_DATA *social = NULL;
@@ -1456,74 +1464,74 @@ void do_mprandomsocial( CHAR_DATA * ch, char *argument )
     random = 0;
     count = 0;
     /* Get the number of socials available */
-    for ( social = social_first; social != NULL; social = social->next )
-        if ( social->next != NULL )
+    for (social = social_first; social != NULL; social = social->next)
+        if (social->next != NULL)
             count++;
 
-    random = number_range( 1, count );
+    random = number_range(1, count);
     count = 0;
 
     /* get a random social from the compiled list */
-    for ( social = social_first; social != NULL; social = social->next )
-        if ( ( social->next != NULL ) && ++count == random )
+    for (social = social_first; social != NULL; social = social->next)
+        if ((social->next != NULL) && ++count == random)
         {
-            printf_to_char( ch, "2nd:%s\n\r", social->name );
+            printf_to_char(ch, "2nd:%s\n\r", social->name);
             RandomSOCIAL = social;
             RandomSOCIAL_picked = TRUE;
         }
 
     /* use to be argument */
-    if ( argument == '\0' )
+    if (argument == '\0')
     {
-        if ( str_cmp( RandomSOCIAL->others_no_arg, "none" ) )
+        if (str_cmp(RandomSOCIAL->others_no_arg, "none"))
         {
-            act( RandomSOCIAL->others_no_arg, ch, NULL, victim, TO_ROOM );
+            act(RandomSOCIAL->others_no_arg, ch, NULL, victim, TO_ROOM);
         }
-        if ( str_cmp( RandomSOCIAL->char_no_arg, "none" ) )
+        if (str_cmp(RandomSOCIAL->char_no_arg, "none"))
         {
-            act( RandomSOCIAL->char_no_arg, ch, NULL, victim, TO_CHAR );
+            act(RandomSOCIAL->char_no_arg, ch, NULL, victim, TO_CHAR);
         }
     }
-    else if ( ( victim = get_char_room( ch, argument ) ) == NULL )
+    else if ((victim = get_char_room(ch, argument)) == NULL)
     {
-        if ( str_cmp( RandomSOCIAL->char_not_found, "none" ) )
+        if (str_cmp(RandomSOCIAL->char_not_found, "none"))
         {
-            act( RandomSOCIAL->char_not_found, ch, NULL, victim, TO_CHAR );
+            act(RandomSOCIAL->char_not_found, ch, NULL, victim, TO_CHAR);
         }
         else
-            send_to_char( "They aren't here.\n\r", ch );
+            send_to_char("They aren't here.\n\r", ch);
     }
-    else if ( victim == ch )
+    else if (victim == ch)
     {
-        if ( str_cmp( RandomSOCIAL->others_auto, "none" ) )
+        if (str_cmp(RandomSOCIAL->others_auto, "none"))
         {
-            act( RandomSOCIAL->others_auto, ch, NULL, victim, TO_ROOM );
+            act(RandomSOCIAL->others_auto, ch, NULL, victim, TO_ROOM);
         }
-        if ( str_cmp( RandomSOCIAL->char_auto, "none" ) )
+        if (str_cmp(RandomSOCIAL->char_auto, "none"))
         {
-            act( RandomSOCIAL->char_auto, ch, NULL, victim, TO_CHAR );
+            act(RandomSOCIAL->char_auto, ch, NULL, victim, TO_CHAR);
         }
     }
     else
     {
-        if ( str_cmp( RandomSOCIAL->others_found, "none" ) )
+        if (str_cmp(RandomSOCIAL->others_found, "none"))
         {
-            act( RandomSOCIAL->others_found, ch, NULL, victim, TO_NOTVICT );
+            act(RandomSOCIAL->others_found, ch, NULL, victim, TO_NOTVICT);
         }
-        if ( str_cmp( RandomSOCIAL->char_found, "none" ) )
+        if (str_cmp(RandomSOCIAL->char_found, "none"))
         {
-            act( RandomSOCIAL->char_found, ch, NULL, victim, TO_CHAR );
+            act(RandomSOCIAL->char_found, ch, NULL, victim, TO_CHAR);
         }
-        if ( str_cmp( RandomSOCIAL->vict_found, "none" ) )
+        if (str_cmp(RandomSOCIAL->vict_found, "none"))
         {
-            act( RandomSOCIAL->vict_found, ch, NULL, victim, TO_VICT );
+            act(RandomSOCIAL->vict_found, ch, NULL, victim, TO_VICT);
         }
 
-        if ( IS_NPC( victim )
-                && !IS_AFFECTED( victim, AFF_CHARM )
-                && IS_AWAKE( victim ) && victim->desc == NULL )
+        if (IS_NPC(victim)
+                && !IS_AFFECTED(victim, AFF_CHARM)
+                && IS_AWAKE(victim) && victim->desc == NULL)
         {
-            switch ( number_bits( 4 ) )
+            switch (number_bits(4))
             {
             case 0:
 
@@ -1535,18 +1543,20 @@ void do_mprandomsocial( CHAR_DATA * ch, char *argument )
             case 6:
             case 7:
             case 8:
-                if ( str_cmp( RandomSOCIAL->others_found, "none" ) )
+                if (str_cmp(RandomSOCIAL->others_found, "none"))
                 {
-                    act( RandomSOCIAL->others_found,
-                         victim, NULL, ch, TO_NOTVICT );
+                    act(RandomSOCIAL->others_found,
+                        victim, NULL, ch, TO_NOTVICT);
                 }
-                if ( str_cmp( RandomSOCIAL->char_found, "none" ) )
+                if (str_cmp(RandomSOCIAL->char_found, "none"))
                 {
-                    act( RandomSOCIAL->char_found, victim, NULL, ch, TO_CHAR );
+                    act(RandomSOCIAL->char_found, victim, NULL, ch,
+                        TO_CHAR);
                 }
-                if ( str_cmp( RandomSOCIAL->vict_found, "none" ) )
+                if (str_cmp(RandomSOCIAL->vict_found, "none"))
                 {
-                    act( RandomSOCIAL->vict_found, victim, NULL, ch, TO_VICT );
+                    act(RandomSOCIAL->vict_found, victim, NULL, ch,
+                        TO_VICT);
                 }
                 break;
 
@@ -1554,9 +1564,9 @@ void do_mprandomsocial( CHAR_DATA * ch, char *argument )
             case 10:
             case 11:
             case 12:
-                act( "$n slaps $N.", victim, NULL, ch, TO_NOTVICT );
-                act( "You slap $N.", victim, NULL, ch, TO_CHAR );
-                act( "$n slaps you.", victim, NULL, ch, TO_VICT );
+                act("$n slaps $N.", victim, NULL, ch, TO_NOTVICT);
+                act("You slap $N.", victim, NULL, ch, TO_CHAR);
+                act("$n slaps you.", victim, NULL, ch, TO_VICT);
                 break;
             }
         }

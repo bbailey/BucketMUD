@@ -25,16 +25,16 @@
 #include "interp.h"
 
 #ifndef S_SPLINT_S
-#include <unistd.h>             /* unlink() */
+#include <unistd.h>		/* unlink() */
 #endif
 
-bool check_disabled( const struct cmd_type * command );
+bool check_disabled(const struct cmd_type *command);
 
 DISABLED_DATA *disabled_first;
 
-#define END_MARKER    "END"     /* for load_disabled() and save_disabled() */
+#define END_MARKER    "END"	/* for load_disabled() and save_disabled() */
 
-bool check_social  ( CHAR_DATA * ch, char *command, char *argument ) ;
+bool check_social(CHAR_DATA * ch, char *command, char *argument);
 
 /*
  * Command logging types.
@@ -316,8 +316,8 @@ const struct cmd_type cmd_table[] =
     {"mversion", do_version, POS_DEAD, 0, LOG_NORMAL, 1},
 
     /*
-         * Clan commands!
-         */
+     * Clan commands!
+     */
     {"promote", do_promote, POS_RESTING, 0, LOG_NORMAL, 1},
     {"clan", do_clan, POS_DEAD, 1, LOG_NORMAL, 1},
     {"show", do_show, POS_RESTING, 0, LOG_NORMAL, 1},
@@ -335,7 +335,8 @@ const struct cmd_type cmd_table[] =
      * Immortal commands.
      */
     {"mpchangefaction", do_mpchangefaction, POS_DEAD, 0, LOG_NORMAL, 1},
-    {"mpsilentchangefaction", do_mpsilentchangefaction, POS_DEAD, 0, LOG_NORMAL,
+    {"mpsilentchangefaction", do_mpsilentchangefaction, POS_DEAD, 0,
+     LOG_NORMAL,
      1},
     {"advance", do_advance, POS_DEAD, 1, LOG_ALWAYS, 1},
     {"advance", do_levelgain, POS_DEAD, 0, LOG_NORMAL, 1},
@@ -470,13 +471,13 @@ const struct cmd_type cmd_table[] =
     {"", 0, POS_DEAD, 0, LOG_NORMAL, 0}
 };
 
-bool is_immcmd( char *command )
+bool is_immcmd(char *command)
 {
     struct cmd_type *cmd;
 
-    for ( cmd = ( struct cmd_type * ) cmd_table; *cmd->name; cmd++ )
+    for (cmd = (struct cmd_type *) cmd_table; *cmd->name; cmd++)
     {
-        if ( *command == *cmd->name && !str_prefix( command, cmd->name ) )
+        if (*command == *cmd->name && !str_prefix(command, cmd->name))
         {
             return cmd->imm;
         }
@@ -485,14 +486,14 @@ bool is_immcmd( char *command )
     return FALSE;
 }
 
-bool can_do_immcmd( CHAR_DATA * ch, char *cmd )
+bool can_do_immcmd(CHAR_DATA * ch, char *cmd)
 {
     IMMCMD_TYPE *tmp;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
     {
         /* If npc is switched, use PC's perms */
-        if ( ch->desc != NULL )
+        if (ch->desc != NULL)
         {
             ch = ch->desc->original;
         }
@@ -503,9 +504,9 @@ bool can_do_immcmd( CHAR_DATA * ch, char *cmd )
         }
     }
 
-    for ( tmp = ch->pcdata->immcmdlist; tmp != NULL; tmp = tmp->next )
+    for (tmp = ch->pcdata->immcmdlist; tmp != NULL; tmp = tmp->next)
     {
-        if ( !str_cmp( tmp->cmd, cmd ) )
+        if (!str_cmp(tmp->cmd, cmd))
         {
             return TRUE;
         }
@@ -518,7 +519,7 @@ bool can_do_immcmd( CHAR_DATA * ch, char *cmd )
  * The main entry point for executing commands.
  * Can be recursively called from 'at', 'order', 'force'.
  */
-void interpret( CHAR_DATA * ch, char *argument )
+void interpret(CHAR_DATA * ch, char *argument)
 {
     char command[MAX_INPUT_LENGTH];
     char *logline;
@@ -530,23 +531,23 @@ void interpret( CHAR_DATA * ch, char *argument )
     /*
      * Strip leading spaces.
      */
-    while ( isspace( *argument ) )
+    while (isspace(*argument))
         argument++;
 
-    if ( !*argument )
+    if (!*argument)
         return;
 
     /*
      * No hiding.
      */
-    REMOVE_BIT( ch->affected_by, AFF_HIDE );
+    REMOVE_BIT(ch->affected_by, AFF_HIDE);
 
     /*
      * Implement freeze command.
      */
-    if ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_FREEZE ) )
+    if (!IS_NPC(ch) && IS_SET(ch->act, PLR_FREEZE))
     {
-        send_to_char( "You're totally frozen!\n\r", ch );
+        send_to_char("You're totally frozen!\n\r", ch);
         return;
     }
 
@@ -556,23 +557,23 @@ void interpret( CHAR_DATA * ch, char *argument )
      *   also no spaces needed after punctuation.
      */
     logline = argument;
-    if ( !isalpha( *argument ) && !isdigit( *argument ) )
+    if (!isalpha(*argument) && !isdigit(*argument))
     {
         *command = *argument++;
         command[1] = '\0';
-        while ( isspace( *argument ) )
+        while (isspace(*argument))
             argument++;
     }
     else
-        argument = one_argument( argument, command );
+        argument = one_argument(argument, command);
 
     /*
      * MUDProg command triggers.
      */
-    if ( !IS_NPC( ch ) )
+    if (!IS_NPC(ch))
     {
-        can_do = mprog_command_trigger( command, ch, argument );
-        if ( !can_do )
+        can_do = mprog_command_trigger(command, ch, argument);
+        if (!can_do)
             return;
     }
 
@@ -580,15 +581,15 @@ void interpret( CHAR_DATA * ch, char *argument )
      * Look for command in command table.
      */
     found = FALSE;
-    trust = get_trust( ch );
-    for ( cmd = ( struct cmd_type * ) cmd_table; *cmd->name; cmd++ )
+    trust = get_trust(ch);
+    for (cmd = (struct cmd_type *) cmd_table; *cmd->name; cmd++)
     {
-        if ( *command == LOWER( *cmd->name )
-                && !str_prefix( command, cmd->name ) )
+        if (*command == LOWER(*cmd->name)
+                && !str_prefix(command, cmd->name))
         {
             /* if the command is an imm command but the char can't
              * execute it, keep searching */
-            if ( ( cmd->imm ) && ( !can_do_immcmd( ch, cmd->name ) ) )
+            if ((cmd->imm) && (!can_do_immcmd(ch, cmd->name)))
             {
                 continue;
             }
@@ -600,92 +601,94 @@ void interpret( CHAR_DATA * ch, char *argument )
         }
     }
 
-    if ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_AFK ) )
+    if (!IS_NPC(ch) && IS_SET(ch->act, PLR_AFK))
     {
         char buff[MAX_STRING_LENGTH];
 
-        if ( str_prefix( command, "afk" ) )
+        if (str_prefix(command, "afk"))
         {
-            sprintf( buff, "`RYou're still AFK!`w - %d message%s waiting.\n\r",
-                     ch->pcdata->messages,
-                     ( ( ch->pcdata->messages > 1 )
-                       || ( ch->pcdata->messages < 1 ) ) ? "s" : "" );
-            send_to_char( buff, ch );
+            sprintf(buff,
+                    "`RYou're still AFK!`w - %d message%s waiting.\n\r",
+                    ch->pcdata->messages, ((ch->pcdata->messages > 1)
+                                           || (ch->pcdata->messages <
+                                               1)) ? "s" : "");
+            send_to_char(buff, ch);
         }
     }
 
     /*
      * Log and snoop.
      */
-    if ( ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_LOG ) )
-            || fLogAll || cmd->log == LOG_ALWAYS )
+    if ((!IS_NPC(ch) && IS_SET(ch->act, PLR_LOG))
+            || fLogAll || cmd->log == LOG_ALWAYS)
     {
-        sprintf( log_buf, "Log %s: %s", ch->name, logline );
-        log_string( log_buf );
+        sprintf(log_buf, "Log %s: %s", ch->name, logline);
+        log_string(log_buf);
     }
 
-    if ( ch->desc && ch->desc->snoop_by )
+    if (ch->desc && ch->desc->snoop_by)
     {
-        write_to_buffer( ch->desc->snoop_by, "% ", 2 );
-        write_to_buffer( ch->desc->snoop_by, logline, 0 );
-        write_to_buffer( ch->desc->snoop_by, "\n\r", 2 );
+        write_to_buffer(ch->desc->snoop_by, "% ", 2);
+        write_to_buffer(ch->desc->snoop_by, logline, 0);
+        write_to_buffer(ch->desc->snoop_by, "\n\r", 2);
     }
 
-    if ( !found )
+    if (!found)
     {
         /*
          * Look for command in socials table.
          * Look for command in IMC2.
          */
-        if ( !check_social( ch, command, argument )
+        if (!check_social(ch, command, argument)
 #ifdef IMC
-                &&   !imc_command_hook( ch, command, argument )
+                && !imc_command_hook(ch, command, argument)
 #endif
            )
-            send_to_char( "Huh?\n\r", ch );
+            send_to_char("Huh?\n\r", ch);
         return;
     }
     else /* a normal valid command.. check if it is disabled */
-        if ( check_disabled( cmd ) )
+        if (check_disabled(cmd))
         {
-            send_to_char( "This command has been temporarily disabled.\n\r", ch );
+            send_to_char("This command has been temporarily disabled.\n\r",
+                         ch);
             return;
         }
 
     /*
      * Character not in position for command?
      */
-    if ( ch->position < cmd->position )
+    if (ch->position < cmd->position)
     {
-        switch ( ch->position )
+        switch (ch->position)
         {
         case POS_DEAD:
-            send_to_char( "Lie still; you are DEAD.\n\r", ch );
+            send_to_char("Lie still; you are DEAD.\n\r", ch);
             break;
 
         case POS_MORTAL:
         case POS_INCAP:
-            send_to_char( "You are hurt far too bad for that.\n\r", ch );
+            send_to_char("You are hurt far too bad for that.\n\r", ch);
             break;
 
         case POS_STUNNED:
-            send_to_char( "You are too stunned to do that.\n\r", ch );
+            send_to_char("You are too stunned to do that.\n\r", ch);
             break;
 
         case POS_SLEEPING:
-            send_to_char( "In your dreams, or what?\n\r", ch );
+            send_to_char("In your dreams, or what?\n\r", ch);
             break;
 
         case POS_RESTING:
-            send_to_char( "Nah... You feel too relaxed...\n\r", ch );
+            send_to_char("Nah... You feel too relaxed...\n\r", ch);
             break;
 
         case POS_SITTING:
-            send_to_char( "Better stand up first.\n\r", ch );
+            send_to_char("Better stand up first.\n\r", ch);
             break;
 
         case POS_FIGHTING:
-            send_to_char( "No way!  You are still fighting!\n\r", ch );
+            send_to_char("No way!  You are still fighting!\n\r", ch);
             break;
         }
         return;
@@ -694,52 +697,52 @@ void interpret( CHAR_DATA * ch, char *argument )
     /*
      * Dispatch the command.
      */
-    ( cmd->do_fun ) ( ch, argument );
+    (cmd->do_fun) (ch, argument);
 
-    tail_chain(  );
+    tail_chain();
     return;
 }
 
-bool check_social( CHAR_DATA * ch, char *command, char *argument )
+bool check_social(CHAR_DATA * ch, char *command, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
-    /*    struct social_type *cmd;*/
+    /*    struct social_type *cmd; */
     SOCIALLIST_DATA *cmd;
     bool found;
 
     found = FALSE;
-    for ( cmd = social_first; cmd != NULL; cmd = cmd->next )
+    for (cmd = social_first; cmd != NULL; cmd = cmd->next)
     {
-        if ( ( is_name( command, cmd->name ) ) )
+        if ((is_name(command, cmd->name)))
         {
             found = TRUE;
             break;
         }
     }
 
-    if ( !found )
+    if (!found)
         return FALSE;
 
-    if ( !IS_NPC( ch ) && IS_SET( ch->comm, COMM_NOEMOTE ) )
+    if (!IS_NPC(ch) && IS_SET(ch->comm, COMM_NOEMOTE))
     {
-        send_to_char( "You are anti-social!\n\r", ch );
+        send_to_char("You are anti-social!\n\r", ch);
         return TRUE;
     }
 
-    switch ( ch->position )
+    switch (ch->position)
     {
     case POS_DEAD:
-        send_to_char( "Lie still; you are DEAD.\n\r", ch );
+        send_to_char("Lie still; you are DEAD.\n\r", ch);
         return TRUE;
 
     case POS_INCAP:
     case POS_MORTAL:
-        send_to_char( "You are hurt far too bad for that.\n\r", ch );
+        send_to_char("You are hurt far too bad for that.\n\r", ch);
         return TRUE;
 
     case POS_STUNNED:
-        send_to_char( "You are too stunned to do that.\n\r", ch );
+        send_to_char("You are too stunned to do that.\n\r", ch);
         return TRUE;
 
     case POS_SLEEPING:
@@ -747,67 +750,68 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
          * I just know this is the path to a 12" 'if' statement.  :(
          * But two players asked for it already!  -- Furey
          */
-        if ( !str_cmp( cmd->name, "snore" ) )
+        if (!str_cmp(cmd->name, "snore"))
             break;
-        send_to_char( "In your dreams, or what?\n\r", ch );
+        send_to_char("In your dreams, or what?\n\r", ch);
 
         return TRUE;
     }
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
     victim = NULL;
-    if ( !*arg )
+    if (!*arg)
     {
-        if ( str_cmp( cmd->others_no_arg, "none" ) )
+        if (str_cmp(cmd->others_no_arg, "none"))
         {
-            act( cmd->others_no_arg, ch, NULL, victim, TO_ROOM );
+            act(cmd->others_no_arg, ch, NULL, victim, TO_ROOM);
         }
-        if ( str_cmp( cmd->char_no_arg, "none" ) )
+        if (str_cmp(cmd->char_no_arg, "none"))
         {
-            act( cmd->char_no_arg, ch, NULL, victim, TO_CHAR );
+            act(cmd->char_no_arg, ch, NULL, victim, TO_CHAR);
         }
     }
-    else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
+    else if ((victim = get_char_room(ch, arg)) == NULL)
     {
-        if ( !str_cmp( cmd->char_not_found, "none" ) )
+        if (!str_cmp(cmd->char_not_found, "none"))
         {
 
-            send_to_char( "There is nothing here that matches that name.", ch );
+            send_to_char("There is nothing here that matches that name.",
+                         ch);
         }
         else
-            act( cmd->char_not_found, ch, NULL, victim, TO_CHAR );
+            act(cmd->char_not_found, ch, NULL, victim, TO_CHAR);
     }
-    else if ( victim == ch )
+    else if (victim == ch)
     {
-        if ( str_cmp( cmd->others_auto, "none" ) )
+        if (str_cmp(cmd->others_auto, "none"))
         {
-            act( cmd->others_auto, ch, NULL, victim, TO_ROOM );
+            act(cmd->others_auto, ch, NULL, victim, TO_ROOM);
         }
-        if ( str_cmp( cmd->char_auto, "none" ) )
+        if (str_cmp(cmd->char_auto, "none"))
         {
-            act( cmd->char_auto, ch, NULL, victim, TO_CHAR );
+            act(cmd->char_auto, ch, NULL, victim, TO_CHAR);
         }
     }
     else
     {
-        if ( str_cmp( cmd->others_found, "none" ) )
+        if (str_cmp(cmd->others_found, "none"))
         {
-            act( cmd->others_found, ch, NULL, victim, TO_NOTVICT );
+            act(cmd->others_found, ch, NULL, victim, TO_NOTVICT);
         }
-        if ( str_cmp( cmd->char_found, "none" ) )
+        if (str_cmp(cmd->char_found, "none"))
         {
-            act( cmd->char_found, ch, NULL, victim, TO_CHAR );
+            act(cmd->char_found, ch, NULL, victim, TO_CHAR);
         }
-        if ( str_cmp( cmd->vict_found, "none" ) )
+        if (str_cmp(cmd->vict_found, "none"))
         {
-            act( cmd->vict_found, ch, NULL, victim, TO_VICT );
+            act(cmd->vict_found, ch, NULL, victim, TO_VICT);
         }
 
-        if ( !IS_NPC( ch ) && IS_NPC( victim )
-                && !IS_AFFECTED( victim, AFF_CHARM )
-                && IS_AWAKE( victim ) && victim->desc == NULL )
+        if (!IS_NPC(ch) && IS_NPC(victim)
+                && !IS_AFFECTED(victim, AFF_CHARM)
+                && IS_AWAKE(victim) && victim->desc == NULL)
         {
-            switch ( number_bits( 4 ) )
+            switch (number_bits(4))
             {
             case 0:
 
@@ -819,17 +823,17 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
             case 6:
             case 7:
             case 8:
-                if ( str_cmp( cmd->others_found, "none" ) )
+                if (str_cmp(cmd->others_found, "none"))
                 {
-                    act( cmd->others_found, victim, NULL, ch, TO_NOTVICT );
+                    act(cmd->others_found, victim, NULL, ch, TO_NOTVICT);
                 }
-                if ( str_cmp( cmd->char_found, "none" ) )
+                if (str_cmp(cmd->char_found, "none"))
                 {
-                    act( cmd->char_found, victim, NULL, ch, TO_CHAR );
+                    act(cmd->char_found, victim, NULL, ch, TO_CHAR);
                 }
-                if ( str_cmp( cmd->vict_found, "none" ) )
+                if (str_cmp(cmd->vict_found, "none"))
                 {
-                    act( cmd->vict_found, victim, NULL, ch, TO_VICT );
+                    act(cmd->vict_found, victim, NULL, ch, TO_VICT);
                 }
                 break;
 
@@ -837,9 +841,9 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
             case 10:
             case 11:
             case 12:
-                act( "$n slaps $N.", victim, NULL, ch, TO_NOTVICT );
-                act( "You slap $N.", victim, NULL, ch, TO_CHAR );
-                act( "$n slaps you.", victim, NULL, ch, TO_VICT );
+                act("$n slaps $N.", victim, NULL, ch, TO_NOTVICT);
+                act("You slap $N.", victim, NULL, ch, TO_CHAR);
+                act("$n slaps you.", victim, NULL, ch, TO_VICT);
                 break;
             }
         }
@@ -851,18 +855,18 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
 /*
  * Return true if an argument is completely numeric.
  */
-bool is_number( char *arg )
+bool is_number(char *arg)
 {
 
-    if ( *arg == '\0' )
+    if (*arg == '\0')
         return FALSE;
 
-    if ( *arg == '+' || *arg == '-' )
+    if (*arg == '+' || *arg == '-')
         arg++;
 
-    for ( ; *arg != '\0'; arg++ )
+    for (; *arg != '\0'; arg++)
     {
-        if ( !isdigit( *arg ) )
+        if (!isdigit(*arg))
             return FALSE;
     }
 
@@ -872,24 +876,24 @@ bool is_number( char *arg )
 /*
  * Given a string like 14.foo, return 14 and 'foo'
  */
-int number_argument( char *argument, char *arg )
+int number_argument(char *argument, char *arg)
 {
     char *pdot;
     int number;
 
-    for ( pdot = argument; *pdot != '\0'; pdot++ )
+    for (pdot = argument; *pdot != '\0'; pdot++)
     {
-        if ( *pdot == '.' )
+        if (*pdot == '.')
         {
             *pdot = '\0';
-            number = atoi( argument );
+            number = atoi(argument);
             *pdot = '.';
-            strcpy( arg, pdot + 1 );
+            strcpy(arg, pdot + 1);
             return number;
         }
     }
 
-    strcpy( arg, argument );
+    strcpy(arg, argument);
     return 1;
 }
 
@@ -898,31 +902,31 @@ int number_argument( char *argument, char *arg )
  * Understands quotes.
  * Converts string to lower case.
  */
-char *one_argument( char *argument, char *arg_first )
+char *one_argument(char *argument, char *arg_first)
 {
     char cEnd;
 
-    while ( isspace( *argument ) )
+    while (isspace(*argument))
         argument++;
 
     cEnd = ' ';
-    if ( *argument == '\'' || *argument == '"' )
+    if (*argument == '\'' || *argument == '"')
         cEnd = *argument++;
 
-    while ( *argument != '\0' )
+    while (*argument != '\0')
     {
-        if ( *argument == cEnd )
+        if (*argument == cEnd)
         {
             argument++;
             break;
         }
-        *arg_first = LOWER( *argument );
+        *arg_first = LOWER(*argument);
         arg_first++;
         argument++;
     }
     *arg_first = '\0';
 
-    while ( isspace( *argument ) )
+    while (isspace(*argument))
         argument++;
 
     return argument;
@@ -933,20 +937,20 @@ char *one_argument( char *argument, char *arg_first )
  * Understands quotes.
  * Doesn't change case.
  */
-char *one_argument2( char *argument, char *arg_first )
+char *one_argument2(char *argument, char *arg_first)
 {
     char cEnd;
 
-    while ( isspace( *argument ) )
+    while (isspace(*argument))
         argument++;
 
     cEnd = ' ';
-    if ( *argument == '\'' || *argument == '"' )
+    if (*argument == '\'' || *argument == '"')
         cEnd = *argument++;
 
-    while ( *argument != '\0' )
+    while (*argument != '\0')
     {
-        if ( *argument == cEnd )
+        if (*argument == cEnd)
         {
             argument++;
             break;
@@ -957,14 +961,14 @@ char *one_argument2( char *argument, char *arg_first )
     }
     *arg_first = '\0';
 
-    while ( isspace( *argument ) )
+    while (isspace(*argument))
         argument++;
 
     return argument;
 }
 
 /* chk_command function coded by Laurie Zenner.  */
-void chk_command( CHAR_DATA * ch, char *argument )
+void chk_command(CHAR_DATA * ch, char *argument)
 {
     char workstr[MAX_INPUT_LENGTH];
     char command[MAX_INPUT_LENGTH];
@@ -976,23 +980,23 @@ void chk_command( CHAR_DATA * ch, char *argument )
     int trust;
     bool found;
 
-    strcpy( workstr, argument );
+    strcpy(workstr, argument);
     argument[0] = '\0';
 
     /*
      * Strip leading spaces.
      */
     pos = 0;
-    while ( isspace( workstr[pos] ) )
+    while (isspace(workstr[pos]))
         pos++;
 
-    if ( workstr[pos] == '\0' )
+    if (workstr[pos] == '\0')
         return;
 
     /*
      * Implement freeze command.
      */
-    if ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_FREEZE ) )
+    if (!IS_NPC(ch) && IS_SET(ch->act, PLR_FREEZE))
         return;
 
     /*
@@ -1000,19 +1004,19 @@ void chk_command( CHAR_DATA * ch, char *argument )
      * Special parsing so ' can be a command,
      *   also no spaces needed after punctuation.
      */
-    if ( !isalpha( workstr[pos] ) && !isdigit( workstr[pos] ) )
+    if (!isalpha(workstr[pos]) && !isdigit(workstr[pos]))
     {
         command[0] = workstr[pos];
         command[1] = '\0';
-        while ( isspace( workstr[pos] ) )
+        while (isspace(workstr[pos]))
             pos++;
     }
     else
     {
         var = 0;
-        while ( !isspace( workstr[pos] ) )
+        while (!isspace(workstr[pos]))
         {
-            if ( workstr[pos] == '\0' )
+            if (workstr[pos] == '\0')
                 break;
 
             command[var] = workstr[pos];
@@ -1020,7 +1024,7 @@ void chk_command( CHAR_DATA * ch, char *argument )
             pos++;
         }
         command[pos] = '\0';
-        while ( isspace( workstr[pos] ) )
+        while (isspace(workstr[pos]))
             pos++;
     }
 
@@ -1028,56 +1032,56 @@ void chk_command( CHAR_DATA * ch, char *argument )
      * Look for command in command table.
      */
     found = FALSE;
-    trust = get_trust( ch );
-    for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
+    trust = get_trust(ch);
+    for (cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++)
     {
-        if ( command[0] == cmd_table[cmd].name[0]
-                && !str_prefix( command, cmd_table[cmd].name ) )
+        if (command[0] == cmd_table[cmd].name[0]
+                && !str_prefix(command, cmd_table[cmd].name))
         {
             /* if the command is an imm command but the char can't
                execute it, keep searching. */
 
-            if ( ( cmd_table[cmd].imm )
-                    && ( !can_do_immcmd( ch, cmd_table[cmd].name ) ) )
+            if ((cmd_table[cmd].imm)
+                    && (!can_do_immcmd(ch, cmd_table[cmd].name)))
             {
                 continue;
             }
             else
             {
                 found = TRUE;
-                sprintf( argument, "%s", cmd_table[cmd].name );
+                sprintf(argument, "%s", cmd_table[cmd].name);
                 break;
             }
         }
     }
 
-    if ( found )
+    if (found)
     {
-        if ( ch->position < cmd_table[cmd].position )
-            found = FALSE;      /* Character not in position for command */
+        if (ch->position < cmd_table[cmd].position)
+            found = FALSE;	/* Character not in position for command */
     }
     else
     {
 
         /* Look for command in social table */
         SOCIALLIST_DATA *cmd;
-        for ( cmd = social_first; cmd != NULL; cmd = cmd->next )
+        for (cmd = social_first; cmd != NULL; cmd = cmd->next)
         {
-            if ( ( is_name( command, cmd->name ) ) )
+            if ((is_name(command, cmd->name)))
             {
                 found = TRUE;
-                sprintf( argument, "%s", cmd->name );
+                sprintf(argument, "%s", cmd->name);
                 break;
             }
         }
 
-        if ( found )
+        if (found)
         {
-            if ( !IS_NPC( ch ) && IS_SET( ch->comm, COMM_NOEMOTE ) )
+            if (!IS_NPC(ch) && IS_SET(ch->comm, COMM_NOEMOTE))
                 found = FALSE;
             else
             {
-                switch ( ch->position )
+                switch (ch->position)
                 {
                 case POS_DEAD:
                 case POS_INCAP:
@@ -1087,18 +1091,18 @@ void chk_command( CHAR_DATA * ch, char *argument )
                     break;
 
                 case POS_SLEEPING:
-                    if ( str_cmp( cmd->name, "snore" ) )
+                    if (str_cmp(cmd->name, "snore"))
                         found = FALSE;
                     break;
                 }
             }
         }
-        if ( found )
+        if (found)
         {
             var = 0;
-            while ( !isspace( workstr[pos] ) )
+            while (!isspace(workstr[pos]))
             {
-                if ( workstr[pos] == '\0' )
+                if (workstr[pos] == '\0')
                     return;
 
                 arg[var] = workstr[pos];
@@ -1108,16 +1112,16 @@ void chk_command( CHAR_DATA * ch, char *argument )
             arg[var] = '\0';
 
             victim = NULL;
-            if ( arg[0] != '\0' )
+            if (arg[0] != '\0')
             {
-                victim = get_char_room( ch, arg );
-                if ( victim == NULL )
+                victim = get_char_room(ch, arg);
+                if (victim == NULL)
                     found = FALSE;
             }
         }
     }
 
-    if ( !found )
+    if (!found)
         argument[0] = '\0';
 
     return;
@@ -1126,61 +1130,61 @@ void chk_command( CHAR_DATA * ch, char *argument )
 /*
  * Contributed by Alander.
  */
-void do_commands( CHAR_DATA * ch, char *argument )
+void do_commands(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     int cmd;
     int col;
 
     col = 0;
-    for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
+    for (cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++)
     {
-        if ( !cmd_table[cmd].imm && cmd_table[cmd].show )
+        if (!cmd_table[cmd].imm && cmd_table[cmd].show)
         {
-            sprintf( buf, "%-12s", cmd_table[cmd].name );
-            send_to_char( buf, ch );
-            if ( ++col % 6 == 0 )
-                send_to_char( "\n\r", ch );
+            sprintf(buf, "%-12s", cmd_table[cmd].name);
+            send_to_char(buf, ch);
+            if (++col % 6 == 0)
+                send_to_char("\n\r", ch);
         }
     }
 
-    if ( col % 6 != 0 )
-        send_to_char( "\n\r", ch );
+    if (col % 6 != 0)
+        send_to_char("\n\r", ch);
     return;
 }
 
-void do_wizhelp( CHAR_DATA * ch, char *argument )
+void do_wizhelp(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     int cmd;
     int col;
 
     col = 0;
-    for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
+    for (cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++)
     {
-        if ( cmd_table[cmd].imm && can_do_immcmd( ch, cmd_table[cmd].name )
-                && cmd_table[cmd].show )
+        if (cmd_table[cmd].imm && can_do_immcmd(ch, cmd_table[cmd].name)
+                && cmd_table[cmd].show)
         {
-            sprintf( buf, "%s%-12s`w",
-                     check_disabled( &cmd_table[cmd] ) ? "`K-" : "`w ",
-                     cmd_table[cmd].name );
-            send_to_char( buf, ch );
-            if ( ++col % 6 == 0 )
-                send_to_char( "\n\r", ch );
+            sprintf(buf, "%s%-12s`w",
+                    check_disabled(&cmd_table[cmd]) ? "`K-" : "`w ",
+                    cmd_table[cmd].name);
+            send_to_char(buf, ch);
+            if (++col % 6 == 0)
+                send_to_char("\n\r", ch);
         }
     }
 
-    if ( col % 6 != 0 )
-        send_to_char( "\n\r", ch );
+    if (col % 6 != 0)
+        send_to_char("\n\r", ch);
 
-    if ( !IS_NPC( ch ) && ch->pcdata->immcmdlist == NULL )
-        send_to_char( "Huh?\n\r", ch );
+    if (!IS_NPC(ch) && ch->pcdata->immcmdlist == NULL)
+        send_to_char("Huh?\n\r", ch);
 
     return;
 }
 
 /* interpret without dumb stuff... used for mob programs... forcing, etc */
-void mpinterpret( CHAR_DATA * ch, char *argument )
+void mpinterpret(CHAR_DATA * ch, char *argument)
 {
     char command[MAX_INPUT_LENGTH];
     char logline[MAX_INPUT_LENGTH];
@@ -1191,9 +1195,9 @@ void mpinterpret( CHAR_DATA * ch, char *argument )
     /*
      * Strip leading spaces.
      */
-    while ( isspace( *argument ) )
+    while (isspace(*argument))
         argument++;
-    if ( argument[0] == '\0' )
+    if (argument[0] == '\0')
         return;
 
     /*
@@ -1201,50 +1205,50 @@ void mpinterpret( CHAR_DATA * ch, char *argument )
      * Special parsing so ' can be a command,
      *   also no spaces needed after punctuation.
      */
-    strcpy( logline, argument );
-    if ( !isalpha( argument[0] ) && !isdigit( argument[0] ) )
+    strcpy(logline, argument);
+    if (!isalpha(argument[0]) && !isdigit(argument[0]))
     {
         command[0] = argument[0];
         command[1] = '\0';
         argument++;
-        while ( isspace( *argument ) )
+        while (isspace(*argument))
             argument++;
     }
     else
     {
-        argument = one_argument( argument, command );
+        argument = one_argument(argument, command);
     }
 
     /*
      * Look for command in command table.
      */
     found = FALSE;
-    trust = get_trust( ch );
-    for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
+    trust = get_trust(ch);
+    for (cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++)
     {
-        if ( command[0] == cmd_table[cmd].name[0]
-                && !str_prefix( command, cmd_table[cmd].name )
-                && !cmd_table[cmd].imm )
+        if (command[0] == cmd_table[cmd].name[0]
+                && !str_prefix(command, cmd_table[cmd].name)
+                && !cmd_table[cmd].imm)
         {
             found = TRUE;
             break;
         }
     }
 
-    if ( !found )
+    if (!found)
     {
         /*
          * Look for command in socials table.
          */
-        if ( !check_social( ch, command, argument ) )
-            send_to_char( "Huh?\n\r", ch );
+        if (!check_social(ch, command, argument))
+            send_to_char("Huh?\n\r", ch);
         return;
     }
 
     /*
      * Character not in position for command?
      */
-    if ( ch->position < cmd_table[cmd].position )
+    if (ch->position < cmd_table[cmd].position)
     {
         return;
     }
@@ -1252,41 +1256,41 @@ void mpinterpret( CHAR_DATA * ch, char *argument )
     /*
      * Dispatch the command.
      */
-    update_last( "Interpret: ", command, argument );
-    ( *cmd_table[cmd].do_fun ) ( ch, argument );
+    update_last("Interpret: ", command, argument);
+    (*cmd_table[cmd].do_fun) (ch, argument);
 
-    tail_chain(  );
+    tail_chain();
     return;
 }
 
-void do_disable( CHAR_DATA * ch, char *argument )
+void do_disable(CHAR_DATA * ch, char *argument)
 {
     int i;
     DISABLED_DATA *p, *q;
     char buf[100];
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
     {
-        send_to_char( "RETURN first.\n\r", ch );
+        send_to_char("RETURN first.\n\r", ch);
         return;
     }
 
-    if ( !argument[0] )         /* Nothing specified. Show disabled commands. */
+    if (!argument[0])  		/* Nothing specified. Show disabled commands. */
     {
-        if ( !disabled_first )  /* Any disabled at all ? */
+        if (!disabled_first)  	/* Any disabled at all ? */
         {
-            send_to_char( "There are no commands disabled.\n\r", ch );
+            send_to_char("There are no commands disabled.\n\r", ch);
             return;
         }
 
-        send_to_char( "Disabled commands:\n\r"
-                      "Command      Level   Disabled by\n\r", ch );
+        send_to_char("Disabled commands:\n\r"
+                     "Command      Level   Disabled by\n\r", ch);
 
-        for ( p = disabled_first; p; p = p->next )
+        for (p = disabled_first; p; p = p->next)
         {
-            sprintf( buf, "%-12s %5d %-12s\n\r", p->command->name, p->level,
-                     p->disabled_by );
-            send_to_char( buf, ch );
+            sprintf(buf, "%-12s %5d %-12s\n\r", p->command->name, p->level,
+                    p->disabled_by);
+            send_to_char(buf, ch);
         }
         return;
     }
@@ -1294,79 +1298,82 @@ void do_disable( CHAR_DATA * ch, char *argument )
     /* command given */
 
     /* First check if it is one of the disabled commands */
-    for ( p = disabled_first; p; p = p->next )
-        if ( !str_cmp( argument, p->command->name ) )
+    for (p = disabled_first; p; p = p->next)
+        if (!str_cmp(argument, p->command->name))
             break;
 
-    if ( p )                    /* this command is disabled */
+    if (p)  			/* this command is disabled */
     {
         /* Optional: The level of the imm to enable the command must equal or exceed level
            of the one that disabled it */
 
-        if ( get_trust( ch ) < p->level )
+        if (get_trust(ch) < p->level)
         {
-            send_to_char( "This command was disabled by a higher power.\n\r",
-                          ch );
+            send_to_char
+            ("This command was disabled by a higher power.\n\r", ch);
             return;
         }
 
         /* Remove */
 
-        if ( disabled_first == p )  /* node to be removed == head ? */
+        if (disabled_first == p)	/* node to be removed == head ? */
             disabled_first = p->next;
-        else                    /* Find the node before this one */
+        else  			/* Find the node before this one */
         {
-            for ( q = disabled_first; q->next != p; q = q->next );  /* empty for */
+
+            for (q = disabled_first; q->next != p; q = q->next);	/* empty for */
             q->next = p->next;
         }
 
-        free_string( &p->disabled_by ); /* free name of disabler */
-        free_mem( &p );         /* free node */
-        save_disabled(  );      /* save to disk */
-        send_to_char( "Command enabled.\n\r", ch );
+        free_string(&p->disabled_by);	/* free name of disabler */
+        free_mem(&p);		/* free node */
+        save_disabled();	/* save to disk */
+        send_to_char("Command enabled.\n\r", ch);
     }
-    else                        /* not a disabled command, check if that command exists */
+    else  			/* not a disabled command, check if that command exists */
     {
+
         /* IQ test */
-        if ( !str_cmp( argument, "disable" ) )
+        if (!str_cmp(argument, "disable"))
         {
-            send_to_char( "You cannot disable the disable command.\n\r", ch );
+            send_to_char("You cannot disable the disable command.\n\r",
+                         ch);
             return;
         }
 
         /* Search for the command */
-        for ( i = 0; cmd_table[i].name[0] != '\0'; i++ )
-            if ( !str_cmp( cmd_table[i].name, argument ) )
+        for (i = 0; cmd_table[i].name[0] != '\0'; i++)
+            if (!str_cmp(cmd_table[i].name, argument))
                 break;
 
         /* Found? */
-        if ( cmd_table[i].name[0] == '\0' )
+        if (cmd_table[i].name[0] == '\0')
         {
-            send_to_char( "No such command.\n\r", ch );
+            send_to_char("No such command.\n\r", ch);
             return;
         }
 
         /* Can the imm use this command at all ? */
-        if ( cmd_table[i].imm && ( !can_do_immcmd( ch, cmd_table[i].name ) ) )
+        if (cmd_table[i].imm && (!can_do_immcmd(ch, cmd_table[i].name)))
         {
             send_to_char
-            ( "You do not have access to that command; you cannot disable it.\n\r",
-              ch );
+            ("You do not have access to that command; you cannot disable it.\n\r",
+             ch);
             return;
         }
 
         /* Disable the command */
 
-        p = alloc_mem( sizeof( DISABLED_DATA ) );
+        p = alloc_mem(sizeof(DISABLED_DATA));
 
         p->command = &cmd_table[i];
-        p->disabled_by = str_dup( ch->name );   /* save name of disabler */
-        p->level = get_trust( ch ); /* save trust */
+        p->disabled_by = str_dup(ch->name);	/* save name of disabler */
+        p->level = get_trust(ch);	/* save trust */
         p->next = disabled_first;
-        disabled_first = p;     /* add before the current first element */
+        disabled_first = p;	/* add before the current first element */
 
-        send_to_char( "Command disabled.\n\r", ch );
-        save_disabled(  );      /* save to disk */
+        send_to_char("Command disabled.\n\r", ch);
+        save_disabled();	/* save to disk */
     }
 }
 
@@ -1374,19 +1381,19 @@ void do_disable( CHAR_DATA * ch, char *argument )
    Note that we check for equivalence of the do_fun pointers; this means
    that disabling 'chat' will also disable the '.' command
 */
-bool check_disabled( const struct cmd_type *command )
+bool check_disabled(const struct cmd_type *command)
 {
     DISABLED_DATA *p;
 
-    for ( p = disabled_first; p; p = p->next )
-        if ( p->command->do_fun == command->do_fun )
+    for (p = disabled_first; p; p = p->next)
+        if (p->command->do_fun == command->do_fun)
             return TRUE;
 
     return FALSE;
 }
 
 /* Load disabled commands */
-void load_disabled(  )
+void load_disabled()
 {
     FILE *fp;
     DISABLED_DATA *p;
@@ -1395,68 +1402,70 @@ void load_disabled(  )
 
     disabled_first = NULL;
 
-    fp = fopen( sysconfig.disable_file, "r" );
+    fp = fopen(sysconfig.disable_file, "r");
 
-    if ( !fp )                  /* No disabled file.. no disabled commands : */
+    if (!fp)			/* No disabled file.. no disabled commands : */
         return;
 
-    name = fread_word( fp );
+    name = fread_word(fp);
 
-    while ( str_cmp( name, END_MARKER ) )   /* as long as name is NOT END_MARKER :) */
+    while (str_cmp(name, END_MARKER))  	/* as long as name is NOT END_MARKER :) */
     {
         /* Find the command in the table */
-        for ( i = 0; cmd_table[i].name[0]; i++ )
-            if ( !str_cmp( cmd_table[i].name, name ) )
+        for (i = 0; cmd_table[i].name[0]; i++)
+            if (!str_cmp(cmd_table[i].name, name))
                 break;
 
-        if ( !cmd_table[i].name[0] )    /* command does not exist? */
+        if (!cmd_table[i].name[0])  	/* command does not exist? */
         {
-            bug( "Skipping uknown command in disable_file file.", 0 );
-            fread_number( fp ); /* level */
-            fread_word( fp );   /* disabled_by */
+            bug("Skipping uknown command in disable_file file.", 0);
+            fread_number(fp);	/* level */
+            fread_word(fp);	/* disabled_by */
         }
-        else                    /* add new disabled command */
+        else  		/* add new disabled command */
         {
-            p = alloc_mem( sizeof( DISABLED_DATA ) );
+
+            p = alloc_mem(sizeof(DISABLED_DATA));
             p->command = &cmd_table[i];
-            p->level = fread_number( fp );
-            p->disabled_by = str_dup( fread_word( fp ) );
+            p->level = fread_number(fp);
+            p->disabled_by = str_dup(fread_word(fp));
             p->next = disabled_first;
 
             disabled_first = p;
 
         }
 
-        name = fread_word( fp );
+        name = fread_word(fp);
     }
 
-    fclose( fp );
+    fclose(fp);
 }
 
 /* Save disabled commands */
-void save_disabled(  )
+void save_disabled()
 {
     FILE *fp;
     DISABLED_DATA *p;
 
-    if ( !disabled_first )      /* delete file if no commands are disabled */
+    if (!disabled_first)  	/* delete file if no commands are disabled */
     {
-        unlink( sysconfig.disable_file );
+        unlink(sysconfig.disable_file);
         return;
     }
 
-    fp = fopen( sysconfig.disable_file, "w" );
+    fp = fopen(sysconfig.disable_file, "w");
 
-    if ( !fp )
+    if (!fp)
     {
-        bug( "Could not open disable_file  for writing", 0 );
+        bug("Could not open disable_file  for writing", 0);
         return;
     }
 
-    for ( p = disabled_first; p; p = p->next )
-        fprintf( fp, "%s %d %s\n", p->command->name, p->level, p->disabled_by );
+    for (p = disabled_first; p; p = p->next)
+        fprintf(fp, "%s %d %s\n", p->command->name, p->level,
+                p->disabled_by);
 
-    fprintf( fp, "%s\n", END_MARKER );
+    fprintf(fp, "%s\n", END_MARKER);
 
-    fclose( fp );
+    fclose(fp);
 }

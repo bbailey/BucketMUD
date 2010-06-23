@@ -44,13 +44,13 @@ HELP_DATA *help_last;
 TODO_DATA *todo_free;
 TODO_DATA *todo_last;
 
-RESET_DATA *new_reset_data( void )
+RESET_DATA *new_reset_data(void)
 {
     RESET_DATA *pReset;
 
-    if ( !reset_free )
+    if (!reset_free)
     {
-        pReset = alloc_perm( sizeof( *pReset ) );
+        pReset = alloc_perm(sizeof(*pReset));
         top_reset++;
     }
     else
@@ -69,7 +69,7 @@ RESET_DATA *new_reset_data( void )
     return pReset;
 }
 
-void free_reset_data( RESET_DATA * pReset )
+void free_reset_data(RESET_DATA * pReset)
 {
     pReset->next = reset_free;
     reset_free = pReset;
@@ -82,23 +82,23 @@ void free_reset_data( RESET_DATA * pReset )
  *
  *    -Thanatos
  */
-char *remove_color( const char *str )
+char *remove_color(const char *str)
 {
     char *nocolor;
     static char nocolor_buf[MAX_STRING_LENGTH];
 
-    bzero( nocolor_buf, MAX_STRING_LENGTH );
+    bzero(nocolor_buf, MAX_STRING_LENGTH);
     nocolor = nocolor_buf;
 
-    while ( *str )
+    while (*str)
     {
-        if ( *str != '`' )      /* If there's no `, add to the count  */
+        if (*str != '`')  	/* If there's no `, add to the count  */
         {
             *nocolor++ = *str++;
             continue;
         }
-        str++;                  /* If there _IS_ a `, check next char */
-        switch ( *str )
+        str++;			/* If there _IS_ a `, check next char */
+        switch (*str)
         {
             /* If it's \0, count the first ` and get outta here */
         case '\0':
@@ -136,13 +136,13 @@ char *remove_color( const char *str )
     return nocolor_buf;
 }
 
-MPROG_DATA *new_mudprog(  )
+MPROG_DATA *new_mudprog()
 {
     MPROG_DATA *mprog;
 
-    if ( !mprog_free )
+    if (!mprog_free)
     {
-        mprog = ( MPROG_DATA * ) alloc_perm( sizeof( MPROG_DATA ) );
+        mprog = (MPROG_DATA *) alloc_perm(sizeof(MPROG_DATA));
         top_mprog++;
     }
     else
@@ -153,10 +153,10 @@ MPROG_DATA *new_mudprog(  )
     }
 
     mprog->next = NULL;
-    mprog->arglist = str_dup( "0" );
-    mprog->comlist = str_dup( "break\r\n" );
-    mprog->name = str_dup( "(no name)" );
-    mprog->description = str_dup( "(no description)" );
+    mprog->arglist = str_dup("0");
+    mprog->comlist = str_dup("break\r\n");
+    mprog->name = str_dup("(no name)");
+    mprog->description = str_dup("(no description)");
     mprog->prog_type = MOB_PROG;
     mprog->trigger_type = RAND_PROG;
     mprog->vnum = 0;
@@ -164,16 +164,16 @@ MPROG_DATA *new_mudprog(  )
     return mprog;
 }
 
-void free_mudprog( MPROG_DATA * mprog )
+void free_mudprog(MPROG_DATA * mprog)
 {
-    if ( mprog->name )
-        free_string( &mprog->name );
-    if ( mprog->description )
-        free_string( &mprog->description );
-    if ( mprog->arglist )
-        free_string( &mprog->arglist );
-    if ( mprog->comlist )
-        free_string( &mprog->comlist );
+    if (mprog->name)
+        free_string(&mprog->name);
+    if (mprog->description)
+        free_string(&mprog->description);
+    if (mprog->arglist)
+        free_string(&mprog->arglist);
+    if (mprog->comlist)
+        free_string(&mprog->comlist);
 
     mprog->next = mprog_free;
     mprog_free = mprog;
@@ -181,13 +181,13 @@ void free_mudprog( MPROG_DATA * mprog )
     return;
 }
 
-MPROG_GROUP *new_mudprog_group(  )
+MPROG_GROUP *new_mudprog_group()
 {
     MPROG_GROUP *pMprogGroup;
 
-    if ( !mprog_group_free )
+    if (!mprog_group_free)
     {
-        pMprogGroup = ( MPROG_GROUP * ) alloc_perm( sizeof( *pMprogGroup ) );
+        pMprogGroup = (MPROG_GROUP *) alloc_perm(sizeof(*pMprogGroup));
         top_mprog_group++;
     }
     else
@@ -200,18 +200,18 @@ MPROG_GROUP *new_mudprog_group(  )
     pMprogGroup->mudprogs = NULL;
     pMprogGroup->prog_type = 0;
     pMprogGroup->vnum = 0;
-    pMprogGroup->name = str_dup( "(no name)" );
-    pMprogGroup->description = str_dup( "(no description)" );
+    pMprogGroup->name = str_dup("(no name)");
+    pMprogGroup->description = str_dup("(no description)");
 
     return pMprogGroup;
 }
 
-void free_mudprog_group( MPROG_GROUP * pMprogGroup )
+void free_mudprog_group(MPROG_GROUP * pMprogGroup)
 {
-    if ( pMprogGroup->name )
-        free_string( &pMprogGroup->name );
-    if ( pMprogGroup->description )
-        free_string( &pMprogGroup->description );
+    if (pMprogGroup->name)
+        free_string(&pMprogGroup->name);
+    if (pMprogGroup->description)
+        free_string(&pMprogGroup->description);
 
     pMprogGroup->next = mprog_group_free;
     mprog_group_free = pMprogGroup;
@@ -219,14 +219,14 @@ void free_mudprog_group( MPROG_GROUP * pMprogGroup )
     return;
 }
 
-AREA_DATA *new_area( void )
+AREA_DATA *new_area(void)
 {
     char buf[MAX_STRING_LENGTH];
     AREA_DATA *pArea;
 
-    if ( !area_free )
+    if (!area_free)
     {
-        pArea = alloc_perm( sizeof( *pArea ) );
+        pArea = alloc_perm(sizeof(*pArea));
         top_area++;
     }
     else
@@ -236,41 +236,41 @@ AREA_DATA *new_area( void )
     }
 
     pArea->next = NULL;
-    pArea->name = str_dup( "New area" );
+    pArea->name = str_dup("New area");
     /*    pArea->recall           =   ROOM_VNUM_TEMPLE;      ROM OLC */
     pArea->area_flags = AREA_ADDED;
     pArea->security = 1;
-    pArea->builders = str_dup( "None" );
+    pArea->builders = str_dup("None");
     pArea->lvnum = 0;
     pArea->uvnum = 0;
     pArea->age = 0;
     pArea->nplayer = 0;
-    pArea->empty = TRUE;        /* ROM patch */
-    sprintf( buf, "area%d.are", pArea->vnum );
-    pArea->filename = str_dup( buf );
+    pArea->empty = TRUE;	/* ROM patch */
+    sprintf(buf, "area%d.are", pArea->vnum);
+    pArea->filename = str_dup(buf);
     pArea->vnum = top_area - 1;
 
     return pArea;
 }
 
-void free_area( AREA_DATA * pArea )
+void free_area(AREA_DATA * pArea)
 {
-    free_string( &pArea->name );
-    free_string( &pArea->filename );
-    free_string( &pArea->builders );
+    free_string(&pArea->name);
+    free_string(&pArea->filename);
+    free_string(&pArea->builders);
 
     pArea->next = area_free->next;
     area_free = pArea;
     return;
 }
 
-EXIT_DATA *new_exit( void )
+EXIT_DATA *new_exit(void)
 {
     EXIT_DATA *pExit;
 
-    if ( !exit_free )
+    if (!exit_free)
     {
-        pExit = alloc_perm( sizeof( *pExit ) );
+        pExit = alloc_perm(sizeof(*pExit));
         top_exit++;
     }
     else
@@ -291,23 +291,23 @@ EXIT_DATA *new_exit( void )
     return pExit;
 }
 
-void free_exit( EXIT_DATA * pExit )
+void free_exit(EXIT_DATA * pExit)
 {
-    free_string( &pExit->keyword );
-    free_string( &pExit->description );
+    free_string(&pExit->keyword);
+    free_string(&pExit->description);
 
     pExit->next = exit_free;
     exit_free = pExit;
     return;
 }
 
-EXTRA_DESCR_DATA *new_extra_descr( void )
+EXTRA_DESCR_DATA *new_extra_descr(void)
 {
     EXTRA_DESCR_DATA *pExtra;
 
-    if ( !extra_descr_free )
+    if (!extra_descr_free)
     {
-        pExtra = alloc_perm( sizeof( *pExtra ) );
+        pExtra = alloc_perm(sizeof(*pExtra));
         top_ed++;
     }
     else
@@ -323,24 +323,24 @@ EXTRA_DESCR_DATA *new_extra_descr( void )
     return pExtra;
 }
 
-void free_extra_descr( EXTRA_DESCR_DATA * pExtra )
+void free_extra_descr(EXTRA_DESCR_DATA * pExtra)
 {
-    free_string( &pExtra->keyword );
-    free_string( &pExtra->description );
+    free_string(&pExtra->keyword);
+    free_string(&pExtra->description);
 
     pExtra->next = extra_descr_free;
     extra_descr_free = pExtra;
     return;
 }
 
-ROOM_INDEX_DATA *new_room_index( void )
+ROOM_INDEX_DATA *new_room_index(void)
 {
     ROOM_INDEX_DATA *pRoom;
     int door;
 
-    if ( !room_index_free )
+    if (!room_index_free)
     {
-        pRoom = alloc_perm( sizeof( *pRoom ) );
+        pRoom = alloc_perm(sizeof(*pRoom));
         top_room++;
     }
     else
@@ -355,7 +355,7 @@ ROOM_INDEX_DATA *new_room_index( void )
     pRoom->extra_descr = NULL;
     pRoom->area = NULL;
 
-    for ( door = 0; door < MAX_DIR; door++ )
+    for (door = 0; door < MAX_DIR; door++)
         pRoom->exit[door] = NULL;
 
     pRoom->name = &str_empty[0];
@@ -368,7 +368,7 @@ ROOM_INDEX_DATA *new_room_index( void )
     return pRoom;
 }
 
-void free_room_index( ROOM_INDEX_DATA * pRoom )
+void free_room_index(ROOM_INDEX_DATA * pRoom)
 {
     int door;
     EXTRA_DESCR_DATA *pExtra;
@@ -376,39 +376,39 @@ void free_room_index( ROOM_INDEX_DATA * pRoom )
     MPROG_LIST *pMprogList;
     MPROG_GROUP_LIST *pMprogGroupList;
 
-    free_string( &pRoom->name );
-    free_string( &pRoom->description );
+    free_string(&pRoom->name);
+    free_string(&pRoom->description);
 
-    for ( door = 0; door < MAX_DIR; door++ )
-        if ( pRoom->exit[door] )
-            free_exit( pRoom->exit[door] );
+    for (door = 0; door < MAX_DIR; door++)
+        if (pRoom->exit[door])
+            free_exit(pRoom->exit[door]);
 
-    for ( pExtra = pRoom->extra_descr; pExtra; pExtra = pExtra->next )
-        free_extra_descr( pExtra );
+    for (pExtra = pRoom->extra_descr; pExtra; pExtra = pExtra->next)
+        free_extra_descr(pExtra);
 
-    for ( pReset = pRoom->reset_first; pReset; pReset = pReset->next )
-        free_reset_data( pReset );
+    for (pReset = pRoom->reset_first; pReset; pReset = pReset->next)
+        free_reset_data(pReset);
 
-    for ( pMprogList = pRoom->mudprogs; pMprogList;
-            pMprogList = pMprogList->next )
-        free_mem( &pMprogList );
+    for (pMprogList = pRoom->mudprogs; pMprogList;
+            pMprogList = pMprogList->next)
+        free_mem(&pMprogList);
 
-    for ( pMprogGroupList = pRoom->mprog_groups; pMprogGroupList;
-            pMprogGroupList = pMprogGroupList->next )
-        free_mem( &pMprogGroupList );
+    for (pMprogGroupList = pRoom->mprog_groups; pMprogGroupList;
+            pMprogGroupList = pMprogGroupList->next)
+        free_mem(&pMprogGroupList);
 
     pRoom->next = room_index_free;
     room_index_free = pRoom;
     return;
 }
 
-AFFECT_DATA *new_affect( void )
+AFFECT_DATA *new_affect(void)
 {
     AFFECT_DATA *pAf;
 
-    if ( !affect_free )
+    if (!affect_free)
     {
-        pAf = alloc_perm( sizeof( *pAf ) );
+        pAf = alloc_perm(sizeof(*pAf));
         top_affect++;
     }
     else
@@ -427,20 +427,20 @@ AFFECT_DATA *new_affect( void )
     return pAf;
 }
 
-void free_affect( AFFECT_DATA * pAf )
+void free_affect(AFFECT_DATA * pAf)
 {
     pAf->next = affect_free;
     affect_free = pAf;
     return;
 }
 
-NEWAFFECT_DATA *new_newaffect( void )
+NEWAFFECT_DATA *new_newaffect(void)
 {
     NEWAFFECT_DATA *npAf;
 
-    if ( !newaffect_free )
+    if (!newaffect_free)
     {
-        npAf = alloc_perm( sizeof( *npAf ) );
+        npAf = alloc_perm(sizeof(*npAf));
         top_newaffect++;
     }
     else
@@ -459,21 +459,21 @@ NEWAFFECT_DATA *new_newaffect( void )
     return npAf;
 }
 
-void free_newaffect( NEWAFFECT_DATA * npAf )
+void free_newaffect(NEWAFFECT_DATA * npAf)
 {
     npAf->next = newaffect_free;
     newaffect_free = npAf;
     return;
 }
 
-SHOP_DATA *new_shop( void )
+SHOP_DATA *new_shop(void)
 {
     SHOP_DATA *pShop;
     int buy;
 
-    if ( !shop_free )
+    if (!shop_free)
     {
-        pShop = alloc_perm( sizeof( *pShop ) );
+        pShop = alloc_perm(sizeof(*pShop));
         top_shop++;
     }
     else
@@ -485,7 +485,7 @@ SHOP_DATA *new_shop( void )
     pShop->next = NULL;
     pShop->keeper = 0;
 
-    for ( buy = 0; buy < MAX_TRADE; buy++ )
+    for (buy = 0; buy < MAX_TRADE; buy++)
         pShop->buy_type[buy] = 0;
 
     pShop->profit_buy = 100;
@@ -496,21 +496,21 @@ SHOP_DATA *new_shop( void )
     return pShop;
 }
 
-void free_shop( SHOP_DATA * pShop )
+void free_shop(SHOP_DATA * pShop)
 {
     pShop->next = shop_free;
     shop_free = pShop;
     return;
 }
 
-OBJ_INDEX_DATA *new_obj_index( void )
+OBJ_INDEX_DATA *new_obj_index(void)
 {
     OBJ_INDEX_DATA *pObj;
     int value;
 
-    if ( !obj_index_free )
+    if (!obj_index_free)
     {
-        pObj = alloc_perm( sizeof( *pObj ) );
+        pObj = alloc_perm(sizeof(*pObj));
         top_obj_index++;
     }
     else
@@ -523,9 +523,9 @@ OBJ_INDEX_DATA *new_obj_index( void )
     pObj->extra_descr = NULL;
     pObj->affected = NULL;
     pObj->area = NULL;
-    pObj->name = str_dup( "(no name)" );
-    pObj->short_descr = str_dup( "(no short description)" );
-    pObj->description = str_dup( "(no description)" );
+    pObj->name = str_dup("(no name)");
+    pObj->short_descr = str_dup("(no short description)");
+    pObj->description = str_dup("(no description)");
     pObj->vnum = 0;
     pObj->item_type = ITEM_TRASH;
     pObj->extra_flags = 0;
@@ -533,51 +533,51 @@ OBJ_INDEX_DATA *new_obj_index( void )
     pObj->count = 0;
     pObj->weight = 0;
     pObj->cost = 0;
-    pObj->material = material_lookup( "" ); /* ROM */
-    pObj->condition = 100;      /* ROM */
-    for ( value = 0; value < 5; value++ )   /* 5 - ROM */
+    pObj->material = material_lookup("");	/* ROM */
+    pObj->condition = 100;	/* ROM */
+    for (value = 0; value < 5; value++)	/* 5 - ROM */
         pObj->value[value] = 0;
 
     return pObj;
 }
 
-void free_obj_index( OBJ_INDEX_DATA * pObj )
+void free_obj_index(OBJ_INDEX_DATA * pObj)
 {
     EXTRA_DESCR_DATA *pExtra;
     MPROG_LIST *pMprogList;
     MPROG_GROUP_LIST *pMprogGroupList;
     AFFECT_DATA *pAf;
 
-    free_string( &pObj->name );
-    free_string( &pObj->short_descr );
-    free_string( &pObj->description );
+    free_string(&pObj->name);
+    free_string(&pObj->short_descr);
+    free_string(&pObj->description);
 
-    for ( pAf = pObj->affected; pAf; pAf = pAf->next )
-        free_affect( pAf );
+    for (pAf = pObj->affected; pAf; pAf = pAf->next)
+        free_affect(pAf);
 
-    for ( pExtra = pObj->extra_descr; pExtra; pExtra = pExtra->next )
-        free_extra_descr( pExtra );
+    for (pExtra = pObj->extra_descr; pExtra; pExtra = pExtra->next)
+        free_extra_descr(pExtra);
 
-    for ( pMprogList = pObj->mudprogs; pMprogList;
-            pMprogList = pMprogList->next )
-        free_mem( &pMprogList );
+    for (pMprogList = pObj->mudprogs; pMprogList;
+            pMprogList = pMprogList->next)
+        free_mem(&pMprogList);
 
-    for ( pMprogGroupList = pObj->mprog_groups; pMprogGroupList;
-            pMprogGroupList = pMprogGroupList->next )
-        free_mem( &pMprogGroupList );
+    for (pMprogGroupList = pObj->mprog_groups; pMprogGroupList;
+            pMprogGroupList = pMprogGroupList->next)
+        free_mem(&pMprogGroupList);
 
     pObj->next = obj_index_free;
     obj_index_free = pObj;
     return;
 }
 
-MOB_INDEX_DATA *new_mob_index( void )
+MOB_INDEX_DATA *new_mob_index(void)
 {
     MOB_INDEX_DATA *pMob;
 
-    if ( !mob_index_free )
+    if (!mob_index_free)
     {
-        pMob = alloc_perm( sizeof( *pMob ) );
+        pMob = alloc_perm(sizeof(*pMob));
         top_mob_index++;
     }
     else
@@ -589,9 +589,9 @@ MOB_INDEX_DATA *new_mob_index( void )
     pMob->next = NULL;
     pMob->pShop = NULL;
     pMob->area = NULL;
-    pMob->player_name = str_dup( "no name" );
-    pMob->short_descr = str_dup( "(no short description)" );
-    pMob->long_descr = str_dup( "(no long description)\n\r" );
+    pMob->player_name = str_dup("no name");
+    pMob->short_descr = str_dup("(no short description)");
+    pMob->long_descr = str_dup("(no long description)\n\r");
     pMob->description = &str_empty[0];
     pMob->vnum = 0;
     pMob->count = 0;
@@ -600,34 +600,34 @@ MOB_INDEX_DATA *new_mob_index( void )
     pMob->level = 0;
     pMob->act = ACT_IS_NPC;
     pMob->affected_by = 0;
-    memset( pMob->newaff, 0,
-            ( MAX_NEWAFF_BIT / 8 ) + ( MAX_NEWAFF_BIT % 8 ? 1 : 0 ) );
+    memset(pMob->newaff, 0,
+           (MAX_NEWAFF_BIT / 8) + (MAX_NEWAFF_BIT % 8 ? 1 : 0));
     pMob->alignment = 0;
     pMob->hitroll = 0;
-    pMob->race = race_lookup( "human" );    /* - Hugin */
-    pMob->form = 0;             /* ROM patch -- Hugin */
-    pMob->parts = 0;            /* ROM patch -- Hugin */
-    pMob->imm_flags = 0;        /* ROM patch -- Hugin */
-    pMob->res_flags = 0;        /* ROM patch -- Hugin */
-    pMob->vuln_flags = 0;       /* ROM patch -- Hugin */
-    pMob->material = material_lookup( "" ); /* -- Hugin */
-    pMob->off_flags = 0;        /* ROM patch -- Hugin */
-    pMob->size = SIZE_MEDIUM;   /* ROM patch -- Hugin */
-    pMob->ac[AC_PIERCE] = 0;    /* ROM patch -- Hugin */
-    pMob->ac[AC_BASH] = 0;      /* ROM patch -- Hugin */
-    pMob->ac[AC_SLASH] = 0;     /* ROM patch -- Hugin */
-    pMob->ac[AC_EXOTIC] = 0;    /* ROM patch -- Hugin */
-    pMob->hit[DICE_NUMBER] = 0; /* ROM patch -- Hugin */
-    pMob->hit[DICE_TYPE] = 0;   /* ROM patch -- Hugin */
-    pMob->hit[DICE_BONUS] = 0;  /* ROM patch -- Hugin */
-    pMob->mana[DICE_NUMBER] = 0;    /* ROM patch -- Hugin */
-    pMob->mana[DICE_TYPE] = 0;  /* ROM patch -- Hugin */
-    pMob->mana[DICE_BONUS] = 0; /* ROM patch -- Hugin */
-    pMob->damage[DICE_NUMBER] = 0;  /* ROM patch -- Hugin */
-    pMob->damage[DICE_TYPE] = 0;    /* ROM patch -- Hugin */
-    pMob->damage[DICE_NUMBER] = 0;  /* ROM patch -- Hugin */
-    pMob->start_pos = POS_STANDING; /*  -- Hugin */
-    pMob->default_pos = POS_STANDING;   /*  -- Hugin */
+    pMob->race = race_lookup("human");	/* - Hugin */
+    pMob->form = 0;		/* ROM patch -- Hugin */
+    pMob->parts = 0;		/* ROM patch -- Hugin */
+    pMob->imm_flags = 0;	/* ROM patch -- Hugin */
+    pMob->res_flags = 0;	/* ROM patch -- Hugin */
+    pMob->vuln_flags = 0;	/* ROM patch -- Hugin */
+    pMob->material = material_lookup("");	/* -- Hugin */
+    pMob->off_flags = 0;	/* ROM patch -- Hugin */
+    pMob->size = SIZE_MEDIUM;	/* ROM patch -- Hugin */
+    pMob->ac[AC_PIERCE] = 0;	/* ROM patch -- Hugin */
+    pMob->ac[AC_BASH] = 0;	/* ROM patch -- Hugin */
+    pMob->ac[AC_SLASH] = 0;	/* ROM patch -- Hugin */
+    pMob->ac[AC_EXOTIC] = 0;	/* ROM patch -- Hugin */
+    pMob->hit[DICE_NUMBER] = 0;	/* ROM patch -- Hugin */
+    pMob->hit[DICE_TYPE] = 0;	/* ROM patch -- Hugin */
+    pMob->hit[DICE_BONUS] = 0;	/* ROM patch -- Hugin */
+    pMob->mana[DICE_NUMBER] = 0;	/* ROM patch -- Hugin */
+    pMob->mana[DICE_TYPE] = 0;	/* ROM patch -- Hugin */
+    pMob->mana[DICE_BONUS] = 0;	/* ROM patch -- Hugin */
+    pMob->damage[DICE_NUMBER] = 0;	/* ROM patch -- Hugin */
+    pMob->damage[DICE_TYPE] = 0;	/* ROM patch -- Hugin */
+    pMob->damage[DICE_NUMBER] = 0;	/* ROM patch -- Hugin */
+    pMob->start_pos = POS_STANDING;	/*  -- Hugin */
+    pMob->default_pos = POS_STANDING;	/*  -- Hugin */
     pMob->gold = 0;
     pMob->path_move = FALSE;
     pMob->path_pos = 0;
@@ -635,25 +635,25 @@ MOB_INDEX_DATA *new_mob_index( void )
     return pMob;
 }
 
-void free_mob_index( MOB_INDEX_DATA * pMob )
+void free_mob_index(MOB_INDEX_DATA * pMob)
 {
     MPROG_LIST *pMprogList;
     MPROG_GROUP_LIST *pMprogGroupList;
 
-    free_string( &pMob->player_name );
-    free_string( &pMob->short_descr );
-    free_string( &pMob->long_descr );
-    free_string( &pMob->description );
+    free_string(&pMob->player_name);
+    free_string(&pMob->short_descr);
+    free_string(&pMob->long_descr);
+    free_string(&pMob->description);
 
-    free_shop( pMob->pShop );
+    free_shop(pMob->pShop);
 
-    for ( pMprogList = pMob->mudprogs; pMprogList;
-            pMprogList = pMprogList->next )
-        free_mem( &pMprogList );
+    for (pMprogList = pMob->mudprogs; pMprogList;
+            pMprogList = pMprogList->next)
+        free_mem(&pMprogList);
 
-    for ( pMprogGroupList = pMob->mprog_groups; pMprogGroupList;
-            pMprogGroupList = pMprogGroupList->next )
-        free_mem( &pMprogGroupList );
+    for (pMprogGroupList = pMob->mprog_groups; pMprogGroupList;
+            pMprogGroupList = pMprogGroupList->next)
+        free_mem(&pMprogGroupList);
 
     pMob->next = mob_index_free;
     mob_index_free = pMob;

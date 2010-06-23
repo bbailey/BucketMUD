@@ -29,7 +29,7 @@
 /*
  * Semi-locals
  */
-void *mprog_get_actor  ( char *arg, char type ) ;
+void *mprog_get_actor(char *arg, char type);
 
 extern CHAR_DATA *ProgSource;
 extern CHAR_DATA *ProgTriggeredBy;
@@ -57,42 +57,42 @@ extern const struct mprog_cmd_type mprog_cmd_table[];
  * Command functions.
  * Defined in act_*.c (mostly).
  */
-DECLARE_MPROG_FUN( mprog_alignment );
-DECLARE_MPROG_FUN( mprog_clan );
-DECLARE_MPROG_FUN( mprog_class );
-DECLARE_MPROG_FUN( mprog_crimethief );
-DECLARE_MPROG_FUN( mprog_fightinroom );
-DECLARE_MPROG_FUN( mprog_getrand );
-DECLARE_MPROG_FUN( mprog_goldamount );
-DECLARE_MPROG_FUN( mprog_hasmemory );
-DECLARE_MPROG_FUN( mprog_hitpercent );
-DECLARE_MPROG_FUN( mprog_hour );
-DECLARE_MPROG_FUN( mprog_immune );
-DECLARE_MPROG_FUN( mprog_isawake );
-DECLARE_MPROG_FUN( mprog_ischarmed );
-DECLARE_MPROG_FUN( mprog_isfight );
-DECLARE_MPROG_FUN( mprog_isfollow );
-DECLARE_MPROG_FUN( mprog_isimmort );
-DECLARE_MPROG_FUN( mprog_isgood );
-DECLARE_MPROG_FUN( mprog_isnpc );
-DECLARE_MPROG_FUN( mprog_ispc );
-DECLARE_MPROG_FUN( mprog_level );
-DECLARE_MPROG_FUN( mprog_memory );
-DECLARE_MPROG_FUN( mprog_mobvnum );
-DECLARE_MPROG_FUN( mprog_objtype );
-DECLARE_MPROG_FUN( mprog_objval0 );
-DECLARE_MPROG_FUN( mprog_objval1 );
-DECLARE_MPROG_FUN( mprog_objval2 );
-DECLARE_MPROG_FUN( mprog_objval3 );
-DECLARE_MPROG_FUN( mprog_objvnum );
-DECLARE_MPROG_FUN( mprog_position );
-DECLARE_MPROG_FUN( mprog_rand );
-DECLARE_MPROG_FUN( mprog_roomvnum );
-DECLARE_MPROG_FUN( mprog_sex );
-DECLARE_MPROG_FUN( mprog_sgetrand );
-DECLARE_MPROG_FUN( mprog_sreset );
-DECLARE_MPROG_FUN( mprog_faction );
-DECLARE_MPROG_FUN( mprog_isname );
-DECLARE_MPROG_FUN( mprog_isequal );
+DECLARE_MPROG_FUN(mprog_alignment);
+DECLARE_MPROG_FUN(mprog_clan);
+DECLARE_MPROG_FUN(mprog_class);
+DECLARE_MPROG_FUN(mprog_crimethief);
+DECLARE_MPROG_FUN(mprog_fightinroom);
+DECLARE_MPROG_FUN(mprog_getrand);
+DECLARE_MPROG_FUN(mprog_goldamount);
+DECLARE_MPROG_FUN(mprog_hasmemory);
+DECLARE_MPROG_FUN(mprog_hitpercent);
+DECLARE_MPROG_FUN(mprog_hour);
+DECLARE_MPROG_FUN(mprog_immune);
+DECLARE_MPROG_FUN(mprog_isawake);
+DECLARE_MPROG_FUN(mprog_ischarmed);
+DECLARE_MPROG_FUN(mprog_isfight);
+DECLARE_MPROG_FUN(mprog_isfollow);
+DECLARE_MPROG_FUN(mprog_isimmort);
+DECLARE_MPROG_FUN(mprog_isgood);
+DECLARE_MPROG_FUN(mprog_isnpc);
+DECLARE_MPROG_FUN(mprog_ispc);
+DECLARE_MPROG_FUN(mprog_level);
+DECLARE_MPROG_FUN(mprog_memory);
+DECLARE_MPROG_FUN(mprog_mobvnum);
+DECLARE_MPROG_FUN(mprog_objtype);
+DECLARE_MPROG_FUN(mprog_objval0);
+DECLARE_MPROG_FUN(mprog_objval1);
+DECLARE_MPROG_FUN(mprog_objval2);
+DECLARE_MPROG_FUN(mprog_objval3);
+DECLARE_MPROG_FUN(mprog_objvnum);
+DECLARE_MPROG_FUN(mprog_position);
+DECLARE_MPROG_FUN(mprog_rand);
+DECLARE_MPROG_FUN(mprog_roomvnum);
+DECLARE_MPROG_FUN(mprog_sex);
+DECLARE_MPROG_FUN(mprog_sgetrand);
+DECLARE_MPROG_FUN(mprog_sreset);
+DECLARE_MPROG_FUN(mprog_faction);
+DECLARE_MPROG_FUN(mprog_isname);
+DECLARE_MPROG_FUN(mprog_isequal);
 
 #endif

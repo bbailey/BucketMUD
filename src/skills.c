@@ -10,67 +10,67 @@
 #include <math.h>
 
 /* command procedures needed */
-void  do_groups  ( CHAR_DATA *ch, char *argument );
-void  do_help  ( CHAR_DATA *ch, char *argument );
-void  do_say  ( CHAR_DATA *ch, char *argument );
-void  do_set  ( CHAR_DATA *ch, char *argument );
+void do_groups(CHAR_DATA * ch, char *argument);
+void do_help(CHAR_DATA * ch, char *argument);
+void do_say(CHAR_DATA * ch, char *argument);
+void do_set(CHAR_DATA * ch, char *argument);
 
-extern bool has_racial_skill( CHAR_DATA * ch, long sn );
-extern bool can_use( CHAR_DATA * ch, int sn );
+extern bool has_racial_skill(CHAR_DATA * ch, long sn);
+extern bool can_use(CHAR_DATA * ch, int sn);
 
-void do_weapon( CHAR_DATA * ch, char *argument )
+void do_weapon(CHAR_DATA * ch, char *argument)
 {
     CHAR_DATA *victim;
     OBJ_DATA *wield, *axe;
     int chance, ch_weapon, vict_weapon;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
-    if ( ( victim = ch->fighting ) == NULL )
+    if ((victim = ch->fighting) == NULL)
     {
-        send_to_char( "You aren't fighting anyone.\n\r", ch );
-        return;
-    }
-
-    if ( ( axe = get_eq_char( ch, WEAR_WIELD ) ) == NULL )
-    {
-        send_to_char( "You must be wielding a weapon.\n\r", ch );
+        send_to_char("You aren't fighting anyone.\n\r", ch);
         return;
     }
 
-    if ( ( chance = get_skill( ch, gsn_weapon_cleave ) ) == 0 )
+    if ((axe = get_eq_char(ch, WEAR_WIELD)) == NULL)
     {
-        send_to_char( "You don't know how to cleave opponents's weapon.\n\r",
-                      ch );
+        send_to_char("You must be wielding a weapon.\n\r", ch);
         return;
     }
 
-    if ( ( wield = get_eq_char( victim, WEAR_WIELD ) ) == NULL )
+    if ((chance = get_skill(ch, gsn_weapon_cleave)) == 0)
     {
-        send_to_char( "Your opponent must wield a weapon.\n\r", ch );
+        send_to_char
+        ("You don't know how to cleave opponents's weapon.\n\r", ch);
+        return;
+    }
+
+    if ((wield = get_eq_char(victim, WEAR_WIELD)) == NULL)
+    {
+        send_to_char("Your opponent must wield a weapon.\n\r", ch);
         return;
     }
     /*
-        if ( check_material(wield,"platinum") || wield->pIndexData->limit != -1 )
-            return;*/
+       if ( check_material(wield,"platinum") || wield->pIndexData->limit != -1 )
+       return; */
 
-    if ( axe->value[0] == WEAPON_AXE )
+    if (axe->value[0] == WEAPON_AXE)
         chance *= 1.2;
-    else if ( axe->value[0] != WEAPON_SWORD )
+    else if (axe->value[0] != WEAPON_SWORD)
     {
-        send_to_char( "Your weapon must be an axe or a sword.\n\r", ch );
+        send_to_char("Your weapon must be an axe or a sword.\n\r", ch);
         return;
     }
 
     /* find weapon skills */
-    ch_weapon = get_weapon_skill( ch, get_weapon_sn( ch ) );
-    vict_weapon = get_weapon_skill( victim, get_weapon_sn( victim ) );
+    ch_weapon = get_weapon_skill(ch, get_weapon_sn(ch));
+    vict_weapon = get_weapon_skill(victim, get_weapon_sn(victim));
 
     /* Stop up some divide by zero problems */
-    if ( IS_NPC( victim ) )
+    if (IS_NPC(victim))
         vict_weapon = victim->level * 12;
-    if ( vict_weapon <= 1 )
+    if (vict_weapon <= 1)
         vict_weapon = 50;
 
     /* modifiers */
@@ -80,89 +80,92 @@ void do_weapon( CHAR_DATA * ch, char *argument )
     chance = chance * 100 / vict_weapon;
 
     /* dex vs. strength */
-    chance += get_curr_stat( ch, STAT_DEX ) + get_curr_stat( ch, STAT_STR );
-    chance -= get_curr_stat( victim, STAT_STR ) +
-              2 * get_curr_stat( victim, STAT_DEX );
+    chance += get_curr_stat(ch, STAT_DEX) + get_curr_stat(ch, STAT_STR);
+    chance -= get_curr_stat(victim, STAT_STR) +
+              2 * get_curr_stat(victim, STAT_DEX);
 
     chance += ch->level - victim->level;
     chance += axe->level - wield->level;
 
     /* and now the attack */
-    /*    SET_BIT(ch->affected_by,AFF_WEAK_STUN);*/
-    if ( number_percent(  ) < chance )
+    /*    SET_BIT(ch->affected_by,AFF_WEAK_STUN); */
+    if (number_percent() < chance)
     {
-        WAIT_STATE( ch, skill_table[gsn_weapon_cleave].beats );
-        act( "You cleaved $N's weapon into two.", ch, NULL, victim, TO_CHAR );
-        act( "$n cleaved your weapon into two.", ch, NULL, victim, TO_VICT );
-        act( "$n cleaved $N's weapon into two.", ch, NULL, victim, TO_NOTVICT );
-        check_improve( ch, gsn_weapon_cleave, TRUE, 1 );
-        extract_obj( get_eq_char( victim, WEAR_WIELD ) );
+        WAIT_STATE(ch, skill_table[gsn_weapon_cleave].beats);
+        act("You cleaved $N's weapon into two.", ch, NULL, victim,
+            TO_CHAR);
+        act("$n cleaved your weapon into two.", ch, NULL, victim, TO_VICT);
+        act("$n cleaved $N's weapon into two.", ch, NULL, victim,
+            TO_NOTVICT);
+        check_improve(ch, gsn_weapon_cleave, TRUE, 1);
+        extract_obj(get_eq_char(victim, WEAR_WIELD));
     }
     else
     {
-        WAIT_STATE( ch, skill_table[gsn_weapon_cleave].beats );
-        act( "You fail to cleave $N's weapon.", ch, NULL, victim, TO_CHAR );
-        act( "$n tries to cleave your weapon, but fails.", ch, NULL, victim,
-             TO_VICT );
-        act( "$n tries to cleave $N's weapon, but fails.", ch, NULL, victim,
-             TO_ROOM );
-        check_improve( ch, gsn_weapon_cleave, FALSE, 1 );
+        WAIT_STATE(ch, skill_table[gsn_weapon_cleave].beats);
+        act("You fail to cleave $N's weapon.", ch, NULL, victim, TO_CHAR);
+        act("$n tries to cleave your weapon, but fails.", ch, NULL, victim,
+            TO_VICT);
+        act("$n tries to cleave $N's weapon, but fails.", ch, NULL, victim,
+            TO_ROOM);
+        check_improve(ch, gsn_weapon_cleave, FALSE, 1);
     }
     return;
 }
-void do_shield( CHAR_DATA * ch, char *argument )
+
+void do_shield(CHAR_DATA * ch, char *argument)
 {
     CHAR_DATA *victim;
     int chance, ch_weapon, vict_shield;
     OBJ_DATA *shield, *axe;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
-    if ( ( victim = ch->fighting ) == NULL )
+    if ((victim = ch->fighting) == NULL)
     {
-        send_to_char( "You aren't fighting anyone.\n\r", ch );
-        return;
-    }
-
-    if ( ( axe = get_eq_char( ch, WEAR_WIELD ) ) == NULL )
-    {
-        send_to_char( "You must be wielding a weapon.\n\r", ch );
+        send_to_char("You aren't fighting anyone.\n\r", ch);
         return;
     }
 
-    if ( ( chance = get_skill( ch, gsn_shield_cleave ) ) == 0 )
+    if ((axe = get_eq_char(ch, WEAR_WIELD)) == NULL)
     {
-        send_to_char( "You don't know how to cleave opponents's shield.\n\r",
-                      ch );
+        send_to_char("You must be wielding a weapon.\n\r", ch);
         return;
     }
 
-    if ( ( shield = get_eq_char( victim, WEAR_SHIELD ) ) == NULL )
+    if ((chance = get_skill(ch, gsn_shield_cleave)) == 0)
     {
-        send_to_char( "Your opponent must wield a shield.\n\r", ch );
+        send_to_char
+        ("You don't know how to cleave opponents's shield.\n\r", ch);
+        return;
+    }
+
+    if ((shield = get_eq_char(victim, WEAR_SHIELD)) == NULL)
+    {
+        send_to_char("Your opponent must wield a shield.\n\r", ch);
         return;
     }
 
     /*    if ( check_material(shield,"platinum") || shield->pIndexData->limit
-    != -1)
-            return;*/
+       != -1)
+       return; */
 
-    if ( axe->value[0] == WEAPON_AXE )
+    if (axe->value[0] == WEAPON_AXE)
         chance *= 1.2;
-    else if ( axe->value[0] != WEAPON_SWORD )
+    else if (axe->value[0] != WEAPON_SWORD)
     {
-        send_to_char( "Your weapon must be an axe or a sword.\n\r", ch );
+        send_to_char("Your weapon must be an axe or a sword.\n\r", ch);
         return;
     }
 
     /* find weapon skills */
-    ch_weapon = get_weapon_skill( ch, get_weapon_sn( ch ) );
-    vict_shield = get_skill( victim, gsn_shield_block );
-    if ( IS_NPC( victim ) )
+    ch_weapon = get_weapon_skill(ch, get_weapon_sn(ch));
+    vict_shield = get_skill(victim, gsn_shield_block);
+    if (IS_NPC(victim))
         vict_shield = victim->level * 10;
 
-    if ( vict_shield <= 1 )
+    if (vict_shield <= 1)
         vict_shield = 50;
 
     /* modifiers */
@@ -172,8 +175,8 @@ void do_shield( CHAR_DATA * ch, char *argument )
     chance = chance * 100 / vict_shield;
 
     /* dex vs. strength */
-    chance += get_curr_stat( ch, STAT_DEX );
-    chance -= 2 * get_curr_stat( victim, STAT_STR );
+    chance += get_curr_stat(ch, STAT_DEX);
+    chance -= 2 * get_curr_stat(victim, STAT_STR);
 
     /* level */
     /*    chance += (ch->level - victim->level) * 2; */
@@ -181,186 +184,200 @@ void do_shield( CHAR_DATA * ch, char *argument )
     chance += axe->level - shield->level;
 
     /* and now the attack */
-    /*    SET_BIT(ch->affected_by,AFF_WEAK_STUN);*/
-    if ( number_percent(  ) < chance )
+    /*    SET_BIT(ch->affected_by,AFF_WEAK_STUN); */
+    if (number_percent() < chance)
     {
-        WAIT_STATE( ch, skill_table[gsn_shield_cleave].beats );
-        act( "You cleaved $N's shield into two.", ch, NULL, victim, TO_CHAR );
-        act( "$n cleaved your shield into two.", ch, NULL, victim, TO_VICT );
-        act( "$n cleaved $N's shield into two.", ch, NULL, victim, TO_NOTVICT );
-        check_improve( ch, gsn_shield_cleave, TRUE, 1 );
-        extract_obj( get_eq_char( victim, WEAR_SHIELD ) );
+        WAIT_STATE(ch, skill_table[gsn_shield_cleave].beats);
+        act("You cleaved $N's shield into two.", ch, NULL, victim,
+            TO_CHAR);
+        act("$n cleaved your shield into two.", ch, NULL, victim, TO_VICT);
+        act("$n cleaved $N's shield into two.", ch, NULL, victim,
+            TO_NOTVICT);
+        check_improve(ch, gsn_shield_cleave, TRUE, 1);
+        extract_obj(get_eq_char(victim, WEAR_SHIELD));
     }
     else
     {
-        WAIT_STATE( ch, skill_table[gsn_shield_cleave].beats );
-        act( "You fail to cleave $N's shield.", ch, NULL, victim, TO_CHAR );
-        act( "$n tries to cleave your shield, but fails.", ch, NULL, victim,
-             TO_VICT );
-        act( "$n tries to cleave $N's shield, but fails.", ch, NULL, victim,
-             TO_ROOM );
-        check_improve( ch, gsn_shield_cleave, FALSE, 1 );
+        WAIT_STATE(ch, skill_table[gsn_shield_cleave].beats);
+        act("You fail to cleave $N's shield.", ch, NULL, victim, TO_CHAR);
+        act("$n tries to cleave your shield, but fails.", ch, NULL, victim,
+            TO_VICT);
+        act("$n tries to cleave $N's shield, but fails.", ch, NULL, victim,
+            TO_ROOM);
+        check_improve(ch, gsn_shield_cleave, FALSE, 1);
     }
     return;
 }
 
-int dgld_compare( const void *left, const void *right )
+int dgld_compare(const void *left, const void *right)
 {
-    DO_GAIN_LIST_DATA *one = (DO_GAIN_LIST_DATA*)left;
-    DO_GAIN_LIST_DATA *two = (DO_GAIN_LIST_DATA*)right;
+    DO_GAIN_LIST_DATA *one = (DO_GAIN_LIST_DATA *) left;
+    DO_GAIN_LIST_DATA *two = (DO_GAIN_LIST_DATA *) right;
 
-    return strcasecmp( one->name, two->name );
+    return strcasecmp(one->name, two->name);
 }
 
 /* used to get new skills */
-void do_gain( CHAR_DATA * ch, char *argument )
+void do_gain(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *trainer;
     int gn = 0, sn = 0;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
     /* find a trainer */
-    for ( trainer = ch->in_room->people;
-            trainer != NULL; trainer = trainer->next_in_room )
-        if ( IS_NPC( trainer ) && IS_SET( trainer->act, ACT_GAIN ) )
+    for (trainer = ch->in_room->people;
+            trainer != NULL; trainer = trainer->next_in_room)
+        if (IS_NPC(trainer) && IS_SET(trainer->act, ACT_GAIN))
             break;
 
-    one_argument( argument, arg );
+    one_argument(argument, arg);
 
-    if ( arg[0] == '\0' )
+    if (arg[0] == '\0')
     {
-        if ( trainer == NULL || !can_see( ch, trainer ) )
-            send_to_char( "You can't do that here.\n\r", ch );
+        if (trainer == NULL || !can_see(ch, trainer))
+            send_to_char("You can't do that here.\n\r", ch);
         else
-            do_say( trainer, "Pardon me?" );
+            do_say(trainer, "Pardon me?");
         return;
     }
 
     buf[0] = '\0';
 
     /* 'list' can now be used even when not in the presence of a trainer. -Zak */
-    if ( !str_prefix( arg, "list" ) )
+    if (!str_prefix(arg, "list"))
     {
         DO_GAIN_LIST_DATA dgld_group[MAX_GROUP];
         DO_GAIN_LIST_DATA dgld_skill[MAX_SKILL];
-        int               dgld_group_count = 0;
-        int               dgld_skill_count = 0;
+        int dgld_group_count = 0;
+        int dgld_skill_count = 0;
 
         /* Find groups that can be gained */
-        for ( gn = 0; gn<MAX_GROUP; gn++ )
+        for (gn = 0; gn < MAX_GROUP; gn++)
         {
             /* Stop at the end */
-            if ( group_table[gn].name == NULL )
+            if (group_table[gn].name == NULL)
                 break;
 
-            if ( !ch->pcdata->group_known[gn]
-                    && group_table[gn].rating[ch->Class] > 0 )
+            if (!ch->pcdata->group_known[gn]
+                    && group_table[gn].rating[ch->Class] > 0)
             {
-                dgld_group[dgld_group_count].name  = group_table[gn].name;
-                dgld_group[dgld_group_count].level = 1; /* Level doesn't count for groups */
-                dgld_group[dgld_group_count].cost  = group_table[gn].rating[ch->Class];
+                dgld_group[dgld_group_count].name = group_table[gn].name;
+                dgld_group[dgld_group_count].level = 1;	/* Level doesn't count for groups */
+                dgld_group[dgld_group_count].cost =
+                    group_table[gn].rating[ch->Class];
                 dgld_group_count++;
             }
         }
 
         /* Display groups that can be gained */
-        if ( dgld_group_count > 0 )
+        if (dgld_group_count > 0)
         {
             int x;
 
-            strcat( buf, "`WSkill Group            Cost   Skill Group            Cost`w\n\r" );
-            strcat( buf, "`K---------------------------------------------------------`w\n\r" );
-            qsort( dgld_group, dgld_group_count, sizeof(DO_GAIN_LIST_DATA), dgld_compare );
+            strcat(buf,
+                   "`WSkill Group            Cost   Skill Group            Cost`w\n\r");
+            strcat(buf,
+                   "`K---------------------------------------------------------`w\n\r");
+            qsort(dgld_group, dgld_group_count, sizeof(DO_GAIN_LIST_DATA),
+                  dgld_compare);
 
-            for ( x=0; x<dgld_group_count; x++ )
+            for (x = 0; x < dgld_group_count; x++)
             {
                 char buf2[MAX_STRING_LENGTH];
 
-                if ( x%2 == 0 )
-                    sprintf( buf2, "%-18s      %3d   ", dgld_group[x].name, dgld_group[x].cost );
+                if (x % 2 == 0)
+                    sprintf(buf2, "%-18s      %3d   ", dgld_group[x].name,
+                            dgld_group[x].cost);
                 else
-                    sprintf( buf2, "%-18s      %3d\n\r", dgld_group[x].name, dgld_group[x].cost );
+                    sprintf(buf2, "%-18s      %3d\n\r", dgld_group[x].name,
+                            dgld_group[x].cost);
 
-                strcat( buf, buf2 );
+                strcat(buf, buf2);
             }
 
-            if ( dgld_group_count%2 == 0 )
-                strcat( buf, "\n\r" );
+            if (dgld_group_count % 2 == 0)
+                strcat(buf, "\n\r");
             else
-                strcat( buf, "\n\r\n\r" );
+                strcat(buf, "\n\r\n\r");
         }
 
         /* Find skills that can be gained */
-        for ( sn = 0; sn<MAX_SKILL; sn++ )
+        for (sn = 0; sn < MAX_SKILL; sn++)
         {
             /* Stop at the end */
-            if ( skill_table[sn].name == NULL )
+            if (skill_table[sn].name == NULL)
                 break;
 
-            if ( !ch->pcdata->learned[sn]
+            if (!ch->pcdata->learned[sn]
                     && skill_table[sn].rating[ch->Class] > 0
-                    && skill_table[sn].spell_fun == spell_null )
+                    && skill_table[sn].spell_fun == spell_null)
             {
-                dgld_skill[dgld_skill_count].name  = skill_table[sn].name;
-                dgld_skill[dgld_skill_count].cost  = skill_table[sn].rating[ch->Class];
-                dgld_skill[dgld_skill_count].level = skill_table[sn].skill_level[ch->Class];
+                dgld_skill[dgld_skill_count].name = skill_table[sn].name;
+                dgld_skill[dgld_skill_count].cost =
+                    skill_table[sn].rating[ch->Class];
+                dgld_skill[dgld_skill_count].level =
+                    skill_table[sn].skill_level[ch->Class];
                 dgld_skill_count++;
             }
         }
 
         /* Display skills that can be gained */
-        if ( dgld_skill_count > 0 )
+        if (dgld_skill_count > 0)
         {
             int x;
 
-            strcat( buf, "`WSkill            Level Cost   Skill            Level Cost`w\n\r" );
-            strcat( buf, "`K---------------------------------------------------------`w\n\r" );
-            qsort( dgld_skill, dgld_skill_count, sizeof(DO_GAIN_LIST_DATA), dgld_compare );
+            strcat(buf,
+                   "`WSkill            Level Cost   Skill            Level Cost`w\n\r");
+            strcat(buf,
+                   "`K---------------------------------------------------------`w\n\r");
+            qsort(dgld_skill, dgld_skill_count, sizeof(DO_GAIN_LIST_DATA),
+                  dgld_compare);
 
-            for ( x=0; x<dgld_skill_count; x++ )
+            for (x = 0; x < dgld_skill_count; x++)
             {
                 char buf2[MAX_STRING_LENGTH];
 
-                if ( x%2 == 0 )
-                    sprintf( buf2, "%-18s %3d  %3d   ", dgld_skill[x].name, dgld_skill[x].level, dgld_skill[x].cost );
+                if (x % 2 == 0)
+                    sprintf(buf2, "%-18s %3d  %3d   ", dgld_skill[x].name,
+                            dgld_skill[x].level, dgld_skill[x].cost);
                 else
-                    sprintf( buf2, "%-18s %3d  %3d\n\r", dgld_skill[x].name, dgld_skill[x].level, dgld_skill[x].cost );
+                    sprintf(buf2, "%-18s %3d  %3d\n\r", dgld_skill[x].name,
+                            dgld_skill[x].level, dgld_skill[x].cost);
 
-                strcat( buf, buf2 );
+                strcat(buf, buf2);
             }
 
-            if ( dgld_skill_count%2 == 0 )
-                strcat( buf, "\n\r" );
+            if (dgld_skill_count % 2 == 0)
+                strcat(buf, "\n\r");
             else
-                strcat( buf, "\n\r\n\r" );
+                strcat(buf, "\n\r\n\r");
         }
 
-        page_to_char( buf, ch );
+        page_to_char(buf, ch);
         return;
     }
 
-    if ( trainer == NULL || !can_see( ch, trainer ) )
+    if (trainer == NULL || !can_see(ch, trainer))
     {
-        send_to_char( "You can't do that here.\n\r", ch );
+        send_to_char("You can't do that here.\n\r", ch);
         return;
     }
-
 #ifdef CAN_GAIN_CONVERT
-    if ( !str_prefix( arg, "convert" ) )
+    if (!str_prefix(arg, "convert"))
     {
-        if ( ch->practice < 10 )
+        if (ch->practice < 10)
         {
-            act( "$N tells you 'You are not yet ready.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'You are not yet ready.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        act( "$N helps you apply your practice to training",
-             ch, NULL, trainer, TO_CHAR );
+        act("$N helps you apply your practice to training",
+            ch, NULL, trainer, TO_CHAR);
         ch->practice -= 10;
         ch->train += 1;
         return;
@@ -368,41 +385,41 @@ void do_gain( CHAR_DATA * ch, char *argument )
 #endif
 
 #ifdef CAN_GAIN_REVERT
-    if ( !str_prefix( arg, "revert" ) )
+    if (!str_prefix(arg, "revert"))
     {
-        if ( ch->train < 1 )
+        if (ch->train < 1)
         {
-            act( "$N tells you 'You are not yet ready.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'You are not yet ready.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        act( "$N helps you apply your training  to practice.",
-             ch, NULL, trainer, TO_CHAR );
+        act("$N helps you apply your training  to practice.",
+            ch, NULL, trainer, TO_CHAR);
         ch->train -= 1;
         ch->practice += 8;
         return;
     }
 #endif
 
-    if ( !str_prefix( arg, "points" ) )
+    if (!str_prefix(arg, "points"))
     {
-        if ( ch->train < 2 )
+        if (ch->train < 2)
         {
-            act( "$N tells you 'You are not yet ready.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'You are not yet ready.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        if ( ch->pcdata->points <= CP_TRAIN_MIN )
+        if (ch->pcdata->points <= CP_TRAIN_MIN)
         {
-            act( "$N tells you 'There would be no point in that.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'There would be no point in that.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        act( "$N trains you, and you feel more at ease with your skills.",
-             ch, NULL, trainer, TO_CHAR );
+        act("$N trains you, and you feel more at ease with your skills.",
+            ch, NULL, trainer, TO_CHAR);
 
         ch->train -= 2;
         ch->pcdata->points -= 1;
@@ -412,82 +429,83 @@ void do_gain( CHAR_DATA * ch, char *argument )
 
     /* else add a group/skill */
 
-    gn = group_lookup( argument );
-    if ( gn > 0 )
+    gn = group_lookup(argument);
+    if (gn > 0)
     {
-        if ( ch->pcdata->group_known[gn] )
+        if (ch->pcdata->group_known[gn])
         {
-            act( "$N tells you 'You already know that group!'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'You already know that group!'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        if ( group_table[gn].rating[ch->Class] <= 0 )
+        if (group_table[gn].rating[ch->Class] <= 0)
         {
-            act( "$N tells you 'That group is beyond your powers.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'That group is beyond your powers.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        if ( ch->train < group_table[gn].rating[ch->Class] )
+        if (ch->train < group_table[gn].rating[ch->Class])
         {
-            act( "$N tells you 'You are not yet ready for that group.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'You are not yet ready for that group.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
         /* add the group */
-        gn_add( ch, gn );
-        act( "$N trains you in the art of $t",
-             ch, group_table[gn].name, trainer, TO_CHAR );
+        gn_add(ch, gn);
+        act("$N trains you in the art of $t",
+            ch, group_table[gn].name, trainer, TO_CHAR);
         ch->train -= group_table[gn].rating[ch->Class];
         return;
     }
 
-    sn = skill_lookup( argument );
-    if ( sn > -1 )
+    sn = skill_lookup(argument);
+    if (sn > -1)
     {
-        if ( skill_table[sn].spell_fun != spell_null )
+        if (skill_table[sn].spell_fun != spell_null)
         {
-            act( "$N tells you 'You must learn the full group.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'You must learn the full group.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        if ( ch->pcdata->learned[sn] )
+        if (ch->pcdata->learned[sn])
         {
-            act( "$N tells you 'You already know that skill!'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'You already know that skill!'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        if ( skill_table[sn].rating[ch->Class] <= 0 )
+        if (skill_table[sn].rating[ch->Class] <= 0)
         {
-            act( "$N tells you 'That skill is beyond your powers.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'That skill is beyond your powers.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
-        if ( ch->train < skill_table[sn].rating[ch->Class] )
+        if (ch->train < skill_table[sn].rating[ch->Class])
         {
-            act( "$N tells you 'You are not yet ready for that skill.'",
-                 ch, NULL, trainer, TO_CHAR );
+            act("$N tells you 'You are not yet ready for that skill.'",
+                ch, NULL, trainer, TO_CHAR);
             return;
         }
 
         /* add the skill */
         ch->pcdata->learned[sn] = 1;
-        act( "$N trains you in the art of $t",
-             ch, skill_table[sn].name, trainer, TO_CHAR );
+        act("$N trains you in the art of $t",
+            ch, skill_table[sn].name, trainer, TO_CHAR);
         ch->train -= skill_table[sn].rating[ch->Class];
         return;
     }
 
-    act( "$N tells you 'I do not understand...'", ch, NULL, trainer, TO_CHAR );
+    act("$N tells you 'I do not understand...'", ch, NULL, trainer,
+        TO_CHAR);
 }
 
 /* RT spells and skills show the players spells (or skills) */
-void do_splist( CHAR_DATA * ch, char *argument )
+void do_splist(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char buf3[MAX_STRING_LENGTH];
@@ -497,94 +515,96 @@ void do_splist( CHAR_DATA * ch, char *argument )
     int oldclass;
     bool found = FALSE;
     int x;
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
-    if ( argument == NULL )
+    if (argument == NULL)
     {
-        send_to_char( "Syntax:\n\r "
-                      "  slist <class>\n\r\n\rWhere class is one of:\n\r", ch );
-        for ( x = 0; x < MAX_CLASS; x++ )
+        send_to_char("Syntax:\n\r "
+                     "  slist <class>\n\r\n\rWhere class is one of:\n\r",
+                     ch);
+        for (x = 0; x < MAX_CLASS; x++)
         {
-            printf_to_char( ch, "  %s\n\r", class_table[x].who_name );
+            printf_to_char(ch, "  %s\n\r", class_table[x].who_name);
         }
-        send_to_char( "\n\r", ch );
+        send_to_char("\n\r", ch);
         return;
     }
 
-    for ( x = 0; x < MAX_CLASS; x++ )
+    for (x = 0; x < MAX_CLASS; x++)
     {
-        if ( !str_cmp( argument, class_table[x].who_name ) )
+        if (!str_cmp(argument, class_table[x].who_name))
             break;
     }
 
-    if ( x >= MAX_CLASS )
+    if (x >= MAX_CLASS)
     {
-        printf_to_char( ch,
-                        "No class named '%s' exists.\n\rClass should be one of:\n\r",
-                        argument );
-        for ( x = 0; x < MAX_CLASS; x++ )
+        printf_to_char(ch,
+                       "No class named '%s' exists.\n\rClass should be one of:\n\r",
+                       argument);
+        for (x = 0; x < MAX_CLASS; x++)
         {
-            printf_to_char( ch, "  %s\n\r", class_table[x].who_name );
+            printf_to_char(ch, "  %s\n\r", class_table[x].who_name);
         }
-        send_to_char( "\n\r", ch );
+        send_to_char("\n\r", ch);
         return;
     }
 
     oldclass = ch->Class;
-    sprintf( buf3, "char self class %s", argument );
-    do_set( ch, buf3 );
+    sprintf(buf3, "char self class %s", argument);
+    do_set(ch, buf3);
 
     /* initilize data */
-    for ( lev = 0; lev < LEVEL_HERO; lev++ )
+    for (lev = 0; lev < LEVEL_HERO; lev++)
     {
         spell_columns[lev] = 0;
         spell_list[lev][0] = '\0';
     }
 
-    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    for (sn = 0; sn < MAX_SKILL; sn++)
     {
-        if ( skill_table[sn].name == NULL )
+        if (skill_table[sn].name == NULL)
             break;
 
-        if ( skill_table[sn].skill_level[ch->Class] < LEVEL_HERO &&
+        if (skill_table[sn].skill_level[ch->Class] < LEVEL_HERO &&
                 skill_table[sn].spell_fun != spell_null &&
-                ch->pcdata->learned[sn] > 0 )
+                ch->pcdata->learned[sn] > 0)
         {
             found = TRUE;
             lev = skill_table[sn].skill_level[ch->Class];
             {
-                sprintf( buf, "%-18s  %3d  ", skill_table[sn].name,
-                         skill_table[sn].rating[ch->Class] );
+                sprintf(buf, "%-18s  %3d  ", skill_table[sn].name,
+                        skill_table[sn].rating[ch->Class]);
             }
 
-            if ( spell_list[lev][0] == '\0' )
-                sprintf( spell_list[lev], "\n\rLevel %2d: %s", lev, buf );
-            else                /* append */
+            if (spell_list[lev][0] == '\0')
+                sprintf(spell_list[lev], "\n\rLevel %2d: %s", lev, buf);
+            else  		/* append */
             {
-                if ( ++spell_columns[lev] % 2 == 0 )
-                    strcat( spell_list[lev], "\n\r          " );
-                strcat( spell_list[lev], buf );
+
+                if (++spell_columns[lev] % 2 == 0)
+                    strcat(spell_list[lev], "\n\r          ");
+                strcat(spell_list[lev], buf);
             }
         }
     }
 
     /* return results */
 
-    if ( !found )
+    if (!found)
     {
-        send_to_char( "This class has no spells.\n\r", ch );
+        send_to_char("This class has no spells.\n\r", ch);
         ch->Class = oldclass;
         return;
     }
 
-    for ( lev = 0; lev < LEVEL_HERO; lev++ )
-        if ( spell_list[lev][0] != '\0' )
-            send_to_char( spell_list[lev], ch );
-    send_to_char( "\n\r", ch );
+    for (lev = 0; lev < LEVEL_HERO; lev++)
+        if (spell_list[lev][0] != '\0')
+            send_to_char(spell_list[lev], ch);
+    send_to_char("\n\r", ch);
     ch->Class = oldclass;
 }
 
-void do_spells( CHAR_DATA * ch, char *argument )
+void do_spells(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char spell_list[LEVEL_HERO][MAX_STRING_LENGTH];
@@ -592,219 +612,235 @@ void do_spells( CHAR_DATA * ch, char *argument )
     int sn, lev, mana;
     bool found = FALSE;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
     /* initilize data */
-    for ( lev = 0; lev < LEVEL_HERO; lev++ )
+    for (lev = 0; lev < LEVEL_HERO; lev++)
     {
         spell_columns[lev] = 0;
         spell_list[lev][0] = '\0';
     }
 
-    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    for (sn = 0; sn < MAX_SKILL; sn++)
     {
-        if ( skill_table[sn].name == NULL )
+        if (skill_table[sn].name == NULL)
             break;
 
-        if ( skill_table[sn].skill_level[ch->Class] < LEVEL_HERO &&
+        if (skill_table[sn].skill_level[ch->Class] < LEVEL_HERO &&
                 skill_table[sn].spell_fun != spell_null &&
-                ch->pcdata->learned[sn] > 0 )
+                ch->pcdata->learned[sn] > 0)
         {
             found = TRUE;
             lev = skill_table[sn].skill_level[ch->Class];
-            if ( ch->level < lev )
-                sprintf( buf, "%-18s  n/a      ", skill_table[sn].name );
+            if (ch->level < lev)
+                sprintf(buf, "%-18s  n/a      ", skill_table[sn].name);
             else
             {
-                mana = UMAX( skill_table[sn].min_mana,
-                             100 / ( 2 + ch->level - lev ) );
-                sprintf( buf, "%-18s  %3d mana  ", skill_table[sn].name, mana );
+                mana = UMAX(skill_table[sn].min_mana,
+                            100 / (2 + ch->level - lev));
+                sprintf(buf, "%-18s  %3d mana  ", skill_table[sn].name,
+                        mana);
             }
 
-            if ( spell_list[lev][0] == '\0' )
-                sprintf( spell_list[lev], "\n\rLevel %2d: %s", lev, buf );
-            else                /* append */
+            if (spell_list[lev][0] == '\0')
+                sprintf(spell_list[lev], "\n\rLevel %2d: %s", lev, buf);
+            else  		/* append */
             {
-                if ( ++spell_columns[lev] % 2 == 0 )
-                    strcat( spell_list[lev], "\n\r          " );
-                strcat( spell_list[lev], buf );
+
+                if (++spell_columns[lev] % 2 == 0)
+                    strcat(spell_list[lev], "\n\r          ");
+                strcat(spell_list[lev], buf);
             }
         }
     }
 
     /* return results */
 
-    if ( !found )
+    if (!found)
     {
-        send_to_char( "You know no spells.\n\r", ch );
+        send_to_char("You know no spells.\n\r", ch);
         return;
     }
 
-    for ( lev = 0; lev < LEVEL_HERO; lev++ )
-        if ( spell_list[lev][0] != '\0' )
-            send_to_char( spell_list[lev], ch );
-    send_to_char( "\n\r", ch );
+    for (lev = 0; lev < LEVEL_HERO; lev++)
+        if (spell_list[lev][0] != '\0')
+            send_to_char(spell_list[lev], ch);
+    send_to_char("\n\r", ch);
 }
 
-int dsd_compare_name( const void* left, const void* right )
+int dsd_compare_name(const void *left, const void *right)
 {
-    DO_SKILLS_DATA *one = (DO_SKILLS_DATA*)left;
-    DO_SKILLS_DATA *two = (DO_SKILLS_DATA*)right;
+    DO_SKILLS_DATA *one = (DO_SKILLS_DATA *) left;
+    DO_SKILLS_DATA *two = (DO_SKILLS_DATA *) right;
 
-    return strcasecmp( one->name, two->name );
+    return strcasecmp(one->name, two->name);
 }
 
-int dsd_compare_lvl_name( const void* left, const void* right )
+int dsd_compare_lvl_name(const void *left, const void *right)
 {
-    DO_SKILLS_DATA *one = (DO_SKILLS_DATA*)left;
-    DO_SKILLS_DATA *two = (DO_SKILLS_DATA*)right;
+    DO_SKILLS_DATA *one = (DO_SKILLS_DATA *) left;
+    DO_SKILLS_DATA *two = (DO_SKILLS_DATA *) right;
 
-    if ( one->level < two->level )
+    if (one->level < two->level)
         return -1;
-    else if ( one->level > two->level )
+    else if (one->level > two->level)
         return 1;
     else
-        return dsd_compare_name( left, right );
+        return dsd_compare_name(left, right);
 }
 
-void do_skills( CHAR_DATA * ch, char *argument )
+void do_skills(CHAR_DATA * ch, char *argument)
 {
     DO_SKILLS_DATA dsd_racial[5];
     DO_SKILLS_DATA dsd_learned[MAX_SKILL];
     DO_SKILLS_DATA dsd_unlearned[MAX_SKILL];
-    int            dsd_racial_count = 0;
-    int            dsd_learned_count = 0;
-    int            dsd_unlearned_count = 0;
-    int            sn;
-    char           buf[4*MAX_STRING_LENGTH];
+    int dsd_racial_count = 0;
+    int dsd_learned_count = 0;
+    int dsd_unlearned_count = 0;
+    int sn;
+    char buf[4 * MAX_STRING_LENGTH];
     /* TODO: static sized string buffers suck - Ember needs a dynamicly sized string buffer.
      *       Maybe we'll switch to C++ and can use std::string? <shrug> -Zak */
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
     {
-        send_to_char( "NPCs have access to all skills", ch );
+        send_to_char("NPCs have access to all skills", ch);
         return;
     }
 
     buf[0] = '\0';
 
     /* Loop through all skills */
-    for ( sn = 0; sn<MAX_SKILL; sn++ )
+    for (sn = 0; sn < MAX_SKILL; sn++)
     {
         /* Stop at the end */
-        if ( skill_table[sn].name == NULL )
+        if (skill_table[sn].name == NULL)
             break;
 
         /* Skip over spells */
-        if ( skill_table[sn].spell_fun != spell_null )
+        if (skill_table[sn].spell_fun != spell_null)
             continue;
 
         /* racial skills */
-        if ( has_racial_skill( ch, sn ) )
+        if (has_racial_skill(ch, sn))
         {
-            dsd_racial[dsd_racial_count].name    = skill_table[sn].name;
-            dsd_racial[dsd_racial_count].level   = 1; /* Racial skills are always level 1 */
+            dsd_racial[dsd_racial_count].name = skill_table[sn].name;
+            dsd_racial[dsd_racial_count].level = 1;	/* Racial skills are always level 1 */
             dsd_racial[dsd_racial_count].learned = ch->pcdata->learned[sn];
             dsd_racial_count++;
         }
         /* learned skills */
-        else if ( ch->level >= skill_table[sn].skill_level[ch->Class] && ch->pcdata->learned[sn] > 0 )
+        else if (ch->level >= skill_table[sn].skill_level[ch->Class]
+                 && ch->pcdata->learned[sn] > 0)
         {
-            dsd_learned[dsd_learned_count].name    = skill_table[sn].name;
-            dsd_learned[dsd_learned_count].level   = skill_table[sn].skill_level[ch->Class];
-            dsd_learned[dsd_learned_count].learned = ch->pcdata->learned[sn];
+            dsd_learned[dsd_learned_count].name = skill_table[sn].name;
+            dsd_learned[dsd_learned_count].level =
+                skill_table[sn].skill_level[ch->Class];
+            dsd_learned[dsd_learned_count].learned =
+                ch->pcdata->learned[sn];
             dsd_learned_count++;
         }
         /* unlearned skills */
-        else if ( ch->pcdata->learned[sn] > 0 )
+        else if (ch->pcdata->learned[sn] > 0)
         {
-            dsd_unlearned[dsd_unlearned_count].name    = skill_table[sn].name;
-            dsd_unlearned[dsd_unlearned_count].level   = skill_table[sn].skill_level[ch->Class];
-            dsd_unlearned[dsd_unlearned_count].learned = ch->pcdata->learned[sn];
+            dsd_unlearned[dsd_unlearned_count].name = skill_table[sn].name;
+            dsd_unlearned[dsd_unlearned_count].level =
+                skill_table[sn].skill_level[ch->Class];
+            dsd_unlearned[dsd_unlearned_count].learned =
+                ch->pcdata->learned[sn];
             dsd_unlearned_count++;
         }
     }
 
-    if ( dsd_racial_count > 0 )
+    if (dsd_racial_count > 0)
     {
         int x;
 
-        strcat( buf, "`wInnate Abilities\n\r`K----------------`w\n\r" );
-        qsort( dsd_racial, dsd_racial_count, sizeof(DO_SKILLS_DATA), dsd_compare_name );
+        strcat(buf, "`wInnate Abilities\n\r`K----------------`w\n\r");
+        qsort(dsd_racial, dsd_racial_count, sizeof(DO_SKILLS_DATA),
+              dsd_compare_name);
 
-        for ( x=0; x<dsd_racial_count; x++ )
+        for (x = 0; x < dsd_racial_count; x++)
         {
             char buf2[MAX_STRING_LENGTH];
 
-            if ( x%2 == 0 )
-                sprintf( buf2, "`w%-18s `W%3d%%          ", dsd_racial[x].name, dsd_racial[x].learned );
+            if (x % 2 == 0)
+                sprintf(buf2, "`w%-18s `W%3d%%          ",
+                        dsd_racial[x].name, dsd_racial[x].learned);
             else
-                sprintf( buf2, "`w%-18s `W%3d%%`w\n\r", dsd_racial[x].name, dsd_racial[x].learned );
+                sprintf(buf2, "`w%-18s `W%3d%%`w\n\r", dsd_racial[x].name,
+                        dsd_racial[x].learned);
 
-            strcat( buf, buf2 );
+            strcat(buf, buf2);
         }
 
-        if ( dsd_racial_count%2 == 0 )
-            strcat( buf, "\n\r" );
+        if (dsd_racial_count % 2 == 0)
+            strcat(buf, "\n\r");
         else
-            strcat( buf, "\n\r\n\r" );
+            strcat(buf, "\n\r\n\r");
     }
 
-    if ( dsd_learned_count > 0 )
+    if (dsd_learned_count > 0)
     {
         int x;
 
-        strcat( buf, "`wLearned Skills\n\r`K----------------`w\n\r" );
-        qsort( dsd_learned, dsd_learned_count, sizeof(DO_SKILLS_DATA), dsd_compare_name );
+        strcat(buf, "`wLearned Skills\n\r`K----------------`w\n\r");
+        qsort(dsd_learned, dsd_learned_count, sizeof(DO_SKILLS_DATA),
+              dsd_compare_name);
 
-        for ( x=0; x<dsd_learned_count; x++ )
+        for (x = 0; x < dsd_learned_count; x++)
         {
             char buf2[MAX_STRING_LENGTH];
 
-            if ( x%2 == 0 )
-                sprintf( buf2, "`w%-18s `W%3d%%          ", dsd_learned[x].name, dsd_learned[x].learned );
+            if (x % 2 == 0)
+                sprintf(buf2, "`w%-18s `W%3d%%          ",
+                        dsd_learned[x].name, dsd_learned[x].learned);
             else
-                sprintf( buf2, "`w%-18s `W%3d%%`w\n\r", dsd_learned[x].name, dsd_learned[x].learned );
+                sprintf(buf2, "`w%-18s `W%3d%%`w\n\r", dsd_learned[x].name,
+                        dsd_learned[x].learned);
 
-            strcat( buf, buf2 );
+            strcat(buf, buf2);
         }
 
-        if ( dsd_learned_count%2 == 0 )
-            strcat( buf, "\n\r" );
+        if (dsd_learned_count % 2 == 0)
+            strcat(buf, "\n\r");
         else
-            strcat( buf, "\n\r\n\r" );
+            strcat(buf, "\n\r\n\r");
     }
 
-    if ( dsd_unlearned_count > 0 )
+    if (dsd_unlearned_count > 0)
     {
         int x;
 
-        strcat( buf, "`wUnlearned Skills\n\r`K----------------`w\n\r" );
-        qsort( dsd_unlearned, dsd_unlearned_count, sizeof(DO_SKILLS_DATA), dsd_compare_lvl_name );
+        strcat(buf, "`wUnlearned Skills\n\r`K----------------`w\n\r");
+        qsort(dsd_unlearned, dsd_unlearned_count, sizeof(DO_SKILLS_DATA),
+              dsd_compare_lvl_name);
 
-        for ( x=0; x<dsd_unlearned_count; x++ )
+        for (x = 0; x < dsd_unlearned_count; x++)
         {
             char buf2[MAX_STRING_LENGTH];
 
-            if ( x%2 == 0 )
-                sprintf( buf2, "`w%-18s `K[`WLevel %3d`K]   ", dsd_unlearned[x].name, dsd_unlearned[x].level );
+            if (x % 2 == 0)
+                sprintf(buf2, "`w%-18s `K[`WLevel %3d`K]   ",
+                        dsd_unlearned[x].name, dsd_unlearned[x].level);
             else
-                sprintf( buf2, "`w%-18s `K[`WLevel %3d`K]`w\n\r", dsd_unlearned[x].name, dsd_unlearned[x].level );
+                sprintf(buf2, "`w%-18s `K[`WLevel %3d`K]`w\n\r",
+                        dsd_unlearned[x].name, dsd_unlearned[x].level);
 
-            strcat( buf, buf2 );
+            strcat(buf, buf2);
         }
 
-        if ( dsd_unlearned_count%2 == 0 )
-            strcat( buf, "\n\r" );
+        if (dsd_unlearned_count % 2 == 0)
+            strcat(buf, "\n\r");
         else
-            strcat( buf, "\n\r\n\r" );
+            strcat(buf, "\n\r\n\r");
     }
 
-    page_to_char( buf, ch );
+    page_to_char(buf, ch);
 }
 
-void do_sklist( CHAR_DATA * ch, char *argument )
+void do_sklist(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char buf3[MAX_STRING_LENGTH];
@@ -814,236 +850,238 @@ void do_sklist( CHAR_DATA * ch, char *argument )
     bool found = FALSE;
     oldclass = 0;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
-    if ( argument == NULL )
+    if (argument == NULL)
     {
-        send_to_char( "Syntax:\n\r "
-                      "  slist <class>\n\r\n\rWhere class is one of:\n\r", ch );
-        for ( x = 0; x < MAX_CLASS; x++ )
+        send_to_char("Syntax:\n\r "
+                     "  slist <class>\n\r\n\rWhere class is one of:\n\r",
+                     ch);
+        for (x = 0; x < MAX_CLASS; x++)
         {
-            printf_to_char( ch, "  %s\n\r", class_table[x].who_name );
+            printf_to_char(ch, "  %s\n\r", class_table[x].who_name);
         }
-        send_to_char( "\n\r", ch );
+        send_to_char("\n\r", ch);
         return;
     }
 
-    for ( x = 0; x < MAX_CLASS; x++ )
+    for (x = 0; x < MAX_CLASS; x++)
     {
-        if ( !str_cmp( argument, class_table[x].who_name ) )
+        if (!str_cmp(argument, class_table[x].who_name))
             break;
     }
 
-    if ( x >= MAX_CLASS )
+    if (x >= MAX_CLASS)
     {
-        printf_to_char( ch,
-                        "No class named '%s' exists.\n\rClass should be one of:\n\r",
-                        argument );
-        for ( x = 0; x < MAX_CLASS; x++ )
+        printf_to_char(ch,
+                       "No class named '%s' exists.\n\rClass should be one of:\n\r",
+                       argument);
+        for (x = 0; x < MAX_CLASS; x++)
         {
-            printf_to_char( ch, "  %s\n\r", class_table[x].who_name );
+            printf_to_char(ch, "  %s\n\r", class_table[x].who_name);
         }
-        send_to_char( "\n\r", ch );
+        send_to_char("\n\r", ch);
         return;
     }
     oldclass = ch->Class;
-    sprintf( buf3, "char self class %s", argument );
-    do_set( ch, buf3 );
+    sprintf(buf3, "char self class %s", argument);
+    do_set(ch, buf3);
 
     /* initilize data */
-    for ( lev = 0; lev < LEVEL_HERO; lev++ )
+    for (lev = 0; lev < LEVEL_HERO; lev++)
     {
         skill_columns[lev] = 0;
         skill_list[lev][0] = '\0';
     }
 
-    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    for (sn = 0; sn < MAX_SKILL; sn++)
     {
-        if ( skill_table[sn].name == NULL )
+        if (skill_table[sn].name == NULL)
             break;
 
-        if ( skill_table[sn].skill_level[ch->Class] < LEVEL_HERO &&
-                skill_table[sn].spell_fun == spell_null )
+        if (skill_table[sn].skill_level[ch->Class] < LEVEL_HERO &&
+                skill_table[sn].spell_fun == spell_null)
         {
             found = TRUE;
             lev = skill_table[sn].skill_level[ch->Class];
-            sprintf( buf, "%-18s %3d      ", skill_table[sn].name,
-                     skill_table[sn].rating[ch->Class] );
+            sprintf(buf, "%-18s %3d      ", skill_table[sn].name,
+                    skill_table[sn].rating[ch->Class]);
 
-            if ( skill_list[lev][0] == '\0' )
-                sprintf( skill_list[lev], "\n\rLevel %2d: %s", lev, buf );
-            else                /* append */
+            if (skill_list[lev][0] == '\0')
+                sprintf(skill_list[lev], "\n\rLevel %2d: %s", lev, buf);
+            else  		/* append */
             {
-                if ( ++skill_columns[lev] % 2 == 0 )
-                    strcat( skill_list[lev], "\n\r          " );
-                strcat( skill_list[lev], buf );
+
+                if (++skill_columns[lev] % 2 == 0)
+                    strcat(skill_list[lev], "\n\r          ");
+                strcat(skill_list[lev], buf);
             }
         }
     }
 
     /* return results */
 
-    if ( !found )
+    if (!found)
     {
-        send_to_char( "You know no skills.\n\r", ch );
+        send_to_char("You know no skills.\n\r", ch);
         ch->Class = oldclass;
         return;
     }
 
-    for ( lev = 0; lev < LEVEL_HERO; lev++ )
-        if ( skill_list[lev][0] != '\0' )
-            send_to_char( skill_list[lev], ch );
-    send_to_char( "\n\r", ch );
+    for (lev = 0; lev < LEVEL_HERO; lev++)
+        if (skill_list[lev][0] != '\0')
+            send_to_char(skill_list[lev], ch);
+    send_to_char("\n\r", ch);
     ch->Class = oldclass;
 }
 
 /* shows skills, groups and costs (only if not bought) */
-void list_group_costs( CHAR_DATA * ch )
+void list_group_costs(CHAR_DATA * ch)
 {
     char buf[MAX_STRING_LENGTH];
     int gn, sn, col;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
     col = 0;
 
-    sprintf( buf, "%-18s %-5s %-18s %-5s %-18s %-5s\n\r", "group", "cp",
-             "group", "cp", "group", "cp" );
-    send_to_char( buf, ch );
+    sprintf(buf, "%-18s %-5s %-18s %-5s %-18s %-5s\n\r", "group", "cp",
+            "group", "cp", "group", "cp");
+    send_to_char(buf, ch);
 
-    for ( gn = 0; gn < MAX_GROUP; gn++ )
+    for (gn = 0; gn < MAX_GROUP; gn++)
     {
-        if ( group_table[gn].name == NULL )
+        if (group_table[gn].name == NULL)
             break;
 
-        if ( !ch->gen_data->group_chosen[gn]
+        if (!ch->gen_data->group_chosen[gn]
                 && !ch->pcdata->group_known[gn]
-                && group_table[gn].rating[ch->Class] > 0 )
+                && group_table[gn].rating[ch->Class] > 0)
         {
-            sprintf( buf, "%-18s %-5d ", group_table[gn].name,
-                     group_table[gn].rating[ch->Class] );
-            send_to_char( buf, ch );
-            if ( ++col % 3 == 0 )
-                send_to_char( "\n\r", ch );
+            sprintf(buf, "%-18s %-5d ", group_table[gn].name,
+                    group_table[gn].rating[ch->Class]);
+            send_to_char(buf, ch);
+            if (++col % 3 == 0)
+                send_to_char("\n\r", ch);
         }
     }
-    if ( col % 3 != 0 )
-        send_to_char( "\n\r", ch );
-    send_to_char( "\n\r", ch );
+    if (col % 3 != 0)
+        send_to_char("\n\r", ch);
+    send_to_char("\n\r", ch);
 
     col = 0;
 
-    sprintf( buf, "%-18s %-5s %-18s %-5s %-18s %-5s\n\r", "skill", "cp",
-             "skill", "cp", "skill", "cp" );
-    send_to_char( buf, ch );
+    sprintf(buf, "%-18s %-5s %-18s %-5s %-18s %-5s\n\r", "skill", "cp",
+            "skill", "cp", "skill", "cp");
+    send_to_char(buf, ch);
 
-    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    for (sn = 0; sn < MAX_SKILL; sn++)
     {
-        if ( skill_table[sn].name == NULL )
+        if (skill_table[sn].name == NULL)
             break;
 
-        if ( !ch->gen_data->skill_chosen[sn]
+        if (!ch->gen_data->skill_chosen[sn]
                 && ch->pcdata->learned[sn] == 0
                 && skill_table[sn].spell_fun == spell_null
-                && skill_table[sn].rating[ch->Class] > 0 )
+                && skill_table[sn].rating[ch->Class] > 0)
         {
-            sprintf( buf, "%-18s %-5d ", skill_table[sn].name,
-                     skill_table[sn].rating[ch->Class] );
-            send_to_char( buf, ch );
-            if ( ++col % 3 == 0 )
-                send_to_char( "\n\r", ch );
+            sprintf(buf, "%-18s %-5d ", skill_table[sn].name,
+                    skill_table[sn].rating[ch->Class]);
+            send_to_char(buf, ch);
+            if (++col % 3 == 0)
+                send_to_char("\n\r", ch);
         }
     }
-    if ( col % 3 != 0 )
-        send_to_char( "\n\r", ch );
-    send_to_char( "\n\r", ch );
+    if (col % 3 != 0)
+        send_to_char("\n\r", ch);
+    send_to_char("\n\r", ch);
 
-    sprintf( buf, "Creation points: %d\n\r", ch->pcdata->points );
-    send_to_char( buf, ch );
-    sprintf( buf,
-             "Experience modifier: %d%% (Percent of difference from the norm)\n\r",
-             figure_difference( ch->gen_data->points_chosen ) );
-    send_to_char( buf, ch );
+    sprintf(buf, "Creation points: %d\n\r", ch->pcdata->points);
+    send_to_char(buf, ch);
+    sprintf(buf,
+            "Experience modifier: %d%% (Percent of difference from the norm)\n\r",
+            figure_difference(ch->gen_data->points_chosen));
+    send_to_char(buf, ch);
     return;
 }
 
-void list_group_chosen( CHAR_DATA * ch )
+void list_group_chosen(CHAR_DATA * ch)
 {
     char buf[MAX_STRING_LENGTH];
     int gn, sn, col;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
     col = 0;
 
-    sprintf( buf, "%-18s %-5s %-18s %-5s %-18s %-5s", "group", "cp", "group",
-             "cp", "group", "cp\n\r" );
-    send_to_char( buf, ch );
+    sprintf(buf, "%-18s %-5s %-18s %-5s %-18s %-5s", "group", "cp",
+            "group", "cp", "group", "cp\n\r");
+    send_to_char(buf, ch);
 
-    for ( gn = 0; gn < MAX_GROUP; gn++ )
+    for (gn = 0; gn < MAX_GROUP; gn++)
     {
-        if ( group_table[gn].name == NULL )
+        if (group_table[gn].name == NULL)
             break;
 
-        if ( ch->gen_data->group_chosen[gn]
-                && group_table[gn].rating[ch->Class] > 0 )
+        if (ch->gen_data->group_chosen[gn]
+                && group_table[gn].rating[ch->Class] > 0)
         {
-            sprintf( buf, "%-18s %-5d ", group_table[gn].name,
-                     group_table[gn].rating[ch->Class] );
-            send_to_char( buf, ch );
-            if ( ++col % 3 == 0 )
-                send_to_char( "\n\r", ch );
+            sprintf(buf, "%-18s %-5d ", group_table[gn].name,
+                    group_table[gn].rating[ch->Class]);
+            send_to_char(buf, ch);
+            if (++col % 3 == 0)
+                send_to_char("\n\r", ch);
         }
     }
-    if ( col % 3 != 0 )
-        send_to_char( "\n\r", ch );
-    send_to_char( "\n\r", ch );
+    if (col % 3 != 0)
+        send_to_char("\n\r", ch);
+    send_to_char("\n\r", ch);
 
     col = 0;
 
-    sprintf( buf, "%-18s %-5s %-18s %-5s %-18s %-5s", "skill", "cp", "skill",
-             "cp", "skill", "cp\n\r" );
-    send_to_char( buf, ch );
+    sprintf(buf, "%-18s %-5s %-18s %-5s %-18s %-5s", "skill", "cp",
+            "skill", "cp", "skill", "cp\n\r");
+    send_to_char(buf, ch);
 
-    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    for (sn = 0; sn < MAX_SKILL; sn++)
     {
-        if ( skill_table[sn].name == NULL )
+        if (skill_table[sn].name == NULL)
             break;
 
-        if ( ch->gen_data->skill_chosen[sn]
-                && skill_table[sn].rating[ch->Class] > 0 )
+        if (ch->gen_data->skill_chosen[sn]
+                && skill_table[sn].rating[ch->Class] > 0)
         {
-            sprintf( buf, "%-18s %-5d ", skill_table[sn].name,
-                     skill_table[sn].rating[ch->Class] );
-            send_to_char( buf, ch );
-            if ( ++col % 3 == 0 )
-                send_to_char( "\n\r", ch );
+            sprintf(buf, "%-18s %-5d ", skill_table[sn].name,
+                    skill_table[sn].rating[ch->Class]);
+            send_to_char(buf, ch);
+            if (++col % 3 == 0)
+                send_to_char("\n\r", ch);
         }
     }
-    if ( col % 3 != 0 )
-        send_to_char( "\n\r", ch );
-    send_to_char( "\n\r", ch );
+    if (col % 3 != 0)
+        send_to_char("\n\r", ch);
+    send_to_char("\n\r", ch);
 
-    sprintf( buf, "Creation points: %d\n\r", ch->gen_data->points_chosen );
-    send_to_char( buf, ch );
-    sprintf( buf,
-             "Experience modifier: %d%% (Percent of difference from the norm)\n\r",
-             figure_difference( ch->gen_data->points_chosen ) );
-    send_to_char( buf, ch );
+    sprintf(buf, "Creation points: %d\n\r", ch->gen_data->points_chosen);
+    send_to_char(buf, ch);
+    sprintf(buf,
+            "Experience modifier: %d%% (Percent of difference from the norm)\n\r",
+            figure_difference(ch->gen_data->points_chosen));
+    send_to_char(buf, ch);
     return;
 }
 
-long exp_per_level( CHAR_DATA * ch, int points )
+long exp_per_level(CHAR_DATA * ch, int points)
 {
     long expl = 0;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return 1000;
 
-    switch ( ch->level )
+    switch (ch->level)
     {
     case 1:
         expl = 750;
@@ -1348,217 +1386,225 @@ long exp_per_level( CHAR_DATA * ch, int points )
         break;
     }
     /*    if (points > 110) expl=(long)pow((double)110,(double)1.2)*(expl/100); */
-    if ( points <= CP_MIN_PENALTY )
+    if (points <= CP_MIN_PENALTY)
         points += CP_PENALTY;
-    if ( points >= 28 )
-        expl =
-            ( long ) pow( ( double ) points, ( double ) 1.2 ) * ( expl / 100 );
+    if (points >= 28)
+        expl = (long) pow((double) points, (double) 1.2) * (expl / 100);
     /*    && (points <= 110)) */
-    if ( points < 28 )
-        expl = ( long ) ( expl * ( ( 26.0 + points ) / 100.0 ) );
+    if (points < 28)
+        expl = (long) (expl * ((26.0 + points) / 100.0));
     /*    if (points < 40)
-    	return 1000 * pc_race_table[ch->race].class_mult[ch->Class]/100;
+       return 1000 * pc_race_table[ch->race].class_mult[ch->Class]/100;
 
-        / processing /
-        points -= 40;
+       / processing /
+       points -= 40;
 
-        while (points > 9)
-        {
-    	expl += inc;
-            points -= 10;
-            if (points > 9)
-    	{
-    	    expl += inc;
-    	    inc *= 2;
-    	    points -= 10;
-    	}
-        }
+       while (points > 9)
+       {
+       expl += inc;
+       points -= 10;
+       if (points > 9)
+       {
+       expl += inc;
+       inc *= 2;
+       points -= 10;
+       }
+       }
 
-        expl += points * inc / 10;*/
+       expl += points * inc / 10; */
 
-    return expl * ( pc_race_table[ch->race].class_mult[ch->Class] / 100 );
+    return expl * (pc_race_table[ch->race].class_mult[ch->Class] / 100);
 }
 
 /* this procedure handles the input parsing for the skill generator */
-bool parse_gen_groups( CHAR_DATA * ch, char *argument )
+bool parse_gen_groups(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     int gn, sn, i;
 
-    if ( argument[0] == '\0' )
+    if (argument[0] == '\0')
         return FALSE;
 
-    argument = one_argument( argument, arg );
+    argument = one_argument(argument, arg);
 
-    if ( !str_prefix( arg, "help" ) )
+    if (!str_prefix(arg, "help"))
     {
-        if ( argument[0] == '\0' )
+        if (argument[0] == '\0')
         {
-            do_help( ch, "group help" );
+            do_help(ch, "group help");
             return TRUE;
         }
 
-        do_help( ch, argument );
+        do_help(ch, argument);
         return TRUE;
     }
 
-    if ( !str_prefix( arg, "add" ) )
+    if (!str_prefix(arg, "add"))
     {
-        if ( argument[0] == '\0' )
+        if (argument[0] == '\0')
         {
-            send_to_char( "You must provide a skill name.\n\r", ch );
+            send_to_char("You must provide a skill name.\n\r", ch);
             return TRUE;
         }
 
         /* Fix this to look for groups that person already has and only charge for the ones they don't.  -Zane */
-        gn = group_lookup( argument );
-        if ( gn != -1 )
+        gn = group_lookup(argument);
+        if (gn != -1)
         {
-            if ( ch->gen_data->group_chosen[gn] || ch->pcdata->group_known[gn] )
+            if (ch->gen_data->group_chosen[gn]
+                    || ch->pcdata->group_known[gn])
             {
-                send_to_char( "You already know that group!\n\r", ch );
+                send_to_char("You already know that group!\n\r", ch);
                 return TRUE;
             }
 
-            if ( group_table[gn].rating[ch->Class] < 1 )
+            if (group_table[gn].rating[ch->Class] < 1)
             {
-                send_to_char( "That group is not available.\n\r", ch );
+                send_to_char("That group is not available.\n\r", ch);
                 return TRUE;
             }
 
             /* If this is broken, please mail dennis@realms.reichel.net :-) */
-            for ( i = 0; group_table[gn].spells[i] != NULL; i++ )
+            for (i = 0; group_table[gn].spells[i] != NULL; i++)
             {
-                if ( group_lookup( group_table[gn].spells[i] ) == -1 )
+                if (group_lookup(group_table[gn].spells[i]) == -1)
                     continue;
-                if ( ch->pcdata->
-                        group_known[group_lookup( group_table[gn].spells[i] )] )
+                if (ch->
+                        pcdata->group_known[group_lookup
+                                            (group_table[gn].spells[i])])
                 {
                     send_to_char
-                    ( "That group contains groups you already know.\n\r",
-                      ch );
+                    ("That group contains groups you already know.\n\r",
+                     ch);
                     send_to_char
-                    ( "Please \"drop\" them if you wish to gain this one.\n\r",
-                      ch );
+                    ("Please \"drop\" them if you wish to gain this one.\n\r",
+                     ch);
                     return TRUE;
                 }
             }
 
-            for ( i = 0; group_table[gn].spells[i] != NULL; i++ )
+            for (i = 0; group_table[gn].spells[i] != NULL; i++)
             {
-                if ( skill_lookup( group_table[gn].spells[i] ) == -1 )
+                if (skill_lookup(group_table[gn].spells[i]) == -1)
                     continue;
-                if ( ch->gen_data->
-                        skill_chosen[skill_lookup( group_table[gn].spells[i] )] )
+                if (ch->
+                        gen_data->skill_chosen[skill_lookup
+                                               (group_table[gn].spells[i])])
                 {
                     send_to_char
-                    ( "That group contains skills/spells you already know.\n\r",
-                      ch );
+                    ("That group contains skills/spells you already know.\n\r",
+                     ch);
                     send_to_char
-                    ( "Please \"drop\" them if you wish to gain this one.\n\r",
-                      ch );
+                    ("Please \"drop\" them if you wish to gain this one.\n\r",
+                     ch);
                     return TRUE;
                 }
             }
 
-            sprintf( buf, "%s group added\n\r", group_table[gn].name );
-            send_to_char( buf, ch );
+            sprintf(buf, "%s group added\n\r", group_table[gn].name);
+            send_to_char(buf, ch);
             ch->gen_data->group_chosen[gn] = TRUE;
-            ch->gen_data->points_chosen += group_table[gn].rating[ch->Class];
-            gn_add( ch, gn );
+            ch->gen_data->points_chosen +=
+                group_table[gn].rating[ch->Class];
+            gn_add(ch, gn);
             ch->pcdata->points += group_table[gn].rating[ch->Class];
             return TRUE;
         }
 
-        sn = skill_lookup( argument );
-        if ( sn != -1 )
+        sn = skill_lookup(argument);
+        if (sn != -1)
         {
-            if ( ch->gen_data->skill_chosen[sn] || ch->pcdata->learned[sn] > 0 )
+            if (ch->gen_data->skill_chosen[sn]
+                    || ch->pcdata->learned[sn] > 0)
             {
-                send_to_char( "You already know that skill!\n\r", ch );
+                send_to_char("You already know that skill!\n\r", ch);
                 return TRUE;
             }
 
-            if ( skill_table[sn].rating[ch->Class] < 1
-                    || skill_table[sn].spell_fun != spell_null )
+            if (skill_table[sn].rating[ch->Class] < 1
+                    || skill_table[sn].spell_fun != spell_null)
             {
-                send_to_char( "That skill is not available.\n\r", ch );
+                send_to_char("That skill is not available.\n\r", ch);
                 return TRUE;
             }
-            sprintf( buf, "%s skill added\n\r", skill_table[sn].name );
-            send_to_char( buf, ch );
+            sprintf(buf, "%s skill added\n\r", skill_table[sn].name);
+            send_to_char(buf, ch);
             ch->gen_data->skill_chosen[sn] = TRUE;
-            ch->gen_data->points_chosen += skill_table[sn].rating[ch->Class];
+            ch->gen_data->points_chosen +=
+                skill_table[sn].rating[ch->Class];
             ch->pcdata->learned[sn] = 1;
             ch->pcdata->points += skill_table[sn].rating[ch->Class];
             return TRUE;
         }
 
-        send_to_char( "No skills or groups by that name...\n\r", ch );
+        send_to_char("No skills or groups by that name...\n\r", ch);
         return TRUE;
     }
 
-    if ( !strcmp( arg, "drop" ) )
+    if (!strcmp(arg, "drop"))
     {
-        if ( argument[0] == '\0' )
+        if (argument[0] == '\0')
         {
-            send_to_char( "You must provide a skill to drop.\n\r", ch );
+            send_to_char("You must provide a skill to drop.\n\r", ch);
             return TRUE;
         }
 
-        gn = group_lookup( argument );
-        if ( gn != -1 && ch->gen_data->group_chosen[gn] )
+        gn = group_lookup(argument);
+        if (gn != -1 && ch->gen_data->group_chosen[gn])
         {
-            send_to_char( "Group dropped.\n\r", ch );
+            send_to_char("Group dropped.\n\r", ch);
             ch->gen_data->group_chosen[gn] = FALSE;
-            ch->gen_data->points_chosen -= group_table[gn].rating[ch->Class];
-            gn_remove( ch, gn );
-            for ( i = 0; i < MAX_GROUP; i++ )
+            ch->gen_data->points_chosen -=
+                group_table[gn].rating[ch->Class];
+            gn_remove(ch, gn);
+            for (i = 0; i < MAX_GROUP; i++)
             {
-                if ( ch->gen_data->group_chosen[gn] )
-                    gn_add( ch, gn );
+                if (ch->gen_data->group_chosen[gn])
+                    gn_add(ch, gn);
             }
             ch->pcdata->points -= group_table[gn].rating[ch->Class];
             return TRUE;
         }
 
-        sn = skill_lookup( argument );
-        if ( sn != -1 && ch->gen_data->skill_chosen[sn] )
+        sn = skill_lookup(argument);
+        if (sn != -1 && ch->gen_data->skill_chosen[sn])
         {
-            send_to_char( "Skill dropped.\n\r", ch );
+            send_to_char("Skill dropped.\n\r", ch);
             ch->gen_data->skill_chosen[sn] = FALSE;
-            ch->gen_data->points_chosen -= skill_table[sn].rating[ch->Class];
+            ch->gen_data->points_chosen -=
+                skill_table[sn].rating[ch->Class];
             ch->pcdata->learned[sn] = 0;
             ch->pcdata->points -= skill_table[sn].rating[ch->Class];
             return TRUE;
         }
 
-        send_to_char( "You haven't bought any such skill or group.\n\r", ch );
+        send_to_char("You haven't bought any such skill or group.\n\r",
+                     ch);
         return TRUE;
     }
 
-    if ( !str_prefix( arg, "premise" ) )
+    if (!str_prefix(arg, "premise"))
     {
-        do_help( ch, "premise" );
+        do_help(ch, "premise");
         return TRUE;
     }
 
-    if ( !str_prefix( arg, "list" ) )
+    if (!str_prefix(arg, "list"))
     {
-        list_group_costs( ch );
+        list_group_costs(ch);
         return TRUE;
     }
 
-    if ( !str_prefix( arg, "learned" ) )
+    if (!str_prefix(arg, "learned"))
     {
-        list_group_chosen( ch );
+        list_group_chosen(ch);
         return TRUE;
     }
 
-    if ( !str_prefix( arg, "info" ) )
+    if (!str_prefix(arg, "info"))
     {
-        do_groups( ch, argument );
+        do_groups(ch, argument);
         return TRUE;
     }
 
@@ -1566,143 +1612,144 @@ bool parse_gen_groups( CHAR_DATA * ch, char *argument )
 }
 
 /* shows all groups, or the sub-members of a group */
-void do_groups( CHAR_DATA * ch, char *argument )
+void do_groups(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     int gn, sn, col;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
     col = 0;
 
-    if ( argument[0] == '\0' )
-    {                           /* show all groups */
+    if (argument[0] == '\0')  	/* show all groups */
+    {
 
-        for ( gn = 0; gn < MAX_GROUP; gn++ )
+        for (gn = 0; gn < MAX_GROUP; gn++)
         {
-            if ( group_table[gn].name == NULL )
+            if (group_table[gn].name == NULL)
                 break;
-            if ( ch->pcdata->group_known[gn] )
+            if (ch->pcdata->group_known[gn])
             {
-                sprintf( buf, "%-20s ", group_table[gn].name );
-                send_to_char( buf, ch );
-                if ( ++col % 3 == 0 )
-                    send_to_char( "\n\r", ch );
+                sprintf(buf, "%-20s ", group_table[gn].name);
+                send_to_char(buf, ch);
+                if (++col % 3 == 0)
+                    send_to_char("\n\r", ch);
             }
         }
-        if ( col % 3 != 0 )
-            send_to_char( "\n\r", ch );
-        sprintf( buf, "Creation points: %d\n\r", ch->pcdata->points );
-        send_to_char( buf, ch );
+        if (col % 3 != 0)
+            send_to_char("\n\r", ch);
+        sprintf(buf, "Creation points: %d\n\r", ch->pcdata->points);
+        send_to_char(buf, ch);
         return;
     }
 
-    if ( !str_cmp( argument, "all" ) )  /* show all groups */
+    if (!str_cmp(argument, "all"))  	/* show all groups */
     {
-        for ( gn = 0; gn < MAX_GROUP; gn++ )
+        for (gn = 0; gn < MAX_GROUP; gn++)
         {
-            if ( group_table[gn].name == NULL )
+            if (group_table[gn].name == NULL)
                 break;
-            sprintf( buf, "%-20s ", group_table[gn].name );
-            send_to_char( buf, ch );
-            if ( ++col % 3 == 0 )
-                send_to_char( "\n\r", ch );
+            sprintf(buf, "%-20s ", group_table[gn].name);
+            send_to_char(buf, ch);
+            if (++col % 3 == 0)
+                send_to_char("\n\r", ch);
         }
-        if ( col % 3 != 0 )
-            send_to_char( "\n\r", ch );
+        if (col % 3 != 0)
+            send_to_char("\n\r", ch);
         return;
     }
 
     /* show the sub-members of a group */
-    gn = group_lookup( argument );
-    if ( gn == -1 )
+    gn = group_lookup(argument);
+    if (gn == -1)
     {
-        send_to_char( "No group of that name exist.\n\r", ch );
-        send_to_char( "Type 'groups all' or 'info all' for a full listing.\n\r",
-                      ch );
+        send_to_char("No group of that name exist.\n\r", ch);
+        send_to_char
+        ("Type 'groups all' or 'info all' for a full listing.\n\r",
+         ch);
         return;
     }
 
-    for ( sn = 0; sn < MAX_IN_GROUP; sn++ )
+    for (sn = 0; sn < MAX_IN_GROUP; sn++)
     {
-        if ( group_table[gn].spells[sn] == NULL )
+        if (group_table[gn].spells[sn] == NULL)
             break;
-        sprintf( buf, "%-20s ", group_table[gn].spells[sn] );
-        send_to_char( buf, ch );
-        if ( ++col % 3 == 0 )
-            send_to_char( "\n\r", ch );
+        sprintf(buf, "%-20s ", group_table[gn].spells[sn]);
+        send_to_char(buf, ch);
+        if (++col % 3 == 0)
+            send_to_char("\n\r", ch);
     }
-    if ( col % 3 != 0 )
-        send_to_char( "\n\r", ch );
+    if (col % 3 != 0)
+        send_to_char("\n\r", ch);
 }
 
 /* checks for skill improvement */
-void check_improve( CHAR_DATA * ch, int sn, bool success, int multiplier )
+void check_improve(CHAR_DATA * ch, int sn, bool success, int multiplier)
 {
     char buf[MAX_STRING_LENGTH];
     int chance;
 
-    if ( IS_NPC( ch ) )
+    if (IS_NPC(ch))
         return;
 
-    if ( ch->level < skill_table[sn].skill_level[ch->Class]
+    if (ch->level < skill_table[sn].skill_level[ch->Class]
             || skill_table[sn].rating[ch->Class] == 0
-            || ch->pcdata->learned[sn] == 0 || ch->pcdata->learned[sn] == 100 )
-        return;                 /* skill is not known */
+            || ch->pcdata->learned[sn] == 0 || ch->pcdata->learned[sn] == 100)
+        return;			/* skill is not known */
 
     /* check to see if the character has a chance to learn */
-    chance = 10 * int_app[get_curr_stat( ch, STAT_INT )].learn;
-    chance /= ( multiplier * skill_table[sn].rating[ch->Class] * 4 );
+    chance = 10 * int_app[get_curr_stat(ch, STAT_INT)].learn;
+    chance /= (multiplier * skill_table[sn].rating[ch->Class] * 4);
     chance += ch->level;
 
-    if ( number_range( 1, 1000 ) > chance )
+    if (number_range(1, 1000) > chance)
         return;
 
     /* now that the character has a CHANCE to learn, see if they really have */
 #ifdef SKILL_DEBUG
-    printf_to_char( ch, "checking on %s's skills", ch->name );
+    printf_to_char(ch, "checking on %s's skills", ch->name);
 #endif
-    if ( success )
+    if (success)
     {
-        chance = URANGE( 5, 100 - ch->pcdata->learned[sn], 95 );
-        if ( number_percent(  ) < chance )
+        chance = URANGE(5, 100 - ch->pcdata->learned[sn], 95);
+        if (number_percent() < chance)
         {
-            sprintf( buf, "You have become better at %s!\n\r",
-                     skill_table[sn].name );
-            send_to_char( buf, ch );
+            sprintf(buf, "You have become better at %s!\n\r",
+                    skill_table[sn].name);
+            send_to_char(buf, ch);
             ch->pcdata->learned[sn]++;
-            gain_exp( ch, 2 * skill_table[sn].rating[ch->Class] );
+            gain_exp(ch, 2 * skill_table[sn].rating[ch->Class]);
         }
     }
 
     else
     {
-        chance = URANGE( 5, ch->pcdata->learned[sn] / 2, 30 );
-        if ( number_percent(  ) < chance )
+        chance = URANGE(5, ch->pcdata->learned[sn] / 2, 30);
+        if (number_percent() < chance)
         {
-            sprintf( buf,
-                     "You learn from your mistakes, and your %s skill improves.\n\r",
-                     skill_table[sn].name );
-            send_to_char( buf, ch );
-            ch->pcdata->learned[sn] += number_range( 1, 3 );
-            ch->pcdata->learned[sn] = UMIN( ch->pcdata->learned[sn], 100 );
-            gain_exp( ch, 2 * skill_table[sn].rating[ch->Class] );
+            sprintf(buf,
+                    "You learn from your mistakes, and your %s skill improves.\n\r",
+                    skill_table[sn].name);
+            send_to_char(buf, ch);
+            ch->pcdata->learned[sn] += number_range(1, 3);
+            ch->pcdata->learned[sn] = UMIN(ch->pcdata->learned[sn], 100);
+            gain_exp(ch, 2 * skill_table[sn].rating[ch->Class]);
         }
     }
 }
 
 /* returns a group index number given the name */
-int group_lookup( const char *name )
+int group_lookup(const char *name)
 {
     int gn;
 
-    for ( gn = 0; gn < MAX_GROUP; gn++ )
+    for (gn = 0; gn < MAX_GROUP; gn++)
     {
-        if ( group_table[gn].name == NULL )
+        if (group_table[gn].name == NULL)
             break;
-        if ( LOWER( name[0] ) == LOWER( group_table[gn].name[0] )
-                && !str_prefix( name, group_table[gn].name ) )
+        if (LOWER(name[0]) == LOWER(group_table[gn].name[0])
+                && !str_prefix(name, group_table[gn].name))
             return gn;
     }
 
@@ -1710,50 +1757,50 @@ int group_lookup( const char *name )
 }
 
 /* recursively adds a group given its number -- uses group_add */
-void gn_add( CHAR_DATA * ch, int gn )
+void gn_add(CHAR_DATA * ch, int gn)
 {
     int i;
 
     ch->pcdata->group_known[gn] = TRUE;
-    for ( i = 0; i < MAX_IN_GROUP; i++ )
+    for (i = 0; i < MAX_IN_GROUP; i++)
     {
-        if ( group_table[gn].spells[i] == NULL )
+        if (group_table[gn].spells[i] == NULL)
             break;
-        group_add( ch, group_table[gn].spells[i], FALSE );
+        group_add(ch, group_table[gn].spells[i], FALSE);
     }
 }
 
 /* recusively removes a group given its number -- uses group_remove */
-void gn_remove( CHAR_DATA * ch, int gn )
+void gn_remove(CHAR_DATA * ch, int gn)
 {
     int i;
 
     ch->pcdata->group_known[gn] = FALSE;
 
-    for ( i = 0; i < MAX_IN_GROUP; i++ )
+    for (i = 0; i < MAX_IN_GROUP; i++)
     {
-        if ( group_table[gn].spells[i] == NULL )
+        if (group_table[gn].spells[i] == NULL)
             break;
-        group_remove( ch, group_table[gn].spells[i] );
+        group_remove(ch, group_table[gn].spells[i]);
     }
 }
 
 /* use for processing a skill or group for addition  */
-void group_add( CHAR_DATA * ch, const char *name, bool deduct )
+void group_add(CHAR_DATA * ch, const char *name, bool deduct)
 {
     int sn, gn;
 
-    if ( IS_NPC( ch ) )         /* NPCs do not have skills */
+    if (IS_NPC(ch))		/* NPCs do not have skills */
         return;
 
-    sn = skill_lookup( name );
+    sn = skill_lookup(name);
 
-    if ( sn != -1 )
+    if (sn != -1)
     {
-        if ( ch->pcdata->learned[sn] == 0 ) /* i.e. not known */
+        if (ch->pcdata->learned[sn] == 0)  	/* i.e. not known */
         {
             ch->pcdata->learned[sn] = 1;
-            if ( deduct )
+            if (deduct)
                 ch->pcdata->points += skill_table[sn].rating[ch->Class];
         }
         return;
@@ -1761,29 +1808,29 @@ void group_add( CHAR_DATA * ch, const char *name, bool deduct )
 
     /* now check groups */
 
-    gn = group_lookup( name );
+    gn = group_lookup(name);
 
-    if ( gn != -1 )
+    if (gn != -1)
     {
-        if ( ch->pcdata->group_known[gn] == FALSE )
+        if (ch->pcdata->group_known[gn] == FALSE)
         {
             ch->pcdata->group_known[gn] = TRUE;
-            if ( deduct )
+            if (deduct)
                 ch->pcdata->points += group_table[gn].rating[ch->Class];
         }
-        gn_add( ch, gn );       /* make sure all skills in the group are known */
+        gn_add(ch, gn);		/* make sure all skills in the group are known */
     }
 }
 
 /* used for processing a skill or group for deletion -- no points back! */
 
-void group_remove( CHAR_DATA * ch, const char *name )
+void group_remove(CHAR_DATA * ch, const char *name)
 {
     int sn, gn;
 
-    sn = skill_lookup( name );
+    sn = skill_lookup(name);
 
-    if ( sn != -1 )
+    if (sn != -1)
     {
         ch->pcdata->learned[sn] = 0;
         return;
@@ -1791,11 +1838,11 @@ void group_remove( CHAR_DATA * ch, const char *name )
 
     /* now check groups */
 
-    gn = group_lookup( name );
+    gn = group_lookup(name);
 
-    if ( gn != -1 && ch->pcdata->group_known[gn] == TRUE )
+    if (gn != -1 && ch->pcdata->group_known[gn] == TRUE)
     {
         ch->pcdata->group_known[gn] = FALSE;
-        gn_remove( ch, gn );    /* be sure to call gn_add on all remaining groups */
+        gn_remove(ch, gn);	/* be sure to call gn_add on all remaining groups */
     }
 }

@@ -41,35 +41,35 @@ I can think of to do to them.
 #define	PREF_NONE	4
 #define	MSL	(MAX_STRING_LENGTH)
 
-void wear_rand_obj  ( CHAR_DATA * ch, OBJ_DATA * obj ) ;
-OBJ_DATA *make_rand_armor  ( sh_int level, bool ismagic ) ;
-OBJ_DATA *make_random_obj  ( sh_int level, long posible_types ) ;
-OBJ_DATA *make_rand_ring  ( sh_int level ) ;
-OBJ_DATA *make_rand_weapon  ( sh_int level, bool ismagic ) ;
-OBJ_DATA *make_rand_bag  ( sh_int level ) ;
+void wear_rand_obj(CHAR_DATA * ch, OBJ_DATA * obj);
+OBJ_DATA *make_rand_armor(sh_int level, bool ismagic);
+OBJ_DATA *make_random_obj(sh_int level, long posible_types);
+OBJ_DATA *make_rand_ring(sh_int level);
+OBJ_DATA *make_rand_weapon(sh_int level, bool ismagic);
+OBJ_DATA *make_rand_bag(sh_int level);
 /*
 OBJ_DATA * make_rand_magic	 ( sh_int level ) ;
 OBJ_DATA * make_rand_light	 ( sh_int level ) ;
 */
-int get_random_material  ( sh_int level ) ;
+int get_random_material(sh_int level);
 
-void load_random_objs( CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex )
+void load_random_objs(CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex)
 {
     OBJ_DATA *obj;
     int actual_num;
     int i;
 
-    if ( mobIndex->rnd_obj_types == 0 )
+    if (mobIndex->rnd_obj_types == 0)
         return;
-    actual_num = number_range( 1, mobIndex->rnd_obj_num );
+    actual_num = number_range(1, mobIndex->rnd_obj_num);
 
-    for ( i = 0; i < actual_num; i++ )
+    for (i = 0; i < actual_num; i++)
     {
-        obj = make_random_obj( mob->level, mobIndex->rnd_obj_types );
-        if ( obj != NULL )
+        obj = make_random_obj(mob->level, mobIndex->rnd_obj_types);
+        if (obj != NULL)
         {
-            obj_to_char( obj, mob );
-            wear_rand_obj( mob, obj );
+            obj_to_char(obj, mob);
+            wear_rand_obj(mob, obj);
         }
         else
         {
@@ -79,12 +79,12 @@ void load_random_objs( CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex )
 
 }
 
-OBJ_DATA *make_random_obj( sh_int level, long possible_type )
+OBJ_DATA *make_random_obj(sh_int level, long possible_type)
 {
     int type = 0;
-    if ( IS_SET( possible_type, ITEM_RAND_ANY ) )
+    if (IS_SET(possible_type, ITEM_RAND_ANY))
     {
-        switch ( number_range( 1, 8 ) )
+        switch (number_range(1, 8))
         {
         case 1:
             type = ITEM_MAGIC_WEAPON;
@@ -112,9 +112,9 @@ OBJ_DATA *make_random_obj( sh_int level, long possible_type )
     }
     else
     {
-        while ( type == 0 )
+        while (type == 0)
         {
-            switch ( number_range( 1, 8 ) )
+            switch (number_range(1, 8))
             {
             case 1:
                 type = ITEM_MAGIC_WEAPON;
@@ -139,28 +139,28 @@ OBJ_DATA *make_random_obj( sh_int level, long possible_type )
                 /*  case 9: type = ITEM_MAGIC_ITEM; break;
                    case 10: type = ITEM_RAND_LIGHT; break; */
             }
-            if ( !IS_SET( possible_type, type ) )
+            if (!IS_SET(possible_type, type))
                 type = 0;
         }
     }
-    switch ( type )
+    switch (type)
     {
     case ITEM_PLAIN_ARMOR:
-        return make_rand_armor( level, FALSE );
+        return make_rand_armor(level, FALSE);
     case ITEM_MAGIC_ARMOR:
-        return make_rand_armor( level, TRUE );
+        return make_rand_armor(level, TRUE);
     case ITEM_RAND_RING:
-        return make_rand_ring( level );
-        /*	case ITEM_MAGIC_ITEM: return make_rand_armor( level, FALSE ); */
+        return make_rand_ring(level);
+        /*      case ITEM_MAGIC_ITEM: return make_rand_armor( level, FALSE ); */
     case ITEM_PLAIN_WEAPON:
-        return make_rand_weapon( level, FALSE );
+        return make_rand_weapon(level, FALSE);
     case ITEM_MAGIC_WEAPON:
-        return make_rand_weapon( level, TRUE );
+        return make_rand_weapon(level, TRUE);
     case ITEM_RAND_CONTAINER:
-        return make_rand_bag( level );
-        /*	case ITEM_RAND_LIGHT: return make_rand_ring( level ); */
+        return make_rand_bag(level);
+        /*      case ITEM_RAND_LIGHT: return make_rand_ring( level ); */
     }
-    log_string( "Returning NULL from make_random_obj." );
+    log_string("Returning NULL from make_random_obj.");
     return NULL;
 }
 
@@ -185,6 +185,7 @@ const struct rand_bag_material rand_bagmaterial_table[] =
     {"of flexibility", FALSE, 160},
     {"with a large hole", FALSE, 25}
 };
+
 /*
 struct rand_bag_type
 {
@@ -209,8 +210,9 @@ const struct rand_bag_type rand_bag_table[] =
     {"satchel", 25, ITEM_HOLD | ITEM_WEAR_ABOUT},
     {"belt", 20, ITEM_HOLD | ITEM_WEAR_WAIST},
     {"backpack", 30, ITEM_WEAR_ABOUT},
-    {"fanny pack", 5, ITEM_WEAR_WAIST}  /* just for fun! */
+    {"fanny pack", 5, ITEM_WEAR_WAIST}	/* just for fun! */
 };
+
 /*
 struct rand_light_type
 {
@@ -338,7 +340,7 @@ const struct rand_item_material rand_material_table[] =
     {"supreme", 26, 26, 86 * MAX_LEVEL / 100},
     {"ultimate", 27, 27, 90 * MAX_LEVEL / 100},
     {"kick-ass", 30, 30, 94 * MAX_LEVEL / 100},
-    {"supercalifragilistdexpealidosiousistic", 30, 30, 98}  /* he he he... */
+    {"supercalifragilistdexpealidosiousistic", 30, 30, 98}	/* he he he... */
 };
 
 /*
@@ -480,203 +482,205 @@ const struct rand_armor_type rand_armor_table[] =
  * Watch out if you modify this... I used a pretty funky algorithm
  * Just trust me when I say it works, ok?
  */
-int get_random_material( sh_int level )
+int get_random_material(sh_int level)
 {
     int poss[37];
     int upper = 0, lower = -1, x, material;
 
-    for ( x = 0; x <= 36; x++ )
+    for (x = 0; x <= 36; x++)
     {
         poss[x] = -1;
     }
-    for ( x = 0; x < TABLESIZE( rand_material_table ); x++ )
+    for (x = 0; x < TABLESIZE(rand_material_table); x++)
     {
-        if ( rand_material_table[x].level <= level + 5
-                && rand_material_table[x].level >= level - 5 )
+        if (rand_material_table[x].level <= level + 5
+                && rand_material_table[x].level >= level - 5)
         {
-            if ( lower == -1 )
+            if (lower == -1)
                 lower = x;
             upper = x;
         }
     }
-    x = ( rand_material_table[lower].level +
-          rand_material_table[upper].level ) / 2;
-    if ( x == rand_material_table[lower].level
-            || x == rand_material_table[upper].level )
+    x = (rand_material_table[lower].level +
+         rand_material_table[upper].level) / 2;
+    if (x == rand_material_table[lower].level
+            || x == rand_material_table[upper].level)
     {
         material = upper;
     }
     else
     {
         int y, z, p = 0, a;
-        for ( y = lower; y < upper; y++ )
+        for (y = lower; y < upper; y++)
         {
             a = 0;
-            if ( rand_material_table[y].level < x
-                    && rand_material_table[y].level > x - 6 )
-                for ( z = rand_material_table[y].level - x + 6; p < 36 && a < z;
-                        p++ )
+            if (rand_material_table[y].level < x
+                    && rand_material_table[y].level > x - 6)
+                for (z = rand_material_table[y].level - x + 6;
+                        p < 36 && a < z; p++)
                 {
                     poss[p] = y;
                     a++;
                 }
-            else if ( rand_material_table[y].level > x
-                      && rand_material_table[y].level < x + 6 )
-                for ( z = x + 6 - rand_material_table[y].level; p < 36 && a < z;
-                        p++ )
+            else if (rand_material_table[y].level > x
+                     && rand_material_table[y].level < x + 6)
+                for (z = x + 6 - rand_material_table[y].level;
+                        p < 36 && a < z; p++)
                 {
                     poss[p] = y;
                     a++;
                 }
             else
-                for ( z = 0; z < 6 && p < 36; z++ )
+                for (z = 0; z < 6 && p < 36; z++)
                 {
                     poss[p] = y;
                     p++;
                 }
         }
-        for ( a = 0; poss[a] != -1; a++ );
-        material = poss[number_range( 0, a - 1 )];
+        for (a = 0; poss[a] != -1; a++);
+        material = poss[number_range(0, a - 1)];
     }
-    return URANGE( 0, material, TABLESIZE( rand_material_table ) - 1 );
+    return URANGE(0, material, TABLESIZE(rand_material_table) - 1);
 }
 
-OBJ_DATA *make_rand_bag( sh_int level )
+OBJ_DATA *make_rand_bag(sh_int level)
 {
     int type, style, x;
     char buf[MSL], buf2[MSL], buf3[MSL];
     OBJ_DATA *obj;
-    type = number_range( 0, TABLESIZE( rand_bag_table ) - 1 );
-    style = number_range( 0, TABLESIZE( rand_bagmaterial_table ) - 1 );
-    obj = create_object( get_obj_index( RAND_VNUM_BAG ), level );
+    type = number_range(0, TABLESIZE(rand_bag_table) - 1);
+    style = number_range(0, TABLESIZE(rand_bagmaterial_table) - 1);
+    obj = create_object(get_obj_index(RAND_VNUM_BAG), level);
 
-    if ( rand_bagmaterial_table[style].isprefix == TRUE )
+    if (rand_bagmaterial_table[style].isprefix == TRUE)
     {
-        sprintf( buf, "%s %s", rand_bagmaterial_table[style].name,
-                 rand_bag_table[type].name );
-        free_string( &obj->name );
-        obj->name = str_dup( buf );
-        if ( rand_bagmaterial_table[style].name[0] == 'a' ||
+        sprintf(buf, "%s %s", rand_bagmaterial_table[style].name,
+                rand_bag_table[type].name);
+        free_string(&obj->name);
+        obj->name = str_dup(buf);
+        if (rand_bagmaterial_table[style].name[0] == 'a' ||
                 rand_bagmaterial_table[style].name[0] == 'e' ||
                 rand_bagmaterial_table[style].name[0] == 'i' ||
                 rand_bagmaterial_table[style].name[0] == 'o' ||
-                rand_bagmaterial_table[style].name[0] == 'u' )
-            sprintf( buf2, "an %s %s", rand_bagmaterial_table[style].name,
-                     rand_bag_table[type].name );
+                rand_bagmaterial_table[style].name[0] == 'u')
+            sprintf(buf2, "an %s %s", rand_bagmaterial_table[style].name,
+                    rand_bag_table[type].name);
         else
-            sprintf( buf2, "a %s %s", rand_bagmaterial_table[style].name,
-                     rand_bag_table[type].name );
-        free_string( &obj->short_descr );
-        obj->short_descr = str_dup( buf2 );
-        if ( rand_bagmaterial_table[style].name[0] == 'a' ||
+            sprintf(buf2, "a %s %s", rand_bagmaterial_table[style].name,
+                    rand_bag_table[type].name);
+        free_string(&obj->short_descr);
+        obj->short_descr = str_dup(buf2);
+        if (rand_bagmaterial_table[style].name[0] == 'a' ||
                 rand_bagmaterial_table[style].name[0] == 'e' ||
                 rand_bagmaterial_table[style].name[0] == 'i' ||
                 rand_bagmaterial_table[style].name[0] == 'o' ||
-                rand_bagmaterial_table[style].name[0] == 'u' )
-            sprintf( buf3, "An %s %s lies here.",
-                     rand_bagmaterial_table[style].name,
-                     rand_bag_table[type].name );
+                rand_bagmaterial_table[style].name[0] == 'u')
+            sprintf(buf3, "An %s %s lies here.",
+                    rand_bagmaterial_table[style].name,
+                    rand_bag_table[type].name);
         else
-            sprintf( buf3, "A %s %s lies here.",
-                     rand_bagmaterial_table[style].name,
-                     rand_bag_table[type].name );
-        free_string( &obj->description );
-        obj->description = str_dup( buf3 );
+            sprintf(buf3, "A %s %s lies here.",
+                    rand_bagmaterial_table[style].name,
+                    rand_bag_table[type].name);
+        free_string(&obj->description);
+        obj->description = str_dup(buf3);
     }
     else
     {
-        sprintf( buf, "%s %s", rand_bag_table[type].name,
-                 rand_bagmaterial_table[style].name );
-        free_string( &obj->name );
-        obj->name = str_dup( buf );
-        if ( rand_bag_table[type].name[0] == 'a' ||
+        sprintf(buf, "%s %s", rand_bag_table[type].name,
+                rand_bagmaterial_table[style].name);
+        free_string(&obj->name);
+        obj->name = str_dup(buf);
+        if (rand_bag_table[type].name[0] == 'a' ||
                 rand_bag_table[type].name[0] == 'e' ||
                 rand_bag_table[type].name[0] == 'i' ||
                 rand_bag_table[type].name[0] == 'o' ||
-                rand_bag_table[type].name[0] == 'u' )
-            sprintf( buf2, "an %s %s", rand_bag_table[type].name,
-                     rand_bagmaterial_table[style].name );
+                rand_bag_table[type].name[0] == 'u')
+            sprintf(buf2, "an %s %s", rand_bag_table[type].name,
+                    rand_bagmaterial_table[style].name);
         else
-            sprintf( buf2, "a %s %s", rand_bag_table[type].name,
-                     rand_bagmaterial_table[style].name );
-        free_string( &obj->short_descr );
-        obj->short_descr = str_dup( buf2 );
-        if ( rand_bag_table[type].name[0] == 'a' ||
+            sprintf(buf2, "a %s %s", rand_bag_table[type].name,
+                    rand_bagmaterial_table[style].name);
+        free_string(&obj->short_descr);
+        obj->short_descr = str_dup(buf2);
+        if (rand_bag_table[type].name[0] == 'a' ||
                 rand_bag_table[type].name[0] == 'e' ||
                 rand_bag_table[type].name[0] == 'i' ||
                 rand_bag_table[type].name[0] == 'o' ||
-                rand_bag_table[type].name[0] == 'u' )
-            sprintf( buf3, "An %s %s lies here.", rand_bag_table[type].name,
-                     rand_bagmaterial_table[style].name );
+                rand_bag_table[type].name[0] == 'u')
+            sprintf(buf3, "An %s %s lies here.", rand_bag_table[type].name,
+                    rand_bagmaterial_table[style].name);
         else
-            sprintf( buf3, "A %s %s lies here.", rand_bag_table[type].name,
-                     rand_bagmaterial_table[style].name );
-        free_string( &obj->description );
-        obj->description = str_dup( buf3 );
+            sprintf(buf3, "A %s %s lies here.", rand_bag_table[type].name,
+                    rand_bagmaterial_table[style].name);
+        free_string(&obj->description);
+        obj->description = str_dup(buf3);
     }
-    obj->level = number_range( 0, level );
-    obj->wear_flags = ( short ) ( ITEM_TAKE | rand_bag_table[type].wear_loc );
+    obj->level = number_range(0, level);
+    obj->wear_flags = (short) (ITEM_TAKE | rand_bag_table[type].wear_loc);
     x = rand_bag_table[type].capacity;
     x *= 100;
     x /= rand_bagmaterial_table[style].size;
-    obj->value[0] = x;          /* hopefully this is the right obj value :) */
+    obj->value[0] = x;		/* hopefully this is the right obj value :) */
     return obj;
 }
 
-OBJ_DATA *make_rand_weapon( sh_int level, bool ismagic )
+OBJ_DATA *make_rand_weapon(sh_int level, bool ismagic)
 {
     int material, type;
     char buf[MSL], buf2[MSL], buf3[MSL];
     OBJ_DATA *obj;
-    material = get_random_material( level );
-    type = number_range( 0, TABLESIZE( rand_weapon_table ) - 1 );
-    obj = create_object( get_obj_index( RAND_VNUM_WEAPON ), level );
-    sprintf( buf, "%s %s", rand_material_table[material].name,
-             rand_weapon_table[type].name );
-    free_string( &obj->name );
-    obj->name = str_dup( buf );
+    material = get_random_material(level);
+    type = number_range(0, TABLESIZE(rand_weapon_table) - 1);
+    obj = create_object(get_obj_index(RAND_VNUM_WEAPON), level);
+    sprintf(buf, "%s %s", rand_material_table[material].name,
+            rand_weapon_table[type].name);
+    free_string(&obj->name);
+    obj->name = str_dup(buf);
 
-    if ( rand_material_table[material].name[0] == 'a' ||
+    if (rand_material_table[material].name[0] == 'a' ||
             rand_material_table[material].name[0] == 'e' ||
             rand_material_table[material].name[0] == 'i' ||
             rand_material_table[material].name[0] == 'o' ||
-            rand_material_table[material].name[0] == 'u' )
-        sprintf( buf2, "an %s %s", rand_material_table[material].name,
-                 rand_weapon_table[type].name );
+            rand_material_table[material].name[0] == 'u')
+        sprintf(buf2, "an %s %s", rand_material_table[material].name,
+                rand_weapon_table[type].name);
     else
-        sprintf( buf2, "a %s %s", rand_material_table[material].name,
-                 rand_weapon_table[type].name );
-    free_string( &obj->short_descr );
-    obj->short_descr = str_dup( buf2 );
+        sprintf(buf2, "a %s %s", rand_material_table[material].name,
+                rand_weapon_table[type].name);
+    free_string(&obj->short_descr);
+    obj->short_descr = str_dup(buf2);
 
-    if ( rand_material_table[material].name[0] == 'a' ||
+    if (rand_material_table[material].name[0] == 'a' ||
             rand_material_table[material].name[0] == 'e' ||
             rand_material_table[material].name[0] == 'i' ||
             rand_material_table[material].name[0] == 'o' ||
-            rand_material_table[material].name[0] == 'u' )
-        sprintf( buf3, "An %s %s lies here.",
-                 rand_material_table[material].name,
-                 rand_weapon_table[type].name );
+            rand_material_table[material].name[0] == 'u')
+        sprintf(buf3, "An %s %s lies here.",
+                rand_material_table[material].name,
+                rand_weapon_table[type].name);
     else
-        sprintf( buf3, "A %s %s lies here.", rand_material_table[material].name,
-                 rand_weapon_table[type].name );
-    free_string( &obj->description );
-    obj->description = str_dup( buf3 );
+        sprintf(buf3, "A %s %s lies here.",
+                rand_material_table[material].name,
+                rand_weapon_table[type].name);
+    free_string(&obj->description);
+    obj->description = str_dup(buf3);
     obj->level = level;
     obj->value[0] = rand_weapon_table[type].weapon_type;
-    obj->value[1] = ( level / 10 ) + 2;
-    /*	obj->value[2] = number_range( 3, 3 +
-    rand_weapon_table[type].damage_mod );*/
-    obj->value[2] = number_range( 3, 3 + level / 3 );
-    obj->value[3] = 0;          /* every random weapon will just "hit" for now... bah */
-    obj->value[4] = 0;          /* maybe later give the weapon a chance to be flaming, whatever */
-    if ( ismagic == TRUE && rand_weapon_table[type].magic_mod > 0 )
+    obj->value[1] = (level / 10) + 2;
+    /*  obj->value[2] = number_range( 3, 3 +
+       rand_weapon_table[type].damage_mod ); */
+    obj->value[2] = number_range(3, 3 + level / 3);
+    obj->value[3] = 0;		/* every random weapon will just "hit" for now... bah */
+    obj->value[4] = 0;		/* maybe later give the weapon a chance to be flaming, whatever */
+    if (ismagic == TRUE && rand_weapon_table[type].magic_mod > 0)
     {
         /* I snatched this code from the freely distributed ROM random obj code(which sucks :),
          * but I couldn't find the name of who wrote it.  Anyone know?
          */
         static int attrib_types[] =
-            { APPLY_STR, APPLY_STR, APPLY_DEX, APPLY_INT, APPLY_STR, APPLY_WIS,
+            { APPLY_STR, APPLY_STR, APPLY_DEX, APPLY_INT, APPLY_STR,
+              APPLY_WIS,
               APPLY_DEX, APPLY_DEX, APPLY_CON
             };
         static int power_types[] =
@@ -684,43 +688,44 @@ OBJ_DATA *make_rand_weapon( sh_int level, bool ismagic )
         static int combat_types[] =
             { APPLY_HITROLL, APPLY_HITROLL, APPLY_DAMROLL, APPLY_DAMROLL };
 
-        AFFECT_DATA *paf = alloc_perm( sizeof( *paf ) );
+        AFFECT_DATA *paf = alloc_perm(sizeof(*paf));
         paf->type = -999;
         paf->duration = -1;
         paf->bitvector = 0;
         paf->next = obj->affected;
         obj->affected = paf;
-        switch ( number_bits( 2 ) )
+        switch (number_bits(2))
         {
         case 0:
             paf->location =
-                attrib_types[number_range( 0, TABLESIZE( attrib_types ) - 1 )];
+                attrib_types[number_range(0, TABLESIZE(attrib_types) - 1)];
             paf->modifier =
-                number_range( 1, rand_weapon_table[type].magic_mod );
+                number_range(1, rand_weapon_table[type].magic_mod);
             break;
         case 1:
             paf->location =
-                power_types[number_range( 0, TABLESIZE( power_types ) - 1 )];
+                power_types[number_range(0, TABLESIZE(power_types) - 1)];
             paf->modifier =
-                UMAX( 1,
-                      number_range( level / 2,
-                                    level +
-                                    rand_material_table[material].magic_mod ) );
+                UMAX(1,
+                     number_range(level / 2,
+                                  level +
+                                  rand_material_table[material].
+                                  magic_mod));
             break;
         case 2:
         case 3:
             paf->location =
-                combat_types[number_range( 0, TABLESIZE( combat_types ) - 1 )];
-            paf->modifier = number_range( 1, level / 8 + 1 );
+                combat_types[number_range(0, TABLESIZE(combat_types) - 1)];
+            paf->modifier = number_range(1, level / 8 + 1);
             break;
         }
-        if ( paf->location == APPLY_AC )
+        if (paf->location == APPLY_AC)
             paf->modifier *= -1;
     }
     return obj;
 }
 
-OBJ_DATA *make_rand_ring( sh_int level )
+OBJ_DATA *make_rand_ring(sh_int level)
 {
     int material, type, x;
     char buf[MSL];
@@ -735,49 +740,49 @@ OBJ_DATA *make_rand_ring( sh_int level )
         { APPLY_HITROLL, APPLY_HITROLL, APPLY_DAMROLL, APPLY_SAVING_SPELL,
           APPLY_DAMROLL
         };
-    AFFECT_DATA *paf = alloc_perm( sizeof( *paf ) );
-    material = get_random_material( level );
-    type = number_range( 0, TABLESIZE( rand_ring_table ) - 1 );
-    obj = create_object( get_obj_index( RAND_VNUM_RING ), level );
-    sprintf( buf, "%s %s ring", rand_material_table[material].name,
-             rand_ring_table[type].name );
-    free_string( &obj->name );
-    obj->name = str_dup( buf );
+    AFFECT_DATA *paf = alloc_perm(sizeof(*paf));
+    material = get_random_material(level);
+    type = number_range(0, TABLESIZE(rand_ring_table) - 1);
+    obj = create_object(get_obj_index(RAND_VNUM_RING), level);
+    sprintf(buf, "%s %s ring", rand_material_table[material].name,
+            rand_ring_table[type].name);
+    free_string(&obj->name);
+    obj->name = str_dup(buf);
 
-    if ( rand_ring_table[type].name[0] == 'a' ||
+    if (rand_ring_table[type].name[0] == 'a' ||
             rand_ring_table[type].name[0] == 'e' ||
             rand_ring_table[type].name[0] == 'i' ||
             rand_ring_table[type].name[0] == 'o' ||
-            rand_ring_table[type].name[0] == 'u' )
-        sprintf( buf, "an %s %s ring", rand_ring_table[type].name,
-                 rand_material_table[material].name );
+            rand_ring_table[type].name[0] == 'u')
+        sprintf(buf, "an %s %s ring", rand_ring_table[type].name,
+                rand_material_table[material].name);
     else
-        sprintf( buf, "a %s %s ring", rand_ring_table[type].name,
-                 rand_material_table[material].name );
-    free_string( &obj->short_descr );
-    obj->short_descr = str_dup( buf );
-    if ( rand_ring_table[type].name[0] == 'a' ||
+        sprintf(buf, "a %s %s ring", rand_ring_table[type].name,
+                rand_material_table[material].name);
+    free_string(&obj->short_descr);
+    obj->short_descr = str_dup(buf);
+    if (rand_ring_table[type].name[0] == 'a' ||
             rand_ring_table[type].name[0] == 'e' ||
             rand_ring_table[type].name[0] == 'i' ||
             rand_ring_table[type].name[0] == 'o' ||
-            rand_ring_table[type].name[0] == 'u' )
-        sprintf( buf, "An %s %s ring lies on the ground here.",
-                 rand_ring_table[type].name,
-                 rand_material_table[material].name );
+            rand_ring_table[type].name[0] == 'u')
+        sprintf(buf, "An %s %s ring lies on the ground here.",
+                rand_ring_table[type].name,
+                rand_material_table[material].name);
     else
-        sprintf( buf, "A %s %s ring lies on the ground here.",
-                 rand_ring_table[type].name,
-                 rand_material_table[material].name );
+        sprintf(buf, "A %s %s ring lies on the ground here.",
+                rand_ring_table[type].name,
+                rand_material_table[material].name);
 
-    free_string( &obj->description );
-    obj->description = str_dup( buf );
-    for ( x = 0; x < 3; x++ )
+    free_string(&obj->description);
+    obj->description = str_dup(buf);
+    for (x = 0; x < 3; x++)
         obj->value[x] =
-            ( rand_material_table[material].coolness + ( level / 5 ) +
-              rand_ring_table[type].coolness ) / 10;
+            (rand_material_table[material].coolness + (level / 5) +
+             rand_ring_table[type].coolness) / 10;
     obj->value[3] =
-        ( rand_material_table[material].coolness + ( level / 5 ) +
-          rand_ring_table[type].coolness ) / 4;
+        (rand_material_table[material].coolness + (level / 5) +
+         rand_ring_table[type].coolness) / 4;
     obj->extra_flags = rand_ring_table[type].extra_flags;
     obj->level = level;
     paf->type = -999;
@@ -785,199 +790,200 @@ OBJ_DATA *make_rand_ring( sh_int level )
     paf->bitvector = 0;
     paf->next = obj->affected;
     obj->affected = paf;
-    switch ( number_bits( 2 ) )
+    switch (number_bits(2))
     {
     case 0:
         paf->location =
-            attrib_types[number_range( 0, TABLESIZE( attrib_types ) - 1 )];
+            attrib_types[number_range(0, TABLESIZE(attrib_types) - 1)];
         paf->modifier =
-            number_range( 1, 1 + ( rand_ring_table[type].coolness / 2 ) );
+            number_range(1, 1 + (rand_ring_table[type].coolness / 2));
         break;
     case 1:
         paf->location =
-            power_types[number_range( 0, TABLESIZE( power_types ) - 1 )];
-        if ( paf->location == APPLY_AC )
+            power_types[number_range(0, TABLESIZE(power_types) - 1)];
+        if (paf->location == APPLY_AC)
             paf->modifier *= -1;
         paf->modifier =
-            UMAX( 1,
-                  number_range( level / 2,
-                                level +
-                                rand_material_table[material].magic_mod ) );
+            UMAX(1,
+                 number_range(level / 2,
+                              level +
+                              rand_material_table[material].magic_mod));
         break;
     case 2:
     case 3:
         paf->location =
-            combat_types[number_range( 0, TABLESIZE( combat_types ) - 1 )];
+            combat_types[number_range(0, TABLESIZE(combat_types) - 1)];
         paf->modifier =
-            number_range( 1,
-                          ( level / 8 ) +
-                          ( rand_ring_table[type].coolness / 3 ) + 1 );
+            number_range(1,
+                         (level / 8) +
+                         (rand_ring_table[type].coolness / 3) + 1);
         break;
     }
     return obj;
 }
 
-OBJ_DATA *make_rand_armor( sh_int level, bool ismagic )
+OBJ_DATA *make_rand_armor(sh_int level, bool ismagic)
 {
     OBJ_DATA *obj;
     char buf[MSL];
     char logbuf[MSL];
     int x, material, type = 0;
-    material = get_random_material( level );
-    type = number_range( 0, TABLESIZE( rand_armor_table ) - 1 );
-    obj = create_object( get_obj_index( RAND_VNUM_ARMOR ), level );
-    sprintf( buf, "%s %s", rand_material_table[material].name,
-             rand_armor_table[type].name );
-    free_string( &obj->name );
-    obj->name = str_dup( buf );
+    material = get_random_material(level);
+    type = number_range(0, TABLESIZE(rand_armor_table) - 1);
+    obj = create_object(get_obj_index(RAND_VNUM_ARMOR), level);
+    sprintf(buf, "%s %s", rand_material_table[material].name,
+            rand_armor_table[type].name);
+    free_string(&obj->name);
+    obj->name = str_dup(buf);
 
-    if ( ( rand_material_table[material].name[0] == 'a' ||
+    if ((rand_material_table[material].name[0] == 'a' ||
             rand_material_table[material].name[0] == 'e' ||
             rand_material_table[material].name[0] == 'i' ||
             rand_material_table[material].name[0] == 'o' ||
-            rand_material_table[material].name[0] == 'u' ) &&
-            rand_armor_table[type].p_type == PREF_A )
-        sprintf( buf, "an %s %s", rand_material_table[material].name,
-                 rand_armor_table[type].name );
+            rand_material_table[material].name[0] == 'u') &&
+            rand_armor_table[type].p_type == PREF_A)
+        sprintf(buf, "an %s %s", rand_material_table[material].name,
+                rand_armor_table[type].name);
     else
-        switch ( rand_armor_table[type].p_type )
+        switch (rand_armor_table[type].p_type)
         {
         case PREF_A:
-            sprintf( buf, "a %s %s", rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "a %s %s", rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case PREF_NONE:
-            sprintf( buf, "%s %s", rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "%s %s", rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case PREF_SOME:
-            sprintf( buf, "some %s %s", rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "some %s %s", rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         }
-    free_string( &obj->short_descr );
-    obj->short_descr = str_dup( buf );
+    free_string(&obj->short_descr);
+    obj->short_descr = str_dup(buf);
 
-    if ( ( rand_material_table[material].name[0] == 'a' ||
+    if ((rand_material_table[material].name[0] == 'a' ||
             rand_material_table[material].name[0] == 'e' ||
             rand_material_table[material].name[0] == 'i' ||
             rand_material_table[material].name[0] == 'o' ||
-            rand_material_table[material].name[0] == 'u' ) &&
-            rand_armor_table[type].p_type == PREF_A )
-        switch ( number_range( 1, 3 ) )
+            rand_material_table[material].name[0] == 'u') &&
+            rand_armor_table[type].p_type == PREF_A)
+        switch (number_range(1, 3))
         {
         case 1:
-            sprintf( buf, "An %s %s lies on the ground here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "An %s %s lies on the ground here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case 2:
-            sprintf( buf, "An %s %s has been dropped here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "An %s %s has been dropped here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case 3:
-            sprintf( buf, "An %s %s is resting here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "An %s %s is resting here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         }
-    else if ( rand_armor_table[type].p_type == PREF_A )
+    else if (rand_armor_table[type].p_type == PREF_A)
     {
-        switch ( number_range( 1, 3 ) )
+        switch (number_range(1, 3))
         {
         case 1:
-            sprintf( buf, "A %s %s lies on the ground here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "A %s %s lies on the ground here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case 2:
-            sprintf( buf, "A %s %s has been dropped here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "A %s %s has been dropped here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case 3:
-            sprintf( buf, "A %s %s is resting here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "A %s %s is resting here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         }
     }
-    else if ( rand_armor_table[type].p_type == PREF_SOME )
+    else if (rand_armor_table[type].p_type == PREF_SOME)
     {
-        switch ( number_range( 1, 4 ) )
+        switch (number_range(1, 4))
         {
         case 1:
-            sprintf( buf, "Some %s %s lie on the ground here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "Some %s %s lie on the ground here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case 2:
-            sprintf( buf, "Some %s made out of %s lie here.",
-                     rand_armor_table[type].name,
-                     rand_material_table[material].name );
+            sprintf(buf, "Some %s made out of %s lie here.",
+                    rand_armor_table[type].name,
+                    rand_material_table[material].name);
             break;
         case 3:
-            sprintf( buf, "Some %s %s are resting here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "Some %s %s are resting here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case 4:
-            sprintf( buf, "Some %s %s have been dropped here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "Some %s %s have been dropped here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         }
     }
-    else if ( rand_armor_table[type].p_type == PREF_NONE )
+    else if (rand_armor_table[type].p_type == PREF_NONE)
     {
-        switch ( number_range( 1, 3 ) )
+        switch (number_range(1, 3))
         {
         case 1:
-            sprintf( buf, "%s %s lies on the ground here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "%s %s lies on the ground here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case 2:
-            sprintf( buf, "%s %s is resting here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "%s %s is resting here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         case 3:
-            sprintf( buf, "%s %s has been dropped here.",
-                     rand_material_table[material].name,
-                     rand_armor_table[type].name );
+            sprintf(buf, "%s %s has been dropped here.",
+                    rand_material_table[material].name,
+                    rand_armor_table[type].name);
             break;
         }
     }
-    else if ( rand_armor_table[type].p_type == PREF_AN )
-        sprintf( buf, "An %s made of %s lies here.",
-                 rand_armor_table[type].name,
-                 rand_material_table[material].name );
+    else if (rand_armor_table[type].p_type == PREF_AN)
+        sprintf(buf, "An %s made of %s lies here.",
+                rand_armor_table[type].name,
+                rand_material_table[material].name);
     else
     {
-        sprintf( buf,
-                 "Buggy long description.  Tell an IMP if you see this description." );
-        sprintf( logbuf, "make_rand_obj Long Desc bug, material=%s, type=%s. ",
-                 rand_material_table[material].name,
-                 rand_armor_table[type].name );
-        log_string( logbuf );
+        sprintf(buf,
+                "Buggy long description.  Tell an IMP if you see this description.");
+        sprintf(logbuf,
+                "make_rand_obj Long Desc bug, material=%s, type=%s. ",
+                rand_material_table[material].name,
+                rand_armor_table[type].name);
+        log_string(logbuf);
     }
-    free_string( &obj->description );
-    buf[0] = UPPER( buf[0] );
-    obj->description = str_dup( buf );
-    for ( x = 0; x < 3; x++ )
+    free_string(&obj->description);
+    buf[0] = UPPER(buf[0]);
+    obj->description = str_dup(buf);
+    for (x = 0; x < 3; x++)
         obj->value[x] =
-            ( rand_material_table[material].coolness +
-              rand_armor_table[type].protect_mod + ( level / 2 ) ) / 4;
+            (rand_material_table[material].coolness +
+             rand_armor_table[type].protect_mod + (level / 2)) / 4;
     obj->value[3] =
-        ( rand_material_table[material].coolness +
-          rand_armor_table[type].protect_mod + ( level / 2 ) ) / 6;
+        (rand_material_table[material].coolness +
+         rand_armor_table[type].protect_mod + (level / 2)) / 6;
     obj->level =
-        UMIN( level, number_fuzzy( rand_material_table[material].level ) );
+        UMIN(level, number_fuzzy(rand_material_table[material].level));
     obj->wear_flags = rand_armor_table[type].wearloc | ITEM_TAKE;
 
-    if ( ismagic == TRUE && rand_armor_table[type].magic_mod > 0 )
+    if (ismagic == TRUE && rand_armor_table[type].magic_mod > 0)
     {
         /* I snatched this code from the freely distributed ROM random obj code(which sucks :),
          * but I couldn't find the name of who wrote it.  Anyone know?
@@ -993,36 +999,37 @@ OBJ_DATA *make_rand_armor( sh_int level, bool ismagic )
               APPLY_SAVING_SPELL, APPLY_DAMROLL
             };
 
-        AFFECT_DATA *paf = alloc_perm( sizeof( *paf ) );
+        AFFECT_DATA *paf = alloc_perm(sizeof(*paf));
         paf->type = -999;
         paf->duration = -1;
         paf->bitvector = 0;
         paf->next = obj->affected;
         obj->affected = paf;
-        switch ( number_bits( 2 ) )
+        switch (number_bits(2))
         {
         case 0:
             paf->location =
-                attrib_types[number_range( 0, TABLESIZE( attrib_types ) - 1 )];
+                attrib_types[number_range(0, TABLESIZE(attrib_types) - 1)];
             paf->modifier = 1;
             break;
         case 1:
             paf->location =
-                power_types[number_range( 0, TABLESIZE( power_types ) - 1 )];
+                power_types[number_range(0, TABLESIZE(power_types) - 1)];
             paf->modifier =
-                UMAX( 1,
-                      number_range( level / 2,
-                                    level +
-                                    rand_material_table[material].magic_mod ) );
+                UMAX(1,
+                     number_range(level / 2,
+                                  level +
+                                  rand_material_table[material].
+                                  magic_mod));
             break;
         case 2:
         case 3:
             paf->location =
-                combat_types[number_range( 0, TABLESIZE( combat_types ) - 1 )];
-            paf->modifier = number_range( 1, level / 8 + 1 );
+                combat_types[number_range(0, TABLESIZE(combat_types) - 1)];
+            paf->modifier = number_range(1, level / 8 + 1);
             break;
         }
-        if ( paf->location == APPLY_AC )
+        if (paf->location == APPLY_AC)
             paf->modifier *= -1;
     }
     return obj;
@@ -1030,216 +1037,215 @@ OBJ_DATA *make_rand_armor( sh_int level, bool ismagic )
 }
 
 /* Essentially the "wear" command with all the act(whatever) taken out */
-void wear_rand_obj( CHAR_DATA * ch, OBJ_DATA * obj )
+void wear_rand_obj(CHAR_DATA * ch, OBJ_DATA * obj)
 {
-    if ( ch->level < obj->level )
+    if (ch->level < obj->level)
         return;
-    if ( obj->item_type == ITEM_LIGHT )
+    if (obj->item_type == ITEM_LIGHT)
     {
-        if ( get_eq_char( ch, WEAR_LIGHT ) != NULL )
+        if (get_eq_char(ch, WEAR_LIGHT) != NULL)
             return;
-        equip_char( ch, obj, WEAR_LIGHT );
+        equip_char(ch, obj, WEAR_LIGHT);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_FINGER ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_FINGER))
     {
-        if ( get_eq_char( ch, WEAR_FINGER_L ) != NULL
-                && get_eq_char( ch, WEAR_FINGER_R ) != NULL )
+        if (get_eq_char(ch, WEAR_FINGER_L) != NULL
+                && get_eq_char(ch, WEAR_FINGER_R) != NULL)
             return;
 
-        if ( get_eq_char( ch, WEAR_FINGER_L ) == NULL )
+        if (get_eq_char(ch, WEAR_FINGER_L) == NULL)
         {
-            equip_char( ch, obj, WEAR_FINGER_L );
+            equip_char(ch, obj, WEAR_FINGER_L);
             return;
         }
 
-        if ( get_eq_char( ch, WEAR_FINGER_R ) == NULL )
+        if (get_eq_char(ch, WEAR_FINGER_R) == NULL)
         {
-            equip_char( ch, obj, WEAR_FINGER_R );
+            equip_char(ch, obj, WEAR_FINGER_R);
             return;
         }
 
-        bug( "Wear_obj_random: no free finger.", 0 );
+        bug("Wear_obj_random: no free finger.", 0);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_NECK ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_NECK))
     {
-        if ( get_eq_char( ch, WEAR_NECK_1 ) != NULL
-                && get_eq_char( ch, WEAR_NECK_2 ) != NULL )
+        if (get_eq_char(ch, WEAR_NECK_1) != NULL
+                && get_eq_char(ch, WEAR_NECK_2) != NULL)
             return;
 
-        if ( get_eq_char( ch, WEAR_NECK_1 ) == NULL )
+        if (get_eq_char(ch, WEAR_NECK_1) == NULL)
         {
-            equip_char( ch, obj, WEAR_NECK_1 );
+            equip_char(ch, obj, WEAR_NECK_1);
             return;
         }
 
-        if ( get_eq_char( ch, WEAR_NECK_2 ) == NULL )
+        if (get_eq_char(ch, WEAR_NECK_2) == NULL)
         {
-            equip_char( ch, obj, WEAR_NECK_2 );
+            equip_char(ch, obj, WEAR_NECK_2);
             return;
         }
 
-        bug( "Wear_obj: no free neck.", 0 );
+        bug("Wear_obj: no free neck.", 0);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_BODY ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_BODY))
     {
-        if ( get_eq_char( ch, WEAR_BODY ) != NULL )
+        if (get_eq_char(ch, WEAR_BODY) != NULL)
             return;
-        equip_char( ch, obj, WEAR_BODY );
+        equip_char(ch, obj, WEAR_BODY);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_HEAD ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_HEAD))
     {
-        if ( get_eq_char( ch, WEAR_HEAD ) != NULL )
+        if (get_eq_char(ch, WEAR_HEAD) != NULL)
             return;
-        equip_char( ch, obj, WEAR_HEAD );
+        equip_char(ch, obj, WEAR_HEAD);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_LEGS ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_LEGS))
     {
-        if ( get_eq_char( ch, WEAR_LEGS ) != NULL )
+        if (get_eq_char(ch, WEAR_LEGS) != NULL)
             return;
-        equip_char( ch, obj, WEAR_LEGS );
+        equip_char(ch, obj, WEAR_LEGS);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_FEET ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_FEET))
     {
-        if ( get_eq_char( ch, WEAR_FEET ) != NULL )
+        if (get_eq_char(ch, WEAR_FEET) != NULL)
             return;
-        equip_char( ch, obj, WEAR_FEET );
+        equip_char(ch, obj, WEAR_FEET);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_HANDS ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_HANDS))
     {
-        if ( get_eq_char( ch, WEAR_HANDS ) != NULL )
+        if (get_eq_char(ch, WEAR_HANDS) != NULL)
             return;
-        equip_char( ch, obj, WEAR_HANDS );
+        equip_char(ch, obj, WEAR_HANDS);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_ARMS ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_ARMS))
     {
-        if ( get_eq_char( ch, WEAR_ARMS ) != NULL )
+        if (get_eq_char(ch, WEAR_ARMS) != NULL)
             return;
-        equip_char( ch, obj, WEAR_ARMS );
+        equip_char(ch, obj, WEAR_ARMS);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_ABOUT ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_ABOUT))
     {
-        if ( get_eq_char( ch, WEAR_ABOUT ) != NULL )
+        if (get_eq_char(ch, WEAR_ABOUT) != NULL)
             return;
-        equip_char( ch, obj, WEAR_ABOUT );
+        equip_char(ch, obj, WEAR_ABOUT);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_WAIST ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_WAIST))
     {
-        if ( get_eq_char( ch, WEAR_WAIST ) != NULL )
+        if (get_eq_char(ch, WEAR_WAIST) != NULL)
             return;
-        equip_char( ch, obj, WEAR_WAIST );
+        equip_char(ch, obj, WEAR_WAIST);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_WRIST ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_WRIST))
     {
-        if ( get_eq_char( ch, WEAR_WRIST_L ) != NULL
-                && get_eq_char( ch, WEAR_WRIST_R ) != NULL )
+        if (get_eq_char(ch, WEAR_WRIST_L) != NULL
+                && get_eq_char(ch, WEAR_WRIST_R) != NULL)
             return;
 
-        if ( get_eq_char( ch, WEAR_WRIST_L ) == NULL )
+        if (get_eq_char(ch, WEAR_WRIST_L) == NULL)
         {
-            equip_char( ch, obj, WEAR_WRIST_L );
+            equip_char(ch, obj, WEAR_WRIST_L);
             return;
         }
 
-        if ( get_eq_char( ch, WEAR_WRIST_R ) == NULL )
+        if (get_eq_char(ch, WEAR_WRIST_R) == NULL)
         {
-            equip_char( ch, obj, WEAR_WRIST_R );
+            equip_char(ch, obj, WEAR_WRIST_R);
             return;
         }
 
-        bug( "Wear_obj: no free wrist.", 0 );
+        bug("Wear_obj: no free wrist.", 0);
         return;
     }
 
-    if ( CAN_WEAR( obj, ITEM_WEAR_SHIELD ) )
+    if (CAN_WEAR(obj, ITEM_WEAR_SHIELD))
     {
         OBJ_DATA *weapon;
         OBJ_DATA *second_weapon;
 
-        if ( get_eq_char( ch, WEAR_SHIELD ) != NULL )
+        if (get_eq_char(ch, WEAR_SHIELD) != NULL)
             return;
 
-        weapon = get_eq_char( ch, WEAR_WIELD );
-        second_weapon = get_eq_char( ch, WEAR_SECOND_WIELD );
-        if ( ( ( weapon != NULL ) && ( ch->size < SIZE_LARGE )
-                && IS_WEAPON_STAT( weapon, WEAPON_TWO_HANDS ) )
-                || ( weapon != NULL && ( second_weapon != NULL
-                                         || get_eq_char( ch,
-                                                         WEAR_HOLD ) != NULL ) ) )
+        weapon = get_eq_char(ch, WEAR_WIELD);
+        second_weapon = get_eq_char(ch, WEAR_SECOND_WIELD);
+        if (((weapon != NULL) && (ch->size < SIZE_LARGE)
+                && IS_WEAPON_STAT(weapon, WEAPON_TWO_HANDS))
+                || (weapon != NULL && (second_weapon != NULL
+                                       || get_eq_char(ch, WEAR_HOLD) != NULL)))
             return;
 
-        equip_char( ch, obj, WEAR_SHIELD );
+        equip_char(ch, obj, WEAR_SHIELD);
         return;
     }
     /* this part is buggy, have not taken the time to figure out why yet */
     /* so for now mobs will not wield their random weapons. */
     /*
-        if ( CAN_WEAR( obj, ITEM_WIELD ) )
-        {
+       if ( CAN_WEAR( obj, ITEM_WIELD ) )
+       {
 
-    	if ( !remove_obj(ch, WEAR_SECOND_WIELD, TRUE) )
-    	    return;
+       if ( !remove_obj(ch, WEAR_SECOND_WIELD, TRUE) )
+       return;
 
 
-    	if ((!IS_NPC(ch) && ch->size < SIZE_LARGE
-    	&&  IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS)
-     	&&  (( get_eq_char(ch,WEAR_SECOND_WIELD) !=NULL
-     	|| get_eq_char(ch,WEAR_SHIELD) != NULL)
-     	|| get_eq_char(ch,WEAR_WIELD) != NULL))
-     	|| (get_eq_char(ch,WEAR_WIELD) != NULL
-     	&& (get_eq_char(ch,WEAR_SHIELD) != NULL
-     	|| get_eq_char(ch,WEAR_SECOND_WIELD) !=NULL
-     	|| get_eq_char(ch,WEAR_HOLD) != NULL))
-     	|| (get_eq_char(ch,WEAR_SHIELD) != NULL
-     	&& get_eq_char(ch,WEAR_HOLD) != NULL))
-    	{
-    	    if (get_eq_char(ch,WEAR_WIELD) != NULL)
-    	       if ( get_eq_char( ch, WEAR_SECOND_WIELD )  != NULL )
-    		return;
-    	    return;
-    	}
+       if ((!IS_NPC(ch) && ch->size < SIZE_LARGE
+       &&  IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS)
+       &&  (( get_eq_char(ch,WEAR_SECOND_WIELD) !=NULL
+       || get_eq_char(ch,WEAR_SHIELD) != NULL)
+       || get_eq_char(ch,WEAR_WIELD) != NULL))
+       || (get_eq_char(ch,WEAR_WIELD) != NULL
+       && (get_eq_char(ch,WEAR_SHIELD) != NULL
+       || get_eq_char(ch,WEAR_SECOND_WIELD) !=NULL
+       || get_eq_char(ch,WEAR_HOLD) != NULL))
+       || (get_eq_char(ch,WEAR_SHIELD) != NULL
+       && get_eq_char(ch,WEAR_HOLD) != NULL))
+       {
+       if (get_eq_char(ch,WEAR_WIELD) != NULL)
+       if ( get_eq_char( ch, WEAR_SECOND_WIELD )  != NULL )
+       return;
+       return;
+       }
 
-    	equip_char( ch, obj, WEAR_WIELD );
-                }
-    	else if (get_eq_char(ch,WEAR_SECOND_WIELD) == NULL) {
-    	    equip_char( ch, obj, WEAR_SECOND_WIELD);
-                }
+       equip_char( ch, obj, WEAR_WIELD );
+       }
+       else if (get_eq_char(ch,WEAR_SECOND_WIELD) == NULL) {
+       equip_char( ch, obj, WEAR_SECOND_WIELD);
+       }
 
-            	return;
-        }
-    */
-    if ( CAN_WEAR( obj, ITEM_HOLD ) )
+       return;
+       }
+     */
+    if (CAN_WEAR(obj, ITEM_HOLD))
     {
-        if ( get_eq_char( ch, WEAR_HOLD ) != NULL )
+        if (get_eq_char(ch, WEAR_HOLD) != NULL)
             return;
-        if ( get_eq_char( ch, WEAR_WIELD ) != NULL
-                && ( get_eq_char( ch, WEAR_SECOND_WIELD ) != NULL
-                     || get_eq_char( ch, WEAR_SHIELD ) != NULL ) )
+        if (get_eq_char(ch, WEAR_WIELD) != NULL
+                && (get_eq_char(ch, WEAR_SECOND_WIELD) != NULL
+                    || get_eq_char(ch, WEAR_SHIELD) != NULL))
         {
             return;
         }
-        equip_char( ch, obj, WEAR_HOLD );
+        equip_char(ch, obj, WEAR_HOLD);
         return;
     }
     return;

@@ -42,15 +42,15 @@ extern int mobile_count;
 
 /* ban data recycling */
 #define BD BAN_DATA
-BD *new_ban  ( void ) ;
-void free_ban  ( BAN_DATA * ban ) ;
+BD *new_ban(void);
+void free_ban(BAN_DATA * ban);
 #undef BD
 
 /* buffer procedures */
 
-BUFFER *new_buf  ( void ) ;
-BUFFER *new_buf_size  ( int size ) ;
-void free_buf  ( BUFFER * buffer ) ;
-bool add_buf  ( BUFFER * buffer, char *string ) ;
-void clear_buf  ( BUFFER * buffer ) ;
-char *buf_string  ( BUFFER * buffer ) ;
+BUFFER *new_buf(void);
+BUFFER *new_buf_size(int size);
+void free_buf(BUFFER * buffer);
+bool add_buf(BUFFER * buffer, char *string);
+void clear_buf(BUFFER * buffer);
+char *buf_string(BUFFER * buffer);

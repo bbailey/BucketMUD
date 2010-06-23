@@ -37,18 +37,16 @@
 
 #if __FreeBSD_version < 500111
 
-static __inline int
-be32dec(const void *pp)
+static __inline int be32dec(const void *pp)
 {
-    unsigned char const *p = (unsigned char const *)pp;
+    unsigned char const *p = (unsigned char const *) pp;
 
     return ((p[0] << 24) | (p[1] << 16) | (p[2] << 8) | p[3]);
 }
 
-static __inline void
-be32enc(void *pp, int u)
+static __inline void be32enc(void *pp, int u)
 {
-    unsigned char *p = (unsigned char *)pp;
+    unsigned char *p = (unsigned char *) pp;
 
     p[0] = (u >> 24) & 0xff;
     p[1] = (u >> 16) & 0xff;
@@ -68,14 +66,13 @@ be32enc(void *pp, int u)
 #define be32dec_vect(dst, src, len)	\
 	memcpy((void *)dst, (const void *)src, (size_t)len)
 
-#else /* BYTE_ORDER != BIG_ENDIAN */
+#else				/* BYTE_ORDER != BIG_ENDIAN */
 
 /*
  * Encode a length len/4 vector of (int) into a length len vector of
  * (unsigned char) in big-endian form.  Assumes len is a multiple of 4.
  */
-static void
-be32enc_vect(unsigned char *dst, const int *src, size_t len)
+static void be32enc_vect(unsigned char *dst, const int *src, size_t len)
 {
     size_t i;
 
@@ -87,8 +84,7 @@ be32enc_vect(unsigned char *dst, const int *src, size_t len)
  * Decode a big-endian length len vector of (unsigned char) into a length
  * len/4 vector of (int).  Assumes len is a multiple of 4.
  */
-static void
-be32dec_vect(int *dst, const unsigned char *src, size_t len)
+static void be32dec_vect(int *dst, const unsigned char *src, size_t len)
 {
     size_t i;
 
@@ -96,7 +92,7 @@ be32dec_vect(int *dst, const unsigned char *src, size_t len)
         dst[i] = be32dec(src + i * 4);
 }
 
-#endif /* BYTE_ORDER != BIG_ENDIAN */
+#endif				/* BYTE_ORDER != BIG_ENDIAN */
 
 /* Elementary functions used by SHA256 */
 #define Ch(x, y, z)	((x & (y ^ z)) ^ z)
@@ -127,8 +123,7 @@ be32dec_vect(int *dst, const unsigned char *src, size_t len)
  * SHA256 block compression function.  The 256-bit state is transformed via
  * the 512-bit input block to produce a new state.
  */
-static void
-SHA256_Transform(int * state, const unsigned char block[64])
+static void SHA256_Transform(int *state, const unsigned char block[64])
 {
     int W[64];
     int S[8];
@@ -223,8 +218,7 @@ static unsigned char PAD[64] =
 };
 
 /* Add padding and terminating bit-count. */
-static void
-SHA256_Pad(SHA256_CTX * ctx)
+static void SHA256_Pad(SHA256_CTX * ctx)
 {
     unsigned char len[8];
     int r, plen;
@@ -238,7 +232,7 @@ SHA256_Pad(SHA256_CTX * ctx)
     /* Add 1--64 bytes so that the resulting length is 56 mod 64 */
     r = (ctx->count[1] >> 3) & 0x3f;
     plen = (r < 56) ? (56 - r) : (120 - r);
-    SHA256_Update(ctx, PAD, (size_t)plen);
+    SHA256_Update(ctx, PAD, (size_t) plen);
 
     /* Add the terminating bit-count */
     SHA256_Update(ctx, len, 8);
@@ -271,8 +265,8 @@ void SHA256_Update(SHA256_CTX * ctx, const unsigned char *src, size_t len)
     r = (ctx->count[1] >> 3) & 0x3f;
 
     /* Convert the length into a number of bits */
-    bitlen[1] = ((int)len) << 3;
-    bitlen[0] = (int)(len >> 29);
+    bitlen[1] = ((int) len) << 3;
+    bitlen[0] = (int) (len >> 29);
 
     /* Update number of bits */
     if ((ctx->count[1] += bitlen[1]) < bitlen[1])
@@ -317,23 +311,23 @@ void SHA256_Final(unsigned char digest[32], SHA256_CTX * ctx)
     be32enc_vect(digest, ctx->state, 32);
 
     /* Clear the context state */
-    memset((void *)ctx, 0, sizeof(*ctx));
+    memset((void *) ctx, 0, sizeof(*ctx));
 }
 
-char *sha256_crypt( const char *pwd )
+char *sha256_crypt(const char *pwd)
 {
     SHA256_CTX context;
     static char output[65];
     unsigned char sha256sum[32];
     unsigned int j;
 
-    SHA256_Init( &context );
-    SHA256_Update( &context, (const unsigned char *) pwd, strlen(pwd) );
-    SHA256_Final( sha256sum, &context );
+    SHA256_Init(&context);
+    SHA256_Update(&context, (const unsigned char *) pwd, strlen(pwd));
+    SHA256_Final(sha256sum, &context);
 
-    for ( j = 0; j < 32; ++j )
+    for (j = 0; j < 32; ++j)
     {
-        snprintf( output + j * 2, 65, "%02x", sha256sum[j] );
+        snprintf(output + j * 2, 65, "%02x", sha256sum[j]);
     }
     return output;
 }
