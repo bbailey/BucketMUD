@@ -66,13 +66,13 @@ extern bool fCopyOver;
 /*
  * Local functions.
  */
-void fwrite_char(CHAR_DATA * ch, FILE * fp);
-void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest);
-void fwrite_pet(CHAR_DATA * pet, FILE * fp);
-void fread_char(CHAR_DATA * ch, FILE * fp);
-void fread_pet(CHAR_DATA * ch, FILE * fp);
-void fread_obj(CHAR_DATA * ch, FILE * fp);
-void fread_imm(CHAR_DATA * ch, FILE * fp);
+static void fwrite_char(CHAR_DATA * ch, FILE * fp);
+static void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest);
+static void fwrite_pet(CHAR_DATA * pet, FILE * fp);
+static void fread_char(CHAR_DATA * ch, FILE * fp);
+static void fread_pet(CHAR_DATA * ch, FILE * fp);
+static void fread_obj(CHAR_DATA * ch, FILE * fp);
+static void fread_imm(CHAR_DATA * ch, FILE * fp);
 
 /*
  * Save a character and inventory.
@@ -182,7 +182,7 @@ void save_char_obj(CHAR_DATA * ch)
 /*
  * Write the char.
  */
-void fwrite_char(CHAR_DATA * ch, FILE * fp)
+static void fwrite_char(CHAR_DATA * ch, FILE * fp)
 {
     AFFECT_DATA *paf;
     NEWAFFECT_DATA *npaf;
@@ -384,7 +384,7 @@ void fwrite_char(CHAR_DATA * ch, FILE * fp)
 }
 
 /* write a pet */
-void fwrite_pet(CHAR_DATA * pet, FILE * fp)
+static void fwrite_pet(CHAR_DATA * pet, FILE * fp)
 {
     AFFECT_DATA *paf;
 
@@ -456,7 +456,7 @@ void fwrite_pet(CHAR_DATA * pet, FILE * fp)
 /*
  * Write an object and its contents.
  */
-void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest)
+static void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest)
 {
     EXTRA_DESCR_DATA *ed;
     AFFECT_DATA *paf;
@@ -856,7 +856,7 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
                                     break;                              \
                                 }
 
-void fread_char(CHAR_DATA * ch, FILE * fp)
+static void fread_char(CHAR_DATA * ch, FILE * fp)
 {
     char buf[MAX_STRING_LENGTH];
     char *word = NULL;
@@ -1330,7 +1330,7 @@ void fread_char(CHAR_DATA * ch, FILE * fp)
 }
 
 /* load an #IMM section from a pfile */
-void fread_imm(CHAR_DATA * ch, FILE * fp)
+static void fread_imm(CHAR_DATA * ch, FILE * fp)
 {
     char *word;
     IMMCMD_TYPE *tmp;
@@ -1352,7 +1352,7 @@ void fread_imm(CHAR_DATA * ch, FILE * fp)
 }
 
 /* load a pet from the forgotten reaches */
-void fread_pet(CHAR_DATA * ch, FILE * fp)
+static void fread_pet(CHAR_DATA * ch, FILE * fp)
 {
     char *word;
     CHAR_DATA *pet;
@@ -1540,7 +1540,7 @@ void fread_pet(CHAR_DATA * ch, FILE * fp)
 
 }
 
-void fread_obj(CHAR_DATA * ch, FILE * fp)
+static void fread_obj(CHAR_DATA * ch, FILE * fp)
 {
     static OBJ_DATA obj_zero;
     OBJ_DATA *obj;

@@ -12,8 +12,5 @@ extern int top_obj_index;
 extern int top_affect;
 extern int top_newaffect;
 extern int top_ed;
-extern int social_count;
-/* OLC */
-extern void assign_area_vnum(int vnum);
 
 #endif

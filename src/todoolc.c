@@ -24,7 +24,7 @@ const struct olc_cmd_type todoedit_table[] =
     {"", 0,}
 };
 
-TODO_DATA *new_todo(void)
+static TODO_DATA *new_todo(void)
 {
     TODO_DATA *pTodo;
 
@@ -33,7 +33,7 @@ TODO_DATA *new_todo(void)
     if (!pTodo)
     {
         bug("new todo: Call to alloc_perm failed!", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     pTodo->next = NULL;

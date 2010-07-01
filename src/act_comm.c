@@ -2240,7 +2240,7 @@ struct pose_table_type
     char *message[2 * MAX_CLASS];
 };
 
-const struct pose_table_type pose_table[] =
+static const struct pose_table_type pose_table[] =
 {
     {
         {

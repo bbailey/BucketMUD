@@ -29,14 +29,14 @@ extern int top_ed;
 extern int top_room;
 extern int top_mprog;
 
-AREA_DATA *area_free;
+static AREA_DATA *area_free;
 EXTRA_DESCR_DATA *extra_descr_free;
-EXIT_DATA *exit_free;
-ROOM_INDEX_DATA *room_index_free;
-OBJ_INDEX_DATA *obj_index_free;
-SHOP_DATA *shop_free;
-MOB_INDEX_DATA *mob_index_free;
-RESET_DATA *reset_free;
+static EXIT_DATA *exit_free;
+static ROOM_INDEX_DATA *room_index_free;
+static OBJ_INDEX_DATA *obj_index_free;
+static SHOP_DATA *shop_free;
+static MOB_INDEX_DATA *mob_index_free;
+static RESET_DATA *reset_free;
 HELP_DATA *help_free;
 
 HELP_DATA *help_last;

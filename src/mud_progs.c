@@ -46,52 +46,49 @@
  * Locals
  */
 
-void release_supermob(void);
-void set_supermob(void *source, int prog_type);
+static void release_supermob(void);
+static void set_supermob(void *source, int prog_type);
 void init_supermob(void);
-void mprog_wordlist_check(char *arg, int trigger_type, int prog_type);
-bool mprog_percent_check(int trigger_type);
-char *parse_script(char *script);
+static char *parse_script(char *script);
 bool is_seperator(char c);
-char *parse_if(char *instring);
-char *parse_command(char *instring);
+static char *parse_if(char *instring);
+static char *parse_command(char *instring);
 void parse_command_var(char var, char *outbuf);
-int parse_expression(char *instring);
-int parse_proc(char *proc);
-int exec_proc(char *procname, int intarg, char *chararg);
-int evaluate(char *line, double *val);
-void strip_whitespace(char *instring);
+static int parse_expression(char *instring);
+static int parse_proc(char *proc);
+static int exec_proc(char *procname, int intarg, char *chararg);
+static int evaluate(char *line, double *val);
+static void strip_whitespace(char *instring);
 void *mprog_get_actor(char *arg, char type);
-void mprog_driver(char *prog);
 
 CHAR_DATA *ProgSource = NULL;
-CHAR_DATA *ProgTriggeredBy = NULL;
-CHAR_DATA *ProgVictim = NULL;
+static CHAR_DATA *ProgTriggeredBy = NULL;
+static CHAR_DATA *ProgVictim = NULL;
 OBJ_DATA *ProgObjectSource = NULL;
-OBJ_DATA *ProgObjectVictim = NULL;
-ROOM_INDEX_DATA *ProgRoomSource = NULL;
-char *ProgExtraArgs = NULL;
-CHAR_DATA *supermob = NULL;
+static OBJ_DATA *ProgObjectVictim = NULL;
+static ROOM_INDEX_DATA *ProgRoomSource = NULL;
+static char *ProgExtraArgs = NULL;
+static CHAR_DATA *supermob = NULL;
 int ExecMudProgID = 0;
 
 /* Random/Semi-Random ch's */
-CHAR_DATA *RandomNPC = NULL;
-bool RandomNPC_picked;
-void mprog_get_RandomNPC(void);
-CHAR_DATA *RandomPC = NULL;
-bool RandomPC_picked;
-void mprog_get_RandomPC(void);
-CHAR_DATA *RandomANY = NULL;
-bool RandomANY_picked;
-void mprog_get_RandomANY(void);
-CHAR_DATA *MostEvilFighter = NULL;
-bool MostEvilFighter_picked;
-void mprog_get_MostEvilFighter(void);
+static CHAR_DATA *RandomNPC = NULL;
+static bool RandomNPC_picked;
+static void mprog_get_RandomNPC(void);
+static CHAR_DATA *RandomPC = NULL;
+static bool RandomPC_picked;
+static void mprog_get_RandomPC(void);
+static CHAR_DATA *RandomANY = NULL;
+static bool RandomANY_picked;
+static void mprog_get_RandomANY(void);
+static CHAR_DATA *MostEvilFighter = NULL;
+static bool MostEvilFighter_picked;
+static void mprog_get_MostEvilFighter(void);
 
 /*
  * Main driver function, called by all triggers.
  */
-void mprog_driver(char *prog)
+static void mprog_driver(char *prog)
 {
     /* Clear out our temp picks */
     RandomNPC = NULL;
@@ -122,7 +119,7 @@ void mprog_driver(char *prog)
  * Main script parsing function.  Passes strings off to parse_if and parse_command
  * for processing.  Also correctly handles breaks.
  */
-char *parse_script(char *script)
+static char *parse_script(char *script)
 {
     char buf[MAX_STRING_LENGTH];
     char *curr;
@@ -224,7 +221,7 @@ char *parse_script(char *script)
  * The main loop found and if and passed the remaining string to us. Now we process the if statement and then execute
  * commands.
  */
-char *parse_if(char *instring)
+static char *parse_if(char *instring)
 {
     char buf[MAX_STRING_LENGTH];
     char *ptr = instring;
@@ -400,7 +397,7 @@ char *parse_if(char *instring)
     return ptr;
 }
 
-int parse_expression(char *instring)
+static int parse_expression(char *instring)
 {
     char buf[MAX_STRING_LENGTH];
     char calcbuf[MAX_STRING_LENGTH];
@@ -487,7 +484,7 @@ int parse_expression(char *instring)
         return 0;
 }
 
-int parse_proc(char *proc)
+static int parse_proc(char *proc)
 {
     char procname[MAX_STRING_LENGTH];
     char arg[MAX_STRING_LENGTH];
@@ -542,7 +539,7 @@ int parse_proc(char *proc)
     }
 }
 
-int exec_proc(char *procname, int intarg, char *chararg)
+static int exec_proc(char *procname, int intarg, char *chararg)
 {
     int cmd;
     bool found = FALSE;
@@ -652,7 +649,7 @@ void *mprog_get_actor(char *arg, char type)
     }
 }
 
-char *parse_command(char *instring)
+static char *parse_command(char *instring)
 {
     char cmd[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
@@ -1058,7 +1055,7 @@ void init_supermob(void)
     return;
 }
 
-void set_supermob(void *source, int prog_type)
+static void set_supermob(void *source, int prog_type)
 {
     OBJ_DATA *pObj = NULL;
     ROOM_INDEX_DATA *pRoom = NULL;
@@ -1137,7 +1134,7 @@ void set_supermob(void *source, int prog_type)
     return;
 }
 
-void release_supermob(void)
+static void release_supermob(void)
 {
     char_from_room(supermob);
     if (supermob->name)
@@ -1153,7 +1150,7 @@ void release_supermob(void)
     char_to_room(supermob, get_room_index(ROOM_VNUM_SUPERMOB));
 }
 
-void mprog_get_RandomNPC(void)
+static void mprog_get_RandomNPC(void)
 {
     CHAR_DATA *ch;
     int count = 0;
@@ -1176,7 +1173,7 @@ void mprog_get_RandomNPC(void)
         }
 }
 
-void mprog_get_RandomPC(void)
+static void mprog_get_RandomPC(void)
 {
     CHAR_DATA *ch;
     int count = 0;
@@ -1199,7 +1196,7 @@ void mprog_get_RandomPC(void)
         }
 }
 
-void mprog_get_RandomANY(void)
+static void mprog_get_RandomANY(void)
 {
     CHAR_DATA *ch;
     int count = 0;
@@ -1222,7 +1219,7 @@ void mprog_get_RandomANY(void)
         }
 }
 
-void mprog_get_MostEvilFighter(void)
+static void mprog_get_MostEvilFighter(void)
 {
     CHAR_DATA *ch;
     int max_evil = 0;
@@ -1256,7 +1253,7 @@ bool is_seperator(char c)
     return FALSE;
 }
 
-void strip_whitespace(char *instring)
+static void strip_whitespace(char *instring)
 {
     char *inptr = instring, *outptr = instring;
 
@@ -1271,7 +1268,7 @@ void strip_whitespace(char *instring)
     *outptr = '\0';
 }
 
-bool mprog_percent_check(int trigger_type)
+static bool mprog_percent_check(int trigger_type)
 {
     MPROG_LIST *pProgList;
     bool executed = FALSE;
@@ -1299,7 +1296,7 @@ bool mprog_percent_check(int trigger_type)
  *  on a certain percent, or trigger on a keyword or word phrase.
  *  To see how this works, look at the various trigger routines..
  */
-void mprog_wordlist_check(char *arg, int trigger_type, int prog_type)
+static void mprog_wordlist_check(char *arg, int trigger_type, int prog_type)
 {
     char temp1[MAX_STRING_LENGTH];
     char temp2[MAX_INPUT_LENGTH];
@@ -2414,7 +2411,7 @@ static int getTOSprec(void);
 /*                                                                      */
 /************************************************************************/
 
-int evaluate(char *line, double *val)
+static int evaluate(char *line, double *val)
 {
     double arg;
     char *ptr = line, *str, *endptr;

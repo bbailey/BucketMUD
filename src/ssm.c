@@ -68,7 +68,7 @@ struct TH
     char *str;
 };
 
-TempHash **temp_string_hash;
+static TempHash **temp_string_hash;
 
 /* These are the original Merc vars in db.c */
 extern bool fBootDb;
@@ -77,29 +77,30 @@ char *string_space;
 char *top_string;
 long nAllocString;
 long sAllocString;
-long nOverFlowString;
-long sOverFlowString;
+static long nOverFlowString;
+static long sOverFlowString;
 
-int numFree;
-bool Full;
+static int numFree;
+static bool Full;
 
 char *str_dup(const char *);
 void free_string(char **);
 char *fread_string(FILE *);
-void temp_hash_add(char *, const int);
-char *temp_hash_find(const char *);
+static void temp_hash_add(char *, const int);
+static char *temp_hash_find(const char *);
 static unsigned long get_string_hash(register const char *key);
 
 /*
  * ssm_buf_head points to start of shared space,
  * ssm_buf_free points to next free block
  */
-BufEntry *ssm_buf_head = NULL, *ssm_buf_free = NULL;
+static BufEntry *ssm_buf_head = NULL;
+static BufEntry *ssm_buf_free = NULL;
 
 /* To allocate more memory increase MAX_CHUNKS in merc.h. */
 #define CHUNK_SIZE   0xfff0	/* DO NOT mess with this! */
 long MAX_STRING = MAX_CHUNKS * CHUNK_SIZE;
-int HEADER_SIZE;
+static int HEADER_SIZE;
 
 /*
  * Not sure what is a good value for MAX_FREE
@@ -148,7 +149,7 @@ void init_string_space()
                                             MAX_KEY_HASH);
 }
 
-int defrag_heap()
+static int defrag_heap()
 {
     /*
      * Walk through the shared heap and merge adjacent free blocks.
@@ -631,7 +632,7 @@ static unsigned long get_string_hash(register const char *key)
 }
 
 /* Lookup the string in the boot-time hash table. */
-char *temp_hash_find(const char *str)
+static char *temp_hash_find(const char *str)
 {
     TempHash *ptr;
     unsigned long ihash;
@@ -659,7 +660,7 @@ char *temp_hash_find(const char *str)
  * String is still in the linked list structure but
  * reference is kept here for quick lookup at boot time;
  */
-void temp_hash_add(char *str, const int len)
+static void temp_hash_add(char *str, const int len)
 {
     TempHash *add;
     unsigned long ihash;

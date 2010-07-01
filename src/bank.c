@@ -26,8 +26,6 @@ NOTE: This code leaves the the IS_CHANGER stuff in do_give
 #include "merc.h"
 /*#include "recycle.h"*/
 /* command procedures needed */
-void do_help(CHAR_DATA * ch, char *argument);
-
 void do_account(CHAR_DATA * ch, char *argument)
 {
     long gold = 0;		/* silver = 0 */

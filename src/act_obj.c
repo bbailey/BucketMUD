@@ -24,12 +24,10 @@
 #include "magic.h"
 
 /* command procedures needed */
-void do_split(CHAR_DATA * ch, char *argument);
-void do_yell(CHAR_DATA * ch, char *argument);
-void do_say(CHAR_DATA * ch, char *argument);
-void do_brew(CHAR_DATA * ch, char *argument);
+extern void do_split(CHAR_DATA * ch, char *argument);
+extern void do_yell(CHAR_DATA * ch, char *argument);
+extern void do_say(CHAR_DATA * ch, char *argument);
 void do_scribe(CHAR_DATA * ch, char *argument);
-void do_imprint(CHAR_DATA * ch, char *argument);
 
 extern bool chaos;
 
@@ -37,10 +35,10 @@ extern bool chaos;
  * Local functions.
  */
 #define CD CHAR_DATA
-bool remove_obj(CHAR_DATA * ch, int iWear, bool fReplace);
-void wear_obj(CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace);
-CD *find_keeper(CHAR_DATA * ch);
-int get_cost
+static bool remove_obj(CHAR_DATA * ch, int iWear, bool fReplace);
+static void wear_obj(CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace);
+static CD *find_keeper(CHAR_DATA * ch);
+static int get_cost
 (CHAR_DATA * ch, CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy);
 #undef  CD
 
@@ -460,7 +458,7 @@ void do_donate(CHAR_DATA * ch, char *argument)
     char arg[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
-    ROOM_INDEX_DATA *donation, *find_location();
+    ROOM_INDEX_DATA *donation;
     ROOM_INDEX_DATA *was_in_room;
     char *room;
     bool found;
@@ -1168,7 +1166,7 @@ void do_eat(CHAR_DATA * ch, char *argument)
 /*
  * Remove an object.
  */
-bool remove_obj(CHAR_DATA * ch, int iWear, bool fReplace)
+static bool remove_obj(CHAR_DATA * ch, int iWear, bool fReplace)
 {
     OBJ_DATA *obj;
 
@@ -1196,7 +1194,7 @@ bool remove_obj(CHAR_DATA * ch, int iWear, bool fReplace)
  * Optional replacement of existing objects.
  * Big repetitive code, ick.
  */
-void wear_obj(CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace)
+static void wear_obj(CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace)
 {
     char buf[MAX_STRING_LENGTH];
 
@@ -2416,7 +2414,7 @@ void do_steal(CHAR_DATA * ch, char *argument)
 /*
  * Shopping commands.
  */
-CHAR_DATA *find_keeper(CHAR_DATA * ch)
+static CHAR_DATA *find_keeper(CHAR_DATA * ch)
 {
     char buf[MAX_STRING_LENGTH];
 
@@ -2472,7 +2470,7 @@ CHAR_DATA *find_keeper(CHAR_DATA * ch)
     return keeper;
 }
 
-int get_cost(CHAR_DATA * ch, CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy)
+static int get_cost(CHAR_DATA * ch, CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy)
 {
     SHOP_DATA *pShop;
     int cost;
@@ -2650,9 +2648,10 @@ void do_buy(CHAR_DATA * ch, char *argument)
 
         CHAR_DATA *keeper;
         OBJ_DATA *obj;
-        int cost;
         char arg2[MAX_INPUT_LENGTH];	/* 2nd argument */
         int item_count = 1;	/* default: buy only 1 item */
+
+		cost = 0;
 
         argument = one_argument(argument, arg);	/* get first argument */
         argument = one_argument(argument, arg2);	/* get another argument, if any */
@@ -4070,7 +4069,7 @@ bool shopkeeper_kick_ch(CHAR_DATA * ch, CHAR_DATA * keeper, char *actstr)
     return FALSE;
 }
 
-void do_portal(CHAR_DATA * ch, OBJ_DATA * portal)
+static void do_portal(CHAR_DATA * ch, OBJ_DATA * portal)
 {
     ROOM_INDEX_DATA *pRoom;
 

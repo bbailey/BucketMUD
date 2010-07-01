@@ -209,7 +209,7 @@ void do_shield(CHAR_DATA * ch, char *argument)
     return;
 }
 
-int dgld_compare(const void *left, const void *right)
+static int dgld_compare(const void *left, const void *right)
 {
     DO_GAIN_LIST_DATA *one = (DO_GAIN_LIST_DATA *) left;
     DO_GAIN_LIST_DATA *two = (DO_GAIN_LIST_DATA *) right;
@@ -669,7 +669,7 @@ void do_spells(CHAR_DATA * ch, char *argument)
     send_to_char("\n\r", ch);
 }
 
-int dsd_compare_name(const void *left, const void *right)
+static int dsd_compare_name(const void *left, const void *right)
 {
     DO_SKILLS_DATA *one = (DO_SKILLS_DATA *) left;
     DO_SKILLS_DATA *two = (DO_SKILLS_DATA *) right;
@@ -677,7 +677,7 @@ int dsd_compare_name(const void *left, const void *right)
     return strcasecmp(one->name, two->name);
 }
 
-int dsd_compare_lvl_name(const void *left, const void *right)
+static int dsd_compare_lvl_name(const void *left, const void *right)
 {
     DO_SKILLS_DATA *one = (DO_SKILLS_DATA *) left;
     DO_SKILLS_DATA *two = (DO_SKILLS_DATA *) right;
@@ -1007,7 +1007,7 @@ void list_group_costs(CHAR_DATA * ch)
     return;
 }
 
-void list_group_chosen(CHAR_DATA * ch)
+static void list_group_chosen(CHAR_DATA * ch)
 {
     char buf[MAX_STRING_LENGTH];
     int gn, sn, col;

@@ -89,9 +89,6 @@ bool todoedit_level(CHAR_DATA * ch, char *argument);
 bool todoedit_text(CHAR_DATA * ch, char *argument);
 bool todoedit_create(CHAR_DATA * ch, char *argument);
 
-/* Command procedures needed ROM OLC */
-DECLARE_SPELL_FUN(spell_null);
-
 /*
  * Connected states for editor.
  */
@@ -112,14 +109,8 @@ DECLARE_SPELL_FUN(spell_null);
 /*
  * Interpreter Prototypes
  */
-void aedit(CHAR_DATA * ch, char *argument);
-void redit(CHAR_DATA * ch, char *argument);
-void medit(CHAR_DATA * ch, char *argument);
-void oedit(CHAR_DATA * ch, char *argument);
 void tedit(CHAR_DATA * ch, char *argument);
 void hedit(CHAR_DATA * ch, char *argument);
-void mpedit(CHAR_DATA * ch, char *argument);
-void mpgedit(CHAR_DATA * ch, char *argument);
 void cedit(CHAR_DATA * ch, char *argument);
 void save_clans(void);
 void save_area_list(void);
@@ -165,23 +156,11 @@ void add_reset(ROOM_INDEX_DATA * room, RESET_DATA * pReset, int index);
 /*
  * Interpreter Table Prototypes
  */
-extern const struct olc_cmd_type aedit_table[];
-extern const struct olc_cmd_type redit_table[];
-extern const struct olc_cmd_type oedit_table[];
-extern const struct olc_cmd_type medit_table[];
-extern const struct olc_cmd_type mpedit_table[];
-extern const struct olc_cmd_type mpgedit_table[];
 extern const struct olc_cmd_type cedit_table[];
 
 /*
  * Editor Commands.
  */
-void do_aedit(CHAR_DATA * ch, char *argument);
-void do_redit(CHAR_DATA * ch, char *argument);
-void do_oedit(CHAR_DATA * ch, char *argument);
-void do_medit(CHAR_DATA * ch, char *argument);
-void do_mpedit(CHAR_DATA * ch, char *argument);
-void do_mpgedit(CHAR_DATA * ch, char *argument);
 void do_cedit(CHAR_DATA * ch, char *argument);
 
 /*
@@ -399,7 +378,6 @@ void delete_oprog(CHAR_DATA * ch, int pnum);
 void show_oprog(CHAR_DATA * ch, MPROG_DATA * pObjProg);
 /* Clan.c */
 CLAN_DATA *new_clan(void);
-CLAN_DATA *get_clan(int clannum);
 char *fwrite_flag(long flags, char buf[]);
 void clan_log(CLAN_DATA * clan, char *str, ...);
 

@@ -29,11 +29,6 @@ bool gsilentdamage;
 void do_look(CHAR_DATA * ch, char *argument);
 
 /*
- * Local functions.
- */
-void say_spell(CHAR_DATA * ch, int sn);
-
-/*
  * Lookup a skill by name.
  */
 int skill_lookup(const char *name)
@@ -82,7 +77,7 @@ int slot_lookup(int slot)
 /*
  * Utter mystical words for an sn.
  */
-void say_spell(CHAR_DATA * ch, int sn)
+static void say_spell(CHAR_DATA * ch, int sn)
 {
     char buf[MAX_STRING_LENGTH];
     char buf2[MAX_STRING_LENGTH];
@@ -178,7 +173,7 @@ bool saves_spell(int level, CHAR_DATA * victim)
 
 /* RT save for dispels */
 
-bool saves_dispel(int dis_level, int spell_level, int duration)
+static bool saves_dispel(int dis_level, int spell_level, int duration)
 {
     int save;
 
@@ -193,7 +188,7 @@ bool saves_dispel(int dis_level, int spell_level, int duration)
 
 /* co-routine for dispel magic and cancellation */
 
-bool check_dispel(int dis_level, CHAR_DATA * victim, int sn)
+static bool check_dispel(int dis_level, CHAR_DATA * victim, int sn)
 {
     AFFECT_DATA *af;
     NEWAFFECT_DATA *naf;
@@ -256,7 +251,7 @@ int mana_cost(CHAR_DATA * ch, int min_mana, int level)
 /*
  * The kludgy global is for spells who want more stuff from command line.
  */
-char *target_name;
+static char *target_name;
 
 void do_cast(CHAR_DATA * ch, char *argument)
 {
@@ -3049,7 +3044,7 @@ void spell_gate(int sn, int level, CHAR_DATA * ch, void *vo)
     }
 }
 
-void spawn_portal(int vnum1, int vnum2)
+static void spawn_portal(int vnum1, int vnum2)
 {
     OBJ_DATA *obj;
     int decay;

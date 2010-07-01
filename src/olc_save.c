@@ -152,7 +152,7 @@ char *fwrite_flag(long flags, char buf[])
  Purpose:	Save one mobile to file, new format -- Hugin
  Called by:	save_mobiles (below).
  ****************************************************************************/
-void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
+static void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
 {
     char buf[MAX_STRING_LENGTH];
     char letter;
@@ -230,7 +230,7 @@ void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
  Called by:	save_area(olc_save.c).
  Notes:         Changed for ROM OLC.
  ****************************************************************************/
-void save_mobiles(FILE * fp, AREA_DATA * pArea)
+static void save_mobiles(FILE * fp, AREA_DATA * pArea)
 {
     int i;
     MOB_INDEX_DATA *pMob;
@@ -253,7 +253,7 @@ void save_mobiles(FILE * fp, AREA_DATA * pArea)
                 new ROM format saving -- Hugin
  Called by:	save_objects (below).
  ****************************************************************************/
-void save_object(FILE * fp, OBJ_INDEX_DATA * pObjIndex)
+static void save_object(FILE * fp, OBJ_INDEX_DATA * pObjIndex)
 {
     char buf[MAX_STRING_LENGTH];
     char letter;
@@ -370,7 +370,7 @@ void save_object(FILE * fp, OBJ_INDEX_DATA * pObjIndex)
  Called by:	save_area(olc_save.c).
  Notes:         Changed for ROM OLC.
  ****************************************************************************/
-void save_objects(FILE * fp, AREA_DATA * pArea)
+static void save_objects(FILE * fp, AREA_DATA * pArea)
 {
     int i;
     OBJ_INDEX_DATA *pObj;
@@ -392,7 +392,7 @@ void save_objects(FILE * fp, AREA_DATA * pArea)
  Purpose:	Save #ROOMS section of an area file.
  Called by:	save_area(olc_save.c).
  ****************************************************************************/
-void save_rooms(FILE * fp, AREA_DATA * pArea)
+static void save_rooms(FILE * fp, AREA_DATA * pArea)
 {
     ROOM_INDEX_DATA *pRoomIndex;
     EXTRA_DESCR_DATA *pEd;
@@ -491,7 +491,7 @@ void save_rooms(FILE * fp, AREA_DATA * pArea)
  Purpose:       Save #PROGS section of area file.    -- By Zane
  Called by:     save_area(olc_save.c).
  ****************************************************************************/
-void save_mudprogs_area(FILE * fp, AREA_DATA * pArea)
+static void save_mudprogs_area(FILE * fp, AREA_DATA * pArea)
 {
     MOB_INDEX_DATA *pMobIndex;
     ROOM_INDEX_DATA *pRoom;
@@ -629,7 +629,7 @@ void save_mudprogs_area(FILE * fp, AREA_DATA * pArea)
  *
  * I don't think it's obsolete in ROM -- Hugin.
  */
-void save_door_resets(FILE * fp, AREA_DATA * pArea)
+static void save_door_resets(FILE * fp, AREA_DATA * pArea)
 {
     int iHash;
     ROOM_INDEX_DATA *pRoomIndex;
@@ -672,7 +672,7 @@ void save_door_resets(FILE * fp, AREA_DATA * pArea)
  Purpose:	Saves the #RESETS section of an area file.
  Called by:	save_area(olc_save.c)
  ****************************************************************************/
-void save_resets(FILE * fp, AREA_DATA * pArea)
+static void save_resets(FILE * fp, AREA_DATA * pArea)
 {
     RESET_DATA *pReset;
     MOB_INDEX_DATA *pLastMob = NULL;
@@ -866,7 +866,7 @@ void save_resets(FILE * fp, AREA_DATA * pArea)
  Purpose:	Saves the #SHOPS section of an area file.
  Called by:	save_area(olc_save.c)
  ****************************************************************************/
-void save_shops(FILE * fp, AREA_DATA * pArea)
+static void save_shops(FILE * fp, AREA_DATA * pArea)
 {
     SHOP_DATA *pShopIndex;
     MOB_INDEX_DATA *pMobIndex;

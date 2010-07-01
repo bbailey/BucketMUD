@@ -28,9 +28,9 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "interp.h"
+#include "magic.h"
 #include "olc.h"
-char buf[MAX_STRING_LENGTH];
-char arg[MAX_INPUT_LENGTH];
 
 /* Return TRUE if area changed, FALSE if not. */
 #define REDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
@@ -67,7 +67,7 @@ bool show_version(CHAR_DATA * ch, char *argument)
  * This table contains help commands and a brief description of each.
  * ------------------------------------------------------------------
  */
-const struct olc_help_type help_table[] =
+static const struct olc_help_type help_table[] =
 {
     {"area", area_flags, "Area attributes."},
     {"room", room_flags, "Room attributes."},
@@ -119,12 +119,14 @@ char *mprog_type_to_name(int type);
  Purpose:	Displays settable flags and stats.
  Called by:	show_help(olc_act.c).
  ****************************************************************************/
-void show_flag_cmds(CHAR_DATA * ch, const struct flag_type *flag_table)
+static void show_flag_cmds(CHAR_DATA * ch, const struct flag_type *flag_table)
 {
+	char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH];
     int flag;
     int col;
 
+	buf[0] = '\0';
     buf1[0] = '\0';
     col = 0;
     for (flag = 0; flag_table[flag].name[0] != '\0'; flag++)
@@ -154,12 +156,14 @@ void show_flag_cmds(CHAR_DATA * ch, const struct flag_type *flag_table)
  		(2) Adding a check for a level range.
  Called by:	show_help(olc_act.c).
  ****************************************************************************/
-void show_skill_cmds(CHAR_DATA * ch, int tar)
+static void show_skill_cmds(CHAR_DATA * ch, int tar)
 {
+	char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH * 2];
     int sn;
     int col;
 
+    buf[0] = '\0';
     buf1[0] = '\0';
     col = 0;
     for (sn = 0; sn < MAX_SKILL; sn++)
@@ -194,6 +198,8 @@ void show_skill_cmds(CHAR_DATA * ch, int tar)
  ****************************************************************************/
 bool show_help(CHAR_DATA * ch, char *argument)
 {
+    char buf[MAX_STRING_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
     char spell[MAX_INPUT_LENGTH];
     int cnt;
 
@@ -274,7 +280,9 @@ REDIT(redit_mlist)
     AREA_DATA *pArea;
     char *dupl;
 
+    char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH * 2];
+    char arg[MAX_INPUT_LENGTH];
     bool fAll, found;
     int vnum;
     int col = 0;
@@ -327,7 +335,9 @@ REDIT(redit_mfreevnums)
 {
     MOB_INDEX_DATA *pMobIndex;
     AREA_DATA *pArea;
+    char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH * 2];
+    char arg[MAX_INPUT_LENGTH];
     bool found;
     int vnum;
     int col = 0;
@@ -375,7 +385,9 @@ REDIT(redit_ofreevnums)
 {
     OBJ_INDEX_DATA *pObjIndex;
     AREA_DATA *pArea;
+    char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH * 2];
+    char arg[MAX_INPUT_LENGTH];
     bool found;
     int vnum;
     int col = 0;
@@ -424,7 +436,9 @@ REDIT(redit_rfreevnums)
 {
     ROOM_INDEX_DATA *pRoomIndex;
     AREA_DATA *pArea;
+    char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH * 2];
+    char arg[MAX_INPUT_LENGTH];
     bool found;
     int vnum;
     int col = 0;
@@ -473,7 +487,9 @@ REDIT(redit_olist)
 {
     OBJ_INDEX_DATA *pObjIndex;
     AREA_DATA *pArea;
+    char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH * 2];
+    char arg[MAX_INPUT_LENGTH];
     bool fAll, found;
     char *dupl;
     int vnum;
@@ -591,7 +607,7 @@ REDIT(redit_oshow)
  Purpose:	Ensures the range spans only one area.
  Called by:	aedit_vnum(olc_act.c).
  ****************************************************************************/
-bool check_range(int lower, int upper)
+static bool check_range(int lower, int upper)
 {
     AREA_DATA *pArea;
     int cnt = 0;
@@ -630,6 +646,7 @@ AREA_DATA *get_vnum_area(int vnum)
  */
 AEDIT(aedit_show)
 {
+    char buf[MAX_STRING_LENGTH];
     AREA_DATA *pArea;
 
     EDIT_AREA(ch, pArea);
@@ -872,6 +889,7 @@ AEDIT(aedit_builder)
 {
     AREA_DATA *pArea;
     char name[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
 
     EDIT_AREA(ch, pArea);
 
@@ -1065,6 +1083,7 @@ AEDIT(aedit_uvnum)
  */
 REDIT(redit_show)
 {
+    char buf[MAX_STRING_LENGTH];
     ROOM_INDEX_DATA *pRoom;
     char buf1[2 * MAX_STRING_LENGTH];
     OBJ_DATA *obj;
@@ -1211,9 +1230,10 @@ REDIT(redit_show)
 }
 
 /* Local function. */
-bool change_exit(CHAR_DATA * ch, char *argument, int door)
+static bool change_exit(CHAR_DATA * ch, char *argument, int door)
 {
     ROOM_INDEX_DATA *pRoom;
+    char arg[MAX_INPUT_LENGTH];
     char command[MAX_INPUT_LENGTH];
     char temp[MAX_INPUT_LENGTH];
     int value;
@@ -1798,6 +1818,7 @@ REDIT(redit_mreset)
     CHAR_DATA *newmob;
 
     RESET_DATA *pReset;
+    char arg[MAX_INPUT_LENGTH];
     char output[MAX_STRING_LENGTH];
 
     EDIT_ROOM(ch, pRoom);
@@ -1854,7 +1875,7 @@ struct wear_type
     int wear_bit;
 };
 
-const struct wear_type wear_table[] =
+static const struct wear_type wear_table[] =
 {
     {WEAR_NONE, ITEM_TAKE},
     {WEAR_LIGHT, ITEM_LIGHT},
@@ -1902,7 +1923,7 @@ int wear_loc(int bits, int count)
  Purpose:	Converts a wear_loc into a bit.
  Called by:	redit_oreset(olc_act.c).
  ****************************************************************************/
-int wear_bit(int loc)
+static int wear_bit(int loc)
 {
     int flag;
 
@@ -1922,6 +1943,7 @@ REDIT(redit_oreset)
     OBJ_DATA *newobj;
     OBJ_DATA *to_obj;
     CHAR_DATA *to_mob;
+    char arg[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
     int olevel = 0;
 
@@ -2117,8 +2139,9 @@ REDIT(redit_oreset)
 /*
  * Object Editor Functions.
  */
-void show_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * obj)
+static void show_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * obj)
 {
+    char buf[MAX_STRING_LENGTH];
     switch (obj->item_type)
     {
     default:			/* No values. */
@@ -2259,7 +2282,7 @@ void show_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * obj)
     return;
 }
 
-bool set_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
+static bool set_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
                     char *argument)
 {
     switch (pObj->item_type)
@@ -2545,6 +2568,7 @@ bool set_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
 
 OEDIT(oedit_show)
 {
+    char buf[MAX_STRING_LENGTH];
     OBJ_INDEX_DATA *pObj;
     AFFECT_DATA *paf;
     int cnt;
@@ -2794,7 +2818,7 @@ OEDIT(oedit_long)
     return TRUE;
 }
 
-bool set_value(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument,
+static bool set_value(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument,
                int value)
 {
     if (argument[0] == '\0')
@@ -2814,7 +2838,7 @@ bool set_value(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument,
  Purpose:	Finds the object and sets its value.
  Called by:	The four valueX functions below. (now five -- Hugin )
  ****************************************************************************/
-bool oedit_values(CHAR_DATA * ch, char *argument, int value)
+static bool oedit_values(CHAR_DATA * ch, char *argument, int value)
 {
     OBJ_INDEX_DATA *pObj;
 
@@ -3269,6 +3293,7 @@ OEDIT(oedit_condition)
  */
 MEDIT(medit_show)
 {
+	char buf[MAX_STRING_LENGTH];
     MOB_INDEX_DATA *pMob;
     FACTIONAFF_DATA *pFactAff;
     int x;
@@ -3621,6 +3646,8 @@ MEDIT(medit_shop)
 {
     MOB_INDEX_DATA *pMob;
     char command[MAX_INPUT_LENGTH];
+	char buf[MAX_STRING_LENGTH];
+	char arg[MAX_INPUT_LENGTH];
 
     argument = one_argument(argument, command);
     argument = one_argument(argument, arg);
@@ -3844,8 +3871,11 @@ MEDIT(medit_affect)
 
 MEDIT(medit_ac)
 {
+	char arg[MAX_INPUT_LENGTH];
     MOB_INDEX_DATA *pMob;
     int pierce, bash, slash, exotic;
+
+    arg[0] = '\0';
 
     do  			/* So that I can use break and send the syntax in one place */
     {
@@ -4288,6 +4318,7 @@ MEDIT(medit_damtype)
 
 MEDIT(medit_race)
 {
+	char buf[MAX_STRING_LENGTH];
     MOB_INDEX_DATA *pMob;
     int race;
 
@@ -4330,6 +4361,7 @@ MEDIT(medit_race)
 
 MEDIT(medit_position)
 {
+	char arg[MAX_INPUT_LENGTH];
     MOB_INDEX_DATA *pMob;
     int value;
 

@@ -21,6 +21,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "interp.h"
 
 #define MAX_DAMAGE_MESSAGE 35
 
@@ -42,34 +43,32 @@ void do_sacrifice(CHAR_DATA * ch, char *argument);
 /*
  * Local functions.
  */
-void check_assist(CHAR_DATA * ch, CHAR_DATA * victim);
-bool check_block(CHAR_DATA * ch, CHAR_DATA * victim);
-bool check_dodge(CHAR_DATA * ch, CHAR_DATA * victim);
-void check_killer(CHAR_DATA * ch, CHAR_DATA * victim);
-bool check_parry(CHAR_DATA * ch, CHAR_DATA * victim);
-void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
+static void check_assist(CHAR_DATA * ch, CHAR_DATA * victim);
+static bool check_block(CHAR_DATA * ch, CHAR_DATA * victim);
+static bool check_dodge(CHAR_DATA * ch, CHAR_DATA * victim);
+static void check_killer(CHAR_DATA * ch, CHAR_DATA * victim);
+static bool check_parry(CHAR_DATA * ch, CHAR_DATA * victim);
+static void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
                  bool immune);
 void death_cry(CHAR_DATA * ch);
-void group_gain(CHAR_DATA * ch, CHAR_DATA * victim);
-int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
+static void group_gain(CHAR_DATA * ch, CHAR_DATA * victim);
+static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                int members);
 int hit_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                    int members, int dam);
 int cast_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                     int members, int dam);
 bool is_safe(CHAR_DATA * ch, CHAR_DATA * victim);
-void make_corpse(CHAR_DATA * ch);
-void make_pk_corpse(CHAR_DATA * ch);
-void one_hit
+static void one_hit
 (CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dt);
-void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt);
-void chaos_kill(CHAR_DATA * victim);
-void pk_kill(CHAR_DATA * victim);
-void raw_kill(CHAR_DATA * victim);
-void set_fighting(CHAR_DATA * ch, CHAR_DATA * victim);
-void disarm(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * target_weapon);
-void chaos_log(CHAR_DATA * ch, char *argument);
-bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
+static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt);
+static void chaos_kill(CHAR_DATA * victim);
+static void pk_kill(CHAR_DATA * victim);
+static void raw_kill(CHAR_DATA * victim);
+static void set_fighting(CHAR_DATA * ch, CHAR_DATA * victim);
+static void disarm(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * target_weapon);
+static void chaos_log(CHAR_DATA * ch, char *argument);
+static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
                  int dam_type);
 extern bool chaos;
 extern bool gsilentdamage;
@@ -117,7 +116,7 @@ void violence_update(void)
 }
 
 /* for auto assisting */
-void check_assist(CHAR_DATA * ch, CHAR_DATA * victim)
+static void check_assist(CHAR_DATA * ch, CHAR_DATA * victim)
 {
     CHAR_DATA *rch, *rch_next;
 
@@ -218,7 +217,7 @@ void stop_hating(CHAR_DATA * ch)
     return;
 }
 
-void start_hating(CHAR_DATA * ch, CHAR_DATA * victim)
+static void start_hating(CHAR_DATA * ch, CHAR_DATA * victim)
 {
     if (ch == victim)
         return;
@@ -305,7 +304,7 @@ void multi_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
 }
 
 /* procedure for all mobile attacks */
-void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
+static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
 {
     OBJ_DATA *weapon;
     OBJ_DATA *second_weapon;
@@ -425,7 +424,7 @@ void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
 /*
  * Hit one guy once.
  */
-void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dt)
+static void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dt)
 {
     bool counter;
     bool damaged = FALSE;
@@ -1452,7 +1451,7 @@ bool new_damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
     return TRUE;
 }
 
-bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
+static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
                  int dam_type)
 {
     char buf[MAX_STRING_LENGTH];
@@ -1801,7 +1800,7 @@ bool is_safe_spell(CHAR_DATA * ch, CHAR_DATA * victim, bool area)
 /*
  * See if an attack justifies a KILLER flag.
  */
-void check_killer(CHAR_DATA * ch, CHAR_DATA * victim)
+static void check_killer(CHAR_DATA * ch, CHAR_DATA * victim)
 {
     char buf[MAX_STRING_LENGTH];
     /*
@@ -1899,7 +1898,7 @@ void update_pos(CHAR_DATA * victim)
 /*
  * Start fights.
  */
-void set_fighting(CHAR_DATA * ch, CHAR_DATA * victim)
+static void set_fighting(CHAR_DATA * ch, CHAR_DATA * victim)
 {
     if (ch->fighting != NULL)
     {
@@ -1955,7 +1954,7 @@ void stop_fighting(CHAR_DATA * ch, bool fBoth)
 /*
  * Make a corpse out of a character.
  */
-void make_corpse(CHAR_DATA * ch)
+static void make_corpse(CHAR_DATA * ch)
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
@@ -2034,7 +2033,7 @@ void make_corpse(CHAR_DATA * ch)
     return;
 }
 
-void make_pk_corpse(CHAR_DATA * ch)
+static void make_pk_corpse(CHAR_DATA * ch)
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
@@ -2225,7 +2224,7 @@ void death_cry(CHAR_DATA * ch)
     return;
 }
 
-void chaos_kill(CHAR_DATA * victim)
+static void chaos_kill(CHAR_DATA * victim)
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *obj;
@@ -2256,7 +2255,7 @@ void chaos_kill(CHAR_DATA * victim)
     return;
 }
 
-void raw_kill(CHAR_DATA * victim)
+static void raw_kill(CHAR_DATA * victim)
 {
     int i;
 
@@ -2295,7 +2294,7 @@ void raw_kill(CHAR_DATA * victim)
     return;
 }
 
-void pk_kill(CHAR_DATA * victim)
+static void pk_kill(CHAR_DATA * victim)
 {
     int i;
 
@@ -2327,7 +2326,7 @@ void pk_kill(CHAR_DATA * victim)
     return;
 }
 
-void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
+static void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
 {
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *gch;
@@ -2431,7 +2430,7 @@ void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
  * Also adjust alignment of killer.
  * Edit this function to change xp computations.
  */
-int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
+static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                int members)
 {
     int xp, base_exp = 0;
@@ -3689,7 +3688,7 @@ int cast_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
     return xp;
 }
 
-void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
+static void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
                  bool immune)
 {
     char buf1[256], buf2[256], buf3[256];
@@ -4301,7 +4300,7 @@ void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
  * Disarm a creature.
  * Caller must check for successful attack.
  */
-void disarm(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * target_weapon)
+static void disarm(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * target_weapon)
 {
     if (IS_OBJ_STAT(target_weapon, ITEM_NOREMOVE))
     {
@@ -5705,7 +5704,7 @@ void do_mortslay(CHAR_DATA * ch, char *argument)
     return;
 }
 
-void chaos_log(CHAR_DATA * ch, char *argument)
+static void chaos_log(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
 
@@ -5714,7 +5713,7 @@ void chaos_log(CHAR_DATA * ch, char *argument)
     return;
 }
 
-bool check_block(CHAR_DATA * ch, CHAR_DATA * victim)
+static bool check_block(CHAR_DATA * ch, CHAR_DATA * victim)
 {
     int chancea;
     int chance;
@@ -5794,7 +5793,7 @@ bool check_block(CHAR_DATA * ch, CHAR_DATA * victim)
     return TRUE;
 }
 
-bool check_parry(CHAR_DATA * ch, CHAR_DATA * victim)
+static bool check_parry(CHAR_DATA * ch, CHAR_DATA * victim)
 {
     int chance;
     int dnum;
@@ -5848,7 +5847,7 @@ bool check_parry(CHAR_DATA * ch, CHAR_DATA * victim)
     return TRUE;
 }
 
-bool check_dodge(CHAR_DATA * ch, CHAR_DATA * victim)
+static bool check_dodge(CHAR_DATA * ch, CHAR_DATA * victim)
 {
     int chance;
     int dnum;

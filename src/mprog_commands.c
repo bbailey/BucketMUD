@@ -45,9 +45,9 @@
 
 char *mprog_type_to_name(int type);
 
-SOCIALLIST_DATA *RandomSOCIAL = NULL;
+static SOCIALLIST_DATA *RandomSOCIAL = NULL;
 void mprog_get_RandomSOCIAL(void);
-bool RandomSOCIAL_picked;
+static bool RandomSOCIAL_picked;
 /* This routine transfers between alpha and numeric forms of the
  *  mud_prog bitvector types. It allows the words to show up in mpstat to
  *  make it just a hair bit easier to see what a mob should be doing.
@@ -118,7 +118,7 @@ char *mprog_type_to_name(int type)
 
 /* do_mobstat: Show the mudprogs on a given mob.
  *             argument can be a vnum or a mob name. */
-void do_mobstat(CHAR_DATA * ch, char *argument)
+static void do_mobstat(CHAR_DATA * ch, char *argument)
 {
     char arg[MAX_INPUT_LENGTH];
     MPROG_LIST *pList;
@@ -199,7 +199,7 @@ void do_mobstat(CHAR_DATA * ch, char *argument)
     }
 }
 
-void do_roomstat(CHAR_DATA * ch, char *argument)
+static void do_roomstat(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
@@ -274,7 +274,7 @@ void do_roomstat(CHAR_DATA * ch, char *argument)
     return;
 }
 
-void do_objstat(CHAR_DATA * ch, char *argument)
+static void do_objstat(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
@@ -1147,9 +1147,10 @@ void do_mpforce(CHAR_DATA * ch, char *argument)
     return;
 }
 
+extern bool silentmode;
+
 void do_mpsilentforce(CHAR_DATA * ch, char *argument)
 {
-    extern bool silentmode;
     char arg[MAX_INPUT_LENGTH];
     if (!IS_NPC(ch))
     {
@@ -1245,7 +1246,6 @@ void do_mpsilentforce(CHAR_DATA * ch, char *argument)
 
 void do_mpdosilent(CHAR_DATA * ch, char *argument)
 {
-    extern bool silentmode;
     silentmode = TRUE;
     interpret(ch, argument);
     silentmode = FALSE;

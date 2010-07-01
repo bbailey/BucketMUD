@@ -26,18 +26,15 @@
 #ifndef _MUD_PROGS_H_
 #define _MUD_PROGS_H_
 
+#include "mprog_fun.h"
+
 /*
  * Semi-locals
  */
 void *mprog_get_actor(char *arg, char type);
 
-extern CHAR_DATA *ProgSource;
-extern CHAR_DATA *ProgTriggeredBy;
-extern CHAR_DATA *ProgVictim;
 extern OBJ_DATA *ProgObjectSource;
-extern OBJ_DATA *ProgObjectVictim;
-extern ROOM_INDEX_DATA *ProgRoomSource;
-extern CHAR_DATA *supermob;
+extern CHAR_DATA *ProgSource;
 extern int ExecMudProgID;
 
 /*

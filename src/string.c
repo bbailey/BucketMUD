@@ -19,10 +19,7 @@
 #include <time.h>
 #include "merc.h"
 
-void show_line_numbers(CHAR_DATA * ch, char *oldstring);
-char *line_replace(char *orig, int line, char *arg3);
-int count_lines(const char *orig);
-char *line_delete(char *orig, int line);
+static void show_line_numbers(CHAR_DATA * ch, char *oldstring);
 
 /*
    The line_replace, count_lines, and line_delete functions
@@ -36,7 +33,7 @@ char *line_delete(char *orig, int line);
  Purpose:	Substitutes one line of text for another.
  Called by:	string_add(string.c) (aedit_builder)olc_act.c.
  ****************************************************************************/
-char *line_replace(char *orig, int line, char *arg3)
+static char *line_replace(char *orig, int line, char *arg3)
 {
 
     unsigned int len;
@@ -93,7 +90,7 @@ char *line_replace(char *orig, int line, char *arg3)
  Purpose:	counts the number of lines in the string
  Called by:     string_add for use in line_delete
  *****************************************************************************/
-int count_lines(const char *orig)
+static int count_lines(const char *orig)
 {
     int line;
 
@@ -111,7 +108,7 @@ int count_lines(const char *orig)
  Purpose:	deletes one line of text
  Called by:	string_add(string.c) (aedit_builder)olc_act.c.
  ****************************************************************************/
-char *line_delete(char *orig, int line)
+static char *line_delete(char *orig, int line)
 {
 
     int len, buflen;
@@ -165,7 +162,7 @@ char *line_delete(char *orig, int line)
  ****************************************************************************/
 /* The old one was buggy, at lesat for my mud */
 /* So I rewrote it.  -- Kyle Boyd */
-char *line_add(char *orig, int line, char *add)
+static char *line_add(char *orig, int line, char *add)
 {
     char *string, outbuf[MAX_STRING_LENGTH], buf[MAX_STRING_LENGTH];
     int count = 1, pos;
@@ -782,7 +779,7 @@ char *string_proper(char *argument)
 /* This functions by Kyle Boyd. */
 /* If you see any bugs, check to see if all of your strings end like that. */
 
-void show_line_numbers(CHAR_DATA * ch, char *string)
+static void show_line_numbers(CHAR_DATA * ch, char *string)
 {
     char *ptr;
     char newstring[MAX_STRING_LENGTH];

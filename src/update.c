@@ -22,29 +22,13 @@
 #include <time.h>
 #include <math.h>
 #include "merc.h"
+#include "interp.h"
 
 extern bool can_use(CHAR_DATA * ch, long sn);
 
 /* command procedures needed */
 void do_quit(CHAR_DATA * ch, char *argument);
 void do_say(CHAR_DATA * ch, char *argument);	/* added for AUTO_HATE */
-
-/*
- * Local functions.
- */
-int hit_gain(CHAR_DATA * ch);
-int mana_gain(CHAR_DATA * ch);
-int move_gain(CHAR_DATA * ch);
-void mobile_update(void);
-void weather_update(void);
-void char_update(void);
-void regen_update(void);
-void obj_update(void);
-void aggr_update(void);
-
-/* used for saving */
-
-int save_number = 0;
 
 /*
  * Advancement stuff.
@@ -153,7 +137,7 @@ void gain_exp(CHAR_DATA * ch, int gain)
 /*
  * Regeneration stuff.
  */
-int hit_gain(CHAR_DATA * ch)
+static int hit_gain(CHAR_DATA * ch)
 {
     int gain;
     int number;
@@ -232,7 +216,7 @@ int hit_gain(CHAR_DATA * ch)
     return UMIN(gain, ch->max_hit - ch->hit);
 }
 
-int mana_gain(CHAR_DATA * ch)
+static int mana_gain(CHAR_DATA * ch)
 {
     int gain;
     int number;
@@ -311,7 +295,7 @@ int mana_gain(CHAR_DATA * ch)
     return UMIN(gain, ch->max_mana - ch->mana);
 }
 
-int move_gain(CHAR_DATA * ch)
+static int move_gain(CHAR_DATA * ch)
 {
     int gain;
 
@@ -394,7 +378,7 @@ void gain_condition(CHAR_DATA * ch, int iCond, int value)
  * This function takes 25% to 35% of ALL Merc cpu time.
  * -- Furey
  */
-void mobile_update(void)
+static void mobile_update(void)
 {
     CHAR_DATA *ch;
     CHAR_DATA *ch_next;
@@ -507,7 +491,7 @@ void mobile_update(void)
 /*
  * Update the weather.
  */
-void weather_update(void)
+static void weather_update(void)
 {
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
@@ -647,7 +631,7 @@ void weather_update(void)
 /*
  * Update all chars, including mobs.
 */
-void char_update(void)
+static void char_update(void)
 {
     CHAR_DATA *ch;
     CHAR_DATA *ch_next;
@@ -655,6 +639,8 @@ void char_update(void)
     char buf[MAX_STRING_LENGTH];
     extern bool chaos;
     int blarg;
+    static int save_number = 0;
+
     ch_quit = NULL;
 
     /* update save counter */
@@ -1004,7 +990,7 @@ void char_update(void)
     return;
 }
 
-void regen_update(void)
+static void regen_update(void)
 {
     CHAR_DATA *ch;
     CHAR_DATA *ch_next;
@@ -1029,7 +1015,7 @@ void regen_update(void)
  * Update all objs.
  * This function is performance sensitive.
  */
-void obj_update(void)
+static void obj_update(void)
 {
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
@@ -1180,7 +1166,7 @@ void obj_update(void)
  *
  * -Zane
  */
-void aggr_update(void)
+static void aggr_update(void)
 {
     CHAR_DATA *wch;
     CHAR_DATA *wch_next;
@@ -1288,6 +1274,7 @@ void aggr_update(void)
  * Called once per pulse from game loop.
  * Random times to defeat tick-timing clients and players.
  */
+extern bool silentmode;
 
 void update_handler(void)
 {
@@ -1296,7 +1283,6 @@ void update_handler(void)
     static int pulse_violence;
     static int pulse_point;
     static int pulse_auction;
-    extern bool silentmode;
 
     if (silentmode)
     {

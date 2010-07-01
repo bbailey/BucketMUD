@@ -37,7 +37,7 @@ struct flag_stat_type
 		but stats can only be assigned.  Update this table when a
 		new set of flags is installed.
  ****************************************************************************/
-const struct flag_stat_type flag_stat_table[] =
+static const struct flag_stat_type flag_stat_table[] =
 {
     /*  {   structure               stat    }, */
     {area_flags, FALSE},
@@ -85,7 +85,7 @@ const struct flag_stat_type flag_stat_table[] =
  Called by:     flag_value and flag_string.
  Note:          This function is local and used only in bit.c.
  ****************************************************************************/
-bool is_stat(const struct flag_type *flag_table)
+static bool is_stat(const struct flag_type *flag_table)
 {
     int flag;
 
@@ -109,7 +109,7 @@ bool is_stat(const struct flag_type *flag_table)
  Called by:     flag_value and flag_string.
  Note:          This function is local and used only in bit.c.
  ****************************************************************************/
-int flag_lookup(const char *name, const struct flag_type *flag_table)
+static int flag_lookup(const char *name, const struct flag_type *flag_table)
 {
     int flag;
 

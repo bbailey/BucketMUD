@@ -9,10 +9,18 @@
 #include "factions.h"
 #include "olc.h"
 
-FACTIONLIST_DATA *faction_first = NULL;
-FACTIONLIST_DATA *faction_last = NULL;
+static FACTIONLIST_DATA *faction_first = NULL;
+static FACTIONLIST_DATA *faction_last = NULL;
 
-sh_int faction_count = 0;
+static sh_int faction_count = 0;
+
+static bool factedit_show(CHAR_DATA * ch, char *argument);
+static bool factedit_create(CHAR_DATA * ch, char *argument);
+static bool factedit_name(CHAR_DATA * ch, char *argument);
+static bool factedit_increase(CHAR_DATA * ch, char *argument);
+static bool factedit_decrease(CHAR_DATA * ch, char *argument);
+static FACTIONLIST_DATA *new_faction(void);
+static char *faction_con_msg(sh_int value);
 
 const struct olc_cmd_type factionedit_table[] =
 {
@@ -137,7 +145,7 @@ void save_factions(void)
     fclose(fp);
 }
 
-FACTIONLIST_DATA *new_faction(void)
+static FACTIONLIST_DATA *new_faction(void)
 {
     FACTIONLIST_DATA *pFact;
 
@@ -289,7 +297,7 @@ void factionedit(CHAR_DATA * ch, char *argument)
     return;
 }
 
-bool factedit_show(CHAR_DATA * ch, char *argument)
+static bool factedit_show(CHAR_DATA * ch, char *argument)
 {
     FACTIONLIST_DATA *pFact;
 
@@ -312,7 +320,7 @@ bool factedit_show(CHAR_DATA * ch, char *argument)
     return FALSE;
 }
 
-bool factedit_create(CHAR_DATA * ch, char *argument)
+static bool factedit_create(CHAR_DATA * ch, char *argument)
 {
     FACTIONLIST_DATA *pFact = new_faction();
 
@@ -340,7 +348,7 @@ bool factedit_create(CHAR_DATA * ch, char *argument)
     return TRUE;
 }
 
-bool factedit_name(CHAR_DATA * ch, char *argument)
+static bool factedit_name(CHAR_DATA * ch, char *argument)
 {
     FACTIONLIST_DATA *pFact;
 
@@ -382,7 +390,7 @@ bool factedit_name(CHAR_DATA * ch, char *argument)
     return TRUE;
 }
 
-bool factedit_increase(CHAR_DATA * ch, char *argument)
+static bool factedit_increase(CHAR_DATA * ch, char *argument)
 {
     FACTIONLIST_DATA *pFact;
 
@@ -408,7 +416,7 @@ bool factedit_increase(CHAR_DATA * ch, char *argument)
     return TRUE;
 }
 
-bool factedit_decrease(CHAR_DATA * ch, char *argument)
+static bool factedit_decrease(CHAR_DATA * ch, char *argument)
 {
     FACTIONLIST_DATA *pFact;
 
@@ -730,7 +738,7 @@ void show_faction_standings(CHAR_DATA * ch, char *argument)
     page_to_char(buffer, ch);
 }
 
-char *faction_con_msg(sh_int value)
+static char *faction_con_msg(sh_int value)
 {
     sh_int percentage;
 
@@ -983,7 +991,7 @@ void faction_stat(CHAR_DATA * ch, CHAR_DATA * victim)
     page_to_char(buffer, ch);
 }
 
-void mpchangefaction(CHAR_DATA * ch, char *argument, bool silent)
+static void mpchangefaction(CHAR_DATA * ch, char *argument, bool silent)
 {
     FACTIONLIST_DATA *pFact;
     FACTIONPC_DATA *pFactPC;

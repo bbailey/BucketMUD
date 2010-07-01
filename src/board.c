@@ -22,6 +22,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "interp.h"
 
 #define L_HER LEVEL_HERO
 #define L_IMM LEVEL_IMMORTAL
@@ -78,14 +79,15 @@ BOARD_DATA boards[MAX_BOARD] =
 
 /* The prompt that the character is given after finishing a note with ~ or END */
 /* Added Word Wrap and Replace. -Lancelight */
-const char *szFinishPrompt =
+static const char *szFinishPrompt =
     "(`WC`w)ontinue, (`WV`w)iew, (`WP`w)ost, (`WF`w)orget it, (`WW`w)ord Wrap, (`WR`w)eplace:";
-long last_note_stamp = 0;	/* To generate unique timestamps on notes */
+static long last_note_stamp = 0;	/* To generate unique timestamps on notes */
 
 #define BOARD_NOACCESS -1
 #define BOARD_NOTFOUND -1
 
 static bool next_board(CHAR_DATA * ch);
+static bool is_note_to(CHAR_DATA * ch, NOTE_DATA * note);
 
 /* recycle a note */
 void free_note(NOTE_DATA * note)
@@ -106,7 +108,7 @@ void free_note(NOTE_DATA * note)
 }
 
 /* allocate memory for a new note or recycle */
-NOTE_DATA *new_note()
+static NOTE_DATA *new_note()
 {
     NOTE_DATA *note;
 
@@ -136,8 +138,8 @@ static void append_note(FILE * fp, NOTE_DATA * note)
 {
     fprintf(fp, "Sender  %s~\n", note->sender);
     fprintf(fp, "Date    %s~\n", note->date);
-    fprintf(fp, "Stamp   %ld\n", note->date_stamp);
-    fprintf(fp, "Expire  %ld\n", note->expire);
+    fprintf(fp, "Stamp   %lld\n", (long long int) note->date_stamp);
+    fprintf(fp, "Expire  %lld\n", (long long int) note->expire);
     fprintf(fp, "To      %s~\n", note->to_list);
     fprintf(fp, "Subject %s~\n", note->subject);
     fprintf(fp, "Text\n%s~\n\n", note->text);
@@ -186,7 +188,7 @@ void finish_note(BOARD_DATA * board, NOTE_DATA * note)
 }
 
 /* Find the number of a board */
-int board_number(const BOARD_DATA * board)
+static int board_number(const BOARD_DATA * board)
 {
     int i;
 
@@ -473,7 +475,7 @@ bool is_note_to(CHAR_DATA * ch, NOTE_DATA * note)
 
 /* Return the number of unread notes 'ch' has in 'board' */
 /* Returns BOARD_NOACCESS if ch has no access to board */
-int unread_notes(CHAR_DATA * ch, BOARD_DATA * board)
+static int unread_notes(CHAR_DATA * ch, BOARD_DATA * board)
 {
     NOTE_DATA *note;
     time_t last_read;

@@ -11,7 +11,7 @@
 SOCIALLIST_DATA *social_first = NULL;
 SOCIALLIST_DATA *social_last = NULL;
 
-sh_int socials_count = 0;
+static sh_int socials_count = 0;
 
 const struct olc_cmd_type socialedit_table[] =
 {

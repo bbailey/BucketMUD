@@ -18,17 +18,17 @@
 #include <ctype.h>
 #include <time.h>
 #include "merc.h"
+#include "interp.h"
 
 bool can_practice(CHAR_DATA * ch, long sn);
 
 /* command procedures needed */
 void do_exits(CHAR_DATA * ch, char *argument);
-void do_look(CHAR_DATA * ch, char *argument);
 void do_help(CHAR_DATA * ch, char *argument);
-void do_todo(CHAR_DATA * ch, char *argument);
-void do_save(CHAR_DATA * ch, char *argument);
 
-char *const where_name[] =
+extern void do_save(CHAR_DATA * ch, char *argument);
+
+static char *const where_name[] =
 {
     WORN_LIGHT,
     WORN_FINGER,
@@ -54,13 +54,10 @@ char *const where_name[] =
 /*
  * Local functions.
  */
-char *format_obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch, bool fShort);
-void show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
-                       bool fShowNothing);
-void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch);
-void show_char_to_char_1(CHAR_DATA * victim, CHAR_DATA * ch);
-void show_char_to_char(CHAR_DATA * list, CHAR_DATA * ch);
-bool check_blind(CHAR_DATA * ch);
+static void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch);
+static void show_char_to_char_1(CHAR_DATA * victim, CHAR_DATA * ch);
+static void show_char_to_char(CHAR_DATA * list, CHAR_DATA * ch);
+static bool check_blind(CHAR_DATA * ch);
 
 /*
  * externs
@@ -68,7 +65,7 @@ bool check_blind(CHAR_DATA * ch);
 
 extern bool can_use(CHAR_DATA * ch, int sn);
 
-char *format_obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch, bool fShort)
+static char *format_obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch, bool fShort)
 {
     static char buf[MAX_STRING_LENGTH];
 
@@ -102,7 +99,7 @@ char *format_obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch, bool fShort)
  * Show a list to a character.
  * Can coalesce duplicated items.
  */
-void show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
+static void show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
                        bool fShowNothing)
 {
     char buf[MAX_STRING_LENGTH];
@@ -212,7 +209,7 @@ void show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
     return;
 }
 
-void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch)
+static void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch)
 {
     char buf[MAX_STRING_LENGTH];
     char message[MAX_STRING_LENGTH];
@@ -435,7 +432,7 @@ void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch)
     return;
 }
 
-void show_char_to_char_1(CHAR_DATA * victim, CHAR_DATA * ch)
+static void show_char_to_char_1(CHAR_DATA * victim, CHAR_DATA * ch)
 {
 
     char buf[MAX_STRING_LENGTH];
@@ -537,7 +534,7 @@ void show_char_to_char_1(CHAR_DATA * victim, CHAR_DATA * ch)
     return;
 }
 
-void show_char_to_char(CHAR_DATA * list, CHAR_DATA * ch)
+static void show_char_to_char(CHAR_DATA * list, CHAR_DATA * ch)
 {
     CHAR_DATA *rch;
 
@@ -566,7 +563,7 @@ void show_char_to_char(CHAR_DATA * list, CHAR_DATA * ch)
     return;
 }
 
-bool check_blind(CHAR_DATA * ch)
+static bool check_blind(CHAR_DATA * ch)
 {
 
     if (!IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT))
@@ -1139,7 +1136,7 @@ void do_pk(CHAR_DATA * ch, char *argument)
     ch->pcdata->confirm_pk = TRUE;
 }
 
-void eval_dir(char *dir, int mov_dir, int num, CHAR_DATA * ch, int *see,
+static void eval_dir(char *dir, int mov_dir, int num, CHAR_DATA * ch, int *see,
               ROOM_INDEX_DATA * first_room)
 {
     char buf[MAX_STRING_LENGTH];
@@ -1192,7 +1189,7 @@ void eval_dir(char *dir, int mov_dir, int num, CHAR_DATA * ch, int *see,
     }
 }
 
-void show_dir_mobs(char *dir, int move_dir, CHAR_DATA * ch, int depth)
+static void show_dir_mobs(char *dir, int move_dir, CHAR_DATA * ch, int depth)
 {
     ROOM_INDEX_DATA *cur_room = ch->in_room;
     EXIT_DATA *pexit;
@@ -1728,8 +1725,7 @@ void do_examine(CHAR_DATA * ch, char *argument)
 void do_exits(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
-
-    extern char *const dir_name[];
+	
     EXIT_DATA *pexit;
     bool found;
     bool fAuto;
@@ -1798,7 +1794,7 @@ void do_worth(CHAR_DATA * ch, char *argument)
     return;
 }
 
-char *statdiff(int normal, int modified)
+static char *statdiff(int normal, int modified)
 {
     static char tempstr[10];
 
@@ -2270,13 +2266,13 @@ void do_score(CHAR_DATA * ch, char *argument)
     return;
 }
 
-char *const day_name[] =
+static char *const day_name[] =
 {
     "the Moon", "the Bull", "Deception", "Thunder", "Freedom",
     "the Great Gods", "the Sun"
 };
 
-char *const month_name[] =
+static char *const month_name[] =
 {
     "Winter", "the Winter Wolf", "the Frost Giant", "the Old Forces",
     "the Grand Struggle", "the Spring", "Nature", "Futility", "the Dragon",
@@ -2284,12 +2280,11 @@ char *const month_name[] =
     "the Long Shadows", "the Ancient Darkness", "the Great Evil"
 };
 
+extern char str_boot_time[];
+
 void do_time(CHAR_DATA * ch, char *argument)
 {
-
     char buf[MAX_STRING_LENGTH];
-
-    extern char str_boot_time[];
     char *suf;
     int day;
 
@@ -2345,7 +2340,7 @@ void do_weather(CHAR_DATA * ch, char *argument)
     return;
 }
 
-void do_version(CHAR_DATA * ch)
+void do_version(CHAR_DATA * ch, char *argument)
 {
 
     printf_to_char(ch, "%s\n\r", EMBER_MUD_VERSION);
@@ -2502,7 +2497,7 @@ void do_todo(CHAR_DATA * ch, char *argument)
 
 /* Stuff for clans in the who listing.  */
 
-char *who_clan(CHAR_DATA * ch, CHAR_DATA * looker, char *empty)
+static char *who_clan(CHAR_DATA * ch, CHAR_DATA * looker, char *empty)
 {
     CLAN_DATA *clan;
 
@@ -2553,7 +2548,7 @@ char *who_clan(CHAR_DATA * ch, CHAR_DATA * looker, char *empty)
 
 }
 
-char *pre_clan(CHAR_DATA * ch, CHAR_DATA * looker, char *empty,
+static char *pre_clan(CHAR_DATA * ch, CHAR_DATA * looker, char *empty,
                char *private, char *secret)
 {
     CLAN_DATA *clan;
@@ -2682,7 +2677,7 @@ void do_whoname(CHAR_DATA * ch, char *argument)
     page_to_char(output, ch);
 }
 
-void insert_sort(CHAR_DATA * who_list[300], CHAR_DATA * ch, int length)
+static void insert_sort(CHAR_DATA * who_list[], CHAR_DATA * ch, int length)
 {
     while ((length) && who_list[length - 1]->level < ch->level)
     {
@@ -2692,7 +2687,7 @@ void insert_sort(CHAR_DATA * who_list[300], CHAR_DATA * ch, int length)
     who_list[length] = ch;
 }
 
-void chaos_sort(CHAR_DATA * who_list[300], CHAR_DATA * ch, int length)
+static void chaos_sort(CHAR_DATA * who_list[], CHAR_DATA * ch, int length)
 {
     while ((length)
             && who_list[length - 1]->pcdata->chaos_score <
@@ -3491,7 +3486,6 @@ void do_email(CHAR_DATA * ch, char *argument)
             ("Invalid email address, your e-mail address must be in the\n\r"
              "name@host.domain format.\n\r", ch);
             return;
-            break;
         }
         last_char = argument[i];
     }
@@ -3786,11 +3780,10 @@ void do_password(CHAR_DATA * ch, char *argument)
     return;
 }
 
-void do_search(CHAR_DATA * ch)
+void do_search(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
 
-    extern char *const dir_name[];
     EXIT_DATA *pexit;
     int door;
     bool found;
@@ -3821,7 +3814,7 @@ void do_search(CHAR_DATA * ch)
     }
 }
 
-void do_cwho(CHAR_DATA * ch)
+void do_cwho(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
 
@@ -4055,10 +4048,10 @@ void do_finger(CHAR_DATA * ch, char *argument)
                 ".gz");
         if ((fp = fopen(pfile, "r")) != NULL)
         {
-            char buf[MAX_INPUT_LENGTH];
+            char system_cmd_buf[MAX_INPUT_LENGTH];
             fclose(fp);
-            sprintf(buf, "gzip -dfq %s", pfile);
-            system(buf);
+            sprintf(system_cmd_buf, "gzip -dfq %s", pfile);
+            system(system_cmd_buf);
         }
         sprintf(pfile, "%s/%s", sysconfig.player_dir, capitalize(arg));
         if ((fp = fopen(pfile, "r")) != NULL)
@@ -4351,7 +4344,8 @@ void do_rebirth(CHAR_DATA * ch, char *argument)
     }
     if (!IS_SET(ch->act, PLR_REMORT))
         SET_BIT(ch->act, PLR_REMORT);
-    ch->incarnations = ++ch->incarnations;
+		
+    ++ch->incarnations;
     /* reset misc */
     ch->pcdata->condition[COND_THIRST] = 0;
     ch->pcdata->condition[COND_FULL] = 0;

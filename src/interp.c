@@ -28,13 +28,15 @@
 #include <unistd.h>		/* unlink() */
 #endif
 
-bool check_disabled(const struct cmd_type *command);
+static bool check_disabled(const struct cmd_type *command);
 
 DISABLED_DATA *disabled_first;
 
 #define END_MARKER    "END"	/* for load_disabled() and save_disabled() */
 
 bool check_social(CHAR_DATA * ch, char *command, char *argument);
+static void do_commands(CHAR_DATA * ch, char *argument);
+static void do_wizhelp(CHAR_DATA *ch, char *argument);
 
 /*
  * Command logging types.
@@ -1130,7 +1132,7 @@ void chk_command(CHAR_DATA * ch, char *argument)
 /*
  * Contributed by Alander.
  */
-void do_commands(CHAR_DATA * ch, char *argument)
+static void do_commands(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     int cmd;
@@ -1153,7 +1155,7 @@ void do_commands(CHAR_DATA * ch, char *argument)
     return;
 }
 
-void do_wizhelp(CHAR_DATA * ch, char *argument)
+static void do_wizhelp(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     int cmd;
@@ -1381,7 +1383,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
    Note that we check for equivalence of the do_fun pointers; this means
    that disabling 'chat' will also disable the '.' command
 */
-bool check_disabled(const struct cmd_type *command)
+static bool check_disabled(const struct cmd_type *command)
 {
     DISABLED_DATA *p;
 

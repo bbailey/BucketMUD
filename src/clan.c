@@ -33,8 +33,9 @@
 #include <stdarg.h>
 #include "merc.h"
 #include "olc.h"
-void do_look(CHAR_DATA * ch, char *argument);
-void do_save(CHAR_DATA * ch, char *argument);
+
+extern void do_look(CHAR_DATA * ch, char *argument);
+extern void do_save(CHAR_DATA * ch, char *argument);
 
 #define CEDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
 
@@ -853,7 +854,7 @@ CEDIT(cedit_clanflags)
     return FALSE;
 }
 
-bool can_ch_join(CHAR_DATA * ch, CLAN_DATA * clan, bool is_petitioning)
+static bool can_ch_join(CHAR_DATA * ch, CLAN_DATA * clan, bool is_petitioning)
 {
     if (ch->level < clan->min_level)
     {
@@ -922,7 +923,7 @@ bool can_ch_join(CHAR_DATA * ch, CLAN_DATA * clan, bool is_petitioning)
     return TRUE;
 }
 
-void add_member(CHAR_DATA * ch, CLAN_DATA * clan)
+static void add_member(CHAR_DATA * ch, CLAN_DATA * clan)
 {
     int i;
 
@@ -943,7 +944,7 @@ void add_member(CHAR_DATA * ch, CLAN_DATA * clan)
     return;
 }
 
-void remove_member(CHAR_DATA * ch, CLAN_DATA * clan)
+static void remove_member(CHAR_DATA * ch, CLAN_DATA * clan)
 {
     int i;
 
@@ -1274,7 +1275,6 @@ void do_join(CHAR_DATA * ch, char *argument)
         ch->pcdata->join_status = JOIN_START;
         return;
     }
-    return;
 }
 
 void do_petition(CHAR_DATA * ch, char *argument)
@@ -1844,7 +1844,6 @@ void do_clan(CHAR_DATA * ch, char *argument)
             send_to_char("You are now snooping clans.\n\r", ch);
             return;
         }
-        return;
     }
 
     if (!is_number(arg1))

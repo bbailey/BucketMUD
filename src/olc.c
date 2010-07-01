@@ -29,15 +29,35 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+#include "interp.h"
 #include "olc.h"
-
-char buf[MAX_STRING_LENGTH];
 
 /*
  * Local functions.
  */
 AREA_DATA *get_area_data(int vnum);
-int get_new_mprog_vnum(void);
+static int get_new_mprog_vnum(void);
+
+static void aedit(CHAR_DATA * ch, char *argument);
+static void redit(CHAR_DATA * ch, char *argument);
+static void oedit(CHAR_DATA * ch, char *argument);
+static void medit(CHAR_DATA * ch, char *argument);
+static void mpedit(CHAR_DATA * ch, char *argument);
+static void mpgedit(CHAR_DATA * ch, char *argument);
+
+static void do_aedit(CHAR_DATA * ch, char *argument);
+static void do_redit(CHAR_DATA * ch, char *argument);
+static void do_oedit(CHAR_DATA * ch, char *argument);
+static void do_medit(CHAR_DATA * ch, char *argument);
+static void do_mpedit(CHAR_DATA * ch, char *argument);
+static void do_mpgedit(CHAR_DATA * ch, char *argument);
+
+static const struct olc_cmd_type aedit_table[];
+static const struct olc_cmd_type redit_table[];
+static const struct olc_cmd_type oedit_table[];
+static const struct olc_cmd_type medit_table[];
+static const struct olc_cmd_type mpedit_table[];
+static const struct olc_cmd_type mpgedit_table[];
 
 /* Executed from comm.c.  Minimizes compiling when changes are made. */
 bool run_olc_editor(DESCRIPTOR_DATA * d)
@@ -87,6 +107,7 @@ bool run_olc_editor(DESCRIPTOR_DATA * d)
 
 char *olc_ed_name(CHAR_DATA * ch)
 {
+    static char buf[MAX_STRING_LENGTH];
     buf[0] = '\0';
 
     switch (ch->desc->editor)
@@ -140,7 +161,7 @@ char *olc_ed_name(CHAR_DATA * ch)
  Purpose:	Format up the commands from given table.
  Called by:	show_commands(olc_act.c).
  ****************************************************************************/
-void show_olc_cmds(CHAR_DATA * ch, const struct olc_cmd_type *olc_table)
+static void show_olc_cmds(CHAR_DATA * ch, const struct olc_cmd_type *olc_table)
 {
     char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH];
@@ -210,7 +231,7 @@ bool show_commands(CHAR_DATA * ch, char *argument)
 /*****************************************************************************
  *                           Interpreter Tables.                             *
  *****************************************************************************/
-const struct olc_cmd_type aedit_table[] =
+static const struct olc_cmd_type aedit_table[] =
 {
     /*  {   command             function        }, */
 
@@ -234,7 +255,7 @@ const struct olc_cmd_type aedit_table[] =
     {"", 0,}
 };
 
-const struct olc_cmd_type redit_table[] =
+static const struct olc_cmd_type redit_table[] =
 {
     /*  {   command             function        }, */
 
@@ -270,7 +291,7 @@ const struct olc_cmd_type redit_table[] =
     {"", 0,}
 };
 
-const struct olc_cmd_type oedit_table[] =
+static const struct olc_cmd_type oedit_table[] =
 {
     /*  {   command             function        }, */
 
@@ -304,7 +325,7 @@ const struct olc_cmd_type oedit_table[] =
     {"", 0,}
 };
 
-const struct olc_cmd_type medit_table[] =
+static const struct olc_cmd_type medit_table[] =
 {
     /*  {   command             function        }, */
 
@@ -352,7 +373,7 @@ const struct olc_cmd_type medit_table[] =
     {"", 0,}
 };
 
-const struct olc_cmd_type mpedit_table[] =
+static const struct olc_cmd_type mpedit_table[] =
 {
     /*  {   command,            function        }, */
 
@@ -376,7 +397,7 @@ const struct olc_cmd_type mpedit_table[] =
     {"", 0,}
 };
 
-const struct olc_cmd_type mpgedit_table[] =
+static const struct olc_cmd_type mpgedit_table[] =
 {
     /*  {   command             function        }, */
 
@@ -945,7 +966,7 @@ void do_mpgedit(CHAR_DATA * ch, char *argument)
     return;
 }
 
-const struct editor_cmd_type editor_table[] =
+static const struct editor_cmd_type editor_table[] =
 {
     /*  {   command             function        }, */
 
@@ -1198,7 +1219,7 @@ void do_medit(CHAR_DATA * ch, char *argument)
     return;
 }
 
-void display_resets(CHAR_DATA * ch)
+static void display_resets(CHAR_DATA * ch)
 {
     char buf[MAX_STRING_LENGTH];
     ROOM_INDEX_DATA *pRoom;
@@ -1706,7 +1727,7 @@ void do_alist(CHAR_DATA * ch, char *argument)
     return;
 }
 
-int get_new_mprog_vnum(void)
+static int get_new_mprog_vnum(void)
 {
     MPROG_DATA *pMudProg;
     MPROG_GROUP *pMprogGroup;

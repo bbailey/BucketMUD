@@ -52,16 +52,17 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-
-#include "merc.h"
 #include <math.h>
 
+#include "merc.h"
+#include "interp.h"
+
 /* command procedures needed */
-void do_help(CHAR_DATA * ch, char *argument);
-void do_look(CHAR_DATA * ch, char *argument);
-void do_skills(CHAR_DATA * ch, char *argument);
-void do_outfit(CHAR_DATA * ch, char *argument);
-void do_afk(CHAR_DATA * ch, char *argument);
+extern void do_help(CHAR_DATA * ch, char *argument);
+extern void do_look(CHAR_DATA * ch, char *argument);
+extern void do_skills(CHAR_DATA * ch, char *argument);
+extern void do_outfit(CHAR_DATA * ch, char *argument);
+extern void do_afk(CHAR_DATA * ch, char *argument);
 
 /*
  * Malloc debugging stuff.
@@ -104,7 +105,6 @@ LAST_DATA *flast_admin = 0;
 LAST_DATA *last_admin = 0;
 LAST_DATA *flast_hero = 0;
 LAST_DATA *last_hero = 0;
-DESCRIPTOR_DATA *d_next = 0;	/* Next descriptor in loop       */
 FILE *fpReserve = 0;		/* Reserved file handle          */
 bool god;			/* All new chars are gods!       */
 bool merc_down;			/* Shutdown                      */
@@ -114,8 +114,8 @@ bool chaos;			/* Game in CHAOS!                */
 bool silentmode;		/* Send no output to descriptors */
 char str_boot_time[MAX_INPUT_LENGTH];
 time_t current_time;		/* time of this pulse */
-bool rolled = FALSE;
-int stat1[5], stat2[5], stat3[5], stat4[5], stat5[5];
+static bool rolled = FALSE;
+static int stat1[5], stat2[5], stat3[5], stat4[5], stat5[5];
 bool fCopyOver;
 int port;
 bool MOBtrigger;
@@ -127,25 +127,25 @@ char last_file[MAX_INPUT_LENGTH];
 /*
  * OS-dependent local functions.
  */
-int game_loop(int control);
-int init_socket(int port);
-void new_descriptor(int control);
-bool read_from_descriptor(DESCRIPTOR_DATA * d, bool color);
+static int game_loop(int control);
+static int init_socket(int port);
+static void new_descriptor(int control);
+static bool read_from_descriptor(DESCRIPTOR_DATA * d, bool color);
 bool write_to_descriptor(int desc, char *txt, int length, bool color);
 
 /*
  * Other local functions (OS-independent).
  */
-bool check_parse_name(char *name);
-bool check_reconnect(DESCRIPTOR_DATA * d, char *name, bool fConn);
-bool check_playing(DESCRIPTOR_DATA * d, char *name);
+static bool check_parse_name(char *name);
+static bool check_reconnect(DESCRIPTOR_DATA * d, char *name, bool fConn);
+static bool check_playing(DESCRIPTOR_DATA * d, char *name);
 int main(int argc, char **argv);
-void nanny(DESCRIPTOR_DATA * d, char *argument);
-bool process_output(DESCRIPTOR_DATA * d, bool fPrompt);
-void read_from_buffer(DESCRIPTOR_DATA * d, bool color);
-void stop_idling(CHAR_DATA * ch);
-char *doparseprompt(CHAR_DATA * ch);
-int roll_stat(int base_bonus, int stat_max);
+static void nanny(DESCRIPTOR_DATA * d, char *argument);
+static bool process_output(DESCRIPTOR_DATA * d, bool fPrompt);
+static void read_from_buffer(DESCRIPTOR_DATA * d, bool color);
+static void stop_idling(CHAR_DATA * ch);
+static char *doparseprompt(CHAR_DATA * ch);
+static int roll_stat(int base_bonus, int stat_max);
 
 bool can_read_descriptor(int fd)
 {
@@ -208,7 +208,7 @@ int main(int argc, char **argv)
     if ((fpReserve = fopen(NULL_FILE, "r")) == NULL)
     {
         perror(NULL_FILE);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     /*
@@ -221,12 +221,12 @@ int main(int argc, char **argv)
         if (!is_number(argv[1]))
         {
             fprintf(stderr, "Usage: %s [port #]\n", argv[0]);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         else if ((port = atoi(argv[1])) <= 1024)
         {
             fprintf(stderr, "Port number must be above 1024.\n");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         if ((argc > 2) && (argv[2] && argv[2][0]))
         {
@@ -282,11 +282,10 @@ int main(int argc, char **argv)
      * That's all, folks.
      */
     log_string("Normal termination of game.");
-    exit(0);
-    return 0;
+    exit(EXIT_SUCCESS);
 }
 
-int init_socket(int port)
+static int init_socket(int port)
 {
     static struct sockaddr_in sa_zero;
     struct sockaddr_in sa;
@@ -296,7 +295,7 @@ int init_socket(int port)
     if ((fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
         perror("Init_socket: socket");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR,
@@ -304,7 +303,7 @@ int init_socket(int port)
     {
         perror("Init_socket: SO_REUSEADDR");
         close(fd);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 #if defined(SO_DONTLINGER) && !defined(SYSV)
     {
@@ -318,7 +317,7 @@ int init_socket(int port)
         {
             perror("Init_socket: SO_DONTLINGER");
             close(fd);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
     }
 #endif
@@ -331,24 +330,25 @@ int init_socket(int port)
     {
         perror("Init socket: bind");
         close(fd);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     if (listen(fd, 3) < 0)
     {
         perror("Init socket: listen");
         close(fd);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return fd;
 }
 
-int game_loop(int control)
+static int game_loop(int control)
 {
     static struct timeval null_time;
     struct timeval last_time;
     bool color;
+    DESCRIPTOR_DATA *d_next = NULL;
 
     signal(SIGPIPE, SIG_IGN);
     gettimeofday(&last_time, NULL);
@@ -388,7 +388,7 @@ int game_loop(int control)
                 0)
         {
             perror("Game_loop: select: poll");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         /*
@@ -545,7 +545,7 @@ int game_loop(int control)
                     if (errno != EINTR)
                     {
                         perror("Game_loop: select: stall");
-                        exit(1);
+                        exit(EXIT_FAILURE);
                     }
 
                 }
@@ -559,7 +559,7 @@ int game_loop(int control)
     return 0;
 }
 
-void new_descriptor(int control)
+static void new_descriptor(int control)
 {
     char buf[MAX_STRING_LENGTH];
     static DESCRIPTOR_DATA d_zero;
@@ -676,6 +676,7 @@ void new_descriptor(int control)
 void close_socket(DESCRIPTOR_DATA * dclose)
 {
     CHAR_DATA *ch;
+    DESCRIPTOR_DATA *d_next = NULL;
 
     if (dclose->outtop > 0)
         process_output(dclose, FALSE);
@@ -757,7 +758,7 @@ void close_socket(DESCRIPTOR_DATA * dclose)
     return;
 }
 
-bool read_from_descriptor(DESCRIPTOR_DATA * d, bool color)
+static bool read_from_descriptor(DESCRIPTOR_DATA * d, bool color)
 {
     int iStart;
     bool bOverflow = FALSE;
@@ -840,7 +841,7 @@ bool read_from_descriptor(DESCRIPTOR_DATA * d, bool color)
 /*
  * Transfer one line from input buffer to input line.
  */
-void read_from_buffer(DESCRIPTOR_DATA * d, bool color)
+static void read_from_buffer(DESCRIPTOR_DATA * d, bool color)
 {
     int i, j, k;
 
@@ -937,10 +938,9 @@ void read_from_buffer(DESCRIPTOR_DATA * d, bool color)
 /*
  * Low level output function.
  */
-bool process_output(DESCRIPTOR_DATA * d, bool fPrompt)
+static bool process_output(DESCRIPTOR_DATA * d, bool fPrompt)
 {
     char buf[MAX_STRING_LENGTH];
-    extern bool merc_down;
     bool color = TRUE;
 
     /*
@@ -1018,7 +1018,6 @@ bool process_output(DESCRIPTOR_DATA * d, bool fPrompt)
  */
 void write_to_buffer(DESCRIPTOR_DATA * d, const char *txt, int length)
 {
-    extern bool silentmode;
 
     /* Don't do ANYTHING if global silentmode is on. */
     if (silentmode)
@@ -1096,10 +1095,13 @@ bool write_to_descriptor(int desc, char *txt, int length, bool color)
     return TRUE;
 }
 
+extern char *help_greeting;
+extern char *ansi_greeting;
+
 /*
  * Deal with sockets that haven't logged in yet.
  */
-void nanny(DESCRIPTOR_DATA * d, char *argument)
+static void nanny(DESCRIPTOR_DATA * d, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
@@ -1111,6 +1113,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
     int iClass, race, i, x;
     bool fOld;
     DESCRIPTOR_DATA *d_old;
+    DESCRIPTOR_DATA *d_next = NULL;
 
     /* Delete leading spaces UNLESS character is writing a note */
     if (d->connected != CON_NOTE_TEXT)
@@ -1141,9 +1144,6 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
          * Send the greeting.
          */
         {
-            extern char *help_greeting;
-            extern char *ansi_greeting;
-
             if (d->ansi)
                 write_to_buffer(d, ansi_greeting, 0);
             else
@@ -1299,11 +1299,6 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
             d->connected = CON_CONFIRM_NEW_NAME;
             return;
         }
-
-        if (check_playing(d, ch->name))
-            return;
-
-        break;
 
     case CON_GET_OLD_PASSWORD:
         write_to_buffer(d, "\n\r", 2);
@@ -2012,7 +2007,7 @@ void nanny(DESCRIPTOR_DATA * d, char *argument)
 /*
  * Parse a name for acceptability.
  */
-bool check_parse_name(char *name)
+static bool check_parse_name(char *name)
 {
     /*
      * Reserved words.
@@ -2082,7 +2077,7 @@ bool check_parse_name(char *name)
 /*
  * Look for link-dead player to reconnect.
  */
-bool check_reconnect(DESCRIPTOR_DATA * d, char *name, bool fConn)
+static bool check_reconnect(DESCRIPTOR_DATA * d, char *name, bool fConn)
 {
     CHAR_DATA *ch;
 
@@ -2129,7 +2124,7 @@ bool check_reconnect(DESCRIPTOR_DATA * d, char *name, bool fConn)
 /*
  * Check if already playing.
  */
-bool check_playing(DESCRIPTOR_DATA * d, char *name)
+static bool check_playing(DESCRIPTOR_DATA * d, char *name)
 {
     DESCRIPTOR_DATA *dold;
 
@@ -2153,7 +2148,7 @@ bool check_playing(DESCRIPTOR_DATA * d, char *name)
     return FALSE;
 }
 
-void stop_idling(CHAR_DATA * ch)
+static void stop_idling(CHAR_DATA * ch)
 {
     if (ch == NULL
             || ch->desc == NULL
@@ -2274,7 +2269,7 @@ void act(const char *format, CHAR_DATA * ch, const void *arg1,
 }
 
 #define NAME(ch)	(IS_NPC(ch) ? ch->short_descr : ch->name)
-char *act_string(const char *format, CHAR_DATA * to, CHAR_DATA * ch,
+static char *act_string(const char *format, CHAR_DATA * to, CHAR_DATA * ch,
                  const void *arg1, const void *arg2)
 {
     static char *const he_she[] = { "it", "he", "she" };
@@ -2691,7 +2686,7 @@ void do_color(register char *inbuf, int inlen, register char *outbuf,
         *outbuf = '\0';
 }
 
-char *figurestate(int current, int max)
+static char *figurestate(int current, int max)
 {
     static char status[40];
 
@@ -2705,7 +2700,7 @@ char *figurestate(int current, int max)
     return (status);
 }
 
-char *damstatus(CHAR_DATA * ch)
+static char *damstatus(CHAR_DATA * ch)
 {
     int percent;
     static char wound[40];
@@ -2734,7 +2729,7 @@ char *damstatus(CHAR_DATA * ch)
     return (wound);
 }
 
-char *doparseprompt(CHAR_DATA * ch)
+static char *doparseprompt(CHAR_DATA * ch)
 {
     CHAR_DATA *tank, *victim;
     static char finished_prompt[240];
@@ -2931,7 +2926,7 @@ char *doparseprompt(CHAR_DATA * ch)
 
 /* Roll a six sided die four times, discard the lowest roll and total the other three,
  * add the base_bonus and return the result */
-int roll_stat(int base_bonus, int stat_max)
+static int roll_stat(int base_bonus, int stat_max)
 {
     int roll = 0;
     int min_roll = 99;

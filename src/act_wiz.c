@@ -2422,12 +2422,13 @@ void do_reboo(CHAR_DATA * ch, char *argument)
     return;
 }
 
+extern bool chaos;
+extern bool merc_down;
+
 void do_reboot(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
-    extern bool merc_down;
     DESCRIPTOR_DATA *d, *d_next;
-    extern bool chaos;
 
     if ((chaos) && (ch->Class != 4))
     {
@@ -2480,13 +2481,14 @@ void do_shutdow(CHAR_DATA * ch, char *argument)
     return;
 }
 
+extern bool chaos;
+
 void do_shutdown(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char strPath[MAX_STRING_LENGTH];
     extern bool merc_down;
     DESCRIPTOR_DATA *d, *d_next;
-    extern bool chaos;
 
     if ((chaos) && (ch->Class != 4))
     {
@@ -3541,9 +3543,10 @@ void do_peace(CHAR_DATA * ch, char *argument)
 /* The ban functions that use to be here have been ripped out to make room
 for the new ban and permban. -Lancelight */
 
+extern bool wizlock;
+
 void do_wizlock(CHAR_DATA * ch, char *argument)
 {
-    extern bool wizlock;
     wizlock = !wizlock;
 
     if (wizlock)
@@ -3555,10 +3558,10 @@ void do_wizlock(CHAR_DATA * ch, char *argument)
 }
 
 /* RT anti-newbie code */
+extern bool newlock;
 
 void do_newlock(CHAR_DATA * ch, char *argument)
 {
-    extern bool newlock;
     newlock = !newlock;
 
     if (newlock)
@@ -5023,8 +5026,6 @@ void do_holylight(CHAR_DATA * ch, char *argument)
 
 void do_chaos(CHAR_DATA * ch, char *argument)
 {
-    extern bool chaos;
-
     if (!chaos)
     {
         do_force(ch, "all save");

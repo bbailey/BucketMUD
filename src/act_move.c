@@ -55,8 +55,7 @@ static struct track_queue_struct *queue_head = NULL, *queue_tail = NULL;
 /* end track */
 
 /* command procedures needed */
-void do_look(CHAR_DATA * ch, char *argument);
-void do_recall(CHAR_DATA * ch, char *argument);
+extern void do_look(CHAR_DATA * ch, char *argument);
 void do_stand(CHAR_DATA * ch, char *argument);
 
 char *const dir_name[] =
@@ -69,7 +68,7 @@ const sh_int rev_dir[] =
     2, 3, 0, 1, 5, 4
 };
 
-const sh_int movement_loss[SECT_MAX] =
+static const sh_int movement_loss[SECT_MAX] =
 {
     1, 2, 2, 3, 4, 6, 4, 1, 6, 10, 6
 };
@@ -78,8 +77,8 @@ const sh_int movement_loss[SECT_MAX] =
  * Local functions.
  */
 int find_door(CHAR_DATA * ch, char *arg);
-bool has_key(CHAR_DATA * ch, int key);
-bool check_web(CHAR_DATA * ch);
+static bool has_key(CHAR_DATA * ch, int key);
+static bool check_web(CHAR_DATA * ch);
 
 void move_char(CHAR_DATA * ch, int door, bool follow)
 {
@@ -582,7 +581,7 @@ void do_close(CHAR_DATA * ch, char *argument)
     return;
 }
 
-bool has_key(CHAR_DATA * ch, int key)
+static bool has_key(CHAR_DATA * ch, int key)
 {
     OBJ_DATA *obj;
 
@@ -1744,7 +1743,7 @@ void do_train(CHAR_DATA * ch, char *argument)
     return;
 }
 
-bool check_web(CHAR_DATA * ch)
+static bool check_web(CHAR_DATA * ch)
 {
     AFFECT_DATA *af;
     int chance;
@@ -1791,7 +1790,7 @@ void do_beaconreset(CHAR_DATA * ch)
     return;
 }
 
-bool can_go(CHAR_DATA * ch, int dir)
+static bool can_go(CHAR_DATA * ch, int dir)
 {
     ROOM_INDEX_DATA *room;
     EXIT_DATA *exit;
@@ -1816,7 +1815,7 @@ bool can_go(CHAR_DATA * ch, int dir)
     return TRUE;
 }
 
-void track_enqueue(ROOM_INDEX_DATA * room, int dir)
+static void track_enqueue(ROOM_INDEX_DATA * room, int dir)
 {
     struct track_queue_struct *curr;
 
@@ -1834,7 +1833,7 @@ void track_enqueue(ROOM_INDEX_DATA * room, int dir)
         queue_head = queue_tail = curr;
 }
 
-void track_dequeue(void)
+static void track_dequeue(void)
 {
     struct track_queue_struct *curr;
 
@@ -1845,7 +1844,7 @@ void track_dequeue(void)
     free_mem(&curr);
 }
 
-void track_clear_queue(void)
+static void track_clear_queue(void)
 {
     while (queue_head)
         track_dequeue();
@@ -1858,7 +1857,7 @@ void track_clear_queue(void)
  *  tracking another mob or a PC.  Or, a 'track' skill for PCs.
  */
 
-int find_first_step(ROOM_INDEX_DATA * src, ROOM_INDEX_DATA * target)
+static int find_first_step(ROOM_INDEX_DATA * src, ROOM_INDEX_DATA * target)
 {
     int curr_dir;
     ROOM_INDEX_DATA *curr_room;
@@ -1918,6 +1917,7 @@ int find_first_step(ROOM_INDEX_DATA * src, ROOM_INDEX_DATA * target)
 /************************************************************************
 *  Functions and Commands which use the above fns		        *
 ************************************************************************/
+extern const char *dir_text[];
 
 void do_track(CHAR_DATA * ch, char *argument)
 {
@@ -1925,9 +1925,6 @@ void do_track(CHAR_DATA * ch, char *argument)
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *vict;
     int dir;
-
-    const char *dir_text[] =
-        { "north", "east", "south", "west", "up", "down" };
 
     one_argument(argument, arg);
     if (!*arg)

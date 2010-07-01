@@ -47,8 +47,8 @@ SYS_CONFIG sysconfig;
 HELP_DATA *help_first;
 HELP_DATA *help_last;
 
-TODO_DATA *todo_first;
-TODO_DATA *todo_last;
+extern TODO_DATA *todo_first;
+extern TODO_DATA *todo_last;
 
 SHOP_DATA *shop_first;
 SHOP_DATA *shop_last;
@@ -76,8 +76,6 @@ CLAN_DATA *clan_last;
 TIME_INFO_DATA time_info;
 WEATHER_DATA weather_info;
 AUCTION_DATA auction_info;	/* Define the auction stuff here. -Lancelight */
-/*struct  sociallist_data     social_table    [MAX_SOCIALS];*/
-int social_count = 0;
 
 sh_int gsn_backstab;
 sh_int gsn_counter;
@@ -149,8 +147,8 @@ sh_int gsn_scribe;
 MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
 OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
 ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
-int load_config_file(void);
-char *get_config_value(char *inbuf, char *outbuf);
+static int load_config_file(void);
+static char *get_config_value(char *inbuf, char *outbuf);
 MPROG_DATA *new_mudprog(void);
 MPROG_DATA *mprog_free;
 MPROG_GROUP *mprog_group_free;
@@ -168,7 +166,7 @@ int top_area;
 int top_ed;
 int top_exit;
 int top_help;
-int top_todo;
+static int top_todo;
 int top_mob_index;
 int top_obj_index;
 int top_reset;
@@ -184,15 +182,15 @@ int mobile_count = 0;
  * MudProg locals
 */
 
-int mprog_name_to_type(char *name);
-void load_mudprogs(FILE * fp);
-void load_progs(FILE * fp);
+static int mprog_name_to_type(char *name);
+static void load_mudprogs(FILE * fp);
+static void load_progs(FILE * fp);
 
 /* Ban Locals
  * -Lancelight
  */
 
-void load_bans(void);
+extern void load_bans(void);
 
 /*
  * Memory management.
@@ -209,16 +207,15 @@ const int rgSizeList[MAX_MEM_LIST] =
 
 int nAllocString;
 int sAllocString;
-int nAllocPerm;
-int sAllocPerm;
+static int nAllocPerm;
+static int sAllocPerm;
 
 /*
  * Semi-locals.
  */
 bool fBootDb;
-FILE *fpArea;
-char strArea[MAX_INPUT_LENGTH];
-char strPath[MAX_STRING_LENGTH];
+static FILE *fpArea;
+static char strArea[MAX_INPUT_LENGTH];
 extern int MAX_STRING;
 
 void init_string_space(void);
@@ -227,19 +224,19 @@ void boot_done(void);
 /*
  * Local booting procedures.
 */
-void init_mm(void);
-void skip_section(FILE * fp, char *section);
-void load_clans(FILE * fp);
-void load_area(FILE * fp);	/* OLC */
-void load_helps(FILE * fp);
-void load_todo(FILE * fp);
-void load_mobiles(FILE * fp);
-void load_objects(FILE * fp);
-void load_resets(FILE * fp);
-void load_rooms(FILE * fp);
-void load_shops(FILE * fp);
+static void init_mm(void);
+static void skip_section(FILE * fp, char *section);
+extern void load_clans(FILE * fp);
+static void load_area(FILE * fp);	/* OLC */
+static void load_helps(FILE * fp);
+static void load_todo(FILE * fp);
+static void load_mobiles(FILE * fp);
+static void load_objects(FILE * fp);
+static void load_resets(FILE * fp);
+static void load_rooms(FILE * fp);
+static void load_shops(FILE * fp);
 void load_socials(FILE * fp);
-void fix_exits(void);
+static void fix_exits(void);
 void init_supermob(void);
 void reset_area(AREA_DATA * pArea);
 void load_random_objs(CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex);
@@ -263,7 +260,6 @@ void do_copyover(CHAR_DATA * ch, char *argument)
     FILE *fp;
     DESCRIPTOR_DATA *d, *d_next;
     char buf[100], buf2[100], buf3[100];
-    int close(int fd);
     if (IS_NPC(ch))
     {
         send_to_char("Mobs dont need to be hotbooting the mud.\n", ch);
@@ -358,7 +354,7 @@ void do_copyover(CHAR_DATA * ch, char *argument)
     /* Here you might want to reopen fpReserve */
 }
 
-void init_descriptor(DESCRIPTOR_DATA * dnew, int desc)
+static void init_descriptor(DESCRIPTOR_DATA * dnew, int desc)
 {
     static DESCRIPTOR_DATA d_zero;
     *dnew = d_zero;
@@ -382,7 +378,7 @@ void init_descriptor(DESCRIPTOR_DATA * dnew, int desc)
 }
 
 /* Recover from a copyover - load players */
-void copyover_recover(void)
+static void copyover_recover(void)
 {
     DESCRIPTOR_DATA *dnew;
     FILE *fp;
@@ -390,7 +386,6 @@ void copyover_recover(void)
     char name[100];
     char host[MSL];
     int desc;
-    int close(int fd);
     bool fOld;
 
     sprintf(buf, "%s/%s", sysconfig.area_dir, COPYOVER_FILE);
@@ -399,7 +394,7 @@ void copyover_recover(void)
     if (!fp)  			/* there are some descriptors open which will hang forever then ? */
     {
         perror("copyover_recover:fopen");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     unlink(COPYOVER_FILE);	/* In case something crashes - doesn't prevent reading  */
@@ -485,7 +480,7 @@ void copyover_recover(void)
 
 /* RT max open files fix */
 
-void maxfilelimit()
+static void maxfilelimit()
 {
     struct rlimit r;
 
@@ -594,13 +589,14 @@ int boot_db()
      */
     {
         FILE *fpList;
+		char strPath[MAX_STRING_LENGTH];
 
         sprintf(strPath, "%s/%s", sysconfig.area_dir, sysconfig.area_list);
 
         if ((fpList = fopen(strPath, "r")) == NULL)
         {
             perror(sysconfig.area_list);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         sprintf(strPath, "%s/%s", sysconfig.area_dir,
@@ -610,7 +606,7 @@ int boot_db()
         if ((fpArea = fopen(strPath, "r")) == NULL)
         {
             perror(strPath);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         load_mudprogs(fpArea);
         fclose(fpArea);
@@ -622,7 +618,7 @@ int boot_db()
         if ((fpArea = fopen(strPath, "r")) == NULL)
         {
             perror(strPath);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         load_factions(fpArea);
@@ -635,7 +631,7 @@ int boot_db()
         if ((fpArea = fopen(strPath, "r")) == NULL)
         {
             perror(strPath);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         load_socials(fpArea);
@@ -657,7 +653,7 @@ int boot_db()
                 if ((fpArea = fopen(strPath, "r")) == NULL)
                 {
                     perror(strPath);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
             }
 
@@ -668,7 +664,7 @@ int boot_db()
                 if (fread_letter(fpArea) != '#')
                 {
                     bug("Boot_db: # not found.", 0);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 word = fread_word(fpArea);
@@ -706,7 +702,7 @@ int boot_db()
                 else
                 {
                     bug("Boot_db: bad section name.", 0);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
             }
 
@@ -722,7 +718,7 @@ int boot_db()
         if ((fpList = fopen(strPath, "r")) == NULL)
         {
             perror(strPath);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         for (;;)
@@ -741,7 +737,7 @@ int boot_db()
                 if ((fpArea = fopen(strPath, "r")) == NULL)
                 {
                     perror(strPath);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
             }
 
@@ -752,7 +748,7 @@ int boot_db()
                 if (fread_letter(fpArea) != '#')
                 {
                     bug("Boot_db: # not found.", 0);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 word = fread_word(fpArea);
@@ -787,7 +783,7 @@ int boot_db()
                 else
                 {
                     bug("Boot_db: bad section name.", 0);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
             }
 
@@ -835,7 +831,7 @@ int boot_db()
 /*
  * Skip a section.
  */
-void skip_section(FILE * fp, char *section)
+static void skip_section(FILE * fp, char *section)
 {
     int number;
     char *word;
@@ -944,7 +940,7 @@ void skip_section(FILE * fp, char *section)
         }
     }
     bug("skip_section: Invalid section name.", 0);
-    exit(1);
+    exit(EXIT_FAILURE);
 }
 
 /*
@@ -984,7 +980,7 @@ void skip_section(FILE * fp, char *section)
  * Recall 3001
  * End
  */
-void load_area(FILE * fp)
+static void load_area(FILE * fp)
 {
     AREA_DATA *pArea;
     AREA_DATA *pTempArea;
@@ -1048,7 +1044,7 @@ void load_area(FILE * fp)
                                  && pArea->uvnum <= pTempArea->uvnum)))
                     {
                         bug("Overlapping vnum range!", pArea->name);
-                        exit(1);
+                        exit(EXIT_FAILURE);
                     }
                 return;
             }
@@ -1068,7 +1064,7 @@ void load_area(FILE * fp)
 /*
  * Sets vnum range for area using OLC protection features.
  */
-void assign_area_vnum(int vnum)
+static void assign_area_vnum(int vnum)
 {
     if (area_last->lvnum == 0 || area_last->uvnum == 0)
         area_last->lvnum = area_last->uvnum = vnum;
@@ -1085,7 +1081,7 @@ void assign_area_vnum(int vnum)
 /*
  * Snarf a help section.
  */
-void load_helps(FILE * fp)
+static void load_helps(FILE * fp)
 {
     HELP_DATA *pHelp;
 
@@ -1117,7 +1113,7 @@ void load_helps(FILE * fp)
     return;
 }
 
-void load_todo(FILE * fp)
+static void load_todo(FILE * fp)
 {
     TODO_DATA *pTodo;
 
@@ -1153,7 +1149,7 @@ void load_todo(FILE * fp)
  * Adds a reset to a room.  OLC
  * Similar to add_reset in olc.c
  */
-void new_reset(ROOM_INDEX_DATA * pR, RESET_DATA * pReset)
+static void new_reset(ROOM_INDEX_DATA * pR, RESET_DATA * pReset)
 {
     RESET_DATA *pr;
 
@@ -1181,7 +1177,7 @@ void new_reset(ROOM_INDEX_DATA * pR, RESET_DATA * pReset)
 /*
  * Snarf a reset section.       Changed for OLC.
  */
-void load_resets(FILE * fp)
+static void load_resets(FILE * fp)
 {
     RESET_DATA *pReset = NULL;
     int iLastRoom = 0;
@@ -1190,7 +1186,7 @@ void load_resets(FILE * fp)
     if (!area_last)
     {
         bug("Load_resets: no #AREA seen yet.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     for (;;)
@@ -1226,8 +1222,7 @@ void load_resets(FILE * fp)
         {
         default:
             bug("Load_resets: bad command '%c'.", letter);
-            exit(1);
-            break;
+            exit(EXIT_FAILURE);
 
         case 'M':
             get_mob_index(pReset->vnum);
@@ -1274,7 +1269,7 @@ void load_resets(FILE * fp)
                     || !IS_SET(pexit->rs_flags, EX_ISDOOR))
             {
                 bug("Load_resets: 'D': exit %d not door.", pReset->arg2);
-                exit(1);
+                exit(EXIT_FAILURE);
             }
 
             switch (pReset->arg3)
@@ -1352,7 +1347,7 @@ void load_resets(FILE * fp)
             if (pReset->arg2 < 0 || pReset->arg2 > 6)  	/* Last Door. */
             {
                 bug("Load_resets: 'R': bad exit %d.", pReset->arg2);
-                exit(1);
+                exit(EXIT_FAILURE);
             }
 
             if ((pRoomIndex = get_room_index(pReset->vnum)))
@@ -1368,14 +1363,14 @@ void load_resets(FILE * fp)
 /*
  * Snarf a room section.
  */
-void load_rooms(FILE * fp)
+static void load_rooms(FILE * fp)
 {
     ROOM_INDEX_DATA *pRoomIndex;
 
     if (area_last == NULL)
     {
         bug("load_rooms: no #AREA seen yet.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     for (;;)
@@ -1389,7 +1384,7 @@ void load_rooms(FILE * fp)
         if (letter != '#')
         {
             bug("Load_rooms: # not found.", 0);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         vnum = fread_number(fp);
@@ -1400,7 +1395,7 @@ void load_rooms(FILE * fp)
         if (get_room_index(vnum) != NULL)
         {
             bug("Load_rooms: vnum %d duplicated.", vnum);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         fBootDb = TRUE;
 
@@ -1436,7 +1431,7 @@ void load_rooms(FILE * fp)
                 if (door < 0 || door > 5)
                 {
                     bug("Fread_rooms: vnum %d has bad door number.", vnum);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 pexit = alloc_perm(sizeof(*pexit));
@@ -1497,7 +1492,7 @@ void load_rooms(FILE * fp)
             else
             {
                 bug("Load_rooms: vnum %d has flag not 'DES'.", vnum);
-                exit(1);
+                exit(EXIT_FAILURE);
             }
         }
 
@@ -1515,7 +1510,7 @@ void load_rooms(FILE * fp)
 /*
  * Snarf a shop section.
  */
-void load_shops(FILE * fp)
+static void load_shops(FILE * fp)
 {
     SHOP_DATA *pShop;
 
@@ -1556,10 +1551,9 @@ void load_shops(FILE * fp)
  * Has to be done after all rooms are read in.
  * Check for bad reverse exits.
  */
-void fix_exits(void)
+static void fix_exits(void)
 {
     char buf[MAX_STRING_LENGTH];
-    extern const sh_int rev_dir[];
     ROOM_INDEX_DATA *pRoomIndex;
     ROOM_INDEX_DATA *to_room;
     EXIT_DATA *pexit;
@@ -1869,8 +1863,6 @@ void reset_room(ROOM_INDEX_DATA * pRoom)
                 case ITEM_TREASURE:
                     olevel = number_range(10, 20);
                     break;
-
-                    break;
                 }
 
                 pObj = create_object(pObjIndex, olevel);
@@ -1970,7 +1962,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
     if (pMobIndex == NULL)
     {
         bug("Create_mobile: NULL pMobIndex.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     if (char_free == NULL)
@@ -2181,7 +2173,7 @@ OBJ_DATA *create_object(OBJ_INDEX_DATA * pObjIndex, int level)
     if (pObjIndex == NULL)
     {
         bug("Create_object: NULL pObjIndex.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     if (obj_free == NULL)
@@ -2499,7 +2491,7 @@ MOB_INDEX_DATA *get_mob_index(int vnum)
     if (fBootDb)
     {
         bug("Get_mob_index: bad vnum %d.", vnum);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return NULL;
@@ -2523,7 +2515,7 @@ OBJ_INDEX_DATA *get_obj_index(int vnum)
     if (fBootDb)
     {
         bug("Get_obj_index: bad vnum %d.", vnum);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return NULL;
@@ -2547,7 +2539,7 @@ MPROG_DATA *get_mprog_by_vnum(int vnum)
     if (fBootDb)
     {
         bug("Get_Mprog_By_Vnum: bad vnum %d.", vnum);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return NULL;
@@ -2571,7 +2563,7 @@ MPROG_GROUP *get_mprog_group_by_vnum(int vnum)
     if (fBootDb)
     {
         bug("Get_Mprog_Group_By_Vnum: bad vnum %d.", vnum);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return NULL;
@@ -2595,7 +2587,7 @@ ROOM_INDEX_DATA *get_room_index(int vnum)
     if (fBootDb)
     {
         bug("Get_room_index: bad vnum %d.", vnum);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return NULL;
@@ -2648,7 +2640,7 @@ int fread_number(FILE * fp)
     if (!isdigit(c))
     {
         bug("Fread_number: bad format.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     while (isdigit(c))
@@ -2831,8 +2823,7 @@ char *fread_word(FILE * fp)
     }
 
     bug("Fread_word: word too long.", 0);
-    exit(1);
-    return NULL;
+    exit(EXIT_FAILURE);
 }
 
 /*
@@ -2847,7 +2838,7 @@ void *alloc_mem(int sMem)
     {
         perror("malloc failure");
         fprintf(stderr, "Malloc failure @ %s:%d\n", __FILE__, __LINE__);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return pMem;
@@ -2894,7 +2885,7 @@ void *alloc_perm(int sMem)
     if (sMem > MAX_PERM_BLOCK)
     {
         bug("Alloc_perm: %d too large.", sMem);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     if (pMemPerm == NULL || iMemPerm + sMem > MAX_PERM_BLOCK)
@@ -2903,7 +2894,7 @@ void *alloc_perm(int sMem)
         if ((pMemPerm = calloc(1, MAX_PERM_BLOCK)) == NULL)
         {
             perror("Alloc_perm");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
     }
 
@@ -3092,8 +3083,6 @@ void do_memory(CHAR_DATA * ch, char *argument)
     send_to_char(buf, ch);
     sprintf(buf, "Helps   %5d\n\r", top_help);
     send_to_char(buf, ch);
-    /*    sprintf( buf, "Socials %5d\n\r", social_count  ); send_to_char( buf,
-       ch ); */
     sprintf(buf, "Mobs    %5d\n\r", top_mob_index);
     send_to_char(buf, ch);
     sprintf(buf, "(in use)%5d\n\r", mobile_count);
@@ -3145,7 +3134,7 @@ void do_dump(CHAR_DATA * ch, char *argument)
     aff_count = 0;
 
     /* mobile prototypes */
-    fprintf(fp, "MobProt	%4d (%8d bytes)\n",
+    fprintf(fp, "MobProt	%4d (%8zd bytes)\n",
             top_mob_index, top_mob_index * (sizeof(*pMobIndex)));
 
     /* mobs */
@@ -3164,7 +3153,7 @@ void do_dump(CHAR_DATA * ch, char *argument)
     for (fch = char_free; fch != NULL; fch = fch->next)
         count2++;
 
-    fprintf(fp, "Mobs	%4d (%8d bytes), %2d free (%d bytes)\n",
+    fprintf(fp, "Mobs	%4d (%8zd bytes), %2d free (%zd bytes)\n",
             count, count * (sizeof(*fch)), count2,
             count2 * (sizeof(*fch)));
 
@@ -3173,7 +3162,7 @@ void do_dump(CHAR_DATA * ch, char *argument)
     for (pc = pcdata_free; pc != NULL; pc = pc->next)
         count++;
 
-    fprintf(fp, "Pcdata	%4d (%8d bytes), %2d free (%d bytes)\n",
+    fprintf(fp, "Pcdata	%4d (%8zd bytes), %2d free (%zd bytes)\n",
             num_pcs, num_pcs * (sizeof(*pc)), count,
             count * (sizeof(*pc)));
 
@@ -3185,7 +3174,7 @@ void do_dump(CHAR_DATA * ch, char *argument)
     for (d = descriptor_free; d != NULL; d = d->next)
         count2++;
 
-    fprintf(fp, "Descs	%4d (%8d bytes), %2d free (%d bytes)\n",
+    fprintf(fp, "Descs	%4d (%8zd bytes), %2d free (%zd bytes)\n",
             count, count * (sizeof(*d)), count2, count2 * (sizeof(*d)));
 
     /* object prototypes */
@@ -3351,7 +3340,7 @@ int number_bits(int width)
  */
 static int rgiState[2 + 55];
 
-void init_mm()
+static void init_mm()
 {
     int *piState;
     int iState;
@@ -3763,7 +3752,7 @@ void tail_chain(void)
  *  MudProg files.
  */
 
-int mprog_name_to_type(char *name)
+static int mprog_name_to_type(char *name)
 {
     if (!str_cmp(name, "in_file_prog"))
         return IN_FILE_PROG;
@@ -3830,7 +3819,7 @@ int mprog_name_to_type(char *name)
 }
 
 /* Load the progs from MUDPROGS_FILE */
-void load_mudprogs(FILE * fp)
+static void load_mudprogs(FILE * fp)
 {
     MPROG_DATA *pMudProg;
     MPROG_GROUP *pMprogGroup;
@@ -3853,7 +3842,7 @@ void load_mudprogs(FILE * fp)
                 if (letter != '#')
                 {
                     bug("Load_MudProgs: # not found.", 0);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 vnum = fread_number(fp);
@@ -3864,7 +3853,7 @@ void load_mudprogs(FILE * fp)
                 if (get_mprog_by_vnum(vnum) != NULL)
                 {
                     bug("Load_MudProgs: vnum %d duplicated.", vnum);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
                 fBootDb = TRUE;
 
@@ -3879,12 +3868,12 @@ void load_mudprogs(FILE * fp)
                 if (pMudProg->trigger_type == ERROR_PROG)
                 {
                     bug("Load_MudProgs: MudProg file type error");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
                 else if (pMudProg->trigger_type == IN_FILE_PROG)
                 {
                     bug("Load_MudProgs: MudProg file contains a call to file.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 pMudProg->arglist = fread_string(fp);
@@ -3913,7 +3902,7 @@ void load_mudprogs(FILE * fp)
                 if (letter != '#')
                 {
                     bug("Load_MudProgs: # not found.", 0);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 vnum = fread_number(fp);
@@ -3924,7 +3913,7 @@ void load_mudprogs(FILE * fp)
                 if (get_mprog_by_vnum(vnum) != NULL)
                 {
                     bug("Load_MudProgs: vnum %d duplicated.", vnum);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
                 fBootDb = TRUE;
 
@@ -3939,12 +3928,12 @@ void load_mudprogs(FILE * fp)
                 if (pMudProg->trigger_type == ERROR_PROG)
                 {
                     bug("Load_MudProgs: MudProg file type error");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
                 else if (pMudProg->trigger_type == IN_FILE_PROG)
                 {
                     bug("Load_MudProgs: MudProg file contains a call to file.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 pMudProg->arglist = fread_string(fp);
@@ -3973,7 +3962,7 @@ void load_mudprogs(FILE * fp)
                 if (letter != '#')
                 {
                     bug("Load_MudProgs: # not found.", 0);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 vnum = fread_number(fp);
@@ -3984,7 +3973,7 @@ void load_mudprogs(FILE * fp)
                 if (get_mprog_by_vnum(vnum) != NULL)
                 {
                     bug("Load_MudProgs: vnum %d duplicated.", vnum);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
                 fBootDb = TRUE;
 
@@ -3999,12 +3988,12 @@ void load_mudprogs(FILE * fp)
                 if (pMudProg->trigger_type == ERROR_PROG)
                 {
                     bug("Load_MudProgs: MudProg file type error");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
                 else if (pMudProg->trigger_type == IN_FILE_PROG)
                 {
                     bug("Load_MudProgs: MudProg file contains a call to file.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 pMudProg->arglist = fread_string(fp);
@@ -4033,7 +4022,7 @@ void load_mudprogs(FILE * fp)
                 if (letter != '#')
                 {
                     bug("Load_MudProgs: # not found.", 0);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 vnum = fread_number(fp);
@@ -4044,7 +4033,7 @@ void load_mudprogs(FILE * fp)
                 if (get_mprog_group_by_vnum(vnum) != NULL)
                 {
                     bug("Load_MudProgs: vnum %d duplicated.", vnum);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
                 fBootDb = TRUE;
 
@@ -4060,7 +4049,7 @@ void load_mudprogs(FILE * fp)
                                 get_mprog_by_vnum(fread_number(fp))) == NULL)
                     {
                         bug("Load_MudProgs: Prog group references invalid prog vnum.");
-                        exit(1);
+                        exit(EXIT_FAILURE);
                     }
 
                     if (pMprogGroup->prog_type == 0)
@@ -4068,7 +4057,7 @@ void load_mudprogs(FILE * fp)
                     else if (pMprogGroup->prog_type != pMudProg->prog_type)
                     {
                         bug("Load_MudProgs: Prog group contains mixed prog types.");
-                        exit(1);
+                        exit(EXIT_FAILURE);
                     }
 
                     pMprogList =
@@ -4099,13 +4088,13 @@ void load_mudprogs(FILE * fp)
         else
         {
             bug("Load_MudProgs: bad section name.", 0);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
     }
 }
 
 /* Load the config file */
-int load_config_file(void)
+static int load_config_file(void)
 {
     FILE *fp;
     char buf[MAX_STRING_LENGTH];
@@ -4117,7 +4106,7 @@ int load_config_file(void)
     if ((fp = fopen(CONFIG_FILE, "r")) == NULL)
     {
         perror(CONFIG_FILE);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     while (!bEOF)
@@ -4185,7 +4174,7 @@ int load_config_file(void)
                     /* Unknown line or section header */
                     bug("Load_Config_File: Invalid variable name - '%s'.",
                         word);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
             }
         }
@@ -4263,7 +4252,7 @@ int load_config_file(void)
                     /* Unknown line or section header */
                     bug("Load_Config_File: Invalid variable name - '%s'.",
                         word);
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
             }
         }
@@ -4271,7 +4260,7 @@ int load_config_file(void)
         {
             /* Unknown line or section header */
             bug("Load_Config_File: Invalid line.");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
     }
 
@@ -4285,14 +4274,14 @@ int load_config_file(void)
  * Accept a string and buffer as an arg.  Filter the string for a value after
  * an = sign and return a pointer to the buffer.
  */
-char *get_config_value(char *inbuf, char *outbuf)
+static char *get_config_value(char *inbuf, char *outbuf)
 {
     inbuf = one_argument2(inbuf, outbuf);
 
     if (str_cmp(outbuf, "="))
     {
         perror("get_config_value: Variable format error.");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     inbuf = one_argument2(inbuf, outbuf);
@@ -4300,7 +4289,7 @@ char *get_config_value(char *inbuf, char *outbuf)
     if (*outbuf == '\0')
     {
         perror("get_config_value: Variable format error.");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return outbuf;
@@ -4309,7 +4298,7 @@ char *get_config_value(char *inbuf, char *outbuf)
 /*
  * Assign a prog to a mob/obj/room.
  */
-void load_progs(FILE * fp)
+static void load_progs(FILE * fp)
 {
     MPROG_DATA *pMudProg;
     MPROG_LIST *pMprogList;
@@ -4325,7 +4314,7 @@ void load_progs(FILE * fp)
     if (!area_last)
     {
         bug("Load_Progs: no #AREA seen yet.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     for (;;)
@@ -4360,7 +4349,7 @@ void load_progs(FILE * fp)
         {
         default:
             bug("Load_Progs: bad prog type '%c'.", letter);
-            exit(1);
+            exit(EXIT_FAILURE);
             break;
 
         case 'M':
@@ -4372,7 +4361,7 @@ void load_progs(FILE * fp)
                 if (pMudProg->prog_type != MOB_PROG)
                 {
                     bug("Load_Progs: invalid prog type.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 assign_mobprog(pMobIndex, pMudProg, NULL);
@@ -4382,7 +4371,7 @@ void load_progs(FILE * fp)
                 if (pMprogGroup->prog_type != MOB_PROG)
                 {
                     bug("Load_Progs: invalid prog type.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 assign_mobprog(pMobIndex, NULL, pMprogGroup);
@@ -4398,7 +4387,7 @@ void load_progs(FILE * fp)
                 if (pMudProg->prog_type != OBJ_PROG)
                 {
                     bug("Load_Progs: invalid prog type.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 assign_objprog(pObjIndex, pMudProg, NULL);
@@ -4408,7 +4397,7 @@ void load_progs(FILE * fp)
                 if (pMprogGroup->prog_type != OBJ_PROG)
                 {
                     bug("Load_Progs: invalid prog type.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 assign_objprog(pObjIndex, NULL, pMprogGroup);
@@ -4424,7 +4413,7 @@ void load_progs(FILE * fp)
                 if (pMudProg->prog_type != ROOM_PROG)
                 {
                     bug("Load_Progs: invalid prog type.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 assign_roomprog(pRoomIndex, pMudProg, NULL);
@@ -4434,7 +4423,7 @@ void load_progs(FILE * fp)
                 if (pMprogGroup->prog_type != ROOM_PROG)
                 {
                     bug("Load_Progs: invalid prog type.");
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
 
                 assign_roomprog(pRoomIndex, NULL, pMprogGroup);
@@ -4452,14 +4441,14 @@ void load_progs(FILE * fp)
 /*
  * Snarf a mob section.
  */
-void load_mobiles(FILE * fp)
+static void load_mobiles(FILE * fp)
 {
     MOB_INDEX_DATA *pMobIndex;
 
     if (!area_last)  		/* OLC */
     {
         bug("Load_mobiles: no #AREA seen yet.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     for (;;)
@@ -4472,7 +4461,7 @@ void load_mobiles(FILE * fp)
         if (letter != '#')
         {
             bug("Load_mobiles: # not found.", 0);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         vnum = fread_number(fp);
@@ -4483,7 +4472,7 @@ void load_mobiles(FILE * fp)
         if (get_mob_index(vnum) != NULL)
         {
             bug("Load_mobiles: vnum %d duplicated.", vnum);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         fBootDb = TRUE;
 
@@ -4623,14 +4612,14 @@ void load_mobiles(FILE * fp)
 /*
  * Snarf an obj section.
  */
-void load_objects(FILE * fp)
+static void load_objects(FILE * fp)
 {
     OBJ_INDEX_DATA *pObjIndex;
 
     if (!area_last)  		/* OLC */
     {
         bug("Load_objects: no #AREA seen yet.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     for (;;)
     {
@@ -4642,7 +4631,7 @@ void load_objects(FILE * fp)
         if (letter != '#')
         {
             bug("Load_objects: # not found.", 0);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         vnum = fread_number(fp);
@@ -4653,7 +4642,7 @@ void load_objects(FILE * fp)
         if (get_obj_index(vnum) != NULL)
         {
             bug("Load_objects: vnum %d duplicated.", vnum);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         fBootDb = TRUE;
 

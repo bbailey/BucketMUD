@@ -25,7 +25,7 @@ void do_skill(CHAR_DATA * ch, char *argument);
 */
 
 /* Save this class */
-void save_class(int num)
+static void save_class(int num)
 {
     FILE *fp;
     char buf[MAX_STRING_LENGTH];
@@ -57,7 +57,7 @@ void save_class(int num)
     fclose(fp);
 }
 
-void save_classes()
+static void save_classes()
 {
     int i;
 
@@ -66,7 +66,7 @@ void save_classes()
 }
 
 /* Load a class */
-void load_class(int num)
+static void load_class(int num)
 {
     char buf[MAX_STRING_LENGTH];
     int level, cp, n;

@@ -79,7 +79,6 @@ struct social_messg
  */
 
 extern struct social_messg *soc_mess_list;
-struct social_messg *find_social(const char *name);
 
 typedef struct social_messg SOCIAL_DATA;
 typedef struct char_data CHAR_DATA;

@@ -63,8 +63,8 @@ update:
 
 ifdef IMC
 splint:
-	splint -showcolumn $(PROF) -DIMC -DIMCROM -DIMCEMBER *.c
+	splint -showcolumn $(PROF) -DIMC -DIMCROM -DIMCEMBER *.[ch]
 else
 splint:
-	splint -showcolumn -DLINUX *.c
+	splint -showcolumn $(PROF) *.c
 endif

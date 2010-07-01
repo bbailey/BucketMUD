@@ -2,6 +2,11 @@
 #ifndef _SPELL_H_
 #define _SPELL_H_
 
+struct char_data;
+
+#define DECLARE_SPELL_FUN( fun )        SPELL_FUN fun
+typedef void SPELL_FUN(int sn, int level, struct char_data *ch, void *vo);
+
 /*
  * Spell functions.
  * Defined in magic.c.

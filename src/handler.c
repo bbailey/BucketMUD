@@ -34,11 +34,6 @@ NEWAFFECT_DATA *newaffect_free;
 char thedate[10];
 char thetime[7];
 
-/*
- * Local functions.
- */
-void affect_modify(CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd);
-
 /* get_date() - Return current date in mm/dd/yy format */
 char *get_curdate()
 {
@@ -1034,7 +1029,7 @@ bool is_name(char *str, char *namelist)
 /*
  * Apply or remove an affect to a character.
  */
-void affect_modify(CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd)
+static void affect_modify(CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd)
 {
     OBJ_DATA *wield;
     int mod, i;
@@ -1160,7 +1155,7 @@ void affect_modify(CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd)
     return;
 }
 
-void newaffect_modify(CHAR_DATA * ch, NEWAFFECT_DATA * npaf, bool fAdd)
+static void newaffect_modify(CHAR_DATA * ch, NEWAFFECT_DATA * npaf, bool fAdd)
 {
     OBJ_DATA *wield;
     int mod, i;

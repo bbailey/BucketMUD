@@ -67,17 +67,17 @@ void free_ban(BAN_DATA * ban)
     ban_free = ban;
 }
 
-BUFFER *buf_free;
+static BUFFER *buf_free;
 
 /* buffer sizes */
-const int buf_size[MAX_BUF_LIST] =
+static const int buf_size[MAX_BUF_LIST] =
 {
     16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384
 };
 
 /* local procedure for finding the next acceptable size */
 /* -1 indicates out-of-boundary error */
-int get_size(int val)
+static int get_size(int val)
 {
     int i;
 

@@ -26,14 +26,13 @@
 #include "merc.h"
 
 void do_auction(CHAR_DATA * ch, char *argument);
-DECLARE_SPELL_FUN(spell_identify);
 void show_obj_stats(int sn, int level, CHAR_DATA * ch, void *vo);
-void auction_channel_bid();
-void auction_channel_sell();
-void auction_channel_begin();
-void auction_channel_remove();
-void auction_channel_once();
-void auction_channel_twice();
+static void auction_channel_bid();
+static void auction_channel_sell();
+static void auction_channel_begin();
+static void auction_channel_remove();
+static void auction_channel_once();
+static void auction_channel_twice();
 
 void do_auction(CHAR_DATA * ch, char *argument)
 {
@@ -255,7 +254,6 @@ void do_auction(CHAR_DATA * ch, char *argument)
                 break;
 #endif				/* End of Weapon Type */
 
-                break;
             }
 
 #endif				/* End of ITEM_TYPE */
@@ -448,7 +446,7 @@ void auction_update()
     return;
 }
 
-void auction_channel_once()
+static void auction_channel_once()
 {
     DESCRIPTOR_DATA *d;
     char buf[MAX_STRING_LENGTH];
@@ -474,7 +472,7 @@ void auction_channel_once()
             auction_info.high_bidder, TO_CHAR, MIN_POS_AUCTION);
 }
 
-void auction_channel_twice()
+static void auction_channel_twice()
 {
     DESCRIPTOR_DATA *d;
     char buf[MAX_STRING_LENGTH];
@@ -500,7 +498,7 @@ void auction_channel_twice()
             auction_info.high_bidder, TO_CHAR, MIN_POS_AUCTION);
 }
 
-void auction_channel_bid()
+static void auction_channel_bid()
 {
     DESCRIPTOR_DATA *d;
     char buf[MAX_STRING_LENGTH];
@@ -526,7 +524,7 @@ void auction_channel_bid()
             auction_info.high_bidder, TO_CHAR, MIN_POS_AUCTION);
 }
 
-void auction_channel_begin()
+static void auction_channel_begin()
 {
     DESCRIPTOR_DATA *d;
 
@@ -548,7 +546,7 @@ void auction_channel_begin()
             auction_info.owner, TO_CHAR, MIN_POS_AUCTION);
 }
 
-void auction_channel_sell()
+static void auction_channel_sell()
 {
     DESCRIPTOR_DATA *d;
     char buf[MAX_STRING_LENGTH];
@@ -585,7 +583,7 @@ void auction_channel_sell()
     auction_info.gold_held = 0;
 }
 
-void auction_channel_remove()
+static void auction_channel_remove()
 {
     DESCRIPTOR_DATA *d;
 

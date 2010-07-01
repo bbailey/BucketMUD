@@ -14,9 +14,6 @@ typedef struct factionlist_data FACTIONLIST_DATA;
 typedef struct factionaff_data FACTIONAFF_DATA;
 typedef struct factionpc_data FACTIONPC_DATA;
 
-extern FACTIONLIST_DATA *faction_first;
-extern FACTIONLIST_DATA *faction_last;
-
 extern const struct olc_cmd_type factionedit_table[];
 
 /* Struct for list of factions available in the MUD */
@@ -50,19 +47,12 @@ void load_factionaffs(FILE * fp);
 void load_factions(FILE * fp);
 void save_factions(void);
 void factionedit(CHAR_DATA * ch, char *argument);
-FACTIONLIST_DATA *new_faction(void);
 FACTIONLIST_DATA *get_faction_by_vnum(sh_int vnum);
-bool factedit_show(CHAR_DATA * ch, char *argument);
-bool factedit_create(CHAR_DATA * ch, char *argument);
-bool factedit_name(CHAR_DATA * ch, char *argument);
-bool factedit_increase(CHAR_DATA * ch, char *argument);
-bool factedit_decrease(CHAR_DATA * ch, char *argument);
 bool medit_faction(CHAR_DATA * ch, char *argument);
 void affect_factions(CHAR_DATA * ch, CHAR_DATA * victim);
 void fread_faction_standings(CHAR_DATA * ch, FILE * fp);
 void fwrite_faction_standings(CHAR_DATA * ch, FILE * fp);
 void free_faction_standings(FACTIONPC_DATA * pFactPC);
-char *faction_con_msg(sh_int value);
 sh_int faction_percentage(sh_int value);
 sh_int consider_factions(CHAR_DATA * ch, CHAR_DATA * victim, bool show);
 void set_faction

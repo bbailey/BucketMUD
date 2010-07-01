@@ -41,17 +41,17 @@ I can think of to do to them.
 #define	PREF_NONE	4
 #define	MSL	(MAX_STRING_LENGTH)
 
-void wear_rand_obj(CHAR_DATA * ch, OBJ_DATA * obj);
-OBJ_DATA *make_rand_armor(sh_int level, bool ismagic);
-OBJ_DATA *make_random_obj(sh_int level, long posible_types);
-OBJ_DATA *make_rand_ring(sh_int level);
-OBJ_DATA *make_rand_weapon(sh_int level, bool ismagic);
-OBJ_DATA *make_rand_bag(sh_int level);
+static void wear_rand_obj(CHAR_DATA * ch, OBJ_DATA * obj);
+static OBJ_DATA *make_rand_armor(sh_int level, bool ismagic);
+static OBJ_DATA *make_random_obj(sh_int level, long posible_types);
+static OBJ_DATA *make_rand_ring(sh_int level);
+static OBJ_DATA *make_rand_weapon(sh_int level, bool ismagic);
+static OBJ_DATA *make_rand_bag(sh_int level);
 /*
 OBJ_DATA * make_rand_magic	 ( sh_int level ) ;
 OBJ_DATA * make_rand_light	 ( sh_int level ) ;
 */
-int get_random_material(sh_int level);
+static int get_random_material(sh_int level);
 
 void load_random_objs(CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex)
 {
@@ -172,7 +172,7 @@ struct rand_bag_material
 	sh_int	size;
 };
 */
-const struct rand_bag_material rand_bagmaterial_table[] =
+static const struct rand_bag_material rand_bagmaterial_table[] =
 {
     {"large", TRUE, 125},
     {"small", TRUE, 75},
@@ -194,7 +194,7 @@ struct rand_bag_type
 	long		wear_loc;
 };
 */
-const struct rand_bag_type rand_bag_table[] =
+static const struct rand_bag_type rand_bag_table[] =
 {
     {"bag", 15, ITEM_HOLD},
     {"bag", 20, ITEM_HOLD},
@@ -251,7 +251,7 @@ WEAPON_FLAIL
 WEAPON_WHIP
 WEAPON_POLEARM
 */
-const struct rand_weapon_type rand_weapon_table[] =
+static const struct rand_weapon_type rand_weapon_table[] =
 {
     {"sword", 1, 1, WEAPON_SWORD},
     {"sword", 2, 1, WEAPON_SWORD},
@@ -303,7 +303,7 @@ struct rand_item_material
 };
 */
 
-const struct rand_item_material rand_material_table[] =
+static const struct rand_item_material rand_material_table[] =
 {
     /* ***IMPORTANT*** Never assign 2 materials to the same level. */
     /* don't put any more than 4 levels apart, either. */
@@ -366,7 +366,7 @@ ITEM_ANTI_EVIL
 ITEM_ANTI_NEUTRAL
 */
 
-const struct rand_ring_type rand_ring_table[] =
+static const struct rand_ring_type rand_ring_table[] =
 {
     {"dirty", 0, 0},
     {"small", 1, 0},
@@ -410,7 +410,7 @@ struct rand_armor_type
 #define	PREF_NONE	4
 */
 
-const struct rand_armor_type rand_armor_table[] =
+static const struct rand_armor_type rand_armor_table[] =
 {
     {"helmet", ITEM_WEAR_HEAD, 5, 0, PREF_A},
     {"helmet", ITEM_WEAR_HEAD, 4, 0, PREF_A},
@@ -482,7 +482,7 @@ const struct rand_armor_type rand_armor_table[] =
  * Watch out if you modify this... I used a pretty funky algorithm
  * Just trust me when I say it works, ok?
  */
-int get_random_material(sh_int level)
+static int get_random_material(sh_int level)
 {
     int poss[37];
     int upper = 0, lower = -1, x, material;
@@ -543,7 +543,7 @@ int get_random_material(sh_int level)
     return URANGE(0, material, TABLESIZE(rand_material_table) - 1);
 }
 
-OBJ_DATA *make_rand_bag(sh_int level)
+static OBJ_DATA *make_rand_bag(sh_int level)
 {
     int type, style, x;
     char buf[MSL], buf2[MSL], buf3[MSL];

@@ -20,6 +20,9 @@
  ***************************************************************************/
 
 #include <stdbool.h>
+
+#include "magic.h"
+
 #if defined(FALSE)
 #undef FALSE
 #endif
@@ -28,13 +31,6 @@
 #undef TRUE
 #endif
 #define TRUE true
-
-#define DECLARE_SPELL_FUN( fun )        SPELL_FUN fun
-#define DECLARE_MPROG_FUN( fun )        MPROG_FUN fun
-
-/* system calls */
-int unlink();
-int system();
 
 /*
  * Short scalar types.
@@ -91,8 +87,6 @@ int count_users(OBJ_DATA * obj);	/* count users on/in an
  * Function types.
  */
 typedef void DO_FUN(CHAR_DATA * ch, char *argument);
-typedef void SPELL_FUN(int sn, int level, CHAR_DATA * ch, void *vo);
-typedef int MPROG_FUN(void *arg);
 
 
 /* Includes for board system */
@@ -147,7 +141,6 @@ void finish_note(BOARD_DATA * board, NOTE_DATA * note);	/* attach a note to a bo
 void free_note(NOTE_DATA * note);	/* deallocate memory used by a note */
 void load_boards(void);		/* load all boards */
 int board_lookup(const char *name);	/* Find a board with that name */
-bool is_note_to(CHAR_DATA * ch, NOTE_DATA * note);	/* is tha note to ch? */
 void personal_message(const char *sender, const char *to,
                       const char *subject, const int expire_days,
                       const char *text);
@@ -1285,7 +1278,6 @@ extern SYS_CONFIG sysconfig;
 #define NEWAD   NEWAFFECT_DATA
 
 /* act_comm.c */
-bool is_note_to(CHAR_DATA * ch, NOTE_DATA * pnote);
 void check_sex(CHAR_DATA * ch);
 void add_follower(CHAR_DATA * ch, CHAR_DATA * master);
 void stop_follower(CHAR_DATA * ch);
@@ -1637,10 +1629,6 @@ void add2last_imm(char *format, char *message, CHAR_DATA * ch);
 void add2last_admin(char *format, char *message, CHAR_DATA * ch);
 void add2last_hero(char *format, char *message, CHAR_DATA * ch);
 
-/* act_wiz.c */
-/*
-ROOM_INDEX_DATA *find_location( CHAR_DATA *ch, char *arg );
-*/
 /* db.c */
 void reset_area(AREA_DATA * pArea);
 void reset_room(ROOM_INDEX_DATA * pRoom);
@@ -1673,7 +1661,7 @@ void show_mprog(CHAR_DATA * ch, MPROG_DATA * pMobProg);
 void show_mpgroup(CHAR_DATA * ch, MPROG_GROUP * pGroup);
 
 /* clan.c */
-CLAN_DATA *get_clan(int clannum);
+extern CLAN_DATA *get_clan(int clannum);
 
 /* bit.c */
 extern const struct flag_type area_flags[];
