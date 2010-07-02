@@ -1823,10 +1823,7 @@ void do_mstat(CHAR_DATA * ch, char *argument)
     if (!IS_NPC(victim))
     {
         sprintf(buf,
-                "Thirst: %d  Full: %d  Drunk: %d\n\r",
-                victim->pcdata->condition[COND_THIRST],
-                victim->pcdata->condition[COND_FULL],
-                victim->pcdata->condition[COND_DRUNK]);
+                "Drunk: %d\n\r", victim->pcdata->condition[COND_DRUNK]);
         send_to_char(buf, ch);
     }
 
@@ -3762,7 +3759,7 @@ void do_mset(CHAR_DATA * ch, char *argument)
         send_to_char("Field being one of:\n\r", ch);
         send_to_char("  str int wis dex con sex class level\n\r", ch);
         send_to_char("  race gold hp mana move practice align\n\r", ch);
-        send_to_char("  train thirst drunk full security recall\n\r", ch);
+        send_to_char("  train drunk security recall\n\r", ch);
         send_to_char("  vlower vupper whorace whoprefix\n\r", ch);
         /*      send_to_char( "    clan\n\r",ch ); */
         return;
@@ -4075,24 +4072,6 @@ void do_mset(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_prefix(arg2, "thirst"))
-    {
-        if (IS_NPC(victim))
-        {
-            send_to_char("Not on NPC's.\n\r", ch);
-            return;
-        }
-
-        if (value < -1 || value > 100)
-        {
-            send_to_char("Thirst range is -1 to 100.\n\r", ch);
-            return;
-        }
-
-        victim->pcdata->condition[COND_THIRST] = value;
-        return;
-    }
-
     if (!str_prefix(arg2, "drunk"))
     {
         if (IS_NPC(victim))
@@ -4108,24 +4087,6 @@ void do_mset(CHAR_DATA * ch, char *argument)
         }
 
         victim->pcdata->condition[COND_DRUNK] = value;
-        return;
-    }
-
-    if (!str_prefix(arg2, "full"))
-    {
-        if (IS_NPC(victim))
-        {
-            send_to_char("Not on NPC's.\n\r", ch);
-            return;
-        }
-
-        if (value < -1 || value > 100)
-        {
-            send_to_char("Full range is -1 to 100.\n\r", ch);
-            return;
-        }
-
-        victim->pcdata->condition[COND_FULL] = value;
         return;
     }
 

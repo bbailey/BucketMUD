@@ -191,12 +191,6 @@ static int hit_gain(CHAR_DATA * ch)
             break;
         }
 
-        if (ch->pcdata->condition[COND_FULL] == 0)
-            gain /= 2;
-
-        if (ch->pcdata->condition[COND_THIRST] == 0)
-            gain /= 2;
-
     }
     if (ch->on != NULL && ch->on->item_type == ITEM_FURNITURE)
         gain = gain * ch->on->value[3] / 100;
@@ -269,12 +263,6 @@ static int mana_gain(CHAR_DATA * ch)
             break;
         }
 
-        if (ch->pcdata->condition[COND_FULL] == 0)
-            gain /= 2;
-
-        if (ch->pcdata->condition[COND_THIRST] == 0)
-            gain /= 2;
-
     }
 
     if (ch->on != NULL && ch->on->item_type == ITEM_FURNITURE)
@@ -317,11 +305,6 @@ static int move_gain(CHAR_DATA * ch)
             break;
         }
 
-        if (ch->pcdata->condition[COND_FULL] == 0)
-            gain /= 2;
-
-        if (ch->pcdata->condition[COND_THIRST] == 0)
-            gain /= 2;
     }
 
     if (ch->on != NULL && ch->on->item_type == ITEM_FURNITURE)
@@ -355,14 +338,6 @@ void gain_condition(CHAR_DATA * ch, int iCond, int value)
     {
         switch (iCond)
         {
-        case COND_FULL:
-            send_to_char("You are hungry.\n\r", ch);
-            break;
-
-        case COND_THIRST:
-            send_to_char("You are thirsty.\n\r", ch);
-            break;
-
         case COND_DRUNK:
             if (condition != 0)
                 send_to_char("You are sober.\n\r", ch);
@@ -818,8 +793,6 @@ static void char_update(void)
             if (ch->level < LEVEL_IMMORTAL)
             {
                 gain_condition(ch, COND_DRUNK, -1 * time_info.hour % 2);
-                gain_condition(ch, COND_FULL, -1 * time_info.hour % 2);
-                gain_condition(ch, COND_THIRST, -1 * time_info.hour % 2);
             }
         }
 

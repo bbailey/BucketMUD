@@ -1017,10 +1017,7 @@ void do_drink(CHAR_DATA * ch, char *argument)
         break;
 
     case ITEM_FOUNTAIN:
-        if (!IS_NPC(ch))
-            ch->pcdata->condition[COND_THIRST] = 48;
         act("$n drinks from $p.", ch, obj, NULL, TO_ROOM);
-        send_to_char("You are no longer thirsty.\n\r", ch);
         break;
 
     case ITEM_DRINK_CON:
@@ -1046,17 +1043,9 @@ void do_drink(CHAR_DATA * ch, char *argument)
 
         gain_condition(ch, COND_DRUNK,
                        amount * liq_table[liquid].liq_affect[COND_DRUNK]);
-        gain_condition(ch, COND_FULL,
-                       amount * liq_table[liquid].liq_affect[COND_FULL]);
-        gain_condition(ch, COND_THIRST,
-                       amount * liq_table[liquid].liq_affect[COND_THIRST]);
 
         if (!IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10)
             send_to_char("You feel drunk.\n\r", ch);
-        if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > 40)
-            send_to_char("You are full.\n\r", ch);
-        if (!IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] > 40)
-            send_to_char("You do not feel thirsty.\n\r", ch);
 
         if (obj->value[3] != 0)
         {
@@ -1106,13 +1095,6 @@ void do_eat(CHAR_DATA * ch, char *argument)
             send_to_char("That's not edible.\n\r", ch);
             return;
         }
-
-        if (!IS_NPC(ch) && obj->item_type != ITEM_PILL
-                && ch->pcdata->condition[COND_FULL] > 40)
-        {
-            send_to_char("You are too full to eat more.\n\r", ch);
-            return;
-        }
     }
 
     act("$n eats $p.", ch, obj, NULL, TO_ROOM);
@@ -1122,18 +1104,6 @@ void do_eat(CHAR_DATA * ch, char *argument)
     {
 
     case ITEM_FOOD:
-        if (!IS_NPC(ch))
-        {
-            int condition;
-
-            condition = ch->pcdata->condition[COND_FULL];
-            gain_condition(ch, COND_FULL, obj->value[0]);
-            if (condition == 0 && ch->pcdata->condition[COND_FULL] > 0)
-                send_to_char("You are no longer hungry.\n\r", ch);
-            else if (ch->pcdata->condition[COND_FULL] > 40)
-                send_to_char("You are full.\n\r", ch);
-        }
-
         if (obj->value[3] != 0)
         {
             /* The shit was poisoned! */
