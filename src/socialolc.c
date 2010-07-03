@@ -170,7 +170,7 @@ SOCIALLIST_DATA *new_social(void)
     if (!pSocial)
     {
         bug("new_social: Call to alloc_perm failed!", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     socials_count++;

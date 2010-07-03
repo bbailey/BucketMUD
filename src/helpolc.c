@@ -33,7 +33,7 @@ HELP_DATA *new_help(void)
     if (!pHelp)
     {
         bug("new help: Call to alloc_perm failed!", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     pHelp->next = NULL;

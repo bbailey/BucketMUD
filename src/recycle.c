@@ -131,7 +131,7 @@ BUFFER *new_buf_size(int size)
     if (buffer->size == -1)
     {
         bug("new_buf: buffer size %d too large.", size);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     buffer->string = alloc_mem(buffer->size);
     buffer->string[0] = '\0';

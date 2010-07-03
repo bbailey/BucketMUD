@@ -120,7 +120,7 @@ void init_string_space()
     if (!string_space)
     {
         bug("[SSM] Cant allocate shared string space.", 0);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     top_string = string_space + MAX_STRING - 1;
@@ -592,7 +592,7 @@ void temp_fread_string(FILE * fp, char *outbuf)
 
         case EOF:
             bug("Fread_string: EOF", 0);
-            exit(1);
+            exit(EXIT_FAILURE);
             break;
 
         case '\n':
