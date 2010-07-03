@@ -41,16 +41,14 @@ extern int mobile_count;
 #define BUFFER_FREED 	2
 
 /* ban data recycling */
-#define BD BAN_DATA
-BD *new_ban(void);
-void free_ban(BAN_DATA * ban);
-#undef BD
+extern BAN_DATA *new_ban(void);
+extern void free_ban(BAN_DATA * ban);
 
 /* buffer procedures */
 
-BUFFER *new_buf(void);
-BUFFER *new_buf_size(int size);
-void free_buf(BUFFER * buffer);
-bool add_buf(BUFFER * buffer, char *string);
-void clear_buf(BUFFER * buffer);
-char *buf_string(BUFFER * buffer);
+extern BUFFER *new_buf(void);
+extern BUFFER *new_buf_size(int size);
+extern void free_buf(BUFFER * buffer);
+extern bool add_buf(BUFFER * buffer, char *string);
+extern void clear_buf(BUFFER * buffer);
+extern char *buf_string(BUFFER * buffer);

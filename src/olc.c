@@ -52,182 +52,6 @@ static void do_medit(CHAR_DATA * ch, char *argument);
 static void do_mpedit(CHAR_DATA * ch, char *argument);
 static void do_mpgedit(CHAR_DATA * ch, char *argument);
 
-static const struct olc_cmd_type aedit_table[];
-static const struct olc_cmd_type redit_table[];
-static const struct olc_cmd_type oedit_table[];
-static const struct olc_cmd_type medit_table[];
-static const struct olc_cmd_type mpedit_table[];
-static const struct olc_cmd_type mpgedit_table[];
-
-/* Executed from comm.c.  Minimizes compiling when changes are made. */
-bool run_olc_editor(DESCRIPTOR_DATA * d)
-{
-    if (IS_NPC(d->character))
-        return FALSE;
-    switch (d->editor)
-    {
-    case ED_AREA:
-        aedit(CH(d), d->incomm);
-        break;
-    case ED_ROOM:
-        redit(CH(d), d->incomm);
-        break;
-    case ED_OBJECT:
-        oedit(CH(d), d->incomm);
-        break;
-    case ED_MOBILE:
-        medit(CH(d), d->incomm);
-        break;
-    case ED_MPROG:
-        mpedit(d->character, d->incomm);
-        break;
-    case ED_MPGROUP:
-        mpgedit(d->character, d->incomm);
-        break;
-    case ED_CLAN:
-        cedit(d->character, d->incomm);
-        break;
-    case ED_FACTION:
-        factionedit(d->character, d->incomm);
-        break;
-    case ED_SOCIAL:
-        socialedit(d->character, d->incomm);
-        break;
-    case ED_HELPOLC:
-        helpsedit(d->character, d->incomm);
-        break;
-    case ED_TODOOLC:
-        todoedit(d->character, d->incomm);
-        break;
-    default:
-        return FALSE;
-    }
-    return TRUE;
-}
-
-char *olc_ed_name(CHAR_DATA * ch)
-{
-    static char buf[MAX_STRING_LENGTH];
-    buf[0] = '\0';
-
-    switch (ch->desc->editor)
-    {
-    case ED_AREA:
-        sprintf(buf, "AEdit");
-        break;
-    case ED_ROOM:
-        sprintf(buf, "REdit");
-        break;
-    case ED_OBJECT:
-        sprintf(buf, "OEdit");
-        break;
-    case ED_MOBILE:
-        sprintf(buf, "MEdit");
-        break;
-    case ED_TODO:
-        sprintf(buf, "TEdit");
-        break;
-    case ED_HELP:
-        sprintf(buf, "HEdit");
-        break;
-    case ED_MPROG:
-        sprintf(buf, "MPEdit");
-        break;
-    case ED_MPGROUP:
-        sprintf(buf, "MPGEdit");
-        break;
-    case ED_CLAN:
-        sprintf(buf, "CEdit");
-        break;
-    case ED_FACTION:
-        sprintf(buf, "FactionEdit");
-        break;
-    case ED_SOCIAL:
-        sprintf(buf, "SocialEdit");
-        break;
-    case ED_HELPOLC:
-        sprintf(buf, "HelpEdit");
-        break;
-    default:
-        sprintf(buf, " ");
-        break;
-    }
-
-    return buf;
-}
-
-/*****************************************************************************
- Name:		show_olc_cmds
- Purpose:	Format up the commands from given table.
- Called by:	show_commands(olc_act.c).
- ****************************************************************************/
-static void show_olc_cmds(CHAR_DATA * ch, const struct olc_cmd_type *olc_table)
-{
-    char buf[MAX_STRING_LENGTH];
-    char buf1[MAX_STRING_LENGTH];
-    int cmd;
-    int col;
-
-    buf1[0] = '\0';
-    col = 0;
-    for (cmd = 0; olc_table[cmd].name[0] != '\0'; cmd++)
-    {
-        sprintf(buf, "%-15.15s", olc_table[cmd].name);
-        if (str_cmp(olc_table[cmd].name, "oclan"))
-            strcat(buf1, buf);
-        if (++col % 5 == 0)
-            strcat(buf1, "\n\r");
-    }
-
-    if (col % 5 != 0)
-        strcat(buf1, "\n\r");
-
-    send_to_char(buf1, ch);
-    return;
-}
-
-/*****************************************************************************
- Name:		show_commands
- Purpose:	Display all olc commands.
- Called by:	olc interpreters.
- ****************************************************************************/
-bool show_commands(CHAR_DATA * ch, char *argument)
-{
-    switch (ch->desc->editor)
-    {
-    case ED_AREA:
-        show_olc_cmds(ch, aedit_table);
-        break;
-    case ED_ROOM:
-        show_olc_cmds(ch, redit_table);
-        break;
-    case ED_OBJECT:
-        show_olc_cmds(ch, oedit_table);
-        break;
-    case ED_MOBILE:
-        show_olc_cmds(ch, medit_table);
-        break;
-    case ED_MPROG:
-        show_olc_cmds(ch, mpedit_table);
-        break;
-    case ED_MPGROUP:
-        show_olc_cmds(ch, mpgedit_table);
-        break;
-    case ED_CLAN:
-        show_olc_cmds(ch, cedit_table);
-    case ED_FACTION:
-        show_olc_cmds(ch, factionedit_table);
-    case ED_SOCIAL:
-        show_olc_cmds(ch, socialedit_table);
-    case ED_HELPOLC:
-        show_olc_cmds(ch, helpsedit_table);
-    case ED_TODOOLC:
-        show_olc_cmds(ch, todoedit_table);
-    }
-
-    return FALSE;
-}
-
 /*****************************************************************************
  *                           Interpreter Tables.                             *
  *****************************************************************************/
@@ -419,6 +243,175 @@ static const struct olc_cmd_type mpgedit_table[] =
 /*****************************************************************************
  *                          End Interpreter Tables.                          *
  *****************************************************************************/
+
+/* Executed from comm.c.  Minimizes compiling when changes are made. */
+bool run_olc_editor(DESCRIPTOR_DATA * d)
+{
+    if (IS_NPC(d->character))
+        return FALSE;
+    switch (d->editor)
+    {
+    case ED_AREA:
+        aedit(CH(d), d->incomm);
+        break;
+    case ED_ROOM:
+        redit(CH(d), d->incomm);
+        break;
+    case ED_OBJECT:
+        oedit(CH(d), d->incomm);
+        break;
+    case ED_MOBILE:
+        medit(CH(d), d->incomm);
+        break;
+    case ED_MPROG:
+        mpedit(d->character, d->incomm);
+        break;
+    case ED_MPGROUP:
+        mpgedit(d->character, d->incomm);
+        break;
+    case ED_CLAN:
+        cedit(d->character, d->incomm);
+        break;
+    case ED_FACTION:
+        factionedit(d->character, d->incomm);
+        break;
+    case ED_SOCIAL:
+        socialedit(d->character, d->incomm);
+        break;
+    case ED_HELPOLC:
+        helpsedit(d->character, d->incomm);
+        break;
+    case ED_TODOOLC:
+        todoedit(d->character, d->incomm);
+        break;
+    default:
+        return FALSE;
+    }
+    return TRUE;
+}
+
+char *olc_ed_name(CHAR_DATA * ch)
+{
+    static char buf[MAX_STRING_LENGTH];
+    buf[0] = '\0';
+
+    switch (ch->desc->editor)
+    {
+    case ED_AREA:
+        sprintf(buf, "AEdit");
+        break;
+    case ED_ROOM:
+        sprintf(buf, "REdit");
+        break;
+    case ED_OBJECT:
+        sprintf(buf, "OEdit");
+        break;
+    case ED_MOBILE:
+        sprintf(buf, "MEdit");
+        break;
+    case ED_TODO:
+        sprintf(buf, "TEdit");
+        break;
+    case ED_HELP:
+        sprintf(buf, "HEdit");
+        break;
+    case ED_MPROG:
+        sprintf(buf, "MPEdit");
+        break;
+    case ED_MPGROUP:
+        sprintf(buf, "MPGEdit");
+        break;
+    case ED_CLAN:
+        sprintf(buf, "CEdit");
+        break;
+    case ED_FACTION:
+        sprintf(buf, "FactionEdit");
+        break;
+    case ED_SOCIAL:
+        sprintf(buf, "SocialEdit");
+        break;
+    case ED_HELPOLC:
+        sprintf(buf, "HelpEdit");
+        break;
+    default:
+        sprintf(buf, " ");
+        break;
+    }
+
+    return buf;
+}
+
+/*****************************************************************************
+ Name:		show_olc_cmds
+ Purpose:	Format up the commands from given table.
+ Called by:	show_commands(olc_act.c).
+ ****************************************************************************/
+static void show_olc_cmds(CHAR_DATA * ch, const struct olc_cmd_type *olc_table)
+{
+    char buf[MAX_STRING_LENGTH];
+    char buf1[MAX_STRING_LENGTH];
+    int cmd;
+    int col;
+
+    buf1[0] = '\0';
+    col = 0;
+    for (cmd = 0; olc_table[cmd].name[0] != '\0'; cmd++)
+    {
+        sprintf(buf, "%-15.15s", olc_table[cmd].name);
+        if (str_cmp(olc_table[cmd].name, "oclan"))
+            strcat(buf1, buf);
+        if (++col % 5 == 0)
+            strcat(buf1, "\n\r");
+    }
+
+    if (col % 5 != 0)
+        strcat(buf1, "\n\r");
+
+    send_to_char(buf1, ch);
+    return;
+}
+
+/*****************************************************************************
+ Name:		show_commands
+ Purpose:	Display all olc commands.
+ Called by:	olc interpreters.
+ ****************************************************************************/
+bool show_commands(CHAR_DATA * ch, char *argument)
+{
+    switch (ch->desc->editor)
+    {
+    case ED_AREA:
+        show_olc_cmds(ch, aedit_table);
+        break;
+    case ED_ROOM:
+        show_olc_cmds(ch, redit_table);
+        break;
+    case ED_OBJECT:
+        show_olc_cmds(ch, oedit_table);
+        break;
+    case ED_MOBILE:
+        show_olc_cmds(ch, medit_table);
+        break;
+    case ED_MPROG:
+        show_olc_cmds(ch, mpedit_table);
+        break;
+    case ED_MPGROUP:
+        show_olc_cmds(ch, mpgedit_table);
+        break;
+    case ED_CLAN:
+        show_olc_cmds(ch, cedit_table);
+    case ED_FACTION:
+        show_olc_cmds(ch, factionedit_table);
+    case ED_SOCIAL:
+        show_olc_cmds(ch, socialedit_table);
+    case ED_HELPOLC:
+        show_olc_cmds(ch, helpsedit_table);
+    case ED_TODOOLC:
+        show_olc_cmds(ch, todoedit_table);
+    }
+
+    return FALSE;
+}
 
 /*****************************************************************************
  Name:		get_area_data

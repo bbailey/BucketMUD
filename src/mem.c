@@ -39,10 +39,7 @@ static MOB_INDEX_DATA *mob_index_free;
 static RESET_DATA *reset_free;
 HELP_DATA *help_free;
 
-HELP_DATA *help_last;
-
 TODO_DATA *todo_free;
-TODO_DATA *todo_last;
 
 RESET_DATA *new_reset_data(void)
 {

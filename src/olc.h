@@ -72,8 +72,6 @@ extern const struct olc_cmd_type todoedit_table[];
 
 /* Function prototypes */
 void helpsedit(CHAR_DATA * ch, char *argument);
-HELP_DATA *new_help(void);
-HELP_DATA *get_help(char *argument);
 bool helpsedit_show(CHAR_DATA * ch, char *argument);
 bool helpsedit_keyword(CHAR_DATA * ch, char *argument);
 bool helpsedit_level(CHAR_DATA * ch, char *argument);
@@ -81,8 +79,6 @@ bool helpsedit_text(CHAR_DATA * ch, char *argument);
 bool helpsedit_create(CHAR_DATA * ch, char *argument);
 
 void todoedit(CHAR_DATA * ch, char *argument);
-HELP_DATA *new_help(void);
-HELP_DATA *get_help(char *argument);
 bool todoedit_show(CHAR_DATA * ch, char *argument);
 bool todoedit_keyword(CHAR_DATA * ch, char *argument);
 bool todoedit_level(CHAR_DATA * ch, char *argument);

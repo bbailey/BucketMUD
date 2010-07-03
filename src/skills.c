@@ -1,5 +1,6 @@
 /* Code specifically for the new skill system */
 
+#include <math.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <stdio.h>
@@ -7,12 +8,11 @@
 #include <stdlib.h>
 #include "merc.h"
 #include "magic.h"
-#include <math.h>
+#include "interp.h"
 
 /* command procedures needed */
 void do_groups(CHAR_DATA * ch, char *argument);
 void do_help(CHAR_DATA * ch, char *argument);
-void do_say(CHAR_DATA * ch, char *argument);
 void do_set(CHAR_DATA * ch, char *argument);
 
 extern bool has_racial_skill(CHAR_DATA * ch, long sn);

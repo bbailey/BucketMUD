@@ -1419,7 +1419,6 @@ bool damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dam,
 bool new_damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
                 int dam, int dt, int Class, bool show);
 void update_pos(CHAR_DATA * victim);
-void stop_fighting(CHAR_DATA * ch, bool fBoth);
 bool is_hating(CHAR_DATA * ch, CHAR_DATA * victim);
 void stop_hating(CHAR_DATA * ch);
 void stop_fighting(CHAR_DATA * ch, bool fBoth);

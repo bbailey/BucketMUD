@@ -26,7 +26,6 @@
 #define MAX_DAMAGE_MESSAGE 35
 
 /* command procedures needed */
-void do_emote(CHAR_DATA * ch, char *argument);
 void do_berserk(CHAR_DATA * ch, char *argument);
 void do_bash(CHAR_DATA * ch, char *argument);
 void do_trip(CHAR_DATA * ch, char *argument);
@@ -37,7 +36,6 @@ void do_blackjack(CHAR_DATA * ch, char *argument);
 void do_disarm(CHAR_DATA * ch, char *argument);
 void do_get(CHAR_DATA * ch, char *argument);
 void do_recall(CHAR_DATA * ch, char *argument);
-void do_yell(CHAR_DATA * ch, char *argument);
 void do_sacrifice(CHAR_DATA * ch, char *argument);
 
 /*
@@ -763,13 +761,14 @@ static void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int d
 /*
  * Inflict damage from a hit.
  */
+extern bool chaos;
+
 bool damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dam,
             int dt, int dam_type)
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
     bool immune;
-    extern bool chaos;
     int chaos_points;
 
     if (victim->position == POS_DEAD)
@@ -1122,7 +1121,6 @@ bool new_damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
     bool immune;
-    extern bool chaos;
     int chaos_points;
 
     if (victim->position == POS_DEAD)
@@ -1456,7 +1454,6 @@ static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
-    extern bool chaos;
     int chaos_points;
 
     if (victim->position == POS_DEAD)
@@ -5574,7 +5571,6 @@ void do_slay(CHAR_DATA * ch, char *argument)
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
-    extern bool chaos;
     DESCRIPTOR_DATA *d;
 
     one_argument(argument, arg);
@@ -5641,7 +5637,6 @@ void do_mortslay(CHAR_DATA * ch, char *argument)
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
-    extern bool chaos;
     DESCRIPTOR_DATA *d;
 
     one_argument(argument, arg);

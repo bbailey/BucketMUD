@@ -4,8 +4,7 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
-
-void do_save(CHAR_DATA * ch, char *argument);
+#include "interp.h"
 
 void do_marry(CHAR_DATA * ch, char *argument)
 {
@@ -197,7 +196,7 @@ void do_divorce(CHAR_DATA * ch, char *argument)
     }
 }
 
-void do_consent(CHAR_DATA * ch)
+void do_consent(CHAR_DATA * ch, char *argument)
 {
     if (IS_NPC(ch))
         return;

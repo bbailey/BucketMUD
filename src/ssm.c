@@ -386,28 +386,28 @@ void free_string(char **strptr)
 
         if (fBootDb)
         {
-            TempHash *ptr;
+            TempHash *th_ptr;
             TempHash *walk;
             unsigned long ihash = get_string_hash(str);
 
-            for (ptr = temp_string_hash[ihash]; ptr; ptr = ptr->next)
+            for (th_ptr = temp_string_hash[ihash]; th_ptr; th_ptr = th_ptr->next)
             {
-                if (ptr->str != str)
+                if (th_ptr->str != str)
                     continue;
-                else if (ptr == temp_string_hash[ihash])
-                    temp_string_hash[ihash] = ptr->next;
+                else if (th_ptr == temp_string_hash[ihash])
+                    temp_string_hash[ihash] = th_ptr->next;
                 else
                     for (walk = temp_string_hash[ihash]; walk;
                             walk = walk->next)
                     {
-                        if (walk->next == ptr)
+                        if (walk->next == th_ptr)
                         {
-                            walk->next = ptr->next;
+                            walk->next = th_ptr->next;
                             break;
                         }
                     }
 
-                free(ptr);
+                free(th_ptr);
                 break;
             }
         }

@@ -25,9 +25,6 @@
 
 bool gsilentdamage;
 
-/* command procedures needed */
-void do_look(CHAR_DATA * ch, char *argument);
-
 /*
  * Lookup a skill by name.
  */
@@ -47,13 +44,14 @@ int skill_lookup(const char *name)
     return -1;
 }
 
+extern bool fBootDb;
+
 /*
  * Lookup a skill by slot number.
  * Used for object loading.
  */
 int slot_lookup(int slot)
 {
-    extern bool fBootDb;
     int sn;
 
     if (slot <= 0)
@@ -2913,11 +2911,11 @@ void spell_frenzy(int sn, int level, CHAR_DATA * ch, void *vo)
 }
 
 /* RT ROM-style gate */
+extern bool chaos;
 
 void spell_gate(int sn, int level, CHAR_DATA * ch, void *vo)
 {
     CHAR_DATA *victim;
-    extern bool chaos;
     bool gate_pet;
 
     if (((victim = get_char_world(ch, target_name)) == NULL))
@@ -3067,7 +3065,6 @@ static void spawn_portal(int vnum1, int vnum2)
 void spell_nexus(int sn, int level, CHAR_DATA * ch, void *vo)
 {
     CHAR_DATA *victim;
-    extern bool chaos;
 
     if (((victim = get_char_world(ch, target_name)) == NULL))
     {
@@ -4029,7 +4026,6 @@ void spell_stone_skin(int sn, int level, CHAR_DATA * ch, void *vo)
 void spell_summon(int sn, int level, CHAR_DATA * ch, void *vo)
 {
     CHAR_DATA *victim;
-    extern bool chaos;
 
     if (((victim = get_char_world(ch, target_name)) == NULL))
     {
@@ -4137,7 +4133,6 @@ void spell_teleport(int sn, int level, CHAR_DATA * ch, void *vo)
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     ROOM_INDEX_DATA *pRoomIndex;
-    extern bool chaos;
 
     if (victim->in_room == NULL
             || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
@@ -5093,11 +5088,6 @@ void spell_knock(int sn, int level, CHAR_DATA * ch, void *vo)
     char arg[MAX_INPUT_LENGTH];
     int chance = 0;
     int door = 0;
-
-    const sh_int rev_dir[] =
-    {
-        2, 3, 0, 1, 5, 4, 9, 8, 7, 6
-    };
 
     target_name = one_argument(target_name, arg);
 

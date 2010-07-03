@@ -44,9 +44,6 @@ extern int _filbuf(FILE *);
 
 SYS_CONFIG sysconfig;
 
-HELP_DATA *help_first;
-HELP_DATA *help_last;
-
 extern TODO_DATA *todo_first;
 extern TODO_DATA *todo_last;
 
@@ -54,7 +51,6 @@ SHOP_DATA *shop_first;
 SHOP_DATA *shop_last;
 
 CHAR_DATA *char_free;
-EXTRA_DESCR_DATA *extra_descr_free;
 NOTE_DATA *note_free;
 OBJ_DATA *obj_free;
 PC_DATA *pcdata_free;
@@ -154,9 +150,6 @@ MPROG_DATA *mprog_free;
 MPROG_GROUP *mprog_group_free;
 AREA_DATA *area_first;
 AREA_DATA *area_last;
-char *string_space;
-char *top_string;
-char str_empty[1];
 
 int top_mprog;
 int top_mprog_group;
@@ -205,8 +198,8 @@ const int rgSizeList[MAX_MEM_LIST] =
     16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768 - 64
 };
 
-int nAllocString;
-int sAllocString;
+extern long nAllocString;
+extern long sAllocString;
 static int nAllocPerm;
 static int sAllocPerm;
 
@@ -1077,6 +1070,8 @@ static void assign_area_vnum(int vnum)
     }
     return;
 }
+
+extern HELP_DATA *help_last;
 
 /*
  * Snarf a help section.
@@ -4699,8 +4694,6 @@ static void load_objects(FILE * fp)
 
         for (;;)
         {
-            char letter;
-
             letter = fread_letter(fp);
 
             if (letter == 'A')

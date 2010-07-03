@@ -1066,13 +1066,13 @@ void chk_command(CHAR_DATA * ch, char *argument)
     {
 
         /* Look for command in social table */
-        SOCIALLIST_DATA *cmd;
-        for (cmd = social_first; cmd != NULL; cmd = cmd->next)
+        SOCIALLIST_DATA *social_cmd;
+        for (social_cmd = social_first; social_cmd != NULL; social_cmd = social_cmd->next)
         {
-            if ((is_name(command, cmd->name)))
+            if ((is_name(command, social_cmd->name)))
             {
                 found = TRUE;
-                sprintf(argument, "%s", cmd->name);
+                sprintf(argument, "%s", social_cmd->name);
                 break;
             }
         }
@@ -1093,7 +1093,7 @@ void chk_command(CHAR_DATA * ch, char *argument)
                     break;
 
                 case POS_SLEEPING:
-                    if (str_cmp(cmd->name, "snore"))
+                    if (str_cmp(social_cmd->name, "snore"))
                         found = FALSE;
                     break;
                 }

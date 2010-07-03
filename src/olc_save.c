@@ -45,7 +45,7 @@ extern void save_factionaffs(FILE * fp, AREA_DATA * pArea);
  * Local functions.
  */
 
-char *mprog_type_to_name(int type);
+extern char *mprog_type_to_name(int type);
 
 /*****************************************************************************
  Name:		fix_string

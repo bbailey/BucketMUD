@@ -26,10 +26,6 @@
 
 extern bool can_use(CHAR_DATA * ch, long sn);
 
-/* command procedures needed */
-void do_quit(CHAR_DATA * ch, char *argument);
-void do_say(CHAR_DATA * ch, char *argument);	/* added for AUTO_HATE */
-
 /*
  * Advancement stuff.
  */
@@ -137,11 +133,12 @@ void gain_exp(CHAR_DATA * ch, int gain)
 /*
  * Regeneration stuff.
  */
+extern bool chaos;
+
 static int hit_gain(CHAR_DATA * ch)
 {
     int gain;
     int number;
-    extern bool chaos;
 
     if (IS_NPC(ch))
     {
@@ -214,7 +211,6 @@ static int mana_gain(CHAR_DATA * ch)
 {
     int gain;
     int number;
-    extern bool chaos;
 
     if (IS_NPC(ch))
     {
@@ -612,7 +608,6 @@ static void char_update(void)
     CHAR_DATA *ch_next;
     CHAR_DATA *ch_quit;
     char buf[MAX_STRING_LENGTH];
-    extern bool chaos;
     int blarg;
     static int save_number = 0;
 

@@ -2484,7 +2484,6 @@ void do_shutdown(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char strPath[MAX_STRING_LENGTH];
-    extern bool merc_down;
     DESCRIPTOR_DATA *d, *d_next;
 
     if ((chaos) && (ch->Class != 4))
