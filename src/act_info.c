@@ -1741,21 +1741,35 @@ void do_exits(CHAR_DATA * ch, char *argument)
         if ((pexit = ch->in_room->exit[door]) != NULL
                 && pexit->u1.to_room != NULL
                 && can_see_room(ch, pexit->u1.to_room)
-                && !IS_SET(pexit->exit_info, EX_CLOSED)
                 && !IS_SET(pexit->exit_info, EX_HIDDEN))
         {
             found = TRUE;
             if (fAuto)
             {
                 strcat(buf, " ");
-                strcat(buf, dir_name[door]);
+                if (IS_SET(pexit->exit_info, EX_CLOSED))
+                {
+                    strcat(buf, "(");
+                    strcat(buf, dir_name[door]);
+                    strcat(buf, ")");
+                }
+                else
+                    strcat(buf, dir_name[door]);
             }
             else
             {
-                sprintf(buf + strlen(buf), "%-5s - %s\n\r",
+                if (IS_SET(pexit->exit_info, EX_CLOSED))
+                {
+                    sprintf(buf + strlen(buf), "(%-5s) - Unknown\n\r",
+                        capitalize(dir_name[door]));
+                }
+                else
+                {
+                    sprintf(buf + strlen(buf), "%-7s - %s\n\r",
                         capitalize(dir_name[door]),
                         room_is_dark(pexit->u1.to_room)
                         ? "Too dark to tell" : pexit->u1.to_room->name);
+                }
             }
         }
     }
