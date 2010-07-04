@@ -3092,7 +3092,7 @@ void do_memory(CHAR_DATA * ch, char *argument)
     send_to_char(buf, ch);
     /*    sprintf( buf, "Clans   %5d\n\r", top_clan    ); send_to_char( buf, ch ); */
 
-    sprintf(buf, "Strings %5d strings of %7d bytes (max %d).\n\r",
+    sprintf(buf, "Strings %5ld strings of %7ld bytes (max %d).\n\r",
             nAllocString, sAllocString, MAX_STRING);
     send_to_char(buf, ch);
 
