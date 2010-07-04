@@ -459,7 +459,6 @@ char *fread_string(FILE * fp)
             bug("Fread_string: EOF", 0);
             /*          *status = 1; */
             return NULL;
-            break;
 
         case '\n':
             *ptr++ = '\r';
@@ -593,7 +592,6 @@ void temp_fread_string(FILE * fp, char *outbuf)
         case EOF:
             bug("Fread_string: EOF", 0);
             exit(EXIT_FAILURE);
-            break;
 
         case '\n':
             ptr++;

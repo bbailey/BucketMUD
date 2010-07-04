@@ -1528,13 +1528,12 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
             KEY("Sex", pet->sex, fread_number(fp));
             KEY("ShD", pet->short_descr, fread_string(fp));
             break;
+        }
 
-            if (!fMatch)
-            {
-                bug("Fread_pet: no match.", 0);
-                fread_to_eol(fp);
-            }
-
+        if (!fMatch)
+        {
+            bug("Fread_pet: no match.", 0);
+            fread_to_eol(fp);
         }
     }
 

@@ -529,13 +529,10 @@ static int parse_proc(char *proc)
     {
     case '$':
         return exec_proc(procname, 0, arg);
-        break;
     case '\0':
         return exec_proc(procname, 0, NULL);
-        break;
     default:
         return exec_proc(procname, parse_expression(arg), NULL);
-        break;
     }
 }
 
@@ -630,7 +627,6 @@ void *mprog_get_actor(char *arg, char type)
             bug("Mprog_Get_Actor:  Invalid variable '%s' for argtype 'C'.\r\n", arg);
             return NULL;
         }
-        break;
     case 'O':
         switch (UPPER(arg[1]))
         {
@@ -642,7 +638,6 @@ void *mprog_get_actor(char *arg, char type)
             bug("Mprog_Get_Actor:  Invalid variable '%s' for argtype 'O'.\r\n", arg);
             return NULL;
         }
-        break;
     default:
         bug("Mprog_Get_Actor:  Invalid argtype '%c'.\r\n", type);
         return NULL;

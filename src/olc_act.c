@@ -942,7 +942,6 @@ AEDIT(aedit_builder)
         return TRUE;
     }
 
-    return FALSE;
 }
 
 AEDIT(aedit_vnum)
@@ -4965,7 +4964,6 @@ MPEDIT(mpedit_progtype)
         return FALSE;
     }
 
-    return TRUE;
 }
 
 MPEDIT(mpedit_show)

@@ -4058,7 +4058,6 @@ static void imc_readchannel(IMC_CHANNEL * channel, FILE * fp)
                 }
             }
             return;
-            break;
         }
 
         if (!fMatch)

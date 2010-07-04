@@ -2251,7 +2251,6 @@ void show_string(struct descriptor_data *d, char *input)
             return;
         }
     }
-    return;
 }
 
 /* quick sex fixer */

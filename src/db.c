@@ -4345,7 +4345,6 @@ static void load_progs(FILE * fp)
         default:
             bug("Load_Progs: bad prog type '%c'.", letter);
             exit(EXIT_FAILURE);
-            break;
 
         case 'M':
             iFound = 0;
