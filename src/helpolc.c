@@ -24,7 +24,7 @@ const struct olc_cmd_type helpsedit_table[] =
     {"", 0,}
 };
 
-HELP_DATA *new_help(void)
+static HELP_DATA *new_help(void)
 {
     HELP_DATA *pHelp;
 

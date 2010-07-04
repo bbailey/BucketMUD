@@ -73,8 +73,8 @@ static TempHash **temp_string_hash;
 /* These are the original Merc vars in db.c */
 extern bool fBootDb;
 char str_empty[1];
-char *string_space;
-char *top_string;
+static char *string_space;
+static char *top_string;
 long nAllocString;
 long sAllocString;
 static long nOverFlowString;
