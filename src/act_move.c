@@ -1652,6 +1652,9 @@ void do_train(CHAR_DATA * ch, char *argument)
     else if (!str_cmp(argument, "mana"))
         cost = 1;
 
+    else if (!str_cmp(argument, "move"))
+        cost = 1;
+
     else
     {
         strcpy(buf, "You can train:");
@@ -1665,7 +1668,7 @@ void do_train(CHAR_DATA * ch, char *argument)
             strcat(buf, " dex");
         if (ch->perm_stat[STAT_CON] < get_max_train(ch, STAT_CON))
             strcat(buf, " con");
-        strcat(buf, " hp mana");
+        strcat(buf, " hp mana move");
 
         if (buf[strlen(buf) - 1] != ':')
         {
@@ -1720,6 +1723,23 @@ void do_train(CHAR_DATA * ch, char *argument)
         ch->mana += 10;
         act("Your power increases!", ch, NULL, NULL, TO_CHAR);
         act("$n's power increases!", ch, NULL, NULL, TO_ROOM);
+        return;
+    }
+
+    if (!str_cmp("move", argument))
+    {
+        if (cost > ch->train)
+        {
+            send_to_char("You don't have enough training sessions.\r\n", ch);
+            return;
+        }
+        
+        ch->train -= cost;
+        ch->pcdata->perm_move += 10;
+        ch->max_move += 10;
+        ch->move += 10;
+        act("Your endurance increases!", ch, NULL, NULL, TO_CHAR);
+        act("$n's endurance increases!", ch, NULL, NULL, TO_ROOM);
         return;
     }
 
