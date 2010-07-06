@@ -21,6 +21,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "interp.h"
 
@@ -1130,29 +1133,33 @@ void chk_command(CHAR_DATA * ch, char *argument)
 }
 
 /*
- * Contributed by Alander.
+ * New do_commands by Chil.
  */
 static void do_commands(CHAR_DATA * ch, char *argument)
 {
-    char buf[MAX_STRING_LENGTH];
-    int cmd;
-    int col;
+    GString *output = g_string_new("");
+    GList *command_names = NULL;
+    GList *tmp = NULL;
+    int cmd_index = 0, cols = 0;
 
-    col = 0;
-    for (cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++)
+    for (cmd_index = 0; cmd_table[cmd_index].name[0] != '\0'; cmd_index++)
+        if (!cmd_table[cmd_index].imm && cmd_table[cmd_index].show)
+            command_names = g_list_insert_sorted(command_names, g_strdup(cmd_table[cmd_index].name), (GCompareFunc)g_ascii_strcasecmp);
+
+    for (tmp = g_list_first(command_names); tmp != g_list_last(command_names); tmp = g_list_next(tmp))
     {
-        if (!cmd_table[cmd].imm && cmd_table[cmd].show)
-        {
-            sprintf(buf, "%-12s", cmd_table[cmd].name);
-            send_to_char(buf, ch);
-            if (++col % 6 == 0)
-                send_to_char("\n\r", ch);
-        }
-    }
+        g_string_append_printf(output, "%-12s", (gchar *) tmp->data);
+        if (++cols % 6 == 0)
+            g_string_append(output, "\r\n");
+    }    
+    if (cols % 6 != 0)
+        g_string_append(output, "\r\n");
 
-    if (col % 6 != 0)
-        send_to_char("\n\r", ch);
-    return;
+    send_to_char(output->str, ch);
+
+    g_list_foreach(command_names, (GFunc) g_free, NULL);
+    g_list_free(command_names);
+    g_string_free(output, true);
 }
 
 static void do_wizhelp(CHAR_DATA * ch, char *argument)

@@ -2,8 +2,8 @@ CC      = gcc
 PROF    = -DLINUX
 NOCRYPT = 
 OPT     = # -O2
-C_FLAGS = -Wall -ggdb $(OPT) $(PROF) $(NOCRYPT)
-L_FLAGS = $(OPT) $(PROF)
+C_FLAGS = -Wall -ggdb $(OPT) $(PROF) $(NOCRYPT) `pkg-config --cflags glib-2.0`
+L_FLAGS = $(OPT) $(PROF) -lm -lcrypt `pkg-config --libs glib-2.0`
 
 O_FILES = act_comm.o	act_info.o	act_move.o \
           act_obj.o	act_wiz.o	auction.o \
@@ -33,7 +33,7 @@ all: ember
 
 ember: $(O_FILES)
 	rm -f ember
-	$(CC) $(L_FLAGS) -o ember $(O_FILES) -lm -lcrypt
+	$(CC) -o ember $(O_FILES) $(L_FLAGS)
 
 .c.o: merc.h
 	$(CC) -c $(C_FLAGS) $<
