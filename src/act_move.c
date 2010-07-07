@@ -1310,6 +1310,7 @@ void do_sleep(CHAR_DATA * ch, char *argument)
         else  		/* find an object and sleep on it */
         {
 
+
             if (argument[0] == '\0')
                 obj = ch->on;
             else
@@ -1730,10 +1731,11 @@ void do_train(CHAR_DATA * ch, char *argument)
     {
         if (cost > ch->train)
         {
-            send_to_char("You don't have enough training sessions.\r\n", ch);
+            send_to_char("You don't have enough training sessions.\r\n",
+                         ch);
             return;
         }
-        
+
         ch->train -= cost;
         ch->pcdata->perm_move += 10;
         ch->max_move += 10;

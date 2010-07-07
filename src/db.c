@@ -430,6 +430,7 @@ static void copyover_recover(void)
         else  		/* ok! */
         {
 
+
             /*              write_to_descriptor (desc, "\n\rCopyover recovery complete.\n\r",0); */
 
             /* Just In Case */
@@ -582,7 +583,7 @@ int boot_db()
      */
     {
         FILE *fpList;
-		char strPath[MAX_STRING_LENGTH];
+        char strPath[MAX_STRING_LENGTH];
 
         sprintf(strPath, "%s/%s", sysconfig.area_dir, sysconfig.area_list);
 
@@ -1866,6 +1867,7 @@ void reset_room(ROOM_INDEX_DATA * pRoom)
             }
             else  		/* ROM OLC else version */
             {
+
 
                 /*
                  * Commented out limit code because even though the limit was

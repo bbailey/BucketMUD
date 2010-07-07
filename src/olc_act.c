@@ -119,14 +119,15 @@ extern char *mprog_type_to_name(int type);
  Purpose:	Displays settable flags and stats.
  Called by:	show_help(olc_act.c).
  ****************************************************************************/
-static void show_flag_cmds(CHAR_DATA * ch, const struct flag_type *flag_table)
+static void show_flag_cmds(CHAR_DATA * ch,
+                           const struct flag_type *flag_table)
 {
-	char buf[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH];
     int flag;
     int col;
 
-	buf[0] = '\0';
+    buf[0] = '\0';
     buf1[0] = '\0';
     col = 0;
     for (flag = 0; flag_table[flag].name[0] != '\0'; flag++)
@@ -158,7 +159,7 @@ static void show_flag_cmds(CHAR_DATA * ch, const struct flag_type *flag_table)
  ****************************************************************************/
 static void show_skill_cmds(CHAR_DATA * ch, int tar)
 {
-	char buf[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH * 2];
     int sn;
     int col;
@@ -2127,6 +2128,7 @@ REDIT(redit_oreset)
             else  			/* Display Syntax */
             {
 
+
                 send_to_char("REdit:  That mobile isn't here.\n\r", ch);
                 return FALSE;
             }
@@ -2281,8 +2283,8 @@ static void show_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * obj)
     return;
 }
 
-static bool set_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, int value_num,
-                    char *argument)
+static bool set_obj_values(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj,
+                           int value_num, char *argument)
 {
     switch (pObj->item_type)
     {
@@ -2738,6 +2740,7 @@ OEDIT(oedit_delaffect)
     else  			/* Affect to remove is not the first */
     {
 
+
         while ((pAf_next = pAf->next) && (++cnt < value))
             pAf = pAf_next;
 
@@ -2748,6 +2751,7 @@ OEDIT(oedit_delaffect)
         }
         else  		/* Doesn't exist */
         {
+
 
             send_to_char("No such affect.\n\r", ch);
             return FALSE;
@@ -2817,8 +2821,8 @@ OEDIT(oedit_long)
     return TRUE;
 }
 
-static bool set_value(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj, char *argument,
-               int value)
+static bool set_value(CHAR_DATA * ch, OBJ_INDEX_DATA * pObj,
+                      char *argument, int value)
 {
     if (argument[0] == '\0')
     {
@@ -3292,7 +3296,7 @@ OEDIT(oedit_condition)
  */
 MEDIT(medit_show)
 {
-	char buf[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH];
     MOB_INDEX_DATA *pMob;
     FACTIONAFF_DATA *pFactAff;
     int x;
@@ -3645,8 +3649,8 @@ MEDIT(medit_shop)
 {
     MOB_INDEX_DATA *pMob;
     char command[MAX_INPUT_LENGTH];
-	char buf[MAX_STRING_LENGTH];
-	char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
 
     argument = one_argument(argument, command);
     argument = one_argument(argument, arg);
@@ -3870,7 +3874,7 @@ MEDIT(medit_affect)
 
 MEDIT(medit_ac)
 {
-	char arg[MAX_INPUT_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
     MOB_INDEX_DATA *pMob;
     int pierce, bash, slash, exotic;
 
@@ -4317,7 +4321,7 @@ MEDIT(medit_damtype)
 
 MEDIT(medit_race)
 {
-	char buf[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH];
     MOB_INDEX_DATA *pMob;
     int race;
 
@@ -4360,7 +4364,7 @@ MEDIT(medit_race)
 
 MEDIT(medit_position)
 {
-	char arg[MAX_INPUT_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
     MOB_INDEX_DATA *pMob;
     int value;
 

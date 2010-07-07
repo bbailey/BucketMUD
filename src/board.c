@@ -582,6 +582,7 @@ static void do_nwrite(CHAR_DATA * ch, char *argument)
     else  			/* we are continuing, print out all the fields and the note so far */
     {
 
+
         sprintf(buf, "`YTo`w:      %s\n\r"
                 "`YExpires`w: %s\n\r"
                 "`YSubject`w: %s\n\r",
@@ -633,6 +634,7 @@ static void do_nread(CHAR_DATA * ch, char *argument)
     }
     else  			/* just next one */
     {
+
 
         char buf[200];
 

@@ -2269,7 +2269,7 @@ void act(const char *format, CHAR_DATA * ch, const void *arg1,
 
 #define NAME(ch)	(IS_NPC(ch) ? ch->short_descr : ch->name)
 static char *act_string(const char *format, CHAR_DATA * to, CHAR_DATA * ch,
-                 const void *arg1, const void *arg2)
+                        const void *arg1, const void *arg2)
 {
     static char *const he_she[] = { "it", "he", "she" };
     static char *const him_her[] = { "it", "him", "her" };

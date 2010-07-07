@@ -346,7 +346,8 @@ char *olc_ed_name(CHAR_DATA * ch)
  Purpose:	Format up the commands from given table.
  Called by:	show_commands(olc_act.c).
  ****************************************************************************/
-static void show_olc_cmds(CHAR_DATA * ch, const struct olc_cmd_type *olc_table)
+static void show_olc_cmds(CHAR_DATA * ch,
+                          const struct olc_cmd_type *olc_table)
 {
     char buf[MAX_STRING_LENGTH];
     char buf1[MAX_STRING_LENGTH];

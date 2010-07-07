@@ -806,8 +806,8 @@ void parse_command_var(char var, char *outbuf)
 
         if (RandomANY)
             strcat(outbuf,
-                   IS_NPC(RandomANY) ? RandomANY->
-                   short_descr : RandomANY->name);
+                   IS_NPC(RandomANY) ? RandomANY->short_descr : RandomANY->
+                   name);
 
         return;
     case 'e':
@@ -1291,7 +1291,8 @@ static bool mprog_percent_check(int trigger_type)
  *  on a certain percent, or trigger on a keyword or word phrase.
  *  To see how this works, look at the various trigger routines..
  */
-static void mprog_wordlist_check(char *arg, int trigger_type, int prog_type)
+static void mprog_wordlist_check(char *arg, int trigger_type,
+                                 int prog_type)
 {
     char temp1[MAX_STRING_LENGTH];
     char temp2[MAX_INPUT_LENGTH];

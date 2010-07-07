@@ -736,8 +736,8 @@ static void save_resets(FILE * fp, AREA_DATA * pArea)
                         fprintf(fp, "O 0 %d 0 %d %s loaded to %s\n",
                                 pReset->vnum,
                                 pReset->arg3,
-                                pLastObj ? capitalize(pLastObj->
-                                                      short_descr)
+                                pLastObj ?
+                                capitalize(pLastObj->short_descr)
                                 : "!NO_OBJ!",
                                 pRoom ? pRoom->name : "!NO_ROOM!");
                         if (!pLastObj)

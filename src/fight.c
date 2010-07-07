@@ -46,12 +46,12 @@ static bool check_block(CHAR_DATA * ch, CHAR_DATA * victim);
 static bool check_dodge(CHAR_DATA * ch, CHAR_DATA * victim);
 static void check_killer(CHAR_DATA * ch, CHAR_DATA * victim);
 static bool check_parry(CHAR_DATA * ch, CHAR_DATA * victim);
-static void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
-                 bool immune);
+static void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
+                        int dt, bool immune);
 void death_cry(CHAR_DATA * ch);
 static void group_gain(CHAR_DATA * ch, CHAR_DATA * victim);
-static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
-               int members);
+static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim,
+                      int total_levels, int members);
 int hit_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                    int members, int dam);
 int cast_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
@@ -64,10 +64,11 @@ static void chaos_kill(CHAR_DATA * victim);
 static void pk_kill(CHAR_DATA * victim);
 static void raw_kill(CHAR_DATA * victim);
 static void set_fighting(CHAR_DATA * ch, CHAR_DATA * victim);
-static void disarm(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * target_weapon);
+static void disarm(CHAR_DATA * ch, CHAR_DATA * victim,
+                   OBJ_DATA * target_weapon);
 static void chaos_log(CHAR_DATA * ch, char *argument);
-static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
-                 int dam_type);
+static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
+                        int dt, int dam_type);
 extern bool chaos;
 extern bool gsilentdamage;
 extern bool can_use(CHAR_DATA * ch, long sn);
@@ -422,7 +423,8 @@ static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
 /*
  * Hit one guy once.
  */
-static void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dt)
+static void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
+                    int dt)
 {
     bool counter;
     bool damaged = FALSE;
@@ -1449,8 +1451,8 @@ bool new_damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
     return TRUE;
 }
 
-static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
-                 int dam_type)
+static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
+                        int dt, int dam_type)
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
@@ -1704,6 +1706,7 @@ bool is_safe(CHAR_DATA * ch, CHAR_DATA * victim)
     else  			/* Not NPC */
     {
 
+
         if (IS_IMMORTAL(ch))
             return FALSE;
 
@@ -1763,6 +1766,7 @@ bool is_safe_spell(CHAR_DATA * ch, CHAR_DATA * victim, bool area)
 
     else  			/* Not NPC */
     {
+
 
         if (IS_IMMORTAL(ch) && !area)
             return FALSE;
@@ -2427,8 +2431,8 @@ static void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
  * Also adjust alignment of killer.
  * Edit this function to change xp computations.
  */
-static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
-               int members)
+static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim,
+                      int total_levels, int members)
 {
     int xp, base_exp = 0;
     int align;
@@ -2772,6 +2776,7 @@ static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
     else  			/* improve this someday */
     {
 
+
         change =
             gch->alignment * (gch->level / total_levels +
                               (1 / members)) / 2;
@@ -2860,6 +2865,7 @@ static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
 
     else  			/* neutral */
     {
+
 
 
         if (victim->alignment > 500 || victim->alignment < -500)
@@ -3326,6 +3332,7 @@ int hit_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
     {
 
 
+
         if (victim->alignment > 500 || victim->alignment < -500)
             xp = base_exp * 4 / 3;
 
@@ -3685,8 +3692,8 @@ int cast_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
     return xp;
 }
 
-static void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
-                 bool immune)
+static void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
+                        int dt, bool immune)
 {
     char buf1[256], buf2[256], buf3[256];
     const char *vs;
@@ -4297,7 +4304,8 @@ static void dam_message(CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt,
  * Disarm a creature.
  * Caller must check for successful attack.
  */
-static void disarm(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * target_weapon)
+static void disarm(CHAR_DATA * ch, CHAR_DATA * victim,
+                   OBJ_DATA * target_weapon)
 {
     if (IS_OBJ_STAT(target_weapon, ITEM_NOREMOVE))
     {
@@ -5410,6 +5418,7 @@ void do_blackjack(CHAR_DATA * ch, char *argument)
     }
     else  			/* Another try damage(ch,victim,0,gsn_blackjack,DAM_NONE,TRUE); */
     {
+
         check_improve(ch, gsn_blackjack, FALSE, 2);
     }
 }

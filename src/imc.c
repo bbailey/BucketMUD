@@ -84,12 +84,12 @@ if( !strcasecmp( (word), (literal) ) )  \
    break;                               \
 }
 
-static int imcwait;			/* Reconnect timer */
+static int imcwait;		/* Reconnect timer */
 static int imcconnect_attempts;	/* How many times have we tried to reconnect? */
 static unsigned long imc_sequencenumber;	/* sequence# for outgoing packets */
 static bool imcpacketdebug = FALSE;
 static bool default_packets_registered = FALSE;	// Cheesy global for a stupid problem!
-static time_t imcucache_clock;		/* prune ucache stuff regularly */
+static time_t imcucache_clock;	/* prune ucache stuff regularly */
 static time_t imc_time;		/* Current clock time for the client */
 
 static void imclog(const char *format, ...)
@@ -103,7 +103,7 @@ __attribute__ ((format(printf, 2, 3)));
 static const char *imc_funcname(IMC_FUN * func);
 static IMC_FUN *imc_function(const char *func);
 static const char *imc_send_social(CHAR_DATA * ch, const char *argument,
-                            int telloption);
+                                   int telloption);
 static void imc_save_config(void);
 static void imc_save_channels(void);
 
@@ -818,8 +818,8 @@ static void imc_delete_reminfo(REMOTEINFO * p)
 
 /* create a new info entry, insert into list */
 static void imc_new_reminfo(const char *mud, const char *version,
-                     const char *netname, const char *url,
-                     const char *path)
+                            const char *netname, const char *url,
+                            const char *path)
 {
     REMOTEINFO *p, *mud_prev;
 
@@ -906,8 +906,8 @@ static int get_imcpermvalue(const char *flag)
     return -1;
 }
 
-static bool imccheck_permissions(CHAR_DATA * ch, int checkvalue, int targetvalue,
-                          bool enforceequal)
+static bool imccheck_permissions(CHAR_DATA * ch, int checkvalue,
+                                 int targetvalue, bool enforceequal)
 {
     if (checkvalue < 0 || checkvalue > IMCPERM_IMP)
     {
@@ -1019,7 +1019,7 @@ static void imc_freechan(IMC_CHANNEL * c)
 }
 
 static void imcformat_channel(CHAR_DATA * ch, IMC_CHANNEL * d, int format,
-                       bool all)
+                              bool all)
 {
     IMC_CHANNEL *c = NULL;
     char buf[LGST];
@@ -1083,9 +1083,10 @@ static void imcformat_channel(CHAR_DATA * ch, IMC_CHANNEL * d, int format,
     imc_save_channels();
 }
 
-static void imc_new_channel(const char *chan, const char *owner, const char *ops,
-                     const char *invite, const char *exclude, bool copen,
-                     int perm, const char *lname)
+static void imc_new_channel(const char *chan, const char *owner,
+                            const char *ops, const char *invite,
+                            const char *exclude, bool copen, int perm,
+                            const char *lname)
 {
     IMC_CHANNEL *c;
 
@@ -1355,7 +1356,8 @@ static char imcfread_letter(FILE * fp)
  * Packet handling and routing functions. *
  ******************************************/
 
-static void imc_register_packet_handler(const char *name, PACKET_FUN * func)
+static void imc_register_packet_handler(const char *name,
+                                        PACKET_FUN * func)
 {
     IMC_PHANDLER *ph;
 
@@ -1575,7 +1577,7 @@ static void imc_addtopacket(IMC_PACKET * p, const char *fmt, ...)
 }
 
 static IMC_PACKET *imc_newpacket(const char *from, const char *type,
-                          const char *to)
+                                 const char *to)
 {
     IMC_PACKET *p;
 
@@ -1642,8 +1644,8 @@ static void imc_update_tellhistory(CHAR_DATA * ch, const char *msg)
     }
 }
 
-static void imc_send_tell(const char *from, const char *to, const char *txt,
-                   int reply)
+static void imc_send_tell(const char *from, const char *to,
+                          const char *txt, int reply)
 {
     IMC_PACKET *p;
 
@@ -1855,8 +1857,8 @@ static void update_imchistory(IMC_CHANNEL * channel, char *message)
     }
 }
 
-static void imc_display_channel(IMC_CHANNEL * c, const char *from, char *txt,
-                         int emote)
+static void imc_display_channel(IMC_CHANNEL * c, const char *from,
+                                char *txt, int emote)
 {
     DESCRIPTOR_DATA *d;
     CHAR_DATA *ch;
@@ -1954,7 +1956,7 @@ static PFUN(imc_recv_broadcast)
 
 /* Send/recv private channel messages */
 static void imc_sendmessage(const IMC_CHANNEL * c, const char *name,
-                     const char *text, int emote)
+                            const char *text, int emote)
 {
     IMC_PACKET *p;
 
@@ -2142,7 +2144,8 @@ static void imc_send_whoreply(const char *to, const char *txt)
     imc_write_packet(p);
 }
 
-static void imc_send_who(const char *from, const char *to, const char *type)
+static void imc_send_who(const char *from, const char *to,
+                         const char *type)
 {
     IMC_PACKET *p;
 
@@ -2247,7 +2250,7 @@ static char *process_who_tail(int plrcount)
 }
 
 static char *process_plrline(char *plrrank, char *plrflags, char *plrname,
-                      char *plrtitle)
+                             char *plrtitle)
 {
     static char pline[LGST];
 
@@ -2262,7 +2265,7 @@ static char *process_plrline(char *plrrank, char *plrflags, char *plrname,
 }
 
 static char *process_immline(char *plrrank, char *plrflags, char *plrname,
-                      char *plrtitle)
+                             char *plrtitle)
 {
     static char pline[LGST];
 
@@ -2277,8 +2280,8 @@ static char *process_immline(char *plrrank, char *plrflags, char *plrname,
 }
 
 static char *process_who_template(char *head, char *tail, char *plrlines,
-                           char *immlines, char *plrheader,
-                           char *immheader)
+                                  char *immlines, char *plrheader,
+                                  char *immheader)
 {
     static char master[LGST];
 
@@ -2443,14 +2446,13 @@ static void imc_process_finger(const char *from, const char *type)
                  "~cICQ     : ~W%d\r\n"
                  "~cAIM     : ~W%s\r\n"
                  "~cYahoo   : ~W%s\r\n"
-                 "~cMSN     : ~W%s\r\n",
-                 (IMC_EMAIL(victim)
-                  && IMC_EMAIL(victim)[0] !=
-                  '\0') ? IMC_EMAIL(victim) : "None", (IMC_HOMEPAGE(victim)
-                                                       &&
-                                                       IMC_HOMEPAGE(victim)
-                                                       [0] !=
-                                                       '\0') ?
+                 "~cMSN     : ~W%s\r\n", (IMC_EMAIL(victim)
+                                          && IMC_EMAIL(victim)[0] !=
+                                          '\0') ? IMC_EMAIL(victim) :
+                 "None", (IMC_HOMEPAGE(victim)
+                          && IMC_HOMEPAGE(victim)
+                          [0] !=
+                          '\0') ?
                  IMC_HOMEPAGE(victim) : "None", IMC_ICQ(victim),
                  (IMC_AIM(victim)
                   && IMC_AIM(victim)[0] !=
@@ -3119,7 +3121,7 @@ static void imc_finalize_connection(char *name, char *netname)
 
 /* Handle an autosetup response from a supporting server - Samson 8-12-03 */
 static void imc_handle_autosetup(char *source, char *servername, char *cmd,
-                          char *txt, char *encrypt)
+                                 char *txt, char *encrypt)
 {
     if (!strcasecmp(cmd, "reject"))
     {
@@ -5443,10 +5445,10 @@ void imc_hotboot(void)
         else
         {
             fprintf(fp, "%s %s\n",
-                    (this_imcmud->network ? this_imcmud->
-                     network : "Unknown"),
-                    (this_imcmud->servername ? this_imcmud->
-                     servername : "Unknown"));
+                    (this_imcmud->
+                     network ? this_imcmud->network : "Unknown"),
+                    (this_imcmud->
+                     servername ? this_imcmud->servername : "Unknown"));
             IMCFCLOSE(fp);
             imc_savehistory();
         }
@@ -6028,8 +6030,7 @@ static IMC_CMD(imcchanlist)
                    c->local_name ? 15 : 17,
                    c->local_name ? c->local_name : "~Y(not local)  ",
                    c->owner, imcperm_names[c->level],
-                   c->refreshed ? (c->
-                                   open ? "~gOpen" : "~yPrivate") :
+                   c->refreshed ? (c->open ? "~gOpen" : "~yPrivate") :
                            "~Runknown");
         count++;		/* Keep a count -- Xorith */
     }
@@ -6365,27 +6366,31 @@ static IMC_CMD(imcfinger)
     if (!strcasecmp(arg, "display"))
     {
         imc_to_char("~GYour current information:\r\n\r\n", ch);
-        imc_printf(ch, "~GEmail   : ~g%s\r\n",
-                   (IMC_EMAIL(ch)
-                    && IMC_EMAIL(ch)[0] != '\0') ? IMC_EMAIL(ch) : "None");
-        imc_printf(ch, "~GHomepage: ~g%s\r\n",
-                   (IMC_HOMEPAGE(ch)
-                    && IMC_HOMEPAGE(ch)[0] !=
-                    '\0') ? IMC_HOMEPAGE(ch) : "None");
+        imc_printf(ch, "~GEmail   : ~g%s\r\n", (IMC_EMAIL(ch)
+                                                && IMC_EMAIL(ch)[0] !=
+                                                '\0') ? IMC_EMAIL(ch) :
+                   "None");
+        imc_printf(ch, "~GHomepage: ~g%s\r\n", (IMC_HOMEPAGE(ch)
+                                                && IMC_HOMEPAGE(ch)[0] !=
+                                                '\0') ? IMC_HOMEPAGE(ch) :
+                   "None");
         imc_printf(ch, "~GICQ     : ~g%d\r\n", IMC_ICQ(ch));
-        imc_printf(ch, "~GAIM     : ~g%s\r\n",
-                   (IMC_AIM(ch)
-                    && IMC_AIM(ch)[0] != '\0') ? IMC_AIM(ch) : "None");
-        imc_printf(ch, "~GYahoo   : ~g%s\r\n",
-                   (IMC_YAHOO(ch)
-                    && IMC_YAHOO(ch)[0] != '\0') ? IMC_YAHOO(ch) : "None");
-        imc_printf(ch, "~GMSN     : ~g%s\r\n",
-                   (IMC_MSN(ch)
-                    && IMC_MSN(ch)[0] != '\0') ? IMC_MSN(ch) : "None");
-        imc_printf(ch, "~GComment : ~g%s\r\n",
-                   (IMC_COMMENT(ch)
-                    && IMC_COMMENT(ch)[0] !=
-                    '\0') ? IMC_COMMENT(ch) : "None");
+        imc_printf(ch, "~GAIM     : ~g%s\r\n", (IMC_AIM(ch)
+                                                && IMC_AIM(ch)[0] !=
+                                                '\0') ? IMC_AIM(ch) :
+                   "None");
+        imc_printf(ch, "~GYahoo   : ~g%s\r\n", (IMC_YAHOO(ch)
+                                                && IMC_YAHOO(ch)[0] !=
+                                                '\0') ? IMC_YAHOO(ch) :
+                   "None");
+        imc_printf(ch, "~GMSN     : ~g%s\r\n", (IMC_MSN(ch)
+                                                && IMC_MSN(ch)[0] !=
+                                                '\0') ? IMC_MSN(ch) :
+                   "None");
+        imc_printf(ch, "~GComment : ~g%s\r\n", (IMC_COMMENT(ch)
+                                                && IMC_COMMENT(ch)[0] !=
+                                                '\0') ? IMC_COMMENT(ch) :
+                   "None");
         imc_printf(ch, "~GPrivacy : ~g%s\r\n",
                    IMCIS_SET(IMCFLAG(ch),
                              IMC_PRIVACY) ? "Enabled" : "Disabled");
@@ -7974,8 +7979,8 @@ static SOCIAL_DATA *find_social(const char *name)
 
 
 static const char *imc_find_social(CHAR_DATA * ch, const char *sname,
-                            const char *person, const char *mud,
-                            int victim)
+                                   const char *person, const char *mud,
+                                   int victim)
 {
     static char socname[LGST];
 #if defined(SMAUGSOCIAL)
@@ -8179,7 +8184,8 @@ static const char *imc_find_social(CHAR_DATA * ch, const char *sname,
 }
 
 /* Revised 10/10/03 by Xorith: Recognize the need to capitalize for a new sentence. */
-static char *imc_act_string(const char *format, CHAR_DATA * ch, CHAR_DATA * vic)
+static char *imc_act_string(const char *format, CHAR_DATA * ch,
+                            CHAR_DATA * vic)
 {
     static const char *const he_she[] = { "it", "he", "she" };
     static const char *const him_her[] = { "it", "him", "her" };

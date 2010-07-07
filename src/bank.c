@@ -99,6 +99,7 @@ void do_deposit(CHAR_DATA * ch, char *argument)
     else  			/* In the Bank */
     {
 
+
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
         if (arg1[0] == '\0' || arg2[0] == '\0')
@@ -303,6 +304,7 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
     }
     else  			/* In the Bank */
     {
+
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);

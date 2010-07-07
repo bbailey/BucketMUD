@@ -109,7 +109,8 @@ static bool is_stat(const struct flag_type *flag_table)
  Called by:     flag_value and flag_string.
  Note:          This function is local and used only in bit.c.
  ****************************************************************************/
-static int flag_lookup(const char *name, const struct flag_type *flag_table)
+static int flag_lookup(const char *name,
+                       const struct flag_type *flag_table)
 {
     int flag;
 

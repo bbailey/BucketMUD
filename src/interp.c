@@ -39,7 +39,7 @@ DISABLED_DATA *disabled_first;
 
 bool check_social(CHAR_DATA * ch, char *command, char *argument);
 static void do_commands(CHAR_DATA * ch, char *argument);
-static void do_wizhelp(CHAR_DATA *ch, char *argument);
+static void do_wizhelp(CHAR_DATA * ch, char *argument);
 
 /*
  * Command logging types.
@@ -1070,7 +1070,8 @@ void chk_command(CHAR_DATA * ch, char *argument)
 
         /* Look for command in social table */
         SOCIALLIST_DATA *social_cmd;
-        for (social_cmd = social_first; social_cmd != NULL; social_cmd = social_cmd->next)
+        for (social_cmd = social_first; social_cmd != NULL;
+                social_cmd = social_cmd->next)
         {
             if ((is_name(command, social_cmd->name)))
             {
@@ -1144,14 +1145,18 @@ static void do_commands(CHAR_DATA * ch, char *argument)
 
     for (cmd_index = 0; cmd_table[cmd_index].name[0] != '\0'; cmd_index++)
         if (!cmd_table[cmd_index].imm && cmd_table[cmd_index].show)
-            command_names = g_list_insert_sorted(command_names, g_strdup(cmd_table[cmd_index].name), (GCompareFunc)g_ascii_strcasecmp);
+            command_names =
+                g_list_insert_sorted(command_names,
+                                     g_strdup(cmd_table[cmd_index].name),
+                                     (GCompareFunc) g_ascii_strcasecmp);
 
-    for (tmp = g_list_first(command_names); tmp != g_list_last(command_names); tmp = g_list_next(tmp))
+    for (tmp = g_list_first(command_names);
+            tmp != g_list_last(command_names); tmp = g_list_next(tmp))
     {
         g_string_append_printf(output, "%-12s", (gchar *) tmp->data);
         if (++cols % 6 == 0)
             g_string_append(output, "\r\n");
-    }    
+    }
     if (cols % 6 != 0)
         g_string_append(output, "\r\n");
 
@@ -1330,6 +1335,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
         else  			/* Find the node before this one */
         {
 
+
             for (q = disabled_first; q->next != p; q = q->next);	/* empty for */
             q->next = p->next;
         }
@@ -1341,6 +1347,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
     }
     else  			/* not a disabled command, check if that command exists */
     {
+
 
         /* IQ test */
         if (!str_cmp(argument, "disable"))
@@ -1433,6 +1440,7 @@ void load_disabled()
         }
         else  		/* add new disabled command */
         {
+
 
             p = alloc_mem(sizeof(DISABLED_DATA));
             p->command = &cmd_table[i];

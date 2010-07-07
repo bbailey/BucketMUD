@@ -390,7 +390,8 @@ void free_string(char **strptr)
             TempHash *walk;
             unsigned long ihash = get_string_hash(str);
 
-            for (th_ptr = temp_string_hash[ihash]; th_ptr; th_ptr = th_ptr->next)
+            for (th_ptr = temp_string_hash[ihash]; th_ptr;
+                    th_ptr = th_ptr->next)
             {
                 if (th_ptr->str != str)
                     continue;

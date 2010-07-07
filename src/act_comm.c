@@ -2917,11 +2917,10 @@ void do_group(CHAR_DATA * ch, char *argument)
                 sprintf(buf,
                         "`K[`W%3d `G%s`K] `w%-16s `W%4d`K/`W%4d hp %4d`K/`W%4d mana %4d`K/`W%4d mv %5ld xp\n\r",
                         gch->level,
-                        IS_NPC(gch) ? "Mob" : class_table[gch->
-                                                          Class].who_name,
-                        capitalize(PERS(gch, ch)), gch->hit, gch->max_hit,
-                        gch->mana, gch->max_mana, gch->move, gch->max_move,
-                        gch->exp);
+                        IS_NPC(gch) ? "Mob" : class_table[gch->Class].
+                        who_name, capitalize(PERS(gch, ch)), gch->hit,
+                        gch->max_hit, gch->mana, gch->max_mana, gch->move,
+                        gch->max_move, gch->exp);
                 send_to_char(buf, ch);
             }
         }

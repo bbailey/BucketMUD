@@ -67,7 +67,8 @@ extern bool fCopyOver;
  * Local functions.
  */
 static void fwrite_char(CHAR_DATA * ch, FILE * fp);
-static void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest);
+static void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp,
+                       int iNest);
 static void fwrite_pet(CHAR_DATA * pet, FILE * fp);
 static void fread_char(CHAR_DATA * ch, FILE * fp);
 static void fread_pet(CHAR_DATA * ch, FILE * fp);
@@ -456,7 +457,8 @@ static void fwrite_pet(CHAR_DATA * pet, FILE * fp)
 /*
  * Write an object and its contents.
  */
-static void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest)
+static void fwrite_obj(CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp,
+                       int iNest)
 {
     EXTRA_DESCR_DATA *ed;
     AFFECT_DATA *paf;

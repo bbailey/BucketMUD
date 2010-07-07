@@ -19,4 +19,4 @@
 #define DECLARE_MPROG_FUN( fun )        MPROG_FUN fun
 typedef int MPROG_FUN(void *arg);
 
-#endif /* __BUCKETMUD_MPROG_FUN_H */
+#endif				/* __BUCKETMUD_MPROG_FUN_H */

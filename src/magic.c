@@ -292,9 +292,9 @@ void do_cast(CHAR_DATA * ch, char *argument)
     if ((sn = skill_lookup(arg)) < 0
             || skill_table[sn].spell_fun == spell_null || (!IS_NPC(ch)
                     && ch->level <
-                    skill_table[sn].
-                    skill_level[ch->
-                                Class]))
+                    skill_table
+                    [sn].skill_level
+                    [ch->Class]))
     {
         send_to_char("You don't know any spells of that name.\n\r", ch);
         return;
@@ -501,8 +501,8 @@ void do_mpsilentcast(CHAR_DATA * ch, char *argument)
 
     if ((sn = skill_lookup(arg)) < 0 || (!IS_NPC(ch)
                                          && ch->level <
-                                         skill_table[sn].skill_level[ch->
-                                                                     Class]))
+                                         skill_table[sn].
+                                         skill_level[ch->Class]))
     {
         send_to_char("You don't know any spells of that name.\n\r", ch);
         return;
@@ -2416,6 +2416,7 @@ void spell_enchant_armor(int sn, int level, CHAR_DATA * ch, void *vo)
     else  			/* exceptional enchant */
     {
 
+
         act("$p glows a brillant gold!", ch, obj, NULL, TO_CHAR);
         act("$p glows a brillant gold!", ch, obj, NULL, TO_ROOM);
         SET_BIT(obj->extra_flags, ITEM_MAGIC);
@@ -2442,6 +2443,7 @@ void spell_enchant_armor(int sn, int level, CHAR_DATA * ch, void *vo)
     }
     else  			/* add a new affect */
     {
+
 
         if (affect_free == NULL)
             paf = alloc_perm(sizeof(*paf));
@@ -2620,6 +2622,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA * ch, void *vo)
     else  			/* exceptional enchant */
     {
 
+
         act("$p glows a brillant blue!", ch, obj, NULL, TO_CHAR);
         act("$p glows a brillant blue!", ch, obj, NULL, TO_ROOM);
         SET_BIT(obj->extra_flags, ITEM_MAGIC);
@@ -2648,6 +2651,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA * ch, void *vo)
     }
     else  			/* add a new affect */
     {
+
 
         if (affect_free == NULL)
             paf = alloc_perm(sizeof(*paf));
@@ -2683,6 +2687,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA * ch, void *vo)
     }
     else  			/* add a new affect */
     {
+
 
         if (affect_free == NULL)
             paf = alloc_perm(sizeof(*paf));

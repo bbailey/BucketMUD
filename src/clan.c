@@ -854,7 +854,8 @@ CEDIT(cedit_clanflags)
     return FALSE;
 }
 
-static bool can_ch_join(CHAR_DATA * ch, CLAN_DATA * clan, bool is_petitioning)
+static bool can_ch_join(CHAR_DATA * ch, CLAN_DATA * clan,
+                        bool is_petitioning)
 {
     if (ch->level < clan->min_level)
     {

@@ -562,15 +562,15 @@ void affect_factions(CHAR_DATA * ch, CHAR_DATA * victim)
 #ifdef FACTION_SHOW_CHANGE_AMOUNT
                 printf_to_char(group_ch, "%s [%d]\n\r",
                                (pFactAff->change >
-                                0) ? pFactAff->
-                               faction->increase_msg : pFactAff->faction->
-                               decrease_msg, pFactAff->change);
+                                0) ? pFactAff->faction->
+                               increase_msg : pFactAff->
+                               faction->decrease_msg, pFactAff->change);
 #else
                 printf_to_char(group_ch, "%s\n\r",
                                (pFactAff->change >
-                                0) ? pFactAff->
-                               faction->increase_msg : pFactAff->
-                               faction->decrease_msg);
+                                0) ? pFactAff->faction->
+                               increase_msg : pFactAff->faction->
+                               decrease_msg);
 #endif
             }
         }
@@ -899,14 +899,13 @@ void set_faction(CHAR_DATA * ch, CHAR_DATA * victim, sh_int vnum,
 #ifdef FACTION_SHOW_CHANGE_AMOUNT
             printf_to_char(victim, "%s [%d]\n\r",
                            (pFactPC->value <
-                            value) ? pFact->
-                           increase_msg : pFact->decrease_msg,
-                           value - pFactPC->value);
+                            value) ? pFact->increase_msg : pFact->
+                           decrease_msg, value - pFactPC->value);
 #else
             printf_to_char(victim, "%s\n\r",
                            (pFactPC->value <
-                            value) ? pFact->
-                           increase_msg : pFact->decrease_msg);
+                            value) ? pFact->increase_msg : pFact->
+                           decrease_msg);
 #endif
             printf_to_char(ch, "%s %s's faction #%d (%s) to %d\n\r",
                            (pFactPC->value <

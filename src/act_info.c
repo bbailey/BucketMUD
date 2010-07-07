@@ -65,7 +65,8 @@ static bool check_blind(CHAR_DATA * ch);
 
 extern bool can_use(CHAR_DATA * ch, int sn);
 
-static char *format_obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch, bool fShort)
+static char *format_obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch,
+                                bool fShort)
 {
     static char buf[MAX_STRING_LENGTH];
 
@@ -100,7 +101,7 @@ static char *format_obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch, bool fShort)
  * Can coalesce duplicated items.
  */
 static void show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
-                       bool fShowNothing)
+                              bool fShowNothing)
 {
     char buf[MAX_STRING_LENGTH];
     char **prgpstrShow;
@@ -1136,8 +1137,8 @@ void do_pk(CHAR_DATA * ch, char *argument)
     ch->pcdata->confirm_pk = TRUE;
 }
 
-static void eval_dir(char *dir, int mov_dir, int num, CHAR_DATA * ch, int *see,
-              ROOM_INDEX_DATA * first_room)
+static void eval_dir(char *dir, int mov_dir, int num, CHAR_DATA * ch,
+                     int *see, ROOM_INDEX_DATA * first_room)
 {
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *mob_in_room;
@@ -1189,7 +1190,8 @@ static void eval_dir(char *dir, int mov_dir, int num, CHAR_DATA * ch, int *see,
     }
 }
 
-static void show_dir_mobs(char *dir, int move_dir, CHAR_DATA * ch, int depth)
+static void show_dir_mobs(char *dir, int move_dir, CHAR_DATA * ch,
+                          int depth)
 {
     ROOM_INDEX_DATA *cur_room = ch->in_room;
     EXIT_DATA *pexit;
@@ -1721,7 +1723,7 @@ void do_examine(CHAR_DATA * ch, char *argument)
 void do_exits(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
-	
+
     EXIT_DATA *pexit;
     bool found;
     bool fAuto;
@@ -1761,14 +1763,15 @@ void do_exits(CHAR_DATA * ch, char *argument)
                 if (IS_SET(pexit->exit_info, EX_CLOSED))
                 {
                     sprintf(buf + strlen(buf), "(%-5s) - Unknown\n\r",
-                        capitalize(dir_name[door]));
+                            capitalize(dir_name[door]));
                 }
                 else
                 {
                     sprintf(buf + strlen(buf), "%-7s - %s\n\r",
-                        capitalize(dir_name[door]),
-                        room_is_dark(pexit->u1.to_room)
-                        ? "Too dark to tell" : pexit->u1.to_room->name);
+                            capitalize(dir_name[door]),
+                            room_is_dark(pexit->u1.to_room)
+                            ? "Too dark to tell" : pexit->u1.to_room->
+                            name);
                 }
             }
         }
@@ -2555,7 +2558,7 @@ static char *who_clan(CHAR_DATA * ch, CHAR_DATA * looker, char *empty)
 }
 
 static char *pre_clan(CHAR_DATA * ch, CHAR_DATA * looker, char *empty,
-               char *private, char *secret)
+                      char *private, char *secret)
 {
     CLAN_DATA *clan;
 
@@ -2946,13 +2949,12 @@ void do_who(CHAR_DATA * ch, char *argument)
                            PLR_KILLER) ? "`RP`W" : "-",
                     IS_SET(who_list[length]->act, PLR_THIEF) ? "`KT" : "-",
                     who_list[length]->pcdata != NULL
-                    && who_list[length]->
-                    pcdata->who_prefix ? who_list[length]->pcdata->
-                    who_prefix : "",
-                    IS_NPC(who_list[length]) ?
-                    who_list[length]->short_descr : who_list[length]->name,
-                    IS_NPC(who_list[length]) ? "" :
-                    who_list[length]->pcdata->title);
+                    && who_list[length]->pcdata->
+                    who_prefix ? who_list[length]->pcdata->who_prefix : "",
+                    IS_NPC(who_list[length]) ? who_list[length]->
+                    short_descr : who_list[length]->name,
+                    IS_NPC(who_list[length]) ? "" : who_list[length]->
+                    pcdata->title);
             strcat(output, buf);
         }
         else
@@ -2968,13 +2970,12 @@ void do_who(CHAR_DATA * ch, char *argument)
                     IS_SET(who_list[length]->act,
                            PLR_THIEF) ? "`KT`W" : "-",
                     who_list[length]->pcdata != NULL
-                    && who_list[length]->
-                    pcdata->who_prefix ? who_list[length]->pcdata->
-                    who_prefix : "",
-                    IS_NPC(who_list[length]) ?
-                    who_list[length]->short_descr : who_list[length]->name,
-                    IS_NPC(who_list[length]) ? "" :
-                    who_list[length]->pcdata->title);
+                    && who_list[length]->pcdata->
+                    who_prefix ? who_list[length]->pcdata->who_prefix : "",
+                    IS_NPC(who_list[length]) ? who_list[length]->
+                    short_descr : who_list[length]->name,
+                    IS_NPC(who_list[length]) ? "" : who_list[length]->
+                    pcdata->title);
             strcat(output, buf);
         }
 
@@ -3976,8 +3977,8 @@ void do_finger(CHAR_DATA * ch, char *argument)
         sprintf(buf,
                 "     | `GLevel: `Y%2d        `WLast login: %s`y",
                 UMIN(MAX_LEVEL, victim->level),
-                victim->
-                desc ? "Currently playing" : "Currently link-dead");
+                victim->desc ? "Currently playing" :
+                "Currently link-dead");
         send_to_char(buf, ch);
         x = str_len(buf);
         strcpy(buf, "\0");
@@ -4180,9 +4181,8 @@ void do_finger(CHAR_DATA * ch, char *argument)
                             !str_cmp(capitalize(arg),
                                      clan->leader) ? "the leader" :
                             !str_cmp(capitalize(arg),
-                                     clan->
-                                     god) ? "the sponsor" : "a member",
-                            clan->whoname);
+                                     clan->god) ? "the sponsor" :
+                            "a member", clan->whoname);
                 }
                 else
                     sprintf(buf2, "not a member of any clan.");
@@ -4350,7 +4350,7 @@ void do_rebirth(CHAR_DATA * ch, char *argument)
     }
     if (!IS_SET(ch->act, PLR_REMORT))
         SET_BIT(ch->act, PLR_REMORT);
-		
+
     ++ch->incarnations;
     /* reset misc */
     ch->pcdata->condition[COND_DRUNK] = 0;

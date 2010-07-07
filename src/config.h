@@ -672,10 +672,10 @@ looting at all.
 #define STAT_CON        4
 
             /********************************************************
-                 *                                                      *
-                 * Clan stuff  -- By Kyle Boyd                          *
-                 *                                                      *
-                 ********************************************************/
+                     *                                                      *
+                     * Clan stuff  -- By Kyle Boyd                          *
+                     *                                                      *
+                     ********************************************************/
 
 #define MAX_CLAN                   10
 #define MAX_CLAN_MEMBERS           30
@@ -716,10 +716,10 @@ looting at all.
             /*********** End Clan Configs ************/
 
             /********************************************************
-                 *                                                      *
-                 * Mob/Room/Obj Progs                                   *
-                 *                                                      *
-                 ********************************************************/
+                     *                                                      *
+                     * Mob/Room/Obj Progs                                   *
+                     *                                                      *
+                     ********************************************************/
 
 #define ERROR_PROG             -1
 #define IN_FILE_PROG            0
@@ -1015,11 +1015,11 @@ looting at all.
 #define CON_BEGIN_REMORT                24
 
             /***************************************************************************
-                 *                                                                         *
-                 *                   VALUES OF INTEREST TO AREA BUILDERS                   *
-                 *                   (Start of section ... start here)                     *
-                 *                                                                         *
-                 ***************************************************************************/
+                     *                                                                         *
+                     *                   VALUES OF INTEREST TO AREA BUILDERS                   *
+                     *                   (Start of section ... start here)                     *
+                     *                                                                         *
+                     ***************************************************************************/
 
             /*
              * ACT bits for mobs.

@@ -1089,8 +1089,9 @@ ROOM_INDEX_DATA *find_location(CHAR_DATA * ch, char *arg)
     if (((victim = get_char_world(ch, arg)) != NULL) && (!IS_NPC(victim)	/* +1 */
             ||(IS_NPC(victim)
                &&
-               (victim->pIndexData->vnum
-                !=
+               (victim->
+                pIndexData->
+                vnum !=
                 MOB_VNUM_SUPERMOB))))
         return victim->in_room;
 
@@ -2759,6 +2760,7 @@ void do_clone(CHAR_DATA * ch, char *argument)
     }
     else  			/* find both */
     {
+
 
         mob = get_char_room(ch, argument);
         obj = get_obj_here(ch, argument);

@@ -581,6 +581,7 @@ void do_splist(CHAR_DATA * ch, char *argument)
             else  		/* append */
             {
 
+
                 if (++spell_columns[lev] % 2 == 0)
                     strcat(spell_list[lev], "\n\r          ");
                 strcat(spell_list[lev], buf);
@@ -647,6 +648,7 @@ void do_spells(CHAR_DATA * ch, char *argument)
                 sprintf(spell_list[lev], "\n\rLevel %2d: %s", lev, buf);
             else  		/* append */
             {
+
 
                 if (++spell_columns[lev] % 2 == 0)
                     strcat(spell_list[lev], "\n\r          ");
@@ -912,6 +914,7 @@ void do_sklist(CHAR_DATA * ch, char *argument)
                 sprintf(skill_list[lev], "\n\rLevel %2d: %s", lev, buf);
             else  		/* append */
             {
+
 
                 if (++skill_columns[lev] % 2 == 0)
                     strcat(skill_list[lev], "\n\r          ");
@@ -1470,8 +1473,7 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
             {
                 if (group_lookup(group_table[gn].spells[i]) == -1)
                     continue;
-                if (ch->
-                        pcdata->group_known[group_lookup
+                if (ch->pcdata->group_known[group_lookup
                                             (group_table[gn].spells[i])])
                 {
                     send_to_char
@@ -1488,9 +1490,9 @@ bool parse_gen_groups(CHAR_DATA * ch, char *argument)
             {
                 if (skill_lookup(group_table[gn].spells[i]) == -1)
                     continue;
-                if (ch->
-                        gen_data->skill_chosen[skill_lookup
-                                               (group_table[gn].spells[i])])
+                if (ch->gen_data->skill_chosen[skill_lookup
+                                               (group_table[gn].
+                                                spells[i])])
                 {
                     send_to_char
                     ("That group contains skills/spells you already know.\n\r",

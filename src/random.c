@@ -709,8 +709,8 @@ OBJ_DATA *make_rand_weapon(sh_int level, bool ismagic)
                 UMAX(1,
                      number_range(level / 2,
                                   level +
-                                  rand_material_table[material].
-                                  magic_mod));
+                                  rand_material_table
+                                  [material].magic_mod));
             break;
         case 2:
         case 3:
@@ -1019,8 +1019,8 @@ OBJ_DATA *make_rand_armor(sh_int level, bool ismagic)
                 UMAX(1,
                      number_range(level / 2,
                                   level +
-                                  rand_material_table[material].
-                                  magic_mod));
+                                  rand_material_table
+                                  [material].magic_mod));
             break;
         case 2:
         case 3:

@@ -186,6 +186,7 @@ int check_immune(CHAR_DATA * ch, int dam_type)
     else  			/* magical attack */
     {
 
+
         if (IS_SET(ch->imm_flags, IMM_MAGIC))
             immune = IS_IMMUNE;
         else if (IS_SET(ch->res_flags, RES_MAGIC))
@@ -282,6 +283,7 @@ int get_skill(CHAR_DATA * ch, int sn)
 
     else  			/* mobiles */
     {
+
 
 
         if (sn == gsn_sneak)
@@ -1155,7 +1157,8 @@ static void affect_modify(CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd)
     return;
 }
 
-static void newaffect_modify(CHAR_DATA * ch, NEWAFFECT_DATA * npaf, bool fAdd)
+static void newaffect_modify(CHAR_DATA * ch, NEWAFFECT_DATA * npaf,
+                             bool fAdd)
 {
     OBJ_DATA *wield;
     int mod, i;

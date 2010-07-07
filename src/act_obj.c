@@ -2440,7 +2440,8 @@ static CHAR_DATA *find_keeper(CHAR_DATA * ch)
     return keeper;
 }
 
-static int get_cost(CHAR_DATA * ch, CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy)
+static int get_cost(CHAR_DATA * ch, CHAR_DATA * keeper, OBJ_DATA * obj,
+                    bool fBuy)
 {
     SHOP_DATA *pShop;
     int cost;
@@ -2616,12 +2617,13 @@ void do_buy(CHAR_DATA * ch, char *argument)
     else  			/* object purchase code begins HERE */
     {
 
+
         CHAR_DATA *keeper;
         OBJ_DATA *obj;
         char arg2[MAX_INPUT_LENGTH];	/* 2nd argument */
         int item_count = 1;	/* default: buy only 1 item */
 
-		cost = 0;
+        cost = 0;
 
         argument = one_argument(argument, arg);	/* get first argument */
         argument = one_argument(argument, arg2);	/* get another argument, if any */
@@ -2790,6 +2792,7 @@ void do_buy(CHAR_DATA * ch, char *argument)
         else  		/* inform of multiple item purchase */
         {
 
+
             /* "buys 5 * a piece of bread" seems to be the easiest and least gramatically incorerct solution. */
             sprintf(buf, "$n buys %d * $p.", item_count);
             act(buf, ch, obj, NULL, TO_ROOM);	/* to char self */
@@ -2815,6 +2818,7 @@ void do_buy(CHAR_DATA * ch, char *argument)
         }
         else  		/* single item */
         {
+
 
             obj_from_char(obj);
             obj_to_char(obj, ch);
@@ -3685,9 +3689,9 @@ void do_lore(CHAR_DATA * ch, char *argument)
 
     if ((chance = get_skill(ch, gsn_lore)) == 0 || (!IS_NPC(ch)
             && ch->level <
-            skill_table[gsn_lore].
-            skill_level[ch->
-                        Class]))
+            skill_table
+            [gsn_lore].skill_level
+            [ch->Class]))
     {
         sprintf(buf, "It looks like a %s to you.\n\r", obj->short_descr);
         send_to_char(buf, ch);
