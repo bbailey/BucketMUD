@@ -1167,35 +1167,55 @@ static void do_commands(CHAR_DATA * ch, char *argument)
     g_string_free(output, true);
 }
 
+/*
+ * New do_wizhelp by Chil.
+ */
 static void do_wizhelp(CHAR_DATA * ch, char *argument)
 {
-    char buf[MAX_STRING_LENGTH];
-    int cmd;
-    int col;
-
-    col = 0;
-    for (cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++)
-    {
-        if (cmd_table[cmd].imm && can_do_immcmd(ch, cmd_table[cmd].name)
-                && cmd_table[cmd].show)
-        {
-            sprintf(buf, "%s%-12s`w",
-                    check_disabled(&cmd_table[cmd]) ? "`K-" : "`w ",
-                    cmd_table[cmd].name);
-            send_to_char(buf, ch);
-            if (++col % 6 == 0)
-                send_to_char("\n\r", ch);
-        }
-    }
-
-    if (col % 6 != 0)
-        send_to_char("\n\r", ch);
+    GString *output = g_string_new("");
+    GList *command_names = NULL;
+    GList *tmp = NULL;
+    int cmd_index = 0, cols = 0;
+    char command_name_buf[MAX_STRING_LENGTH];
 
     if (!IS_NPC(ch) && ch->pcdata->immcmdlist == NULL)
-        send_to_char("Huh?\n\r", ch);
+    {
+        send_to_char
+        ("You do not have access to any administrative commands.\r\n",
+         ch);
+        return;
+    }
 
-    return;
+    for (cmd_index = 0; cmd_table[cmd_index].name[0] != '\0'; cmd_index++)
+        if (cmd_table[cmd_index].imm && cmd_table[cmd_index].show
+                && can_do_immcmd(ch, cmd_table[cmd_index].name))
+        {
+            sprintf(command_name_buf, "%s%-12s`w",
+                    check_disabled(&cmd_table[cmd_index]) ? "`K-" : "`w ",
+                    cmd_table[cmd_index].name);
+            command_names =
+                g_list_insert_sorted(command_names,
+                                     g_strdup(command_name_buf),
+                                     (GCompareFunc) g_ascii_strcasecmp);
+        }
+
+    for (tmp = g_list_first(command_names);
+            tmp != g_list_last(command_names); tmp = g_list_next(tmp))
+    {
+        g_string_append(output, (char *) tmp->data);
+        if (++cols % 6 == 0)
+            g_string_append(output, "\r\n");
+    }
+    if (cols % 6 != 0)
+        g_string_append(output, "\r\n");
+
+    send_to_char(output->str, ch);
+
+    g_list_foreach(command_names, (GFunc) g_free, NULL);
+    g_list_free(command_names);
+    g_string_free(output, true);
 }
+
 
 /* interpret without dumb stuff... used for mob programs... forcing, etc */
 void mpinterpret(CHAR_DATA * ch, char *argument)
