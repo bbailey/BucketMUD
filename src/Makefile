@@ -63,8 +63,8 @@ update:
 
 ifdef IMC
 splint:
-	splint -showcolumn $(PROF) -DIMC -DIMCROM -DIMCEMBER *.[ch]
+	splint -showcolumn $(PROF) `pkg-config --cflags glib-2.0` -DIMC -DIMCROM -DIMCEMBER *.[ch]
 else
 splint:
-	splint -showcolumn $(PROF) *.c
+	splint -showcolumn $(PROF) `pkg-config --cflags glib-2.0` *.c
 endif
