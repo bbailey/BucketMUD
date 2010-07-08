@@ -136,7 +136,6 @@ extern void do_groups(CHAR_DATA * ch, char *argument);
 extern void do_gtell(CHAR_DATA * ch, char *argument);
 extern void do_heal(CHAR_DATA * ch, char *argument);
 extern void do_help(CHAR_DATA * ch, char *argument);
-extern void do_todo(CHAR_DATA * ch, char *argument);
 extern void do_hide(CHAR_DATA * ch, char *argument);
 extern void do_holylight(CHAR_DATA * ch, char *argument);
 extern void do_idea(CHAR_DATA * ch, char *argument);

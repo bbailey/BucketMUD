@@ -18,7 +18,7 @@ O_FILES = act_comm.o	act_info.o	act_move.o \
 	  olc_save.o	newbits.o \
       	  random.o	recycle.o \
     	  save.o	skills.o 	socialolc.o \
-   	  ssm.o		string.o        todoolc.o \
+   	  ssm.o		string.o \
   	  update.o	remort.o 
 
 ## IMC2 support.

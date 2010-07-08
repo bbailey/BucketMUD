@@ -66,9 +66,7 @@ struct olc_cmd_type
 };
 
 void do_helpedit(CHAR_DATA * ch, char *argument);
-void do_todoedit(CHAR_DATA * ch, char *argument);
 extern const struct olc_cmd_type helpsedit_table[];
-extern const struct olc_cmd_type todoedit_table[];
 
 /* Function prototypes */
 void helpsedit(CHAR_DATA * ch, char *argument);
@@ -78,13 +76,6 @@ bool helpsedit_level(CHAR_DATA * ch, char *argument);
 bool helpsedit_text(CHAR_DATA * ch, char *argument);
 bool helpsedit_create(CHAR_DATA * ch, char *argument);
 
-void todoedit(CHAR_DATA * ch, char *argument);
-bool todoedit_show(CHAR_DATA * ch, char *argument);
-bool todoedit_keyword(CHAR_DATA * ch, char *argument);
-bool todoedit_level(CHAR_DATA * ch, char *argument);
-bool todoedit_text(CHAR_DATA * ch, char *argument);
-bool todoedit_create(CHAR_DATA * ch, char *argument);
-
 /*
  * Connected states for editor.
  */
@@ -92,7 +83,6 @@ bool todoedit_create(CHAR_DATA * ch, char *argument);
 #define ED_ROOM 	2
 #define ED_OBJECT 	3
 #define ED_MOBILE 	4
-#define ED_TODO 	5
 #define ED_HELP 	6
 #define ED_MPROG	7
 #define ED_MPGROUP	8
@@ -100,7 +90,6 @@ bool todoedit_create(CHAR_DATA * ch, char *argument);
 #define ED_FACTION  10
 #define ED_HELPOLC  11
 #define ED_SOCIAL  12
-#define ED_TODOOLC 13
 
 /*
  * Interpreter Prototypes
@@ -111,7 +100,6 @@ void cedit(CHAR_DATA * ch, char *argument);
 void save_clans(void);
 void save_area_list(void);
 void save_area(AREA_DATA * pArea);
-void save_todo(void);
 void save_helps(void);
 void save_mudprogs(void);
 char *fix_string(const char *str);

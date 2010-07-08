@@ -1860,10 +1860,6 @@ looting at all.
              * to help OLC */
 #define HELP_EDIT_LEVEL MAX_LEVEL
 
-            /* Set TODO_EDIT_LEVEL to whatever level you want imms to have access
-             * to help OLC */
-#define TODO_EDIT_LEVEL MAX_LEVEL
-
             /* With this defined, the amount of faction change will be shown.  Comment
              * it out if you don't like it. */
 #define FACTION_SHOW_CHANGE_AMOUNT

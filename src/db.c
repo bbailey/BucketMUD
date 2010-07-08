@@ -44,9 +44,6 @@ extern int _filbuf(FILE *);
 
 SYS_CONFIG sysconfig;
 
-extern TODO_DATA *todo_first;
-extern TODO_DATA *todo_last;
-
 SHOP_DATA *shop_first;
 SHOP_DATA *shop_last;
 
@@ -159,7 +156,6 @@ int top_area;
 int top_ed;
 int top_exit;
 int top_help;
-static int top_todo;
 int top_mob_index;
 int top_obj_index;
 int top_reset;
@@ -222,7 +218,6 @@ static void skip_section(FILE * fp, char *section);
 extern void load_clans(FILE * fp);
 static void load_area(FILE * fp);	/* OLC */
 static void load_helps(FILE * fp);
-static void load_todo(FILE * fp);
 static void load_mobiles(FILE * fp);
 static void load_objects(FILE * fp);
 static void load_resets(FILE * fp);
@@ -675,8 +670,6 @@ int boot_db()
                     else
                         bug("%s contains a #HELPS section, only %s can contain #HELPS.", strArea, sysconfig.help_file);
 
-                else if (!str_cmp(word, "TODO"))
-                    load_todo(fpArea);
                 else if (!str_cmp(word, "MOBILES"))
                     load_mobiles(fpArea);
                 else if (!str_cmp(word, "PROGS"))
@@ -756,8 +749,6 @@ int boot_db()
                     skip_section(fpArea, word);	/*load_clans   (fparea) */
                 else if (!str_cmp(word, "HELPS"))
                     skip_section(fpArea, word);	/*load_helps   (fpArea) */
-                else if (!str_cmp(word, "TODO"))
-                    skip_section(fpArea, word);	/*load_todo   (fpArea) */
                 else if (!str_cmp(word, "MOBILES"))
                     skip_section(fpArea, word);	/*load_mobiles (fpArea) */
                 else if (!str_cmp(word, "PROGS"))
@@ -853,17 +844,6 @@ static void skip_section(FILE * fp, char *section)
         }
     }
 
-    if (!str_cmp(section, "TODO"))
-    {
-        for (;;)
-        {
-            number = fread_number(fp);
-            word = fread_string(fp);
-            if (word[0] == '$')
-                return;
-            fread_string(fp);
-        }
-    }
     if (!str_cmp(section, "MOBILES") || !str_cmp(section, "OBJECTS")
             || !str_cmp(section, "ROOMS"))
     {
@@ -1104,38 +1084,6 @@ static void load_helps(FILE * fp)
         help_last = pHelp;
         pHelp->next = NULL;
         top_help++;
-    }
-
-    return;
-}
-
-static void load_todo(FILE * fp)
-{
-    TODO_DATA *pTodo;
-
-    for (;;)
-    {
-        pTodo = alloc_perm(sizeof(*pTodo));
-        pTodo->level = fread_number(fp);
-        pTodo->keyword = fread_string(fp);
-        if (pTodo->keyword[0] == '$')
-            break;
-        pTodo->text = fread_string(fp);
-        /*
-           if ( !str_cmp( pTodo->keyword, "greeting" ) )
-           help_greeting = pHelp->text;
-
-           if (!str_cmp(pHelp->keyword, "ansigreet"))
-           ansi_greeting = pHelp->text; */
-
-        if (todo_first == NULL)
-            todo_first = pTodo;
-        if (todo_last != NULL)
-            todo_last->next = pTodo;
-
-        todo_last = pTodo;
-        pTodo->next = NULL;
-        top_todo++;
     }
 
     return;
@@ -4204,9 +4152,6 @@ static int load_config_file(void)
                         strdup(get_config_value(ptr, word));
                 else if (!str_cmp(word, "HelpFile"))
                     sysconfig.help_file =
-                        strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "TodoFile"))
-                    sysconfig.todo_file =
                         strdup(get_config_value(ptr, word));
                 else if (!str_cmp(word, "MudProgs"))
                     sysconfig.mudprogs_file =

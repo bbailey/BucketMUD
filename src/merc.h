@@ -52,7 +52,6 @@ typedef struct descriptor_data DESCRIPTOR_DATA;
 typedef struct exit_data EXIT_DATA;
 typedef struct extra_descr_data EXTRA_DESCR_DATA;
 typedef struct help_data HELP_DATA;
-typedef struct todo_data TODO_DATA;
 typedef struct kill_data KILL_DATA;
 typedef struct mob_index_data MOB_INDEX_DATA;
 typedef struct note_data NOTE_DATA;
@@ -214,15 +213,6 @@ struct clan_data
     char *skill;
     char *rank[MAX_RANK];
     int clan_fund;
-};
-
-/* Local TODO structures -Lancelight */
-struct todo_data
-{
-    TODO_DATA *next;
-    sh_int level;
-    char *keyword;
-    char *text;
 };
 
 /* one disabled command */
@@ -580,7 +570,6 @@ struct char_data
     char *short_descr;
     char *long_descr;
     char *description;
-    char *temp_todo;
     sh_int sex;
     sh_int Class;
     sh_int race;
@@ -811,7 +800,6 @@ struct system_config
     /* Files */
     char *area_list;
     char *help_file;
-    char *todo_file;
     char *mudprogs_file;
     char *bug_file;
     char *idea_file;
@@ -1215,7 +1203,6 @@ extern char thetime[7];
 extern char thedate[10];
 
 extern HELP_DATA *help_first;
-extern TODO_DATA *todo_first;
 extern SHOP_DATA *shop_first;
 extern CLAN_DATA *clan_first;
 extern CLAN_DATA *clan_last;

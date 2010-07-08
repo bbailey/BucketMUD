@@ -281,9 +281,6 @@ bool run_olc_editor(DESCRIPTOR_DATA * d)
     case ED_HELPOLC:
         helpsedit(d->character, d->incomm);
         break;
-    case ED_TODOOLC:
-        todoedit(d->character, d->incomm);
-        break;
     default:
         return FALSE;
     }
@@ -308,9 +305,6 @@ char *olc_ed_name(CHAR_DATA * ch)
         break;
     case ED_MOBILE:
         sprintf(buf, "MEdit");
-        break;
-    case ED_TODO:
-        sprintf(buf, "TEdit");
         break;
     case ED_HELP:
         sprintf(buf, "HEdit");
@@ -407,8 +401,6 @@ bool show_commands(CHAR_DATA * ch, char *argument)
         show_olc_cmds(ch, socialedit_table);
     case ED_HELPOLC:
         show_olc_cmds(ch, helpsedit_table);
-    case ED_TODOOLC:
-        show_olc_cmds(ch, todoedit_table);
     }
 
     return FALSE;
@@ -974,7 +966,6 @@ static const struct editor_cmd_type editor_table[] =
     {"faction", do_factionedit},
     {"social", do_socialedit},
     {"help", do_helpedit},
-    {"todo", do_todoedit},
     {"", 0,}
 };
 

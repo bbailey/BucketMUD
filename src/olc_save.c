@@ -94,7 +94,6 @@ void save_area_list()
      * startup to this section.
      */
     fprintf(fp, "%s\n", sysconfig.help_file);
-    fprintf(fp, "%s\n", sysconfig.todo_file);
     /*  fprintf( fp, "social.are\n" ); *//* ROM OLC */
     fprintf(fp, "%s\n", sysconfig.clans_file);
 
@@ -998,8 +997,6 @@ void do_asave(CHAR_DATA * ch, char *argument)
 
         printf_to_char(ch, "  asave help     - saves the %s file\n\r",
                        sysconfig.help_file);
-        printf_to_char(ch, "  asave todo     - saves the %s file\n\r",
-                       sysconfig.todo_file);
         printf_to_char(ch, "  asave mudprogs - saves the %s file\n\r",
                        sysconfig.mudprogs_file);
         printf_to_char(ch, "  asave clans    - saves the %s file\n\r",
@@ -1071,14 +1068,6 @@ void do_asave(CHAR_DATA * ch, char *argument)
         send_to_char("Help file saved!\n\r", ch);
         return;
     }
-    /* Save the TODO file */
-
-    if (!str_prefix("todo", arg))
-    {
-        save_todo();
-        send_to_char("TODO file saved!\n\r", ch);
-        return;
-    }
 
     /* Save the mudprogs file */
     /*------------------- */
@@ -1098,7 +1087,6 @@ void do_asave(CHAR_DATA * ch, char *argument)
             && IS_IMMORTAL(ch))
     {
         save_area_list();
-        save_todo();
         save_mudprogs();
         save_clans();
         save_factions();
@@ -1124,7 +1112,6 @@ void do_asave(CHAR_DATA * ch, char *argument)
     if (!str_cmp("changed", arg))
     {
         save_area_list();
-        save_todo();
         save_mudprogs();
         save_clans();
         save_factions();
@@ -1241,43 +1228,6 @@ void save_helps()
         fprintf(fp, " %s", pHelp->keyword);
         fprintf(fp, "~\n");
         fprintf(fp, "%s~", fix_string(pHelp->text));
-        fprintf(fp, "\n");
-
-    }
-
-    fprintf(fp, "\n\n0 $~");
-    fprintf(fp, "\n\n#$\n");
-    fclose(fp);
-    fpReserve = fopen(NULL_FILE, "r");
-
-    return;
-}
-
-void save_todo()
-{
-    char buf[MAX_STRING_LENGTH];
-    TODO_DATA *pTodo;
-    FILE *fp;
-
-    fclose(fpReserve);
-
-    sprintf(buf, "%s/%s", sysconfig.area_dir, sysconfig.todo_file);
-    if (!(fp = fopen(buf, "w")))
-    {
-        bug("todo.txt:  fopen");
-        perror(buf);
-        return;
-    }
-
-    fprintf(fp, "#TODO\n\n");
-
-    for (pTodo = todo_first; pTodo != NULL; pTodo = pTodo->next)
-    {
-
-        fprintf(fp, "%d", pTodo->level);
-        fprintf(fp, " %s", pTodo->keyword);
-        fprintf(fp, "~\n");
-        fprintf(fp, "%s~", fix_string(pTodo->text));
         fprintf(fp, "\n");
 
     }

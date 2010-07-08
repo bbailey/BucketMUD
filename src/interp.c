@@ -137,7 +137,6 @@ const struct cmd_type cmd_table[] =
     {"examine", do_examine, POS_RESTING, 0, LOG_NORMAL, 1},
     {"effects", do_effects, POS_DEAD, 0, LOG_NORMAL, 1},
     {"help", do_help, POS_DEAD, 0, LOG_NORMAL, 1},
-    {"todo", do_todo, POS_DEAD, 0, LOG_NORMAL, 1},
     {"idea", do_idea, POS_DEAD, 0, LOG_NORMAL, 1},
     {"info", do_info, POS_SLEEPING, 0, LOG_NORMAL, 1},
     {"levels", do_levels, POS_DEAD, 0, LOG_NORMAL, 1},
