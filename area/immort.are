@@ -61,7 +61,7 @@ which twinkles happily in a warm fireplace.  This is one of the many rooms
 where the heroes and gods come to socialize.  It is by far one of the most
 comfortable! 
 ~
-0 66056 0
+0 65544 0
 D2
 Asgard lies to the south.
 ~
@@ -591,6 +591,11 @@ S
 
 
 #SHOPS
+0
+
+
+
+#FACTIONAFFS
 0
 
 

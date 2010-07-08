@@ -805,14 +805,14 @@ D2
 (null)~
 ~
 0 0 3416
-D1
-(null)~
-~
-0 0 3420
 D3
 (null)~
 ~
 0 0 3410
+D1
+(null)~
+~
+0 0 3420
 S
 #3416
 Entrance to the Lower Chambers~
@@ -908,14 +908,14 @@ The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
-D1
-(null)~
-~
-0 0 3425
 D3
 (null)~
 ~
 0 0 3415
+D1
+(null)~
+~
+0 0 3425
 S
 #3421
 Entrance Chamber to the Grand Hall of Kings~
@@ -1036,28 +1036,28 @@ The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
-D2
-(null)~
-~
-0 0 3426
 D3
 (null)~
 ~
 0 0 3420
+D2
+(null)~
+~
+0 0 3426
 S
 #3426
 The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
-D0
-(null)~
-~
-0 0 3425
 D1
 (null)~
 ~
 0 0 3430
+D0
+(null)~
+~
+0 0 3425
 S
 #3427
 The Grand Hall of Kings~
@@ -1121,32 +1121,32 @@ The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
-D2
-(null)~
-~
-0 0 3431
-D1
-(null)~
-~
-0 0 3435
 D3
 (null)~
 ~
 0 0 3426
+D1
+(null)~
+~
+0 0 3435
+D2
+(null)~
+~
+0 0 3431
 S
 #3431
 The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
-D1
-(null)~
-~
-0 0 3436
 D0
 (null)~
 ~
 0 0 3430
+D1
+(null)~
+~
+0 0 3436
 S
 #3432
 The Grand Hall of Kings~
@@ -1194,10 +1194,6 @@ The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
-D2
-(null)~
-~
-0 0 3436
 D1
 (null)~
 ~
@@ -1206,12 +1202,20 @@ D3
 (null)~
 ~
 0 0 3430
+D2
+(null)~
+~
+0 0 3436
 S
 #3436
 The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
+D0
+(null)~
+~
+0 0 3435
 D3
 (null)~
 ~
@@ -1220,10 +1224,6 @@ D1
 (null)~
 ~
 0 0 3441
-D0
-(null)~
-~
-0 0 3435
 S
 #3437
 The Grand Hall of Kings~
@@ -1277,6 +1277,10 @@ The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
+D1
+(null)~
+~
+0 0 3445
 D2
 (null)~
 ~
@@ -1285,16 +1289,16 @@ D3
 (null)~
 ~
 0 0 3435
-D1
-(null)~
-~
-0 0 3445
 S
 #3441
 The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
+D3
+(null)~
+~
+0 0 3436
 D1
 (null)~
 ~
@@ -1303,10 +1307,6 @@ D0
 (null)~
 ~
 0 0 3440
-D3
-(null)~
-~
-0 0 3436
 S
 #3442
 The Lower Chambers and Tombs of the Undead~
@@ -1387,14 +1387,14 @@ The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 8201 0
-D2
-(null)~
-~
-0 0 3448
 D0
 (null)~
 ~
 0 0 3446
+D2
+(null)~
+~
+0 0 3448
 D3
 (null)~
 ~
@@ -1423,14 +1423,14 @@ The Lower Chambers and Tombs of the Undead~
 The stench of death is heavy in these caverns.
 ~
 0 9 0
-D1
-(null)~
-door~
-2 3411 3408
 D3
 (null)~
 ~
 0 0 3444
+D1
+(null)~
+door~
+2 3411 3408
 S
 #3450
 Entrance to the Forbidden Catacombs~
@@ -2005,6 +2005,11 @@ S
 
 
 #SHOPS
+0
+
+
+
+#FACTIONAFFS
 0
 
 

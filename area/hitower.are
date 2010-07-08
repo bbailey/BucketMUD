@@ -1982,11 +1982,6 @@ sounds of moaning and growling come from all directions.
   All exits lead into shadows, you are very confused.
 ~
 0 8193 3
-D1
-The shadows cloud your vision.
-~
-~
-0 -1 1302
 D2
 The shadows cloud your vision.
 ~
@@ -1997,6 +1992,11 @@ The shadows cloud your vision.
 ~
 ~
 0 -1 1303
+D1
+The shadows cloud your vision.
+~
+~
+0 -1 1302
 D0
 The shadows cloud your vision.
 ~
@@ -2016,21 +2016,21 @@ You see a small clearing in the shadows.
 ~
 ~
 0 -1 1311
-D3
-The shadows cloud your vision.
-~
-~
-0 -1 1301
-D1
-The shadows cloud your vision.
-~
-~
-0 -1 1303
 D2
 The shadows cloud your vision.
 ~
 ~
 0 -1 1305
+D1
+The shadows cloud your vision.
+~
+~
+0 -1 1303
+D3
+The shadows cloud your vision.
+~
+~
+0 -1 1301
 S
 #1303
 The Shadow Grove~
@@ -2040,6 +2040,11 @@ sounds of moaning and growling come from all directions.
   All exits lead into shadows, you are very confused.
 ~
 0 8193 3
+D1
+The shadows cloud your vision.
+~
+~
+0 -1 1301
 D2
 The shadows cloud your vision.
 ~
@@ -2050,11 +2055,6 @@ The shadows cloud your vision.
 ~
 ~
 0 -1 1302
-D1
-The shadows cloud your vision.
-~
-~
-0 -1 1301
 D0
 The shadows cloud your vision.
 ~
@@ -2074,11 +2074,6 @@ Dark gates loom in the mist.
 ~
 ~
 0 -1 2201
-D1
-The shadows cloud your vision.
-~
-~
-0 -1 1305
 D2
 The shadows cloud your vision.
 ~
@@ -2089,6 +2084,11 @@ The shadows cloud your vision.
 ~
 ~
 0 -1 1301
+D1
+The shadows cloud your vision.
+~
+~
+0 -1 1305
 S
 #1305
 The Shadow Grove~
@@ -2132,21 +2132,21 @@ The shadows cloud your vision.
 ~
 ~
 0 -1 1305
-D1
-You see a shadowy tavern.
-~
-~
-0 -1 9301
-D2
-The shadows cloud your vision.
-~
-~
-0 -1 1309
 D0
 The shadows cloud your vision.
 ~
 ~
 0 -1 1303
+D2
+The shadows cloud your vision.
+~
+~
+0 -1 1309
+D1
+You see a shadowy tavern.
+~
+~
+0 -1 9301
 S
 #1307
 The Shadow Grove~
@@ -2156,16 +2156,16 @@ sounds of moaning and growling come from all directions.
   All exits lead into shadows, you are very confused.
 ~
 0 8193 3
-D2
-The shadows cloud your vision.
-~
-~
-0 -1 1301
 D1
 The shadows cloud your vision.
 ~
 ~
 0 -1 1308
+D2
+The shadows cloud your vision.
+~
+~
+0 -1 1301
 D3
 The shadows cloud your vision.
 ~
@@ -2185,26 +2185,26 @@ sounds of moaning and growling come from all directions.
   All exits lead into shadows, you are very confused.
 ~
 0 8193 3
-D0
-The shadows cloud your vision.
-~
-~
-0 -1 1305
-D1
-The shadows cloud your vision.
-~
-~
-0 -1 1309
 D3
 The shadows cloud your vision.
 ~
 ~
 0 -1 1307
+D1
+The shadows cloud your vision.
+~
+~
+0 -1 1309
 D2
 The shadows cloud your vision.
 ~
 ~
 0 -1 1300
+D0
+The shadows cloud your vision.
+~
+~
+0 -1 1305
 S
 #1309
 The Shadow Grove~
@@ -2214,6 +2214,11 @@ sounds of moaning and growling come from all directions.
   All directions lead into shadows, you are very confused.
 ~
 0 8193 3
+D2
+The shadows cloud your vision.
+~
+~
+0 -1 1303
 D0
 The shadows cloud your vision.
 ~
@@ -2224,11 +2229,6 @@ The shadows cloud your vision.
 ~
 ~
 0 -1 1307
-D2
-The shadows cloud your vision.
-~
-~
-0 -1 1303
 D3
 The shadows cloud your vision.
 ~
@@ -3623,6 +3623,14 @@ Nice going!  You might as well wait here until the wizard who built this
 trap comes back to imprison your soul as well as your body.
 ~
 0 8200 0
+D5
+(null)~
+~
+0 0 3460
+D1
+(null)~
+~
+0 0 5113
 D4
 (null)~
 ~
@@ -3631,14 +3639,6 @@ D2
 (null)~
 ~
 0 0 9141
-D1
-(null)~
-~
-0 0 5113
-D5
-(null)~
-~
-0 0 3460
 D3
 (null)~
 ~
@@ -5595,6 +5595,11 @@ S
 #SHOPS
 1305 17 19 0 0 0 210 50 0 23
 1306 2 3 4 10 21 250 30 0 23
+0
+
+
+
+#FACTIONAFFS
 0
 
 

@@ -2258,7 +2258,15 @@ almost caresses your body as it floats about you. You can wander in any
 direction.......
 ~
 0 8201 3
+D1
+(null)~
+~
+0 0 2336
 D0
+(null)~
+~
+0 0 2333
+D2
 (null)~
 ~
 0 0 2333
@@ -2266,14 +2274,6 @@ D3
 (null)~
 ~
 0 0 2335
-D1
-(null)~
-~
-0 0 2336
-D2
-(null)~
-~
-0 0 2333
 S
 #2334
 Lost in the Mist~
@@ -2310,18 +2310,18 @@ D3
 (null)~
 ~
 0 0 2331
-D2
-(null)~
-~
-0 0 2337
-D0
-(null)~
-~
-0 0 2332
 D1
 (null)~
 ~
 0 0 2333
+D0
+(null)~
+~
+0 0 2332
+D2
+(null)~
+~
+0 0 2337
 S
 #2336
 Lost in the Mist~
@@ -2334,10 +2334,6 @@ D0
 (null)~
 ~
 0 0 2334
-D2
-(null)~
-~
-0 0 2338
 D3
 (null)~
 ~
@@ -2346,6 +2342,10 @@ D1
 (null)~
 ~
 0 0 2339
+D2
+(null)~
+~
+0 0 2338
 S
 #2337
 Lost in the Mist~
@@ -2355,6 +2355,10 @@ on, but this noise is absorbed by the mist and does not travel. You can wander
 in any direction.
 ~
 0 8201 4
+D2
+(null)~
+~
+0 0 2332
 D0
 (null)~
 ~
@@ -2363,10 +2367,6 @@ D1
 (null)~
 ~
 0 0 2338
-D2
-(null)~
-~
-0 0 2332
 D3
 (null)~
 ~
@@ -2379,10 +2379,10 @@ direction. You stumble blindly through the mist, oblivious to your
 surroundings.
 ~
 0 8201 3
-D3
+D2
 (null)~
 ~
-0 0 2337
+0 0 2334
 D0
 (null)~
 ~
@@ -2391,10 +2391,10 @@ D1
 (null)~
 ~
 0 0 2337
-D2
+D3
 (null)~
 ~
-0 0 2334
+0 0 2337
 S
 #2339
 The solid path~
@@ -2621,22 +2621,22 @@ The cold cuts to the bone. Swirling snow and wind make impossible for you to
 discern any directions.
 ~
 0 0 5
-D0
-(null)~
-~
-0 0 2353
 D2
 (null)~
 ~
 0 0 2355
-D3
+D0
 (null)~
 ~
-0 0 2354
+0 0 2353
 D1
 (null)~
 ~
 0 0 2352
+D3
+(null)~
+~
+0 0 2354
 S
 #2352
 The frigid wastelands~
@@ -2645,6 +2645,14 @@ The cold cuts to the bine. Swirling snow and wind make it impossible to
 discern any directions.
 ~
 0 0 5
+D3
+(null)~
+~
+0 0 2351
+D2
+(null)~
+~
+0 -1 2358
 D0
 (null)~
 ~
@@ -2653,14 +2661,6 @@ D1
 (null)~
 ~
 0 -1 2354
-D2
-(null)~
-~
-0 -1 2358
-D3
-(null)~
-~
-0 0 2351
 S
 #2353
 The Glacier Temple~
@@ -2686,14 +2686,6 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D0
-(null)~
-~
-0 0 2359
-D2
-(null)~
-~
-0 0 2356
 D1
 (null)~
 ~
@@ -2702,6 +2694,14 @@ D3
 (null)~
 ~
 0 0 2352
+D2
+(null)~
+~
+0 0 2356
+D0
+(null)~
+~
+0 0 2359
 S
 #2355
 The frigid wastelands~
@@ -2714,6 +2714,10 @@ D3
 (null)~
 ~
 0 0 2356
+D0
+(null)~
+~
+0 0 2351
 D2
 (null)~
 ~
@@ -2722,10 +2726,6 @@ D1
 (null)~
 ~
 0 0 2356
-D0
-(null)~
-~
-0 0 2351
 S
 #2356
 The frigid wastelands~
@@ -2734,11 +2734,15 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D1
+D3
 (null)~
 ~
 0 0 2355
-D3
+D0
+(null)~
+~
+0 0 2354
+D1
 (null)~
 ~
 0 0 2355
@@ -2746,10 +2750,6 @@ D2
 (null)~
 ~
 0 0 2359
-D0
-(null)~
-~
-0 0 2354
 S
 #2357
 The frigid wastelands~
@@ -2758,22 +2758,22 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D1
-(null)~
-~
-0 0 2358
-D2
-(null)~
-~
-0 0 2352
 D0
 (null)~
 ~
 0 0 2355
+D2
+(null)~
+~
+0 0 2352
 D3
 (null)~
 ~
 0 0 2359
+D1
+(null)~
+~
+0 0 2358
 S
 #2358
 The frigid wastelands~
@@ -2782,22 +2782,22 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any direction.
 ~
 0 0 5
-D1
-(null)~
-~
-0 0 2359
-D0
-(null)~
-~
-0 0 2352
 D2
 (null)~
 ~
 0 0 2360
+D1
+(null)~
+~
+0 0 2359
 D3
 (null)~
 ~
 0 0 2357
+D0
+(null)~
+~
+0 0 2352
 S
 #2359
 The frigid wastelands~
@@ -2806,22 +2806,22 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D2
-(null)~
-~
-0 0 2354
-D0
-(null)~
-~
-0 0 2356
-D1
-(null)~
-~
-0 0 2357
 D3
 (null)~
 ~
 0 0 2358
+D1
+(null)~
+~
+0 0 2357
+D0
+(null)~
+~
+0 0 2356
+D2
+(null)~
+~
+0 0 2354
 S
 #2360
 The edge of the frigid wastes~
@@ -3902,6 +3902,11 @@ S
 
 
 #SHOPS
+0
+
+
+
+#FACTIONAFFS
 0
 
 

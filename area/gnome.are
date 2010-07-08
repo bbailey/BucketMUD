@@ -1436,14 +1436,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D3
-(null)~
-~
-0 -1 1551
 D0
 (null)~
 ~
 0 -1 1547
+D3
+(null)~
+~
+0 -1 1551
 D1
 (null)~
 ~
@@ -1455,14 +1455,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D3
-(null)~
-~
-0 -1 1548
 D2
 (null)~
 ~
 0 -1 1550
+D3
+(null)~
+~
+0 -1 1548
 S
 #1550
 A Damp Hallway~
@@ -1485,14 +1485,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D1
-(null)~
-~
-0 -1 1548
 D2
 (null)~
 ~
 0 -1 1552
+D1
+(null)~
+~
+0 -1 1548
 S
 #1552
 A Damp Hallway~
@@ -1515,14 +1515,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D1
-(null)~
-~
-0 -1 1554
 D0
 (null)~
 ~
 0 -1 1552
+D1
+(null)~
+~
+0 -1 1554
 S
 #1554
 A Damp Hallway~
@@ -1530,6 +1530,10 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
+D1
+(null)~
+~
+0 -1 1555
 D3
 (null)~
 ~
@@ -1538,10 +1542,6 @@ D0
 (null)~
 ~
 0 -1 1556
-D1
-(null)~
-~
-0 -1 1555
 S
 #1555
 A Damp Hallway~
@@ -1549,14 +1549,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D3
-(null)~
-~
-0 -1 1554
 D0
 (null)~
 ~
 0 -1 1550
+D3
+(null)~
+~
+0 -1 1554
 S
 #1556
 The End of the Hallway~
@@ -2290,6 +2290,11 @@ S
 
 
 #SHOPS
+0
+
+
+
+#FACTIONAFFS
 0
 
 

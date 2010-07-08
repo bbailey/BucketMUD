@@ -1004,14 +1004,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D5
-(null)~
-~
-0 -1 9146
 D0
 (null)~
 ~
 0 -1 9148
+D5
+(null)~
+~
+0 -1 9146
 S
 #9145
 Raging hurricane.~
@@ -1020,19 +1020,19 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D5
-(null)~
-~
-0 -1 9148
-D3
-(null)~
-~
-0 -1 9150
 D2
 You see a sneezy little cloud.
 ~
 ~
 0 -1 9133
+D3
+(null)~
+~
+0 -1 9150
+D5
+(null)~
+~
+0 -1 9148
 S
 #9146
 Raging hurricane.~
@@ -1041,14 +1041,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D1
-(null)~
-~
-0 -1 9144
 D0
 (null)~
 ~
 0 -1 9147
+D1
+(null)~
+~
+0 -1 9144
 S
 #9147
 Raging hurricane.~
@@ -1057,14 +1057,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D2
-(null)~
-~
-0 -1 9146
 D1
 (null)~
 ~
 0 -1 9148
+D2
+(null)~
+~
+0 -1 9146
 S
 #9148
 Raging hurricane.~
@@ -1073,14 +1073,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D3
-(null)~
-~
-0 -1 9147
 D4
 (null)~
 ~
 0 -1 9145
+D3
+(null)~
+~
+0 -1 9147
 D2
 (null)~
 ~
@@ -1097,15 +1097,15 @@ D0
 (null)~
 ~
 0 -1 9152
-D1
-(null)~
-~
-0 -1 9150
 D5
 You see a cumulative nimbus cloud.
 ~
 ~
 0 -1 9157
+D1
+(null)~
+~
+0 -1 9150
 S
 #9150
 Raging hurricane.~
@@ -1134,14 +1134,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D2
-(null)~
-~
-0 -1 9150
 D3
 (null)~
 ~
 0 -1 9152
+D2
+(null)~
+~
+0 -1 9150
 S
 #9152
 Raging hurricane.~
@@ -1150,14 +1150,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D2
-(null)~
-~
-0 -1 9149
 D1
 (null)~
 ~
 0 -1 9151
+D2
+(null)~
+~
+0 -1 9149
 S
 #9153
 Calm cloud.~
@@ -1828,6 +1828,11 @@ S
 
 
 #SHOPS
+0
+
+
+
+#FACTIONAFFS
 0
 
 
