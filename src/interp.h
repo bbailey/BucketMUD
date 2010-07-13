@@ -189,7 +189,6 @@ extern void do_motd(CHAR_DATA * ch, char *argument);
 extern void do_murde(CHAR_DATA * ch, char *argument);
 extern void do_murder(CHAR_DATA * ch, char *argument);
 extern void do_newlock(CHAR_DATA * ch, char *argument);
-extern void do_news(CHAR_DATA * ch, char *argument);
 extern void do_nochannels(CHAR_DATA * ch, char *argument);
 extern void do_noemote(CHAR_DATA * ch, char *argument);
 extern void do_nofollow(CHAR_DATA * ch, char *argument);

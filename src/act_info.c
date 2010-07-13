@@ -630,12 +630,6 @@ void do_scroll(CHAR_DATA * ch, char *argument)
 
 /* RT does socials */
 
-/* RT Commands to replace news, motd, imotd, etc from ROM */
-void do_news(CHAR_DATA * ch, char *argument)
-{
-    do_help(ch, "news");
-}
-
 void do_motd(CHAR_DATA * ch, char *argument)
 {
     do_help(ch, "motd");
