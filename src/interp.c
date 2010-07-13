@@ -343,7 +343,7 @@ const struct cmd_type cmd_table[] =
      LOG_NORMAL,
      0},
     {"advance", do_advance, POS_DEAD, 1, LOG_ALWAYS, 1},
-    {"advance", do_levelgain, POS_DEAD, 0, LOG_NORMAL, 1},
+    {"levelgain", do_levelgain, POS_DEAD, 0, LOG_NORMAL, 1},
     {"award", do_award, POS_DEAD, 1, LOG_ALWAYS, 1},
     {"hotboo", do_hotboo, POS_DEAD, 1, LOG_ALWAYS, 1},
     {"hotboot", do_copyover, POS_DEAD, 1, LOG_ALWAYS, 1},
