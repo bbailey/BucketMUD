@@ -338,10 +338,10 @@ const struct cmd_type cmd_table[] =
     /*
      * Immortal commands.
      */
-    {"mpchangefaction", do_mpchangefaction, POS_DEAD, 0, LOG_NORMAL, 1},
+    {"mpchangefaction", do_mpchangefaction, POS_DEAD, 0, LOG_NORMAL, 0},
     {"mpsilentchangefaction", do_mpsilentchangefaction, POS_DEAD, 0,
      LOG_NORMAL,
-     1},
+     0},
     {"advance", do_advance, POS_DEAD, 1, LOG_ALWAYS, 1},
     {"advance", do_levelgain, POS_DEAD, 0, LOG_NORMAL, 1},
     {"award", do_award, POS_DEAD, 1, LOG_ALWAYS, 1},
