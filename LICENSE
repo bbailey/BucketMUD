@@ -1,0 +1,31 @@
+BucketMUD
+Copyright 2010 Bobby Bailey
+All Rights Reserved
+
+Permission to use, copy, modify, and/or distribute this software
+and/or derivatives of this software is hereby granted, provided
+that you adhere to the restrictions in the Diku, Merc, Rom, and
+Ember licenses.
+
+The Diku license is contained in doc/old/license.diku
+The Merc license is contained in doc/old/license.merc
+The ROM license is contained in doc/old/license.rom
+The Ember license is contained in doc/old/license.ember
+
+The terms of these licenses are summarized below.
+
+1) This software may be used only for non-commercial purposes.
+2) The names of the Diku authors (Sebastian Hammer, Michael Seifert,
+   Hans St{rfeldt, Tom Madsen, and Katja Nyboe) must be retained in
+   the login sequence.
+3) The login message must contain a notice that the mud is based
+   on ROM and EmberMUD.
+3) The "credits" command and the HELP CREDITS helpfile entry shall
+   include the Diku author's names, addresses, and the statement
+   that they created DikuMud.
+4) The HELP MERC, HELP EMBER and HELP EMBERMUD helpfile entries
+   must remain intact.
+5) You may not use the names ROM, Rivers of Mud, or EmberMUD in
+   your mud's name, nor may you release derivatives using these
+   names. You are free to create and distribute derivatives
+   to this software using other names.
