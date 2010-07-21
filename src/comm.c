@@ -2153,15 +2153,10 @@ static void stop_idling(CHAR_DATA * ch)
     if (ch == NULL
             || ch->desc == NULL
             || ch->desc->connected != CON_PLAYING
-            || ch->was_in_room == NULL
-            || ch->in_room != get_room_index(ROOM_VNUM_LIMBO))
+            || ch->was_in_room == NULL)
         return;
 
     ch->timer = 0;
-    char_from_room(ch);
-    char_to_room(ch, ch->was_in_room);
-    ch->was_in_room = NULL;
-    act("$n has returned from the void.", ch, NULL, NULL, TO_ROOM);
     return;
 }
 
