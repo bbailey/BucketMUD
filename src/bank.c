@@ -166,23 +166,6 @@ void do_deposit(CHAR_DATA * ch, char *argument)
                             return;
                         }
                     }
-                    /*  if(!str_cmp( arg2, "silver"))
-                       {
-                       if (ch->silver < amount)
-                       {
-                       send_to_char("GBS: You don't have that much silver.\n\r",ch);
-                       return;
-                       }
-                       else
-                       {
-                       ch->pcdata->silver_bank += amount;
-                       ch->silver -= amount;
-                       act("$n deposits silver into $s account.", ch,NULL,NULL, TO_ROOM);
-                       sprintf( buf, "GBS: You have deposited %ld Silver.\n\r   Account: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
-                       send_to_char( buf, ch);
-                       return;
-                       }
-                       } */
                 }
             }
         }
@@ -237,23 +220,6 @@ void do_deposit(CHAR_DATA * ch, char *argument)
                             return;
                         }
                     }
-                    /*               if(!str_cmp( arg2, "silver"))
-                       {
-                       if (ch->silver < amount)
-                       {
-                       send_to_char("THIEF: You don't have that much silver.\n\r",ch);
-                       return;
-                       }
-                       else
-                       {
-                       ch->pcdata->silver_bank += amount;
-                       ch->silver -= amount;
-                       act("$n hides silver under a bedroll.", ch,NULL,NULL, TO_ROOM);
-                       sprintf( buf, "THIEF: You have hidden %ld Silver.\n\r   Bedroll: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
-                       send_to_char( buf, ch);
-                       return;
-                       }
-                       } */
                 }
                 else
                 {
@@ -371,23 +337,6 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
                             return;
                         }
                     }
-                    /*               if(!str_cmp( arg2, "silver"))
-                       {
-                       if (ch->pcdata->silver_bank < amount)
-                       {
-                       send_to_char("GBS: You don't have that much silver squirreled away.\n\r",ch);
-                       return;
-                       }
-                       else
-                       {
-                       ch->pcdata->silver_bank -= amount;
-                       ch->silver += amount;
-                       act("$n withdraws silver from $s account.", ch,NULL,NULL, TO_ROOM);
-                       sprintf( buf, "GBS: You have withdrawn %ld Silver.\n\r   Account: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
-                       send_to_char( buf, ch);
-                       return;
-                       }
-                       } */
                 }
                 else
                 {
@@ -444,23 +393,6 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
                             return;
                         }
                     }
-                    /*               if(!str_cmp( arg2, "silver"))
-                       {
-                       if (ch->pcdata->silver_bank < amount)
-                       {
-                       send_to_char("THIEF: You don't have that much silver squirreled away.\n\r",ch);
-                       return;
-                       }
-                       else
-                       {
-                       ch->pcdata->silver_bank -= amount;
-                       ch->silver += amount;
-                       act("$n grabs silver from under a bedroll.", ch,NULL,NULL, TO_ROOM);
-                       sprintf( buf, "THIEF: You have grabbed %ld Silver.\n\r   Bedroll: %10ld.\n\r   Beltpouch: %8ld.\n\r", amount, ch->pcdata->silver_bank, ch->silver);
-                       send_to_char( buf, ch);
-                       return;
-                       }
-                       } */
                 }
                 else
                 {

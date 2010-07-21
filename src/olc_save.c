@@ -927,7 +927,6 @@ void save_area(AREA_DATA * pArea)
     fprintf(fp, "Builders    %s~\n", fix_string(pArea->builders));
     fprintf(fp, "VNUMs       %d %d\n", pArea->lvnum, pArea->uvnum);
     fprintf(fp, "Security    %d\n", pArea->security);
-    /*    fprintf( fp, "Recall      %d\n",         pArea->recall );  ROM OLC */
     fprintf(fp, "End\n\n\n\n");
 
     save_mobiles(fp, pArea);

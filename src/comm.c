@@ -895,30 +895,6 @@ static void read_from_buffer(DESCRIPTOR_DATA * d, bool color)
     d->incomm[k] = '\0';
 
     /*
-     * Deal with bozos with #repeat 1000 ...
-     */
-    /*
-       if ( k > 1 || d->incomm[0] == '!' )
-       {
-       if ( d->incomm[0] != '!' && strcmp( d->incomm, d->inlast ) )
-       {
-       d->repeat = 0;
-       }
-       else
-       {
-       if ( ++d->repeat >= 25 )
-       {
-       sprintf( log_buf, "%s input spamming!", d->host );
-       log_string( log_buf );
-       write_to_descriptor( d->descriptor,
-       "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 , color);
-       strcpy( d->incomm, "quit" );
-       }
-       }
-       }
-     */
-
-    /*
      * Do '!' substitution.
      */
     if (d->incomm[0] == '!')
@@ -1277,23 +1253,6 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
                 }
 
             }
-            /*
-               for ( pban = ban_list; pban != NULL; pban = pban->next )
-               {
-               if ( !str_suffix( pban->name, d->host ) &&
-               (pban->ban_flags,BAN_NEWBIES))
-               {
-               write_to_buffer(d,
-               "New players are not allowed from your site.\n\r",0);
-               close_socket(d);
-               return;
-               }
-               else
-               write_to_buffer(d,
-               "I dont work.\n\r",0);
-
-
-               } */
             sprintf(buf, "Did I get that right, %s (Y/N)? ", argument);
             write_to_buffer(d, buf, 0);
             d->connected = CON_CONFIRM_NEW_NAME;
@@ -1754,16 +1713,12 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
         sprintf(log_buf, "%s@%s new player.", ch->name, d->host);
         log_string(log_buf);
         write_to_buffer(d, "\n\r", 2);
-        /*if (ch->race == 1) write_to_buffer( d, "Your class is evil by nature.\n\r",0);
-           else { */
         write_to_buffer(d, "You may be good, neutral, or evil.\n\r", 0);
         write_to_buffer(d, "Which alignment (G/N/E)? ", 0);
-        /*} */
         d->connected = CON_GET_ALIGNMENT;
         break;
 
     case CON_GET_ALIGNMENT:
-        /* if (ch->race == 1) ch->alignment = -750; */
         switch (argument[0])
         {
         case 'g':
@@ -2417,15 +2372,7 @@ char *act_new(const char *format, CHAR_DATA * ch, const void *arg1,
     /* room progs & obj progs */
     if (MOBtrigger && type != TO_CHAR && type != TO_VICT && to)
     {
-        /*        OBJ_DATA *to_obj; *//* FIXME! - Zane */
         txt = act_string(format, NULL, ch, arg1, arg2);
-        /* FIXME! - Zane */
-        /*        if ( IS_SET( to->in_room->progtypes, ACT_PROG ) )
-           rprog_act_trigger( txt, to->in_room, ch, (OBJ_DATA *)arg1, (void *)arg2 );
-           for ( to_obj = to->in_room->contents; to_obj;
-           to_obj = to_obj->next_content )
-           if ( IS_SET(to_obj->pIndexData->progtypes, ACT_PROG) )
-           oprog_act_trigger(txt, to_obj, ch, (OBJ_DATA *)arg1, (void *)arg2); */
     }
 
     for (; to; to = (type == TO_CHAR || type == TO_VICT)
@@ -2454,11 +2401,6 @@ char *act_new(const char *format, CHAR_DATA * ch, const void *arg1,
         oprog_act_trigger(txt, ch);
 
         rprog_act_trigger(txt, ch);
-
-        /* FIXME! - Zane */
-        /*        if (MOBtrigger)
-           mprog_act_trigger( txt, to, ch, (OBJ_DATA *)arg1, vch ); */
-
     }
 
     MOBtrigger = TRUE;

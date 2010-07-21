@@ -1026,11 +1026,6 @@ static void load_area(FILE * fp)
         case 'B':
             SKEY("Builders", pArea->builders);
             break;
-            /* removed for ROM OLC
-               case 'R':
-               KEY( "Recall", pArea->recall, fread_number( fp ) );
-               break;
-             */
         }
     }
 }
@@ -1615,7 +1610,6 @@ void reset_room(ROOM_INDEX_DATA * pRoom)
     {
         EXIT_DATA *pExit;
         if ((pExit = pRoom->exit[iExit])
-                /*  && !IS_SET( pExit->exit_info, EX_BASHED )   ROM OLC */
            )
         {
             pExit->exit_info = pExit->rs_flags;
@@ -1815,24 +1809,6 @@ void reset_room(ROOM_INDEX_DATA * pRoom)
             }
             else  		/* ROM OLC else version */
             {
-
-
-                /*
-                 * Commented out limit code because even though the limit was
-                 * being calculated it wasn't being used.  -Zane
-                 */
-                /*               int limit;
-
-                   if (pReset->arg2 > 50 *//* old format */
-                /*                                 || pReset->arg2 == -1 *//* no limit *//*)
-                   {
-                   limit = 9999;
-                   }
-                   else
-                   {
-                   limit = pReset->arg2;
-                   } */
-
                 pObj =
                     create_object(pObjIndex,
                                   UMIN(number_fuzzy(level),
@@ -2239,19 +2215,6 @@ void clone_object(OBJ_DATA * parent, OBJ_DATA * clone)
 
     for (paf = parent->affected; paf != NULL; paf = paf->next)
         affect_to_obj(clone, paf);
-
-    /* extended desc */
-    /*
-       for (ed = parent->extra_descr; ed != NULL; ed = ed->next);
-       {
-       ed_new              = alloc_perm( sizeof(*ed_new) );
-
-       ed_new->keyword         = str_dup( ed->keyword);
-       ed_new->description     = str_dup( ed->description );
-       ed_new->next            = clone->extra_descr;
-       clone->extra_descr      = ed_new;
-       }
-     */
 
 }
 
@@ -3565,16 +3528,6 @@ void bug(const char *str, ...)
         va_end(param);
     }
     log_string(buf);
-    /*    info(NULL, INFOACT_CODER, NULL, buf); */
-    /*
-     *   fclose( fpReserve );
-     *   if ( ( fp = fopen( BUG_FILE, "a" ) ) )
-     *   {
-     *  fprintf( fp, "%s\n", buf );
-     *  fclose( fp );
-     *   }
-     *   fpReserve = fopen( NULL_FILE, "r" );
-     */
     return;
 }
 

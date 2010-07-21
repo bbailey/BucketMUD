@@ -289,11 +289,6 @@ static void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch)
     case POS_STUNNED:
         strcat(buf, " `Cis lying here stunned.");
         break;
-        /*      case POS_SLEEPING: strcat( buf, " `Cis sleeping here." );      break;
-           case POS_RESTING:  strcat( buf, " `Cis resting here." );       break;
-           case POS_SITTING:  strcat( buf, " `Cis sitting here." );       break;
-           case POS_STANDING: strcat( buf, " `Cis here." );               break; */
-
     case POS_SLEEPING:
         if (victim->on != NULL)
         {
@@ -4158,11 +4153,6 @@ void do_finger(CHAR_DATA * ch, char *argument)
             send_to_char
             ("`y  \\________________________________________________________________\\__/`w\n\r",
              ch);
-            /*           if (class) free_string(&class);
-             *           if (race) free_string(&race);
-             *           if (comment) free_string(&comment);
-             *           if (email) free_string(&email);
-             *           if (nemesis) free_string(&nemesis); */
             return;
         }
         send_to_char("That character does not exist on this mud.\n\r", ch);

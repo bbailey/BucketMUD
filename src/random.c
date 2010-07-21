@@ -164,14 +164,6 @@ OBJ_DATA *make_random_obj(sh_int level, long possible_type)
     return NULL;
 }
 
-/*
-struct rand_bag_material
-{
-	char *	name;
-	bool	isprefix;
-	sh_int	size;
-};
-*/
 static const struct rand_bag_material rand_bagmaterial_table[] =
 {
     {"large", TRUE, 125},
@@ -186,14 +178,6 @@ static const struct rand_bag_material rand_bagmaterial_table[] =
     {"with a large hole", FALSE, 25}
 };
 
-/*
-struct rand_bag_type
-{
-	char * 	name;
-	sh_int	capacity;
-	long		wear_loc;
-};
-*/
 static const struct rand_bag_type rand_bag_table[] =
 {
     {"bag", 15, ITEM_HOLD},
@@ -213,44 +197,6 @@ static const struct rand_bag_type rand_bag_table[] =
     {"fanny pack", 5, ITEM_WEAR_WAIST}	/* just for fun! */
 };
 
-/*
-struct rand_light_type
-{
-	char *	name;
-	sh_int	duration;
-};
-*/
-/* I couldn't think of many of these... maybe someone else can add some? */
-/*
-const	struct rand_light_type rand_light_table[] =
-{
-	{ "torch", 20 },
-	{ "torch", 25 },
-	{ "lantern", 35 },
-	{ "lantern", 40 },
-	{ "sceptre", -1 }
-};
-*/
-/*
-struct rand_weapon_type
-{
-	char *	name;
-	sh_int	magic_mod;
-	sh_int	damage_mod;
-	sh_int	weapon_type;
-};
-*/
-/*
-WEAPON_EXOTIC
-WEAPON_SWORD
-WEAPON_DAGGER
-WEAPON_SPEAR
-WEAPON_MACE
-WEAPON_AXE
-WEAPON_FLAIL
-WEAPON_WHIP
-WEAPON_POLEARM
-*/
 static const struct rand_weapon_type rand_weapon_table[] =
 {
     {"sword", 1, 1, WEAPON_SWORD},
@@ -293,16 +239,6 @@ static const struct rand_weapon_type rand_weapon_table[] =
     {"halberd", 0, 6, WEAPON_POLEARM}
 };
 
-/*
-struct rand_item_material
-{
-	char *	name;
-	sh_int	coolness;
-	sh_int	magic_mod;
-	sh_int	level;
-};
-*/
-
 static const struct rand_item_material rand_material_table[] =
 {
     /* ***IMPORTANT*** Never assign 2 materials to the same level. */
@@ -343,29 +279,6 @@ static const struct rand_item_material rand_material_table[] =
     {"supercalifragilistdexpealidosiousistic", 30, 30, 98}	/* he he he... */
 };
 
-/*
-struct rand_ring_type
-{
-	char * name;
-	sh_int coolness;
-	long   extra_flags;
-};
-*/
-/*
-ITEM_GLOW
-ITEM_HUM
-ITEM_DARK
-ITEM_LOCK
-ITEM_EVIL
-ITEM_INVIS
-ITEM_MAGIC
-ITEM_NODROP
-ITEM_BLESS
-ITEM_ANTI_GOOD
-ITEM_ANTI_EVIL
-ITEM_ANTI_NEUTRAL
-*/
-
 static const struct rand_ring_type rand_ring_table[] =
 {
     {"dirty", 0, 0},
@@ -394,21 +307,6 @@ static const struct rand_ring_type rand_ring_table[] =
     {"tarnished", 1, 0},
     {"heavy", 2, 0}
 };
-
-/*
-struct rand_armor_type
-{
-	char *	name;
-	sh_int	wearloc;
-	sh_int	protect_mod;
-	sh_int	magic_mod;
-	sh_int	p_type;
-};
-#define	PREF_A	1
-#define	PREF_AN	2
-#define	PREF_SOME	3
-#define	PREF_NONE	4
-*/
 
 static const struct rand_armor_type rand_armor_table[] =
 {
@@ -668,8 +566,6 @@ OBJ_DATA *make_rand_weapon(sh_int level, bool ismagic)
     obj->level = level;
     obj->value[0] = rand_weapon_table[type].weapon_type;
     obj->value[1] = (level / 10) + 2;
-    /*  obj->value[2] = number_range( 3, 3 +
-       rand_weapon_table[type].damage_mod ); */
     obj->value[2] = number_range(3, 3 + level / 3);
     obj->value[3] = 0;		/* every random weapon will just "hit" for now... bah */
     obj->value[4] = 0;		/* maybe later give the weapon a chance to be flaming, whatever */
@@ -1198,43 +1094,6 @@ void wear_rand_obj(CHAR_DATA * ch, OBJ_DATA * obj)
         equip_char(ch, obj, WEAR_SHIELD);
         return;
     }
-    /* this part is buggy, have not taken the time to figure out why yet */
-    /* so for now mobs will not wield their random weapons. */
-    /*
-       if ( CAN_WEAR( obj, ITEM_WIELD ) )
-       {
-
-       if ( !remove_obj(ch, WEAR_SECOND_WIELD, TRUE) )
-       return;
-
-
-       if ((!IS_NPC(ch) && ch->size < SIZE_LARGE
-       &&  IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS)
-       &&  (( get_eq_char(ch,WEAR_SECOND_WIELD) !=NULL
-       || get_eq_char(ch,WEAR_SHIELD) != NULL)
-       || get_eq_char(ch,WEAR_WIELD) != NULL))
-       || (get_eq_char(ch,WEAR_WIELD) != NULL
-       && (get_eq_char(ch,WEAR_SHIELD) != NULL
-       || get_eq_char(ch,WEAR_SECOND_WIELD) !=NULL
-       || get_eq_char(ch,WEAR_HOLD) != NULL))
-       || (get_eq_char(ch,WEAR_SHIELD) != NULL
-       && get_eq_char(ch,WEAR_HOLD) != NULL))
-       {
-       if (get_eq_char(ch,WEAR_WIELD) != NULL)
-       if ( get_eq_char( ch, WEAR_SECOND_WIELD )  != NULL )
-       return;
-       return;
-       }
-
-       equip_char( ch, obj, WEAR_WIELD );
-       }
-       else if (get_eq_char(ch,WEAR_SECOND_WIELD) == NULL) {
-       equip_char( ch, obj, WEAR_SECOND_WIELD);
-       }
-
-       return;
-       }
-     */
     if (CAN_WEAR(obj, ITEM_HOLD))
     {
         if (get_eq_char(ch, WEAR_HOLD) != NULL)

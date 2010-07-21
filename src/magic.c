@@ -900,10 +900,6 @@ void do_spellup(CHAR_DATA * ch, char *argument)
     sn = skill_lookup("armor");
     spell(sn, level, ch, victim);
 
-    /*      spell = spell_stone_skin;
-       sn = skill_lookup("stone skin");
-       spell(sn,level,ch,victim); */
-
     spell = spell_invis;
     sn = skill_lookup("invis");
     spell(sn, level, ch, victim);
@@ -931,8 +927,6 @@ void do_spellup(CHAR_DATA * ch, char *argument)
     act("$n has given you an immortal spellup.", ch, NULL, victim,
         TO_VICT);
 
-    /* sprintf(buf, "\n\r\n\rYou have been given an Immortal spellup from %s\n\r",  ch->name );
-       send_to_char(buf, victim); */
     sprintf(buf, "\n\r\n\rYou have given %s an Immortal spellup.\n\r",
             victim->name);
     send_to_char(buf, ch);
@@ -3637,19 +3631,6 @@ void spell_magic_missile(int sn, int level, CHAR_DATA * ch, void *vo)
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     int dam;
 
-    /*  static const sh_int dam_each[] =
-       {
-       0,
-       3,  3,  4,  4,  5,        6,  6,  6,  6,  6,
-       7,  7,  7,  7,  7,        8,  8,  8,  8,  8,
-       9,  9,  9,  9,  9,       10, 10, 10, 10, 10,
-       11, 11, 11, 11, 11,      12, 12, 12, 12, 12,
-       13, 13, 13, 13, 13,      14, 14, 14, 14, 14
-       };
-
-       level    = UMIN(level, sizeof(dam_each)/sizeof(dam_each[0]) - 1);
-       level    = UMAX(0, level);
-       dam              = number_range( dam_each[level] / 2, dam_each[level] * 2 ); */
     if (level > 25)
         dam = dice(3, 6);
     /*else */

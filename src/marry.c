@@ -96,17 +96,8 @@ void do_marry(CHAR_DATA * ch, char *argument)
         do_save(victim, "");
         do_save(victim2, "");
 
-        /*    victim->pcdata->spouse = victim2->name;
-           victim2->pcdata->spouse = victim->name; */
-
         return;
     }
-
-    /*   else
-       {
-       send_to_char( "You do not have marrying power.\n\r", ch);
-       return;
-       } */
 }
 
 void do_divorce(CHAR_DATA * ch, char *argument)
@@ -114,7 +105,6 @@ void do_divorce(CHAR_DATA * ch, char *argument)
     char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
     CHAR_DATA *victim2;
-    /*    char buf[MAX_STRING_LENGTH]; */
 
     argument = one_argument(argument, arg1);
     argument = one_argument(argument, arg2);
@@ -182,10 +172,6 @@ void do_divorce(CHAR_DATA * ch, char *argument)
 
         do_save(victim, "");
         do_save(victim2, "");
-
-        /*
-           victim->pcdata->spouse = str_dup("none") ;
-           victim2->pcdata->spouse = str_dup("none"); */
 
         return;
     }

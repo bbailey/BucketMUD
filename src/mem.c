@@ -144,7 +144,6 @@ MPROG_DATA *new_mudprog()
     {
         mprog = mprog_free;
         mprog_free = mprog->next;
-        /* mprog->next = NULL  -  added by Zak 1/3/98 */
     }
 
     mprog->next = NULL;
@@ -232,7 +231,6 @@ AREA_DATA *new_area(void)
 
     pArea->next = NULL;
     pArea->name = str_dup("New area");
-    /*    pArea->recall           =   ROOM_VNUM_TEMPLE;      ROM OLC */
     pArea->area_flags = AREA_ADDED;
     pArea->security = 1;
     pArea->builders = str_dup("None");

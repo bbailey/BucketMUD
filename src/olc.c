@@ -983,14 +983,6 @@ void do_olc(CHAR_DATA * ch, char *argument)
     }
 #endif
 
-    /*     if ( ch->pcdata &&
-       ( ch->in_room->vnum < ch->pcdata->vnum_range[0]
-       || ch->in_room->vnum > ch->pcdata->vnum_range[1] ) )
-       {
-       send_to_char( "You're not authorized to use this command here.\n\r", ch );
-       return;
-       }       */
-
     argument = one_argument(argument, command);
 
     if (command[0] == '\0')
@@ -1466,14 +1458,6 @@ void do_resets(CHAR_DATA * ch, char *argument)
     char arg4[MAX_INPUT_LENGTH];
     char arg5[MAX_INPUT_LENGTH];
     RESET_DATA *pReset = NULL;
-
-    /*    if ( ch->pcdata &&
-       ( ch->in_room->vnum < ch->pcdata->vnum_range[0]
-       || ch->in_room->vnum > ch->pcdata->vnum_range[1] ) )
-       {
-       send_to_char( "You're not authorized to use this command here.\n\r", ch );
-       return;
-       }    */
 
     argument = one_argument(argument, arg);
     argument = one_argument(argument, arg2);
