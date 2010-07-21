@@ -6,23 +6,14 @@ limit core unlimited
 set port = 1234
 if ( "$1" != "" ) set port="$1"
 
-# Change to area directory.
-# ( commented out in 0.9.42 - no longer necessary )
-#cd ../area
-
 # Set limits.
 if ( -e ../area/shutdown.txt ) rm -f ../area/shutdown.txt
 
 while ( 1 )
     # If you want to have logs in a different directory,
     #   change the 'set logfile' line to reflect the directory name.
-    set index = 1000
     set coreind = 1000
-    while ( 1 )
-	set logfile = ../log/$index.log
-	if ( ! -e $logfile ) break
-	@ index++
-    end
+    set logfile = ../log/bucketmud.log
 
     while ( 1 )
         set corefile = ./core.$coreind

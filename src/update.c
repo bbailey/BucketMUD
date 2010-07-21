@@ -1125,32 +1125,6 @@ static void aggr_update(void)
     {
         wch_next = wch->next_player;
 
-        /* FIXME!  Remove this code alltogether.  Having delayed act-progs is a problem.
-         * What is someone triggers an act prog then runs out of the room?  The TriggeredBy is then
-         * set and the mob/obj/room will try to act like that player is still in the room.  If you want
-         * delayed triggers then maybe we should get a command queue system put in. - Zane */
-        /*      if ( IS_NPC( wch ) && wch->mpactnum > 0
-           && wch->in_room->area->nplayer > 0 )
-           {
-
-           MPROG_ACT_LIST * tmp_act, *tmp2_act;
-           for ( tmp_act = wch->mpact; tmp_act != NULL;
-           tmp_act = tmp_act->next )
-           {
-           mprog_wordlist_check( tmp_act->buf,wch, tmp_act->ch,
-           tmp_act->obj, tmp_act->vo, ACT_PROG, MOB_PROG );
-           free_string( &tmp_act->buf );
-           }
-           for ( tmp_act = wch->mpact; tmp_act != NULL; tmp_act =
-           tmp2_act )
-           {
-           tmp2_act = tmp_act->next;
-           free_mem( &tmp_act );
-           }
-           wch->mpactnum = 0;
-           wch->mpact    = NULL;
-           } */
-
         if (wch->level >= LEVEL_IMMORTAL || !wch->in_room
                 /*      ||   wch->in_room->area->empty *//* How can the area be in it if this player is in that area? - Zane */
                 || IS_SET(wch->in_room->room_flags, ROOM_SAFE))

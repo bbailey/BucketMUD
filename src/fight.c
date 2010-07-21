@@ -403,20 +403,11 @@ static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
             do_dirt(ch, "");
         break;
 
-        /*case (5) :
-           if (IS_SET(ch->off_flags,OFF_TAIL))
-           do_tail(ch,"");
-           break; */
-
     case (6):
         if (IS_SET(ch->off_flags, OFF_TRIP))
             do_trip(ch, "");
         break;
 
-        /*case (7) :
-           if (IS_SET(ch->off_flags,OFF_CRUSH))
-           do_crush(ch,"");
-           break; */
     }
 }
 
@@ -3213,49 +3204,10 @@ int hit_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
         break;
     }
 
-    /* do alignment computations */
-    /* No, actually we don't want to here - see rapid align changes notes above */
-    /*    align = victim->alignment - gch->alignment;
-
-       if ( IS_SET( victim->act, ACT_NOALIGN ) )
-       { */
-    /* no change */
-    /*    }
-
-       else if ( align > 500 )   *//* monster is more good than slayer */
-    /*    {
-       change =
-       ( align - 500 ) * ( gch->level / total_levels +
-       ( 1 / members ) ) / 2;
-       change = UMAX( 1, change );
-       gch->alignment = UMAX( -1000, gch->alignment - change );
-       }
-     */
-    /*    else if ( align < -500 ) *//* monster is more evil than slayer */
-    /*    {
-       change =
-       ( -1 * align - 500 ) * ( gch->level / total_levels +
-       ( 1 / members ) ) / 2;
-       change = UMAX( 1, change );
-       gch->alignment = UMIN( 1000, gch->alignment + change );
-       }
-     */
-    /*    else  *//* improve this someday */
-    /*    {
-       change =
-       gch->alignment * ( gch->level / total_levels +
-       ( 1 / members ) ) / 2;
-       gch->alignment -= change;
-       }
-     */
     /* calculate exp multiplier */
     xp = base_exp;
 
-    if (IS_SET(victim->act, ACT_NOALIGN) || victim == gch)
-    {
-        /* no change */
-    }
-    else if (gch->alignment > 500)  	/* for goodie two shoes */
+    if (gch->alignment > 500)  	/* for goodie two shoes */
     {
         if (victim->alignment < -750)
             xp = base_exp * 4 / 3;
@@ -5410,13 +5362,8 @@ void do_blackjack(CHAR_DATA * ch, char *argument)
             act("$n goes to sleep.", victim, NULL, NULL, TO_ROOM);
             victim->position = POS_SLEEPING;
         }
-
-        /* This damaged the victim too, but i couldnt get it the numbers right.
-
-           damage(ch,victim,number_range(2,5),gsn_blackjack,DAM_NONE,FALSE); */
-
     }
-    else  			/* Another try damage(ch,victim,0,gsn_blackjack,DAM_NONE,TRUE); */
+    else
     {
 
         check_improve(ch, gsn_blackjack, FALSE, 2);

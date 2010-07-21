@@ -343,12 +343,6 @@ const struct pc_race_type pc_race_table[] =
        },
      */
 
-    /*    {
-       "drow elf",              "Drow ",        5,      { 100, 125,  100, 120 },
-       { "sneak", "hide" },
-       { -1, 1, 0, 2, -2 },     { 16, 20, 18, 21, 15 }, SIZE_MEDIUM
-       }, */
-
     {
         "dwarf", "  Dwarf   ", 8, {150, 100, 125, 100},
         {"berserk"},
