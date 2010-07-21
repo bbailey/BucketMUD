@@ -6,10 +6,6 @@ limit core unlimited
 set port = 9005
 if ( "$1" != "" ) set port="$1"
 
-# Change to area directory.
-# ( commented out in 0.9.42 - no longer necessary )
-#cd ../area
-
 # Set limits.
 if ( -e ../area/shutdown.txt ) rm -f ../area/shutdown.txt
 
