@@ -3,7 +3,7 @@
 # With additions from Tony.
 limit core unlimited
 # Set the port number.
-set port = 9005
+set port = 1234
 if ( "$1" != "" ) set port="$1"
 
 # Change to area directory.
