@@ -806,7 +806,7 @@ bool damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dam,
         {
             if (victim->fighting == NULL)
                 set_fighting(victim, ch);
-            if (victim->timer <= 4)
+            if (victim->idle_timer <= 4)
                 victim->position = POS_FIGHTING;
         }
 
@@ -1158,7 +1158,7 @@ bool new_damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
         {
             if (victim->fighting == NULL)
                 set_fighting(victim, ch);
-            if (victim->timer <= 4)
+            if (victim->idle_timer <= 4)
                 victim->position = POS_FIGHTING;
         }
 
@@ -1484,7 +1484,7 @@ static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
         {
             if (victim->fighting == NULL)
                 set_fighting(victim, ch);
-            if (victim->timer <= 4)
+            if (victim->idle_timer <= 4)
                 victim->position = POS_FIGHTING;
         }
 

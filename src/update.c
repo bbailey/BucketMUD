@@ -759,7 +759,7 @@ static void char_update(void)
                     act("$p flickers.", ch, obj, NULL, TO_CHAR);
             }
 
-            ++ch->timer;
+            ++ch->idle_timer;
             if (IS_SET(ch->act, PLR_JAILED))
             {
                 --ch->jail_timer;

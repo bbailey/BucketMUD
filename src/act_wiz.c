@@ -1839,7 +1839,7 @@ void do_mstat(CHAR_DATA * ch, char *argument)
                 get_age(victim),
                 (int) (victim->played + current_time -
                        victim->logon) / 3600,
-                victim->pcdata->last_level, victim->timer);
+                victim->pcdata->last_level, victim->idle_timer);
         send_to_char(buf, ch);
     }
 
@@ -4692,8 +4692,8 @@ void do_sockets(CHAR_DATA * ch, char *argument)
             vch = d->original ? d->original : d->character;
             strftime(s, 100, "%I:%M%p", localtime(&vch->logon));
 
-            if (vch->timer > 0)
-                sprintf(idle, "%-3d", vch->timer);
+            if (vch->idle_timer > 0)
+                sprintf(idle, "%-3d", vch->idle_timer);
             else
                 sprintf(idle, "  ");
 

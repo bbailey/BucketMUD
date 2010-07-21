@@ -2049,7 +2049,7 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
     clone->race = parent->race;
     clone->level = parent->level;
     clone->trust = 0;
-    clone->timer = parent->timer;
+    clone->idle_timer = parent->idle_timer;
     clone->wait = parent->wait;
     clone->hit = parent->hit;
     clone->max_hit = parent->max_hit;

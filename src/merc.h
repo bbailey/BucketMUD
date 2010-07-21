@@ -579,7 +579,7 @@ struct char_data
     int lines;			/* for the pager */
     time_t logon;
     time_t last_note;
-    sh_int timer;
+    sh_int idle_timer;
     sh_int wait;
     sh_int daze;
     sh_int hit;

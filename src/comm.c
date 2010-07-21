@@ -426,7 +426,7 @@ static int game_loop(int control)
             {
                 if (d->character != NULL)
                 {
-                    d->character->timer = 0;
+                    d->character->idle_timer = 0;
                     if (IS_SET(d->character->act, PLR_COLOR))
                         color = TRUE;
                     else
@@ -2096,7 +2096,7 @@ static bool check_reconnect(DESCRIPTOR_DATA * d, char *name, bool fConn)
                 free_char(d->character);
                 d->character = ch;
                 ch->desc = d;
-                ch->timer = 0;
+                ch->idle_timer = 0;
                 if (IS_SET(ch->act, PLR_BUILDING))
                 {
                     REMOVE_BIT(ch->act, PLR_BUILDING);
@@ -2156,7 +2156,7 @@ static void stop_idling(CHAR_DATA * ch)
             || ch->was_in_room == NULL)
         return;
 
-    ch->timer = 0;
+    ch->idle_timer = 0;
     return;
 }
 
