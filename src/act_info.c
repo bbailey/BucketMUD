@@ -1048,26 +1048,6 @@ void do_afk(CHAR_DATA * ch, char *argument)
     }
 }
 
-void do_anonymous(CHAR_DATA * ch, char *argument)
-{
-    if (IS_NPC(ch))
-        return;
-
-    if (ch->anonymous == TRUE)
-    {
-        send_to_char
-        ("You are no longer `KA`wN`WO`wN`KY`wM`WO`wU`KS`W.\n\r", ch);
-        ch->anonymous = FALSE;
-    }
-    else
-    {
-        send_to_char
-        ("You are now set `KA`wN`WO`wN`KY`wM`WO`wU`KS`w.  Your Level, Race, and Class will no longer be displayed under \"who\".\n\r",
-         ch);
-        ch->anonymous = TRUE;
-    }
-}
-
 void do_pk(CHAR_DATA * ch, char *argument)
 {
     char buf2[MAX_STRING_LENGTH];
@@ -2829,27 +2809,6 @@ void do_who(CHAR_DATA * ch, char *argument)
 
         /* Yes, I know this new version is messy.  Really messy in fact.
            Clean it up if you like.  -Kyle */
-        if (who_list[length]->anonymous)
-        {
-            sprintf(buf, "`K[    `KA`wN`WO`wN`KY`wM`WO`wU`KS`K     ] %s%s%s `R[`W%s%s%s%s%s`R] `w%s%s%s\n\r", IS_NPC(who_list[length]) ? "" : (who_list[length]->pcdata->clan == 0) ? "" : pre_clan(who_list[length], ch, empty, private, secret), IS_NPC(who_list[length]) ? "" : (who_list[length]->pcdata->clan == 0) ? "" : who_clan(who_list[length], ch, empty), "",	/* <---- if you need to add something, remove this */
-                    IS_NPC(who_list[length]) ? "-" :
-                    !is_name(who_list[length]->pcdata->spouse,
-                             "(none)") ? "M" : "-",
-                    IS_SET(who_list[length]->act, PLR_WIZINVIS) ? "W" : "",
-                    IS_SET(who_list[length]->act, PLR_AFK) ? "A" : "-",
-                    IS_SET(who_list[length]->act,
-                           PLR_KILLER) ? "`RP`W" : "-",
-                    IS_SET(who_list[length]->act, PLR_THIEF) ? "`KT" : "-",
-                    who_list[length]->pcdata != NULL
-                    && who_list[length]->pcdata->
-                    who_prefix ? who_list[length]->pcdata->who_prefix : "",
-                    IS_NPC(who_list[length]) ? who_list[length]->
-                    short_descr : who_list[length]->name,
-                    IS_NPC(who_list[length]) ? "" : who_list[length]->
-                    pcdata->title);
-            strcat(output, buf);
-        }
-        else
         {
             sprintf(buf, "`K[`W%3d `Y%s `G%s`K] %s%s%s`R[`W%s%s%s%s%s`R] `w%s%s%s\n\r", (who_list[length]->level > MAX_LEVEL ? MAX_LEVEL : who_list[length]->level), who_list[length]->pcdata != NULL && who_list[length]->pcdata->who_race ? who_list[length]->pcdata->who_race : who_list[length]->race < MAX_PC_RACE ? pc_race_table[who_list[length]->race].who_name : "          ", Class, IS_NPC(who_list[length]) ? "" : (who_list[length]->pcdata->clan == 0) ? "" : pre_clan(who_list[length], ch, empty, private, secret), IS_NPC(who_list[length]) ? "" : (who_list[length]->pcdata->clan == 0) ? "" : who_clan(who_list[length], ch, empty), "",	/* <---- if you need to add something, remove this */
                     IS_NPC(who_list[length]) ? "-" :
@@ -3802,13 +3761,6 @@ void do_finger(CHAR_DATA * ch, char *argument)
 
     if (victim != NULL)
     {
-        if (victim->anonymous)
-        {
-            printf_to_char(ch, "%s is `KA`wN`WO`wN`KY`wM`WO`wU`KS`K",
-                           victim->name);
-            return;
-        }
-
         sprintf(buf,
                 "\n\r      `y/~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/~~\\\n\r");
         send_to_char(buf, ch);
@@ -3958,17 +3910,6 @@ void do_finger(CHAR_DATA * ch, char *argument)
             for (;;)
             {
                 word = get_word(fp);
-                if (!str_cmp(word, "Anon"))
-                {
-                    if (fread_number(fp) == 1)
-                    {
-                        printf_to_char(ch,
-                                       "%s is `KA`wN`WO`wN`KY`wM`WO`wU`KS`W",
-                                       arg);
-                        fclose(fp);
-                        return;
-                    }
-                }
 
                 if (!str_cmp(word, "End"))
                 {

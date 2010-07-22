@@ -48,7 +48,6 @@ extern void do_advance(CHAR_DATA * ch, char *argument);
 extern void do_aexits(CHAR_DATA * ch, char *argument);
 extern void do_aentrances(CHAR_DATA * ch, char *argument);
 extern void do_afk(CHAR_DATA * ch, char *argument);
-extern void do_anonymous(CHAR_DATA * ch, char *argument);
 extern void do_alias(CHAR_DATA * ch, char *argument);
 extern void do_allow(CHAR_DATA * ch, char *argument);
 extern void do_answer(CHAR_DATA * ch, char *argument);

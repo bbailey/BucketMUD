@@ -164,9 +164,6 @@ const struct cmd_type cmd_table[] =
      * Configuration commands.
      */
     {"afk", do_afk, POS_DEAD, 0, LOG_NORMAL, 1},
-#ifdef ANONYMOUS
-    {"anonymous", do_anonymous, POS_DEAD, 0, LOG_NORMAL, 1},
-#endif
     {"alias", do_alias, POS_DEAD, 0, LOG_NORMAL, 1},
     {"autolist", do_autolist, POS_DEAD, 0, LOG_NORMAL, 1},
     {"autoassist", do_autoassist, POS_DEAD, 0, LOG_NORMAL, 1},

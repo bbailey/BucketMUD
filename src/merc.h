@@ -565,7 +565,6 @@ struct char_data
     GEN_DATA *gen_data;
     char *name;
     bool beep;
-    bool anonymous;
     sh_int version;
     char *short_descr;
     char *long_descr;

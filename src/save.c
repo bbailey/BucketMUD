@@ -203,7 +203,6 @@ static void fwrite_char(CHAR_DATA * ch, FILE * fp)
     fprintf(fp, "Sex  %d\n", ch->sex);
     fprintf(fp, "Cla  %d\n", ch->Class);
     fprintf(fp, "Beep %d\n", ch->beep);
-    fprintf(fp, "Anon %d\n", ch->anonymous);
     fprintf(fp, "Levl %d\n", ch->level);
     if (ch->trust != 0)
         fprintf(fp, "Tru  %d\n", ch->trust);
@@ -679,7 +678,6 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
         str_dup("%i`K/`W%H`w HP %n`K/`W%M`w MP %w`K/`W%V`w MV `K> ");
     /*    ch->pcdata->clan                      = 0; */
     ch->beep = TRUE;
-    ch->anonymous = FALSE;
     ch->pcdata->recall_room = get_room_index(ROOM_VNUM_TEMPLE);
     ch->pcdata->pk_deaths = 0;
     ch->pcdata->pk_kills = 0;
@@ -885,7 +883,13 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             KEY("NewAfBy", ch->newaff[0], fread_number(fp));
             KEY("Alignment", ch->alignment, fread_number(fp));
             KEY("Alig", ch->alignment, fread_number(fp));
-            KEY("Anon", ch->anonymous, fread_number(fp));
+
+            if (!str_cmp(word, "Anon"))
+            {
+                fread_to_eol(fp);
+                fMatch = TRUE;
+                break;
+            }
 
             if (!str_cmp(word, "Alias"))
             {

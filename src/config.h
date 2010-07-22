@@ -423,11 +423,6 @@ sets the level of the obj, the second sets the level of the spells.*/
 #define WORN_HELD     "`K<`wheld`K>"
 #define WORN_WIELDED2 "`K<`wsecondary weapon`K>"
 
-/* Comment this if you do not want to have the anonymous command
-available*/
-
-#define ANONYMOUS
-
 /* This determines at what level the recall command no longer works for
 mortals. Set this to MAX_LEVEL if you dont want to use it. */
 #define RECALL_LEVEL 20
