@@ -5,11 +5,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+#include <glib.h>
+
 #include "merc.h"
 #include "olc.h"
 
-HELP_DATA *help_first = NULL;
-HELP_DATA *help_last = NULL;
+
+GList *help_entries = NULL;
 
 const struct olc_cmd_type helpsedit_table[] =
 {
@@ -24,7 +26,7 @@ const struct olc_cmd_type helpsedit_table[] =
     {"", 0,}
 };
 
-static HELP_DATA *new_help(void)
+HELP_DATA *new_help(void)
 {
     HELP_DATA *pHelp;
 
@@ -36,7 +38,6 @@ static HELP_DATA *new_help(void)
         exit(EXIT_FAILURE);
     }
 
-    pHelp->next = NULL;
     pHelp->keyword = str_dup("CHANGE_ME!");
     pHelp->level = 0;
     pHelp->text =
@@ -48,21 +49,31 @@ static HELP_DATA *new_help(void)
 
 HELP_DATA *get_help(char *argument)
 {
-    HELP_DATA *pHelp;
+    GList *help_iter;
+    HELP_DATA *pHelp = NULL;
+    bool found = false;
     char arg[MAX_INPUT_LENGTH];
     argument = one_argument(argument, arg);
-    for (pHelp = help_first; pHelp != NULL; pHelp = pHelp->next)
 
-        if (str_cmp(arg, pHelp->keyword))
+    for (help_iter = g_list_first(help_entries); help_iter != NULL; help_iter = g_list_next(help_iter))
+    {
+        pHelp = (HELP_DATA *) help_iter->data;
+        if (str_cmp(arg,pHelp->keyword))
         {
+            found = true;
             break;
         }
+    }
 
-    return pHelp;
+    if (found)
+        return pHelp;
+    else
+        return NULL;
 }
 
 void do_helpedit(CHAR_DATA * ch, char *argument)
 {
+    GList *help_iter;
     HELP_DATA *pHelp;
     char argall[MAX_INPUT_LENGTH], argone[MAX_INPUT_LENGTH];
 
@@ -96,17 +107,6 @@ void do_helpedit(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    for (pHelp = help_first; pHelp != NULL; pHelp = pHelp->next)
-
-        if (is_name(argall, pHelp->keyword))
-        {
-            ch->desc->pEdit = (void *) pHelp;
-            ch->desc->editor = ED_HELPOLC;
-            SET_BIT(ch->act, PLR_BUILDING);
-            act("$n has entered the Help Editor.", ch, NULL, NULL,
-                TO_ROOM);
-            return;
-        }
     if (is_name(argall, "createhelp"))
     {
         if (helpsedit_create(ch, argument))
@@ -119,8 +119,21 @@ void do_helpedit(CHAR_DATA * ch, char *argument)
 
         return;
     }
-    else
+
+    for (help_iter = g_list_first(help_entries); help_iter != NULL; help_iter = g_list_next(help_iter))
     {
+        pHelp = (HELP_DATA *) help_iter->data;
+
+        if (is_name(argall, pHelp->keyword))
+        {
+            ch->desc->pEdit = (void *) pHelp;
+            ch->desc->editor = ED_HELPOLC;
+            SET_BIT(ch->act, PLR_BUILDING);
+            act("$n has entered the Help Editor.", ch, NULL, NULL,
+                TO_ROOM);
+            return;
+        }
+
         send_to_char("There is no default help to edit.\n\r", ch);
         return;
     }
@@ -219,20 +232,11 @@ bool helpsedit_create(CHAR_DATA * ch, char *argument)
         return FALSE;
     }
 
-    if (help_first == NULL)
-    {
-        help_first = pHelp;
-        help_last = pHelp;
-    }
-    else
-    {
-        help_last->next = pHelp;
-        help_last = pHelp;
-    }
-
     send_to_char("Help created.\n\r", ch);
 
     ch->desc->pEdit = (void *) pHelp;
+
+    help_entries = g_list_append(help_entries, pHelp);
 
     return TRUE;
 }

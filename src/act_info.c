@@ -17,6 +17,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
+#include <glib.h>
+
 #include "merc.h"
 #include "interp.h"
 
@@ -2325,9 +2327,12 @@ void do_version(CHAR_DATA * ch, char *argument)
     return;
 }
 
+extern GList *help_entries;
+
 void do_help(CHAR_DATA * ch, char *argument)
 {
     HELP_DATA *pHelp;
+    GList *help_iter = NULL;
     char argall[MAX_INPUT_LENGTH], argone[MAX_INPUT_LENGTH];
     char nohelp[MAX_STRING_LENGTH];
 
@@ -2346,8 +2351,10 @@ void do_help(CHAR_DATA * ch, char *argument)
         strcat(argall, argone);
     }
 
-    for (pHelp = help_first; pHelp != NULL; pHelp = pHelp->next)
+    for (help_iter = g_list_first(help_entries); help_iter != NULL; help_iter = g_list_next(help_iter))
     {
+        pHelp = (HELP_DATA *) help_iter->data;
+
         if (pHelp->level > get_trust(ch))
             continue;
 

@@ -36,6 +36,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <glib.h>
+
 #include "merc.h"
 #include "olc.h"
 
@@ -1202,9 +1204,12 @@ void do_asave(CHAR_DATA * ch, char *argument)
     return;
 }
 
+extern GList *help_entries;
+
 void save_helps()
 {
     char buf[MAX_STRING_LENGTH];
+    GList *help_iter = NULL;
     HELP_DATA *pHelp;
     FILE *fp;
 
@@ -1220,8 +1225,9 @@ void save_helps()
 
     fprintf(fp, "#HELPS\n\n");
 
-    for (pHelp = help_first; pHelp != NULL; pHelp = pHelp->next)
+    for (help_iter = g_list_first(help_entries); help_iter != NULL; help_iter = g_list_next(help_iter))
     {
+        pHelp = (HELP_DATA *) help_iter->data;
 
         fprintf(fp, "%d", pHelp->level);
         fprintf(fp, " %s", pHelp->keyword);

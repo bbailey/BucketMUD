@@ -365,7 +365,6 @@ struct con_app_type
  */
 struct help_data
 {
-    HELP_DATA *next;
     sh_int level;
     char *keyword;
     char *text;
@@ -1201,7 +1200,6 @@ extern struct social_type social_table[MAX_SOCIALS];
 extern char thetime[7];
 extern char thedate[10];
 
-extern HELP_DATA *help_first;
 extern SHOP_DATA *shop_first;
 extern CLAN_DATA *clan_first;
 extern CLAN_DATA *clan_last;

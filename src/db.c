@@ -22,6 +22,7 @@
 #include <ctype.h>
 #include <time.h>
 #include <sys/types.h>
+#include <glib.h>
 
 #include "merc.h"
 #include "olc.h"
@@ -1047,7 +1048,9 @@ static void assign_area_vnum(int vnum)
     return;
 }
 
-extern HELP_DATA *help_last;
+extern HELP_DATA *new_help(void);
+
+extern GList *help_entries;
 
 /*
  * Snarf a help section.
@@ -1058,11 +1061,13 @@ static void load_helps(FILE * fp)
 
     for (;;)
     {
-        pHelp = alloc_perm(sizeof(*pHelp));
+        pHelp = new_help();
         pHelp->level = fread_number(fp);
+        free_string(&pHelp->keyword);
         pHelp->keyword = fread_string(fp);
         if (pHelp->keyword[0] == '$')
             break;
+        free_string(&pHelp->text);
         pHelp->text = fread_string(fp);
 
         if (!str_cmp(pHelp->keyword, "greeting"))
@@ -1071,13 +1076,7 @@ static void load_helps(FILE * fp)
         if (!str_cmp(pHelp->keyword, "ansigreet"))
             ansi_greeting = pHelp->text;
 
-        if (help_first == NULL)
-            help_first = pHelp;
-        if (help_last != NULL)
-            help_last->next = pHelp;
-
-        help_last = pHelp;
-        pHelp->next = NULL;
+        help_entries = g_list_append(help_entries, pHelp);
         top_help++;
     }
 
