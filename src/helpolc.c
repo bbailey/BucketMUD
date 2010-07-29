@@ -17,6 +17,7 @@ const struct olc_cmd_type helpsedit_table[] =
 {
     {"show", helpsedit_show},
     {"create", helpsedit_create},
+    {"delete", helpsedit_delete},
     {"keyword", helpsedit_keyword},
     {"level", helpsedit_level},
     {"text", helpsedit_text},
@@ -30,7 +31,7 @@ HELP_DATA *new_help(void)
 {
     HELP_DATA *pHelp;
 
-    pHelp = alloc_perm(sizeof(HELP_DATA));
+    pHelp = (HELP_DATA *) malloc(sizeof(HELP_DATA));
 
     if (!pHelp)
     {
@@ -45,6 +46,14 @@ HELP_DATA *new_help(void)
         ("Someone didnt change the text for this help, the bonheads.");
 
     return pHelp;
+}
+
+void free_help(HELP_DATA *pHelp)
+{
+    free_string(&pHelp->keyword);
+    free_string(&pHelp->text);
+    pHelp->level = 0;
+    free(pHelp);
 }
 
 HELP_DATA *get_help(char *argument)
@@ -133,10 +142,10 @@ void do_helpedit(CHAR_DATA * ch, char *argument)
                 TO_ROOM);
             return;
         }
-
-        send_to_char("There is no default help to edit.\n\r", ch);
-        return;
     }
+
+    send_to_char("There is no default help to edit.\n\r", ch);
+    return;
 }
 
 void helpsedit(CHAR_DATA * ch, char *argument)
@@ -324,5 +333,31 @@ bool helpsedit_text(CHAR_DATA * ch, char *argument)
     }
 
     send_to_char("Syntax:  text    (No arguments allowed)\n\r", ch);
+    return FALSE;
+}
+
+bool helpsedit_delete(CHAR_DATA * ch, char *argument)
+{
+    HELP_DATA *pHelp;
+
+    pHelp = (HELP_DATA *) ch->desc->pEdit;
+
+    if (!pHelp)
+    {
+        send_to_char("You are not currently editing a help.\r\n", ch);
+        return FALSE;
+    }
+
+    if (argument[0] == '\0')
+    {
+        help_entries = g_list_remove_all(help_entries, pHelp);
+        free_help(pHelp);
+        pHelp = NULL;
+        send_to_char("You have deleted the current helpfile.\r\n", ch);
+        edit_done(ch);
+        return TRUE;
+    }
+
+    send_to_char("Syntax:  delete  (No arguments allowed)\r\n", ch);
     return FALSE;
 }

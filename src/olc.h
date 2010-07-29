@@ -75,6 +75,7 @@ bool helpsedit_keyword(CHAR_DATA * ch, char *argument);
 bool helpsedit_level(CHAR_DATA * ch, char *argument);
 bool helpsedit_text(CHAR_DATA * ch, char *argument);
 bool helpsedit_create(CHAR_DATA * ch, char *argument);
+bool helpsedit_delete(CHAR_DATA * ch, char *argument);
 
 /*
  * Connected states for editor.
