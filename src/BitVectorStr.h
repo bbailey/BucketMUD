@@ -34,10 +34,8 @@ typedef struct BitVectorStringList
 
 typedef enum { BV_STR_SET, BV_STR_UNSET, BV_STR_TOGGLE } BitVectorStringOp;
 
-
 gchar *bv_to_string(const BitVector *, const BitVectorStringList *);
 gsize bv_bit_from_string(const BitVectorStringList *, const gchar *);
 void bv_from_string(BitVector *, const BitVectorStringList *, const gchar *, BitVectorStringOp);
 
 #endif // BUCKETMUD_BITVECTORSTR_H_
-
