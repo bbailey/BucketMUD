@@ -7,7 +7,7 @@ L_FLAGS = $(OPT) $(PROF) -lm -lcrypt `pkg-config --libs glib-2.0`
 
 O_FILES = act_comm.o	act_info.o	act_move.o \
           act_obj.o	act_wiz.o	auction.o \
-          ban.o		bank.o		bit.o \
+          ban.o		bank.o		bit.o 		BitVector.o     BitVectorStr.o\
           board.o	comm.o		const.o \
           clan.o	class.o		db.o \
           drunk2.o 	factions.o	fight.o \
