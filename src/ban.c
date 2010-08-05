@@ -26,15 +26,28 @@
 ***************************************************************************/
 
 #include <sys/time.h>
-
-// #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "recycle.h"
+#include "ban.h"
 
 BAN_DATA *ban_list;
+
+const BitVectorStringList bv_str_list_ban[] =
+{
+    { "suffix", BV_BAN_SUFFIX },
+    { "prefix", BV_BAN_PREFIX },
+    { "newbies", BV_BAN_NEWBIES },
+    { "all", BV_BAN_ALL },
+    { "permit", BV_BAN_PERMIT },
+    { "permanent", BV_BAN_PERMANENT },
+    { NULL, BV_BAN_MAX }
+};
 
 static void save_bans(void)
 {
@@ -50,11 +63,11 @@ static void save_bans(void)
 
     for (pban = ban_list; pban != NULL; pban = pban->next)
     {
-        if (IS_SET(pban->ban_flags, BAN_PERMANENT))
+        if (bv_is_set(pban->bv_flags, BV_BAN_PERMANENT))
         {
             found = TRUE;
-            fprintf(fp, "%-20s %-2d %s\n", pban->name, pban->level,
-                    print_flags(pban->ban_flags));
+            fprintf(fp, "%-20s %-2d %s~\n", pban->name, pban->level,
+                    bv_to_string(pban->bv_flags, bv_str_list_ban));
         }
     }
 
@@ -68,6 +81,7 @@ void load_bans(void)
 {
     FILE *fp;
     BAN_DATA *ban_last;
+    char *tmp_string;
 
     if ((fp = fopen(sysconfig.ban_file, "r")) == NULL)
         return;
@@ -86,7 +100,9 @@ void load_bans(void)
 
         pban->name = str_dup(fread_word(fp));
         pban->level = fread_number(fp);
-        pban->ban_flags = fread_flag(fp);
+        tmp_string = fread_string(fp);
+        bv_from_string(pban->bv_flags, bv_str_list_ban, tmp_string, BV_STR_SET);
+        free_string(&tmp_string);
         fread_to_eol(fp);
 
         if (ban_list == NULL)
@@ -107,19 +123,19 @@ bool check_ban(char *site, int type)
 
     for (pban = ban_list; pban != NULL; pban = pban->next)
     {
-        if (!IS_SET(pban->ban_flags, type))
+        if (!bv_is_set(pban->bv_flags, type))
             continue;
 
-        if (IS_SET(pban->ban_flags, BAN_PREFIX)
-                && IS_SET(pban->ban_flags, BAN_SUFFIX)
+        if (bv_is_set(pban->bv_flags, BV_BAN_PREFIX)
+                && bv_is_set(pban->bv_flags, BV_BAN_SUFFIX)
                 && strstr(pban->name, host) != NULL)
             return TRUE;
 
-        if (IS_SET(pban->ban_flags, BAN_PREFIX)
+        if (bv_is_set(pban->bv_flags, BV_BAN_PREFIX)
                 && !str_suffix(pban->name, host))
             return TRUE;
 
-        if (IS_SET(pban->ban_flags, BAN_SUFFIX)
+        if (bv_is_set(pban->bv_flags, BV_BAN_SUFFIX)
                 && !str_prefix(pban->name, host))
             return TRUE;
     }
@@ -153,16 +169,16 @@ static void ban_site(CHAR_DATA * ch, char *argument, bool fPerm)
         for (pban = ban_list; pban != NULL; pban = pban->next)
         {
             sprintf(buf2, "%s%s%s",
-                    IS_SET(pban->ban_flags, BAN_PREFIX) ? "*" : "",
+                    bv_is_set(pban->bv_flags, BV_BAN_PREFIX) ? "*" : "",
                     pban->name,
-                    IS_SET(pban->ban_flags, BAN_SUFFIX) ? "*" : "");
+                    bv_is_set(pban->bv_flags, BV_BAN_SUFFIX) ? "*" : "");
             sprintf(buf, "%-12s    %-3d  %-7s  %s\n\r",
                     buf2, pban->level,
-                    IS_SET(pban->ban_flags, BAN_NEWBIES) ? "newbies" :
-                    IS_SET(pban->ban_flags, BAN_PERMIT) ? "permit" :
-                    IS_SET(pban->ban_flags, BAN_ALL) ? "all" : "",
-                    IS_SET(pban->ban_flags,
-                           BAN_PERMANENT) ? "perm" : "temp");
+                    bv_is_set(pban->bv_flags, BV_BAN_NEWBIES) ? "newbies" :
+                    bv_is_set(pban->bv_flags, BV_BAN_PERMIT) ? "permit" :
+                    bv_is_set(pban->bv_flags, BV_BAN_ALL) ? "all" : "",
+                    bv_is_set(pban->bv_flags,
+                              BV_BAN_PERMANENT) ? "perm" : "temp");
             add_buf(buffer, buf);
         }
 
@@ -173,11 +189,11 @@ static void ban_site(CHAR_DATA * ch, char *argument, bool fPerm)
 
     /* find out what type of ban */
     if (arg2[0] == '\0' || !str_prefix(arg2, "all"))
-        type = BAN_ALL;
+        type = BV_BAN_ALL;
     else if (!str_prefix(arg2, "newbies"))
-        type = BAN_NEWBIES;
+        type = BV_BAN_NEWBIES;
     else if (!str_prefix(arg2, "permit"))
-        type = BAN_PERMIT;
+        type = BV_BAN_PERMIT;
     else
     {
         send_to_char
@@ -232,14 +248,15 @@ static void ban_site(CHAR_DATA * ch, char *argument, bool fPerm)
     pban->level = get_trust(ch);
 
     /* set ban type */
-    pban->ban_flags = type;
+    bv_clear(pban->bv_flags);
+    bv_set(pban->bv_flags,type);
 
     if (prefix)
-        SET_BIT(pban->ban_flags, BAN_PREFIX);
+        bv_set(pban->bv_flags, BV_BAN_PREFIX);
     if (suffix)
-        SET_BIT(pban->ban_flags, BAN_SUFFIX);
+        bv_set(pban->bv_flags, BV_BAN_SUFFIX);
     if (fPerm)
-        SET_BIT(pban->ban_flags, BAN_PERMANENT);
+        bv_set(pban->bv_flags, BV_BAN_PERMANENT);
 
     pban->next = ban_list;
     ban_list = pban;
@@ -301,4 +318,23 @@ void do_allow(CHAR_DATA * ch, char *argument)
 
     send_to_char("Site is not banned.\n\r", ch);
     return;
+}
+
+BAN_DATA *new_ban(void)
+{
+    BAN_DATA *ban;
+
+    ban = malloc(sizeof(BAN_DATA));
+
+    ban->bv_flags = bv_new(BV_BAN_MAX);
+    ban->level=0;
+    ban->name=&str_empty[0];
+    return ban;
+}
+
+void free_ban(BAN_DATA * ban)
+{
+    bv_delete(ban->bv_flags);
+    free_string(&ban->name);
+    free(ban);
 }

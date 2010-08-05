@@ -34,25 +34,6 @@
 #include "recycle.h"
 
 
-/* BAN_DATA is no longer recycled. */
-BAN_DATA *new_ban(void)
-{
-    BAN_DATA *ban;
-    
-    ban = malloc(sizeof(BAN_DATA));
-
-    ban->ban_flags=0;
-    ban->level=0;
-    ban->name=&str_empty[0];
-    return ban;
-}
-
-void free_ban(BAN_DATA * ban)
-{
-    free_string(&ban->name);
-    free(ban);
-}
-
 static BUFFER *buf_free;
 
 /* buffer sizes */

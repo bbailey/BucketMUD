@@ -45,7 +45,6 @@ typedef struct affect_data AFFECT_DATA;
 typedef struct newaffect_data NEWAFFECT_DATA;
 typedef struct area_data AREA_DATA;
 typedef struct auction_data AUCTION_DATA;	/* Added for automated auction. -Lancelight */
-typedef struct ban_data BAN_DATA;
 typedef struct buf_type BUFFER;	/* Added for recycle.h -Lancelight */
 typedef struct char_data CHAR_DATA;
 typedef struct descriptor_data DESCRIPTOR_DATA;
@@ -232,18 +231,6 @@ struct struckdrunk
     int min_drunk_level;
     int number_of_rep;
     char *replacement[11];
-};
-
-/*
- * Site ban structure.
- * Added for the new ban functions. -Lancelight
- */
-struct ban_data
-{
-    BAN_DATA *next;
-    int ban_flags;
-    int level;
-    char *name;
 };
 
 /* The next couple of buffer structs were added for recyle.h -Lancelight */
@@ -1203,7 +1190,6 @@ extern SHOP_DATA *shop_first;
 extern CLAN_DATA *clan_first;
 extern CLAN_DATA *clan_last;
 
-extern BAN_DATA *ban_list;
 extern CHAR_DATA *char_list;
 extern CHAR_DATA *player_list;
 extern MPROG_DATA *mudprog_first;
@@ -1623,14 +1609,6 @@ char *format_string(char *oldstring /*, bool fSpace */ );
 char *first_arg(char *argument, char *arg_first, bool fCase);
 char *string_unpad(char *argument);
 char *string_proper(char *argument);
-
-/* ban data recycling */
-#define BD BAN_DATA
-/* ban data recycling */
-#define BD BAN_DATA
-BD *new_ban(void);
-void free_ban(BAN_DATA * ban);
-#undef BD
 
 /* olc.c */
 bool run_olc_editor(DESCRIPTOR_DATA * d);
