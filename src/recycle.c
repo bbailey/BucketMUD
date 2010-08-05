@@ -33,38 +33,24 @@
 #include "merc.h"
 #include "recycle.h"
 
-/* stuff for recycling ban structures */
-BAN_DATA *ban_free;
 
+/* BAN_DATA is no longer recycled. */
 BAN_DATA *new_ban(void)
 {
-    static BAN_DATA ban_zero;
     BAN_DATA *ban;
+    
+    ban = malloc(sizeof(BAN_DATA));
 
-    if (ban_free == NULL)
-        ban = alloc_perm(sizeof(*ban));
-    else
-    {
-        ban = ban_free;
-        ban_free = ban_free->next;
-    }
-
-    *ban = ban_zero;
-    VALIDATE(ban);
-    ban->name = &str_empty[0];
+    ban->ban_flags=0;
+    ban->level=0;
+    ban->name=&str_empty[0];
     return ban;
 }
 
 void free_ban(BAN_DATA * ban)
 {
-    if (!IS_VALID(ban))
-        return;
-
     free_string(&ban->name);
-    INVALIDATE(ban);
-
-    ban->next = ban_free;
-    ban_free = ban;
+    free(ban);
 }
 
 static BUFFER *buf_free;

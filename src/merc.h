@@ -241,7 +241,6 @@ struct struckdrunk
 struct ban_data
 {
     BAN_DATA *next;
-    bool valid;
     int ban_flags;
     int level;
     char *name;
@@ -1219,7 +1218,6 @@ extern MPROG_DATA *mprog_free;
 extern MPROG_GROUP *mprog_group_free;
 extern AFFECT_DATA *affect_free;
 extern NEWAFFECT_DATA *newaffect_free;
-extern BAN_DATA *ban_free;
 extern CHAR_DATA *char_free;
 extern DESCRIPTOR_DATA *descriptor_free;
 extern EXTRA_DESCR_DATA *extra_descr_free;
