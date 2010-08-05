@@ -23,9 +23,23 @@
 #include <time.h>
 #include "merc.h"
 #include "interp.h"
+#include "BitVector.h"
 
 extern int _filbuf(FILE *);
 extern bool chaos;
+
+
+/* Convert a standard bitvector to our new BitVector type */
+void bv_from_old_bitvector(BitVector *bv, long old_bitvector)
+{
+    int index = 0;
+
+    for (index=0; index<31; index++)
+    {
+        if (old_bitvector & (1<<index))
+            bv_set(bv,index);
+    }
+}
 
 /* This is called by ban.c -Lancelight */
 char *print_flags(int flag)
