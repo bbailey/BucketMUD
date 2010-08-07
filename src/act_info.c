@@ -61,7 +61,7 @@ static char *const where_name[] =
 static void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch);
 static void show_char_to_char_1(CHAR_DATA * victim, CHAR_DATA * ch);
 static void show_char_to_char(CHAR_DATA * list, CHAR_DATA * ch);
-static bool check_blind(CHAR_DATA * ch);
+bool check_blind(CHAR_DATA * ch);
 
 /*
  * externs
@@ -563,7 +563,7 @@ static void show_char_to_char(CHAR_DATA * list, CHAR_DATA * ch)
     return;
 }
 
-static bool check_blind(CHAR_DATA * ch)
+bool check_blind(CHAR_DATA * ch)
 {
 
     if (!IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT))

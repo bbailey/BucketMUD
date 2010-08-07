@@ -2665,6 +2665,8 @@ static char *damstatus(CHAR_DATA * ch)
     return (wound);
 }
 
+extern bool check_blind(CHAR_DATA * ch);
+
 static char *doparseprompt(CHAR_DATA * ch)
 {
     CHAR_DATA *tank, *victim;
@@ -2847,6 +2849,27 @@ static char *doparseprompt(CHAR_DATA * ch)
         case 'X':
             sprintf(workstr, "%ld",
                     exp_per_level(ch, ch->pcdata->points) - ch->exp);
+            strcat(finished_prompt, workstr);
+            fp_point += strlen(workstr);
+            orig_prompt++;
+            break;
+        case 'R':
+            if (!ch->in_room)
+            {
+                sprintf(workstr, "%s", "nowhere");
+            }
+            else if ((ch->position <= POS_SLEEPING) || !check_blind(ch))
+            {
+                sprintf(workstr, "%s", "Unknown");
+            }
+            else if (!IS_NPC(ch) && !IS_SET(ch->act, PLR_HOLYLIGHT) && room_is_dark(ch->in_room))
+            {
+                sprintf(workstr, "%s", "Pitch Black");
+            }
+            else 
+            {
+                sprintf(workstr, "%s", ch->in_room->name);
+            }
             strcat(finished_prompt, workstr);
             fp_point += strlen(workstr);
             orig_prompt++;
