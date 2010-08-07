@@ -31,8 +31,12 @@
 #include <string.h>
 #include <time.h>
 #include <stdarg.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "olc.h"
+#include "bv_tables.h"
 
 extern void do_look(CHAR_DATA * ch, char *argument);
 extern void do_save(CHAR_DATA * ch, char *argument);
@@ -1832,16 +1836,16 @@ void do_clan(CHAR_DATA * ch, char *argument)
 
     if (!str_cmp(arg1, "snoop"))
     {
-        if (IS_SET(ch->comm, COMM_SNOOP_CLAN))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_SNOOP_CLAN))
         {
-            REMOVE_BIT(ch->comm, COMM_SNOOP_CLAN);
+            bv_unset(ch->bv_comm_flags, BV_COMM_SNOOP_CLAN);
             send_to_char
             ("You no longer are snooping the clan channels.\n\r", ch);
             return;
         }
         else
         {
-            SET_BIT(ch->comm, COMM_SNOOP_CLAN);
+            bv_set(ch->bv_comm_flags, BV_COMM_SNOOP_CLAN);
             send_to_char("You are now snooping clans.\n\r", ch);
             return;
         }
@@ -2101,13 +2105,13 @@ void do_clantalk(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char("You must turn off quiet mode first.\n\r", ch);
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char("The gods have revoked your channel priviliges.\n\r",
                      ch);
@@ -2116,20 +2120,20 @@ void do_clantalk(CHAR_DATA * ch, char *argument)
 
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOCLAN))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CLAN))
         {
             send_to_char("`BClan channel is now ON.\n\r`w", ch);
-            REMOVE_BIT(ch->comm, COMM_NOCLAN);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_CLAN);
         }
         else
         {
             send_to_char("`BClan channel is now OFF.\n\r`w", ch);
-            SET_BIT(ch->comm, COMM_NOCLAN);
+            bv_set(ch->bv_comm_flags, BV_COMM_NO_CLAN);
         }
     }
 
     /* Re-enable the channel if it was disabled */
-    REMOVE_BIT(ch->comm, COMM_NOCLAN);
+    bv_unset(ch->bv_comm_flags, BV_COMM_NO_CLAN);
 
 #ifdef CLANTALK_DRUNK
     /* Make the words drunk if needed */
@@ -2152,11 +2156,11 @@ void do_clantalk(CHAR_DATA * ch, char *argument)
                                              POS_SLEEPING
                                              && victim->pcdata->clan ==
                                              ch->pcdata->clan)
-                                            || IS_SET(victim->comm,
-                                                      COMM_SNOOP_CLAN))
-                && !IS_SET(victim->comm, COMM_DEAF)
-                && !IS_SET(victim->comm, COMM_QUIET)
-                && !IS_SET(victim->comm, COMM_NOCLAN))
+                                            || bv_is_set(victim->bv_comm_flags,
+                                                      BV_COMM_SNOOP_CLAN))
+                && !bv_is_set(victim->bv_comm_flags, BV_COMM_DEAF)
+                && !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET)
+                && !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_CLAN))
         {
             printf_to_char(victim, "`B%s`R<`w%s`R>`w %s`w\n\r",
                            clan->whoname[0] !=

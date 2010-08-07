@@ -21,6 +21,7 @@
 
 #include <stdbool.h>
 
+#include "BitVector.h"
 #include "magic.h"
 
 #if defined(FALSE)
@@ -576,7 +577,7 @@ struct char_data
     long exp;
     long exp_stack;
     long act;
-    long comm;			/* RT added to pad the vector */
+    BitVector *bv_comm_flags;
     long imm_flags;
     long res_flags;
     long vuln_flags;
@@ -1477,7 +1478,6 @@ char *imm_bit_name(int imm_flags);
 char *form_bit_name(int form_flags);
 char *part_bit_name(int part_flags);
 char *weapon_bit_name(int weapon_flags);
-char *comm_bit_name(int comm_flags);
 
 /* interp.c */
 int cmd_level(char *argument);

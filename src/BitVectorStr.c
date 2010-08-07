@@ -40,7 +40,11 @@ gchar *bv_to_string(const BitVector *bv, const BitVectorStringList *bv_str_list)
             g_string_append_printf(tmp_output, "%s ", bv_str_list[index].name_);
     }
 
-    output = g_strdup(tmp_output->str);
+    if (!g_strcasecmp(tmp_output->str, "")) {
+        output = g_strdup("none");
+    } else {
+        output = g_strdup(tmp_output->str);
+    }
     g_string_free(tmp_output, true);
 
     return output;

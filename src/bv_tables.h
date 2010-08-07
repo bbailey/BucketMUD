@@ -1,0 +1,38 @@
+#ifndef BUCKETMUD_BV_TABLES_H
+#define BUCKETMUD_BV_TABLES_H
+
+#include "BitVectorStr.h"
+
+typedef enum {
+    BV_COMM_QUIET = 0,
+    BV_COMM_DEAF = 1,
+    BV_COMM_NO_WIZ = 2,
+    BV_COMM_NO_AUCTION = 3,
+    BV_COMM_NO_GOSSIP = 4,
+    BV_COMM_NO_QUESTION = 5,
+    BV_COMM_NO_OOC = 6,
+    BV_COMM_NO_INFO = 7,
+    BV_COMM_NO_CLAN = 8,
+    BV_COMM_SNOOP_CLAN = 9,
+    BV_COMM_NO_MUSIC = 10,
+    BV_COMM_COMPACT = 11,
+    BV_COMM_BRIEF = 12,
+    BV_COMM_PROMPT = 13,
+    BV_COMM_COMBINE = 14,
+    BV_COMM_TELNET_GA = 15,
+    BV_COMM_NO_SPOUSETALK = 16,
+    BV_COMM_NO_ADMIN = 17,
+    BV_COMM_NO_HERO = 18,
+    BV_COMM_NO_EMOTE = 19,
+    BV_COMM_NO_SHOUT = 20,
+    BV_COMM_NO_TELL = 21,
+    BV_COMM_NO_CHANNELS = 22,
+    BV_COMM_VIS_CONSOLE = 23,
+    BV_COMM_NO_GOCIAL = 24,
+    BV_COMM_TELLOFF = 25,
+    BV_COMM_MAX
+} BV_COMM_FLAGS;
+
+extern const BitVectorStringList bv_str_list_comm[];
+
+#endif // BUCKETMUD_BV_TABLES_H

@@ -21,9 +21,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "interp.h"
 #include "BitVector.h"
+#include "bv_tables.h"
 
 extern int _filbuf(FILE *);
 extern bool chaos;
@@ -202,6 +206,7 @@ static void fwrite_char(CHAR_DATA * ch, FILE * fp)
     AFFECT_DATA *paf;
     NEWAFFECT_DATA *npaf;
     int sn, gn, pos, i;
+    gchar *tmp_str = NULL;
 
     fprintf(fp, "#%s\n", IS_NPC(ch) ? "MOB" : "PLAYER");
 
@@ -250,7 +255,11 @@ static void fwrite_char(CHAR_DATA * ch, FILE * fp)
         fprintf(fp, "AfBy %ld\n", ch->affected_by);
     if (ch->newaff[0] != 0)
         fprintf(fp, "NewAfBy %s\n", ch->newaff);
-    fprintf(fp, "Comm %ld\n", ch->comm);
+
+    tmp_str = bv_to_string(ch->bv_comm_flags, bv_str_list_comm);
+    fprintf(fp, "BvCommFlags %s~\n", tmp_str );
+    g_free(tmp_str);
+    
     if (ch->incarnations != 0)
         fprintf(fp, "Inca %d\n", ch->incarnations);
     if (ch->invis_level != 0)
@@ -401,6 +410,7 @@ static void fwrite_char(CHAR_DATA * ch, FILE * fp)
 static void fwrite_pet(CHAR_DATA * pet, FILE * fp)
 {
     AFFECT_DATA *paf;
+    gchar *tmp_str = NULL;
 
     fprintf(fp, "#PET\n");
 
@@ -429,8 +439,11 @@ static void fwrite_pet(CHAR_DATA * pet, FILE * fp)
         fprintf(fp, "Act  %ld\n", pet->act);
     if (pet->affected_by != pet->pIndexData->affected_by)
         fprintf(fp, "AfBy %ld\n", pet->affected_by);
-    if (pet->comm != 0)
-        fprintf(fp, "Comm %ld\n", pet->comm);
+
+    tmp_str = bv_to_string(pet->bv_comm_flags, bv_str_list_comm);
+    fprintf(fp, "BvCommFlags %s~\n", tmp_str);
+    g_free(tmp_str);
+    
     fprintf(fp, "Pos  %d\n", pet->position =
                 POS_FIGHTING ? POS_STANDING : pet->position);
     if (pet->saving_throw != 0)
@@ -655,7 +668,10 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
     ch->newaff[0] = 0;
     ch->act = PLR_NOSUMMON
               | PLR_AUTOEXIT | PLR_AUTOLOOT | PLR_AUTOSAC | PLR_AUTOGOLD;
-    ch->comm = COMM_COMBINE | COMM_PROMPT;
+    bv_clear(ch->bv_comm_flags);
+    bv_set(ch->bv_comm_flags, BV_COMM_COMBINE);
+    bv_set(ch->bv_comm_flags, BV_COMM_PROMPT);
+
     ch->invis_level = 0;
     ch->practice = 0;
     ch->train = 0;
@@ -876,6 +892,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
     char *word = NULL;
     int count = 0;
     bool fMatch = FALSE;
+    char *tmp_string= NULL;
 
     for (;;)
     {
@@ -1067,7 +1084,17 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 }		/* for */
 
                 fMatch = TRUE;
+                break;
             }			/* Boards */
+            
+            if (!str_cmp(word, "BvCommFlags"))
+            {
+                tmp_string = fread_string(fp);
+                bv_from_string(ch->bv_comm_flags, bv_str_list_comm, tmp_string, BV_STR_SET);
+                free_string(&tmp_string);
+                fMatch = true;
+                break;
+            }
             break;
 
         case 'C':
@@ -1084,7 +1111,13 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }
             KEY("Cmnt", ch->pcdata->comment, fread_string(fp));
-            KEY("Comm", ch->comm, fread_number(fp));
+            
+            if (!str_cmp(word, "Comm"))
+            {
+                bv_from_old_bitvector(ch->bv_comm_flags, fread_number(fp));
+                fMatch = true;
+                break;
+            }
 
             break;
 
@@ -1377,6 +1410,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
     char *word;
     CHAR_DATA *pet;
     bool fMatch;
+    char *tmp_string = NULL;
 
     /* first entry had BETTER be the vnum or we barf */
     word = feof(fp) ? "END" : fread_word(fp);
@@ -1477,8 +1511,25 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
             }
             break;
 
+        case 'B':
+            if (!str_cmp(word, "BvCommFlags"))
+            {
+                tmp_string = fread_string(fp);
+                bv_from_string(pet->bv_comm_flags, bv_str_list_comm, tmp_string, BV_STR_SET);
+                free_string(&tmp_string);
+                fMatch = true;
+                break;
+            }
+            break;
+
         case 'C':
-            KEY("Comm", pet->comm, fread_number(fp));
+            if (!str_cmp(word, "Comm"))
+            {
+                bv_from_old_bitvector(pet->bv_comm_flags, fread_number(fp));
+                fMatch = true;
+                break;
+            }
+
             break;
 
         case 'D':

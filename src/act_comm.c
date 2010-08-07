@@ -15,7 +15,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+
+#include "glib.h"
+
 #include "merc.h"
+#include "bv_tables.h"
 
 /* command procedures needed */
 void do_quit(CHAR_DATA * ch, char *argument);
@@ -102,7 +106,7 @@ void do_channels(CHAR_DATA * ch, char *argument)
     send_to_char("`K---------------------`w\n\r", ch);
 
     printf_to_char(ch, "`w%-15s", CFG_GOS_NAME);
-    if (!IS_SET(ch->comm, COMM_NOGOSSIP))
+    if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_GOSSIP))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
@@ -110,7 +114,7 @@ void do_channels(CHAR_DATA * ch, char *argument)
 #ifdef USE_GOCIAL
 
     printf_to_char(ch, "`w%-15s", CFG_GOC_NAME);
-    if (!IS_SET(ch->comm, COMM_NOGOC))
+    if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_GOCIAL))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
@@ -118,19 +122,19 @@ void do_channels(CHAR_DATA * ch, char *argument)
 #endif
 
     send_to_char("`Yau`ycti`Yon`w        ", ch);
-    if (!IS_SET(ch->comm, COMM_NOAUCTION))
+    if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_AUCTION))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
 
     printf_to_char(ch, "`w%-15s", CFG_OOC_NAME);
-    if (!IS_SET(ch->comm, COMM_NO_OOC))
+    if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_OOC))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
 
     send_to_char("`RQ`r/`RA            ", ch);
-    if (!IS_SET(ch->comm, COMM_NOQUESTION))
+    if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_QUESTION))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
@@ -138,7 +142,7 @@ void do_channels(CHAR_DATA * ch, char *argument)
     if (IS_HERO(ch) && (can_do_immcmd(ch, "immtalk")))
     {
         send_to_char("`Ki`Wm`Km `Kc`Wh`Ka`Wn`Kn`We`Kl`w    ", ch);
-        if (!IS_SET(ch->comm, COMM_NOWIZ))
+        if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_WIZ))
             send_to_char("`GON`w\n\r", ch);
         else
             send_to_char("`ROFF`w\n\r", ch);
@@ -148,7 +152,7 @@ void do_channels(CHAR_DATA * ch, char *argument)
     if (IS_HERO(ch) && (can_do_immcmd(ch, "admintalk")))
     {
         send_to_char("`Ka`Wd`Km`Ki`Wn`Kt`Wa`Kl`Wk`K `w     ", ch);
-        if (!IS_SET(ch->comm, COMM_NOADMIN))
+        if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_ADMIN))
             send_to_char("`GON`w\n\r", ch);
         else
             send_to_char("`ROFF`w\n\r", ch);
@@ -160,7 +164,7 @@ void do_channels(CHAR_DATA * ch, char *argument)
             && (can_do_immcmd(ch, "herotalk")))
     {
         send_to_char("`Kh`We`Kr`Ko`Wt`Ka`Wl`Kk`W `K `w     ", ch);
-        if (!IS_SET(ch->comm, COMM_NOHERO))
+        if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_HERO))
             send_to_char("`GON`w\n\r", ch);
         else
             send_to_char("`ROFF`w\n\r", ch);
@@ -168,25 +172,25 @@ void do_channels(CHAR_DATA * ch, char *argument)
 #endif
 
     send_to_char("`Csh`cou`Cts`w         ", ch);
-    if (!IS_SET(ch->comm, COMM_DEAF))
+    if (!bv_is_set(ch->bv_comm_flags, BV_COMM_DEAF))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
 
     send_to_char("`Rinfo`w           ", ch);
-    if (!IS_SET(ch->comm, COMM_NOINFO))
+    if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_INFO))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
 
     send_to_char("`Bmusic`w          ", ch);
-    if (!IS_SET(ch->comm, COMM_NOMUSIC))
+    if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_MUSIC))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
 
     send_to_char("`Kquiet mode`w     ", ch);
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
@@ -197,7 +201,7 @@ void do_channels(CHAR_DATA * ch, char *argument)
         {
             send_to_char("`wsp`Wou`wse         ", ch);
 
-            if (!IS_SET(ch->comm, COMM_NOSPOUSETALK))
+            if (!bv_is_set(ch->bv_comm_flags, BV_COMM_NO_SPOUSETALK))
                 send_to_char("`GON`w\n\r", ch);
             else
                 send_to_char("`ROFF`w\n\r", ch);
@@ -225,16 +229,16 @@ void do_channels(CHAR_DATA * ch, char *argument)
             send_to_char("Scroll buffering is off.\n\r", ch);
     }
 
-    if (IS_SET(ch->comm, COMM_NOSHOUT))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_SHOUT))
         send_to_char("You cannot shout.\n\r", ch);
 
-    if (IS_SET(ch->comm, COMM_NOTELL))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_TELL))
         send_to_char("You cannot use tell.\n\r", ch);
 
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
         send_to_char("You cannot use channels.\n\r", ch);
 
-    if (IS_SET(ch->comm, COMM_NOEMOTE))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_EMOTE))
         send_to_char("You cannot emote.\n\r", ch);
 
 }
@@ -242,37 +246,37 @@ void do_channels(CHAR_DATA * ch, char *argument)
 /* RT deaf blocks out all shouts */
 void do_deaf(CHAR_DATA * ch, char *argument)
 {
-    if (IS_SET(ch->comm, COMM_NOSHOUT))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_SHOUT))
     {
         send_to_char("The gods have taken away your ability to shout.\n\r",
                      ch);
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_DEAF))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_DEAF))
     {
         send_to_char("You can now hear shouts again.\n\r", ch);
-        REMOVE_BIT(ch->comm, COMM_DEAF);
+        bv_unset(ch->bv_comm_flags, BV_COMM_DEAF);
     }
     else
     {
         send_to_char("From now on, you won't hear shouts.\n\r", ch);
-        SET_BIT(ch->comm, COMM_DEAF);
+        bv_set(ch->bv_comm_flags, BV_COMM_DEAF);
     }
 }
 
 /* DNC - telloff for imms */
 void do_telloff(CHAR_DATA * ch, char *argument)
 {
-    if (IS_SET(ch->comm, COMM_TELLOFF))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_TELLOFF))
     {
         send_to_char("You can now hear tells again.\n\r", ch);
-        REMOVE_BIT(ch->comm, COMM_TELLOFF);
+        bv_unset(ch->bv_comm_flags, BV_COMM_TELLOFF);
     }
     else
     {
         send_to_char("From now on, you won't hear tells.\n\r", ch);
-        SET_BIT(ch->comm, COMM_TELLOFF);
+        bv_set(ch->bv_comm_flags, BV_COMM_TELLOFF);
     }
 }
 
@@ -281,10 +285,10 @@ void do_quiet(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
 
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char("Quiet mode removed.\n\r", ch);
-        REMOVE_BIT(ch->comm, COMM_QUIET);
+        bv_unset(ch->bv_comm_flags, BV_COMM_QUIET);
         if (ch->pcdata->message != NULL)
         {
             sprintf(buf,
@@ -299,7 +303,7 @@ void do_quiet(CHAR_DATA * ch, char *argument)
         send_to_char
         ("From now on, you will only hear says and emotes.\n\r", ch);
         send_to_char("Messages are being recorded.\n\r", ch);
-        SET_BIT(ch->comm, COMM_QUIET);
+        bv_set(ch->bv_comm_flags, BV_COMM_QUIET);
     }
 }
 
@@ -310,14 +314,14 @@ void do_gossip(CHAR_DATA * ch, char *argument)
     /* No argument - toggle on/off */
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOGOSSIP))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_GOSSIP))
         {
-            REMOVE_BIT(ch->comm, COMM_NOGOSSIP);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_GOSSIP);
             send_to_char(CFG_GOS_NAME "`0 channel is now `GON`0.\n\r", ch);
         }
         else
         {
-            SET_BIT(ch->comm, COMM_NOGOSSIP);
+            bv_set(ch->bv_comm_flags, BV_COMM_NO_GOSSIP);
             send_to_char(CFG_GOS_NAME "`0 channel is now `ROFF`0.\n\r",
                          ch);
         }
@@ -326,7 +330,7 @@ void do_gossip(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for channel being OFF */
-    if (IS_SET(ch->comm, COMM_NOGOSSIP))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_GOSSIP))
     {
         send_to_char("`0Cannot send to the " CFG_GOS_NAME
                      "`0 channel when you have it turned off!\n\r", ch);
@@ -334,7 +338,7 @@ void do_gossip(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for quiet mode */
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char("`0Cannot send to the " CFG_OOC_NAME
                      "`0 channel without turning off quiet mode!\n\r", ch);
@@ -342,7 +346,7 @@ void do_gossip(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for nochannel */
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char
         ("The gods have revoked all of your channel priviliges!\n\r",
@@ -365,9 +369,9 @@ void do_gossip(CHAR_DATA * ch, char *argument)
         {
             if (victim != ch &&
                     d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_NOGOSSIP) &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_QUIET))
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_GOSSIP) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
             {
                 act_new(CFG_GOS, ch, argument, victim, TO_VICT,
                         MIN_POS_GOS);
@@ -407,14 +411,14 @@ void do_gocial(CHAR_DATA * ch, char *argument)
     /* No argument - toggle on/off */
     if (argument[0] == '\0' && command[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOGOC))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_GOCIAL))
         {
-            REMOVE_BIT(ch->comm, COMM_NOGOC);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_GOCIAL);
             send_to_char(CFG_GOC_NAME "`0 channel is now `GON`0.\n\r", ch);
         }
         else
         {
-            SET_BIT(ch->comm, COMM_NOGOC);
+            bv_set(ch->bv_comm_flags, BV_COMM_NO_GOCIAL);
             send_to_char(CFG_GOC_NAME "`0 channel is now `ROFF`0.\n\r",
                          ch);
         }
@@ -438,13 +442,13 @@ void do_gocial(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!IS_NPC(ch) && IS_SET(ch->comm, COMM_QUIET))
+    if (!IS_NPC(ch) && bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char("You must turn off quiet mode first.\n\r", ch);
         return;
     }
 
-    if (!IS_NPC(ch) && IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (!IS_NPC(ch) && bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char("The gods have revoked your channel priviliges.\n\r",
                      ch);
@@ -479,8 +483,8 @@ void do_gocial(CHAR_DATA * ch, char *argument)
             vch = d->original ? d->original : d->character;
             if (d->connected == CON_PLAYING &&
                     d->character != ch &&
-                    !IS_SET(vch->comm, COMM_NOGOC) &&
-                    !IS_SET(vch->comm, COMM_QUIET))
+                    !bv_is_set(vch->bv_comm_flags, BV_COMM_NO_GOCIAL) &&
+                    !bv_is_set(vch->bv_comm_flags, BV_COMM_QUIET))
             {
                 act_new(buf, ch, NULL, vch, TO_VICT, POS_DEAD);
             }
@@ -502,8 +506,8 @@ void do_gocial(CHAR_DATA * ch, char *argument)
             vch = d->original ? d->original : d->character;
             if (d->connected == CON_PLAYING &&
                     d->character != ch &&
-                    !IS_SET(vch->comm, COMM_NOGOC) &&
-                    !IS_SET(vch->comm, COMM_QUIET))
+                    !bv_is_set(vch->bv_comm_flags, BV_COMM_NO_GOCIAL) &&
+                    !bv_is_set(vch->bv_comm_flags, BV_COMM_QUIET))
             {
                 act_new(buf, ch, NULL, vch, TO_VICT, POS_DEAD);
             }
@@ -660,8 +664,8 @@ void do_gocial(CHAR_DATA * ch, char *argument)
             if (d->connected == CON_PLAYING &&
                     d->character != ch &&
                     d->character != victim &&
-                    !IS_SET(vch->comm, COMM_NOGOC) &&
-                    !IS_SET(vch->comm, COMM_QUIET))
+                    !bv_is_set(vch->bv_comm_flags, BV_COMM_NO_GOCIAL) &&
+                    !bv_is_set(vch->bv_comm_flags,BV_COMM_QUIET))
             {
                 act_new(buf, ch, NULL, vch, TO_VICT, POS_DEAD);
             }
@@ -679,14 +683,14 @@ void do_music(CHAR_DATA * ch, char *argument)
     /* No argument - toggle on/off */
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOMUSIC))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_MUSIC))
         {
-            REMOVE_BIT(ch->comm, COMM_NOMUSIC);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_MUSIC);
             send_to_char(CFG_MUS_NAME "`0 channel is now `GON`0.\n\r", ch);
         }
         else
         {
-            SET_BIT(ch->comm, COMM_NOMUSIC);
+            bv_set(ch->bv_comm_flags, BV_COMM_NO_MUSIC);
             send_to_char(CFG_MUS_NAME "`0 channel is now `ROFF`0.\n\r",
                          ch);
         }
@@ -695,7 +699,7 @@ void do_music(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for channel being OFF */
-    if (IS_SET(ch->comm, COMM_NOMUSIC))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_MUSIC))
     {
         send_to_char("`0Cannot send to the " CFG_MUS_NAME
                      "`0 channel when you have it turned off!\n\r", ch);
@@ -703,7 +707,7 @@ void do_music(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for quiet mode */
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char("`0Cannot send to the " CFG_MUS_NAME
                      "`0 channel without turning off quiet mode!\n\r", ch);
@@ -711,7 +715,7 @@ void do_music(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for nochannel */
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char
         ("The gods have revoked all of your channel priviliges!\n\r",
@@ -732,9 +736,9 @@ void do_music(CHAR_DATA * ch, char *argument)
         {
             if (victim != ch &&
                     d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_NOMUSIC) &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_QUIET))
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_MUSIC) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
             {
                 act_new(CFG_MUS, ch, argument, victim, TO_VICT,
                         MIN_POS_MUS);
@@ -756,16 +760,16 @@ void do_question(CHAR_DATA * ch, char *argument)
 
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOQUESTION))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_QUESTION))
         {
-            if (IS_SET(ch->comm, COMM_NOQUESTION))
+            if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_QUESTION))
             {
-                REMOVE_BIT(ch->comm, COMM_NOQUESTION);
+                bv_unset(ch->bv_comm_flags, BV_COMM_NO_QUESTION);
                 send_to_char("`0Q/A channel is now `GON`0.\n\r", ch);
             }
             else
             {
-                SET_BIT(ch->comm, COMM_NOQUESTION);
+                bv_set(ch->bv_comm_flags, BV_COMM_NO_QUESTION);
                 send_to_char("`0Q/A channel is now `ROFF`0.\n\r", ch);
             }
 
@@ -774,7 +778,7 @@ void do_question(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for channel being OFF */
-    if (IS_SET(ch->comm, COMM_NOQUESTION))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_QUESTION))
     {
         send_to_char
         ("`0Cannot send to the Q/A channel when you have it turned off!\n\r",
@@ -783,7 +787,7 @@ void do_question(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for quiet mode */
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char
         ("`0Cannot send to the Q/A channel without turning off quiet mode!\n\r",
@@ -792,7 +796,7 @@ void do_question(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for nochannel */
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char
         ("The gods have revoked all of your channel priviliges!", ch);
@@ -814,9 +818,9 @@ void do_question(CHAR_DATA * ch, char *argument)
         {
             if (victim != ch &&
                     d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_NOQUESTION) &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_QUIET))
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_QUESTION) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
             {
                 act_new(CFG_QUESTION, ch, argument, victim, TO_VICT,
                         MIN_POS_QA);
@@ -836,14 +840,14 @@ void do_answer(CHAR_DATA * ch, char *argument)
 
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOQUESTION))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_QUESTION))
         {
-            REMOVE_BIT(ch->comm, COMM_NOQUESTION);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_QUESTION);
             send_to_char("`0Q/A channel is now `GON`0.\n\r", ch);
         }
         else
         {
-            SET_BIT(ch->comm, COMM_NOQUESTION);
+            bv_set(ch->bv_comm_flags, BV_COMM_NO_QUESTION);
             send_to_char("`0Q/A channel is now `ROFF`0.\n\r", ch);
         }
 
@@ -851,7 +855,7 @@ void do_answer(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for channel being OFF */
-    if (IS_SET(ch->comm, COMM_NOQUESTION))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_QUESTION))
     {
         send_to_char
         ("`0Cannot send to the Q/A channel when you have it turned off!\n\r",
@@ -860,7 +864,7 @@ void do_answer(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for quiet mode */
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char
         ("`0Cannot send to the Q/A channel without turning off quiet mode!\n\r",
@@ -874,7 +878,7 @@ void do_answer(CHAR_DATA * ch, char *argument)
 #endif
 
     /* Check for nochannel */
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char
         ("The gods have revoked all of your channel priviliges!", ch);
@@ -891,9 +895,9 @@ void do_answer(CHAR_DATA * ch, char *argument)
         {
             if (victim != ch &&
                     d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_NOQUESTION) &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_QUIET))
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_QUESTION) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
             {
                 act_new(CFG_ANSWER, ch, argument, victim, TO_VICT,
                         MIN_POS_QA);
@@ -913,14 +917,14 @@ void do_ooc(CHAR_DATA * ch, char *argument)
     /* No argument - toggle on/off */
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NO_OOC))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_OOC))
         {
-            REMOVE_BIT(ch->comm, COMM_NO_OOC);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_OOC);
             send_to_char(CFG_OOC_NAME "`0 channel is now `GON`0.\n\r", ch);
         }
         else
         {
-            SET_BIT(ch->comm, COMM_NO_OOC);
+            bv_set(ch->bv_comm_flags, BV_COMM_NO_OOC);
             send_to_char(CFG_OOC_NAME "`0 channel is now `ROFF`0.\n\r",
                          ch);
         }
@@ -929,7 +933,7 @@ void do_ooc(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for channel being OFF */
-    if (IS_SET(ch->comm, COMM_NO_OOC))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_OOC))
     {
         send_to_char("`0Cannot send to the " CFG_OOC_NAME
                      "`0 channel when you have it turned off!\n\r", ch);
@@ -937,7 +941,7 @@ void do_ooc(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for quiet mode */
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char("`0Cannot send to the " CFG_OOC_NAME
                      "`0 channel without turning off quiet mode!\n\r", ch);
@@ -945,7 +949,7 @@ void do_ooc(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for nochannel */
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char
         ("The gods have revoked all of your channel priviliges!\n\r",
@@ -954,7 +958,7 @@ void do_ooc(CHAR_DATA * ch, char *argument)
     }
 
     /* Turn the channel on if we're using it. */
-    REMOVE_BIT(ch->comm, COMM_NO_OOC);
+    bv_unset(ch->bv_comm_flags,BV_COMM_NO_OOC);
 
 #ifdef OOC_DRUNK
     /* Make the words drunk if needed */
@@ -972,9 +976,9 @@ void do_ooc(CHAR_DATA * ch, char *argument)
         {
             if (victim != ch &&
                     d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_NO_OOC) &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_QUIET))
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_OOC) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
             {
                 act_new(CFG_OOC, ch, argument, victim, TO_VICT,
                         MIN_POS_OOC);
@@ -994,14 +998,14 @@ void do_immtalk(CHAR_DATA * ch, char *argument)
     /* No argument - toggle on/off */
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOWIZ))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_WIZ))
         {
-            REMOVE_BIT(ch->comm, COMM_NOWIZ);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_WIZ);
             send_to_char("`0Immortal channel is now `GON`0.\n\r", ch);
         }
         else
         {
-            SET_BIT(ch->comm, COMM_NOWIZ);
+            bv_set(ch->bv_comm_flags, BV_COMM_NO_WIZ);
             send_to_char("`0Immortal channel is now `ROFF`0.\n\r", ch);
         }
 
@@ -1009,7 +1013,7 @@ void do_immtalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for channel being OFF */
-    if (IS_SET(ch->comm, COMM_NOWIZ))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_WIZ))
     {
         send_to_char
         ("`0Cannot send to the Immortal channel when you have it turned off!\n\r",
@@ -1018,7 +1022,7 @@ void do_immtalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for quiet mode */
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_QUIET))
     {
         send_to_char
         ("`0Cannot send to the Immortal channel without turning off quiet mode!\n\r",
@@ -1027,7 +1031,7 @@ void do_immtalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for nochannel */
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char
         ("The gods have revoked all of your channel priviliges!\n\r",
@@ -1045,9 +1049,9 @@ void do_immtalk(CHAR_DATA * ch, char *argument)
         {
             if (victim != ch &&
                     d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_NOWIZ) &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_QUIET) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_WIZ) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET) &&
                     can_do_immcmd(victim, "immtalk"))
             {
                 act_new(CFG_IMM, ch, argument, victim, TO_VICT, POS_DEAD);
@@ -1068,14 +1072,14 @@ void do_admintalk(CHAR_DATA * ch, char *argument)
     /* No argument - toggle on/off */
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOADMIN))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_ADMIN))
         {
-            REMOVE_BIT(ch->comm, COMM_NOADMIN);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_ADMIN);
             send_to_char("`0Admin channel is now `GON`0.\n\r", ch);
         }
         else
         {
-            SET_BIT(ch->comm, COMM_NOADMIN);
+            bv_set(ch->bv_comm_flags,BV_COMM_NO_ADMIN);
             send_to_char("`0Admin channel is now `ROFF`0.\n\r", ch);
         }
 
@@ -1083,7 +1087,7 @@ void do_admintalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for channel being OFF */
-    if (IS_SET(ch->comm, COMM_NOADMIN))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_ADMIN))
     {
         send_to_char
         ("`0Cannot send to the Admin channel when you have it turned off!\n\r",
@@ -1092,7 +1096,7 @@ void do_admintalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for quiet mode */
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_QUIET))
     {
         send_to_char
         ("`0Cannot send to the Admin channel without turning off quiet mode!\n\r",
@@ -1101,7 +1105,7 @@ void do_admintalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for nochannel */
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char
         ("The gods have revoked all of your channel priviliges!\n\r",
@@ -1119,9 +1123,9 @@ void do_admintalk(CHAR_DATA * ch, char *argument)
         {
             if (victim != ch &&
                     d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_NOADMIN) &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_QUIET) &&
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_NO_ADMIN) &&
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_QUIET) &&
                     can_do_immcmd(victim, "admintalk"))
             {
                 act_new(CFG_ADMIN, ch, argument, victim, TO_VICT,
@@ -1143,14 +1147,14 @@ void do_herotalk(CHAR_DATA * ch, char *argument)
     /* No argument - toggle on/off */
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOHERO))
+        if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_HERO))
         {
-            REMOVE_BIT(ch->comm, COMM_NOHERO);
+            bv_unset(ch->bv_comm_flags,BV_COMM_NO_HERO);
             send_to_char("`0HERO channel is now `GON`0.\n\r", ch);
         }
         else
         {
-            SET_BIT(ch->comm, COMM_NOHERO);
+            bv_set(ch->bv_comm_flags,BV_COMM_NO_HERO);
             send_to_char("`0HERO channel is now `ROFF`0.\n\r", ch);
         }
 
@@ -1158,7 +1162,7 @@ void do_herotalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for channel being OFF */
-    if (IS_SET(ch->comm, COMM_NOHERO))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_HERO))
     {
         send_to_char
         ("`0Cannot send to the HERO channel when you have it turned off!\n\r",
@@ -1167,7 +1171,7 @@ void do_herotalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for quiet mode */
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_QUIET))
     {
         send_to_char
         ("`0Cannot send to the HERO channel without turning off quiet mode!\n\r",
@@ -1176,7 +1180,7 @@ void do_herotalk(CHAR_DATA * ch, char *argument)
     }
 
     /* Check for nochannel */
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char
         ("The gods have revoked all of your channel priviliges!\n\r",
@@ -1194,9 +1198,9 @@ void do_herotalk(CHAR_DATA * ch, char *argument)
         {
             if (victim != ch &&
                     d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_NOHERO) &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_QUIET) &&
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_NO_HERO) &&
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_QUIET) &&
                     can_do_immcmd(victim, "herotalk"))
             {
                 act_new(CFG_HERO, ch, argument, victim, TO_VICT, POS_DEAD);
@@ -1245,13 +1249,13 @@ void do_shout(CHAR_DATA * ch, char *argument)
 {
     DESCRIPTOR_DATA *d;
 
-    if (IS_SET(ch->comm, COMM_NOSHOUT))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_SHOUT))
     {
         send_to_char("You can't shout.\n\r", ch);
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_DEAF))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_DEAF))
     {
         send_to_char("Deaf people can't shout.\n\r", ch);
         return;
@@ -1277,8 +1281,8 @@ void do_shout(CHAR_DATA * ch, char *argument)
 
         if (victim != ch &&
                 d->connected == CON_PLAYING &&
-                !IS_SET(victim->comm, COMM_DEAF) &&
-                !IS_SET(victim->comm, COMM_QUIET))
+                !bv_is_set(victim->bv_comm_flags,BV_COMM_DEAF) &&
+                !bv_is_set(victim->bv_comm_flags,BV_COMM_QUIET))
         {
             act_new(CFG_SHOUT, ch, argument, victim, TO_VICT,
                     MIN_POS_SHOUT);
@@ -1295,15 +1299,15 @@ void do_sendinfo(CHAR_DATA * ch, char *argument)
 
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOINFO))
+        if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_INFO))
         {
             send_to_char("Info channel is now `GON.`w\n\r", ch);
-            REMOVE_BIT(ch->comm, COMM_NOINFO);
+            bv_unset(ch->bv_comm_flags,BV_COMM_NO_INFO);
         }
         else
         {
             send_to_char("Info channel is now `ROFF.`w\n\r", ch);
-            SET_BIT(ch->comm, COMM_NOINFO);
+            bv_set(ch->bv_comm_flags,BV_COMM_NO_INFO);
         }
 
         return;
@@ -1317,9 +1321,9 @@ void do_sendinfo(CHAR_DATA * ch, char *argument)
         if (victim)
         {
             if (d->connected == CON_PLAYING &&
-                    !IS_SET(victim->comm, COMM_DEAF) &&
-                    !IS_SET(victim->comm, COMM_NOINFO) &&
-                    !IS_SET(victim->comm, COMM_QUIET))
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_DEAF) &&
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_NO_INFO) &&
+                    !bv_is_set(victim->bv_comm_flags,BV_COMM_QUIET))
             {
                 act_new(CFG_INFO, ch, argument, victim, TO_VICT, POS_DEAD);
             }
@@ -1352,13 +1356,13 @@ void do_tell(CHAR_DATA * ch, char *argument)
     CHAR_DATA *victim;
     bool switched = FALSE;
 
-    if (IS_SET(ch->comm, COMM_NOTELL))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_TELL))
     {
         send_to_char("Your message didn't get through.\n\r", ch);
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_QUIET))
     {
         send_to_char("You must turn off quiet mode first.\n\r", ch);
         return;
@@ -1418,8 +1422,8 @@ void do_tell(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if ((IS_SET(victim->comm, COMM_QUIET)
-            || (IS_SET(victim->comm, COMM_TELLOFF))) && !IS_IMMORTAL(ch))
+    if ((bv_is_set(victim->bv_comm_flags,BV_COMM_QUIET)
+            || (bv_is_set(victim->bv_comm_flags,BV_COMM_TELLOFF))) && !IS_IMMORTAL(ch))
     {
         act("$E is not receiving tells, but your message has been recorded.", ch, 0, victim, TO_CHAR);
         add2queue(ch, victim, argument);
@@ -1463,7 +1467,7 @@ void do_reply(CHAR_DATA * ch, char *argument)
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
 
-    if (IS_SET(ch->comm, COMM_NOTELL))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_TELL))
     {
         send_to_char("Your message didn't get through.\n\r", ch);
         return;
@@ -1491,7 +1495,7 @@ void do_reply(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_SET(victim->comm, COMM_QUIET) && !IS_IMMORTAL(ch))
+    if (bv_is_set(victim->bv_comm_flags,BV_COMM_QUIET) && !IS_IMMORTAL(ch))
     {
         act("$E is not receiving tells, but your message has been recorded.", ch, 0, victim, TO_CHAR);
         add2queue(ch, victim, argument);
@@ -2158,7 +2162,7 @@ void do_yell(CHAR_DATA * ch, char *argument)
 {
     DESCRIPTOR_DATA *d;
 
-    if (IS_SET(ch->comm, COMM_NOSHOUT))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_SHOUT))
     {
         send_to_char("You can't yell.\n\r", ch);
         return;
@@ -2181,8 +2185,8 @@ void do_yell(CHAR_DATA * ch, char *argument)
                 d->connected == CON_PLAYING &&
                 d->character->in_room != NULL &&
                 d->character->in_room->area == ch->in_room->area &&
-                !IS_SET(d->character->comm, COMM_QUIET) &&
-                !IS_SET(d->character->comm, COMM_DEAF))
+                !bv_is_set(d->character->bv_comm_flags,BV_COMM_QUIET) &&
+                !bv_is_set(d->character->bv_comm_flags,BV_COMM_DEAF))
         {
             act_new(CFG_YELL, ch, argument, d->character, TO_VICT,
                     MIN_POS_YELL);
@@ -2195,7 +2199,7 @@ void do_yell(CHAR_DATA * ch, char *argument)
 
 void do_emote(CHAR_DATA * ch, char *argument)
 {
-    if (!IS_NPC(ch) && IS_SET(ch->comm, COMM_NOEMOTE))
+    if (!IS_NPC(ch) && bv_is_set(ch->bv_comm_flags,BV_COMM_NO_EMOTE))
     {
         send_to_char("You can't emote.\n\r", ch);
         return;
@@ -2219,15 +2223,15 @@ void do_emote(CHAR_DATA * ch, char *argument)
 
 void do_info(CHAR_DATA * ch)
 {
-    if (IS_SET(ch->comm, COMM_NOINFO))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_INFO))
     {
         send_to_char("`BInfo channel is now ON.\n\r`w", ch);
-        REMOVE_BIT(ch->comm, COMM_NOINFO);
+        bv_unset(ch->bv_comm_flags,BV_COMM_NO_INFO);
     }
     else
     {
         send_to_char("`BInfo channel is now OFF.\n\r`w", ch);
-        SET_BIT(ch->comm, COMM_NOINFO);
+        bv_set(ch->bv_comm_flags,BV_COMM_NO_INFO);
     }
     return;
 }
@@ -3076,7 +3080,7 @@ void do_gtell(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_NOTELL))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_TELL))
     {
         send_to_char("Your message didn't get through!\n\r", ch);
         return;
@@ -3137,32 +3141,32 @@ void do_spousetalk(CHAR_DATA * ch, char *argument)
 
     if (argument[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOSPOUSETALK))
+        if (bv_is_set(ch->bv_comm_flags,BV_COMM_NO_SPOUSETALK))
         {
             send_to_char("`BSpouse channel is now ON.\n\r`w", ch);
-            REMOVE_BIT(ch->comm, COMM_NOSPOUSETALK);
+            bv_unset(ch->bv_comm_flags,BV_COMM_NO_SPOUSETALK);
         }
         else
         {
             send_to_char("`BSpouse channel is now OFF.\n\r`w", ch);
-            SET_BIT(ch->comm, COMM_NOSPOUSETALK);
+            bv_set(ch->bv_comm_flags,BV_COMM_NO_SPOUSETALK);
         }
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_QUIET))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_QUIET))
     {
         send_to_char("You must turn off quiet mode first.\n\r", ch);
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_DEAF))
+    if (bv_is_set(ch->bv_comm_flags,BV_COMM_DEAF))
     {
         send_to_char("You must turn off quiet mode first.\n\r", ch);
         return;
     }
 
-    if (IS_SET(ch->comm, COMM_NOCHANNELS))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char("The gods have revoked your channel priviliges.\n\r",
                      ch);
@@ -3170,7 +3174,7 @@ void do_spousetalk(CHAR_DATA * ch, char *argument)
     }
 
     /* If they've turned off spouse talk, turn it back on */
-    REMOVE_BIT(ch->comm, COMM_NOSPOUSETALK);
+    bv_unset(ch->bv_comm_flags,BV_COMM_NO_SPOUSETALK);
 
 #ifdef SPOUSE_DRUNK
     /* Make the words drunk if needed */
@@ -3197,7 +3201,7 @@ void do_spousetalk(CHAR_DATA * ch, char *argument)
         if (victim != ch && d->connected == CON_PLAYING &&
                 is_name(victim->pcdata->spouse, ch->name))
         {
-            if (IS_SET(victim->comm, COMM_NOSPOUSETALK))
+            if (bv_is_set(victim->bv_comm_flags,BV_COMM_NO_SPOUSETALK))
             {
                 send_to_char
                 ("Your spouse has their spouse channel turned off, maybe you two should talk?\n\r",
@@ -3205,7 +3209,7 @@ void do_spousetalk(CHAR_DATA * ch, char *argument)
                 return;
             }
 
-            if (IS_SET(victim->comm, COMM_DEAF))
+            if (bv_is_set(victim->bv_comm_flags,BV_COMM_DEAF))
             {
                 send_to_char
                 ("Your spouse is having a hearing problem at the moment.\n\r",
@@ -3213,7 +3217,7 @@ void do_spousetalk(CHAR_DATA * ch, char *argument)
                 return;
             }
 
-            if (IS_SET(victim->comm, COMM_QUIET))
+            if (bv_is_set(victim->bv_comm_flags,BV_COMM_QUIET))
             {
                 send_to_char
                 ("Your spouse is currently being punished by the gods, no communication is allowed.\n\r",

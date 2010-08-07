@@ -23,7 +23,11 @@
 #include <time.h>
 #include <stdio.h>
 #include <string.h>
+
+#include <glib.h>
+
 #include "merc.h"
+#include "bv_tables.h"
 
 void do_auction(CHAR_DATA * ch, char *argument);
 void show_obj_stats(int sn, int level, CHAR_DATA * ch, void *vo);
@@ -50,14 +54,14 @@ void do_auction(CHAR_DATA * ch, char *argument)
 
     if (arg1[0] == '\0')
     {
-        if (IS_SET(ch->comm, COMM_NOAUCTION))
+        if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_AUCTION))
         {
-            REMOVE_BIT(ch->comm, COMM_NOAUCTION);
+            bv_unset(ch->bv_comm_flags, BV_COMM_NO_AUCTION);
             send_to_char("Auction channel is now ON.\n\r", ch);
             return;
         }
 
-        SET_BIT(ch->comm, COMM_NOAUCTION);
+        bv_set(ch->bv_comm_flags, BV_COMM_NO_AUCTION);
         send_to_char("Auction channel is now OFF.\n\r", ch);
         return;
     }
@@ -459,8 +463,8 @@ static void auction_channel_once()
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if (d->connected == CON_PLAYING &&
-                !IS_SET(victim->comm, COMM_NOAUCTION) &&
-                !IS_SET(victim->comm, COMM_QUIET))
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_AUCTION) &&
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
         {
             act_new(buf, auction_info.high_bidder, auction_info.item,
                     victim, TO_VICT, MIN_POS_AUCTION);
@@ -485,8 +489,8 @@ static void auction_channel_twice()
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if (d->connected == CON_PLAYING &&
-                !IS_SET(victim->comm, COMM_NOAUCTION) &&
-                !IS_SET(victim->comm, COMM_QUIET))
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_AUCTION) &&
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
         {
             act_new(buf, auction_info.high_bidder, auction_info.item,
                     victim, TO_VICT, MIN_POS_AUCTION);
@@ -511,8 +515,8 @@ static void auction_channel_bid()
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if (d->connected == CON_PLAYING &&
-                !IS_SET(victim->comm, COMM_NOAUCTION) &&
-                !IS_SET(victim->comm, COMM_QUIET))
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_AUCTION) &&
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
         {
             act_new(buf, auction_info.high_bidder, auction_info.item,
                     victim, TO_VICT, MIN_POS_AUCTION);
@@ -533,8 +537,8 @@ static void auction_channel_begin()
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if (d->connected == CON_PLAYING &&
-                !IS_SET(victim->comm, COMM_NOAUCTION) &&
-                !IS_SET(victim->comm, COMM_QUIET))
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_AUCTION) &&
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
         {
             act_new(CFG_AUC_BEGIN, auction_info.owner, auction_info.item,
                     victim, TO_VICT, MIN_POS_AUCTION);
@@ -560,8 +564,8 @@ static void auction_channel_sell()
 
         if (victim != auction_info.high_bidder &&
                 d->connected == CON_PLAYING &&
-                !IS_SET(victim->comm, COMM_NOAUCTION) &&
-                !IS_SET(victim->comm, COMM_QUIET))
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_AUCTION) &&
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
         {
             act_new(buf, auction_info.high_bidder, auction_info.item,
                     victim, TO_VICT, MIN_POS_AUCTION);
@@ -592,8 +596,8 @@ static void auction_channel_remove()
         CHAR_DATA *victim = d->original ? d->original : d->character;
 
         if (d->connected == CON_PLAYING &&
-                !IS_SET(victim->comm, COMM_NOAUCTION) &&
-                !IS_SET(victim->comm, COMM_QUIET))
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_AUCTION) &&
+                !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET))
         {
             act_new(CFG_AUC_REMOVE, auction_info.owner, auction_info.item,
                     victim, TO_VICT, MIN_POS_AUCTION);

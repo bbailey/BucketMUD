@@ -59,6 +59,7 @@
 #include "merc.h"
 #include "interp.h"
 #include "ban.h"
+#include "bv_tables.h"
 
 /* command procedures needed */
 extern void do_help(CHAR_DATA * ch, char *argument);
@@ -941,10 +942,10 @@ static bool process_output(DESCRIPTOR_DATA * d, bool fPrompt)
             CHAR_DATA *ch;
 
             ch = d->original ? d->original : d->character;
-            if (!IS_SET(ch->comm, COMM_COMPACT))
+            if (!bv_is_set(ch->bv_comm_flags, BV_COMM_COMPACT))
                 write_to_buffer(d, "\n\r", 2);
 
-            if (IS_SET(ch->comm, COMM_PROMPT))
+            if (bv_is_set(ch->bv_comm_flags, BV_COMM_PROMPT))
             {
                 ch = d->character;
                 if (!IS_NPC(ch))
@@ -956,7 +957,7 @@ static bool process_output(DESCRIPTOR_DATA * d, bool fPrompt)
                 write_to_buffer(d, buf, 0);
             }
 
-            if (IS_SET(ch->comm, COMM_TELNET_GA))
+            if (bv_is_set(ch->bv_comm_flags, BV_COMM_TELNET_GA))
                 write_to_buffer(d, go_ahead_str, 0);
         }
     }

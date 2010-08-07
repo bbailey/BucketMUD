@@ -26,6 +26,8 @@
 #ifndef BUCKETMUD_BITVECTORSTR_H_
 #define BUCKETMUD_BITVECTORSTR_H_
 
+#include "BitVector.h"
+
 typedef struct BitVectorStringList
 {
     gchar *name_;

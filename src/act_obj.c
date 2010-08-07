@@ -20,8 +20,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "magic.h"
+#include "bv_tables.h"
 
 /* command procedures needed */
 extern void do_split(CHAR_DATA * ch, char *argument);
@@ -2583,7 +2587,10 @@ void do_buy(CHAR_DATA * ch, char *argument)
         SET_BIT(ch->act, PLR_BOUGHT_PET);
         SET_BIT(pet->act, ACT_PET);
         SET_BIT(pet->affected_by, AFF_CHARM);
-        pet->comm = COMM_NOTELL | COMM_NOSHOUT | COMM_NOCHANNELS;
+        bv_clear(pet->bv_comm_flags);
+        bv_set(pet->bv_comm_flags, BV_COMM_NO_TELL);
+        bv_set(pet->bv_comm_flags, BV_COMM_NO_SHOUT);
+        bv_set(pet->bv_comm_flags, BV_COMM_NO_CHANNELS);
 
         argument = one_argument(argument, arg);
         if (arg[0] != '\0')
