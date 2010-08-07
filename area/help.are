@@ -2897,6 +2897,24 @@ much trouble learning to meditate.
 `GÄÄ`gÄÄ`KÄ`gÄ`KÄÄÄ`gÄ`KÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ`w
 
 ~
+-1 LEVELGAIN~
+Syntax: levelgain
+ 
+Levelgain will advance your character to the next level if you have sufficient experience.
+~
+-1 WLEGEND~
+ 
+WHO LEGEND
+==========
+`R[`WMWA`RP`W`KT`W`R]`w
+ ||||``--`RT`w -- Player is a THIEF.
+ |||``---`RP`w -- Player is a PLAYER KILLER.
+ ||``----`RA`w -- Player is AFK.
+ |``-----`RW`w -- Player is WIZINVIS.
+ ``------`RM`w -- Player is MARRIED.
+ 
+Absent flags will be represented by a "`W-`w". For example: `R[`WM--`RP`KT`R]`w
+~
 
 
 0 $~
