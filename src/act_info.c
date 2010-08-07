@@ -2823,7 +2823,7 @@ void do_who(CHAR_DATA * ch, char *argument)
                     IS_NPC(who_list[length]) ? "-" :
                     !is_name(who_list[length]->pcdata->spouse,
                              "(none)") ? "M" : "-",
-                    IS_SET(who_list[length]->act, PLR_WIZINVIS) ? "W" : "",
+                    IS_SET(who_list[length]->act, PLR_WIZINVIS) ? "W" : "-",
                     IS_SET(who_list[length]->act, PLR_AFK) ? "A" : "-",
                     IS_SET(who_list[length]->act,
                            PLR_KILLER) ? "`RP`W" : "-",
