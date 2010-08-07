@@ -3,7 +3,8 @@
 #include "BitVectorStr.h"
 #include "bv_tables.h"
 
-const BitVectorStringList bv_str_list_comm[] = {
+const BitVectorStringList bv_str_list_comm[] =
+{
     { "quiet", BV_COMM_QUIET },
     { "deaf", BV_COMM_DEAF },
     { "no_wiz", BV_COMM_NO_WIZ },

@@ -259,7 +259,7 @@ static void fwrite_char(CHAR_DATA * ch, FILE * fp)
     tmp_str = bv_to_string(ch->bv_comm_flags, bv_str_list_comm);
     fprintf(fp, "BvCommFlags %s~\n", tmp_str );
     g_free(tmp_str);
-    
+
     if (ch->incarnations != 0)
         fprintf(fp, "Inca %d\n", ch->incarnations);
     if (ch->invis_level != 0)
@@ -443,7 +443,7 @@ static void fwrite_pet(CHAR_DATA * pet, FILE * fp)
     tmp_str = bv_to_string(pet->bv_comm_flags, bv_str_list_comm);
     fprintf(fp, "BvCommFlags %s~\n", tmp_str);
     g_free(tmp_str);
-    
+
     fprintf(fp, "Pos  %d\n", pet->position =
                 POS_FIGHTING ? POS_STANDING : pet->position);
     if (pet->saving_throw != 0)
@@ -1086,7 +1086,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 fMatch = TRUE;
                 break;
             }			/* Boards */
-            
+
             if (!str_cmp(word, "BvCommFlags"))
             {
                 tmp_string = fread_string(fp);
@@ -1111,7 +1111,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }
             KEY("Cmnt", ch->pcdata->comment, fread_string(fp));
-            
+
             if (!str_cmp(word, "Comm"))
             {
                 bv_from_old_bitvector(ch->bv_comm_flags, fread_number(fp));

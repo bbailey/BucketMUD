@@ -57,7 +57,8 @@ BitVector* bv_new(size_t numBits)
     // Count the number of blocks
     bv->numBlocks_ = numBits / BITS_PER_BLOCK;
     // If there's a remainder, we need another one
-    if (numBits % BITS_PER_BLOCK != 0) {
+    if (numBits % BITS_PER_BLOCK != 0)
+    {
         bv->numBlocks_++;
     }
 
@@ -136,10 +137,12 @@ void bv_set_bit(BitVector* bv, size_t whichBit, BOOL toWhat)
 
     assert(bit < BITS_PER_BLOCK);
 
-    if (toWhat) {
+    if (toWhat)
+    {
         bv->data_[block] |= (0x1u << bit);
     }
-    else {
+    else
+    {
         bv->data_[block] ^= (0x1u << bit);
     }
 }
@@ -160,7 +163,8 @@ void bv_unset(BitVector* bv, size_t whichBit)
 void bv_clear(BitVector* bv)
 {
     size_t block = 0;
-    for (block = 0; block < bv->numBlocks_; block++) {
+    for (block = 0; block < bv->numBlocks_; block++)
+    {
         bv->data_[block] = 0;
     }
 }
@@ -182,14 +186,15 @@ BOOL bv_is_subset(const BitVector* subset, const BitVector* superset)
         uint32_t mask = subset->data_[block] ^ superset->data_[block];
 
         // AND: make sure that none of those bits are in this one
-        if ( (subset->data_[block] & mask) != 0 ) {
+        if ( (subset->data_[block] & mask) != 0 )
+        {
             return 0;
         }
     }
 
     return 1;
 }
-        
+
 /** Intersect one bitvector with another bitvector.
  * (In-place modification.)
  *
@@ -200,7 +205,8 @@ void bv_intersect(BitVector* bv, const BitVector* other)
     size_t block = 0;
     assert(bv->numBits_ == other->numBits_);
 
-    for (block = 0; block < bv->numBlocks_; block++) {
+    for (block = 0; block < bv->numBlocks_; block++)
+    {
         bv->data_[block] &= other->data_[block];
     }
 }
@@ -215,7 +221,8 @@ void bv_union(BitVector* bv, const BitVector* other)
     size_t block = 0;
     assert(bv->numBits_ == other->numBits_);
 
-    for (block = 0; block < bv->numBlocks_; block++) {
+    for (block = 0; block < bv->numBlocks_; block++)
+    {
         bv->data_[block] |= other->data_[block];
     }
 }
@@ -227,9 +234,11 @@ BOOL bv_equal(const BitVector* bv1, const BitVector* bv2)
 {
     size_t block = 0;
     assert(bv1->numBits_ == bv2->numBits_);
-    
-    for (block = 0; block < bv1->numBlocks_; block++) {
-        if (bv1->data_[block] != bv2->data_[block]) {
+
+    for (block = 0; block < bv1->numBlocks_; block++)
+    {
+        if (bv1->data_[block] != bv2->data_[block])
+        {
             return 0;
         }
     }
@@ -243,7 +252,8 @@ size_t bv_num_set(const BitVector* bv)
     size_t block = 0;
     size_t numBits = 0;
 
-    for (block = 0; block < bv->numBlocks_; block++) {
+    for (block = 0; block < bv->numBlocks_; block++)
+    {
         numBits += uint32_bitcount(bv->data_[block]);
     }
 
@@ -268,7 +278,8 @@ static void initialize_bits_in_16bits()
 {
     size_t i = 0;
     static int initialized = 0;
-    if (initialized) {
+    if (initialized)
+    {
         return;
     }
 
@@ -279,7 +290,7 @@ static void initialize_bits_in_16bits()
         size_t numBits = 0;
 
         size_t bit = i;
-        while (bit) 
+        while (bit)
         {
             numBits += bit & 0x1u;
             bit >>= 1;
@@ -294,6 +305,6 @@ static void initialize_bits_in_16bits()
 static size_t uint32_bitcount(uint32_t n)
 {
     return bits_in_16bits[ n        & 0xffffu]
-        +  bits_in_16bits[(n >> 16) & 0xffffu];
+           +  bits_in_16bits[(n >> 16) & 0xffffu];
 }
 

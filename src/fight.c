@@ -4929,13 +4929,13 @@ static bool check_dodge(CHAR_DATA * ch, CHAR_DATA * victim)
 uint32_t get_base_exp(uint8_t level)
 {
     uint32_t base_exp = 0;
-    
+
     if (level > 100)
         level = 100;
-        
-    switch(level)
+
+    switch (level)
     {
-            case 0:
+    case 0:
         base_exp = 50;
         break;
     case 1:
