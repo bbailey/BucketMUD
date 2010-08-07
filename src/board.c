@@ -21,8 +21,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "interp.h"
+#include "bv_tables.h"
 
 #define L_HER LEVEL_HERO
 #define L_IMM LEVEL_IMMORTAL
@@ -759,7 +763,7 @@ void do_note(CHAR_DATA * ch, char *argument)
 
     if (IS_NPC(ch))
         return;
-    if (IS_SET(ch->comm, COMM_NOCHANNELS) || IS_SET(ch->act, PLR_JAILED))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS) || IS_SET(ch->act, PLR_JAILED))
     {
         send_to_char("You can't seem to write a note.\n\r", ch);
         return;

@@ -30,10 +30,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <fcntl.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "olc.h"
-
 #include "interp.h"
+#include "bv_tables.h"
 
 /*
  * Local functions.
@@ -195,22 +198,22 @@ void do_jail(CHAR_DATA * ch, char *argument)
 
         if (JAIL_NOSHOUT == 1)
         {
-            REMOVE_BIT(victim->comm, COMM_NOSHOUT);
+            bv_unset(victim->bv_comm_flags, BV_COMM_NO_SHOUT);
         }
 
         if (JAIL_NOEMOTE == 1)
         {
-            REMOVE_BIT(victim->comm, COMM_NOEMOTE);
+            bv_unset(victim->bv_comm_flags, BV_COMM_NO_EMOTE);
         }
 
         if (JAIL_NOTELL == 1)
         {
-            REMOVE_BIT(victim->comm, COMM_NOTELL);
+            bv_unset(victim->bv_comm_flags, BV_COMM_NO_TELL);
         }
 
         if (JAIL_NOCHANNEL == 1)
         {
-            REMOVE_BIT(victim->comm, COMM_NOCHANNELS);
+            bv_unset(victim->bv_comm_flags, BV_COMM_NO_CHANNELS);
         }
 
         REMOVE_BIT(victim->act, PLR_JAILED);
@@ -282,22 +285,22 @@ void do_jail(CHAR_DATA * ch, char *argument)
 
         if (JAIL_NOSHOUT == 1)
         {
-            SET_BIT(victim->comm, COMM_NOSHOUT);
+            bv_set(victim->bv_comm_flags, BV_COMM_NO_SHOUT);
         }
 
         if (JAIL_NOEMOTE == 1)
         {
-            SET_BIT(victim->comm, COMM_NOEMOTE);
+            bv_set(victim->bv_comm_flags, BV_COMM_NO_EMOTE);
         }
 
         if (JAIL_NOTELL == 1)
         {
-            SET_BIT(victim->comm, COMM_NOTELL);
+            bv_set(victim->bv_comm_flags, BV_COMM_NO_TELL);
         }
 
         if (JAIL_NOCHANNEL == 1)
         {
-            SET_BIT(victim->comm, COMM_NOCHANNELS);
+            bv_set(victim->bv_comm_flags, BV_COMM_NO_CHANNELS);
         }
 
         SET_BIT(victim->act, PLR_JAILED);
@@ -748,16 +751,16 @@ void do_nochannels(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_SET(victim->comm, COMM_NOCHANNELS))
+    if (bv_is_set(victim->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
-        REMOVE_BIT(victim->comm, COMM_NOCHANNELS);
+        bv_unset(victim->bv_comm_flags, BV_COMM_NO_CHANNELS);
         send_to_char("The gods have restored your channel priviliges.\n\r",
                      victim);
         send_to_char("NOCHANNELS removed.\n\r", ch);
     }
     else
     {
-        SET_BIT(victim->comm, COMM_NOCHANNELS);
+        bv_set(victim->bv_comm_flags, BV_COMM_NO_CHANNELS);
         send_to_char("The gods have revoked your channel priviliges.\n\r",
                      victim);
         send_to_char("NOCHANNELS set.\n\r", ch);
@@ -1854,11 +1857,8 @@ void do_mstat(CHAR_DATA * ch, char *argument)
     send_to_char(buf, ch);
     printf_to_char(ch, "Jail Timer: %d\n\r", victim->jail_timer);
 
-    if (victim->comm)
-    {
-        sprintf(buf, "Comm: %s\n\r", comm_bit_name(victim->comm));
-        send_to_char(buf, ch);
-    }
+    sprintf(buf, "Comm: %s\n\r", bv_to_string(victim->bv_comm_flags, bv_str_list_comm));
+    send_to_char(buf, ch);
 
     if (IS_NPC(victim) && victim->off_flags)
     {
@@ -2654,7 +2654,8 @@ void do_switch(CHAR_DATA * ch, char *argument)
     victim->desc = ch->desc;
     ch->desc = NULL;
     /* change communications to match */
-    victim->comm = ch->comm;
+    bv_delete(victim->bv_comm_flags);
+    victim->bv_comm_flags = bv_copy(ch->bv_comm_flags);
     victim->lines = ch->lines;
     send_to_char("Ok.\n\r", victim);
     return;
@@ -3409,15 +3410,15 @@ void do_noemote(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_SET(victim->comm, COMM_NOEMOTE))
+    if (bv_is_set(victim->bv_comm_flags, BV_COMM_NO_EMOTE))
     {
-        REMOVE_BIT(victim->comm, COMM_NOEMOTE);
+        bv_unset(victim->bv_comm_flags, BV_COMM_NO_EMOTE);
         send_to_char("You can emote again.\n\r", victim);
         send_to_char("NOEMOTE removed.\n\r", ch);
     }
     else
     {
-        SET_BIT(victim->comm, COMM_NOEMOTE);
+        bv_set(victim->bv_comm_flags, BV_COMM_NO_EMOTE);
         send_to_char("You can't emote!\n\r", victim);
         send_to_char("NOEMOTE set.\n\r", ch);
     }
@@ -3456,15 +3457,15 @@ void do_noshout(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_SET(victim->comm, COMM_NOSHOUT))
+    if (bv_is_set(victim->bv_comm_flags, BV_COMM_NO_SHOUT))
     {
-        REMOVE_BIT(victim->comm, COMM_NOSHOUT);
+        bv_unset(victim->bv_comm_flags, BV_COMM_NO_SHOUT);
         send_to_char("You can shout again.\n\r", victim);
         send_to_char("NOSHOUT removed.\n\r", ch);
     }
     else
     {
-        SET_BIT(victim->comm, COMM_NOSHOUT);
+        bv_set(victim->bv_comm_flags, BV_COMM_NO_SHOUT);
         send_to_char("You can't shout!\n\r", victim);
         send_to_char("NOSHOUT set.\n\r", ch);
     }
@@ -3503,15 +3504,15 @@ void do_notell(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_SET(victim->comm, COMM_NOTELL))
+    if (bv_is_set(victim->bv_comm_flags, BV_COMM_NO_TELL))
     {
-        REMOVE_BIT(victim->comm, COMM_NOTELL);
+        bv_unset(victim->bv_comm_flags, BV_COMM_NO_TELL);
         send_to_char("You can tell again.\n\r", victim);
         send_to_char("NOTELL removed.\n\r", ch);
     }
     else
     {
-        SET_BIT(victim->comm, COMM_NOTELL);
+        bv_set(victim->bv_comm_flags, BV_COMM_NO_TELL);
         send_to_char("You can't tell!\n\r", victim);
         send_to_char("NOTELL set.\n\r", ch);
     }

@@ -54,8 +54,12 @@
 #include <time.h>
 #include <math.h>
 
+#include <glib.h>
+
 #include "merc.h"
 #include "interp.h"
+#include "ban.h"
+#include "bv_tables.h"
 
 /* command procedures needed */
 extern void do_help(CHAR_DATA * ch, char *argument);
@@ -938,10 +942,10 @@ static bool process_output(DESCRIPTOR_DATA * d, bool fPrompt)
             CHAR_DATA *ch;
 
             ch = d->original ? d->original : d->character;
-            if (!IS_SET(ch->comm, COMM_COMPACT))
+            if (!bv_is_set(ch->bv_comm_flags, BV_COMM_COMPACT))
                 write_to_buffer(d, "\n\r", 2);
 
-            if (IS_SET(ch->comm, COMM_PROMPT))
+            if (bv_is_set(ch->bv_comm_flags, BV_COMM_PROMPT))
             {
                 ch = d->character;
                 if (!IS_NPC(ch))
@@ -953,7 +957,7 @@ static bool process_output(DESCRIPTOR_DATA * d, bool fPrompt)
                 write_to_buffer(d, buf, 0);
             }
 
-            if (IS_SET(ch->comm, COMM_TELNET_GA))
+            if (bv_is_set(ch->bv_comm_flags, BV_COMM_TELNET_GA))
                 write_to_buffer(d, go_ahead_str, 0);
         }
     }
@@ -1083,7 +1087,6 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *ch;
     BAN_DATA *pban;
-    int ban_type;
     char *pwdnew;
     char *p;
     int iClass, race, i, x;
@@ -1159,11 +1162,10 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
 
         for (pban = ban_list; pban != NULL; pban = pban->next)
         {
-            ban_type = pban->ban_flags;
             if (!str_suffix((pban->name), d->host))
             {
-                if (IS_SET(pban->ban_flags, BAN_PERMANENT)
-                        || IS_SET(pban->ban_flags, BAN_ALL))
+                if (bv_is_set(pban->bv_flags, BV_BAN_PERMANENT)
+                        || bv_is_set(pban->bv_flags, BV_BAN_ALL))
                 {
                     write_to_buffer(d,
                                     "Your site has been banned from this mud.\n\r",
@@ -1176,10 +1178,9 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
         }
         for (pban = ban_list; pban != NULL; pban = pban->next)
         {
-            ban_type = pban->ban_flags;
             if (!str_suffix((pban->name), d->host))
             {
-                if (ban_type == 16 && !IS_SET(ch->act, PLR_PERMIT))
+                if (bv_is_set(pban->bv_flags, BV_BAN_PERMIT) && !IS_SET(ch->act, PLR_PERMIT))
                 {
                     sprintf(buf,
                             "You do not have permission to play on this mud.\n\r Please email %s to get permission to play here.",
@@ -1239,10 +1240,9 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
             }
             for (pban = ban_list; pban != NULL; pban = pban->next)
             {
-                ban_type = pban->ban_flags;
                 if (!str_suffix((pban->name), d->host))
                 {
-                    if (ban_type == 4)
+                    if (bv_is_set(pban->bv_flags, BV_BAN_NEWBIES))
                     {
                         write_to_buffer(d,
                                         "New players from your site have been banned from this mud.\n\r",

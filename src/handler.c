@@ -22,8 +22,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "olc.h"
+#include "bv_tables.h"
 
 /* command procedures needed */
 void do_return(CHAR_DATA * ch, char *argument);
@@ -2895,8 +2899,8 @@ bool can_see(CHAR_DATA * ch, CHAR_DATA * victim)
     if (ch == victim)
         return TRUE;
 
-    if (IS_SET(victim->comm, VIS_CONSOLE)
-            || IS_SET(ch->comm, VIS_CONSOLE))
+    if (bv_is_set(victim->bv_comm_flags, BV_COMM_VIS_CONSOLE)
+            || bv_is_set(ch->bv_comm_flags, BV_COMM_VIS_CONSOLE))
         return TRUE;
 
     if (!IS_NPC(victim)
@@ -3300,51 +3304,6 @@ char *act_bit_name(int act_flags)
         if (act_flags & PLR_PERMIT)
             strcat(buf, " permit");
     }
-    return (buf[0] != '\0') ? buf + 1 : "none";
-}
-
-char *comm_bit_name(int comm_flags)
-{
-    char buf[MAX_STRING_LENGTH];
-    buf[0] = '\0';
-
-    if (comm_flags & COMM_QUIET)
-        strcat(buf, " quiet");
-    if (comm_flags & COMM_DEAF)
-        strcat(buf, " deaf");
-    if (comm_flags & COMM_NOWIZ)
-        strcat(buf, " no_wiz");
-    if (comm_flags & COMM_NOADMIN)
-        strcat(buf, " no_admin");
-    if (comm_flags & COMM_NOHERO)
-        strcat(buf, " no_hero");
-    if (comm_flags & COMM_NOAUCTION)
-        strcat(buf, " no_auction");
-    if (comm_flags & COMM_NOGOSSIP)
-        strcat(buf, " no_gossip");
-    if (comm_flags & COMM_NOMUSIC)
-        strcat(buf, " no_nomusic");
-    if (comm_flags & COMM_NOQUESTION)
-        strcat(buf, " no_question");
-    if (comm_flags & COMM_NO_OOC)
-        strcat(buf, " no_ooc");
-    if (comm_flags & COMM_COMPACT)
-        strcat(buf, " compact");
-    if (comm_flags & COMM_BRIEF)
-        strcat(buf, " brief");
-    if (comm_flags & COMM_PROMPT)
-        strcat(buf, " prompt");
-    if (comm_flags & COMM_COMBINE)
-        strcat(buf, " combine");
-    if (comm_flags & COMM_NOEMOTE)
-        strcat(buf, " no_emote");
-    if (comm_flags & COMM_NOSHOUT)
-        strcat(buf, " no_shout");
-    if (comm_flags & COMM_NOTELL)
-        strcat(buf, " no_tell");
-    if (comm_flags & COMM_NOCHANNELS)
-        strcat(buf, " no_channels");
-
     return (buf[0] != '\0') ? buf + 1 : "none";
 }
 

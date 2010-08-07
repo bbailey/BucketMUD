@@ -21,6 +21,7 @@
 
 #include <stdbool.h>
 
+#include "BitVector.h"
 #include "magic.h"
 
 #if defined(FALSE)
@@ -45,7 +46,6 @@ typedef struct affect_data AFFECT_DATA;
 typedef struct newaffect_data NEWAFFECT_DATA;
 typedef struct area_data AREA_DATA;
 typedef struct auction_data AUCTION_DATA;	/* Added for automated auction. -Lancelight */
-typedef struct ban_data BAN_DATA;
 typedef struct buf_type BUFFER;	/* Added for recycle.h -Lancelight */
 typedef struct char_data CHAR_DATA;
 typedef struct descriptor_data DESCRIPTOR_DATA;
@@ -232,19 +232,6 @@ struct struckdrunk
     int min_drunk_level;
     int number_of_rep;
     char *replacement[11];
-};
-
-/*
- * Site ban structure.
- * Added for the new ban functions. -Lancelight
- */
-struct ban_data
-{
-    BAN_DATA *next;
-    bool valid;
-    int ban_flags;
-    int level;
-    char *name;
 };
 
 /* The next couple of buffer structs were added for recyle.h -Lancelight */
@@ -590,7 +577,7 @@ struct char_data
     long exp;
     long exp_stack;
     long act;
-    long comm;			/* RT added to pad the vector */
+    BitVector *bv_comm_flags;
     long imm_flags;
     long res_flags;
     long vuln_flags;
@@ -1204,7 +1191,6 @@ extern SHOP_DATA *shop_first;
 extern CLAN_DATA *clan_first;
 extern CLAN_DATA *clan_last;
 
-extern BAN_DATA *ban_list;
 extern CHAR_DATA *char_list;
 extern CHAR_DATA *player_list;
 extern MPROG_DATA *mudprog_first;
@@ -1219,7 +1205,6 @@ extern MPROG_DATA *mprog_free;
 extern MPROG_GROUP *mprog_group_free;
 extern AFFECT_DATA *affect_free;
 extern NEWAFFECT_DATA *newaffect_free;
-extern BAN_DATA *ban_free;
 extern CHAR_DATA *char_free;
 extern DESCRIPTOR_DATA *descriptor_free;
 extern EXTRA_DESCR_DATA *extra_descr_free;
@@ -1493,7 +1478,6 @@ char *imm_bit_name(int imm_flags);
 char *form_bit_name(int form_flags);
 char *part_bit_name(int part_flags);
 char *weapon_bit_name(int weapon_flags);
-char *comm_bit_name(int comm_flags);
 
 /* interp.c */
 int cmd_level(char *argument);
@@ -1625,14 +1609,6 @@ char *format_string(char *oldstring /*, bool fSpace */ );
 char *first_arg(char *argument, char *arg_first, bool fCase);
 char *string_unpad(char *argument);
 char *string_proper(char *argument);
-
-/* ban data recycling */
-#define BD BAN_DATA
-/* ban data recycling */
-#define BD BAN_DATA
-BD *new_ban(void);
-void free_ban(BAN_DATA * ban);
-#undef BD
 
 /* olc.c */
 bool run_olc_editor(DESCRIPTOR_DATA * d);

@@ -17,10 +17,12 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
+
 #include <glib.h>
 
 #include "merc.h"
 #include "interp.h"
+#include "bv_tables.h"
 
 bool can_practice(CHAR_DATA * ch, long sn);
 
@@ -145,7 +147,7 @@ static void show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
             pstrShow = format_obj_to_char(obj, ch, fShort);
             fCombine = FALSE;
 
-            if (IS_NPC(ch) || IS_SET(ch->comm, COMM_COMBINE))
+            if (IS_NPC(ch) || bv_is_set(ch->bv_comm_flags, BV_COMM_COMBINE))
             {
                 /*
                  * Look for duplicates, case sensitive.
@@ -179,7 +181,7 @@ static void show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
      */
     for (iShow = 0; iShow < nShow; iShow++)
     {
-        if (IS_NPC(ch) || IS_SET(ch->comm, COMM_COMBINE))
+        if (IS_NPC(ch) || bv_is_set(ch->bv_comm_flags, BV_COMM_COMBINE))
         {
             if (prgnShow[iShow] != 1)
             {
@@ -198,7 +200,7 @@ static void show_list_to_char(OBJ_DATA * list, CHAR_DATA * ch, bool fShort,
 
     if (fShowNothing && nShow == 0)
     {
-        if (IS_NPC(ch) || IS_SET(ch->comm, COMM_COMBINE))
+        if (IS_NPC(ch) || bv_is_set(ch->bv_comm_flags, BV_COMM_COMBINE))
             send_to_char("`g     ", ch);
         send_to_char("Nothing.\n\r`w", ch);
     }
@@ -273,7 +275,7 @@ static void show_char_to_char_0(CHAR_DATA * victim, CHAR_DATA * ch)
     }
 
     strcat(buf, PERS(victim, ch));
-    if (!IS_NPC(victim) && !IS_SET(ch->comm, COMM_BRIEF)
+    if (!IS_NPC(victim) && !bv_is_set(ch->bv_comm_flags, BV_COMM_BRIEF)
             && victim->position == POS_STANDING && ch->on == NULL)
         strcat(buf, victim->pcdata->title);
 
@@ -703,13 +705,13 @@ void do_autolist(CHAR_DATA * ch, char *argument)
         send_to_char("`ROFF`w\n\r", ch);
 
     send_to_char("prompt         ", ch);
-    if (IS_SET(ch->comm, COMM_PROMPT))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_PROMPT))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
 
     send_to_char("combine items  ", ch);
-    if (IS_SET(ch->comm, COMM_COMBINE))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_COMBINE))
         send_to_char("`GON`w\n\r", ch);
     else
         send_to_char("`ROFF`w\n\r", ch);
@@ -842,29 +844,29 @@ void do_autosplit(CHAR_DATA * ch, char *argument)
 
 void do_brief(CHAR_DATA * ch, char *argument)
 {
-    if (IS_SET(ch->comm, COMM_BRIEF))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_BRIEF))
     {
         send_to_char("Full descriptions activated.\n\r", ch);
-        REMOVE_BIT(ch->comm, COMM_BRIEF);
+        bv_unset(ch->bv_comm_flags, BV_COMM_BRIEF);
     }
     else
     {
         send_to_char("Short descriptions activated.\n\r", ch);
-        SET_BIT(ch->comm, COMM_BRIEF);
+        bv_set(ch->bv_comm_flags, BV_COMM_BRIEF);
     }
 }
 
 void do_compact(CHAR_DATA * ch, char *argument)
 {
-    if (IS_SET(ch->comm, COMM_COMPACT))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_COMPACT))
     {
         send_to_char("Compact mode removed.\n\r", ch);
-        REMOVE_BIT(ch->comm, COMM_COMPACT);
+        bv_unset(ch->bv_comm_flags, BV_COMM_COMPACT);
     }
     else
     {
         send_to_char("Compact mode set.\n\r", ch);
-        SET_BIT(ch->comm, COMM_COMPACT);
+        bv_set(ch->bv_comm_flags, BV_COMM_COMPACT);
     }
 }
 
@@ -919,15 +921,15 @@ void do_prompt(CHAR_DATA * ch, char *argument)
 
 void do_combine(CHAR_DATA * ch, char *argument)
 {
-    if (IS_SET(ch->comm, COMM_COMBINE))
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_COMBINE))
     {
         send_to_char("Long inventory selected.\n\r", ch);
-        REMOVE_BIT(ch->comm, COMM_COMBINE);
+        bv_unset(ch->bv_comm_flags, BV_COMM_COMBINE);
     }
     else
     {
         send_to_char("Combined inventory selected.\n\r", ch);
-        SET_BIT(ch->comm, COMM_COMBINE);
+        bv_set(ch->bv_comm_flags, BV_COMM_COMBINE);
     }
 }
 
@@ -1409,7 +1411,7 @@ void do_look(CHAR_DATA * ch, char *argument)
         send_to_char("`w\n\r", ch);
 
         if (arg[0] == '\0'
-                || (!IS_NPC(ch) && !IS_SET(ch->comm, COMM_BRIEF)))
+                || (!IS_NPC(ch) && !bv_is_set(ch->bv_comm_flags, BV_COMM_BRIEF)))
         {
             send_to_char("  ", ch);
             send_to_char(ch->in_room->description, ch);

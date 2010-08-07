@@ -21,8 +21,12 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
+
+#include <glib.h>
+
 #include "merc.h"
 #include "interp.h"
+#include "bv_tables.h"
 
 extern bool can_use(CHAR_DATA * ch, long sn);
 
@@ -640,22 +644,22 @@ static void char_update(void)
 
             if (JAIL_NOSHOUT == 1)
             {
-                REMOVE_BIT(ch->comm, COMM_NOSHOUT);
+                bv_unset(ch->bv_comm_flags, BV_COMM_NO_SHOUT);
             }
 
             if (JAIL_NOEMOTE == 1)
             {
-                REMOVE_BIT(ch->comm, COMM_NOEMOTE);
+                bv_unset(ch->bv_comm_flags, BV_COMM_NO_EMOTE);
             }
 
             if (JAIL_NOTELL == 1)
             {
-                REMOVE_BIT(ch->comm, COMM_NOTELL);
+                bv_unset(ch->bv_comm_flags, BV_COMM_NO_TELL);
             }
 
             if (JAIL_NOCHANNEL == 1)
             {
-                REMOVE_BIT(ch->comm, COMM_NOCHANNELS);
+                bv_unset(ch->bv_comm_flags, BV_COMM_NO_CHANNELS);
             }
 
             REMOVE_BIT(ch->act, PLR_JAILED);

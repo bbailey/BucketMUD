@@ -73,6 +73,8 @@ extern bool chaos;
 extern bool gsilentdamage;
 extern bool can_use(CHAR_DATA * ch, long sn);
 
+static uint32_t get_base_exp(uint8_t level);
+
 /*
  * Control the fights going on.
  * Called periodically by update_handler.
@@ -2429,313 +2431,7 @@ static int xp_compute(CHAR_DATA * gch, CHAR_DATA * victim,
     int align;
     int change;
 
-    /* compute the base exp */
-    switch (victim->level)
-    {
-    case 0:
-        base_exp = 50;
-        break;
-    case 1:
-        base_exp = 100;
-        break;
-    case 2:
-        base_exp = 200;
-        break;
-    case 3:
-        base_exp = 250;
-        break;
-    case 4:
-        base_exp = 350;
-        break;
-    case 5:
-        base_exp = 550;
-        break;
-    case 6:
-        base_exp = 1000;
-        break;
-    case 7:
-        base_exp = 3000;
-        break;
-    case 8:
-        base_exp = 5000;
-        break;
-    case 9:
-        base_exp = 7500;
-        break;
-    case 10:
-        base_exp = 10000;
-        break;
-    case 11:
-        base_exp = 15000;
-        break;
-    case 12:
-        base_exp = 23000;
-        break;
-    case 13:
-        base_exp = 35000;
-        break;
-    case 14:
-        base_exp = 50000;
-        break;
-    case 15:
-        base_exp = 65000;
-        break;
-    case 16:
-        base_exp = 80000;
-        break;
-    case 17:
-        base_exp = 95000;
-        break;
-    case 18:
-        base_exp = 110000;
-        break;
-    case 19:
-        base_exp = 135000;
-        break;
-    case 20:
-        base_exp = 150000;
-        break;
-    case 21:
-        base_exp = 165000;
-        break;
-    case 22:
-        base_exp = 180000;
-        break;
-    case 23:
-        base_exp = 200000;
-        break;
-    case 24:
-        base_exp = 220000;
-        break;
-    case 25:
-        base_exp = 240000;
-        break;
-    case 26:
-        base_exp = 260000;
-        break;
-    case 27:
-        base_exp = 280000;
-        break;
-    case 28:
-        base_exp = 300000;
-        break;
-    case 29:
-        base_exp = 320000;
-        break;
-    case 30:
-        base_exp = 340000;
-        break;
-    case 31:
-        base_exp = 360000;
-        break;
-    case 32:
-        base_exp = 380000;
-        break;
-    case 33:
-        base_exp = 400000;
-        break;
-    case 34:
-        base_exp = 420000;
-        break;
-    case 35:
-        base_exp = 440000;
-        break;
-    case 36:
-        base_exp = 460000;
-        break;
-    case 37:
-        base_exp = 480000;
-        break;
-    case 38:
-        base_exp = 500000;
-        break;
-    case 39:
-        base_exp = 520000;
-        break;
-    case 40:
-        base_exp = 540000;
-        break;
-    case 41:
-        base_exp = 560000;
-        break;
-    case 42:
-        base_exp = 580000;
-        break;
-    case 43:
-        base_exp = 600000;
-        break;
-    case 44:
-        base_exp = 620000;
-        break;
-    case 45:
-        base_exp = 640000;
-        break;
-    case 46:
-        base_exp = 660000;
-        break;
-    case 47:
-        base_exp = 680000;
-        break;
-    case 48:
-        base_exp = 700000;
-        break;
-    case 49:
-        base_exp = 720000;
-        break;
-    case 50:
-        base_exp = 740000;
-        break;
-    case 51:
-        base_exp = 760000;
-        break;
-    case 52:
-        base_exp = 780000;
-        break;
-    case 53:
-        base_exp = 800000;
-        break;
-    case 54:
-        base_exp = 820000;
-        break;
-    case 55:
-        base_exp = 840000;
-        break;
-    case 56:
-        base_exp = 860000;
-        break;
-    case 57:
-        base_exp = 880000;
-        break;
-    case 58:
-        base_exp = 900000;
-        break;
-    case 59:
-        base_exp = 920000;
-        break;
-    case 60:
-        base_exp = 940000;
-        break;
-    case 61:
-        base_exp = 960000;
-        break;
-    case 62:
-        base_exp = 1000000;
-        break;
-    case 63:
-        base_exp = 1100000;
-        break;
-    case 64:
-        base_exp = 1200000;
-        break;
-    case 65:
-        base_exp = 1300000;
-        break;
-    case 66:
-        base_exp = 1400000;
-        break;
-    case 67:
-        base_exp = 1500000;
-        break;
-    case 68:
-        base_exp = 1600000;
-        break;
-    case 69:
-        base_exp = 1700000;
-        break;
-    case 70:
-        base_exp = 1800000;
-        break;
-    case 71:
-        base_exp = 1900000;
-        break;
-    case 72:
-        base_exp = 2000000;
-        break;
-    case 73:
-        base_exp = 2100000;
-        break;
-    case 74:
-        base_exp = 2200000;
-        break;
-    case 75:
-        base_exp = 2300000;
-        break;
-    case 76:
-        base_exp = 2400000;
-        break;
-    case 77:
-        base_exp = 2500000;
-        break;
-    case 78:
-        base_exp = 2600000;
-        break;
-    case 79:
-        base_exp = 2700000;
-        break;
-    case 80:
-        base_exp = 2800000;
-        break;
-    case 81:
-        base_exp = 2900000;
-        break;
-    case 82:
-        base_exp = 3000000;
-        break;
-    case 83:
-        base_exp = 3100000;
-        break;
-    case 84:
-        base_exp = 3200000;
-        break;
-    case 85:
-        base_exp = 3300000;
-        break;
-    case 86:
-        base_exp = 3400000;
-        break;
-    case 87:
-        base_exp = 3500000;
-        break;
-    case 88:
-        base_exp = 3600000;
-        break;
-    case 89:
-        base_exp = 3700000;
-        break;
-    case 90:
-        base_exp = 3800000;
-        break;
-    case 91:
-        base_exp = 4000000;
-        break;
-    case 92:
-        base_exp = 4500000;
-        break;
-    case 93:
-        base_exp = 5000000;
-        break;
-    case 94:
-        base_exp = 5500000;
-        break;
-    case 95:
-        base_exp = 6000000;
-        break;
-    case 96:
-        base_exp = 6500000;
-        break;
-    case 97:
-        base_exp = 7000000;
-        break;
-    case 98:
-        base_exp = 7500000;
-        break;
-    case 99:
-        base_exp = 8000000;
-        break;
-    case 100:
-        base_exp = 10000000;
-        break;
-    }
+    base_exp = get_base_exp(victim->level);
 
     /* do alignment computations */
 
@@ -2896,316 +2592,8 @@ int hit_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
     /*    int align;
        int change; */
 
-    /* compute the base exp */
-    switch (victim->level)
-    {
-    case 0:
-        base_exp = 50;
-        break;
-    case 1:
-        base_exp = 100;
-        break;
-    case 2:
-        base_exp = 200;
-        break;
-    case 3:
-        base_exp = 250;
-        break;
-    case 4:
-        base_exp = 350;
-        break;
-    case 5:
-        base_exp = 550;
-        break;
-    case 6:
-        base_exp = 1000;
-        break;
-    case 7:
-        base_exp = 3000;
-        break;
-    case 8:
-        base_exp = 5000;
-        break;
-    case 9:
-        base_exp = 7500;
-        break;
-    case 10:
-        base_exp = 10000;
-        break;
-    case 11:
-        base_exp = 15000;
-        break;
-    case 12:
-        base_exp = 23000;
-        break;
-    case 13:
-        base_exp = 35000;
-        break;
-    case 14:
-        base_exp = 50000;
-        break;
-    case 15:
-        base_exp = 65000;
-        break;
-    case 16:
-        base_exp = 80000;
-        break;
-    case 17:
-        base_exp = 95000;
-        break;
-    case 18:
-        base_exp = 110000;
-        break;
-    case 19:
-        base_exp = 135000;
-        break;
-    case 20:
-        base_exp = 150000;
-        break;
-    case 21:
-        base_exp = 165000;
-        break;
-    case 22:
-        base_exp = 180000;
-        break;
-    case 23:
-        base_exp = 200000;
-        break;
-    case 24:
-        base_exp = 220000;
-        break;
-    case 25:
-        base_exp = 240000;
-        break;
-    case 26:
-        base_exp = 260000;
-        break;
-    case 27:
-        base_exp = 280000;
-        break;
-    case 28:
-        base_exp = 300000;
-        break;
-    case 29:
-        base_exp = 320000;
-        break;
-    case 30:
-        base_exp = 340000;
-        break;
-    case 31:
-        base_exp = 360000;
-        break;
-    case 32:
-        base_exp = 380000;
-        break;
-    case 33:
-        base_exp = 400000;
-        break;
-    case 34:
-        base_exp = 420000;
-        break;
-    case 35:
-        base_exp = 440000;
-        break;
-    case 36:
-        base_exp = 460000;
-        break;
-    case 37:
-        base_exp = 480000;
-        break;
-    case 38:
-        base_exp = 500000;
-        break;
-    case 39:
-        base_exp = 520000;
-        break;
-    case 40:
-        base_exp = 540000;
-        break;
-    case 41:
-        base_exp = 560000;
-        break;
-    case 42:
-        base_exp = 580000;
-        break;
-    case 43:
-        base_exp = 600000;
-        break;
-    case 44:
-        base_exp = 620000;
-        break;
-    case 45:
-        base_exp = 640000;
-        break;
-    case 46:
-        base_exp = 660000;
-        break;
-    case 47:
-        base_exp = 680000;
-        break;
-    case 48:
-        base_exp = 700000;
-        break;
-    case 49:
-        base_exp = 720000;
-        break;
-    case 50:
-        base_exp = 740000;
-        break;
-    case 51:
-        base_exp = 760000;
-        break;
-    case 52:
-        base_exp = 780000;
-        break;
-    case 53:
-        base_exp = 800000;
-        break;
-    case 54:
-        base_exp = 820000;
-        break;
-    case 55:
-        base_exp = 840000;
-        break;
-    case 56:
-        base_exp = 860000;
-        break;
-    case 57:
-        base_exp = 880000;
-        break;
-    case 58:
-        base_exp = 900000;
-        break;
-    case 59:
-        base_exp = 920000;
-        break;
-    case 60:
-        base_exp = 940000;
-        break;
-    case 61:
-        base_exp = 960000;
-        break;
-    case 62:
-        base_exp = 1000000;
-        break;
-    case 63:
-        base_exp = 1100000;
-        break;
-    case 64:
-        base_exp = 1200000;
-        break;
-    case 65:
-        base_exp = 1300000;
-        break;
-    case 66:
-        base_exp = 1400000;
-        break;
-    case 67:
-        base_exp = 1500000;
-        break;
-    case 68:
-        base_exp = 1600000;
-        break;
-    case 69:
-        base_exp = 1700000;
-        break;
-    case 70:
-        base_exp = 1800000;
-        break;
-    case 71:
-        base_exp = 1900000;
-        break;
-    case 72:
-        base_exp = 2000000;
-        break;
-    case 73:
-        base_exp = 2100000;
-        break;
-    case 74:
-        base_exp = 2200000;
-        break;
-    case 75:
-        base_exp = 2300000;
-        break;
-    case 76:
-        base_exp = 2400000;
-        break;
-    case 77:
-        base_exp = 2500000;
-        break;
-    case 78:
-        base_exp = 2600000;
-        break;
-    case 79:
-        base_exp = 2700000;
-        break;
-    case 80:
-        base_exp = 2800000;
-        break;
-    case 81:
-        base_exp = 2900000;
-        break;
-    case 82:
-        base_exp = 3000000;
-        break;
-    case 83:
-        base_exp = 3100000;
-        break;
-    case 84:
-        base_exp = 3200000;
-        break;
-    case 85:
-        base_exp = 3300000;
-        break;
-    case 86:
-        base_exp = 3400000;
-        break;
-    case 87:
-        base_exp = 3500000;
-        break;
-    case 88:
-        base_exp = 3600000;
-        break;
-    case 89:
-        base_exp = 3700000;
-        break;
-    case 90:
-        base_exp = 3800000;
-        break;
-    case 91:
-        base_exp = 4000000;
-        break;
-    case 92:
-        base_exp = 4500000;
-        break;
-    case 93:
-        base_exp = 5000000;
-        break;
-    case 94:
-        base_exp = 5500000;
-        break;
-    case 95:
-        base_exp = 6000000;
-        break;
-    case 96:
-        base_exp = 6500000;
-        break;
-    case 97:
-        base_exp = 7000000;
-        break;
-    case 98:
-        base_exp = 7500000;
-        break;
-    case 99:
-        base_exp = 8000000;
-        break;
-    case 100:
-        base_exp = 10000000;
-        break;
-    }
-
     /* calculate exp multiplier */
-    xp = base_exp;
+    xp = base_exp = get_base_exp(victim->level);
 
     if (gch->alignment > 500)  	/* for goodie two shoes */
     {
@@ -3314,319 +2702,11 @@ int hit_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
 int cast_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                     int members, int dam)
 {
-    int xp, base_exp = 0;
-
-    /* compute the base exp */
-    switch (victim->level)
-    {
-    case 0:
-        base_exp = 50;
-        break;
-    case 1:
-        base_exp = 100;
-        break;
-    case 2:
-        base_exp = 200;
-        break;
-    case 3:
-        base_exp = 250;
-        break;
-    case 4:
-        base_exp = 350;
-        break;
-    case 5:
-        base_exp = 550;
-        break;
-    case 6:
-        base_exp = 1000;
-        break;
-    case 7:
-        base_exp = 3000;
-        break;
-    case 8:
-        base_exp = 5000;
-        break;
-    case 9:
-        base_exp = 7500;
-        break;
-    case 10:
-        base_exp = 10000;
-        break;
-    case 11:
-        base_exp = 15000;
-        break;
-    case 12:
-        base_exp = 23000;
-        break;
-    case 13:
-        base_exp = 35000;
-        break;
-    case 14:
-        base_exp = 50000;
-        break;
-    case 15:
-        base_exp = 65000;
-        break;
-    case 16:
-        base_exp = 80000;
-        break;
-    case 17:
-        base_exp = 95000;
-        break;
-    case 18:
-        base_exp = 110000;
-        break;
-    case 19:
-        base_exp = 135000;
-        break;
-    case 20:
-        base_exp = 150000;
-        break;
-    case 21:
-        base_exp = 165000;
-        break;
-    case 22:
-        base_exp = 180000;
-        break;
-    case 23:
-        base_exp = 200000;
-        break;
-    case 24:
-        base_exp = 220000;
-        break;
-    case 25:
-        base_exp = 240000;
-        break;
-    case 26:
-        base_exp = 260000;
-        break;
-    case 27:
-        base_exp = 280000;
-        break;
-    case 28:
-        base_exp = 300000;
-        break;
-    case 29:
-        base_exp = 320000;
-        break;
-    case 30:
-        base_exp = 340000;
-        break;
-    case 31:
-        base_exp = 360000;
-        break;
-    case 32:
-        base_exp = 380000;
-        break;
-    case 33:
-        base_exp = 400000;
-        break;
-    case 34:
-        base_exp = 420000;
-        break;
-    case 35:
-        base_exp = 440000;
-        break;
-    case 36:
-        base_exp = 460000;
-        break;
-    case 37:
-        base_exp = 480000;
-        break;
-    case 38:
-        base_exp = 500000;
-        break;
-    case 39:
-        base_exp = 520000;
-        break;
-    case 40:
-        base_exp = 540000;
-        break;
-    case 41:
-        base_exp = 560000;
-        break;
-    case 42:
-        base_exp = 580000;
-        break;
-    case 43:
-        base_exp = 600000;
-        break;
-    case 44:
-        base_exp = 620000;
-        break;
-    case 45:
-        base_exp = 640000;
-        break;
-    case 46:
-        base_exp = 660000;
-        break;
-    case 47:
-        base_exp = 680000;
-        break;
-    case 48:
-        base_exp = 700000;
-        break;
-    case 49:
-        base_exp = 720000;
-        break;
-    case 50:
-        base_exp = 740000;
-        break;
-    case 51:
-        base_exp = 760000;
-        break;
-    case 52:
-        base_exp = 780000;
-        break;
-    case 53:
-        base_exp = 800000;
-        break;
-    case 54:
-        base_exp = 820000;
-        break;
-    case 55:
-        base_exp = 840000;
-        break;
-    case 56:
-        base_exp = 860000;
-        break;
-    case 57:
-        base_exp = 880000;
-        break;
-    case 58:
-        base_exp = 900000;
-        break;
-    case 59:
-        base_exp = 920000;
-        break;
-    case 60:
-        base_exp = 940000;
-        break;
-    case 61:
-        base_exp = 960000;
-        break;
-    case 62:
-        base_exp = 1000000;
-        break;
-    case 63:
-        base_exp = 1100000;
-        break;
-    case 64:
-        base_exp = 1200000;
-        break;
-    case 65:
-        base_exp = 1300000;
-        break;
-    case 66:
-        base_exp = 1400000;
-        break;
-    case 67:
-        base_exp = 1500000;
-        break;
-    case 68:
-        base_exp = 1600000;
-        break;
-    case 69:
-        base_exp = 1700000;
-        break;
-    case 70:
-        base_exp = 1800000;
-        break;
-    case 71:
-        base_exp = 1900000;
-        break;
-    case 72:
-        base_exp = 2000000;
-        break;
-    case 73:
-        base_exp = 2100000;
-        break;
-    case 74:
-        base_exp = 2200000;
-        break;
-    case 75:
-        base_exp = 2300000;
-        break;
-    case 76:
-        base_exp = 2400000;
-        break;
-    case 77:
-        base_exp = 2500000;
-        break;
-    case 78:
-        base_exp = 2600000;
-        break;
-    case 79:
-        base_exp = 2700000;
-        break;
-    case 80:
-        base_exp = 2800000;
-        break;
-    case 81:
-        base_exp = 2900000;
-        break;
-    case 82:
-        base_exp = 3000000;
-        break;
-    case 83:
-        base_exp = 3100000;
-        break;
-    case 84:
-        base_exp = 3200000;
-        break;
-    case 85:
-        base_exp = 3300000;
-        break;
-    case 86:
-        base_exp = 3400000;
-        break;
-    case 87:
-        base_exp = 3500000;
-        break;
-    case 88:
-        base_exp = 3600000;
-        break;
-    case 89:
-        base_exp = 3700000;
-        break;
-    case 90:
-        base_exp = 3800000;
-        break;
-    case 91:
-        base_exp = 4000000;
-        break;
-    case 92:
-        base_exp = 4500000;
-        break;
-    case 93:
-        base_exp = 5000000;
-        break;
-    case 94:
-        base_exp = 5500000;
-        break;
-    case 95:
-        base_exp = 6000000;
-        break;
-    case 96:
-        base_exp = 6500000;
-        break;
-    case 97:
-        base_exp = 7000000;
-        break;
-    case 98:
-        base_exp = 7500000;
-        break;
-    case 99:
-        base_exp = 8000000;
-        break;
-    case 100:
-        base_exp = 10000000;
-        break;
-    }
+    int xp = 0;
 
     /* calculate exp multiplier */
 
-    xp = base_exp;
+    xp = get_base_exp(victim->level);
 
     /* randomize the rewards */
     xp = number_range(xp * 9 / 10, xp * 11 / 10);
@@ -5844,4 +4924,320 @@ static bool check_dodge(CHAR_DATA * ch, CHAR_DATA * victim)
     check_improve(victim, gsn_dodge, TRUE, 6);
     return TRUE;
 
+}
+
+uint32_t get_base_exp(uint8_t level)
+{
+    uint32_t base_exp = 0;
+
+    if (level > 100)
+        level = 100;
+
+    switch (level)
+    {
+    case 0:
+        base_exp = 50;
+        break;
+    case 1:
+        base_exp = 100;
+        break;
+    case 2:
+        base_exp = 200;
+        break;
+    case 3:
+        base_exp = 250;
+        break;
+    case 4:
+        base_exp = 350;
+        break;
+    case 5:
+        base_exp = 550;
+        break;
+    case 6:
+        base_exp = 1000;
+        break;
+    case 7:
+        base_exp = 3000;
+        break;
+    case 8:
+        base_exp = 5000;
+        break;
+    case 9:
+        base_exp = 7500;
+        break;
+    case 10:
+        base_exp = 10000;
+        break;
+    case 11:
+        base_exp = 15000;
+        break;
+    case 12:
+        base_exp = 23000;
+        break;
+    case 13:
+        base_exp = 35000;
+        break;
+    case 14:
+        base_exp = 50000;
+        break;
+    case 15:
+        base_exp = 65000;
+        break;
+    case 16:
+        base_exp = 80000;
+        break;
+    case 17:
+        base_exp = 95000;
+        break;
+    case 18:
+        base_exp = 110000;
+        break;
+    case 19:
+        base_exp = 135000;
+        break;
+    case 20:
+        base_exp = 150000;
+        break;
+    case 21:
+        base_exp = 165000;
+        break;
+    case 22:
+        base_exp = 180000;
+        break;
+    case 23:
+        base_exp = 200000;
+        break;
+    case 24:
+        base_exp = 220000;
+        break;
+    case 25:
+        base_exp = 240000;
+        break;
+    case 26:
+        base_exp = 260000;
+        break;
+    case 27:
+        base_exp = 280000;
+        break;
+    case 28:
+        base_exp = 300000;
+        break;
+    case 29:
+        base_exp = 320000;
+        break;
+    case 30:
+        base_exp = 340000;
+        break;
+    case 31:
+        base_exp = 360000;
+        break;
+    case 32:
+        base_exp = 380000;
+        break;
+    case 33:
+        base_exp = 400000;
+        break;
+    case 34:
+        base_exp = 420000;
+        break;
+    case 35:
+        base_exp = 440000;
+        break;
+    case 36:
+        base_exp = 460000;
+        break;
+    case 37:
+        base_exp = 480000;
+        break;
+    case 38:
+        base_exp = 500000;
+        break;
+    case 39:
+        base_exp = 520000;
+        break;
+    case 40:
+        base_exp = 540000;
+        break;
+    case 41:
+        base_exp = 560000;
+        break;
+    case 42:
+        base_exp = 580000;
+        break;
+    case 43:
+        base_exp = 600000;
+        break;
+    case 44:
+        base_exp = 620000;
+        break;
+    case 45:
+        base_exp = 640000;
+        break;
+    case 46:
+        base_exp = 660000;
+        break;
+    case 47:
+        base_exp = 680000;
+        break;
+    case 48:
+        base_exp = 700000;
+        break;
+    case 49:
+        base_exp = 720000;
+        break;
+    case 50:
+        base_exp = 740000;
+        break;
+    case 51:
+        base_exp = 760000;
+        break;
+    case 52:
+        base_exp = 780000;
+        break;
+    case 53:
+        base_exp = 800000;
+        break;
+    case 54:
+        base_exp = 820000;
+        break;
+    case 55:
+        base_exp = 840000;
+        break;
+    case 56:
+        base_exp = 860000;
+        break;
+    case 57:
+        base_exp = 880000;
+        break;
+    case 58:
+        base_exp = 900000;
+        break;
+    case 59:
+        base_exp = 920000;
+        break;
+    case 60:
+        base_exp = 940000;
+        break;
+    case 61:
+        base_exp = 960000;
+        break;
+    case 62:
+        base_exp = 1000000;
+        break;
+    case 63:
+        base_exp = 1100000;
+        break;
+    case 64:
+        base_exp = 1200000;
+        break;
+    case 65:
+        base_exp = 1300000;
+        break;
+    case 66:
+        base_exp = 1400000;
+        break;
+    case 67:
+        base_exp = 1500000;
+        break;
+    case 68:
+        base_exp = 1600000;
+        break;
+    case 69:
+        base_exp = 1700000;
+        break;
+    case 70:
+        base_exp = 1800000;
+        break;
+    case 71:
+        base_exp = 1900000;
+        break;
+    case 72:
+        base_exp = 2000000;
+        break;
+    case 73:
+        base_exp = 2100000;
+        break;
+    case 74:
+        base_exp = 2200000;
+        break;
+    case 75:
+        base_exp = 2300000;
+        break;
+    case 76:
+        base_exp = 2400000;
+        break;
+    case 77:
+        base_exp = 2500000;
+        break;
+    case 78:
+        base_exp = 2600000;
+        break;
+    case 79:
+        base_exp = 2700000;
+        break;
+    case 80:
+        base_exp = 2800000;
+        break;
+    case 81:
+        base_exp = 2900000;
+        break;
+    case 82:
+        base_exp = 3000000;
+        break;
+    case 83:
+        base_exp = 3100000;
+        break;
+    case 84:
+        base_exp = 3200000;
+        break;
+    case 85:
+        base_exp = 3300000;
+        break;
+    case 86:
+        base_exp = 3400000;
+        break;
+    case 87:
+        base_exp = 3500000;
+        break;
+    case 88:
+        base_exp = 3600000;
+        break;
+    case 89:
+        base_exp = 3700000;
+        break;
+    case 90:
+        base_exp = 3800000;
+        break;
+    case 91:
+        base_exp = 4000000;
+        break;
+    case 92:
+        base_exp = 4500000;
+        break;
+    case 93:
+        base_exp = 5000000;
+        break;
+    case 94:
+        base_exp = 5500000;
+        break;
+    case 95:
+        base_exp = 6000000;
+        break;
+    case 96:
+        base_exp = 6500000;
+        break;
+    case 97:
+        base_exp = 7000000;
+        break;
+    case 98:
+        base_exp = 7500000;
+        break;
+    case 99:
+        base_exp = 8000000;
+        break;
+    case 100:
+        base_exp = 10000000;
+        break;
+    }
+    return base_exp;
 }

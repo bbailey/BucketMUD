@@ -1645,36 +1645,6 @@ looting at all.
 #define PLR_THIEF               (Z)
 #define PLR_KILLER              (aa)
 
-            /* RT comm flags -- may be used on both mobs and chars */
-#define COMM_QUIET              (A)
-#define COMM_DEAF               (B)
-#define COMM_NOWIZ              (C)
-#define COMM_NOAUCTION          (D)
-#define COMM_NOGOSSIP           (E)
-#define COMM_NOQUESTION         (F)
-#define COMM_NO_OOC             (G)
-#define COMM_NOINFO             (H)
-#define COMM_NOCLAN             (I)
-#define COMM_SNOOP_CLAN         (J)
-#define COMM_NOMUSIC            (K)
-            /* display flags */
-#define COMM_COMPACT            (L)
-#define COMM_BRIEF              (M)
-#define COMM_PROMPT             (N)
-#define COMM_COMBINE            (O)
-#define COMM_TELNET_GA          (P)
-#define COMM_NOSPOUSETALK       (Q)
-#define COMM_NOADMIN            (R)
-#define COMM_NOHERO             (S)
-            /* penalties */
-#define COMM_NOEMOTE            (T)
-#define COMM_NOSHOUT            (U)
-#define COMM_NOTELL             (V)
-#define COMM_NOCHANNELS         (W)
-            /* Console Visible flag for Win32 - Zane */
-#define VIS_CONSOLE                             (X)
-#define COMM_NOGOC              (Y)
-#define COMM_TELLOFF            (Z)
 
             /*
              * Liquids.
@@ -1698,15 +1668,6 @@ looting at all.
 #define TAR_CHAR_DEFENSIVE          2
 #define TAR_CHAR_SELF               3
 #define TAR_OBJ_INV                 4
-
-            /* These are needed for the ban.c file. -Lancelight */
-
-#define BAN_SUFFIX              A
-#define BAN_PREFIX              B
-#define BAN_NEWBIES             C
-#define BAN_ALL                 D
-#define BAN_PERMIT              E
-#define BAN_PERMANENT           F
 
             /*
              * Object defined in limbo.are

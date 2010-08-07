@@ -51,9 +51,6 @@ void do_weapon(CHAR_DATA * ch, char *argument)
         send_to_char("Your opponent must wield a weapon.\n\r", ch);
         return;
     }
-    /*
-       if ( check_material(wield,"platinum") || wield->pIndexData->limit != -1 )
-       return; */
 
     if (axe->value[0] == WEAPON_AXE)
         chance *= 1.2;
@@ -88,7 +85,6 @@ void do_weapon(CHAR_DATA * ch, char *argument)
     chance += axe->level - wield->level;
 
     /* and now the attack */
-    /*    SET_BIT(ch->affected_by,AFF_WEAK_STUN); */
     if (number_percent() < chance)
     {
         WAIT_STATE(ch, skill_table[gsn_weapon_cleave].beats);
@@ -147,10 +143,6 @@ void do_shield(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    /*    if ( check_material(shield,"platinum") || shield->pIndexData->limit
-       != -1)
-       return; */
-
     if (axe->value[0] == WEAPON_AXE)
         chance *= 1.2;
     else if (axe->value[0] != WEAPON_SWORD)
@@ -179,12 +171,10 @@ void do_shield(CHAR_DATA * ch, char *argument)
     chance -= 2 * get_curr_stat(victim, STAT_STR);
 
     /* level */
-    /*    chance += (ch->level - victim->level) * 2; */
     chance += ch->level - victim->level;
     chance += axe->level - shield->level;
 
     /* and now the attack */
-    /*    SET_BIT(ch->affected_by,AFF_WEAK_STUN); */
     if (number_percent() < chance)
     {
         WAIT_STATE(ch, skill_table[gsn_shield_cleave].beats);
@@ -1388,33 +1378,12 @@ long exp_per_level(CHAR_DATA * ch, int points)
         expl = 999999999;
         break;
     }
-    /*    if (points > 110) expl=(long)pow((double)110,(double)1.2)*(expl/100); */
     if (points <= CP_MIN_PENALTY)
         points += CP_PENALTY;
     if (points >= 28)
         expl = (long) pow((double) points, (double) 1.2) * (expl / 100);
-    /*    && (points <= 110)) */
     if (points < 28)
         expl = (long) (expl * ((26.0 + points) / 100.0));
-    /*    if (points < 40)
-       return 1000 * pc_race_table[ch->race].class_mult[ch->Class]/100;
-
-       / processing /
-       points -= 40;
-
-       while (points > 9)
-       {
-       expl += inc;
-       points -= 10;
-       if (points > 9)
-       {
-       expl += inc;
-       inc *= 2;
-       points -= 10;
-       }
-       }
-
-       expl += points * inc / 10; */
 
     return expl * (pc_race_table[ch->race].class_mult[ch->Class] / 100);
 }

@@ -40,10 +40,6 @@ extern int mobile_count;
 #define BUFFER_OVERFLOW	1
 #define BUFFER_FREED 	2
 
-/* ban data recycling */
-extern BAN_DATA *new_ban(void);
-extern void free_ban(BAN_DATA * ban);
-
 /* buffer procedures */
 
 extern BUFFER *new_buf(void);

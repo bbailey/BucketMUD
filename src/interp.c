@@ -26,6 +26,7 @@
 
 #include "merc.h"
 #include "interp.h"
+#include "bv_tables.h"
 
 #ifndef S_SPLINT_S
 #include <unistd.h>		/* unlink() */
@@ -724,7 +725,7 @@ bool check_social(CHAR_DATA * ch, char *command, char *argument)
     if (!found)
         return FALSE;
 
-    if (!IS_NPC(ch) && IS_SET(ch->comm, COMM_NOEMOTE))
+    if (!IS_NPC(ch) && bv_is_set(ch->bv_comm_flags, BV_COMM_NO_EMOTE))
     {
         send_to_char("You are anti-social!\n\r", ch);
         return TRUE;
@@ -1078,7 +1079,7 @@ void chk_command(CHAR_DATA * ch, char *argument)
 
         if (found)
         {
-            if (!IS_NPC(ch) && IS_SET(ch->comm, COMM_NOEMOTE))
+            if (!IS_NPC(ch) && bv_is_set(ch->bv_comm_flags, BV_COMM_NO_EMOTE))
                 found = FALSE;
             else
             {

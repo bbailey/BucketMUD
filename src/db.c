@@ -22,12 +22,14 @@
 #include <ctype.h>
 #include <time.h>
 #include <sys/types.h>
+
 #include <glib.h>
 
 #include "merc.h"
 #include "olc.h"
 #include "db.h"
 #include "interp.h"
+#include "bv_tables.h"
 
 #ifndef S_SPLINT_S
 #include <unistd.h>
@@ -1903,7 +1905,8 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
 
     /* read from prototype */
     mob->act = pMobIndex->act;
-    mob->comm = COMM_BRIEF;
+    bv_clear(mob->bv_comm_flags);
+    bv_set(mob->bv_comm_flags, BV_COMM_BRIEF);
     mob->affected_by = pMobIndex->affected_by;
     strncpy(mob->newaff, pMobIndex->newaff, sizeof(mob->newaff));
     mob->alignment = pMobIndex->alignment;
@@ -2035,7 +2038,8 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
     clone->gold = parent->gold;
     clone->exp = parent->exp;
     clone->act = parent->act;
-    clone->comm = parent->comm;
+    bv_delete(clone->bv_comm_flags);
+    clone->bv_comm_flags = bv_copy(parent->bv_comm_flags);
     clone->imm_flags = parent->imm_flags;
     clone->res_flags = parent->res_flags;
     clone->vuln_flags = parent->vuln_flags;
@@ -2235,7 +2239,8 @@ void clear_char(CHAR_DATA * ch)
     ch->lines = PAGELEN;
     for (i = 0; i < 4; i++)
         ch->armor[i] = 100;
-    ch->comm = 0;
+    if (ch->bv_comm_flags == NULL)
+        ch->bv_comm_flags = bv_new(BV_COMM_MAX);
     ch->position = POS_STANDING;
     ch->practice = 0;
     ch->hit = 20;
