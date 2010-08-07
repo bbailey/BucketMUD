@@ -421,7 +421,7 @@ const struct cmd_type cmd_table[] =
     {"beacon", do_beacon, POS_DEAD, BEACON_WIZ, LOG_NORMAL, 1},
     {"beaconreset", do_beaconreset, POS_DEAD, BEACON_WIZ, LOG_NORMAL, 1},
     {"chaos", do_chaos, POS_DEAD, 1, LOG_ALWAYS, 1},
-    {"rlist", do_rlist, POS_DEAD, 1, LOG_NORMAL, 0},
+    {"rlist", do_rlist, POS_DEAD, 1, LOG_NORMAL, 1},
     {"aexits", do_aexits, POS_DEAD, 1, LOG_NORMAL, 1},
     {"aentrances", do_aentrances, POS_DEAD, 1, LOG_NORMAL, 1},
     {"cdeposit", do_cdeposit, POS_RESTING, 0, LOG_NORMAL, 1},
