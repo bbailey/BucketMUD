@@ -306,22 +306,22 @@ int get_skill(CHAR_DATA * ch, int sn)
         else if (sn == gsn_hand_to_hand)
             skill = 40 + 2 * ch->level;
 
-        else if (sn == gsn_trip && IS_SET(ch->off_flags, OFF_TRIP))
+        else if (sn == gsn_trip && bv_is_set(ch->bv_offense_flags, BV_OFF_TRIP))
             skill = 10 + 3 * ch->level;
 
-        else if (sn == gsn_bash && IS_SET(ch->off_flags, OFF_BASH))
+        else if (sn == gsn_bash && bv_is_set(ch->bv_offense_flags, BV_OFF_BASH))
             skill = 10 + 3 * ch->level;
 
-        else if (sn == gsn_disarm && (IS_SET(ch->off_flags, OFF_DISARM)
-                                      || IS_SET(ch->off_flags, ACT_WARRIOR)
-                                      || IS_SET(ch->off_flags, ACT_THIEF)))
+        else if (sn == gsn_disarm && (bv_is_set(ch->bv_offense_flags, BV_OFF_DISARM)
+                                      || IS_SET(ch->act, ACT_WARRIOR)
+                                      || IS_SET(ch->act, ACT_THIEF)))
             skill = 20 + 3 * ch->level;
 
         else if (sn == gsn_grip && (IS_SET(ch->act, ACT_WARRIOR)
                                     || IS_SET(ch->act, ACT_THIEF)))
             skill = ch->level;
 
-        else if (sn == gsn_berserk && IS_SET(ch->off_flags, OFF_BERSERK))
+        else if (sn == gsn_berserk && bv_is_set(ch->bv_offense_flags, BV_OFF_BERSERK))
             skill = 3 * ch->level;
 
         else if (sn == gsn_sword
@@ -3524,57 +3524,6 @@ char *weapon_bit_name(int weapon_flags)
         strcat(buf, " vorpal");
     if (weapon_flags & WEAPON_TWO_HANDS)
         strcat(buf, " two-handed");
-
-    return (buf[0] != '\0') ? buf + 1 : "none";
-}
-
-char *off_bit_name(int off_flags)
-{
-    char buf[MAX_STRING_LENGTH];
-    buf[0] = '\0';
-
-    if (off_flags & OFF_AREA_ATTACK)
-        strcat(buf, " area attack");
-    if (off_flags & OFF_BACKSTAB)
-        strcat(buf, " backstab");
-    if (off_flags & OFF_BASH)
-        strcat(buf, " bash");
-    if (off_flags & OFF_BERSERK)
-        strcat(buf, " berserk");
-    if (off_flags & OFF_DISARM)
-        strcat(buf, " disarm");
-    if (off_flags & OFF_DODGE)
-        strcat(buf, " dodge");
-    if (off_flags & OFF_FADE)
-        strcat(buf, " fade");
-    if (off_flags & OFF_FAST)
-        strcat(buf, " fast");
-    if (off_flags & OFF_KICK)
-        strcat(buf, " kick");
-    if (off_flags & OFF_KICK_DIRT)
-        strcat(buf, " kick_dirt");
-    if (off_flags & OFF_PARRY)
-        strcat(buf, " parry");
-    if (off_flags & OFF_RESCUE)
-        strcat(buf, " rescue");
-    if (off_flags & OFF_TAIL)
-        strcat(buf, " tail");
-    if (off_flags & OFF_TRIP)
-        strcat(buf, " trip");
-    if (off_flags & OFF_CRUSH)
-        strcat(buf, " crush");
-    if (off_flags & ASSIST_ALL)
-        strcat(buf, " assist_all");
-    if (off_flags & ASSIST_ALIGN)
-        strcat(buf, " assist_align");
-    if (off_flags & ASSIST_RACE)
-        strcat(buf, " assist_race");
-    if (off_flags & ASSIST_PLAYERS)
-        strcat(buf, " assist_players");
-    if (off_flags & ASSIST_GUARD)
-        strcat(buf, " assist_guard");
-    if (off_flags & ASSIST_VNUM)
-        strcat(buf, " assist_vnum");
 
     return (buf[0] != '\0') ? buf + 1 : "none";
 }

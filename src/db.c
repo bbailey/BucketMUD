@@ -975,6 +975,7 @@ static void load_area(FILE * fp)
     pArea->lvnum = 0;
     pArea->uvnum = 0;
     pArea->area_flags = 0;
+    pArea->version = 0;
     /*  pArea->recall       = ROOM_VNUM_TEMPLE;        ROM OLC */
 
     for (;;)
@@ -991,6 +992,7 @@ static void load_area(FILE * fp)
             KEY("Security", pArea->security, fread_number(fp));
             break;
         case 'V':
+            KEY("Version", pArea->version, fread_number(fp));
             if (!str_cmp(word, "VNUMs"))
             {
                 pArea->lvnum = fread_number(fp);
@@ -1930,7 +1932,8 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
     mob->dam_type = pMobIndex->dam_type;
     for (i = 0; i < 4; i++)
         mob->armor[i] = pMobIndex->ac[i];
-    mob->off_flags = pMobIndex->off_flags;
+    bv_delete(mob->bv_offense_flags);
+    bv_copy(pMobIndex->bv_offense_flags);
     mob->imm_flags = pMobIndex->imm_flags;
     mob->res_flags = pMobIndex->res_flags;
     mob->vuln_flags = pMobIndex->vuln_flags;
@@ -1983,7 +1986,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
         mob->perm_stat[STAT_DEX] += 1;
     }
 
-    if (IS_SET(mob->off_flags, OFF_FAST))
+    if (bv_is_set(mob->bv_offense_flags, BV_OFF_FAST))
         mob->perm_stat[STAT_DEX] += 2;
 
     mob->perm_stat[STAT_STR] += mob->size - SIZE_MEDIUM;
@@ -2062,7 +2065,8 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
     clone->parts = parent->parts;
     clone->size = parent->size;
     clone->material = parent->material;
-    clone->off_flags = parent->off_flags;
+    bv_delete(clone->bv_offense_flags);
+    clone->bv_offense_flags = bv_copy(parent->bv_offense_flags);
     clone->dam_type = parent->dam_type;
     clone->start_pos = parent->start_pos;
     clone->default_pos = parent->default_pos;
@@ -2241,6 +2245,8 @@ void clear_char(CHAR_DATA * ch)
         ch->armor[i] = 100;
     if (ch->bv_comm_flags == NULL)
         ch->bv_comm_flags = bv_new(BV_COMM_MAX);
+    if (ch->bv_offense_flags == NULL)
+        ch->bv_offense_flags = bv_new(BV_OFF_MAX);
     ch->position = POS_STANDING;
     ch->practice = 0;
     ch->hit = 20;
@@ -4342,6 +4348,7 @@ static void load_progs(FILE * fp)
 static void load_mobiles(FILE * fp)
 {
     MOB_INDEX_DATA *pMobIndex;
+    gchar *tmp_string = NULL;
 
     if (!area_last)  		/* OLC */
     {
@@ -4432,8 +4439,18 @@ static void load_mobiles(FILE * fp)
         pMobIndex->ac[AC_EXOTIC] = fread_number(fp) * 10;
 
         /* read flags and add in data from the race table */
-        pMobIndex->off_flags = fread_flag(fp)
-                               | race_table[pMobIndex->race].off;
+        if (pMobIndex->area->version < 1)
+        {
+            bv_from_old_bitvector(pMobIndex->bv_offense_flags, fread_flag(fp));
+        }
+        else
+        {
+            tmp_string = fread_string(fp);
+            bv_from_string(pMobIndex->bv_offense_flags, bv_str_list_off, tmp_string, BV_STR_SET);
+            free_string(&tmp_string);
+        }
+        bv_from_string(pMobIndex->bv_offense_flags, bv_str_list_off, race_table[pMobIndex->race].offense_flags, BV_STR_SET);
+
         pMobIndex->imm_flags = fread_flag(fp)
                                | race_table[pMobIndex->race].imm;
         pMobIndex->res_flags = fread_flag(fp)

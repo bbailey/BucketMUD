@@ -35,4 +35,31 @@ typedef enum {
 
 extern const BitVectorStringList bv_str_list_comm[];
 
+typedef enum {
+    BV_OFF_AREA_ATTACK = 0,
+    BV_OFF_BACKSTAB = 1,
+    BV_OFF_BASH = 2,
+    BV_OFF_BERSERK = 3,
+    BV_OFF_DISARM = 4,
+    BV_OFF_DODGE = 5,
+    BV_OFF_FADE = 6,
+    BV_OFF_FAST = 7,
+    BV_OFF_KICK = 8,
+    BV_OFF_KICK_DIRT = 9,
+    BV_OFF_PARRY = 10,
+    BV_OFF_RESCUE = 11,
+    BV_OFF_TAIL = 12,
+    BV_OFF_TRIP = 13,
+    BV_OFF_CRUSH = 14,
+    BV_OFF_ASSIST_ALL = 15,
+    BV_OFF_ASSIST_ALIGN = 16,
+    BV_OFF_ASSIST_RACE = 17,
+    BV_OFF_ASSIST_PLAYERS = 18,
+    BV_OFF_ASSIST_GUARD = 19,
+    BV_OFF_ASSIST_VNUM = 20,
+    BV_OFF_MAX
+} BV_OFF_FLAGS;
+
+extern const BitVectorStringList bv_str_list_off[];
+
 #endif // BUCKETMUD_BV_TABLES_H

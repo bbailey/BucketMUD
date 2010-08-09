@@ -20,8 +20,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
 #include "merc.h"
 #include "magic.h"
+#include "bv_tables.h"
 
 bool gsilentdamage;
 
@@ -3217,7 +3219,7 @@ void spell_haste(int sn, int level, CHAR_DATA * ch, void *vo)
     AFFECT_DATA af;
 
     if (is_affected(victim, sn) || IS_AFFECTED(victim, AFF_HASTE)
-            || IS_SET(victim->off_flags, OFF_FAST))
+            || bv_is_set(victim->bv_offense_flags, BV_OFF_FAST))
     {
         if (victim == ch)
             send_to_char("You can't move any faster!\n\r", ch);

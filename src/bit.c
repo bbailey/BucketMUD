@@ -69,7 +69,6 @@ static const struct flag_stat_type flag_stat_table[] =
     {ac_type, TRUE},
     {size_flags, TRUE},
     {position_flags, TRUE},
-    {off_flags, FALSE},
     {imm_flags, FALSE},
     {res_flags, FALSE},
     {vuln_flags, FALSE},
@@ -708,32 +707,6 @@ const struct flag_type furniture_flags[] =
     {"put_on", PUT_ON, TRUE},
     {"put_in", PUT_IN, TRUE},
     {"put_inside", PUT_INSIDE, TRUE},
-    {"", 0, 0}
-};
-
-const struct flag_type off_flags[] =
-{
-    {"area-attack", OFF_AREA_ATTACK, TRUE},
-    {"backstab", OFF_BACKSTAB, TRUE},
-    {"bash", OFF_BASH, TRUE},
-    {"berserk", OFF_BERSERK, TRUE},
-    {"disarm", OFF_DISARM, TRUE},
-    {"dodge", OFF_DODGE, TRUE},
-    {"fade", OFF_FADE, TRUE},
-    {"fast", OFF_FAST, TRUE},
-    {"kick", OFF_KICK, TRUE},
-    {"kick-dirt", OFF_KICK_DIRT, TRUE},
-    {"parry", OFF_PARRY, TRUE},
-    {"rescue", OFF_RESCUE, TRUE},
-    {"tail", OFF_TAIL, TRUE},
-    {"trip", OFF_TRIP, TRUE},
-    {"crush", OFF_CRUSH, TRUE},
-    {"assist-all", ASSIST_ALL, TRUE},
-    {"assist-align", ASSIST_ALIGN, TRUE},
-    {"assist-race", ASSIST_RACE, TRUE},
-    {"assist-player", ASSIST_PLAYERS, TRUE},
-    {"assist-guard", ASSIST_GUARD, TRUE},
-    {"assist-vnum", ASSIST_VNUM, TRUE},
     {"", 0, 0}
 };
 

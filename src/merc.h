@@ -21,6 +21,8 @@
 
 #include <stdbool.h>
 
+#include <glib.h>
+
 #include "BitVector.h"
 #include "magic.h"
 
@@ -398,7 +400,7 @@ struct race_type
     bool pc_race;		/* can be chosen by pcs */
     long act;			/* act bits for the race */
     long aff;			/* aff bits for the race */
-    long off;			/* off bits for the race */
+    gchar *offense_flags;			/* off bits for the race */
     long imm;			/* imm bits for the race */
     long res;			/* res bits for the race */
     long vuln;			/* vuln bits for the race */
@@ -496,7 +498,6 @@ struct mob_index_data
     sh_int damage[3];
     sh_int ac[4];
     sh_int dam_type;
-    long off_flags;
     long imm_flags;
     long res_flags;
     long vuln_flags;
@@ -519,6 +520,7 @@ struct mob_index_data
     unsigned int path_pos;
     bool path_move;
     FACTIONAFF_DATA *faction_affs;
+    BitVector *bv_offense_flags;
 };
 /* Used for formating up the vnum command -Lancelight */
 extern OBJ_INDEX_DATA *obj_first;
@@ -611,7 +613,6 @@ struct char_data
     sh_int size;
     sh_int material;
     /* mobile stuff */
-    long off_flags;
     sh_int damage[3];
     sh_int dam_type;
     sh_int start_pos;
@@ -622,6 +623,7 @@ struct char_data
     sh_int jail_timer;
     /* mob counter for a reset */
     sh_int *reset_count;
+    BitVector *bv_offense_flags;
 };
 
 struct mud_prog_act_list
@@ -946,6 +948,7 @@ struct area_data
     int uvnum;			/* OLC *//* Upper vnum */
     int vnum;			/* OLC *//* Area vnum  */
     int area_flags;		/* OLC */
+    uint8_t version;
 };
 
 /*
@@ -1473,7 +1476,6 @@ char *newaffect_bit_name(int vector);
 char *extra_bit_name(int extra_flags);
 char *wear_bit_name(int wear_flags);
 char *act_bit_name(int act_flags);
-char *off_bit_name(int off_flags);
 char *imm_bit_name(int imm_flags);
 char *form_bit_name(int form_flags);
 char *part_bit_name(int part_flags);
@@ -1785,4 +1787,5 @@ void oprog_act_trigger(char *txt, CHAR_DATA * ch);
 /* added by Zane */
 void oprog_hit_trigger(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj);
 
+void bv_from_old_bitvector(BitVector *bv, uint32_t bitvector);
 #endif

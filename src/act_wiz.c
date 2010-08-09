@@ -1860,9 +1860,9 @@ void do_mstat(CHAR_DATA * ch, char *argument)
     sprintf(buf, "Comm: %s\n\r", bv_to_string(victim->bv_comm_flags, bv_str_list_comm));
     send_to_char(buf, ch);
 
-    if (IS_NPC(victim) && victim->off_flags)
+    if (IS_NPC(victim))
     {
-        sprintf(buf, "Offense: %s\n\r", off_bit_name(victim->off_flags));
+        sprintf(buf, "Offense: %s\n\r", bv_to_string(victim->bv_offense_flags, bv_str_list_off));
         send_to_char(buf, ch);
     }
 

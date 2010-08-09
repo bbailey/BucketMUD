@@ -33,3 +33,29 @@ const BitVectorStringList bv_str_list_comm[] =
     { "telloff", BV_COMM_TELLOFF },
     { NULL, BV_COMM_MAX }
 };
+
+const BitVectorStringList bv_str_list_off[] =
+{
+    { "area_attack", BV_OFF_AREA_ATTACK },
+    { "backstab", BV_OFF_BACKSTAB },
+    { "bash", BV_OFF_BASH },
+    { "berserk", BV_OFF_BERSERK },
+    { "disarm", BV_OFF_DISARM },
+    { "dodge", BV_OFF_DODGE },
+    { "fade", BV_OFF_FADE },
+    { "fast", BV_OFF_FAST },
+    { "kick", BV_OFF_KICK },
+    { "kick_dirt", BV_OFF_KICK },
+    { "parry", BV_OFF_PARRY },
+    { "rescue", BV_OFF_RESCUE },
+    { "tail", BV_OFF_TAIL },
+    { "trip", BV_OFF_TRIP },
+    { "crush", BV_OFF_CRUSH },
+    { "assist_all", BV_OFF_ASSIST_ALL },
+    { "assist_align", BV_OFF_ASSIST_ALIGN },
+    { "assist_race", BV_OFF_ASSIST_RACE },
+    { "assist_players", BV_OFF_ASSIST_PLAYERS },
+    { "assist_guard", BV_OFF_ASSIST_GUARD },
+    { "assist_vnum", BV_OFF_ASSIST_VNUM},
+    { NULL, BV_OFF_MAX }
+};

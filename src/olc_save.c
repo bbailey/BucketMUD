@@ -36,10 +36,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
 #include <glib.h>
 
 #include "merc.h"
 #include "olc.h"
+#include "bv_tables.h"
 
 extern void save_factionaffs(FILE * fp, AREA_DATA * pArea);
 
@@ -184,7 +186,7 @@ static void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
     fprintf(fp, "%d %d %d %d\n", pMobIndex->ac[AC_PIERCE] / 10,
             pMobIndex->ac[AC_BASH] / 10,
             pMobIndex->ac[AC_SLASH] / 10, pMobIndex->ac[AC_EXOTIC] / 10);
-    fprintf(fp, "%s ", fwrite_flag(pMobIndex->off_flags, buf));
+    fprintf(fp, "%s~\n", bv_to_string(pMobIndex->bv_offense_flags, bv_str_list_off));
     fprintf(fp, "%s ", fwrite_flag(pMobIndex->imm_flags, buf));
     fprintf(fp, "%s ", fwrite_flag(pMobIndex->res_flags, buf));
     fprintf(fp, "%s\n", fwrite_flag(pMobIndex->vuln_flags, buf));
@@ -929,6 +931,7 @@ void save_area(AREA_DATA * pArea)
     fprintf(fp, "Builders    %s~\n", fix_string(pArea->builders));
     fprintf(fp, "VNUMs       %d %d\n", pArea->lvnum, pArea->uvnum);
     fprintf(fp, "Security    %d\n", pArea->security);
+    fprintf(fp, "Version     %d\n", CURRENT_AREA_VERSION);
     fprintf(fp, "End\n\n\n\n");
 
     save_mobiles(fp, pArea);

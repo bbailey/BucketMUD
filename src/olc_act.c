@@ -27,10 +27,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
 #include "merc.h"
 #include "interp.h"
 #include "magic.h"
 #include "olc.h"
+#include "bv_tables.h"
 
 /* Return TRUE if area changed, FALSE if not. */
 #define REDIT( fun )		bool fun( CHAR_DATA *ch, char *argument )
@@ -95,7 +97,6 @@ static const struct olc_help_type help_table[] =
     {"imm", imm_flags, "Mobile immunity."},
     {"res", res_flags, "Mobile resistance."},
     {"vuln", vuln_flags, "Mobile vlnerability."},
-    {"off", off_flags, "Mobile offensive behaviour."},
     {"size", size_flags, "Mobile size."},
     {"position", position_flags, "Mobile positions."},
     {"material", material_type, "Material mob/obj is made from."},
@@ -3391,7 +3392,7 @@ MEDIT(medit_show)
     send_to_char(buf, ch);
 
     sprintf(buf, "Off:         [%s]\n\r",
-            flag_string(off_flags, pMob->off_flags));
+            bv_to_string(pMob->bv_offense_flags, bv_str_list_off));
     send_to_char(buf, ch);
 
     sprintf(buf, "Size:        [%s]\n\r",
@@ -4077,18 +4078,14 @@ MEDIT(medit_material)
 MEDIT(medit_off)
 {
     MOB_INDEX_DATA *pMob;
-    int value;
 
     if (argument[0] != '\0')
     {
         EDIT_MOB(ch, pMob);
 
-        if ((value = flag_value(off_flags, argument)) != NO_FLAG)
-        {
-            pMob->off_flags ^= value;
-            send_to_char("Offensive behaviour toggled.\n\r", ch);
-            return TRUE;
-        }
+        bv_from_string(pMob->bv_offense_flags, bv_str_list_off, argument, BV_STR_TOGGLE);
+        send_to_char("Offensive behaviour toggled.\n\r", ch);
+        return TRUE;
     }
 
     send_to_char("Syntax: off [flags]\n\r"
@@ -4330,7 +4327,7 @@ MEDIT(medit_race)
         EDIT_MOB(ch, pMob);
 
         pMob->race = race;
-        pMob->off_flags |= race_table[race].off;
+        bv_from_string(pMob->bv_offense_flags, bv_str_list_off, race_table[race].offense_flags, BV_STR_SET);
         pMob->imm_flags |= race_table[race].imm;
         pMob->res_flags |= race_table[race].res;
         pMob->vuln_flags |= race_table[race].vuln;

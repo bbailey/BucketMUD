@@ -20,8 +20,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
 #include "merc.h"
 #include "interp.h"
+#include "bv_tables.h"
 
 #define MAX_DAMAGE_MESSAGE 35
 
@@ -129,7 +131,7 @@ static void check_assist(CHAR_DATA * ch, CHAR_DATA * victim)
         {
             /* quick check for ASSIST_PLAYER */
             if (!IS_NPC(ch) && IS_NPC(rch)
-                    && IS_SET(rch->off_flags, ASSIST_PLAYERS)
+                    && bv_is_set(rch->bv_offense_flags, BV_OFF_ASSIST_PLAYERS)
                     && rch->level + 6 > victim->level
                     && (!chaos && !IS_SET(ch->act, PLR_KILLER)))
             {
@@ -154,16 +156,16 @@ static void check_assist(CHAR_DATA * ch, CHAR_DATA * victim)
 
             if (IS_NPC(ch) && !IS_AFFECTED(ch, AFF_CHARM))
             {
-                if ((IS_NPC(rch) && IS_SET(rch->off_flags, ASSIST_ALL))
+                if ((IS_NPC(rch) && bv_is_set(rch->bv_offense_flags, BV_OFF_ASSIST_ALL))
                         || (IS_NPC(rch) && rch->race == ch->race
-                            && IS_SET(rch->off_flags, ASSIST_RACE))
+                            && bv_is_set(rch->bv_offense_flags, BV_OFF_ASSIST_RACE))
                         || (IS_NPC(rch)
-                            && IS_SET(rch->off_flags, ASSIST_ALIGN)
+                            && bv_is_set(rch->bv_offense_flags, BV_OFF_ASSIST_ALIGN)
                             && ((IS_GOOD(rch) && IS_GOOD(ch))
                                 || (IS_EVIL(rch) && IS_EVIL(ch))
                                 || (IS_NEUTRAL(rch) && IS_NEUTRAL(ch))))
                         || (rch->pIndexData == ch->pIndexData
-                            && IS_SET(rch->off_flags, ASSIST_VNUM)))
+                            && bv_is_set(rch->bv_offense_flags, BV_OFF_ASSIST_VNUM)))
                 {
                     CHAR_DATA *vch;
                     CHAR_DATA *target;
@@ -322,7 +324,7 @@ static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
 
     /* Area attack -- BALLS nasty! */
 
-    if (IS_SET(ch->off_flags, OFF_AREA_ATTACK))
+    if (bv_is_set(ch->bv_offense_flags, BV_OFF_AREA_ATTACK))
     {
         for (vch = ch->in_room->people; vch != NULL; vch = vch_next)
         {
@@ -332,7 +334,7 @@ static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
         }
     }
 
-    if (IS_AFFECTED(ch, AFF_HASTE) || IS_SET(ch->off_flags, OFF_FAST))
+    if (IS_AFFECTED(ch, AFF_HASTE) || bv_is_set(ch->bv_offense_flags, BV_OFF_FAST))
         one_hit(ch, victim, weapon, dt);
 
     if (ch->fighting != victim || dt == gsn_backstab)
@@ -377,18 +379,18 @@ static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
     switch (number)
     {
     case (0):
-        if (IS_SET(ch->off_flags, OFF_BASH))
+        if (bv_is_set(ch->bv_offense_flags, BV_OFF_BASH))
             do_bash(ch, "");
         break;
 
     case (1):
-        if (IS_SET(ch->off_flags, OFF_BERSERK)
+        if (bv_is_set(ch->bv_offense_flags, BV_OFF_BERSERK)
                 && !IS_AFFECTED(ch, AFF_BERSERK))
             do_berserk(ch, "");
         break;
 
     case (2):
-        if (IS_SET(ch->off_flags, OFF_DISARM)
+        if (bv_is_set(ch->bv_offense_flags, BV_OFF_DISARM)
                 || (get_weapon_sn(ch) != gsn_hand_to_hand
                     && (IS_SET(ch->act, ACT_WARRIOR)
                         || IS_SET(ch->act, ACT_THIEF))))
@@ -396,17 +398,17 @@ static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
         break;
 
     case (3):
-        if (IS_SET(ch->off_flags, OFF_KICK))
+        if (bv_is_set(ch->bv_offense_flags, BV_OFF_KICK))
             do_kick(ch, "");
         break;
 
     case (4):
-        if (IS_SET(ch->off_flags, OFF_KICK_DIRT))
+        if (bv_is_set(ch->bv_offense_flags, BV_OFF_KICK_DIRT))
             do_dirt(ch, "");
         break;
 
     case (6):
-        if (IS_SET(ch->off_flags, OFF_TRIP))
+        if (bv_is_set(ch->bv_offense_flags, BV_OFF_TRIP))
             do_trip(ch, "");
         break;
 
@@ -3396,7 +3398,7 @@ void do_berserk(CHAR_DATA * ch, char *argument)
     int chance, hp_percent;
 
     if ((chance = get_skill(ch, gsn_berserk)) == 0
-            || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_BERSERK))
+            || (IS_NPC(ch) && !bv_is_set(ch->bv_offense_flags, BV_OFF_BERSERK))
             || (!IS_NPC(ch)
                 && ch->level < skill_table[gsn_berserk].skill_level[ch->Class])
             || !can_use(ch, gsn_berserk))
@@ -3490,7 +3492,7 @@ void do_bash(CHAR_DATA * ch, char *argument)
     one_argument(argument, arg);
 
     if ((chance = get_skill(ch, gsn_bash)) == 0
-            || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_BASH))
+            || (IS_NPC(ch) && !bv_is_set(ch->bv_offense_flags, BV_OFF_BASH))
             || (!IS_NPC(ch)
                 && ch->level < skill_table[gsn_bash].skill_level[ch->Class])
             || !can_use(ch, gsn_bash))
@@ -3568,9 +3570,9 @@ void do_bash(CHAR_DATA * ch, char *argument)
     chance -= get_curr_stat(victim, STAT_DEX) * 4 / 3;
 
     /* speed */
-    if (IS_SET(ch->off_flags, OFF_FAST))
+    if (bv_is_set(ch->bv_offense_flags, BV_OFF_FAST))
         chance += 10;
-    if (IS_SET(victim->off_flags, OFF_FAST))
+    if (bv_is_set(victim->bv_offense_flags, BV_OFF_FAST))
         chance -= 20;
 
     /* level */
@@ -3618,7 +3620,7 @@ void do_dirt(CHAR_DATA * ch, char *argument)
     one_argument(argument, arg);
 
     if ((chance = get_skill(ch, gsn_dirt)) == 0
-            || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_KICK_DIRT))
+            || (IS_NPC(ch) && !bv_is_set(ch->bv_offense_flags, BV_OFF_KICK_DIRT))
             || (!IS_NPC(ch)
                 && ch->level < skill_table[gsn_dirt].skill_level[ch->Class]))
     {
@@ -3685,9 +3687,9 @@ void do_dirt(CHAR_DATA * ch, char *argument)
     chance -= 2 * get_curr_stat(victim, STAT_DEX);
 
     /* speed  */
-    if (IS_SET(ch->off_flags, OFF_FAST) || IS_AFFECTED(ch, AFF_HASTE))
+    if (bv_is_set(ch->bv_offense_flags, BV_OFF_FAST) || IS_AFFECTED(ch, AFF_HASTE))
         chance += 10;
-    if (IS_SET(victim->off_flags, OFF_FAST)
+    if (bv_is_set(victim->bv_offense_flags, BV_OFF_FAST)
             || IS_AFFECTED(victim, AFF_HASTE))
         chance -= 25;
 
@@ -3775,7 +3777,7 @@ void do_trip(CHAR_DATA * ch, char *argument)
     one_argument(argument, arg);
 
     if ((chance = get_skill(ch, gsn_trip)) == 0
-            || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_TRIP))
+            || (IS_NPC(ch) && !bv_is_set(ch->bv_offense_flags, BV_OFF_TRIP))
             || (!IS_NPC(ch)
                 && ch->level < skill_table[gsn_trip].skill_level[ch->Class]))
     {
@@ -3853,10 +3855,12 @@ void do_trip(CHAR_DATA * ch, char *argument)
     chance += get_curr_stat(ch, STAT_DEX);
     chance -= get_curr_stat(victim, STAT_DEX) * 3 / 2;
 
+
     /* speed */
-    if (IS_SET(ch->off_flags, OFF_FAST) || IS_AFFECTED(ch, AFF_HASTE))
+#warning "This chunk exists in multiple functions. Refactor it."
+    if (bv_is_set(ch->bv_offense_flags, BV_OFF_FAST) || IS_AFFECTED(ch, AFF_HASTE))
         chance += 10;
-    if (IS_SET(victim->off_flags, OFF_FAST)
+    if (bv_is_set(victim->bv_offense_flags, BV_OFF_FAST)
             || IS_AFFECTED(victim, AFF_HASTE))
         chance -= 20;
 
@@ -4462,7 +4466,7 @@ void do_kick(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_KICK))
+    if (IS_NPC(ch) && !bv_is_set(ch->bv_offense_flags, BV_OFF_KICK))
         return;
 
     if ((victim = ch->fighting) == NULL)
@@ -4515,7 +4519,7 @@ void do_disarm(CHAR_DATA * ch, char *argument)
     if (get_eq_char(ch, WEAR_WIELD) == NULL
             && get_eq_char(ch, WEAR_SECOND_WIELD) == NULL
             && ((hth = get_skill(ch, gsn_hand_to_hand)) == 0
-                || (IS_NPC(ch) && !IS_SET(ch->off_flags, OFF_DISARM))))
+                || (IS_NPC(ch) && !bv_is_set(ch->bv_offense_flags, BV_OFF_DISARM))))
     {
         send_to_char("You must wield a weapon to disarm.\n\r", ch);
         return;

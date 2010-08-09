@@ -50,6 +50,8 @@
 		"     Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com\n\r" \
 		"     Heavily modified by Zane (zane@supernova.org) "
 
+#define CURRENT_AREA_VERSION 1
+
 /*
  * New typedefs.
  */

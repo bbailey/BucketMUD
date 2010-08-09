@@ -34,7 +34,7 @@ extern bool chaos;
 
 
 /* Convert a standard bitvector to our new BitVector type */
-void bv_from_old_bitvector(BitVector *bv, long old_bitvector)
+void bv_from_old_bitvector(BitVector *bv, uint32_t old_bitvector)
 {
     int index = 0;
 
