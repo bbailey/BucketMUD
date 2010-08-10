@@ -40,7 +40,7 @@ void bv_from_old_bitvector(BitVector *bv, uint32_t old_bitvector)
 
     for (index=0; index<31; index++)
     {
-        if (old_bitvector & (1<<index))
+        if (old_bitvector & (1<<index) && (index < bv->numBits_))
             bv_set(bv,index);
     }
 }
