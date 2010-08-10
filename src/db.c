@@ -1933,7 +1933,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
     for (i = 0; i < 4; i++)
         mob->armor[i] = pMobIndex->ac[i];
     bv_delete(mob->bv_offense_flags);
-    bv_copy(pMobIndex->bv_offense_flags);
+    mob->bv_offense_flags = bv_copy(pMobIndex->bv_offense_flags);
     mob->imm_flags = pMobIndex->imm_flags;
     mob->res_flags = pMobIndex->res_flags;
     mob->vuln_flags = pMobIndex->vuln_flags;
@@ -4382,6 +4382,7 @@ static void load_mobiles(FILE * fp)
         fBootDb = TRUE;
 
         pMobIndex = alloc_perm(sizeof(*pMobIndex));
+	pMobIndex->bv_offense_flags = bv_new(BV_OFF_MAX);
         pMobIndex->vnum = vnum;
         pMobIndex->area = area_last;	/* OLC */
         pMobIndex->player_name = fread_string(fp);
