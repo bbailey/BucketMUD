@@ -3,6 +3,7 @@ Name        {20 30} Diku    Redferne's Residence~
 Builders    None~
 VNUMs       7900 7918
 Security    9
+Version     1
 End
 
 
@@ -22,7 +23,8 @@ AGT DH 1000 S
 29 0 
 100 0 0 0 10d56+405 29d10+100 5d10+15 11
 -8 -8 -8 1
-0 0 0 0
+none~
+0 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #0

@@ -3,6 +3,7 @@ Name        { 1  5} Hatchet Mud School~
 Builders    None~
 VNUMs       3700 3799
 Security    9
+Version     1
 End
 
 
@@ -20,7 +21,8 @@ ABGQTV CH 1000 S
 30 10 
 100 0 0 0 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
-ACEFHIKN ABCD 0 0
+area_attack bash disarm dodge fast kick kick_dirt parry trip ~
+ABCD 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3701
@@ -37,7 +39,8 @@ ABG C 0 S
 5 -5 
 100 0 0 0 1d1+49 1d1+99 1d1+0 14
 -15 -15 -15 -15
-AN AB CD 0
+area_attack trip ~
+AB CD 0
 8 8 0 0
 BSc 0 L 0
 #3702
@@ -53,7 +56,8 @@ ABU 0 0 S
 1 0 
 100 0 0 0 1d1+7 1d1+99 1d3+0 5
 10 10 10 10
-0 AB 0 C
+none~
+AB 0 C
 8 8 0 10
 AMV ABCDEFHJKQU M 0
 #3703
@@ -69,7 +73,8 @@ ABHU 0 0 S
 1 0 
 100 0 0 0 1d1+7 1d1+99 1d2+0 5
 10 10 10 10
-O AB 0 C
+crush ~
+AB 0 C
 8 8 0 10
 AMV ABCDEFHJKQU M 0
 #3704
@@ -85,7 +90,8 @@ ABFU 0 0 S
 1 0 
 100 0 0 0 1d1+7 1d1+99 1d4+0 5
 10 10 10 10
-EK AB 0 C
+disarm parry ~
+AB 0 C
 8 8 0 10
 AMV ABCDEFHJKQU M 0
 #3705
@@ -101,7 +107,8 @@ ABFHU 0 0 S
 1 0 
 100 0 0 0 1d1+7 1d1+99 1d3+0 5
 10 10 10 10
-J AB 0 C
+none~
+AB 0 C
 8 8 0 10
 AMV ABCDEFHJKQU M 0
 #3706
@@ -117,7 +124,8 @@ ABU JZ 0 S
 2 1 
 100 0 0 0 2d2+20 1d1+99 1d4+1 5
 8 8 8 10
-FN AB 0 C
+dodge trip ~
+AB 0 C
 8 8 0 25
 AMV ABCDEFHJKQU M 0
 #3707
@@ -132,7 +140,8 @@ ABGQTV CH 1000 S
 30 10 
 100 0 0 0 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
-ACEFHIKN ABCD 0 0
+area_attack bash disarm dodge fast kick kick_dirt parry trip ~
+ABCD 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3708
@@ -147,7 +156,8 @@ ABGQTV CH 1000 S
 30 10 
 100 0 0 0 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
-ACEFHIKN ABCD 0 0
+area_attack bash disarm dodge fast kick kick_dirt parry trip ~
+ABCD 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3709
@@ -162,7 +172,8 @@ AGHU 0 100 S
 1 0 
 100 0 0 0 1d1+10 1d1+99 1d3+0 10
 10 10 10 10
-FH 0 0 0
+dodge fast ~
+0 0 0
 8 8 3 0
 AGV ACDEFHJK T 0
 #3710
@@ -177,7 +188,8 @@ AGU 0 -100 S
 2 0 
 100 0 0 0 2d2+20 1d1+99 1d4+1 10
 8 8 8 10
-0 0 L I
+none~
+0 L I
 8 8 3 0
 AGXc ACDEFHKQV S 0
 #3711
@@ -192,7 +204,8 @@ AGU 0 0 S
 3 1 
 100 0 0 0 3d3+30 1d1+99 1d6+1 15
 7 7 7 9
-CDF 0 0 0
+bash berserk dodge ~
+0 0 0
 8 8 3 0
 AGV ACDEFHJK M 0
 #3712
@@ -207,7 +220,8 @@ AGHU Z 100 S
 1 1 
 100 0 0 0 1d1+12 1d1+99 1d3+1 10
 8 8 8 10
-FHN 0 0 0
+dodge fast trip ~
+0 0 0
 8 8 3 0
 AGV ACDEFHJKQV S 0
 #3713
@@ -222,7 +236,8 @@ AGU 0 0 S
 0 0 
 100 0 0 0 1d1+0 1d1+99 1d1+0 14
 10 10 10 10
-0 0 0 0
+none~
+0 0 0
 8 8 0 0
 AGQc AFHM T 0
 #3714
@@ -237,7 +252,8 @@ AFTU Z 0 S
 5 1 
 100 0 0 0 5d5+55 1d1+99 1d6+3 10
 5 5 5 8
-EKM AB HI C
+disarm parry tail ~
+AB HI C
 8 8 0 50
 AMV ABCDEFHJKQU L 0
 #3715
@@ -252,7 +268,8 @@ AGU 0 0 S
 4 1 
 100 0 0 0 4d4+44 1d1+99 1d6+2 5
 6 5 6 7
-CDEOR 0 EI 0
+bash berserk disarm crush assist_race ~
+0 EI 0
 8 8 3 0
 AGV ABCDEFHJKUV L 0
 #3716
@@ -267,7 +284,8 @@ AGU Z 0 S
 4 0 
 100 0 0 0 4d4+44 1d1+99 1d6+2 10
 7 7 7 10
-FHNR 0 0 0
+dodge fast trip assist_race ~
+0 0 0
 8 8 3 0
 AGV ACDEFJKQV M 0
 #3717
@@ -282,7 +300,8 @@ ABCQTV CH 1000 S
 30 10 
 100 0 0 0 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
-ACEFHIKN ABCD 0 0
+area_attack bash disarm dodge fast kick kick_dirt parry trip ~
+ABCD 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3718
@@ -297,7 +316,8 @@ ABCJQTV CH 1000 S
 30 10 
 100 0 0 0 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
-ACEFHIKN ABCD 0 0
+area_attack bash disarm dodge fast kick kick_dirt parry trip ~
+ABCD 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3719
@@ -312,7 +332,8 @@ ABCKQTV CH 1000 S
 30 10 
 100 0 0 0 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
-ACEFHIKN ABCD 0 0
+area_attack bash disarm dodge fast kick kick_dirt parry trip ~
+ABCD 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3720
@@ -328,7 +349,8 @@ ABU J 0 S
 3 1 
 100 0 0 0 2d4+30 1d1+99 1d6+1 5
 8 8 8 10
-EFN AB 0 C
+disarm dodge trip ~
+AB 0 C
 8 8 0 30
 AMV ABCDEFHJKQU M 0
 #0
@@ -541,9 +563,9 @@ unknown~
 0 0 0 0 0
 0 1 0 P
 A
-5 1
-A
 4 1
+A
+5 1
 E
 diploma~
 This document shows that you have graduated from Mud School.
@@ -560,9 +582,9 @@ unknown~
 0 0 200 0 0
 0 2 0 P
 A
-24 -1
-A
 17 -1
+A
+24 -1
 E
 banner~
 This is the official Merc war banner to see you through the darkest realm!
@@ -606,11 +628,6 @@ wall.
 ~
 0 131084 0
 E
-plaque~
-This zone (Mud School) is created by Hatchet for any Merc Mud.
-Copyright 1992, 1993.
-~
-E
 sign~
 Equipment check time!  Type 'EQUIPMENT' to see your current equipment.  Right
 now, you have just a vest, a shield, and a weapon.  As you go through Mud
@@ -625,6 +642,11 @@ To stop using a piece of equipment, type 'REMOVE item'.
 Finally, to see the items in your inventory, type 'INVENTORY'.
 
 When you are ready to continue, go west.
+~
+E
+plaque~
+This zone (Mud School) is created by Hatchet for any Merc Mud.
+Copyright 1992, 1993.
 ~
 D2
 You see a path into another room.
@@ -1972,8 +1994,9 @@ in Furey's Training Room to the west.  You can practice your skills and spells
 in Seth's Guild Room to the east.  You can continue through mud school by
 going north.
 
-If you are a new character, you should go 'WEST' from here, train your
-abilities, and then come back here and go 'NORTH'.
+New characters should go 'WEST' from here to train your abilities, then
+return here and go 'EAST' to practice your skills and spells. Once you
+are finished, continue 'NORTH'.
 ~
 D0
 You see the next station of Mud School.

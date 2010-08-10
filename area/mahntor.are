@@ -3,6 +3,7 @@ Name        { 5 35} Chris   The Keep of Mahn-Tor~
 Builders    None~
 VNUMs       2300 2399
 Security    9
+Version     1
 End
 
 
@@ -22,7 +23,8 @@ ABT DH -1000 S
 25 0 
 100 0 0 0 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
-0 0 0 0
+none~
+0 0 0
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #2301
@@ -39,7 +41,8 @@ ABT 0 250 S
 21 0 
 100 0 0 0 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
-0 0 0 0
+none~
+0 0 0
 8 8 0 500
 AHMV ABCDEFGHIJK M 0
 #2302
@@ -56,7 +59,8 @@ ABFT CEP 0 S
 14 0 
 100 0 0 0 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
-0 0 0 0
+none~
+0 0 0
 8 8 0 250
 AHMV ABCDEFGHIJK M 0
 #2303
@@ -71,7 +75,8 @@ ABT 0 -250 S
 15 0 
 100 0 0 0 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
-0 0 0 0
+none~
+0 0 0
 6 6 0 255
 AHMV ABCDEFGHIJK M 0
 #2304
@@ -87,7 +92,8 @@ ABT DH 1000 S
 24 0 
 100 0 0 0 10d38+311 24d10+100 5d8+14 7
 -5 -5 -5 2
-0 0 0 0
+none~
+0 0 0
 8 8 2 2000
 AHMV ABCDEFGHIJK M 0
 #2305
@@ -102,7 +108,8 @@ ABFT Q 0 S
 14 0 
 100 0 0 0 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
-0 0 0 0
+none~
+0 0 0
 8 8 0 100
 AHMV ABCDEFGHIJK M 0
 #2306
@@ -119,7 +126,8 @@ ABCFT 0 -1000 S
 21 0 
 100 0 0 0 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
-0 0 0 0
+none~
+0 0 0
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #2307
@@ -135,7 +143,8 @@ AGHT 0 -200 S
 10 0 
 100 0 0 0 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
-0 0 0 0
+none~
+0 0 0
 8 8 0 20
 AHMV ABCDEFGHIJK M 0
 #2308
@@ -151,7 +160,8 @@ ACFGHT 0 -350 S
 15 0 
 100 0 0 0 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
-0 0 0 0
+none~
+0 0 0
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #2309
@@ -167,7 +177,8 @@ ABCFGT 0 -500 S
 20 0 
 100 0 0 0 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
-0 0 0 0
+none~
+0 0 0
 8 8 1 1000
 AHMV ABCDEFGHIJK M 0
 #2310
@@ -183,7 +194,8 @@ ABCFGHT DH -750 S
 20 0 
 100 0 0 0 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
-0 0 0 0
+none~
+0 0 0
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #2311
@@ -199,7 +211,8 @@ ABCFGHT DH -1000 S
 25 0 
 100 0 0 0 10d42+322 25d10+100 5d8+16 7
 -5 -5 -5 2
-0 0 0 0
+none~
+0 0 0
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #2312
@@ -215,7 +228,8 @@ ABCFGHT 0 0 S
 19 0 
 100 0 0 0 7d34+223 19d10+100 5d6+12 11
 -1 -1 -1 4
-0 0 0 0
+none~
+0 0 0
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #2313
@@ -231,7 +245,8 @@ ABCFGHT 0 -350 S
 16 0 
 100 0 0 0 5d34+175 16d10+100 4d7+8 3
 0 0 0 5
-0 0 0 0
+none~
+0 0 0
 8 8 0 100
 AHMV ABCDEFGHIJK M 0
 #2314
@@ -248,7 +263,8 @@ ABCFGT 0 0 S
 20 0 
 100 0 0 0 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
-0 0 0 0
+none~
+0 0 0
 8 8 0 350
 AHMV ABCDEFGHIJK M 0
 #2315
@@ -264,7 +280,8 @@ ABCGHT 0 100 S
 15 0 
 100 0 0 0 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
-0 0 0 0
+none~
+0 0 0
 8 8 0 1000
 AHMV ABCDEFGHIJK M 0
 #2316
@@ -280,7 +297,8 @@ ABCFGT 0 -330 S
 23 0 
 100 0 0 0 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
-0 0 0 0
+none~
+0 0 0
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #2317
@@ -296,7 +314,8 @@ ACFGT 0 -330 S
 20 0 
 100 0 0 0 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
-0 0 0 0
+none~
+0 0 0
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #2318
@@ -312,7 +331,8 @@ ABCGT D -330 S
 26 0 
 100 0 0 0 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
-0 0 0 0
+none~
+0 0 0
 8 8 0 2500
 AHMV ABCDEFGHIJK M 0
 #2319
@@ -328,7 +348,8 @@ ABCFGT D -330 S
 24 0 
 100 0 0 0 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
-0 0 0 0
+none~
+0 0 0
 8 8 1 4500
 AHMV ABCDEFGHIJK M 0
 #2320
@@ -344,7 +365,8 @@ ABCFGT D -330 S
 26 0 
 100 0 0 0 10d45+345 26d10+100 5d9+13 3
 -6 -6 -6 1
-0 0 0 0
+none~
+0 0 0
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #2321
@@ -360,7 +382,8 @@ ABCFGT D -250 S
 27 0 
 100 0 0 0 10d49+360 27d10+100 5d9+15 11
 -6 -6 -6 1
-0 0 0 0
+none~
+0 0 0
 8 8 1 7500
 AHMV ABCDEFGHIJK M 0
 #2322
@@ -376,7 +399,8 @@ ABCGHT 0 1000 S
 2 0 
 100 0 0 0 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
-0 0 0 0
+none~
+0 0 0
 8 8 1 1
 AHMV ABCDEFGHIJK M 0
 #2323
@@ -391,7 +415,8 @@ ABCGHT 0 250 S
 20 0 
 100 0 0 0 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
-0 0 0 0
+none~
+0 0 0
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #2324
@@ -407,7 +432,8 @@ ABCGT DH -300 S
 29 0 
 100 0 0 0 10d56+405 29d10+100 5d10+15 11
 -8 -8 -8 1
-0 0 0 0
+none~
+0 0 0
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #2325
@@ -423,7 +449,8 @@ ABFT DH -300 S
 29 0 
 100 0 0 0 10d56+405 29d10+100 5d10+15 3
 -8 -8 -8 1
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2326
@@ -439,7 +466,8 @@ ABFT DH -1000 S
 30 0 
 100 0 0 0 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2327
@@ -455,7 +483,8 @@ ABT DH 1000 S
 31 0 
 100 0 0 0 10d64+448 31d10+100 5d10+19 3
 -9 -9 -9 0
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2328
@@ -472,7 +501,8 @@ ABFT DH 300 S
 31 0 
 100 0 0 0 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2329
@@ -488,7 +518,8 @@ ABFT DH 1000 S
 30 0 
 100 0 0 0 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2330
@@ -504,7 +535,8 @@ ABT DH 500 S
 31 0 
 100 0 0 0 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2331
@@ -520,7 +552,8 @@ ABFT DH 500 S
 30 0 
 100 0 0 0 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2332
@@ -536,7 +569,8 @@ ABCFT Q -500 S
 31 0 
 100 0 0 0 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2333
@@ -553,7 +587,8 @@ ABCT BDHTU -500 S
 34 0 
 100 0 0 0 10d78+505 34d10+100 5d11+21 11
 -11 -11 -11 0
-0 0 0 0
+none~
+0 0 0
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #0
@@ -2237,10 +2272,6 @@ D3
 (null)~
 ~
 0 0 2334
-D0
-(null)~
-~
-0 0 2337
 D2
 (null)~
 ~
@@ -2249,6 +2280,10 @@ D1
 (null)~
 ~
 0 0 2334
+D0
+(null)~
+~
+0 0 2337
 S
 #2333
 Lost in the Mist~
@@ -2258,22 +2293,22 @@ almost caresses your body as it floats about you. You can wander in any
 direction.......
 ~
 0 8201 3
-D1
-(null)~
-~
-0 0 2336
-D0
-(null)~
-~
-0 0 2333
 D2
 (null)~
 ~
 0 0 2333
+D1
+(null)~
+~
+0 0 2336
 D3
 (null)~
 ~
 0 0 2335
+D0
+(null)~
+~
+0 0 2333
 S
 #2334
 Lost in the Mist~
@@ -2282,15 +2317,7 @@ covering you in a damp sheen. There is no sound, all light is eagerly devoured
 by the mist. You feel totally and hopelessly lost.
 ~
 0 8201 4
-D2
-(null)~
-~
-0 0 2336
 D1
-(null)~
-~
-0 0 2332
-D3
 (null)~
 ~
 0 0 2332
@@ -2298,6 +2325,14 @@ D0
 (null)~
 ~
 0 0 2338
+D3
+(null)~
+~
+0 0 2332
+D2
+(null)~
+~
+0 0 2336
 S
 #2335
 Lost in the Mist~
@@ -2306,22 +2341,22 @@ and denied you exit. This mist is your jailor. You cannot tell where you are.
 You hear quiet laughter all about you.
 ~
 0 8201 4
-D3
-(null)~
-~
-0 0 2331
-D1
-(null)~
-~
-0 0 2333
 D0
 (null)~
 ~
 0 0 2332
+D3
+(null)~
+~
+0 0 2331
 D2
 (null)~
 ~
 0 0 2337
+D1
+(null)~
+~
+0 0 2333
 S
 #2336
 Lost in the Mist~
@@ -2330,6 +2365,10 @@ what appears to be trees and hills to the east. The mist itself thickens to
 the west, while it grows thin to the east.
 ~
 0 8201 4
+D2
+(null)~
+~
+0 0 2338
 D0
 (null)~
 ~
@@ -2342,10 +2381,6 @@ D1
 (null)~
 ~
 0 0 2339
-D2
-(null)~
-~
-0 0 2338
 S
 #2337
 Lost in the Mist~
@@ -2355,22 +2390,22 @@ on, but this noise is absorbed by the mist and does not travel. You can wander
 in any direction.
 ~
 0 8201 4
-D2
-(null)~
-~
-0 0 2332
-D0
-(null)~
-~
-0 0 2335
-D1
-(null)~
-~
-0 0 2338
 D3
 (null)~
 ~
 0 0 2338
+D2
+(null)~
+~
+0 0 2332
+D1
+(null)~
+~
+0 0 2338
+D0
+(null)~
+~
+0 0 2335
 S
 #2338
 Lost in the Mist~
@@ -2383,15 +2418,15 @@ D2
 (null)~
 ~
 0 0 2334
+D3
+(null)~
+~
+0 0 2337
 D0
 (null)~
 ~
 0 0 2336
 D1
-(null)~
-~
-0 0 2337
-D3
 (null)~
 ~
 0 0 2337
@@ -2621,14 +2656,6 @@ The cold cuts to the bone. Swirling snow and wind make impossible for you to
 discern any directions.
 ~
 0 0 5
-D2
-(null)~
-~
-0 0 2355
-D0
-(null)~
-~
-0 0 2353
 D1
 (null)~
 ~
@@ -2637,6 +2664,14 @@ D3
 (null)~
 ~
 0 0 2354
+D2
+(null)~
+~
+0 0 2355
+D0
+(null)~
+~
+0 0 2353
 S
 #2352
 The frigid wastelands~
@@ -2645,22 +2680,22 @@ The cold cuts to the bine. Swirling snow and wind make it impossible to
 discern any directions.
 ~
 0 0 5
-D3
-(null)~
-~
-0 0 2351
-D2
-(null)~
-~
-0 -1 2358
-D0
-(null)~
-~
-0 -1 2357
 D1
 (null)~
 ~
 0 -1 2354
+D2
+(null)~
+~
+0 -1 2358
+D3
+(null)~
+~
+0 0 2351
+D0
+(null)~
+~
+0 -1 2357
 S
 #2353
 The Glacier Temple~
@@ -2686,22 +2721,22 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D1
-(null)~
-~
-0 0 2351
-D3
-(null)~
-~
-0 0 2352
-D2
-(null)~
-~
-0 0 2356
 D0
 (null)~
 ~
 0 0 2359
+D3
+(null)~
+~
+0 0 2352
+D1
+(null)~
+~
+0 0 2351
+D2
+(null)~
+~
+0 0 2356
 S
 #2355
 The frigid wastelands~
@@ -2710,14 +2745,14 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D3
-(null)~
-~
-0 0 2356
 D0
 (null)~
 ~
 0 0 2351
+D3
+(null)~
+~
+0 0 2356
 D2
 (null)~
 ~
@@ -2734,7 +2769,7 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D3
+D1
 (null)~
 ~
 0 0 2355
@@ -2742,14 +2777,14 @@ D0
 (null)~
 ~
 0 0 2354
-D1
-(null)~
-~
-0 0 2355
 D2
 (null)~
 ~
 0 0 2359
+D3
+(null)~
+~
+0 0 2355
 S
 #2357
 The frigid wastelands~
@@ -2762,10 +2797,6 @@ D0
 (null)~
 ~
 0 0 2355
-D2
-(null)~
-~
-0 0 2352
 D3
 (null)~
 ~
@@ -2774,6 +2805,10 @@ D1
 (null)~
 ~
 0 0 2358
+D2
+(null)~
+~
+0 0 2352
 S
 #2358
 The frigid wastelands~
@@ -2786,6 +2821,10 @@ D2
 (null)~
 ~
 0 0 2360
+D0
+(null)~
+~
+0 0 2352
 D1
 (null)~
 ~
@@ -2794,10 +2833,6 @@ D3
 (null)~
 ~
 0 0 2357
-D0
-(null)~
-~
-0 0 2352
 S
 #2359
 The frigid wastelands~
@@ -2814,14 +2849,14 @@ D1
 (null)~
 ~
 0 0 2357
-D0
-(null)~
-~
-0 0 2356
 D2
 (null)~
 ~
 0 0 2354
+D0
+(null)~
+~
+0 0 2356
 S
 #2360
 The edge of the frigid wastes~

@@ -3,6 +3,7 @@ Name        { 1 20} Copper  Plains of the North~
 Builders    None~
 VNUMs       300 350
 Security    9
+Version     1
 End
 
 
@@ -21,7 +22,8 @@ AGHT D -500 S
 12 0 
 100 0 0 0 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
-0 0 0 0
+none~
+0 0 0
 8 8 1 50
 AHMV ABCDEFGHIJK M 0
 #301
@@ -38,7 +40,8 @@ ABT 0 0 S
 4 0 
 100 0 0 0 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
-0 0 0 0
+none~
+0 0 0
 6 6 1 0
 AHMV ABCDEFGHIJK M 0
 #303
@@ -54,7 +57,8 @@ ACGT 0 0 S
 7 0 
 100 0 0 0 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
-0 0 0 0
+none~
+0 0 0
 8 8 1 20
 AHMV ABCDEFGHIJK M 0
 #304
@@ -70,7 +74,8 @@ ACGT 0 0 S
 5 0 
 100 0 0 0 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
-0 0 0 0
+none~
+0 0 0
 8 8 2 10
 AHMV ABCDEFGHIJK M 0
 #305
@@ -87,7 +92,8 @@ ABFT D -1000 S
 24 0 
 100 0 0 0 10d38+311 24d10+100 5d8+14 7
 -5 -5 -5 2
-0 0 0 0
+none~
+0 0 0
 8 8 1 1366
 AHMV ABCDEFGHIJK M 0
 #306
@@ -105,7 +111,8 @@ ABCT 0 400 S
 23 0 
 100 0 0 0 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
-0 0 0 0
+none~
+0 0 0
 8 8 1 800
 AHMV ABCDEFGHIJK M 0
 #308
@@ -121,7 +128,8 @@ ABT 0 -100 S
 24 0 
 100 0 0 0 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
-0 0 0 0
+none~
+0 0 0
 8 8 1 10
 AHMV ABCDEFGHIJK M 0
 #309
@@ -136,7 +144,8 @@ AGT 0 0 S
 1 0 
 100 0 0 0 1d2+6 1d10+100 1d2+0 3
 9 9 9 9
-FH 0 0 0
+dodge fast ~
+0 0 0
 8 8 0 0
 AGV ACDEFHJK M 0
 #350
@@ -153,7 +162,8 @@ ABHT DHT 1000 S
 10 0 
 100 0 0 0 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
-0 0 0 0
+none~
+0 0 0
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #0

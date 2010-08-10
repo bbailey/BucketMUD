@@ -3,6 +3,7 @@ Name        { All } Diku    Midgaard~
 Builders    None~
 VNUMs       3000 3399
 Security    9
+Version     1
 End
 
 
@@ -22,7 +23,8 @@ ABV D 900 S
 23 0 
 100 0 0 0 1d1+999 1d1+999 1d8+32 19
 -15 -15 -15 -15
-AF ABCD 0 0
+area_attack dodge ~
+ABCD 0 0
 8 8 1 15000
 AHMV ABCDEFGHIJK M 0
 #3001
@@ -38,7 +40,8 @@ ABV 0 900 S
 23 0 
 100 0 0 0 1d1+999 1d1+99 1d8+20 13
 -15 -15 -15 -15
-CDF ABCD 0 0
+bash berserk dodge ~
+ABCD 0 0
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #3002
@@ -53,7 +56,8 @@ ABV 0 900 S
 23 0 
 100 0 0 0 1d1+999 1d1+99 1d8+20 13
 1 1 1 1
-EFJ AB 0 0
+disarm dodge ~
+AB 0 0
 8 8 1 1300
 AHMV ABCDEFGHIJK M 0
 #3003
@@ -68,7 +72,8 @@ ABTV 0 900 S
 23 10 
 100 0 0 0 1d1+999 1d1+99 1d8+32 17
 -15 -15 -15 -15
-CEIK ABCD 0 0
+bash disarm kick kick_dirt parry ~
+ABCD 0 0
 8 8 1 25000
 AHMV ABCDEFGHIJK M 0
 #3004
@@ -84,7 +89,8 @@ ABV 0 900 S
 23 10 
 100 0 0 0 1d1+999 1d1+99 1d8+32 17
 -15 -15 -15 -15
-CEFJKN ABCD 0 0
+bash disarm dodge parry trip ~
+ABCD 0 0
 8 8 1 25000
 AHMV ABCDEFGHIJK M 0
 #3005
@@ -99,7 +105,8 @@ ACHS PQ -100 S
 8 1 
 100 0 0 0 6d8+80 1d1+99 1d5+1 17
 2 4 3 7
-EFJN 0 0 0
+disarm dodge trip ~
+0 0 0
 8 8 3 100
 AHMV ABCDEFGHIJK M 0
 #3006
@@ -114,7 +121,8 @@ ABTV 0 900 S
 23 10 
 100 0 0 0 1d1+999 1d1+99 1d8+32 13
 -15 -15 -15 -15
-CEI ABCD 0 0
+bash disarm kick kick_dirt ~
+ABCD 0 0
 8 8 1 1300
 AHMV ABCDEFGHIJK M 0
 #3007
@@ -129,7 +137,8 @@ ABJKTVb 0 900 S
 23 5 
 100 0 0 0 1d1+999 1d1+99 1d4+23 13
 -15 -15 -15 -15
-FHJN ABCD 0 0
+dodge fast trip ~
+ABCD 0 0
 8 8 1 58
 AHMV ABCDEFGHIJK M 0
 #3008
@@ -144,7 +153,8 @@ ABV 0 900 S
 23 0 
 100 0 0 0 1d1+999 1d1+99 1d8+20 17
 -15 -15 -15 -15
-0 ABCD 0 0
+none~
+ABCD 0 0
 8 8 1 4000
 AHMV ABCDEFGHIJK M 0
 #3009
@@ -159,7 +169,8 @@ ABV 0 900 S
 23 0 
 100 0 0 0 1d1+999 1d1+99 1d8+22 16
 -15 -15 -15 -15
-AF ABCD 0 0
+area_attack dodge ~
+ABCD 0 0
 8 8 1 58000
 AHMV ABCDEFGHIJK M 0
 #3010
@@ -175,7 +186,8 @@ ABV 0 900 S
 23 0 
 100 0 0 0 1d1+999 1d1+99 1d8+20 17
 -15 -15 -15 -15
-AFN ABCD 0 0
+area_attack dodge trip ~
+ABCD 0 0
 8 8 2 4500
 AHMV ABCDEFGHIJK M 0
 #3011
@@ -195,7 +207,8 @@ ABTV CDFJZ 1000 S
 53 30 
 100 0 0 0 1d1+2999 1d1+499 4d4+30 8
 -20 -20 -20 -10
-ACDEFHIKLNOT ABP CDHI JP
+area_attack bash berserk disarm dodge fast kick kick_dirt parry rescue trip crush assist_guard ~
+ABP CDHI JP
 8 8 1 0
 AHMV ABCDEFGHIJK H 0
 #3012
@@ -211,7 +224,8 @@ ABQVa DFH 1000 S
 40 0 
 100 0 0 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
-FHIK ABCD 0 0
+dodge fast kick kick_dirt parry ~
+ABCD 0 0
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #3020
@@ -228,7 +242,8 @@ ABKRV DEFJZ 1000 S
 36 0 
 100 0 0 0 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
-FG ABCD B Z
+dodge fade ~
+ABCD B Z
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #3021
@@ -244,7 +259,8 @@ ABKQV CDEFHZ 1000 S
 36 0 
 100 0 0 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
-EFHIK ABCD 0 0
+disarm dodge fast kick kick_dirt parry ~
+ABCD 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3022
@@ -261,7 +277,8 @@ ABKSV DFZ 1000 S
 36 0 
 100 0 0 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
-BEFHJN ABCD 0 0
+backstab disarm dodge fast trip ~
+ABCD 0 0
 8 8 2 0
 0 0 M 0
 #3023
@@ -278,7 +295,8 @@ ABKTV DFJ 1000 S
 36 0 
 100 0 0 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
-ACDEIK ABCD CLQ R
+area_attack bash berserk disarm kick kick_dirt parry ~
+ABCD CLQ R
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3024
@@ -295,7 +313,8 @@ ABRTV BDJ 800 S
 30 5 
 100 0 0 0 1d1+999 1d1+499 10d4+10 19
 -10 -10 -10 -8
-AEG AB BCD Z
+area_attack disarm fade ~
+AB BCD Z
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #3025
@@ -313,7 +332,8 @@ ABQTV DJ 800 S
 30 5 
 100 0 0 0 1d1+999 1d1+499 5d8+10 20
 -10 -10 -10 -7
-DEIK AB CD 0
+berserk disarm kick kick_dirt parry ~
+AB CD 0
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #3026
@@ -330,7 +350,8 @@ ABSTV DFPQ 800 S
 30 8 
 100 0 0 0 1d1+999 1d1+99 4d10+12 11
 -12 -12 -12 -6
-BEFJN AB CD 0
+backstab disarm dodge trip ~
+AB CD 0
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #3027
@@ -348,7 +369,8 @@ ABTV DF 800 S
 30 10 
 100 0 0 0 1d1+999 1d1+199 11d4+10 17
 -10 -10 -10 -4
-ACDEHIK AB CD 0
+area_attack bash berserk disarm fast kick kick_dirt parry ~
+AB CD 0
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #3040
@@ -363,7 +385,8 @@ ABV 0 900 S
 23 0 
 100 0 0 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
-FHJN AB CD 0
+dodge fast trip ~
+AB CD 0
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3041
@@ -378,7 +401,8 @@ ABV 0 900 S
 23 0 
 100 0 0 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
-FHJN AB CD 0
+dodge fast trip ~
+AB CD 0
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3042
@@ -393,7 +417,8 @@ ABRV D 600 S
 23 0 
 100 0 0 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
-FJN AB CD 0
+dodge trip ~
+AB CD 0
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3043
@@ -407,7 +432,8 @@ ABQV 0 600 S
 23 0 
 100 0 0 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
-FHJN AB CD 0
+dodge fast trip ~
+AB CD 0
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3044
@@ -421,7 +447,8 @@ ABSV 0 600 S
 23 0 
 100 0 0 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
-FHJN AB CD 0
+dodge fast trip ~
+AB CD 0
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3045
@@ -435,7 +462,8 @@ ABTV 0 600 S
 23 0 
 100 0 0 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
-BFHJN AB CD 0
+backstab dodge fast trip ~
+AB CD 0
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3046
@@ -451,7 +479,8 @@ ABSV 0 600 S
 23 2 
 100 0 0 0 1d1+499 1d1+99 1d8+18 13
 -8 -8 -8 -4
-BEFJN AB CD 0
+backstab disarm dodge trip ~
+AB CD 0
 8 8 1 200
 AHMV ABCDEFGHIJK M 0
 #3060
@@ -466,7 +495,8 @@ ACGT 0 1000 S
 15 3 
 100 0 0 0 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+bash berserk disarm parry rescue assist_guard assist_vnum ~
+0 C 0
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3061
@@ -480,7 +510,8 @@ AGH 0 900 S
 1 0 
 100 0 0 0 2d6+10 1d1+99 1d5+0 7
 10 10 10 10
-NU 0 0 C
+trip assist_vnum ~
+0 0 C
 8 8 3 10
 AHMV ABCDEFGHIJK M 0
 #3062
@@ -496,7 +527,8 @@ AFGHU 0 -200 S
 3 0 
 100 0 0 0 1d6+4 1d1+99 1d4+0 10
 10 10 10 10
-FR 0 0 C
+dodge assist_race ~
+0 0 C
 8 8 3 0
 BGV ACDEFHJKQV S 0
 #3063
@@ -511,7 +543,8 @@ ACS 0 -200 S
 5 1 
 100 0 0 0 2d6+60 1d1+99 1d6+1 17
 7 5 5 10
-BJNQ 0 0 C
+backstab trip assist_align ~
+0 0 C
 8 8 1 18
 AHMV ABCDEFGHIJK M 0
 #3064
@@ -526,7 +559,8 @@ AG 0 400 S
 2 -1 
 100 0 0 0 2d6+22 1d1+99 1d6+0 13
 8 8 8 10
-U 0 0 C
+assist_vnum ~
+0 0 C
 8 8 1 65
 AHMV ABCDEFGHIJK M 0
 #3065
@@ -541,7 +575,8 @@ AB 0 400 S
 1 0 
 100 0 0 0 2d6+10 1d1+99 1d5+0 13
 8 8 8 10
-FJNU 0 0 C
+dodge trip assist_vnum ~
+0 0 C
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #3066
@@ -556,7 +591,8 @@ AFGHU Z -200 S
 0 1 
 100 0 0 0 1d6+4 1d1+99 1d4+0 22
 8 8 8 9
-DFHR 0 0 C
+berserk dodge fast assist_race ~
+0 0 C
 8 8 3 0
 AGV ACDEFHJKQUV S 0
 #3067
@@ -571,7 +607,8 @@ ABT 0 1000 S
 15 3 
 100 0 0 0 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+bash berserk disarm parry rescue assist_guard assist_vnum ~
+0 C 0
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3068
@@ -586,7 +623,8 @@ ABT 0 1000 S
 15 3 
 100 0 0 0 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+bash berserk disarm parry rescue assist_guard assist_vnum ~
+0 C 0
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3069
@@ -601,7 +639,8 @@ ABT BQ 1000 S
 20 4 
 100 0 0 0 20d20+200 1d1+199 2d4+7 17
 -4 -6 -6 0
-CDEHKLTU 0 C 0
+bash berserk disarm fast parry rescue assist_guard assist_vnum ~
+0 C 0
 8 8 3 500
 AHMV ABCDEFGHIJK M 0
 #3070
@@ -617,7 +656,8 @@ ABQRV DEF 1000 S
 32 0 
 100 0 0 0 1d1+999 1d1+999 10d10+10 19
 -15 -15 -15 -15
-FGH ABCD 0 0
+dodge fade fast ~
+ABCD 0 0
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #3071
@@ -632,7 +672,8 @@ ABT 0 1000 S
 15 3 
 100 0 0 0 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+bash berserk disarm parry rescue assist_guard assist_vnum ~
+0 C 0
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3072
@@ -647,7 +688,8 @@ ABT 0 1000 S
 15 3 
 100 0 0 0 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+bash berserk disarm parry rescue assist_guard assist_vnum ~
+0 C 0
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3090
@@ -662,7 +704,8 @@ ABU Z 400 S
 1 2 
 100 0 0 0 2d6+11 1d1+99 1d4+0 22
 8 8 8 10
-FH 0 C 0
+dodge fast ~
+0 C 0
 8 8 3 0
 AGV ACDEFHJKQUV T 0
 #3091
@@ -677,7 +720,8 @@ ABU F 400 S
 3 2 
 100 0 0 0 4d6+25 1d1+99 1d6+0 10
 7 7 7 10
-HN 0 C 0
+fast trip ~
+0 C 0
 8 8 3 0
 AGV ACDEFHJKQUV S 0
 #3092
@@ -692,7 +736,8 @@ ABU F 400 S
 5 3 
 100 0 0 0 3d12+50 1d1+99 1d6+0 10
 5 5 5 9
-HN 0 C 0
+fast trip ~
+0 C 0
 8 8 3 0
 AGV ACDEFHJKQUV S 0
 #3093
@@ -707,7 +752,8 @@ ABU F 400 S
 7 3 
 100 0 0 0 6d10+60 1d1+149 2d4+1 10
 4 4 4 8
-CDHL 0 C 0
+bash berserk fast rescue ~
+0 C 0
 8 8 3 0
 AGV ACDEFHJKUV M 0
 #3094
@@ -722,7 +768,8 @@ ABU FZ 0 S
 9 3 
 100 0 0 0 6d10+80 1d1+99 2d5+1 10
 4 4 4 8
-CFH 0 C 0
+bash dodge fast ~
+0 C 0
 8 8 3 0
 AGV ACDEFJKQV M 0
 #3100
@@ -738,7 +785,8 @@ ABV 0 1000 S
 23 2 
 100 0 0 0 1d1+499 1d1+99 1d8+12 13
 -15 -15 -15 -15
-FG AB CD 0
+dodge fade ~
+AB CD 0
 8 8 2 180
 AHMV ABCDEFGHIJK M 0
 #3120
@@ -753,7 +801,8 @@ ABH 0 800 S
 3 0 
 100 0 0 0 2d6+35 1d1+99 1d7+0 17
 7 7 7 10
-0 0 0 C
+none~
+0 0 C
 6 6 1 75
 AHMV ABCDEFGHIJK M 0
 #3121
@@ -768,7 +817,8 @@ ABU Tb 1000 S
 1 0 
 100 0 0 0 2d6+10 1d1+99 1d5+0 23
 8 8 8 10
-CFR 0 R C
+bash dodge assist_race ~
+0 R C
 8 8 3 0
 AGW ACDEFHKP S 0
 #3122
@@ -783,7 +833,8 @@ ABU Tb 1000 S
 0 0 
 100 0 0 0 1d4+0 1d1+99 1d1+0 24
 10 10 10 10
-FR 0 R C
+dodge assist_race ~
+0 R C
 8 8 3 0
 AGW ACDEFHKP T 0
 #3123
@@ -798,7 +849,8 @@ AGHU T 1000 S
 0 0 
 100 0 0 0 2d6+0 1d1+99 1d3+0 23
 10 10 10 10
-FHR 0 0 C
+dodge fast assist_race ~
+0 0 C
 8 8 3 0
 AGW ACDEFHKP T 0
 #3124
@@ -813,7 +865,8 @@ AGU Tb 1000 S
 1 0 
 100 0 0 0 2d6+5 1d1+99 1d4+0 24
 10 10 10 10
-FR 0 R C
+dodge assist_race ~
+0 R C
 8 8 3 0
 AGW ACDEFHKP S 0
 #3140
@@ -828,7 +881,8 @@ ABCFT D 1000 S
 17 4 
 100 0 0 0 15d15+190 1d1+199 2d4+6 17
 -2 -2 -2 6
-CDEHKLU 0 C 0
+bash berserk disarm fast parry rescue assist_vnum ~
+0 C 0
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #3141
@@ -843,7 +897,8 @@ ABCFT 0 1000 S
 15 3 
 100 0 0 0 15d15+10 1d1+149 2d4+4 17
 0 0 0 8
-CDEHKLU 0 C 0
+bash berserk disarm fast parry rescue assist_vnum ~
+0 C 0
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3142
@@ -860,7 +915,8 @@ AB 0 900 S
 12 2 
 100 0 0 0 4d12+148 1d1+99 2d7+1 16
 0 0 0 8
-FHI 0 0 0
+dodge fast kick kick_dirt ~
+0 0 0
 6 6 2 100
 AHMV ABCDEFGHIJK M 0
 #3143
@@ -875,7 +931,8 @@ AB N 900 S
 23 6 
 100 0 0 0 6d10+500 1d1+199 1d8+12 17
 -15 -15 -15 -15
-EFNS AB CD 0
+disarm dodge trip assist_players ~
+AB CD 0
 4 4 1 1000
 AHMV ABCDEFGHIJK M 0
 #3144
@@ -890,7 +947,8 @@ AH 0 900 S
 1 0 
 100 0 0 0 2d6+10 1d1+99 1d5+0 16
 10 10 10 10
-D 0 0 C
+berserk ~
+0 0 C
 8 8 1 14
 AHMV ABCDEFGHIJK M 0
 #3150
@@ -906,7 +964,8 @@ ABV 0 900 S
 25 0 
 100 0 0 0 1d1+999 1d1+199 1d8+10 16
 -15 -15 -15 -15
-FG ABCD 0 0
+dodge fade ~
+ABCD 0 0
 8 8 2 1000
 AHMV ABCDEFGHIJK M 0
 #3160
@@ -924,7 +983,8 @@ ABV 0 900 S
 25 0 
 100 0 0 0 1d1+999 1d1+199 5d6+20 16
 -15 -15 -15 -15
-FG ABCD 0 0
+dodge fade ~
+ABCD 0 0
 8 8 2 1000
 AHMV ABCDEFGHIJK M 0
 #3161
@@ -941,7 +1001,8 @@ ABV D 200 S
 15 3 
 100 0 0 0 11d10+200 1d1+99 4d6+4 10
 -6 -5 -2 4
-FHNR 0 FL I
+dodge fast trip assist_race ~
+0 FL I
 8 8 1 0
 AGRXYc ADEFKLQVX S 0
 #0

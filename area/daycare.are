@@ -3,6 +3,7 @@ Name        { 1  5} Sandman Dwarven Day Care~
 Builders    None~
 VNUMs       6600 6647
 Security    9
+Version     1
 End
 
 
@@ -20,7 +21,8 @@ ACGT J -5 S
 3 0 
 100 0 0 0 1d4+30 1d1+99 1d4+2 13
 7 6 7 10
-DJR 0 CLQ R
+berserk assist_race ~
+0 CLQ R
 6 8 3 10
 AHMV ABCDEFGHIJK S 0
 #6601
@@ -35,7 +37,8 @@ ACG 0 500 S
 1 0 
 100 0 0 0 1d10+10 1d1+99 1d4+0 13
 8 5 9 10
-NR C ES GHJKO
+trip assist_race ~
+C ES GHJKO
 8 8 1 0
 EJMc ABCGHK S 0
 #6602
@@ -50,7 +53,8 @@ ACG 0 300 S
 2 0 
 100 0 0 0 2d5+19 1d1+99 1d5+0 13
 7 4 8 10
-FHR C ES GHJKO
+dodge fast assist_race ~
+C ES GHJKO
 6 8 2 0
 EJMc ABCGHK S 0
 #6603
@@ -65,7 +69,8 @@ ACGT 0 -300 S
 3 1 
 100 0 0 0 3d5+36 1d1+99 1d4+3 17
 6 7 6 9
-IR C EGS EGHJKO
+kick kick_dirt assist_race ~
+C EGS EGHJKO
 8 8 1 0
 EJMc ABCGHK S 0
 #6604
@@ -81,7 +86,8 @@ ACF 0 -400 S
 3 0 
 100 0 0 0 3d4+29 1d1+99 1d6+1 32
 6 3 7 10
-DJNR C ES GHJKO
+berserk trip assist_race ~
+C ES GHJKO
 8 8 1 5
 EJMc ABCGHK S 0
 #6605
@@ -96,7 +102,8 @@ ACG 0 -2 S
 1 0 
 100 0 0 0 1d10+1 1d1+99 1d4+0 13
 8 5 9 10
-R C ES GHJKO
+assist_race ~
+C ES GHJKO
 8 8 0 0
 EJMc ABCGHK S 0
 #6606
@@ -112,7 +119,8 @@ AG J 10 S
 5 1 
 100 0 0 0 4d4+50 5d4+100 1d6+1 16
 5 5 5 10
-CDR 0 CLQ R
+bash berserk assist_race ~
+0 CLQ R
 8 8 2 50
 AHMV ABCDEFGHIJK M 0
 #6607
@@ -128,7 +136,8 @@ ABCT DJ -800 S
 8 1 
 100 0 0 0 3d10+100 8d4+100 1d7+3 17
 3 2 3 8
-CDJR 0 CLQ R
+bash berserk assist_race ~
+0 CLQ R
 8 8 1 120
 AHMV ABCDEFGHIJK M 0
 #6608
@@ -144,7 +153,8 @@ ABC J -400 S
 1 0 
 100 0 0 0 2d4+15 1d1+199 2d2+1 13
 8 8 8 10
-IJN 0 CLQ R
+kick kick_dirt trip ~
+0 CLQ R
 8 8 1 50
 AHMV ABCDEFGHIJK S 0
 #0
@@ -544,14 +554,14 @@ D2
 (null)~
 ~
 0 -1 6624
-D3
-(null)~
-~
-0 -1 6615
 D0
 (null)~
 ~
 0 -1 6614
+D3
+(null)~
+~
+0 -1 6615
 S
 #6624
 End of the Mini-Maze~

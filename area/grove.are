@@ -3,6 +3,7 @@ Name        { 5 20} Alfa    Holy Grove~
 Builders    None~
 VNUMs       8900 8999
 Security    9
+Version     1
 End
 
 
@@ -22,7 +23,8 @@ AGHT DHN 1000 S
 20 0 
 100 0 0 0 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
-0 0 0 0
+none~
+0 0 0
 8 8 1 5
 AHMV ABCDEFGHIJK M 0
 #8901
@@ -39,7 +41,8 @@ AGHT DHN 1000 S
 20 0 
 100 0 0 0 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
-0 0 0 0
+none~
+0 0 0
 8 8 2 5
 AHMV ABCDEFGHIJK M 0
 #8902
@@ -55,7 +58,8 @@ AGHT N 1000 S
 12 0 
 100 0 0 0 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
-0 0 0 0
+none~
+0 0 0
 8 8 1 5
 AHMV ABCDEFGHIJK M 0
 #8903
@@ -70,7 +74,8 @@ AGHT N 1000 S
 12 0 
 100 0 0 0 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
-0 0 0 0
+none~
+0 0 0
 8 8 2 5
 AHMV ABCDEFGHIJK M 0
 #8904
@@ -86,7 +91,8 @@ AGHT 0 0 S
 5 0 
 100 0 0 0 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
-0 0 0 0
+none~
+0 0 0
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #8905
@@ -102,7 +108,8 @@ AGHT 0 0 S
 6 0 
 100 0 0 0 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
-0 0 0 0
+none~
+0 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8906
@@ -117,7 +124,8 @@ AFGHT 0 0 S
 7 0 
 100 0 0 0 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
-0 0 0 0
+none~
+0 0 0
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8907
@@ -132,7 +140,8 @@ AGHT 0 0 S
 2 0 
 100 0 0 0 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
-0 0 0 0
+none~
+0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #8908
@@ -147,7 +156,8 @@ AFGHT P 0 S
 3 0 
 100 0 0 0 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
-0 0 L I
+none~
+0 L I
 8 8 0 0
 AGRXYc ADEFKLQVX M 0
 #8909
@@ -162,7 +172,8 @@ AGHT DN 1000 S
 11 0 
 100 0 0 0 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
-0 0 0 0
+none~
+0 0 0
 8 8 1 5
 AHMV ABCDEFGHIJK M 0
 #8910
@@ -177,7 +188,8 @@ AGHT DN 1000 S
 9 0 
 100 0 0 0 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
-0 0 0 0
+none~
+0 0 0
 8 8 2 5
 AHMV ABCDEFGHIJK M 0
 #0

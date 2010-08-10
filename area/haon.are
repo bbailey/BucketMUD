@@ -3,6 +3,7 @@ Name        { 5 10} Diku    Haon Dor~
 Builders    None~
 VNUMs       6000 6155
 Security    9
+Version     1
 End
 
 
@@ -22,7 +23,8 @@ AGT 0 350 S
 4 0 
 100 0 0 0 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
-0 0 0 0
+none~
+0 0 0
 8 8 1 5
 AHMV ABCDEFGHIJK M 0
 #6002
@@ -38,7 +40,8 @@ AFGT 0 -50 S
 9 0 
 100 0 0 0 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
-DEO 0 EI 0
+berserk disarm crush ~
+0 EI 0
 4 8 0 0
 AGV ABCDEFHJKUV M 0
 #6003
@@ -55,7 +58,8 @@ AFGT 0 -150 S
 2 0 
 100 0 0 0 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
-FH 0 0 0
+dodge fast ~
+0 0 0
 4 8 0 0
 AGV ACDEFHJK M 0
 #6004
@@ -71,7 +75,8 @@ ABEGIT D 350 S
 2 0 
 100 0 0 0 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
-0 0 0 0
+none~
+0 0 0
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #6005
@@ -86,7 +91,8 @@ AGT Z -50 S
 1 0 
 100 0 0 0 1d2+6 1d10+100 1d2+0 11
 9 9 9 9
-FH 0 0 0
+dodge fast ~
+0 0 0
 8 8 0 0
 AGV ACDEFHJKQV M 0
 #6100
@@ -102,7 +108,8 @@ AFGT 0 -350 S
 5 0 
 100 0 0 0 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
-0 0 0 0
+none~
+0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #6101
@@ -118,7 +125,8 @@ AFGT 0 -350 S
 4 0 
 100 0 0 0 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
-0 0 0 0
+none~
+0 0 0
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #6102
@@ -133,7 +141,8 @@ AFGT Z -150 S
 3 0 
 100 0 0 0 1d6+23 3d10+100 1d5+1 7
 8 8 8 9
-FH 0 0 0
+dodge fast ~
+0 0 0
 8 8 0 0
 AGV ACDEFJKQV M 0
 #6103
@@ -148,7 +157,8 @@ AFGT Z -150 S
 2 0 
 100 0 0 0 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
-FH 0 0 0
+dodge fast ~
+0 0 0
 8 8 0 0
 AGV ACDEFJKQV M 0
 #6112
@@ -166,7 +176,8 @@ ABFGT D -1000 S
 26 0 
 100 0 0 0 10d45+345 26d10+100 5d9+13 7
 -6 -6 -6 1
-0 0 0 0
+none~
+0 0 0
 8 8 0 5000
 AHMV ABCDEFGHIJK M 0
 #6115
@@ -183,7 +194,8 @@ ACEHT BDP 1000 S
 10 0 
 100 0 0 0 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
-0 0 0 0
+none~
+0 0 0
 8 8 1 100
 AHMV ABCDEFGHIJK M 0
 #6116
@@ -199,7 +211,8 @@ ABCFT D 0 S
 17 0 
 100 0 0 0 5d39+187 17d10+100 4d7+10 11
 0 0 0 4
-0 0 0 0
+none~
+0 0 0
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #0

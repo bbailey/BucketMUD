@@ -3,6 +3,7 @@ Name        {15 25} Dylan   Dylan's Area~
 Builders    None~
 VNUMs       9101 9199
 Security    9
+Version     1
 End
 
 
@@ -22,7 +23,8 @@ ACFT DFP -500 S
 20 0 
 100 0 0 0 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
-0 0 0 0
+none~
+0 0 0
 8 8 2 3050
 AHMV ABCDEFGHIJK M 0
 #9102
@@ -40,7 +42,8 @@ ABCFT DFP -750 S
 23 0 
 100 0 0 0 9d39+290 23d10+100 5d8+11 3
 -4 -4 -4 2
-0 0 0 0
+none~
+0 0 0
 8 8 2 4250
 AHMV ABCDEFGHIJK M 0
 #9103
@@ -56,7 +59,8 @@ ACFT DFPQ 0 S
 25 0 
 100 0 0 0 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
-0 0 0 0
+none~
+0 0 0
 8 8 0 100
 AHMV ABCDEFGHIJK M 0
 #9104
@@ -72,7 +76,8 @@ ACT DHP -100 S
 28 0 
 100 0 0 0 10d52+387 28d10+100 5d9+18 7
 -7 -7 -7 1
-0 0 0 0
+none~
+0 0 0
 8 8 0 5000
 AHMV ABCDEFGHIJK M 0
 #9105
@@ -87,7 +92,8 @@ AGT 0 50 S
 23 0 
 100 0 0 0 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
-0 0 0 0
+none~
+0 0 0
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #9106
@@ -103,7 +109,8 @@ AGT 0 50 S
 29 0 
 100 0 0 0 10d56+405 29d10+100 5d10+15 7
 -8 -8 -8 1
-0 0 0 0
+none~
+0 0 0
 8 8 1 4000
 AHMV ABCDEFGHIJK M 0
 #9107
@@ -120,7 +127,8 @@ ABCFT DH -600 S
 30 0 
 100 0 0 0 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
-0 0 0 0
+none~
+0 0 0
 8 8 2 20000
 AHMV ABCDEFGHIJK M 0
 #0
@@ -1020,11 +1028,6 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D2
-You see a sneezy little cloud.
-~
-~
-0 -1 9133
 D3
 (null)~
 ~
@@ -1033,6 +1036,11 @@ D5
 (null)~
 ~
 0 -1 9148
+D2
+You see a sneezy little cloud.
+~
+~
+0 -1 9133
 S
 #9146
 Raging hurricane.~
@@ -1041,14 +1049,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D0
-(null)~
-~
-0 -1 9147
 D1
 (null)~
 ~
 0 -1 9144
+D0
+(null)~
+~
+0 -1 9147
 S
 #9147
 Raging hurricane.~
@@ -1057,14 +1065,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D1
-(null)~
-~
-0 -1 9148
 D2
 (null)~
 ~
 0 -1 9146
+D1
+(null)~
+~
+0 -1 9148
 S
 #9148
 Raging hurricane.~
@@ -1073,10 +1081,6 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D4
-(null)~
-~
-0 -1 9145
 D3
 (null)~
 ~
@@ -1085,6 +1089,10 @@ D2
 (null)~
 ~
 0 -1 9144
+D4
+(null)~
+~
+0 -1 9145
 S
 #9149
 Raging hurricane.~
@@ -1114,10 +1122,6 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D1
-(null)~
-~
-0 -1 9145
 D0
 (null)~
 ~
@@ -1126,6 +1130,10 @@ D3
 (null)~
 ~
 0 -1 9149
+D1
+(null)~
+~
+0 -1 9145
 S
 #9151
 Raging hurricane.~

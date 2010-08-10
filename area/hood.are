@@ -3,6 +3,7 @@ Name        { 5 15} Raff    Dangerous Neighborhood~
 Builders    None~
 VNUMs       2101 2170
 Security    9
+Version     1
 End
 
 
@@ -20,7 +21,8 @@ ACEGT 0 -100 S
 5 0 
 100 0 0 0 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
-0 0 0 0
+none~
+0 0 0
 8 8 1 20
 AHMV ABCDEFGHIJK M 0
 #2102
@@ -35,7 +37,8 @@ ACEGT Jc 100 S
 5 0 
 100 0 0 0 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
-D 0 BE HK
+berserk ~
+0 BE HK
 8 8 1 21
 BMV ABCDEFGHIJKUV M 0
 #2103
@@ -50,7 +53,8 @@ ABFGT 0 0 S
 12 0 
 100 0 0 0 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
-0 0 0 0
+none~
+0 0 0
 8 8 1 200
 AHMV ABCDEFGHIJK M 0
 #2104
@@ -65,7 +69,8 @@ ACFGHT D -333 S
 9 0 
 100 0 0 0 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
-0 0 0 0
+none~
+0 0 0
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #2105
@@ -80,7 +85,8 @@ ACEGHT 0 0 S
 7 0 
 100 0 0 0 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
-0 C ES GHJKO
+none~
+C ES GHJKO
 8 8 2 100
 EJMc ABCGHK M 0
 #2106
@@ -95,7 +101,8 @@ AGT 0 700 S
 7 0 
 100 0 0 0 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
-0 0 0 0
+none~
+0 0 0
 8 8 1 700
 AHMV ABCDEFGHIJK M 0
 #2107
@@ -110,7 +117,8 @@ AHT P -400 S
 10 0 
 100 0 0 0 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
-0 0 0 0
+none~
+0 0 0
 8 8 1 50
 AHMV ABCDEFGHIJK M 0
 #2108
@@ -126,7 +134,8 @@ ABFGT DQ -100 S
 5 0 
 100 0 0 0 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
-H 0 0 0
+fast ~
+0 0 0
 8 8 1 1
 AGV ACDEFHJKUV M 0
 #0

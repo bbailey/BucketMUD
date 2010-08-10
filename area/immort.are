@@ -3,6 +3,7 @@ Name        {36 40} ROM     Immortal Zone~
 Builders    None~
 VNUMs       1200 1299
 Security    9
+Version     1
 End
 
 
@@ -23,7 +24,8 @@ ABTV CDFJZ 1000 S
 57 30 
 100 0 0 0 1d1+19999 1d1+499 5d4+40 8
 -20 -20 -20 -10
-ACDEFHIKLNOT ABP CD 0
+area_attack bash berserk disarm dodge fast kick kick_dirt parry rescue trip crush assist_guard ~
+ABP CD 0
 8 8 1 0
 AHMV ABCDEFGHIJK L 0
 #1201
@@ -41,7 +43,8 @@ ABTV CDFJZ 1000 S
 99 30 
 100 0 0 0 1d1+19999 1d1+499 5d4+40 8
 -20 -20 -20 -10
-ACDEFHIKLNOT ABP CD 0
+area_attack bash berserk disarm dodge fast kick kick_dirt parry rescue trip crush assist_guard ~
+ABP CD 0
 8 8 1 0
 AHMV ABCDEFGHIJK L 0
 #0

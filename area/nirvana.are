@@ -3,6 +3,7 @@ Name        {30 35} Fstall  Nirvana~
 Builders    None~
 VNUMs       9000 9059
 Security    9
+Version     1
 End
 
 
@@ -20,7 +21,8 @@ ACG J 300 S
 8 0 
 100 0 0 0 3d20+80 1d1+99 2d5+3 7
 4 3 4 5
-NQR BMNPQ HIK 0
+trip assist_align assist_race ~
+BMNPQ HIK 0
 8 8 0 0
 H ABCGHIJK M 0
 #9001
@@ -35,7 +37,8 @@ AFGT DJ 300 S
 11 3 
 100 0 0 0 14d10+70 1d1+99 3d4+2 13
 1 0 1 2
-CEKQR BMNPQ HIK 0
+bash disarm parry assist_align assist_race ~
+BMNPQ HIK 0
 8 8 0 0
 H ABCGHIJK M 0
 #9002
@@ -50,7 +53,8 @@ ABFGT DJ 300 S
 14 3 
 100 0 0 0 15d12+110 1d1+99 4d4+3 16
 -2 -2 0 -1
-CEFLNQR BMNPQR HIK 0
+bash disarm dodge rescue trip assist_align assist_race ~
+BMNPQR HIK 0
 8 8 0 0
 H ABCGHJKN M 0
 #9003
@@ -65,7 +69,8 @@ ABFGQT DJ 300 S
 17 4 
 100 0 0 0 25d10+70 17d8+50 4d5+3 7
 -4 -4 0 -2
-ACEKNQR BMNPQR HIK 0
+area_attack bash disarm parry trip assist_align assist_race ~
+BMNPQR HIK 0
 8 8 0 0
 HM ABCGHJKN M 0
 #9004
@@ -80,7 +85,8 @@ ABFGQT DHJ 300 S
 20 5 
 100 0 0 0 11d8+250 20d8+75 4d6+4 7
 -4 -4 -2 -3
-AEFNQR BMNPQR HIK G
+area_attack disarm dodge trip assist_align assist_race ~
+BMNPQR HIK G
 8 8 0 0
 HM ABCGHJKN L 0
 #9005
@@ -96,7 +102,8 @@ ABFGQ DJ 300 S
 22 5 
 100 0 0 0 25d10+300 18d10+75 4d6+5 8
 -5 -5 -3 -4
-ACEHKQR BMNPQR HIK G
+area_attack bash disarm fast parry assist_align assist_race ~
+BMNPQR HIK G
 8 8 0 0
 HM ABCGHJKN L 0
 #9006
@@ -112,7 +119,8 @@ ABFGQR DJ 300 S
 24 5 
 100 0 0 0 30d10+350 20d10+100 6d4+5 13
 -6 -6 -6 -4
-AFKOQR BMNPQR HIK 0
+area_attack dodge parry crush assist_align assist_race ~
+BMNPQR HIK 0
 8 8 0 0
 HM ABCGHIJKN M 0
 #9007
@@ -128,7 +136,8 @@ ABFGQT DFHJ 300 S
 26 7 
 100 0 0 0 35d20+300 20d10+75 4d8+6 3
 -8 -8 -8 -4
-ACEFHIKLNQR ABMNPQR CHIK 0
+area_attack bash disarm dodge fast kick kick_dirt parry rescue trip assist_align assist_race ~
+ABMNPQR CHIK 0
 8 8 0 0
 HM ABCGHIJKNP L 0
 #9008
@@ -145,7 +154,8 @@ ABFGQ DJ 300 S
 28 6 
 100 0 0 0 10d100+150 20d12+100 4d8+7 13
 -7 -8 -6 -8
-AKMOQR ABMNPQR HIK 0
+area_attack parry tail crush assist_align assist_race ~
+ABMNPQR HIK 0
 8 8 0 0
 HM ABCGHIJKNPQ L 0
 #9009
@@ -162,7 +172,8 @@ ABFGQRT DJ 300 S
 33 12 
 100 0 0 0 1d1+999 20d20+50 8d6+12 7
 -11 -13 -10 -9
-CEFQR ABMNPQR CHIK 0
+bash disarm dodge assist_align assist_race ~
+ABMNPQR CHIK 0
 8 8 0 0
 HM ABCGHIJKW H 0
 #9010
@@ -178,7 +189,8 @@ ABFGQRT DFHJ 0 S
 36 15 
 100 0 0 0 1d1+1599 40d20+50 7d8+15 17
 -11 -14 -11 -12
-EFHIKNQR ABHIKMNPQR CHIK 0
+disarm dodge fast kick kick_dirt parry trip assist_align assist_race ~
+ABHIKMNPQR CHIK 0
 8 8 0 0
 HM ABCGHIJK H 0
 #9011
@@ -195,7 +207,8 @@ ABFGQRT DFHJ 0 S
 40 20 
 100 0 0 0 1d1+3999 1d1+3999 6d10+25 18
 -15 -15 -15 -15
-AHQR ABHIKMNPQRS CHIK 0
+area_attack fast assist_align assist_race ~
+ABHIKMNPQRS CHIK 0
 8 8 0 0
 HM ABCGHIJK G 0
 #0
