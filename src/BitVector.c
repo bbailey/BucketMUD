@@ -47,10 +47,12 @@ const size_t BITS_PER_BLOCK = 32;
  */
 BitVector* bv_new(size_t numBits)
 {
+    BitVector *bv = NULL;
+
     // Make sure the equality testing map has been initialized.
     initialize_bits_in_16bits();
 
-    BitVector* bv = (BitVector*) malloc(sizeof(BitVector));
+    bv = (BitVector*) malloc(sizeof(BitVector));
 
     bv->numBits_ = numBits;
 
@@ -111,12 +113,15 @@ void bv_assign(BitVector* dst, const BitVector* other)
  */
 BOOL bv_is_set(const BitVector* bv, size_t whichBit)
 {
+    size_t block = 0;
+    size_t bit = 0;
+
     assert(whichBit < bv->numBits_);
 
     // figure out what block to be in.
-    size_t block = whichBit / BITS_PER_BLOCK;
+    block = whichBit / BITS_PER_BLOCK;
     // figure out what bit to grab.
-    size_t bit = whichBit - (block*BITS_PER_BLOCK);
+    bit = whichBit - (block*BITS_PER_BLOCK);
 
     assert(bit < BITS_PER_BLOCK);
 
@@ -128,12 +133,15 @@ BOOL bv_is_set(const BitVector* bv, size_t whichBit)
  */
 void bv_set_bit(BitVector* bv, size_t whichBit, BOOL toWhat)
 {
+    size_t block = 0;
+    size_t bit = 0;
+
     assert(whichBit < bv->numBits_);
 
     // figure out what block to be in.
-    size_t block = whichBit / BITS_PER_BLOCK;
+    block = whichBit / BITS_PER_BLOCK;
     // figure out what bit to grab.
-    size_t bit = whichBit - (block*BITS_PER_BLOCK);
+    bit = whichBit - (block*BITS_PER_BLOCK);
 
     assert(bit < BITS_PER_BLOCK);
 
