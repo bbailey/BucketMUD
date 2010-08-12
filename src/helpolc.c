@@ -48,7 +48,7 @@ HELP_DATA *new_help(void)
     return pHelp;
 }
 
-void free_help(HELP_DATA *pHelp)
+static void free_help(HELP_DATA *pHelp)
 {
     free_string(&pHelp->keyword);
     free_string(&pHelp->text);

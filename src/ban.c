@@ -49,6 +49,25 @@ const BitVectorStringList bv_str_list_ban[] =
     { NULL, BV_BAN_MAX }
 };
 
+static BAN_DATA *new_ban(void)
+{
+    BAN_DATA *ban;
+
+    ban = malloc(sizeof(BAN_DATA));
+
+    ban->bv_flags = bv_new(BV_BAN_MAX);
+    ban->level=0;
+    ban->name=&str_empty[0];
+    return ban;
+}
+
+static void free_ban(BAN_DATA * ban)
+{
+    bv_delete(ban->bv_flags);
+    free_string(&ban->name);
+    free(ban);
+}
+
 static void save_bans(void)
 {
     BAN_DATA *pban;
@@ -318,23 +337,4 @@ void do_allow(CHAR_DATA * ch, char *argument)
 
     send_to_char("Site is not banned.\n\r", ch);
     return;
-}
-
-BAN_DATA *new_ban(void)
-{
-    BAN_DATA *ban;
-
-    ban = malloc(sizeof(BAN_DATA));
-
-    ban->bv_flags = bv_new(BV_BAN_MAX);
-    ban->level=0;
-    ban->name=&str_empty[0];
-    return ban;
-}
-
-void free_ban(BAN_DATA * ban)
-{
-    bv_delete(ban->bv_flags);
-    free_string(&ban->name);
-    free(ban);
 }

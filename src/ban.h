@@ -22,5 +22,3 @@ typedef enum
 
 extern const BitVectorStringList bv_str_list_ban[];
 extern BAN_DATA *ban_list;
-extern BAN_DATA *new_ban(void);
-extern void free_ban(BAN_DATA *ban);
