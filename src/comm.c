@@ -1847,7 +1847,7 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
         break;
 
     case CON_READ_MOTD:
-        write_to_buffer(d, "\n\rWelcome to EmberMUD.\n\r", 0);
+        write_to_buffer(d, "\r\nPlease don't feed the staff.\r\n", 0);
         /* Add to list of PCs and NPCs */
         ch->next = char_list;
         char_list = ch;
