@@ -1124,7 +1124,12 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
          */
         {
             if (d->ansi)
-                write_to_buffer(d, ansi_greeting, 0);
+            {
+                if (ansi_greeting[0] == '.')
+                    write_to_buffer(d, ansi_greeting + 1, 0);
+                else
+                    write_to_buffer(d, ansi_greeting, 0);
+            }
             else
             {
                 if (help_greeting[0] == '.')

@@ -5,7 +5,7 @@
 
 /* These strings probably should NOT contain color codes */
 #define CFG_QUIT "Alas, all good things must come to an end.\n\r"
-#define CFG_CONNECT_MSG "Welcome to a MUD based on EmberMUD.\n\r"
+#define CFG_CONNECT_MSG "Welcome to a MUD based on BucketMUD.\r\n"
 #define CFG_ASK_ANSI "Use ANSI Color? [Y/n]: "
 
 /* Do you want a music channel?  Can be used as any other

@@ -1,47 +1,32 @@
 #HELPS
-
 -1 ANSIGREET~
-[2J[1;1H[1;[1;32mTHIS MUD IS BASED ON RIVERS OF MUD v2.3.
+.
 
-[0;33m                      _________________________________
-[0;33m          __    _____|       [1;33m EmberMUD v0.9.47     [0;33m    |_____    __
-[0;33m_________|  |__|    :|                                 |     |__|  |_________
-[0;33m\       :|  |::|    :|                                 |     |::|  |        /
-[0;33m  \     :|  |::|    :|                                 |     |::|  |      /
-[0;33m    >   :|  |::|    :|_________________________________|     |::|  |    <
-[0;33m  /     :|__|::|____:/                                 \.____|::|__|      \
-[0;33m/_______:/  \::/                                             \::/  \._______\
-[1;37m
-Welcome to a brand new EmberMUD!
-[0m
-  Original DikuMUD by Hans Staerfeldt, Katja Nyboe, Tom Madsen, 
-  Michael Seifert, and Sebastian Hammer.  Based on MERC 2.1 code 
-  by Hatchet, Furey, and Kahn.  ROM 2.3 code written by Alander.
-  EmberMUD improvements by Zane, Zak, Thexder, Lancelight, and
-  Dorzak.
 
-Welcome -- Who are you? ~
+                         BucketMUD
+
+                 Official Development Server
+                      www.bucketmud.tk
+
+   BucketMUD is based on EmberMUD, ROM and Merc Diku Mud.
+   Original DikuMud by Sebastian Hammer, Michael Seifert,
+   Hans Henrik Staerfeldt, Tom Madsen and Katja Nyboe.
+
+By what name do you wish to be known? ~
 -1 GREETING~
-. 
-`GTHIS MUD IS BASED ON RIVERS OF MUD v2.3.
-`y                      _________________________________
-`y          __    _____|       `Y EmberMUD v0.9.47     `y    |_____    __
-`y_________|  |__|    :|                                 |     |__|  |_________
-`y\       :|  |::|    :|                                 |     |::|  |        /
-`y  \     :|  |::|    :|                                 |     |::|  |      /
-`y    >   :|  |::|    :|_________________________________|     |::|  |    <
-`y  /     :|__|::|____:/                                 \.____|::|__|      \
-`y/_______:/  \::/                                             \::/  \._______\
-`W
-Welcome to a brand new EmberMUD!
-`w
-  Original DikuMUD by Hans Staerfeldt, Katja Nyboe, Tom Madsen, 
-  Michael Seifert, and Sebastian Hammer.  Based on MERC 2.1 code 
-  by Hatchet, Furey, and Kahn.  ROM 2.3 code written by Alander.
-  EmberMUD improvements by Zane, Zak, Thexder, Lancelight, and
-  Dorzak.
+.
 
-Welcome -- Who are you? ~
+
+                         BucketMUD
+
+                 Official Development Server
+                      www.bucketmud.tk
+
+   BucketMUD is based on EmberMUD, ROM and Merc Diku Mud.
+   Original DikuMud by Sebastian Hammer, Michael Seifert,
+   Hans Henrik Staerfeldt, Tom Madsen and Katja Nyboe.
+
+By what name do you wish to be known? ~
 -1 WIZLIST~
 .
 `KÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ`gÄ`KÄÄÄ`gÄ`KÄ`gÄÄ`GÄÄ`w

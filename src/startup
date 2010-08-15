@@ -25,7 +25,7 @@ while ( 1 )
     if ( -e ./$corefile ) gzip ./$corefile
 
     # Run ember.
-    ../src/ember $port >&! $logfile
+    ../src/ember $port >>&! $logfile
 
 
     # Restart, giving old connections a chance to die.

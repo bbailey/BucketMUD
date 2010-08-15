@@ -1,4 +1,4 @@
-#define EMBER_MUD_VERSION         "`WEmberMUD Release 0.9.47`w\n\r"
+#define EMBER_MUD_VERSION         "`WBucketMUD Pre-release (alpha development)`w\r\n"
 
 #ifndef merc_h__
 #define merc_h__
