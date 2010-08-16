@@ -118,6 +118,18 @@ void violence_update(void)
     return;
 }
 
+bool is_speedy(CHAR_DATA *ch)
+{
+    if (IS_NPC(ch))
+        if (bv_is_set(ch->bv_offense_flags, BV_OFF_FAST))
+            return true;
+
+    if (IS_AFFECTED(ch,AFF_HASTE))
+        return true;
+
+    return false;
+}
+
 /* for auto assisting */
 static void check_assist(CHAR_DATA * ch, CHAR_DATA * victim)
 {
@@ -267,7 +279,7 @@ void multi_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
     if (ch->fighting != victim)
         return;
 
-    if (IS_AFFECTED(ch, AFF_HASTE))
+    if (is_speedy(ch))
         one_hit(ch, victim, weapon, dt);
 
     if (ch->fighting != victim || dt == gsn_backstab)
@@ -334,7 +346,7 @@ static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt)
         }
     }
 
-    if (IS_AFFECTED(ch, AFF_HASTE) || bv_is_set(ch->bv_offense_flags, BV_OFF_FAST))
+    if (is_speedy(ch))
         one_hit(ch, victim, weapon, dt);
 
     if (ch->fighting != victim || dt == gsn_backstab)
@@ -3570,9 +3582,9 @@ void do_bash(CHAR_DATA * ch, char *argument)
     chance -= get_curr_stat(victim, STAT_DEX) * 4 / 3;
 
     /* speed */
-    if (bv_is_set(ch->bv_offense_flags, BV_OFF_FAST))
+    if (is_speedy(ch))
         chance += 10;
-    if (bv_is_set(victim->bv_offense_flags, BV_OFF_FAST))
+    if (is_speedy(victim))
         chance -= 20;
 
     /* level */
@@ -3687,10 +3699,9 @@ void do_dirt(CHAR_DATA * ch, char *argument)
     chance -= 2 * get_curr_stat(victim, STAT_DEX);
 
     /* speed  */
-    if (bv_is_set(ch->bv_offense_flags, BV_OFF_FAST) || IS_AFFECTED(ch, AFF_HASTE))
+    if (is_speedy(ch))
         chance += 10;
-    if (bv_is_set(victim->bv_offense_flags, BV_OFF_FAST)
-            || IS_AFFECTED(victim, AFF_HASTE))
+    if (is_speedy(victim))
         chance -= 25;
 
     /* level */
@@ -3857,11 +3868,9 @@ void do_trip(CHAR_DATA * ch, char *argument)
 
 
     /* speed */
-#warning "This chunk exists in multiple functions. Refactor it."
-    if (bv_is_set(ch->bv_offense_flags, BV_OFF_FAST) || IS_AFFECTED(ch, AFF_HASTE))
+    if (is_speedy(ch))
         chance += 10;
-    if (bv_is_set(victim->bv_offense_flags, BV_OFF_FAST)
-            || IS_AFFECTED(victim, AFF_HASTE))
+    if (is_speedy(victim))
         chance -= 20;
 
     /* level */

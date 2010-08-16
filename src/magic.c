@@ -3212,14 +3212,13 @@ void spell_harm(int sn, int level, CHAR_DATA * ch, void *vo)
 }
 
 /* RT haste spell */
-
+extern bool is_speedy(CHAR_DATA *ch);
 void spell_haste(int sn, int level, CHAR_DATA * ch, void *vo)
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
-    if (is_affected(victim, sn) || IS_AFFECTED(victim, AFF_HASTE)
-            || bv_is_set(victim->bv_offense_flags, BV_OFF_FAST))
+    if (is_affected(victim, sn) || is_speedy(victim))
     {
         if (victim == ch)
             send_to_char("You can't move any faster!\n\r", ch);
