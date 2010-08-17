@@ -160,6 +160,7 @@ static void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
     char buf[MAX_STRING_LENGTH];
     char letter;
     sh_int race = pMobIndex->race;
+    gchar *tmp_string = NULL;
 
     fprintf(fp, "#%d\n", pMobIndex->vnum);
     fprintf(fp, "%s~\n", pMobIndex->player_name);
@@ -186,7 +187,9 @@ static void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
     fprintf(fp, "%d %d %d %d\n", pMobIndex->ac[AC_PIERCE] / 10,
             pMobIndex->ac[AC_BASH] / 10,
             pMobIndex->ac[AC_SLASH] / 10, pMobIndex->ac[AC_EXOTIC] / 10);
-    fprintf(fp, "%s~\n", bv_to_string(pMobIndex->bv_offense_flags, bv_str_list_off));
+    tmp_string = bv_to_string(pMobIndex->bv_offense_flags, bv_str_list_off);
+    fprintf(fp, "%s~\n", tmp_string);
+    g_free(tmp_string);
     fprintf(fp, "%s ", fwrite_flag(pMobIndex->imm_flags, buf));
     fprintf(fp, "%s ", fwrite_flag(pMobIndex->res_flags, buf));
     fprintf(fp, "%s\n", fwrite_flag(pMobIndex->vuln_flags, buf));

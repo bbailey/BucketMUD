@@ -1740,6 +1740,7 @@ void do_mstat(CHAR_DATA * ch, char *argument)
     NEWAFFECT_DATA *npaf;
     CHAR_DATA *victim;
     int x;
+    gchar *tmp_string = NULL;
 
     one_argument(argument, arg);
 
@@ -1857,12 +1858,16 @@ void do_mstat(CHAR_DATA * ch, char *argument)
     send_to_char(buf, ch);
     printf_to_char(ch, "Jail Timer: %d\n\r", victim->jail_timer);
 
-    sprintf(buf, "Comm: %s\n\r", bv_to_string(victim->bv_comm_flags, bv_str_list_comm));
+    tmp_string = bv_to_string(victim->bv_comm_flags, bv_str_list_comm);
+    sprintf(buf, "Comm: %s\n\r", tmp_string);
+    g_free(tmp_string);
     send_to_char(buf, ch);
 
     if (IS_NPC(victim))
     {
-        sprintf(buf, "Offense: %s\n\r", bv_to_string(victim->bv_offense_flags, bv_str_list_off));
+        tmp_string = bv_to_string(victim->bv_offense_flags, bv_str_list_off);
+        sprintf(buf, "Offense: %s\n\r", tmp_string);
+        g_free(tmp_string);
         send_to_char(buf, ch);
     }
 

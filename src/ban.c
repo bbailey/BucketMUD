@@ -73,6 +73,7 @@ static void save_bans(void)
     BAN_DATA *pban;
     FILE *fp;
     bool found = FALSE;
+    gchar *tmp_string = NULL;
 
     fclose(fpReserve);
     if ((fp = fopen(sysconfig.ban_file, "w")) == NULL)
@@ -85,8 +86,9 @@ static void save_bans(void)
         if (bv_is_set(pban->bv_flags, BV_BAN_PERMANENT))
         {
             found = TRUE;
-            fprintf(fp, "%-20s %-2d %s~\n", pban->name, pban->level,
-                    bv_to_string(pban->bv_flags, bv_str_list_ban));
+            tmp_string = bv_to_string(pban->bv_flags, bv_str_list_ban);
+            fprintf(fp, "%-20s %-2d %s~\n", pban->name, pban->level, tmp_string);
+            g_free(tmp_string);
         }
     }
 

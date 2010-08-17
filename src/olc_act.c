@@ -3301,6 +3301,7 @@ MEDIT(medit_show)
     MOB_INDEX_DATA *pMob;
     FACTIONAFF_DATA *pFactAff;
     int x;
+    gchar *tmp_string = NULL;
 
     EDIT_MOB(ch, pMob);
 
@@ -3391,8 +3392,9 @@ MEDIT(medit_show)
             flag_string(vuln_flags, pMob->vuln_flags));
     send_to_char(buf, ch);
 
-    sprintf(buf, "Off:         [%s]\n\r",
-            bv_to_string(pMob->bv_offense_flags, bv_str_list_off));
+    tmp_string = bv_to_string(pMob->bv_offense_flags, bv_str_list_off);
+    sprintf(buf, "Off:         [%s]\n\r", tmp_string);
+    g_free(tmp_string);
     send_to_char(buf, ch);
 
     sprintf(buf, "Size:        [%s]\n\r",
