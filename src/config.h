@@ -1,7 +1,7 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-#define CONFIG_FILE "ember.cfg"
+#define CONFIG_FILE "bucketmud.conf"
 
 /* These strings probably should NOT contain color codes */
 #define CFG_QUIT "Alas, all good things must come to an end.\n\r"
