@@ -107,7 +107,9 @@ encrypted in the pfiles.
     #END
 
     with:
-#IMM
+#IMM  
+mlevel olevel beaconreset herotalk admintalk
+setprog setedit dump wizrevoke spellup
 mpstat wizrevoke wizgrant disable pload
 punload at goto sockets wizhelp
 askill divorce marry murder clan
@@ -124,7 +126,8 @@ stat string switch wizinvis jail
 vnum clone immtalk imotd beacon
 chaos aexits aentrances edit asave
 alist resets rlist splist sklist
-lastimm hotboo mortslay End
+lastimm hotboo mortslay lastadmin lasthero
+telloff End
 #END
 
 11.  Log into the MUD and you should be ready.
