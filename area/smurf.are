@@ -3,7 +3,7 @@ Name        { 1 10} Generic Smurf Village~
 Builders    None~
 VNUMs       100 129
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -20,7 +20,7 @@ urge to crush him.
 Human~
 AGHT 0 100 S
 1 0 
-100 0 0 0 1d2+6 1d10+100 1d2+0 7
+100 1d2+6 1d10+100 1d2+0 7
 9 9 9 9
 none~
 0 0 0
@@ -36,7 +36,7 @@ A small smurf is quietly picking berries.  He seems to hardly notice you.
 Human~
 ABHT 0 100 S
 1 0 
-100 0 0 0 1d2+6 1d10+100 1d2+0 7
+100 1d2+6 1d10+100 1d2+0 7
 9 9 9 9
 none~
 0 0 0
@@ -53,7 +53,7 @@ other smurfs.  They fear his knowledge.  Knowledge is power!
 Human~
 AGHT 0 100 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 7
+100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
 0 0 0
@@ -70,7 +70,7 @@ give him a break, like all of his bones.
 Human~
 AGHT 0 100 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 7
+100 1d6+23 3d10+100 1d5+1 7
 8 8 8 9
 none~
 0 0 0
@@ -87,7 +87,7 @@ if he has ever stayed up a whole night without sleeping.
 Human~
 AGHT 0 100 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 7
+100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
 0 0 0
@@ -104,7 +104,7 @@ the time.  Won't do him much good when he's DEAD.
 Human~
 AGHT 0 100 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -120,7 +120,7 @@ Grumpy has never been happy in his whole life.  So why don't you just end it?
 Human~
 AGHT 0 100 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 7
+100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
 0 0 0
@@ -137,7 +137,7 @@ Oh well, to each his own.
 Human~
 AGHT 0 100 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 11
+100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
 0 0 0
@@ -154,7 +154,7 @@ size.  I wonder how much she charges the other smurfs.
 Human~
 AGHT 0 100 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 7
+100 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
 none~
 0 0 0
@@ -172,7 +172,7 @@ is why Papa Smurf is so popular among the ladies.
 Human~
 AGHT 0 100 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -189,7 +189,7 @@ before but always lets them escape.  He brings true meaning to the word moron.
 Human~
 ABHT 0 -100 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -206,7 +206,7 @@ just grab a smurf in his teeth and chew away.
 Human~
 ABHT 0 -100 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 11
+100 2d21+73 8d10+100 2d7+4 11
 5 5 5 7
 none~
 0 0 0

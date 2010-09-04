@@ -3,7 +3,7 @@ Name        { 5 50} Generic Olympus~
 Builders    None~
 VNUMs       900 954
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ You now know what true fear is.
 Human~
 ABCT BDFHNT 1000 S
 61 0 
-100 0 0 0 10d251+1278 61d10+100 5d21+32 11
+100 10d251+1278 61d10+100 5d21+32 11
 -28 -28 -28 -9
 none~
 0 0 0
@@ -38,7 +38,7 @@ looks up at you and smiles.
 Human~
 ABCT BDFHNT 1000 S
 51 0 
-100 0 0 0 10d175+958 51d10+100 5d17+29 3
+100 10d175+958 51d10+100 5d17+29 3
 -21 -21 -21 -5
 none~
 0 0 0
@@ -56,7 +56,7 @@ even notice your presence.
 Human~
 ACT BDFHNPT 1000 S
 56 0 
-100 0 0 0 10d211+1115 56d10+100 5d19+31 11
+100 10d211+1115 56d10+100 5d19+31 11
 -25 -25 -25 -7
 none~
 0 0 0
@@ -74,7 +74,7 @@ have a seat.
 Human~
 ABCT BDFHNT 1000 S
 58 0 
-100 0 0 0 10d227+1175 58d10+100 5d20+30 11
+100 10d227+1175 58d10+100 5d20+30 11
 -26 -26 -26 -8
 none~
 0 0 0
@@ -92,7 +92,7 @@ that he knows more than music.
 Human~
 ABCT BDFHNT 1000 S
 58 0 
-100 0 0 0 10d227+1175 58d10+100 5d20+30 7
+100 10d227+1175 58d10+100 5d20+30 7
 -26 -26 -26 -8
 none~
 0 0 0
@@ -109,7 +109,7 @@ and says 'I am very busy.  What do you want?'
 Human~
 ABCFT BDFHT -1000 S
 58 0 
-100 0 0 0 10d227+1175 58d10+100 5d20+30 7
+100 10d227+1175 58d10+100 5d20+30 7
 -26 -26 -26 -8
 none~
 0 0 0
@@ -126,7 +126,7 @@ you and invites you to join her.
 Human~
 ABCT BDFHNT 1000 S
 56 0 
-100 0 0 0 10d211+1115 56d10+100 5d19+31 7
+100 10d211+1115 56d10+100 5d19+31 7
 -25 -25 -25 -7
 none~
 0 0 0
@@ -144,7 +144,7 @@ way to help you.  He is attended by three golden maidens.
 Human~
 ABCT BDFHNT 1000 S
 55 0 
-100 0 0 0 10d204+1078 55d10+100 5d19+28 3
+100 10d204+1078 55d10+100 5d19+28 3
 -24 -24 -24 -7
 none~
 0 0 0
@@ -161,7 +161,7 @@ gold.  She seems to be very lifelike as she assists the smith in his work.
 Human~
 ABCT BDFHNT 0 S
 27 0 
-100 0 0 0 10d49+360 27d10+100 5d9+15 3
+100 10d49+360 27d10+100 5d9+15 3
 -6 -6 -6 1
 none~
 0 0 0
@@ -178,7 +178,7 @@ realize that Ares would not have any weaklings working for him.
 Human~
 ABCFT BDFHT 0 S
 36 0 
-100 0 0 0 10d87+555 36d10+100 5d12+21 11
+100 10d87+555 36d10+100 5d12+21 11
 -12 -12 -12 -1
 none~
 0 0 0
@@ -195,7 +195,7 @@ immortal Apollo.
 Human~
 ABCT BDFHT 1000 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 7
+100 4d33+145 14d10+100 4d6+7 7
 1 1 1 5
 none~
 0 0 0
@@ -211,7 +211,7 @@ This boy is truly lucky to be able to serve Athena herself.
 Human~
 ABCT BDFHT 1000 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 11
+100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 none~
 0 0 0
@@ -228,7 +228,7 @@ on the battle field, and you have no doubt that it does its job well.
 Human~
 ABCFT BDFHT -600 S
 34 0 
-100 0 0 0 10d78+505 34d10+100 5d11+21 11
+100 10d78+505 34d10+100 5d11+21 11
 -11 -11 -11 0
 none~
 0 0 0
@@ -246,7 +246,7 @@ presence.
 Human~
 ABCT BDFHNT 1000 S
 60 0 
-100 0 0 0 10d243+1242 60d10+100 5d21+30 7
+100 10d243+1242 60d10+100 5d21+30 7
 -27 -27 -27 -8
 none~
 0 0 0
@@ -265,7 +265,7 @@ of delicious looking foods.
 Human~
 ABCT BDFHNT 1000 S
 51 0 
-100 0 0 0 10d175+958 51d10+100 5d17+29 3
+100 10d175+958 51d10+100 5d17+29 3
 -21 -21 -21 -5
 none~
 0 0 0
@@ -283,7 +283,7 @@ arcane supplies.
 Human~
 ABCT BDFHNT 1000 S
 49 0 
-100 0 0 0 10d162+893 49d10+100 5d17+25 3
+100 10d162+893 49d10+100 5d17+25 3
 -20 -20 -20 -5
 none~
 0 0 0
@@ -300,7 +300,7 @@ paid off.
 Human~
 ABCT BDFHNT 1000 S
 49 0 
-100 0 0 0 10d162+893 49d10+100 5d17+25 7
+100 10d162+893 49d10+100 5d17+25 7
 -20 -20 -20 -5
 none~
 0 0 0
@@ -317,7 +317,7 @@ He doesn't like what you've been doing in his city.
 Human~
 ABCFT BDFHNT 1000 S
 34 0 
-100 0 0 0 10d78+505 34d10+100 5d11+21 7
+100 10d78+505 34d10+100 5d11+21 7
 -11 -11 -11 0
 none~
 0 0 0
@@ -335,7 +335,7 @@ to be trifled with.
 rabbit~
 ABCT BDFHNT 1000 S
 60 0 
-100 0 0 0 10d243+1242 60d10+100 5d21+30 11
+100 10d243+1242 60d10+100 5d21+30 11
 -27 -27 -27 -8
 dodge fast ~
 0 0 0
@@ -352,7 +352,7 @@ of a dragon.  It growls at you as you enter the cell, then suddenly attacks!
 Human~
 ABCFT BDFHT -1000 S
 34 0 
-100 0 0 0 10d78+505 34d10+100 5d11+21 7
+100 10d78+505 34d10+100 5d11+21 7
 -11 -11 -11 0
 none~
 0 0 0
@@ -369,7 +369,7 @@ to rest and sit for a while.
 Human~
 ABCT BDFHNT 1000 S
 59 0 
-100 0 0 0 10d234+1217 59d10+100 5d20+32 11
+100 10d234+1217 59d10+100 5d20+32 11
 -26 -26 -26 -8
 none~
 0 0 0
@@ -386,7 +386,7 @@ looks away.
 Human~
 ACT BDFHNT 0 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 11
+100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
 0 0 0
@@ -402,7 +402,7 @@ He looks happy and carefree.  He smiles and tips his hat to you.
 Human~
 ACT BDFHNT 1000 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 7
+100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
 0 0 0
@@ -419,7 +419,7 @@ threatening, it seems as though it would be dangerous if provoked.
 Human~
 ACT BDFHNT 0 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 3
+100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
 0 0 0
@@ -435,7 +435,7 @@ This man looks as is he has been spending WAY too much time in the kitchen.
 Human~
 ABCT BDFHNT 1000 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 7
+100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
 0 0 0
@@ -452,7 +452,7 @@ prisoners.
 Human~
 ABCT BDFHNT 0 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 11
+100 9d36+270 22d10+100 5d7+14 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -502,9 +502,9 @@ unknown~
 BCD BCD BCD B 0
 58 18 580 P
 A
-19 2
-A
 18 2
+A
+19 2
 #904
 sandals winged~
 a pair of winged sandals~
@@ -540,9 +540,9 @@ unknown~
 0 AC ABD ABC 0
 49 15 490 P
 A
-19 1
-A
 18 1
+A
+19 1
 #908
 gauntlets flaming~
 flaming gauntlets~
@@ -580,9 +580,9 @@ unknown~
 AD AD AD 0 0
 34 1 340 P
 A
-19 4
-A
 4 2
+A
+19 4
 #912
 shield glowing~
 a brightly glowing shield~

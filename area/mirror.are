@@ -3,7 +3,7 @@ Name        { 1 30} Kahn    Old Thalos~
 Builders    None~
 VNUMs       5300 5386
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ their playful personality.  Hmmm....  It looks like the baby is teething!
 Human~
 ABCHT D 500 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -38,7 +38,7 @@ body of a four-legged beast.
 Human~
 ACHT 0 500 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
 0 0 0
@@ -55,7 +55,7 @@ choice but to reciprocate.
 Human~
 AGHT 0 500 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 3
+100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
 0 0 0
@@ -72,7 +72,7 @@ he is just giggling with a kid running about.
 Human~
 ACGT H 1000 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 7
+100 6d36+205 18d10+100 4d7+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -90,7 +90,7 @@ attention, if only for a moment.
 Human~
 AGHT 0 500 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -109,7 +109,7 @@ ARMED stranger.  Better not do any funny stuff in his presence.
 Human~
 AT H 1000 S
 35 0 
-100 0 0 0 10d82+534 35d10+100 5d12+18 11
+100 10d82+534 35d10+100 5d12+18 11
 -11 -11 -11 0
 none~
 0 0 0
@@ -128,7 +128,7 @@ and he clenches it at you.  Other than that, he is dressed all in black.
 Human~
 ABHT 0 -500 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 7
+100 3d27+107 11d10+100 3d6+6 7
 3 3 3 6
 none~
 0 0 0
@@ -145,7 +145,7 @@ the world as 'The City of Peace'.  He is very happy to be the high priest here.
 Human~
 ABT H 1000 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 7
+100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -162,7 +162,7 @@ stone creature.  It stands here guarding the city.
 Human~
 ABT N 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 7
+100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
 0 0 0
@@ -179,7 +179,7 @@ He looks very proud of his work.
 Human~
 ABT 0 800 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 0 0
@@ -195,7 +195,7 @@ He looks at you, and says, 'What's your poison, stranger?'
 Human~
 ABT 0 600 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 11
+100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
 0 0 0
@@ -212,7 +212,7 @@ he asks, 'How much you want?'
 Human~
 ABT 0 600 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -228,7 +228,7 @@ She smiles at you meekly.
 Human~
 ABT 0 650 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 11
+100 10d60+426 30d10+100 5d10+17 11
 -8 -8 -8 0
 none~
 0 0 0
@@ -245,7 +245,7 @@ metal into items of defense and destruction.
 Human~
 ABT 0 550 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 3
+100 10d56+405 29d10+100 5d10+15 3
 -8 -8 -8 1
 none~
 0 0 0
@@ -261,7 +261,7 @@ Ben tries to pawn his various wares to you.
 Human~
 ABT 0 600 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 3
+100 10d56+405 29d10+100 5d10+15 3
 -8 -8 -8 1
 none~
 0 0 0
@@ -277,7 +277,7 @@ The librarian looks busy and whispers, 'Shhh!'
 Human~
 ABHT 0 500 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 3
+100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
 0 0 0
@@ -293,7 +293,7 @@ This young scholar is studying to be a priest.
 Human~
 ABHT 0 500 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -309,7 +309,7 @@ This old wizard almost looks like he is about to fall over and sleep.
 Human~
 ABT D 550 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 7
+100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
 0 0 0
@@ -327,7 +327,7 @@ attention, and you jump to her offer for a massage.
 Human~
 ABHT 0 700 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
 0 0 0
@@ -344,7 +344,7 @@ choice but to reciprocate and join him and the others in the soothing pool.
 Human~
 ABHT 0 650 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 11
+100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 none~
 0 0 0
@@ -362,7 +362,7 @@ track of each city patrol.
 Human~
 ABCGT H 1000 S
 17 0 
-100 0 0 0 5d39+187 17d10+100 4d7+10 11
+100 5d39+187 17d10+100 4d7+10 11
 0 0 0 4
 none~
 0 0 0
@@ -379,7 +379,7 @@ he is watching the children play with amusement.
 Human~
 ABCGT H 1000 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 11
+100 5d34+175 16d10+100 4d7+8 11
 0 0 0 5
 none~
 0 0 0
@@ -396,7 +396,7 @@ she sniffs at you, but she goes back to chewing some grass.
 Human~
 AGHT 0 0 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 7
+100 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
 none~
 0 0 0
@@ -413,7 +413,7 @@ albeit ineffectively.
 Human~
 AGHT 0 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 7
+100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
 0 0 0
@@ -429,7 +429,7 @@ He eyes you with contained anger.  You'd better leave him alone!
 Human~
 AFGHT 0 0 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 0 0
@@ -445,7 +445,7 @@ This bunny looks so adorable, you wished you had one just like this!
 Human~
 AGHT 0 0 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 11
+100 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
 none~
 0 0 0
@@ -461,7 +461,7 @@ Upon careful inspection, you are sure it is NOT a cobra!
 snake~
 AFGHT P 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 11
+100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
 0 L I
@@ -477,7 +477,7 @@ He doesn't like you bothering him, but is too polite to ask you to leave.
 Human~
 AGHT DN 1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -493,7 +493,7 @@ She wonders why you are staring at her, and how you got in here.
 Human~
 AGHT DN 1000 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 0 0
@@ -509,7 +509,7 @@ This musical fellow plays a happy song with his fellow comrades.
 Human~
 ABCT 0 450 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 3
+100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
 0 0 0
@@ -525,7 +525,7 @@ This musical fellow wanders the world singing of the glory of Thalos.
 Human~
 ACT 0 550 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 7
+100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
 0 0 0
@@ -541,7 +541,7 @@ A big, strong, helpful, trustworthy guard.
 Human~
 ACGT 0 1000 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 3
+100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
 0 0 0
@@ -556,7 +556,7 @@ A janitor is walking around, cleaning up.
 Human~
 AT 0 900 S
 1 0 
-100 0 0 0 1d2+6 1d10+100 1d2+0 11
+100 1d2+6 1d10+100 1d2+0 11
 9 9 9 9
 none~
 0 0 0
@@ -573,7 +573,7 @@ around his teeth.
 fido~
 AFHT 0 -200 S
 1 0 
-100 0 0 0 1d2+6 1d10+100 1d2+0 11
+100 1d2+6 1d10+100 1d2+0 11
 9 9 9 9
 dodge assist_race ~
 0 0 C
@@ -589,7 +589,7 @@ A big, strong, helpful, trustworthy guard.
 Human~
 ABGT 0 1000 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 11
+100 4d37+162 15d10+100 4d6+9 11
 0 0 0 5
 none~
 0 0 0
@@ -756,9 +756,9 @@ unknown~
 A AC C AB 0
 16 5 160 P
 A
-19 2
-A
 18 2
+A
+19 2
 E
 sword~
 You see a sword of great craftsmanship.  Imprinted on the side is:
@@ -773,9 +773,9 @@ unknown~
 C AC C ABC 0
 16 5 160 P
 A
-19 2
-A
 18 2
+A
+19 2
 E
 mace~
 You see a mace of great craftsmanship.  Imprinted on the side is:
@@ -933,9 +933,9 @@ unknown~
 BC BC BC 0 0
 17 1 170 P
 A
-24 -2
-A
 17 -6
+A
+24 -2
 #5331
 imperial banner~
 an imperial war banner~
@@ -945,9 +945,9 @@ unknown~
 0 0 999 0 0
 16 1 160 P
 A
-17 -2
-A
 24 -2
+A
+17 -2
 E
 banner~
 This is the official Merc war banner to see you through the darkest realm!
@@ -2464,7 +2464,12 @@ rainbow then back to its normal state.  In the middle of this room is
 a ladder standing vertical.
 ~
 0 0 3
-D3
+D4
+You see stars.
+~
+~
+0 0 5376
+D1
 You see stars.
 ~
 ~
@@ -2474,12 +2479,7 @@ You see a fuzzy portal of some sort and a little green.
 ~
 ~
 0 0 5368
-D4
-You see stars.
-~
-~
-0 0 5376
-D1
+D3
 You see stars.
 ~
 ~
@@ -2499,36 +2499,36 @@ either.  Occasionally, the starry 'sky' fades into a fuzzy, yet bright,
 rainbow then back to its normal state.
 ~
 0 0 3
-D4
-You see stars.
-~
-~
-0 0 5375
-D1
-You see stars.
-~
-~
-0 0 5376
-D0
-You see stars.
-~
-~
-0 0 5377
 D2
 You see stars.
 ~
 ~
 0 0 5377
-D5
+D0
 You see stars.
 ~
 ~
-0 0 5375
+0 0 5377
 D3
 You see stars.
 ~
 ~
 0 0 5376
+D1
+You see stars.
+~
+~
+0 0 5376
+D5
+You see stars.
+~
+~
+0 0 5375
+D4
+You see stars.
+~
+~
+0 0 5375
 S
 #5377
 The Void~
@@ -2539,17 +2539,22 @@ either.  Occasionally, the starry 'sky' fades into a fuzzy, yet bright,
 rainbow then back to its normal state.
 ~
 0 0 3
+D0
+You see stars.
+~
+~
+0 0 5376
+D5
+You see stars.
+~
+~
+0 0 5378
 D4
 You see stars.
 ~
 ~
 0 0 5378
 D2
-You see stars.
-~
-~
-0 0 5376
-D0
 You see stars.
 ~
 ~
@@ -2564,11 +2569,6 @@ You see stars.
 ~
 ~
 0 0 5377
-D5
-You see stars.
-~
-~
-0 0 5378
 S
 #5378
 The Void~
@@ -2580,22 +2580,22 @@ rainbow then back to its normal state.  In the middle of this room is
 a ladder standing vertical.
 ~
 0 0 3
-D2
-You see a fuzzy portal of some sort and a little green.
+D1
+You see stars.
 ~
 ~
-0 0 8903
+0 0 5375
 D4
 You see stars.
 ~
 ~
 0 0 5377
+D2
+You see a fuzzy portal of some sort and a little green.
+~
+~
+0 0 8903
 D3
-You see stars.
-~
-~
-0 0 5375
-D1
 You see stars.
 ~
 ~
@@ -2719,14 +2719,9 @@ Main Street leads west from here.
 ~
 0 0 1
 E
-wall~
-It is built from large grey rocks that have been fastened to each other with
-some kind of mortar.  It is far too high to climb.
-~
-E
-tower towers~
-Both of the towers are built from large grey rocks that have been fastened to
-each other with some kind of mortar, just like the city wall.
+bridge footbridge~
+It is too high up to reach but it looks as if one easily could walk across it
+from one tower to the other.
 ~
 E
 gate~
@@ -2735,9 +2730,14 @@ reinforced with large iron bands to make them even more sturdy.  One of the
 doors is equipped with a very big lock.
 ~
 E
-bridge footbridge~
-It is too high up to reach but it looks as if one easily could walk across it
-from one tower to the other.
+tower towers~
+Both of the towers are built from large grey rocks that have been fastened to
+each other with some kind of mortar, just like the city wall.
+~
+E
+wall~
+It is built from large grey rocks that have been fastened to each other with
+some kind of mortar.  It is far too high to climb.
 ~
 D1
 You see the city gate.
@@ -2757,14 +2757,9 @@ plains stretch out in the distance.
 ~
 0 0 1
 E
-wall~
-It is built from large grey rocks that have been fastened to each other with
-some kind of mortar.  It is far too high to climb.
-~
-E
-tower towers~
-Both of the towers are built from large grey rocks that have been fastened to
-each other with some kind of mortar, just like the city wall.
+bridge footbridge~
+It is too high up to reach but it looks as if one easily could walk across it
+from one tower to the other.
 ~
 E
 gate~
@@ -2773,9 +2768,14 @@ reinforced with large iron bands to make them even more sturdy.  One of the
 doors is equipped with a very big lock.
 ~
 E
-bridge footbridge~
-It is too high up to reach but it looks as if one easily could walk across it
-from one tower to the other.
+tower towers~
+Both of the towers are built from large grey rocks that have been fastened to
+each other with some kind of mortar, just like the city wall.
+~
+E
+wall~
+It is built from large grey rocks that have been fastened to each other with
+some kind of mortar.  It is far too high to climb.
 ~
 D1
 You see the plains.~
@@ -2795,16 +2795,16 @@ behind it is a ten foot tall sitting statue of Odin, the King of the Gods.
 ~
 0 1032 0
 E
+altar~
+Even though the altar is more than ten feet long it appears to be made from a
+single block of white virgin marble.
+~
+E
 statue odin king god~
 The statue represents the one-eyed Odin sitting on a his throne.  He has
 long, grey hair and beard and a strict look on his face.  On top of the
 throne, just above his shoulders, his two ravens Hugin and Munin are sitting
 and at his feet are his wolves Gere and Freke.
-~
-E
-altar~
-Even though the altar is more than ten feet long it appears to be made from a
-single block of white virgin marble.
 ~
 D2
 You see the southern end of the temple.

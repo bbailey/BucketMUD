@@ -3,7 +3,7 @@ Name        {10 35} Anon    New Thalos~
 Builders    None~
 VNUMs       9500 9799
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ An old man peering through ancient tomes rests here.
 Human~
 ABJKRVb DF 0 S
 40 10 
-100 0 0 0 1d1+30000 1d1+499 5d8+5 11
+100 1d1+30000 1d1+499 5d8+5 11
 -15 -15 -15 -15
 dodge fast trip ~
 ABCD 0 0
@@ -35,7 +35,7 @@ An older man wrapped in purple, long-flowing robes meditates here.
 Human~
 ABJKQVb DFH 250 S
 40 10 
-100 0 0 0 1d1+30000 1d1+499 6d7+8 10
+100 1d1+30000 1d1+499 6d7+8 10
 -15 -15 -15 -15
 disarm dodge fade kick kick_dirt parry ~
 ABCD 0 0
@@ -51,7 +51,7 @@ A smaller man dressed in nothing but a tunic stands here waiting to train you.
 Human~
 ABJKTVb DF 0 S
 40 20 
-100 0 0 0 1d1+30000 1d1+99 2d4+30 14
+100 1d1+30000 1d1+99 2d4+30 14
 -15 -15 -15 -15
 area_attack bash disarm dodge fast kick kick_dirt parry ~
 ABCD 0 0
@@ -69,7 +69,7 @@ will now begin, is all he says.
 Elf~
 ABJKTVb DFJ -100 S
 40 15 
-100 0 0 0 1d1+30000 1d1+99 1d4+10 14
+100 1d1+30000 1d1+99 1d4+10 14
 -15 -15 -15 -15
 backstab disarm dodge fast parry trip ~
 ABCD B Z
@@ -87,7 +87,7 @@ a small moon-shaped birthmark on her left cheek.
 Human~
 ABT 0 800 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 0 0
@@ -103,7 +103,7 @@ He looks distracted as he pours five drinks at once without error.
 Human~
 ABRTVXYZ D 800 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 3
+100 10d38+311 24d10+100 5d8+14 3
 -5 -5 -5 2
 none~
 0 0 0
@@ -119,7 +119,7 @@ You see the lead singer of the Lokettes lip synching to an old Zeppelin tune.
 Human~
 ABGT D 0 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 3
+100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
 0 0 0
@@ -135,7 +135,7 @@ A small skinny man rests here hoping to find a warm heart.
 Human~
 ACGHT 0 -20 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 11
+100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
 0 0 0
@@ -151,7 +151,7 @@ A small skinny man rests here staring at your clothes.
 Human~
 ACGHT 0 -20 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 7
+100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
 0 0 0
@@ -167,7 +167,7 @@ This poor soul seems down on his luck, perhaps you might spare a dime?
 Human~
 ACGHST 0 -20 S
 1 0 
-100 0 0 0 1d2+6 1d10+100 1d2+0 11
+100 1d2+6 1d10+100 1d2+0 11
 9 9 9 9
 none~
 0 0 0
@@ -183,7 +183,7 @@ You see a large man in a white apron covered in flour from head to toe.
 Human~
 ABTVXYZd D 800 S
 23 100 
-100 0 0 0 9d39+290 23d10+100 5d8+11 11
+100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 bash ~
 CD 0 0
@@ -199,7 +199,7 @@ You see a half-elf sitting on a stool behind his counter.
 Human~
 ABTVXYZ D 800 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 11
+100 9d36+270 22d10+100 5d7+14 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -215,7 +215,7 @@ This small hobbit seems adept at counting money.
 Human~
 ABT D 800 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 11
+100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
 0 0 0
@@ -232,7 +232,7 @@ wardrobe.
 Human~
 ABTVXYZ D 800 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 11
+100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -248,7 +248,7 @@ A tall slender elf stands before you smiling broadly.
 Human~
 ABTVXYZd D 800 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 7
+100 9d36+270 22d10+100 5d7+14 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -265,7 +265,7 @@ carelessly into the air.
 Human~
 ABTVXYZ D 800 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 11
+100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
 0 0 0
@@ -282,7 +282,7 @@ his cold stare and place your order.
 Human~
 ABTVXYZ D 800 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 3
+100 9d39+290 23d10+100 5d8+11 3
 -4 -4 -4 2
 none~
 0 0 0
@@ -298,7 +298,7 @@ You see a small dwarf with a large hump on his left shoulder.
 Human~
 ABTVXYZd D 800 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 7
+100 9d39+290 23d10+100 5d8+11 7
 -4 -4 -4 2
 none~
 0 0 0
@@ -316,7 +316,7 @@ the smell that permeates the air.
 Human~
 ABT D 800 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 3
+100 9d39+290 23d10+100 5d8+11 3
 -4 -4 -4 2
 none~
 0 0 0
@@ -333,7 +333,7 @@ book and looking at his watch.
 Human~
 ABGT 0 0 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 11
+100 4d37+162 15d10+100 4d6+9 11
 0 0 0 5
 none~
 0 0 0
@@ -349,7 +349,7 @@ A large sweaty looking man doesn't even return your glance.
 Human~
 ABGT 0 10 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -364,7 +364,7 @@ The statue of Tempest stands here.
 Human~
 ABQTX 0 1000 S
 35 0 
-100 0 0 0 10d82+534 35d10+100 5d12+18 3
+100 10d82+534 35d10+100 5d12+18 3
 -11 -11 -11 0
 none~
 0 0 0
@@ -379,7 +379,7 @@ The statue of Ezra stands here.
 Human~
 ABQTX 0 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 7
+100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
 0 0 0
@@ -395,7 +395,7 @@ A statue of Seth.
 Human~
 ABQTX 0 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -411,7 +411,7 @@ A statue of Pontius.
 Human~
 ABQTX 0 1000 S
 32 0 
-100 0 0 0 10d69+462 32d10+100 5d11+17 7
+100 10d69+462 32d10+100 5d11+17 7
 -10 -10 -10 0
 none~
 0 0 0
@@ -427,7 +427,7 @@ A statue of Lisa.
 Human~
 ABQTX 0 1000 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 7
+100 10d64+448 31d10+100 5d10+19 7
 -9 -9 -9 0
 none~
 0 0 0
@@ -443,7 +443,7 @@ A statue of Kate.
 Human~
 ABQTX 0 1000 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 3
+100 10d64+448 31d10+100 5d10+19 3
 -9 -9 -9 0
 none~
 0 0 0
@@ -459,7 +459,7 @@ A statue of Furey.
 Human~
 ABQRTX 0 1000 S
 33 0 
-100 0 0 0 10d73+487 33d10+100 5d11+19 7
+100 10d73+487 33d10+100 5d11+19 7
 -10 -10 -10 0
 none~
 0 0 0
@@ -475,7 +475,7 @@ A statue of Alander.
 Human~
 ABQRTUWX 0 1000 S
 35 0 
-100 0 0 0 10d82+534 35d10+100 5d12+18 7
+100 10d82+534 35d10+100 5d12+18 7
 -11 -11 -11 0
 none~
 0 0 0
@@ -491,7 +491,7 @@ You see nothing special...
 Human~
 ACGHQT D 0 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -507,7 +507,7 @@ You see nothing special...
 Human~
 ACGHST D 0 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
 0 0 0
@@ -523,7 +523,7 @@ You see nothing special...
 Human~
 ACGHRTU D 0 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 0 0
@@ -539,7 +539,7 @@ You see nothing special...
 Human~
 ACGHT D 0 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 11
+100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
 0 0 0
@@ -556,7 +556,7 @@ tells you not to trust him very far.
 Human~
 ACFHT 0 -100 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 3
+100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
 0 0 0
@@ -572,7 +572,7 @@ The large half-orc quickly glances you over and returns to his duties.
 Human~
 AGT 0 0 S
 13 0 
-100 0 0 0 3d38+131 13d10+100 3d7+8 11
+100 3d38+131 13d10+100 3d7+8 11
 1 1 1 6
 none~
 0 0 0
@@ -588,7 +588,7 @@ This small child sees you looking at him and quickly looks away.
 Human~
 ACHST 0 100 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 3
+100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
 0 0 0
@@ -605,7 +605,7 @@ crates from the boats like so many lilies.
 Human~
 AGT 0 0 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 3
+100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
 0 0 0
@@ -622,7 +622,7 @@ Sultan's fee for living in his grand city.
 Human~
 AGHT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -638,7 +638,7 @@ You see nothing special.
 Human~
 ACGSTU 0 -200 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 7
+100 10d42+322 25d10+100 5d8+16 7
 -5 -5 -5 2
 none~
 0 0 0
@@ -654,7 +654,7 @@ You see nothing special.
 Human~
 AGTU 0 -200 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 3
+100 10d42+322 25d10+100 5d8+16 3
 -5 -5 -5 2
 none~
 0 0 0
@@ -670,7 +670,7 @@ You see nothing special.
 Human~
 ACGHRT D 200 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+12 7
+100 10d42+322 25d10+100 5d8+12 7
 -5 -5 -5 2
 none~
 0 0 0
@@ -686,7 +686,7 @@ You see nothing special.
 Human~
 AGQT D 0 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 3
+100 10d42+322 25d10+100 5d8+16 3
 -5 -5 -5 2
 none~
 0 0 0
@@ -703,7 +703,7 @@ to stand on corners and accost passers-by with his doomsday preaching.
 Human~
 AHT 0 0 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 3
+100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
 0 0 0
@@ -719,7 +719,7 @@ You see a small starved cat.
 Human~
 ACHTU 0 -10 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 7
+100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
 0 0 0
@@ -735,7 +735,7 @@ As you look up at this bird, you see the only thing it wants is a corpse.
 Human~
 AGHT 0 -200 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -751,7 +751,7 @@ He seems intent on winning.
 Human~
 AHT 0 200 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 3
+100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
 0 0 0
@@ -767,7 +767,7 @@ The huge hulking mass rises as someone asks him a question.
 Human~
 ABETU 0 300 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 7
+100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -783,7 +783,7 @@ What you see before you is really a baby air elemental.
 Human~
 ACFTU 0 -1000 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 11
+100 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
 none~
 0 0 0
@@ -799,7 +799,7 @@ A half snake half woman creature rears back to attack you.
 Human~
 ACFRT 0 -500 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 3
+100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
 0 0 0
@@ -815,7 +815,7 @@ This man looks like he could use a lot of rest.
 Human~
 AEFRT U -750 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 0 0
@@ -831,7 +831,7 @@ You see a large wealthy man in red robes smiling at you.
 Human~
 ABTW D 200 S
 35 0 
-100 0 0 0 10d82+534 35d10+100 5d12+18 3
+100 10d82+534 35d10+100 5d12+18 3
 -11 -11 -11 0
 none~
 0 0 0
@@ -848,7 +848,7 @@ light blue viel. Her loyalty to the sultan is unwavering.
 Human~
 ABT 0 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -865,7 +865,7 @@ out of grace with the Sultan.
 Human~
 ABCHT D -100 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 7
+100 6d36+205 18d10+100 4d7+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -882,7 +882,7 @@ castrated for the ladies safety.
 Human~
 ABFT D 0 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 7
+100 4d33+145 14d10+100 4d6+7 7
 1 1 1 5
 none~
 0 0 0
@@ -899,7 +899,7 @@ bad she's about to kill you.
 Human~
 AET D 100 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 0 0
@@ -915,7 +915,7 @@ You see the all-knowing Allah.
 Human~
 ABQRTUWX DHU 1000 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 3
+100 10d64+448 31d10+100 5d10+19 3
 -9 -9 -9 0
 none~
 0 0 0
@@ -931,7 +931,7 @@ This man looks like a mage/warrior, i wouldn't mess with him.
 Human~
 ABRT D 0 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 3
+100 9d36+270 22d10+100 5d7+14 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -947,7 +947,7 @@ This man looks like a cleric/warrior, I wouldn't mess with him.
 Human~
 ABQT D 0 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 3
+100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -963,7 +963,7 @@ The man looks like Conan's cousin, I wouldn't mess with him.
 Human~
 ABTU D 0 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 7
+100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -980,7 +980,7 @@ and steps to bar your way. You notice his hands resting on two sheafs.
 Human~
 ABST D 0 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 11
+100 8d37+252 21d10+100 5d7+12 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -996,7 +996,7 @@ You see a small boy running around the halls of the palace.
 Human~
 AGT 0 0 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 3
+100 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
 none~
 0 0 0
@@ -1012,7 +1012,7 @@ You see a trained fighter, ready to help those in need.
 Human~
 AGHT 0 1000 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 3
+100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
 0 0 0
@@ -1028,7 +1028,7 @@ You see a trained fighter, ready to defend the city.
 Human~
 ABGT 0 1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -1044,7 +1044,7 @@ You see a large man skilled in hunting and killing.
 Human~
 ABGTU D 1000 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 7
+100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -1060,7 +1060,7 @@ You see an assassin down on his luck looking to be freelanced out.
 Human~
 ABTU 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -1077,7 +1077,7 @@ beams a smile at you through his beard as you walk in.
 Human~
 ABTVXYZ 0 0 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 7
+100 10d56+405 29d10+100 5d10+15 7
 -8 -8 -8 1
 none~
 0 0 0
@@ -1094,7 +1094,7 @@ break from his swealtering work to bid you welcome.
 Human~
 ABTVXYZ 0 0 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 7
+100 10d64+448 31d10+100 5d10+19 7
 -9 -9 -9 0
 none~
 0 0 0
@@ -1110,7 +1110,7 @@ You see one of the fine arabian beasts known about the land.
 Human~
 ACGHTU 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -1128,7 +1128,7 @@ upside down.
 Human~
 ACGHT 0 0 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 7
+100 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
 none~
 0 0 0
@@ -1144,7 +1144,7 @@ You see nothing special.
 Human~
 AT 0 -1000 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 11
+100 10d56+405 29d10+100 5d10+15 11
 -8 -8 -8 1
 none~
 0 0 0
@@ -1160,7 +1160,7 @@ A grey-brown reptillian creature with amber eyes stands before you.
 Human~
 AFGTW 0 0 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 7
+100 2d21+73 8d10+100 2d7+4 7
 5 5 5 7
 none~
 0 0 0
@@ -1176,7 +1176,7 @@ A huge lizard like reptile with horns like a minotaur.
 Giant~
 AFGT 0 0 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 7
+100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
 0 HI JP
@@ -1192,7 +1192,7 @@ A large two-headed hound barks at you viciously.
 dog~
 AFGTU 0 0 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 11
+100 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
 fast ~
 0 0 0
@@ -1208,7 +1208,7 @@ A large fierce dapple skinned lion glares at you.
 Human~
 AFGTU 0 0 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 3
+100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
 0 0 0
@@ -1224,7 +1224,7 @@ You see a large snake like reptile with more than a dozen legs.
 Human~
 ABFT D -300 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 11
+100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
 0 0 0
@@ -1242,7 +1242,7 @@ dragon.
 Human~
 ABFT D -500 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 7
+100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
 0 0 0
@@ -1259,7 +1259,7 @@ color of the rainbow.
 Human~
 ABEQTU B 300 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 7
+100 4d33+145 14d10+100 4d6+7 7
 1 1 1 5
 none~
 0 0 0
@@ -1276,7 +1276,7 @@ You wish you wounds would stop BLEEDING so much!
 Giant~
 AFGTU 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 HI JP
@@ -1293,7 +1293,7 @@ thoroughbred you've seen in the stables.
 Human~
 ABHTU 0 1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -1310,7 +1310,7 @@ hair to match her outfit.
 Human~
 ABRTVXYZ 0 0 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -1326,7 +1326,7 @@ You see a powerful but slighty insane mage.
 Human~
 ABRTVXYZ 0 0 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 11
+100 10d60+426 30d10+100 5d10+17 11
 -8 -8 -8 0
 none~
 0 0 0
@@ -1342,7 +1342,7 @@ He does NOT look real happy that you have disturbed him.
 Human~
 ABEQT DH 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -1359,7 +1359,7 @@ through some training.
 Human~
 AGHTU D 1000 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 11
+100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
 0 0 0
@@ -1376,7 +1376,7 @@ or another.
 Human~
 ABHTVXYZ D -500 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 7
+100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -1393,7 +1393,7 @@ some sucker, um, customer to walk in his store.
 Human~
 ABHTVXYZ D -500 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 0 0
@@ -1410,7 +1410,7 @@ his garden.
 Human~
 ABTU 0 0 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 3
+100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -1428,7 +1428,7 @@ his love.
 Human~
 ABGTU BDU 1000 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 11
+100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
 0 0 0
@@ -1445,7 +1445,7 @@ blades on it.
 Human~
 ABETUW D 0 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 3
+100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
 0 0 0
@@ -1461,7 +1461,7 @@ Boy is she ugly.
 Human~
 ABRT 0 0 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -1477,7 +1477,7 @@ You see a chubby hobbit dressed in his best suit.
 Human~
 AGT 0 1000 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 3
+100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -1493,7 +1493,7 @@ You see a very large human who seems to taste everything he makes.
 Human~
 ABT 0 400 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 7
+100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -1509,7 +1509,7 @@ You see a large ray with sharp fangs and a barbed tail.
 Human~
 ABEQT D -500 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 7
+100 10d64+448 31d10+100 5d10+19 7
 -9 -9 -9 0
 none~
 0 0 0
@@ -1525,7 +1525,7 @@ A big, strong, helpful, trustworthy guard.
 Human~
 AT 0 1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -2311,9 +2311,9 @@ unknown~
 AB AB AB 0 0
 0 1 0 P
 A
-2 1
-A
 14 10
+A
+2 1
 #9598
 daemon claw~
 the Daemon Claw~
@@ -2341,9 +2341,9 @@ unknown~
 D AC BC AB 0
 25 16 250 P
 A
-18 2
-A
 19 2
+A
+18 2
 #9601
 fountain water~
 a fountain~
@@ -2391,14 +2391,9 @@ tavern of the Dancing Daemon Inn, and your future adventures in New Thalos.
 ~
 0 124 0
 E
-4.picture~
-You see a picture of Loki... at least you think it's Loki.
-He seems to be hiding from the camera.
-~
-E
-3.picture~
-You see a picture of Hammor on the front porch of the Danjerhaus,
-drinking a guinness stout and petting Big Guy the Cat.
+1.1picture~
+You see a picture of Felix here, standing before the arena.
+He seems to be doing a body count.
 ~
 E
 2.picture~
@@ -2407,9 +2402,14 @@ Through a window in the back you see a large aquarium. The newbie seems to
 be cowering in fear.
 ~
 E
-1.1picture~
-You see a picture of Felix here, standing before the arena.
-He seems to be doing a body count.
+3.picture~
+You see a picture of Hammor on the front porch of the Danjerhaus,
+drinking a guinness stout and petting Big Guy the Cat.
+~
+E
+4.picture~
+You see a picture of Loki... at least you think it's Loki.
+He seems to be hiding from the camera.
 ~
 D5
 The stairs lead down to the Daemon.
@@ -4736,10 +4736,6 @@ blood, there is a barely readable sign.
 ~
 0 120 0
 E
-vat~
-You think you hear noises from the vat....nah.
-~
-E
 note sign~
 LIST : gives you a list of items for sale.
 VALUE : tells you how much an item is worth
@@ -4747,6 +4743,10 @@ SELL : sells an item to Butch for a generous sum
 BUY : Butch's FAVORITE command lets you have an item for his low low price.
 
                                         NEWBEE INTRUCTOR COMMITEE
+~
+E
+vat~
+You think you hear noises from the vat....nah.
 ~
 D3
 (null)~
@@ -5662,13 +5662,13 @@ hallway.
 ~
 0 8 0
 E
+mirror~
+You see a the fighting image of some armor clad humanoid wielding a weapon.
+~
+E
 window~
 Looking out this window you can see the grounds of the palace that
 seperate the walls of the palace from the building itself.
-~
-E
-mirror~
-You see a the fighting image of some armor clad humanoid wielding a weapon.
 ~
 D0
 (null)~

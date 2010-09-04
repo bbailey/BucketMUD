@@ -3,7 +3,7 @@ Name        { 5 15} Raff    Dangerous Neighborhood~
 Builders    None~
 VNUMs       2101 2170
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ He's lived a life of violence ever since he was little.
 Human~
 ACEGT 0 -100 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -35,7 +35,7 @@ He wants to rid the world of every last Ogre gang member.
 Troll~
 ACEGT Jc 100 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 berserk ~
 0 BE HK
@@ -51,7 +51,7 @@ He's risen to be leader through brute force and cunning leadership.
 Human~
 ABFGT 0 0 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -67,7 +67,7 @@ He's 6'6" 245 pounds and enough muscle to bash your head in.
 Human~
 ACFGHT D -333 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 11
+100 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
 none~
 0 0 0
@@ -83,7 +83,7 @@ She's a beauty (ok in RELATIVE terms) but you better not touch!
 doll~
 ACEGHT 0 0 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 7
+100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
 C ES GHJKO
@@ -99,7 +99,7 @@ He'd rather be at the local pub then out here with these nasty kids.
 Human~
 AGT 0 700 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 7
+100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
 0 0 0
@@ -115,7 +115,7 @@ He has a wary eye and a fine hand for art.
 Human~
 AHT P -400 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -132,7 +132,7 @@ His fangs are blood-stained from hearty meals of ... steak?!
 dog~
 ABFGT DQ -100 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 fast ~
 0 0 0
@@ -168,9 +168,9 @@ unknown~
 ABC AB AC C 0
 9 10 90 P
 A
-17 -5
-A
 18 1
+A
+17 -5
 #2104
 metal cover shield~
 a metal shield~
@@ -196,9 +196,9 @@ unknown~
 B C C ABD 0
 12 2 120 P
 A
-18 4
-A
 17 20
+A
+18 4
 #2107
 spiked heel boots~
 spiked heeled boots~
@@ -208,9 +208,9 @@ unknown~
 C C C 0 0
 7 4 70 P
 A
-2 -1
-A
 19 1
+A
+2 -1
 #2108
 mirror~
 a mirror~
@@ -238,9 +238,9 @@ unknown~
 C B ABC ABC 0
 7 1 70 P
 A
-18 3
-A
 14 10
+A
+18 3
 #2111
 signet ring~
 a troll signet ring~
@@ -260,9 +260,9 @@ unknown~
 AC AC AC 0 0
 12 1 120 P
 A
-13 -15
-A
 18 5
+A
+13 -15
 #0
 
 

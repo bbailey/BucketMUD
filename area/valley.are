@@ -3,7 +3,7 @@ Name        { 5 20} Hatchet Valley of the Elves~
 Builders    None~
 VNUMs       7800 7883
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ undetectable as it moves.
 dog~
 AGHT P 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 fast ~
 0 0 0
@@ -40,7 +40,7 @@ noticing him, and quietly disappears.
 Elf~
 ACFGHT JP 0 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 7
+100 2d21+73 8d10+100 2d7+4 7
 5 5 5 7
 none~
 0 B Z
@@ -57,7 +57,7 @@ She glares at you, then quickly disappears before you see more of her.
 Elf~
 ACFGHT JP 0 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 3
+100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
 0 B Z
@@ -74,7 +74,7 @@ He glares at your intrusion and attacks with menace.
 Elf~
 ABFT JP 0 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 3
+100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
 0 B Z
@@ -91,7 +91,7 @@ She glares at your intrusion and attacks with menace.
 Elf~
 ABFT JP 0 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
 0 B Z
@@ -107,7 +107,7 @@ The elf notices your intrusion and attacks with determination.
 Elf~
 ACFGT JP 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 11
+100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 none~
 0 B Z
@@ -124,7 +124,7 @@ when you are in her way.
 Elf~
 AGHT JP 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 3
+100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
 0 B Z
@@ -142,7 +142,7 @@ quite potent, though.
 Elf~
 ABCFT HJN 0 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 7
+100 4d33+145 14d10+100 4d6+7 7
 1 1 1 5
 none~
 0 B Z
@@ -160,7 +160,7 @@ quite potent, though.
 Elf~
 ABCFT JN 0 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 3
+100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
 0 B Z
@@ -177,7 +177,7 @@ regular dragon, too.  It doesn't look happy.
 Human~
 ABFT 0 0 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 11
+100 8d37+252 21d10+100 5d7+12 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -193,7 +193,7 @@ He looks old and feeble.
 Human~
 ABCHT 0 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -209,7 +209,7 @@ Talemon looks harmless, but the fireballs he throws at you don't.
 Human~
 ABCFT 0 0 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 11
+100 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -226,7 +226,7 @@ anger at you!
 Human~
 ABFT 0 -500 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 7
+100 10d38+311 24d10+100 5d8+14 7
 -5 -5 -5 2
 none~
 0 0 0
@@ -242,7 +242,7 @@ The wolf is covered with brown hair.  It looks at you with fright.
 Wolf~
 AFHT Z 0 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 dodge fast ~
 0 0 0
@@ -259,7 +259,7 @@ image of ... an antelope.
 Human~
 AHT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0

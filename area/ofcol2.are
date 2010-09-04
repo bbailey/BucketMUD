@@ -3,7 +3,7 @@ Name        { 5 35} Hatchet New Ofcol~
 Builders    None~
 VNUMs       600 699
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -22,7 +22,7 @@ Ofcol.
 Human~
 ACT N 1000 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 3
+100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
 0 0 0
@@ -42,7 +42,7 @@ death.
 Human~
 ABT DHN 1000 S
 33 0 
-100 0 0 0 10d73+487 33d10+100 5d11+19 7
+100 10d73+487 33d10+100 5d11+19 7
 -10 -10 -10 0
 none~
 0 0 0
@@ -61,7 +61,7 @@ has to be hard won to be kept, and that laxity is for the weak.
 Human~
 AGT DHN 1000 S
 27 0 
-100 0 0 0 10d49+360 27d10+100 5d9+15 3
+100 10d49+360 27d10+100 5d9+15 3
 -6 -6 -6 1
 none~
 0 0 0
@@ -81,7 +81,7 @@ she need not be.
 Human~
 ABT DN 1000 S
 28 0 
-100 0 0 0 10d52+387 28d10+100 5d9+18 11
+100 10d52+387 28d10+100 5d9+18 11
 -7 -7 -7 1
 none~
 0 0 0
@@ -99,7 +99,7 @@ the metals or the value of the coins.
 Human~
 ABT N 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 7
+100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
 0 0 0
@@ -116,7 +116,7 @@ last sale from you.  He grins at you slightly.
 Human~
 ABT N 1000 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 7
+100 10d64+448 31d10+100 5d10+19 7
 -9 -9 -9 0
 none~
 0 0 0
@@ -134,7 +134,7 @@ shop, trading little things (for a wee bit of profit).
 Human~
 ABT N 1000 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 11
+100 7d34+223 19d10+100 5d6+12 11
 -1 -1 -1 4
 none~
 0 0 0
@@ -152,7 +152,7 @@ kill, though.
 Human~
 ABT N 1000 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 11
+100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
 0 0 0
@@ -171,7 +171,7 @@ get a good price off of you!
 Human~
 ABT N 1000 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 0 0
@@ -190,7 +190,7 @@ Granny Jenkins cackles again.
 Human~
 ABT N 500 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -208,7 +208,7 @@ enter.  "Came by to watch, eh?", he asks.
 Human~
 ABFHT 0 200 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 3
+100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
 0 0 0
@@ -226,7 +226,7 @@ her work.
 Human~
 ABHT 0 800 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 3
+100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
 0 0 0
@@ -243,7 +243,7 @@ you've ever seen one.
 Human~
 AHIT 0 0 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 11
+100 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
 none~
 0 0 0
@@ -259,7 +259,7 @@ The cow is here happily grazing.  It moos at you and goes back to grazing.
 Human~
 AIT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -275,7 +275,7 @@ The cow is just standing here.  She moos at you and otherwise ignores you.
 Human~
 ABIT 0 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 3
+100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
 0 0 0
@@ -292,7 +292,7 @@ back to grazing.
 Human~
 AFHIT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -308,7 +308,7 @@ The pig looks dirty.  It snorts and sniffs at you, then goes back to its slop.
 pig~
 ABIT 0 0 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
 0 0 0
@@ -326,7 +326,7 @@ armored.
 Human~
 AHT 0 500 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -344,7 +344,7 @@ and armored.
 Human~
 AHT 0 500 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 7
+100 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
 none~
 0 0 0
@@ -361,7 +361,7 @@ He then smiles and runs away, remembering his game.
 Human~
 AHT 0 500 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 11
+100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
 0 0 0
@@ -378,7 +378,7 @@ coin?'  She then smiles and runs away, remembering her game.
 Human~
 AHT 0 500 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -396,7 +396,7 @@ She hits you with her broom.
 Human~
 AHT 0 500 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -414,7 +414,7 @@ any.
 Human~
 ABT 0 1000 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 11
+100 10d56+405 29d10+100 5d10+15 11
 -8 -8 -8 1
 none~
 0 0 0
@@ -433,7 +433,7 @@ Ofcol.
 Human~
 ABT N 1000 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 7
+100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -451,7 +451,7 @@ you, hinting toward a tip from you in ever a subtle way.
 Human~
 ABT N 800 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -467,7 +467,7 @@ The servant smiles good-naturedly at you, then goes on his duties.
 Human~
 AGT N 1000 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 3
+100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
 0 0 0
@@ -483,7 +483,7 @@ This young man smiles at you, but is too busy to chat.
 Human~
 AGT N 1000 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
 0 0 0
@@ -499,7 +499,7 @@ The page smiles for you, asking if he can do you a favor too.
 Human~
 AGT N 1000 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
 0 0 0
@@ -518,7 +518,7 @@ god, Bahamut.  The dragon symbol around her neck looks almost alive.
 Human~
 ABT BHN 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 7
+100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
 0 0 0
@@ -537,7 +537,7 @@ turns to you and with a consipatory tone, whispers, "Kids!"
 Human~
 AGT BHN 1000 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 3
+100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
 0 0 0
@@ -555,7 +555,7 @@ look upset at your presence.
 Human~
 ABT BHN 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -574,7 +574,7 @@ his attendants to escort you away.
 Human~
 ABCT BHJN 1000 S
 38 0 
-100 0 0 0 10d97+603 38d10+100 5d13+20 3
+100 10d97+603 38d10+100 5d13+20 3
 -13 -13 -13 -1
 none~
 0 0 0
@@ -591,7 +591,7 @@ his life for his liege.
 Human~
 ABT BN 1000 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 11
+100 9d36+270 22d10+100 5d7+14 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -609,7 +609,7 @@ He smiles at you, showing very sharp teeth.
 Human~
 AGT BN 1000 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 7
+100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -628,7 +628,7 @@ Ofcol.
 Human~
 ABT N 1000 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 7
+100 6d36+205 18d10+100 4d7+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -723,9 +723,9 @@ unknown~
 0 0 0 0 0
 15 2 150 P
 A
-4 -1
-A
 9 10
+A
+4 -1
 #609
 cabbage~
 a head of cabbage~
@@ -823,9 +823,9 @@ unknown~
 BC BC BC 0 0
 18 1 180 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #621
 plate brass~
 brass plate~
@@ -835,9 +835,9 @@ unknown~
 BC BC BC 0 0
 17 10 170 P
 A
-24 -2
-A
 13 10
+A
+24 -2
 #622
 helm brass~
 a brass helm~
@@ -847,9 +847,9 @@ unknown~
 BC BC BC 0 0
 17 10 170 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #623
 leggings brass~
 brass leggings~
@@ -859,9 +859,9 @@ unknown~
 BC BC BC 0 0
 19 10 190 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #624
 boots brass~
 brass boots~
@@ -871,9 +871,9 @@ unknown~
 BC BC BC 0 0
 19 10 190 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #625
 gauntlets brass~
 brass gauntlets~
@@ -883,9 +883,9 @@ unknown~
 BC BC BC 0 0
 19 10 190 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #626
 sleeves brass~
 brass sleeves~
@@ -895,9 +895,9 @@ unknown~
 BC BC BC 0 0
 19 10 190 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #627
 shield brass~
 a brass shield~
@@ -907,9 +907,9 @@ unknown~
 BC BC BC 0 0
 18 10 180 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #628
 girth brass~
 a brass girth~
@@ -919,9 +919,9 @@ unknown~
 BC BC BC 0 0
 19 10 190 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #629
 bracer brass~
 a brass bracer~
@@ -931,9 +931,9 @@ unknown~
 BC BC BC 0 0
 19 10 190 P
 A
-24 -1
-A
 13 5
+A
+24 -1
 #630
 claymore sword~
 a claymore~
@@ -943,9 +943,9 @@ unknown~
 A AC AC A F
 18 16 180 P
 A
-18 -2
-A
 19 5
+A
+18 -2
 #631
 plate silver~
 silver plate~
@@ -955,9 +955,9 @@ unknown~
 D D D 0 0
 27 20 270 P
 A
-12 10
-A
 1 1
+A
+12 10
 #632
 helm silver~
 a silver helm~
@@ -967,9 +967,9 @@ unknown~
 D D D 0 0
 27 20 270 P
 A
-12 5
-A
 2 1
+A
+12 5
 #633
 leggings silver~
 silver leggings~
@@ -979,9 +979,9 @@ unknown~
 D D D 0 0
 27 20 270 P
 A
-12 5
-A
 3 1
+A
+12 5
 #634
 boots silver~
 silver boots~
@@ -991,9 +991,9 @@ unknown~
 D D D 0 0
 27 20 270 P
 A
-12 5
-A
 4 1
+A
+12 5
 #635
 gauntlets silver~
 silver gauntlets~
@@ -1003,9 +1003,9 @@ unknown~
 D D D 0 0
 27 20 270 P
 A
-12 5
-A
 5 1
+A
+12 5
 #636
 sleeves silver~
 silver sleeves~
@@ -1015,9 +1015,9 @@ unknown~
 D D D 0 0
 28 20 280 P
 A
-12 5
-A
 18 1
+A
+12 5
 #637
 shield silver~
 the silver shield~
@@ -1027,9 +1027,9 @@ unknown~
 D D D 0 0
 28 20 280 P
 A
-12 5
-A
 17 -3
+A
+12 5
 #638
 girth silver~
 the silver girth~
@@ -1039,9 +1039,9 @@ unknown~
 D D D 0 0
 28 20 280 P
 A
-12 5
-A
 19 1
+A
+12 5
 #639
 plate platinum~
 platinum plate~
@@ -1051,9 +1051,9 @@ unknown~
 AD AD AD 0 0
 33 50 330 P
 A
-13 15
-A
 5 2
+A
+13 15
 #640
 helmet platinum~
 the platinum helmet~
@@ -1063,9 +1063,9 @@ unknown~
 AD AD AD 0 0
 33 30 330 P
 A
-12 10
-A
 4 2
+A
+12 10
 #641
 leggings platinum~
 platinum leggings~
@@ -1075,9 +1075,9 @@ unknown~
 AD AD AD 0 0
 33 40 330 P
 A
-13 10
-A
 2 2
+A
+13 10
 #642
 boots platinum~
 platinum boots~
@@ -1087,9 +1087,9 @@ unknown~
 AD AD AD 0 0
 33 40 330 P
 A
-13 10
-A
 14 100
+A
+13 10
 #643
 gauntlets platinum~
 platinum gauntlets~
@@ -1099,9 +1099,9 @@ unknown~
 AD AD AD 0 0
 33 40 330 P
 A
-13 10
-A
 18 2
+A
+13 10
 #644
 sleeves platinum~
 platinum sleeves~
@@ -1111,9 +1111,9 @@ unknown~
 AD AD AD 0 0
 33 40 330 P
 A
-13 10
-A
 1 2
+A
+13 10
 #645
 shield spiked platinum~
 the platinum spiked shield~
@@ -1123,9 +1123,9 @@ unknown~
 AD AD AD 0 0
 33 40 330 P
 A
-13 10
-A
 19 3
+A
+13 10
 #646
 girth platinum~
 the platinum girth~
@@ -1135,9 +1135,9 @@ unknown~
 AD AD AD 0 0
 33 40 330 P
 A
-13 10
-A
 24 -5
+A
+13 10
 #647
 avenger holy sword~
 holy Avenger~
@@ -1147,9 +1147,9 @@ unknown~
 A AC D A 0
 33 25 330 P
 A
-18 1
-A
 19 6
+A
+18 1
 #648
 whiskey shot~
 a shot of whiskey~
@@ -1191,9 +1191,9 @@ unknown~
 AD AD AD 0 0
 30 5 300 P
 A
-12 10
-A
 4 2
+A
+12 10
 #653
 ranseur polearm~
 a ranseur~
@@ -1203,9 +1203,9 @@ unknown~
 D AC BC B 0
 27 20 270 P
 A
-18 5
-A
 19 -1
+A
+18 5
 #654
 torso dragonscale golden~
 a golden dragonscale torso~
@@ -1215,9 +1215,9 @@ unknown~
 ABC ABC ABC 0 0
 21 25 210 P
 A
-17 -5
-A
 18 2
+A
+17 -5
 #655
 dragonhelm golden~
 a golden dragonhelm~
@@ -1227,9 +1227,9 @@ unknown~
 AB AB AB 0 0
 0 10 0 P
 A
-17 -3
-A
 18 1
+A
+17 -3
 #656
 leggings golden~
 golden dragonscale leggings~
@@ -1239,9 +1239,9 @@ unknown~
 AD AD AD 0 0
 30 10 300 P
 A
-17 -3
-A
 18 1
+A
+17 -3
 #657
 boots golden~
 golden dragonscale boots~
@@ -1251,9 +1251,9 @@ unknown~
 AD AD AD 0 0
 30 10 300 P
 A
-17 -3
-A
 18 1
+A
+17 -3
 #658
 gauntlets golden~
 golden dragonscale gauntlets~
@@ -1263,9 +1263,9 @@ unknown~
 AD AD AD 0 0
 30 10 300 P
 A
-17 -3
-A
 18 1
+A
+17 -3
 #659
 sleeves golden~
 golden dragonscale sleeves~
@@ -1275,9 +1275,9 @@ unknown~
 AD AD AD 0 0
 30 10 300 P
 A
-17 -3
-A
 18 1
+A
+17 -3
 #660
 shield golden~
 a golden dragonscale shield~
@@ -1287,9 +1287,9 @@ unknown~
 ABC ABC ABC 0 0
 21 10 210 P
 A
-17 -3
-A
 18 1
+A
+17 -3
 #661
 girth golden~
 a golden dragonscale girth~
@@ -1299,9 +1299,9 @@ unknown~
 AD AD AD 0 0
 30 10 300 P
 A
-17 -3
-A
 18 1
+A
+17 -3
 #662
 claw golden~
 the Golden Claw~
@@ -1321,9 +1321,9 @@ unknown~
 BCD C C 28 0
 38 30 380 P
 A
-3 1
-A
 4 2
+A
+3 1
 #664
 robe golden~
 a golden robe~
@@ -1351,9 +1351,9 @@ unknown~
 0 B BC ABC 0
 5 8 50 P
 A
-18 3
-A
 19 -3
+A
+18 3
 #667
 chest~
 a chest~

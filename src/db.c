@@ -230,7 +230,6 @@ void load_socials(FILE * fp);
 static void fix_exits(void);
 void init_supermob(void);
 void reset_area(AREA_DATA * pArea);
-void load_random_objs(CHAR_DATA * mob, MOB_INDEX_DATA * mobIndex);
 
 #define MSL MAX_STRING_LENGTH
 #define MIL MAX_INPUT_LENGTH
@@ -1915,9 +1914,6 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
     mob->level = pMobIndex->level;
     mob->hitroll = pMobIndex->hitroll;
     mob->breath_percent = pMobIndex->breath_percent;
-    mob->rnd_obj_percent = pMobIndex->rnd_obj_percent;
-    mob->rnd_obj_num = pMobIndex->rnd_obj_num;
-    mob->rnd_obj_types = pMobIndex->rnd_obj_types;
     mob->damroll = pMobIndex->damage[DICE_BONUS];
     mob->max_hit = dice(pMobIndex->hit[DICE_NUMBER],
                         pMobIndex->hit[DICE_TYPE])
@@ -2000,12 +1996,6 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
     pMobIndex->count++;
     mob->reset_count = NULL;
 
-    /* rnd_obj_percent is the percent chance of a random object
-       loading on a mob at all. */
-
-    if (number_range(0, 99) < pMobIndex->rnd_obj_percent)
-        load_random_objs(mob, pMobIndex);
-
     return mob;
 }
 
@@ -2056,9 +2046,6 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
     clone->alignment = parent->alignment;
     clone->hitroll = parent->hitroll;
     clone->breath_percent = parent->breath_percent;
-    clone->rnd_obj_percent = parent->rnd_obj_percent;
-    clone->rnd_obj_num = parent->rnd_obj_num;
-    clone->rnd_obj_types = parent->rnd_obj_types;
     clone->damroll = parent->damroll;
     clone->wimpy = parent->wimpy;
     clone->form = parent->form;
@@ -4382,7 +4369,7 @@ static void load_mobiles(FILE * fp)
         fBootDb = TRUE;
 
         pMobIndex = alloc_perm(sizeof(*pMobIndex));
-	pMobIndex->bv_offense_flags = bv_new(BV_OFF_MAX);
+	    pMobIndex->bv_offense_flags = bv_new(BV_OFF_MAX);
         pMobIndex->vnum = vnum;
         pMobIndex->area = area_last;	/* OLC */
         pMobIndex->player_name = fread_string(fp);
@@ -4405,9 +4392,13 @@ static void load_mobiles(FILE * fp)
         pMobIndex->level = fread_number(fp);
         pMobIndex->hitroll = fread_number(fp);
         pMobIndex->breath_percent = fread_number(fp);
-        pMobIndex->rnd_obj_percent = fread_number(fp);
-        pMobIndex->rnd_obj_num = fread_number(fp);
-        pMobIndex->rnd_obj_types = fread_flag(fp);
+        if ( pMobIndex->area->version < 2 )
+        {
+            // Skip random object settings for old area files.
+            fread_number(fp);
+            fread_number(fp);
+            fread_flag(fp);
+        }
 
         /* read hit dice */
         pMobIndex->hit[DICE_NUMBER] = fread_number(fp);
@@ -4504,9 +4495,10 @@ static void load_mobiles(FILE * fp)
         /* R indicates beginning of random object info. */
         if (letter == 'R')
         {
-            pMobIndex->rnd_obj_percent = fread_number(fp);
-            pMobIndex->rnd_obj_num = fread_number(fp);
-            pMobIndex->rnd_obj_types = fread_flag(fp);
+            // Skip random object settings
+            fread_number(fp);
+            fread_number(fp);
+            fread_flag(fp);
         }
         else
         {

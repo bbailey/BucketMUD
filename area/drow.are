@@ -3,7 +3,7 @@ Name        {15 25} Drkside Drow City~
 Builders    None~
 VNUMs       5100 5150
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ The defenseless goblin begs for mercy.
 goblin~
 ABHT J -450 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 3
+100 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
 none~
 0 Q C
@@ -35,7 +35,7 @@ I doubt he is the type to give directions.
 Drow Elf~
 ADFGT DZ -1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 B SZ
@@ -51,7 +51,7 @@ He looks pissed off!
 Drow Elf~
 ABFT DZ -1000 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 11
+100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
 0 B SZ
@@ -67,7 +67,7 @@ The mage prepares to cast a spell ... at you!!
 Drow Elf~
 ABFT DZ -1000 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 3
+100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
 0 B SZ
@@ -83,7 +83,7 @@ I wouldn't want go get on her bad side!
 Drow Elf~
 ABFT DZ -1000 S
 17 0 
-100 0 0 0 5d39+187 17d10+100 4d7+10 3
+100 5d39+187 17d10+100 4d7+10 3
 0 0 0 4
 none~
 0 B SZ
@@ -99,7 +99,7 @@ The drow master is ALWAYS ready for a fight.
 Drow Elf~
 ABFT DZ -1000 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 3
+100 9d36+270 22d10+100 5d7+14 3
 -3 -3 -3 3
 none~
 0 B SZ
@@ -115,7 +115,7 @@ He definitely knows his way around in combat.
 Drow Elf~
 ABFT DZ -1000 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 3
+100 10d38+311 24d10+100 5d8+14 3
 -5 -5 -5 2
 none~
 0 B SZ
@@ -131,7 +131,7 @@ She looks really pissed off!
 Drow Elf~
 ABFT DZ -1000 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 3
+100 10d42+322 25d10+100 5d8+16 3
 -5 -5 -5 2
 none~
 0 B SZ
@@ -147,7 +147,7 @@ She looks like she is about to rip your head off and eat it.
 Drow Elf~
 ABFT DHZ -1000 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 7
+100 10d45+345 26d10+100 5d9+13 7
 -6 -6 -6 1
 none~
 0 B SZ
@@ -163,7 +163,7 @@ The yochlol is not in a good mood.
 Human~
 ABFT DH -1000 S
 34 0 
-100 0 0 0 10d78+505 34d10+100 5d11+21 7
+100 10d78+505 34d10+100 5d11+21 7
 -11 -11 -11 0
 none~
 0 0 0
@@ -179,7 +179,7 @@ The drow guard blends so well with his environment, you barely see his form.
 Drow Elf~
 ABFT JQZ -1000 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 B SZ
@@ -195,7 +195,7 @@ The drow scout blends so well with her environment, you barely see her form.
 Drow Elf~
 AFHT PQZ -1000 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 7
+100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
 0 B SZ
@@ -215,9 +215,9 @@ unknown~
 A B BC AB 0
 6 2 60 P
 A
-19 1
-A
 18 1
+A
+19 1
 #5101
 longsword noble~
 a noble's longsword~
@@ -227,9 +227,9 @@ unknown~
 A AB BC AB 0
 11 1 110 P
 A
-19 2
-A
 18 2
+A
+19 2
 #5102
 whip snake two-headed~
 a snake headed whip~
@@ -239,9 +239,9 @@ unknown~
 ABC C AC C F
 15 0 150 P
 A
-19 2
-A
 18 2
+A
+19 2
 #5103
 whip snake three-headed~
 a snake headed whip~
@@ -251,9 +251,9 @@ unknown~
 ABC AC C C 0
 17 0 170 P
 A
-19 2
-A
 18 2
+A
+19 2
 #5104
 whip snake four-headed~
 a snake headed whip~
@@ -263,9 +263,9 @@ unknown~
 ABC AC AC C 0
 22 0 220 P
 A
-19 2
-A
 18 2
+A
+19 2
 #5105
 longsword black~
 a black longsword~
@@ -275,9 +275,9 @@ unknown~
 A AC AC AB 0
 22 0 220 P
 A
-19 2
-A
 18 2
+A
+19 2
 #5106
 whip snake five-headed~
 a snake headed whip~
@@ -287,9 +287,9 @@ unknown~
 ABC A ABC C 0
 0 0 0 P
 A
-3 -1
-A
 1 -1
+A
+3 -1
 #5107
 whip snake six-headed~
 a snake headed whip~
@@ -299,9 +299,9 @@ unknown~
 ABC A ABC C 0
 0 0 0 P
 A
-3 -2
-A
 1 -2
+A
+3 -2
 #5108
 bracers iron~
 a pair of bracers~
@@ -357,9 +357,9 @@ unknown~
 B AC D ABD 0
 34 2 340 P
 A
-19 3
-A
 18 3
+A
+19 3
 #5114
 hat green~
 a small bright green hat~
@@ -369,9 +369,9 @@ unknown~
 D D D 0 0
 25 1 250 P
 A
-17 -2
-A
 9 -15
+A
+17 -2
 #0
 
 
@@ -384,12 +384,12 @@ gate lies open to the west allowing entrance into the city.
 ~
 0 9 0
 E
-hole~
-A small hole that looks to have sealed at one time.
-~
-E
 gate~
 A large adamantite gate with giant spider shaped emblems stands here.
+~
+E
+hole~
+A small hole that looks to have sealed at one time.
 ~
 D3
 A huge gate opens to the west allowing entrance into the city.~

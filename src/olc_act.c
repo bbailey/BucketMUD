@@ -104,8 +104,6 @@ static const struct olc_help_type help_table[] =
     {"wtype", weapon_type, "Special weapon type."},
     {"furniture", furniture_flags, "Furniture Flags."},
 
-    {"randobj", rnd_obj_flags, "Random object types."},
-
     /* Clans */
 
     {"joinflags", clan_join_flags, "Clan join flags."},
@@ -3416,15 +3414,6 @@ MEDIT(medit_show)
             pMob->breath_percent);
     send_to_char(buf, ch);
 
-    sprintf(buf, "Random objects:\n\rChance:      [%4d]\n\r"
-            "Number:      [%4d]\n\r",
-            pMob->rnd_obj_percent, pMob->rnd_obj_num);
-    send_to_char(buf, ch);
-
-    sprintf(buf, "Types:       [%s]\n\r",
-            flag_string(rnd_obj_flags, pMob->rnd_obj_types));
-    send_to_char(buf, ch);
-
     /* ROM values end */
 
     sprintf(buf, "Short descr: %s\n\rLong descr:\n\r%s",
@@ -4444,30 +4433,6 @@ MEDIT(medit_hitroll)
     return TRUE;
 }
 
-MEDIT(medit_randpct)
-{
-    MOB_INDEX_DATA *pMob;
-    int pctbuf = 0;
-    EDIT_MOB(ch, pMob);
-
-    if (argument[0] == '\0' || !is_number(argument))
-    {
-        send_to_char("Syntax: chance [number]\n\r", ch);
-        return FALSE;
-    }
-    pctbuf = atoi(argument);
-
-    if (pctbuf < 0 || pctbuf > 100)
-    {
-        send_to_char("Number must be from 0 to 100.\n\r", ch);
-        return FALSE;
-    }
-
-    pMob->rnd_obj_percent = pctbuf;
-    send_to_char("Random object loading percent set.\n\r", ch);
-    return TRUE;
-}
-
 MEDIT(medit_bdamage)
 {
     MOB_INDEX_DATA *pMob;
@@ -4492,54 +4457,6 @@ MEDIT(medit_bdamage)
 
     send_to_char("Breath weapon percentage set.\n\r", ch);
     return TRUE;
-}
-
-MEDIT(medit_randnum)
-{
-    MOB_INDEX_DATA *pMob;
-    int randbuf;
-    EDIT_MOB(ch, pMob);
-
-    if (argument[0] == '\0' || !is_number(argument))
-    {
-        send_to_char("Syntax:  number [number]\n\r", ch);
-        return FALSE;
-    }
-
-    randbuf = atoi(argument);
-    if (randbuf < 0 || randbuf > 10)
-    {
-        send_to_char("Number must be from 0 to 10.\n\r", ch);
-        return FALSE;
-    }
-    pMob->rnd_obj_num = randbuf;
-
-    send_to_char("Number of random objects possible set.\n\r", ch);
-    return TRUE;
-}
-
-MEDIT(medit_randtype)
-{
-    MOB_INDEX_DATA *pMob;
-    int value;
-    EDIT_MOB(ch, pMob);
-
-    if (argument[0] != '\0')
-    {
-        if ((value = flag_value(rnd_obj_flags, argument)) != NO_FLAG)
-        {
-            pMob->rnd_obj_types ^= value;
-            send_to_char("Type set.\n\r", ch);
-            return TRUE;
-        }
-        send_to_char("Syntax:  types [flag]\n\r"
-                     "Type '? randobj' for a list of flags.\n\r", ch);
-        return FALSE;
-    }
-
-    send_to_char("Syntax:  types [flag]\n\r"
-                 "Type '? randobj' for a list of flags.\n\r", ch);
-    return FALSE;
 }
 
 /*

@@ -185,9 +185,6 @@ static const struct olc_cmd_type medit_table[] =
     {"gold", medit_gold},	/* ROM */
     {"breath damage", medit_bdamage},
     {"hitroll", medit_hitroll},	/* ROM */
-    {"chance", medit_randpct},	/* ROM */
-    {"number", medit_randnum},	/* ROM */
-    {"types", medit_randtype},	/* ROM */
 
     {"faction", medit_faction},
 

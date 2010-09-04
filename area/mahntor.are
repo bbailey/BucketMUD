@@ -3,7 +3,7 @@ Name        { 5 35} Chris   The Keep of Mahn-Tor~
 Builders    None~
 VNUMs       2300 2399
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ he waits for release.
 Human~
 ABT DH -1000 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 11
+100 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -39,7 +39,7 @@ wind pushes it back and forth.
 Human~
 ABT 0 250 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 7
+100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -57,7 +57,7 @@ It sees you and snarls.
 Human~
 ABFT CEP 0 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 11
+100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
 0 0 0
@@ -73,7 +73,7 @@ A grey toad. Its about the size of a cow. Small horns grow all over its body.
 Human~
 ABT 0 -250 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 7
+100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 none~
 0 0 0
@@ -90,7 +90,7 @@ anguish and dismay. You hear a faint sound of crying.
 Human~
 ABT DH 1000 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 7
+100 10d38+311 24d10+100 5d8+14 7
 -5 -5 -5 2
 none~
 0 0 0
@@ -106,7 +106,7 @@ It looks like a thin wisp of mist that has gained substance and size.
 Human~
 ABFT Q 0 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 11
+100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
 0 0 0
@@ -124,7 +124,7 @@ he nears you.
 Human~
 ABCFT 0 -1000 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 3
+100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -141,7 +141,7 @@ with its head hung low. It sees you and cringes in mortal terror.
 Human~
 AGHT 0 -200 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -158,7 +158,7 @@ formidable.
 Human~
 ACFGHT 0 -350 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 7
+100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 none~
 0 0 0
@@ -175,7 +175,7 @@ fight to the death before abandoning his post.
 Human~
 ABCFGT 0 -500 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 3
+100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
 0 0 0
@@ -192,7 +192,7 @@ charms and holy symbols draped about him. He looks at you and snarls.
 Human~
 ABCFGHT DH -750 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 3
+100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
 0 0 0
@@ -209,7 +209,7 @@ quite formidable. He towers high above you and growls menacingly.
 Human~
 ABCFGHT DH -1000 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 7
+100 10d42+322 25d10+100 5d8+16 7
 -5 -5 -5 2
 none~
 0 0 0
@@ -226,7 +226,7 @@ and icy wastes.
 Human~
 ABCFGHT 0 0 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 11
+100 7d34+223 19d10+100 5d6+12 11
 -1 -1 -1 4
 none~
 0 0 0
@@ -243,7 +243,7 @@ curved talons and its mouth is full of sharp teeth.
 Human~
 ABCFGHT 0 -350 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 3
+100 5d34+175 16d10+100 4d7+8 3
 0 0 0 5
 none~
 0 0 0
@@ -261,7 +261,7 @@ as it charges directly at you.
 Human~
 ABCFGT 0 0 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 11
+100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
 0 0 0
@@ -278,7 +278,7 @@ place to seek refuge from the cold.
 Human~
 ABCGHT 0 100 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 3
+100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
 0 0 0
@@ -295,7 +295,7 @@ his armor.
 Human~
 ABCFGT 0 -330 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 11
+100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
 0 0 0
@@ -312,7 +312,7 @@ fur and red eyes. He looks quite capable of protecting the city.
 Human~
 ACFGT 0 -330 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 11
+100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
 0 0 0
@@ -329,7 +329,7 @@ miserable standing in the driven snow and ice.
 Human~
 ABCGT D -330 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 11
+100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
 0 0 0
@@ -346,7 +346,7 @@ skilled.
 Human~
 ABCFGT D -330 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 11
+100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -363,7 +363,7 @@ huge glaive. He looks quite capable of protecting the keep.
 Human~
 ABCFGT D -330 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 3
+100 10d45+345 26d10+100 5d9+13 3
 -6 -6 -6 1
 none~
 0 0 0
@@ -380,7 +380,7 @@ furs.
 Human~
 ABCFGT D -250 S
 27 0 
-100 0 0 0 10d49+360 27d10+100 5d9+15 11
+100 10d49+360 27d10+100 5d9+15 11
 -6 -6 -6 1
 none~
 0 0 0
@@ -397,7 +397,7 @@ in the harem.
 Human~
 ABCGHT 0 1000 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 3
+100 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
 none~
 0 0 0
@@ -413,7 +413,7 @@ He looks quite regal and refined to be a minotaur.
 Human~
 ABCGHT 0 250 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 3
+100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
 0 0 0
@@ -430,7 +430,7 @@ keys hanging from his belt. He wears huge, spiked brass knuckles.
 Human~
 ABCGT DH -300 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 11
+100 10d56+405 29d10+100 5d10+15 11
 -8 -8 -8 1
 none~
 0 0 0
@@ -447,7 +447,7 @@ master of the warrior guild of Mahn-Tor.
 Human~
 ABFT DH -300 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 3
+100 10d56+405 29d10+100 5d10+15 3
 -8 -8 -8 1
 none~
 0 0 0
@@ -464,7 +464,7 @@ chill runs down your spine. He is the master of the Mahn-Tor anti-paladins.
 Human~
 ABFT DH -1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 7
+100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
 0 0 0
@@ -481,7 +481,7 @@ presence. He is the leader of the Mahn-Tor paladins.
 Human~
 ABT DH 1000 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 3
+100 10d64+448 31d10+100 5d10+19 3
 -9 -9 -9 0
 none~
 0 0 0
@@ -499,7 +499,7 @@ mages of Mahn-Tor.
 Human~
 ABFT DH 300 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 11
+100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
 0 0 0
@@ -516,7 +516,7 @@ master of all the clerics of Mahn-Tor.
 Human~
 ABFT DH 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -533,7 +533,7 @@ wears no metal of any type. He looks at you and smiles.
 Human~
 ABT DH 500 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 11
+100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
 0 0 0
@@ -550,7 +550,7 @@ compared to the normal minotaur. He looks at you with a slight smirk.
 Human~
 ABFT DH 500 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -567,7 +567,7 @@ appears to be quite a skilled thief.
 Human~
 ABCFT Q -500 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 11
+100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
 0 0 0
@@ -585,7 +585,7 @@ Mahn-Tor is the leader of the minotaurs. He is awe-inspiring.
 Human~
 ABCT BDHTU -500 S
 34 0 
-100 0 0 0 10d78+505 34d10+100 5d11+21 11
+100 10d78+505 34d10+100 5d11+21 11
 -11 -11 -11 0
 none~
 0 0 0
@@ -605,9 +605,9 @@ unknown~
 D D D 0 0
 29 6 290 P
 A
-19 1
-A
 18 1
+A
+19 1
 E
 gloves combat~
 These gloves are plated with metal plates that provide strength and 
@@ -648,9 +648,9 @@ unknown~
 0 AC ABC BC 0
 29 24 290 P
 A
-19 3
-A
 18 3
+A
+19 3
 #2305
 cloak pitch black~
 a pitch black cloak~
@@ -712,9 +712,9 @@ unknown~
 A AC ABC ABD 0
 30 9 300 P
 A
-19 3
-A
 18 3
+A
+19 3
 E
 nightbringer short sword shortsword~
 The runes "NiGHtBrINgeR" are scrawled along the blade.
@@ -728,9 +728,9 @@ unknown~
 AD AD AD 0 0
 31 15 310 P
 A
-3 1
-A
 4 1
+A
+3 1
 #2311
 breast plate gilded gold~
 a gilded gold breast plate~
@@ -770,9 +770,9 @@ unknown~
 C AC ABC BC 0
 31 24 310 P
 A
-19 3
-A
 18 3
+A
+19 3
 E
 dawnbringer mace huge~
 The runes "DAwNbRIngER" are scrawled along the handle.
@@ -828,9 +828,9 @@ unknown~
 AB AC ABC BC 0
 31 10 310 P
 A
-19 3
-A
 18 3
+A
+19 3
 E
 staff gnarled magius~
 It appears to be simply a gnarled old limb. It feels powerful though.
@@ -886,9 +886,9 @@ unknown~
 C AC ABC BC 0
 30 13 300 P
 A
-19 2
-A
 18 2
+A
+19 2
 #2324
 symbol holy golden~
 a golden holy symbol~
@@ -952,9 +952,9 @@ unknown~
 AB AC ABC BC 0
 31 13 310 P
 A
-12 20
-A
 18 2
+A
+12 20
 E
 staff ice~
 The runes "FrIgID" are inscribed in the icy staff.
@@ -968,9 +968,9 @@ unknown~
 AD AD AD 0 0
 30 3 300 P
 A
-19 1
-A
 18 1
+A
+19 1
 #2331
 horn life~
 the horn of life~
@@ -1016,9 +1016,9 @@ unknown~
 0 AC ABC ABC 0
 30 15 300 P
 A
-19 1
-A
 18 1
+A
+19 1
 #2335
 pack leather small~
 a small leather pack~
@@ -1068,9 +1068,9 @@ unknown~
 A AC ABC ABD 0
 31 11 310 P
 A
-19 1
-A
 18 1
+A
+19 1
 E
 sword wicked short shortsword~
 It looks just perfect for backstabbing.
@@ -1098,9 +1098,9 @@ unknown~
 AD AD AD 0 0
 34 12 340 P
 A
-5 1
-A
 1 1
+A
+5 1
 #2342
 buckler spiked~
 a spiked buckler~
@@ -1138,9 +1138,9 @@ unknown~
 AC AC D AB 0
 34 26 340 P
 A
-19 2
-A
 18 2
+A
+19 2
 E
 axe great~
 The runes "DeAtH" are scrawled along the blade.
@@ -1180,9 +1180,9 @@ unknown~
 0 AC BC AB 0
 25 3 250 P
 A
-19 1
-A
 18 1
+A
+19 1
 E
 blade ethereal~
 You can almost see through it.
@@ -1359,9 +1359,9 @@ unknown~
 D AC AC AB 0
 20 18 200 P
 A
-19 1
-A
 18 1
+A
+19 1
 #2369
 visor blue steel helm~
 a blue steel helm and visor~
@@ -1395,9 +1395,9 @@ unknown~
 A AC BC AB F
 24 18 240 P
 A
-19 2
-A
 18 2
+A
+19 2
 #2373
 visor helm steel red~
 a red steel helm and visor~
@@ -1431,9 +1431,9 @@ unknown~
 D AC BC AB 0
 26 19 260 P
 A
-19 1
-A
 18 1
+A
+19 1
 #2377
 visor helm crimson steel~
 a crimson steel helm and visor~
@@ -1467,9 +1467,9 @@ unknown~
 C AC BC BC 0
 27 20 270 P
 A
-19 2
-A
 18 2
+A
+19 2
 E
 star morning morningstar~
 It looks damaging.
@@ -1563,11 +1563,11 @@ unknown~
 D D D 0 0
 25 13 250 P
 A
-17 10
+1 4
 A
 19 3
 A
-1 4
+17 10
 E
 gauntlets ogre power~
 They look very "handy".
@@ -2118,13 +2118,13 @@ There are small inscriptions on the rock at the base of the portal.
 ~
 0 0 2
 E
+small inscriptions inscription~
+"Enter all ye who wish to join the Brotherhood!"
+~
+E
 portal blue~
 You see a swirling blue portal of light. You think you can see glimpses of
 something moving on the "other side".
-~
-E
-small inscriptions inscription~
-"Enter all ye who wish to join the Brotherhood!"
 ~
 D0
 (null)~
@@ -2268,15 +2268,15 @@ your mind. You lose all concept of direction. Small, silent giggles can be
 heard all around. You can wander in any direction.
 ~
 0 8201 4
-D3
-(null)~
-~
-0 0 2334
 D2
 (null)~
 ~
 0 0 2335
 D1
+(null)~
+~
+0 0 2334
+D3
 (null)~
 ~
 0 0 2334
@@ -2297,6 +2297,10 @@ D2
 (null)~
 ~
 0 0 2333
+D0
+(null)~
+~
+0 0 2333
 D1
 (null)~
 ~
@@ -2305,10 +2309,6 @@ D3
 (null)~
 ~
 0 0 2335
-D0
-(null)~
-~
-0 0 2333
 S
 #2334
 Lost in the Mist~
@@ -2317,7 +2317,11 @@ covering you in a damp sheen. There is no sound, all light is eagerly devoured
 by the mist. You feel totally and hopelessly lost.
 ~
 0 8201 4
-D1
+D2
+(null)~
+~
+0 0 2336
+D3
 (null)~
 ~
 0 0 2332
@@ -2325,14 +2329,10 @@ D0
 (null)~
 ~
 0 0 2338
-D3
+D1
 (null)~
 ~
 0 0 2332
-D2
-(null)~
-~
-0 0 2336
 S
 #2335
 Lost in the Mist~
@@ -2341,22 +2341,22 @@ and denied you exit. This mist is your jailor. You cannot tell where you are.
 You hear quiet laughter all about you.
 ~
 0 8201 4
-D0
-(null)~
-~
-0 0 2332
-D3
-(null)~
-~
-0 0 2331
-D2
-(null)~
-~
-0 0 2337
 D1
 (null)~
 ~
 0 0 2333
+D2
+(null)~
+~
+0 0 2337
+D3
+(null)~
+~
+0 0 2331
+D0
+(null)~
+~
+0 0 2332
 S
 #2336
 Lost in the Mist~
@@ -2365,22 +2365,22 @@ what appears to be trees and hills to the east. The mist itself thickens to
 the west, while it grows thin to the east.
 ~
 0 8201 4
-D2
-(null)~
-~
-0 0 2338
-D0
-(null)~
-~
-0 0 2334
-D3
-(null)~
-~
-0 0 2333
 D1
 (null)~
 ~
 0 0 2339
+D2
+(null)~
+~
+0 0 2338
+D3
+(null)~
+~
+0 0 2333
+D0
+(null)~
+~
+0 0 2334
 S
 #2337
 Lost in the Mist~
@@ -2390,14 +2390,6 @@ on, but this noise is absorbed by the mist and does not travel. You can wander
 in any direction.
 ~
 0 8201 4
-D3
-(null)~
-~
-0 0 2338
-D2
-(null)~
-~
-0 0 2332
 D1
 (null)~
 ~
@@ -2406,6 +2398,14 @@ D0
 (null)~
 ~
 0 0 2335
+D3
+(null)~
+~
+0 0 2338
+D2
+(null)~
+~
+0 0 2332
 S
 #2338
 Lost in the Mist~
@@ -2414,10 +2414,6 @@ direction. You stumble blindly through the mist, oblivious to your
 surroundings.
 ~
 0 8201 3
-D2
-(null)~
-~
-0 0 2334
 D3
 (null)~
 ~
@@ -2426,6 +2422,10 @@ D0
 (null)~
 ~
 0 0 2336
+D2
+(null)~
+~
+0 0 2334
 D1
 (null)~
 ~
@@ -2656,22 +2656,22 @@ The cold cuts to the bone. Swirling snow and wind make impossible for you to
 discern any directions.
 ~
 0 0 5
-D1
-(null)~
-~
-0 0 2352
-D3
-(null)~
-~
-0 0 2354
 D2
 (null)~
 ~
 0 0 2355
+D3
+(null)~
+~
+0 0 2354
 D0
 (null)~
 ~
 0 0 2353
+D1
+(null)~
+~
+0 0 2352
 S
 #2352
 The frigid wastelands~
@@ -2680,22 +2680,22 @@ The cold cuts to the bine. Swirling snow and wind make it impossible to
 discern any directions.
 ~
 0 0 5
-D1
-(null)~
-~
-0 -1 2354
 D2
 (null)~
 ~
 0 -1 2358
-D3
+D1
 (null)~
 ~
-0 0 2351
+0 -1 2354
 D0
 (null)~
 ~
 0 -1 2357
+D3
+(null)~
+~
+0 0 2351
 S
 #2353
 The Glacier Temple~
@@ -2721,22 +2721,22 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D0
-(null)~
-~
-0 0 2359
-D3
-(null)~
-~
-0 0 2352
-D1
-(null)~
-~
-0 0 2351
 D2
 (null)~
 ~
 0 0 2356
+D0
+(null)~
+~
+0 0 2359
+D1
+(null)~
+~
+0 0 2351
+D3
+(null)~
+~
+0 0 2352
 S
 #2355
 The frigid wastelands~
@@ -2745,10 +2745,6 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D0
-(null)~
-~
-0 0 2351
 D3
 (null)~
 ~
@@ -2757,6 +2753,10 @@ D2
 (null)~
 ~
 0 0 2357
+D0
+(null)~
+~
+0 0 2351
 D1
 (null)~
 ~
@@ -2769,6 +2769,14 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
+D3
+(null)~
+~
+0 0 2355
+D2
+(null)~
+~
+0 0 2359
 D1
 (null)~
 ~
@@ -2777,14 +2785,6 @@ D0
 (null)~
 ~
 0 0 2354
-D2
-(null)~
-~
-0 0 2359
-D3
-(null)~
-~
-0 0 2355
 S
 #2357
 The frigid wastelands~
@@ -2797,10 +2797,6 @@ D0
 (null)~
 ~
 0 0 2355
-D3
-(null)~
-~
-0 0 2359
 D1
 (null)~
 ~
@@ -2809,6 +2805,10 @@ D2
 (null)~
 ~
 0 0 2352
+D3
+(null)~
+~
+0 0 2359
 S
 #2358
 The frigid wastelands~
@@ -2817,10 +2817,6 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any direction.
 ~
 0 0 5
-D2
-(null)~
-~
-0 0 2360
 D0
 (null)~
 ~
@@ -2833,6 +2829,10 @@ D3
 (null)~
 ~
 0 0 2357
+D2
+(null)~
+~
+0 0 2360
 S
 #2359
 The frigid wastelands~
@@ -2841,22 +2841,22 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D3
-(null)~
-~
-0 0 2358
-D1
-(null)~
-~
-0 0 2357
-D2
-(null)~
-~
-0 0 2354
 D0
 (null)~
 ~
 0 0 2356
+D1
+(null)~
+~
+0 0 2357
+D3
+(null)~
+~
+0 0 2358
+D2
+(null)~
+~
+0 0 2354
 S
 #2360
 The edge of the frigid wastes~
@@ -3353,12 +3353,12 @@ door is to the west. To the east, you see a heavy stone door.
 ~
 0 8 0
 E
-huge stone~
-A very formidable looking door.
-~
-E
 gold~
 Looks like the back of a secret door of sorts.
+~
+E
+huge stone~
+A very formidable looking door.
 ~
 D1
 (null)~
@@ -3420,12 +3420,12 @@ itself leads south and north.
 ~
 0 8 0
 E
-yellow~
-You see a yellow door. It has the name "Sumaron" written on it.
-~
-E
 red~
 You see a red door. It has the name "Gorak" written on it.
+~
+E
+yellow~
+You see a yellow door. It has the name "Sumaron" written on it.
 ~
 D0
 (null)~
@@ -3452,12 +3452,12 @@ black door. The hall itself leads north and south.
 ~
 0 8 0
 E
-maroon~
-You see a maroon door here. It has the name "Amyrok" written on it.
-~
-E
 black~
 You see a black door. It has the name "Darkoth" inscribed on it.
+~
+E
+maroon~
+You see a maroon door here. It has the name "Amyrok" written on it.
 ~
 D0
 (null)~
@@ -3518,12 +3518,12 @@ south.
 ~
 0 8 0
 E
-green~
-You see a green door here. It has the name "Nasturn" written on it.
-~
-E
 white~
 You see a white door here. It has the name "Tyrgoth" inscribed on it.
+~
+E
+green~
+You see a green door here. It has the name "Nasturn" written on it.
 ~
 D0
 (null)~
@@ -3615,12 +3615,12 @@ itself leads north back along the rows of doors.
 ~
 0 8 0
 E
-grey~
-You see a grey door here. It has the name "Dorgar" written on it.
-~
-E
 brown~
 You see a brown door here. It has the name "Belrak" written on it.
+~
+E
+grey~
+You see a grey door here. It has the name "Dorgar" written on it.
 ~
 D0
 (null)~

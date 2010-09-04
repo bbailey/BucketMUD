@@ -3,7 +3,7 @@ Name        {15 25} Generic Old Marsh~
 Builders    None~
 VNUMs       8301 8321
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -20,7 +20,7 @@ as he approaches and raises two black taloned claws to strike you.
 Troll~
 ABCFGT Jc -600 S
 17 0 
-100 0 0 0 5d39+187 17d10+100 4d7+10 3
+100 5d39+187 17d10+100 4d7+10 3
 0 0 0 4
 berserk ~
 0 BE HK
@@ -38,7 +38,7 @@ and cackles with glee.
 Troll~
 ACFGT Jc -400 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 11
+100 4d37+162 15d10+100 4d6+9 11
 0 0 0 5
 berserk ~
 0 BE HK
@@ -54,7 +54,7 @@ This mean bastard looks like he could tear you limb from limb.
 Human~
 ACFGT 0 -500 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 3
+100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
 0 0 0
@@ -70,7 +70,7 @@ The Swamp Thing has huge fists, which look like they could pound you flat.
 Human~
 ACFGT 0 -700 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 11
+100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -86,7 +86,7 @@ The Gnoll seems annoyed at your presence.
 Human~
 ACGT DF -1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 7
+100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
 0 0 0
@@ -103,7 +103,7 @@ appendages.
 Human~
 ACFGT DF -450 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 7
+100 9d36+270 22d10+100 5d7+14 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -120,7 +120,7 @@ sword blow.
 Human~
 ACGHT P 0 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 3
+100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
 0 0 0
@@ -138,7 +138,7 @@ are just able to notice a small pair of glowing eyes.
 Human~
 ACGHT P 0 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -154,7 +154,7 @@ This 10 meter anaconda looks rather hungry.
 snake~
 ACFGHT PQ -100 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 11
+100 5d34+175 16d10+100 4d7+8 11
 0 0 0 5
 none~
 0 L I
@@ -170,7 +170,7 @@ It's the largest Amazon python you have ever seen.
 snake~
 ACFGHT PQ -100 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 L I
@@ -187,7 +187,7 @@ because she thinks you stink too, and she's about to do something about it.
 Human~
 ACGT 0 -200 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -204,7 +204,7 @@ swamp light, the blade of his scythe gleams.
 Human~
 ACGT DF -200 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 11
+100 7d34+223 19d10+100 5d6+12 11
 -1 -1 -1 4
 none~
 0 0 0
@@ -221,7 +221,7 @@ into the marsh.
 Wolf~
 ACFGT Z -200 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 dodge fast ~
 0 0 0
@@ -237,7 +237,7 @@ This grotesque pile of plant matter fills you with utmost horror.
 Human~
 ACGT Q -100 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 11
+100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
 0 0 0
@@ -254,7 +254,7 @@ painted on his face and hands.
 Human~
 ABCDFGT DF -100 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -270,7 +270,7 @@ This huge monster of a man has green gnarly teeth and a BIG stick.
 Giant~
 ABCDFGT DF -100 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 3
+100 4d33+145 14d10+100 4d6+7 3
 1 1 1 5
 none~
 0 HI JP
@@ -286,7 +286,7 @@ This creepy fellow looks like he could use you as a meal.
 Human~
 ABCDFGT DF -100 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 11
+100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
 0 0 0
@@ -306,9 +306,9 @@ unknown~
 AB C AC B 0
 14 10 140 P
 A
-2 2
-A
 19 3
+A
+2 2
 #8302
 horned helmet~
 a dark horned helmet~
@@ -318,9 +318,9 @@ unknown~
 AC AC AC 0 0
 14 5 140 P
 A
-3 -3
-A
 19 1
+A
+3 -3
 E
 horns horn~
 These horns appear to be made of adamantite.~
@@ -341,9 +341,9 @@ unknown~
 D AC AC A 0
 19 16 190 P
 A
-19 3
-A
 18 3
+A
+19 3
 #8307
 green potion~
 a murky green potion~
@@ -415,13 +415,13 @@ distance.  And feel fear creep into your heart.
 ~
 0 1 5
 E
-pieces~
-You see severed limbs and spongy intestines.
-~
-E
 humanoid corpse~
 He looks mangled and shredded.  You see one large gash mark that looks
 like it came from the claw of some huge beast.
+~
+E
+pieces~
+You see severed limbs and spongy intestines.
 ~
 D1
 Eastward is the thick bog of ooze...
@@ -522,12 +522,12 @@ be taunting you towards the pool.
 ~
 0 1 6
 E
-quicksand~
-It looks deadly to the foolish.
-~
-E
 lights ~
 From the stories you have heard, you recognize them as will-o-wisps.
+~
+E
+quicksand~
+It looks deadly to the foolish.
 ~
 D1
 The swamp thing's lair.
@@ -581,8 +581,12 @@ huge fortress, half buried in the marsh.
 ~
 0 1 6
 E
-vegetation~
-It looks sentient.
+clouds~
+The clouds look dark and foreboding.
+~
+E
+beast~
+It looks to be a demon of some foul breed.
 ~
 E
 fortress~
@@ -590,12 +594,8 @@ It is surrounded by walls nearly 20 meters high.  In a tall tower on the
 northeast side, a window glows blue with magical energy.
 ~
 E
-beast~
-It looks to be a demon of some foul breed.
-~
-E
-clouds~
-The clouds look dark and foreboding.
+vegetation~
+It looks sentient.
 ~
 D0
 To the north a hill protrudes from the marshes.

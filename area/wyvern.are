@@ -3,7 +3,7 @@ Name        { 5 30} Tyrst   Wyvern's Tower~
 Builders    None~
 VNUMs       1601 1720
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ The killer frog looks ravenous.
 Human~
 ABFGT 0 -300 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -35,7 +35,7 @@ As you look, the figure seems to shift and move ...
 Human~
 ABFGHT 0 -400 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -51,7 +51,7 @@ He looks ready to attack!
 Human~
 ACFGT 0 -600 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 7
+100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
 0 0 0
@@ -67,7 +67,7 @@ He snarls at you and says LEAVE OR DIE!
 Human~
 ABCT 0 -600 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 3
+100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
 0 0 0
@@ -83,7 +83,7 @@ She says 'I can SEE you! I have been waiting ...'.
 Human~
 ABCGT DF -900 S
 13 0 
-100 0 0 0 3d38+131 13d10+100 3d7+8 7
+100 3d38+131 13d10+100 3d7+8 7
 1 1 1 6
 none~
 0 0 0
@@ -99,7 +99,7 @@ The plant looks something like a Venus fly-trap, only MUCH larger.
 Human~
 ABFGT 0 0 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -115,7 +115,7 @@ It thinks that perhaps you would make a better meal.
 Human~
 ABCFGT 0 -200 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 7
+100 3d27+107 11d10+100 3d6+6 7
 3 3 3 6
 none~
 0 0 0
@@ -131,7 +131,7 @@ The Shadow is vaguely humanoid. Two glowing pinpoints look at you.
 Human~
 ACFGT BDF -1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -147,7 +147,7 @@ He glares at you savagely and charges!
 Human~
 ABCFGT DF -1000 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 11
+100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
 0 0 0
@@ -163,7 +163,7 @@ This powerful creature wonders whether to kill you or not ...
 Human~
 ACGT D -600 S
 13 0 
-100 0 0 0 3d38+131 13d10+100 3d7+8 11
+100 3d38+131 13d10+100 3d7+8 11
 1 1 1 6
 none~
 0 0 0
@@ -179,7 +179,7 @@ He looks up at you and screams 'SO! Coming to steal my hoard!'
 Human~
 ABCFGT D -600 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 11
+100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
 0 0 0
@@ -195,7 +195,7 @@ He looks at you, and a sinister grin slowly spreads on his face ...
 Human~
 ABCFGT D -900 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 11
+100 6d36+205 18d10+100 4d7+12 11
 -1 -1 -1 4
 none~
 0 0 0
@@ -211,7 +211,7 @@ It is a huge black blob that oozes about the room. Its heading toward YOU!
 Human~
 ACFGT 0 -1000 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 3
+100 4d33+145 14d10+100 4d6+7 3
 1 1 1 5
 none~
 0 0 0
@@ -227,7 +227,7 @@ The golem appears to be made of some kind of clay, enchanted to come to life!
 Human~
 ABGT D 0 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 7
+100 5d34+175 16d10+100 4d7+8 7
 0 0 0 5
 none~
 0 0 0
@@ -243,7 +243,7 @@ It thunders loudly 'I must protect my Master's wealth!'
 Human~
 ACFGT DF -1000 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 3
+100 6d36+205 18d10+100 4d7+12 3
 -1 -1 -1 4
 none~
 0 0 0
@@ -259,7 +259,7 @@ Terror fills your heart as you view this master of the undead.
 Human~
 ACFGT BDH -1000 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 0 0
@@ -275,7 +275,7 @@ The trapper is clad mostly in the fur of various animals he's caught.
 Human~
 ACT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -291,7 +291,7 @@ The hunter is rugged and sturdy from his occupation.
 Human~
 ACT 0 0 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 0 0
@@ -307,7 +307,7 @@ The years of wanderings have left the ranger hardened and strong.
 Human~
 ACGT D 200 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 11
+100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
 0 0 0
@@ -323,7 +323,7 @@ This individual has quite a reputation at the local trading posts!
 Human~
 ABCT D 300 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 11
+100 5d34+175 16d10+100 4d7+8 11
 0 0 0 5
 none~
 0 0 0
@@ -338,7 +338,7 @@ The Lord of the Rangers catches your eye.
 Human~
 ABCT D 400 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 7
+100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -354,7 +354,7 @@ The centaur has the upper torso of a man and lower body of a horse.
 Human~
 ACT 0 200 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 3
+100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
 0 0 0
@@ -370,7 +370,7 @@ The centaur has the upper torso of a woman and lower body of a horse.
 Human~
 ACT 0 200 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 7
+100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
 0 0 0
@@ -386,7 +386,7 @@ This centaur has lived a full life.
 Human~
 ACT 0 200 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 3
+100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
 0 0 0
@@ -402,7 +402,7 @@ The elders act as counselors and advisors to the chief.
 Human~
 ABCT B 200 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 7
+100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
 0 0 0
@@ -418,7 +418,7 @@ He appears to be blocking entrance to the next room.
 Human~
 ABT B 200 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 0 0
@@ -435,7 +435,7 @@ wisdom.
 Human~
 ABCT B 200 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 7
+100 3d27+107 11d10+100 3d6+6 7
 3 3 3 6
 none~
 0 0 0
@@ -451,7 +451,7 @@ As you watch this strange creature, its position seems to flicker and shift.
 Human~
 AHT 0 0 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -499,9 +499,9 @@ unknown~
 A AB AC AB 0
 9 12 90 P
 A
-19 1
-A
 18 1
+A
+19 1
 #1606
 rod might~
 the rod of might~
@@ -511,9 +511,9 @@ unknown~
 C AC C BC 0
 16 13 160 P
 A
-1 1
-A
 18 2
+A
+1 1
 #1612
 black kite shield~
 a black kite shield~
@@ -556,9 +556,9 @@ unknown~
 ABC ABC ABC 0 0
 20 2 200 P
 A
-12 5
-A
 17 -6
+A
+12 5
 #1621
 dark red potion~
 a dark red potion~
@@ -649,9 +649,9 @@ unknown~
 A A ABC AB 0
 0 10 0 P
 A
-19 3
-A
 18 3
+A
+19 3
 #1711
 fur cap~
 a fur cap~

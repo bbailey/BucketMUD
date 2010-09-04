@@ -3,7 +3,7 @@ Name        { 5 20} Mahatma Arachnos~
 Builders    None~
 VNUMs       6200 6399
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -20,7 +20,7 @@ growing in as of late.
 Human~
 ACGT D 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -36,7 +36,7 @@ Old, scaly, but still with a lot of bite in him left.
 Human~
 ABCGT D -1000 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 11
+100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -52,7 +52,7 @@ The Wolf Spider is hairy, very hairy.
 Human~
 ABFT 0 -300 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 7
+100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
 0 0 0
@@ -68,7 +68,7 @@ You notice an evil look in his eyes.
 orc~
 ABT J -400 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 3
+100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
 0 Q S
@@ -85,7 +85,7 @@ You notice a glazed look in her eyes.
 Human~
 ABFT 0 -800 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 11
+100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
 0 0 0
@@ -101,7 +101,7 @@ An ordinary drone spider.
 Human~
 ACGT 0 -300 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 7
+100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
 0 0 0
@@ -117,7 +117,7 @@ She winks in and out.
 Human~
 ACGT 0 1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -133,7 +133,7 @@ The slave does not mind you, but will fight like a warrior if attacked.
 Human~
 ACGT 0 0 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
 0 0 0
@@ -150,7 +150,7 @@ and creates a magical treasure!
 Human~
 ACEHT BDP 1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -166,7 +166,7 @@ The Bird Spider has very powerful jaws.
 Human~
 ABFT 0 -800 S
 13 0 
-100 0 0 0 3d38+131 13d10+100 3d7+8 7
+100 3d38+131 13d10+100 3d7+8 7
 1 1 1 6
 none~
 0 0 0
@@ -183,7 +183,7 @@ means well.
 Human~
 ABCT D -400 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
 0 0 0
@@ -199,7 +199,7 @@ He delves deeper into you as you stare at him.
 Human~
 ABCT D 1000 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 11
+100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -215,7 +215,7 @@ He looks like a lazy bum who sleeps half the time.
 Human~
 AFGT P 250 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 7
+100 6d36+205 18d10+100 4d7+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -234,7 +234,7 @@ them.
 Human~
 ABFT BD -1000 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 11
+100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
 0 0 0
@@ -251,7 +251,7 @@ someday free the slaves of the Empress.
 Human~
 ABCT D 1000 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 11
+100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
 0 0 0
@@ -267,7 +267,7 @@ Rather small, you almost feel sad in killing it.
 Human~
 ABT D 1000 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -283,7 +283,7 @@ A medium-sized dragon--seems it hasn't killed anything yet by itself.
 Human~
 ABT D 100 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -301,7 +301,7 @@ sharp poisonous fangs to paralyze or kill its prey.
 Human~
 ABGT 0 -350 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
 0 0 0
@@ -319,7 +319,7 @@ if it wasn't so immensely fat.  Its large, bulbous eyes stare back at you.
 Human~
 ABGT D -1000 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 3
+100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
 0 0 0
@@ -339,9 +339,9 @@ unknown~
 D D D 0 0
 26 5 260 P
 A
-17 -2
-A
 4 3
+A
+17 -2
 #6304
 visor black knight's~
 a black knight's visor~
@@ -351,9 +351,9 @@ unknown~
 ABC ABC ABC 0 0
 24 5 240 P
 A
-5 2
-A
 1 1
+A
+5 2
 #6308
 coins gold~
 a big pile of gold coins~

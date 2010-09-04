@@ -3,7 +3,7 @@ Name        { 5 15} Copper  Miden'nir~
 Builders    None~
 VNUMs       3500 3584
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -20,7 +20,7 @@ APPEAR to be very hungry ... yet.
 Wyvern~
 AG DFT -200 S
 8 2 
-100 0 0 0 8d8+80 1d1+149 2d6+1 10
+100 8d8+80 1d1+149 2d6+1 10
 5 4 5 6
 bash berserk dodge fast trip assist_race ~
 L 0 S
@@ -36,7 +36,7 @@ You see before you a small and twisted creature with knotted muscles.
 goblin~
 AFGT J -500 S
 6 1 
-100 0 0 0 4d4+65 1d1+99 2d4+1 17
+100 4d4+65 1d1+99 2d4+1 17
 4 6 4 9
 parry assist_race ~
 0 Q C
@@ -53,7 +53,7 @@ He is apparently the only survivor of the ambush.
 Human~
 ABH 0 500 S
 4 0 
-100 0 0 0 1d12+47 1d1+99 1d6+0 13
+100 1d12+47 1d1+99 1d6+0 13
 8 8 8 10
 kick kick_dirt ~
 0 0 C
@@ -71,7 +71,7 @@ place that is used to be in days past.
 Human~
 ABT 0 500 S
 10 1 
-100 0 0 0 1d12+200 1d1+149 2d8+1 17
+100 1d12+200 1d1+149 2d8+1 17
 2 2 2 8
 backstab dodge parry assist_align ~
 AB CD 0
@@ -88,7 +88,7 @@ has been sitting here quite a while, drinking himself into oblivion.
 Human~
 ABST D 600 S
 8 3 
-100 0 0 0 1d12+110 1d1+99 2d6+0 17
+100 1d12+110 1d1+99 2d6+0 17
 3 5 3 6
 dodge kick kick_dirt parry trip assist_align ~
 0 0 0
@@ -105,7 +105,7 @@ little bits.
 Human~
 AGHS P -900 S
 8 2 
-100 0 0 0 1d12+110 1d1+99 2d5+2 17
+100 1d12+110 1d1+99 2d5+2 17
 5 3 3 6
 backstab dodge parry assist_align ~
 0 0 0
@@ -122,7 +122,7 @@ beat up upon, but maybe you will do just fine ...
 goblin~
 AFGT J -600 S
 7 1 
-100 0 0 0 1d12+100 1d1+149 1d10+1 17
+100 1d12+100 1d1+149 1d10+1 17
 3 5 3 8
 berserk parry trip assist_race ~
 0 Q C
@@ -139,7 +139,7 @@ for his shortsword and lunges for your neck.
 goblin~
 ACFGT J -900 S
 9 2 
-100 0 0 0 1d12+120 1d1+199 1d12+3 17
+100 1d12+120 1d1+199 1d12+3 17
 1 3 1 6
 berserk parry trip assist_race ~
 0 Q C
@@ -1043,11 +1043,6 @@ return to the forest.
 ~
 0 0 3
 E
-sign~
-The sign reads:
-   The Woodsman
-~
-E
 credits credit author~
 +-------------------------------------------------+
 | This zone originally written for Copper II DIKU |
@@ -1055,6 +1050,11 @@ credits credit author~
 | Modification and alterations for MERCmud DIKU   |
 |   by VampLestat                        1 JAN 93 |
 +-------------------------------------------------+
+~
+E
+sign~
+The sign reads:
+   The Woodsman
 ~
 D0
 You can go north around the inn.

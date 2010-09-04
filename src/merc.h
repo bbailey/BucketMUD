@@ -514,9 +514,6 @@ struct mob_index_data
     MPROG_GROUP_LIST *mprog_groups;
     int progtypes;
     sh_int breath_percent;
-    sh_int rnd_obj_percent;
-    sh_int rnd_obj_num;
-    long rnd_obj_types;
     unsigned int path_pos;
     bool path_move;
     FACTIONAFF_DATA *faction_affs;
@@ -598,9 +595,6 @@ struct char_data
     sh_int alignment;
     sh_int hitroll;
     sh_int breath_percent;
-    sh_int rnd_obj_percent;
-    sh_int rnd_obj_num;
-    long rnd_obj_types;
     sh_int damroll;
     sh_int armor[4];
     sh_int wimpy;
@@ -1664,60 +1658,6 @@ extern const struct flag_type furniture_flags[];
 
 extern const struct flag_type clan_flags[];
 extern const struct flag_type clan_join_flags[];
-extern const struct flag_type rnd_obj_flags[];
-
-struct rand_bag_material
-{
-    char *name;
-    bool isprefix;		/* before or after the type.name? */
-    sh_int size;		/* is the material big or small? */
-};
-
-struct rand_bag_type
-{
-    char *name;
-    sh_int capacity;		/* big or small? */
-    long wear_loc;		/* can it be worn? */
-};
-
-/* struct rand_light_type
- * {
- *  char *  name;
- *  sh_int  duration;
- * };
- */
-
-struct rand_weapon_type
-{
-    char *name;
-    sh_int magic_mod;
-    sh_int damage_mod;
-    sh_int weapon_type;
-};
-
-struct rand_armor_type
-{
-    char *name;
-    sh_int wearloc;
-    sh_int protect_mod;		/* + or - AC ? */
-    sh_int magic_mod;		/* better or worse for magic? */
-    sh_int p_type;
-};
-
-struct rand_item_material
-{
-    char *name;
-    sh_int coolness;		/* better AC for armor, better damroll for weapons, etc. */
-    sh_int magic_mod;
-    sh_int level;		/* level where this material is normal (i.e. iron is 1, dilithium is 80, etc.) */
-};
-
-struct rand_ring_type
-{
-    char *name;
-    sh_int coolness;		/* "exquisite gold" rings are cooler than "dirty copper" */
-    long extra_flags;		/* if it's "glowing" set it to glow, etc. */
-};
 
 /*****************************************************************************
  *                                 OLC END                                   *

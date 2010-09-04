@@ -3,7 +3,7 @@ Name        {10 25} Drkside Thalos~
 Builders    None~
 VNUMs       5200 5281
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ to disintegrate you.  Beholders are not known for their personality.
 Human~
 ABFHT D -870 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 11
+100 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -38,7 +38,7 @@ body of a four-legged beast.  She licks her lips as she looks at you greedily.
 Human~
 ACFGT 0 -999 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -55,7 +55,7 @@ front.
 Human~
 ABCFGHT P 10 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -70,7 +70,7 @@ Two skeletons lie crushed under a large boulder.
 Human~
 ABCFGHT P -10 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 11
+100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
 0 0 0
@@ -85,7 +85,7 @@ The stone floor of this house has been ripped apart.
 Human~
 ABCFGHT P -140 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -100,7 +100,7 @@ Some broken shards of pottery lie strewn about the floor.
 Human~
 ABCFGHT P 200 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -115,7 +115,7 @@ A few wooden planks lie stacked on a low shelf.
 Human~
 ABCFGHT P 0 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -131,7 +131,7 @@ A cute little lizard, that is, if you like reptiles!
 lizard~
 AHT 0 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 11
+100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
 0 L I
@@ -148,7 +148,7 @@ stone creature. He stands here still guarding the city.
 Human~
 ABT N 600 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 7
+100 10d45+345 26d10+100 5d9+13 7
 -6 -6 -6 1
 none~
 0 0 0
@@ -168,9 +168,9 @@ unknown~
 D D D 0 0
 26 30 260 P
 A
-19 1
-A
 1 2
+A
+19 1
 #5201
 helm mithril~
 a mithril helm~
@@ -190,9 +190,9 @@ unknown~
 D D D 0 0
 26 10 260 P
 A
-18 1
-A
 19 1
+A
+18 1
 #5203
 sleeves mithril~
 some mithril sleeves~
@@ -202,9 +202,9 @@ unknown~
 D D D 0 0
 26 10 260 P
 A
-18 1
-A
 19 1
+A
+18 1
 #5204
 boots mithril~
 a pair of mithril boots~
@@ -214,9 +214,9 @@ unknown~
 D D D 0 0
 26 6 260 P
 A
-18 1
-A
 2 1
+A
+18 1
 #5205
 leggings mithril~
 a set of mithril leggings~
@@ -226,9 +226,9 @@ unknown~
 D D D 0 0
 26 10 260 P
 A
-18 1
-A
 2 1
+A
+18 1
 #5206
 girth mithril~
 a mithril girth~
@@ -258,9 +258,9 @@ unknown~
 D D D 0 0
 25 5 250 P
 A
-20 -2
-A
 21 -2
+A
+20 -2
 #5210
 potion black~
 a black potion~
@@ -318,9 +318,9 @@ unknown~
 AC AC AC 0 0
 10 11 100 P
 A
-1 -10
-A
 2 -8
+A
+1 -10
 #5219
 venison chunk~
 a chunk of venison~
@@ -346,9 +346,9 @@ unknown~
 A AC BC AB F
 26 24 260 P
 A
-18 2
-A
 19 3
+A
+18 2
 #5222
 robe black silk~
 a black silk robe~
@@ -532,9 +532,9 @@ unknown~
 B AB AC ABD 0
 10 4 100 P
 A
-18 1
-A
 19 1
+A
+18 1
 #0
 
 
@@ -1878,15 +1878,15 @@ Some writings are on this wall.
 ~
 0 1 3
 E
+skeleton skeletons~
+Something is strange about these skeletons.  Upon further investigation, these
+skeletons appear illusionary.
+~
+E
 writings writing words~
 This cave along with the valley and dwarf forest is made by Hatchet for any
 Merc Mud.
 copyright 1992
-~
-E
-skeleton skeletons~
-Something is strange about these skeletons.  Upon further investigation, these
-skeletons appear illusionary.
 ~
 D0
 You see more of the cave.

@@ -3,7 +3,7 @@ Name        {36 40} ROM     Immortal Zone~
 Builders    None~
 VNUMs       1200 1299
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -22,7 +22,7 @@ towards Valhalla on the dawn of Ragnarok
 Human~
 ABTV CDFJZ 1000 S
 57 30 
-100 0 0 0 1d1+19999 1d1+499 5d4+40 8
+100 1d1+19999 1d1+499 5d4+40 8
 -20 -20 -20 -10
 area_attack bash berserk disarm dodge fast kick kick_dirt parry rescue trip crush assist_guard ~
 ABP CD 0
@@ -41,7 +41,7 @@ towards Valhalla on the dawn of Ragnarok
 Human~
 ABTV CDFJZ 1000 S
 99 30 
-100 0 0 0 1d1+19999 1d1+499 5d4+40 8
+100 1d1+19999 1d1+499 5d4+40 8
 -20 -20 -20 -10
 area_attack bash berserk disarm dodge fast kick kick_dirt parry rescue trip crush assist_guard ~
 ABP CD 0
@@ -191,17 +191,17 @@ plaque on the wall.
 ~
 0 18952 0
 E
+desk~
+The desk is old, but looks to be well taken care of.  There are various
+qwill pens, paper, and reference books scattered about the top as if Tia was
+recently looking for something of importance.  
+~
+E
 plaque~
 The plaque is wooden, well worn, and appears to be hand carved.  The
 words of wisdom look back at you: Mans greatness is not found in his armies,
 for all men have armies.  Mans greatness is found in his ability to stop
 war, seek truth, and find courage instead.  
-~
-E
-desk~
-The desk is old, but looks to be well taken care of.  There are various
-qwill pens, paper, and reference books scattered about the top as if Tia was
-recently looking for something of importance.  
 ~
 D2
 Valhalla is to the south.
@@ -261,10 +261,11 @@ corner, you notice a statue.
 ~
 0 33288 0
 E
-bookshelf~
-This is the most amazing collection of chess books you have ever seen.
-Everything from Damiano's manuscripts, to a complete collection of the
-Encyclopedia of Chess Openings, to the latest Imformants are all here.
+desk~
+This desk is much larger than anyone could possibly need.  At one end you 
+notice a large, disorderly mass of papers; it must be all his immortal
+paperwork.  At the other end is a magnificent wooden inlaid board with
+handcrafted ebony and hardwood pieces.
 ~
 E
 statue~
@@ -273,11 +274,10 @@ creative, if not eccentric, players of all time.  The inscription on the
 base reads, "I like the moment when I crush a man's ego."
 ~
 E
-desk~
-This desk is much larger than anyone could possibly need.  At one end you 
-notice a large, disorderly mass of papers; it must be all his immortal
-paperwork.  At the other end is a magnificent wooden inlaid board with
-handcrafted ebony and hardwood pieces.
+bookshelf~
+This is the most amazing collection of chess books you have ever seen.
+Everything from Damiano's manuscripts, to a complete collection of the
+Encyclopedia of Chess Openings, to the latest Imformants are all here.
 ~
 D0
 Valhalla is to the north
@@ -315,14 +315,14 @@ tear savagely at your fragile body.
 ~
 0 8200 0
 E
+sky wind winds~
+Cold winds plunge ceaselessly at you from the dark, cloudless sky.
+~
+E
 floor~
 The stone floor is the same shade of grey as the sky and is completely plain
 and unscratched.  It is probably too hard for anything to leave as much as a
 scratch on it.
-~
-E
-sky wind winds~
-Cold winds plunge ceaselessly at you from the dark, cloudless sky.
 ~
 D0
 The hard floor seems to go on forever.

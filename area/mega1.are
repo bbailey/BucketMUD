@@ -3,7 +3,7 @@ Name        { 5 35} Glop    Mega-City One ~
 Builders    None~
 VNUMs       8000 8028
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ vandalism repairs.
 Human~
 ACT 0 -400 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 7
+100 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
 none~
 0 0 0
@@ -38,7 +38,7 @@ fashionable of all gangs -- the Grunge Mongers.
 Human~
 ACGT 0 -500 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 11
+100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
 0 0 0
@@ -56,7 +56,7 @@ Justice Department.
 Human~
 ABFT D 0 S
 17 0 
-100 0 0 0 5d39+187 17d10+100 4d7+10 11
+100 5d39+187 17d10+100 4d7+10 11
 0 0 0 4
 none~
 0 0 0
@@ -73,7 +73,7 @@ and undersupervised.
 Human~
 ACGT J 0 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 11
+100 5d34+175 16d10+100 4d7+8 11
 0 0 0 5
 none~
 0 0 0
@@ -89,7 +89,7 @@ He blends into the crowd as his hand travels into another citizen's pocket.
 Human~
 ACGHT 0 -150 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -106,7 +106,7 @@ looking you over for a possible business transaction.
 Human~
 ACGT 0 -400 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 7
+100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 none~
 0 0 0
@@ -124,7 +124,7 @@ you though.
 Human~
 AGT DF 300 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 11
+100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
 0 0 0
@@ -141,7 +141,7 @@ unintelligent and unimaginative, but looks can be deceiving.
 Human~
 ABCT DFJ -600 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 11
+100 8d37+252 21d10+100 5d7+12 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -159,7 +159,7 @@ eyes is the mention of money.
 Human~
 ABCFT DF -900 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 11
+100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
 0 0 0
@@ -177,7 +177,7 @@ Gleep.
 Human~
 ABCT 0 -400 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 3
+100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
 0 0 0
@@ -194,7 +194,7 @@ of the Downtown Quadrant.
 Human~
 AGT DFH 300 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -212,7 +212,7 @@ to enforce the LAW.
 Human~
 AGT DF 500 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 11
+100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
 0 0 0
@@ -228,7 +228,7 @@ A bite fighter is here with sharpened teeth and a bad attitude.
 Human~
 ABFT 0 -400 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 0 0
@@ -339,13 +339,13 @@ unknown~
 B AC AC AB 0
 19 2 190 P
 A
-18 2
-A
-19 2
+2 1
 A
 5 1
 A
-2 1
+19 2
+A
+18 2
 E
 vibroblade~
 Obviously of alien manufacture, this blade enhances fighting

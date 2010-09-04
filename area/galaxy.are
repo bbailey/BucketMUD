@@ -3,7 +3,7 @@ Name        {20 30} Doctor  Galaxy~
 Builders    None~
 VNUMs       9301 9371
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ You will become him if you are not careful.
 Human~
 ACGT 0 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -35,7 +35,7 @@ You can't tell what the star looks like, she is too bright!
 Human~
 ABGT 0 500 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 11
+100 2d21+73 8d10+100 2d7+4 11
 5 5 5 7
 none~
 0 0 0
@@ -51,7 +51,7 @@ It hasn't got a definite shape, it is just a cloud of mist.
 Human~
 AGT 0 200 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -67,7 +67,7 @@ You see the offspring of Halley's comet, here just to wipe everything out.
 Human~
 ACFGT 0 -500 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 3
+100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
 0 0 0
@@ -84,7 +84,7 @@ Still he can be very powerful.
 Human~
 ABGHT 0 0 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 3
+100 5d34+175 16d10+100 4d7+8 3
 0 0 0 5
 none~
 0 0 0
@@ -101,7 +101,7 @@ But somehow he manages to escape.  Though tiny, it can take a lot of hits!
 Human~
 ACGT 0 0 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 3
+100 5d34+175 16d10+100 4d7+8 3
 0 0 0 5
 none~
 0 0 0
@@ -118,7 +118,7 @@ here and his face may never be seen by anyone again.
 Human~
 ABGT PQ -1000 S
 17 0 
-100 0 0 0 5d39+187 17d10+100 4d7+10 3
+100 5d39+187 17d10+100 4d7+10 3
 0 0 0 4
 none~
 0 0 0
@@ -135,7 +135,7 @@ jealousy and she has to suffer here endlessly until Perseus comes.
 Human~
 ABEGT H 1000 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 11
+100 6d36+205 18d10+100 4d7+12 11
 -1 -1 -1 4
 none~
 0 0 0
@@ -153,7 +153,7 @@ granted immortality. He is a very brave and strong fighter.
 Human~
 ABGT H 1000 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 3
+100 6d36+205 18d10+100 4d7+12 3
 -1 -1 -1 4
 none~
 0 0 0
@@ -169,7 +169,7 @@ It is the legendary horse with wings on its back.
 Human~
 ABGHT 0 300 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 3
+100 5d34+175 16d10+100 4d7+8 3
 0 0 0 5
 none~
 0 0 0
@@ -188,7 +188,7 @@ never meet.
 Human~
 ABGT H 300 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 3
+100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
 0 0 0
@@ -205,7 +205,7 @@ one knows; even the Gods themselves have forgotten.
 Human~
 ABGT 0 300 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 7
+100 3d27+107 11d10+100 3d6+6 7
 3 3 3 6
 none~
 0 0 0
@@ -223,7 +223,7 @@ hitting the head is certainly not easy.
 Human~
 ABFGT DH -1000 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 11
+100 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -241,7 +241,7 @@ we are on now?
 Human~
 ACGHT 0 -700 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 0 0
@@ -258,7 +258,7 @@ also the ruler of Spring. He looks as if he is expecting you.
 Human~
 ABGT H 700 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 3
+100 9d36+270 22d10+100 5d7+14 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -275,7 +275,7 @@ he can fight well ... indeed he has fought with Orion before and survived.
 Human~
 ABFGT DH -100 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 3
+100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -292,7 +292,7 @@ You can't find any imperfections on him.
 Human~
 ABGT H 1000 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 7
+100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -309,7 +309,7 @@ How can there be such a contrast?  You wonder ...
 Human~
 ABCFGHT DHU -1000 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 7
+100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 none~
 0 0 0
@@ -327,7 +327,7 @@ So Hera made Cancer a constellation for his work.
 Human~
 ABGT H 0 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 3
+100 9d36+270 22d10+100 5d7+14 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -345,7 +345,7 @@ his bare hands to tear the lion into two from its mouth!
 Human~
 ABFGT DH -100 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 11
+100 9d36+270 22d10+100 5d7+14 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -363,7 +363,7 @@ gorgeous and is waiting for your first move, whatever it is ...
 Human~
 ABGT H 1000 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 11
+100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
 0 0 0
@@ -380,7 +380,7 @@ Now all he can see from you is greed and bloodshed.
 Human~
 ABGT H 1000 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 11
+100 9d36+270 22d10+100 5d7+14 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -397,7 +397,7 @@ Sagittarius' arrow aimed at his heart forever.
 Human~
 ABFGT DH -200 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 7
+100 9d39+290 23d10+100 5d8+11 7
 -4 -4 -4 2
 none~
 0 0 0
@@ -413,7 +413,7 @@ He is a centaur and a well trained archer. No one can escape his arrows.
 Human~
 ABGT H 1000 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 3
+100 9d36+270 22d10+100 5d7+14 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -431,7 +431,7 @@ days in peace.
 Human~
 ABGT H 700 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 3
+100 9d36+270 22d10+100 5d7+14 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -448,7 +448,7 @@ hand with holding the vessel.
 Human~
 ABGT H 1000 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 11
+100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
 0 0 0
@@ -465,7 +465,7 @@ fish and she deserves your pity.
 Human~
 ABGT H 1000 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 3
+100 9d39+290 23d10+100 5d8+11 3
 -4 -4 -4 2
 none~
 0 0 0
@@ -482,7 +482,7 @@ So he becomes jealous of any living thing which is more handsome than him.
 Human~
 ABFGT H -1000 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 3
+100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -499,7 +499,7 @@ You think you'd better turn back.  At least you have got a chance of survival.
 bear~
 ABFGT DH 0 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 7
+100 10d45+345 26d10+100 5d9+13 7
 -6 -6 -6 1
 berserk disarm crush ~
 0 EI 0
@@ -515,7 +515,7 @@ She is the Queen of Dignity; facing her you feel all your dignity has gone.
 Human~
 ABGT H 700 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 3
+100 10d45+345 26d10+100 5d9+13 3
 -6 -6 -6 1
 none~
 0 0 0
@@ -532,7 +532,7 @@ weak and useless in front of him.
 Human~
 ABGT H 700 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 7
+100 10d45+345 26d10+100 5d9+13 7
 -6 -6 -6 1
 none~
 0 0 0
@@ -551,7 +551,7 @@ here at all?
 Human~
 ABGT BDH 1000 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 11
+100 10d60+426 30d10+100 5d10+17 11
 -8 -8 -8 0
 none~
 0 0 0
@@ -579,9 +579,9 @@ unknown~
 BC BC BC 0 0
 18 10 180 P
 A
-19 2
-A
 1 1
+A
+19 2
 E
 arm~
 These mighty armors have been worn by this immortal, since the ancient time.
@@ -632,9 +632,9 @@ unknown~
 ABC ABC ABC 0 0
 21 10 210 P
 A
-19 1
-A
 14 50
+A
+19 1
 E
 hoof~
 It is with these hooves that Taurus can stand against Orion's attacks.
@@ -648,9 +648,9 @@ unknown~
 ABC ABC ABC 0 0
 21 7 210 P
 A
-2 2
-A
 1 1
+A
+2 2
 E
 mask~
 You notice the mask has got two faces, one smiling and the other crying.
@@ -706,9 +706,9 @@ unknown~
 ABC ABC ABC 0 0
 22 15 220 P
 A
-13 5
-A
 17 -3
+A
+13 5
 E
 scale~
 It is a shield of justice, used in the ancient battle against injustice.
@@ -722,9 +722,9 @@ unknown~
 ABC ABC ABC 0 0
 22 15 220 P
 A
-13 -30
-A
 17 6
+A
+13 -30
 E
 scale~
 It is a shield of injustice, it picks on the innocent.
@@ -738,9 +738,9 @@ unknown~
 0 AC BC ABD 0
 23 7 230 P
 A
-19 1
-A
 18 3
+A
+19 1
 E
 sting~
 This dreadful weapon put a lot of mortals to death before Scorpio was banished.
@@ -766,9 +766,9 @@ unknown~
 0 AC AC BC 0
 22 20 220 P
 A
-19 3
-A
 18 1
+A
+19 3
 E
 bow~
 The gigantic bow used by the Archer; it is a very powerful weapon.
@@ -782,9 +782,9 @@ unknown~
 ABC ABC ABC 0 0
 22 6 220 P
 A
-19 2
-A
 18 3
+A
+19 2
 E
 horn~
 These strange horns are the work of gods, shaped to fit on hands.
@@ -812,9 +812,9 @@ unknown~
 ABC ABC ABC 0 0
 23 10 230 P
 A
-2 -2
-A
 17 -2
+A
+2 -2
 E
 tail~
 This tail can actually be worn by mortals somehow as leggings ... another
@@ -829,9 +829,9 @@ unknown~
 D D D 0 0
 26 3 260 P
 A
-3 2
-A
 12 25
+A
+3 2
 E
 ring~
 This ring belongs to Cassiopeia, queen of the Universe.
@@ -846,9 +846,9 @@ unknown~
 0 0 999 0 0
 26 4 260 P
 A
-19 2
-A
 18 2
+A
+19 2
 E
 sceptre~
 You'd better give it back, or the king of the Universe will punish you.
@@ -862,9 +862,9 @@ unknown~
 AD AD AD 0 0
 30 3 300 P
 A
-13 30
-A
 12 10
+A
+13 30
 E
 ring~
 It conceals the power of the universe.
@@ -878,9 +878,9 @@ unknown~
 0 AC ABC BC 0
 30 20 300 P
 A
-19 2
-A
 18 2
+A
+19 2
 #9324
 spring shoot~
 a spring shoot~

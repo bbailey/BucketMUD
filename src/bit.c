@@ -74,7 +74,6 @@ static const struct flag_stat_type flag_stat_table[] =
     {vuln_flags, FALSE},
     {weapon_class, TRUE},
     {weapon_type, FALSE},
-    {rnd_obj_flags, FALSE},
     {0, 0}
 };
 
