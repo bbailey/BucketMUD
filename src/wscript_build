@@ -3,7 +3,7 @@ bld.new_task_gen(
     uselib       = ['GLIB-2.0', 'M', 'CRYPT'],
     ccflags      = ['-Wall', '-g3'],
     includes     = ['.'],
-    defines      = [ 'LINUX', 'IMC', 'IMCROM', 'IMCEMBER' ],
+    defines      = [ 'IMC', 'IMCROM', 'IMCEMBER' ],
     source       = [ 'act_comm.c', 'act_info.c', 'act_move.c', 'act_obj.c',
 'act_wiz.c', 'auction.c', 'ban.c', 'bank.c', 'bit.c', 'BitVector.c',
 'BitVectorStr.c', 'board.c', 'bv_tables.c', 'clan.c', 'class.c',
