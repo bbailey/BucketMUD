@@ -215,7 +215,6 @@ extern void do_permit(CHAR_DATA * ch, char *argument);	/* Permban and Permit. */
 extern void do_pick(CHAR_DATA * ch, char *argument);
 extern void do_pk(CHAR_DATA * ch, char *argument);
 extern void do_pour(CHAR_DATA * ch, char *argument);
-extern void do_pose(CHAR_DATA * ch, char *argument);
 extern void do_practice(CHAR_DATA * ch, char *argument);
 extern void do_prompt(CHAR_DATA * ch, char *argument);
 extern void do_pload(CHAR_DATA * ch, char *argument);

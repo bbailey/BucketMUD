@@ -219,7 +219,6 @@ const struct cmd_type cmd_table[] =
     {CFG_OOC_NAME, do_ooc, MIN_POS_OOC, 0, LOG_NORMAL, 1},
     {"note", do_note, POS_SLEEPING, 0, LOG_NORMAL, 1},
     {"board", do_board, POS_SLEEPING, 0, LOG_NORMAL, 1},
-    {"pose", do_pose, POS_RESTING, 0, LOG_NORMAL, 1},
     {"question", do_question, MIN_POS_QA, 0, LOG_NORMAL, 1},
     {"quiet", do_quiet, POS_SLEEPING, 0, LOG_NORMAL, 1},
     {"reply", do_reply, MIN_POS_TELL, 0, LOG_NORMAL, 1},
