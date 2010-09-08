@@ -1298,9 +1298,7 @@ void do_color(register char *inbuf, int inlen, register char *outbuf,
 
 /* db.c */
 
-#if !defined(CPP)
 char *remove_color(const char *str);
-#endif
 
 /* Added for ban.c -Lancelight */
 char *print_flags(int flag);
