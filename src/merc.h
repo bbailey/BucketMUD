@@ -1674,11 +1674,6 @@ int hit_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
 int cast_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                     int members, int dam);
 
-/* mud_prog.c */
-#ifdef DUNNO_STRSTR
-char *strstr(const char *s1, const char *s2);
-#endif
-
 void mprog_act_trigger(char *txt, CHAR_DATA * ch);
 void mprog_bribe_trigger(CHAR_DATA * mob, CHAR_DATA * ch, int amount);
 void mprog_entry_trigger(CHAR_DATA * mob);
