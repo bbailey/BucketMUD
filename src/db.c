@@ -2862,21 +2862,6 @@ unsigned int str_len(const char *str)
     return numb;
 }
 
-#if defined(_MSC_VER)
-/*
- * MSVC doesn't have a snprintf() function, it has _snprintf().  I'm wrapping that function
- * so we can use snprintf() to our heart's desire.
- */
-void snprintf(char *buffer, size_t count, const char *format, ...)
-{
-    va_list args;
-
-    va_start(args, format);
-    _vsnprintf(buffer, count, format, args);
-    va_end(args);
-}
-#endif
-
 /*
  * Search for a string within a string, case insensitive.
  */
@@ -2890,13 +2875,8 @@ char *str_str(char *str1, char *str2)
     if (!str1 || !str2 || str1[0] == '\0' || str2[0] == '\0')
         return NULL;
 
-#if defined(_MSC_VER)
-    strcopy1 = _strdup(str1);
-    strcopy2 = _strdup(str2);
-#else
     strcopy1 = strdup(str1);
     strcopy2 = strdup(str2);
-#endif
 
     str_upr(strcopy1);
     str_upr(strcopy2);

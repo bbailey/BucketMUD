@@ -1335,9 +1335,6 @@ void *alloc_mem(int sMem);
 void *alloc_perm(int sMem);
 void free_mem(void *pMemPtr);
 unsigned int str_len(const char *str);
-#if defined(_MSC_VER)
-void snprintf(char *buffer, size_t count, const char *format, ...);
-#endif
 char *str_str(char *str1, char *str2);
 char *str_upr(char *str);
 int number_fuzzy(int number);
