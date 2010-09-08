@@ -405,7 +405,6 @@ const struct cmd_type cmd_table[] =
     {"string", do_string, POS_DEAD, 1, LOG_ALWAYS, 1},
     {"switch", do_switch, POS_DEAD, 1, LOG_ALWAYS, 1},
     {"wizinvis", do_invis, POS_DEAD, 1, LOG_NORMAL, 1},
-    {"jail", do_jail, POS_DEAD, 1, LOG_ALWAYS, 1},
     {"vnum", do_vnum, POS_DEAD, 1, LOG_NORMAL, 1},
     {"clone", do_clone, POS_DEAD, 1, LOG_ALWAYS, 1},
     {"immtalk", do_immtalk, POS_DEAD, 1, LOG_NORMAL, 1},

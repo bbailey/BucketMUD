@@ -46,15 +46,6 @@ void do_delete(CHAR_DATA * ch, char *argument)
     if (IS_NPC(ch))
         return;
 
-    /* This is more of a personal prefference. You dont need this. -Lancelight
-     */
-
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("You wont get out of it that easily.", ch);
-        return;
-    }
-
     /* Lets make sure they dont get any bright ideas. -Lancelight */
 
     if (auction_info.high_bidder == ch || auction_info.owner == ch)

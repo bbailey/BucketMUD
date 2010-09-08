@@ -150,173 +150,6 @@ void do_permit(CHAR_DATA * ch, char *argument)
     return;
 }
 
-/* I whipped this jail command up after a suggestion came that we should
-have some sort of jail system. I'm the meanie type, so I whipped up a
-really nasty jail bit. -Lancelight */
-
-void do_jail(CHAR_DATA * ch, char *argument)
-{
-    int blarg;
-    int jtimer;
-    char arg1[MAX_INPUT_LENGTH], buf[MAX_STRING_LENGTH];
-    char arg2[MAX_INPUT_LENGTH];
-    CHAR_DATA *victim;
-    argument = one_argument(argument, arg1);
-    argument = one_argument(argument, arg2);
-    if (arg1[0] == '\0')
-    {
-        send_to_char("Jail whom?\n`RSyntax: `Yjail <player> <time>`w\n",
-                     ch);
-        return;
-    }
-
-    if ((victim = get_player_world(ch, arg1)) == NULL)
-    {
-        send_to_char("They aren't here.\n\r", ch);
-        return;
-    }
-
-    if (get_trust(victim) >= get_trust(ch))
-    {
-        send_to_char("You failed.\n\r", ch);
-        return;
-    }
-
-    if (IS_SET(victim->act, PLR_JAILED))
-    {
-        if (IS_NPC(victim))
-        {
-            blarg = victim->was_in_room->vnum;
-        }
-        else
-        {
-            if (JAIL_RELEASE_RECALL == 1)
-                blarg = victim->pcdata->recall_room->vnum;
-            else
-                blarg = JAIL_RELEASE_VNUM;
-        }
-
-        if (JAIL_NOSHOUT == 1)
-        {
-            bv_unset(victim->bv_comm_flags, BV_COMM_NO_SHOUT);
-        }
-
-        if (JAIL_NOEMOTE == 1)
-        {
-            bv_unset(victim->bv_comm_flags, BV_COMM_NO_EMOTE);
-        }
-
-        if (JAIL_NOTELL == 1)
-        {
-            bv_unset(victim->bv_comm_flags, BV_COMM_NO_TELL);
-        }
-
-        if (JAIL_NOCHANNEL == 1)
-        {
-            bv_unset(victim->bv_comm_flags, BV_COMM_NO_CHANNELS);
-        }
-
-        REMOVE_BIT(victim->act, PLR_JAILED);
-        send_to_char("`WYour `Rjail term`W has been `clifted\n\r", victim);
-
-        if (!IS_NPC(victim) && (JAIL_RELEASE_RECALL == 1))
-        {
-            send_to_char
-            ("`Wand you are being teleported back to `Grecall`W.`w\n\r",
-             victim);
-            send_to_char("Jail Lifted\n\r", ch);
-            char_from_room(victim);
-            victim->jail_timer = 0;
-            char_to_room(victim, get_room_index(blarg));
-            if (IS_NPC(victim))
-                sprintf(buf, "%s frees %s from jail.", ch->name,
-                        victim->short_descr);
-            else
-                sprintf(buf, "%s frees %s from jail.", ch->name,
-                        victim->name);
-            do_sendinfo(ch, buf);
-        }
-        else
-        {
-            send_to_char
-            ("`Wand you are being teleported to the front gates of the jail.`w\n\r",
-             victim);
-            send_to_char("Jail Lifted\n\r", ch);
-            char_from_room(victim);
-            char_to_room(victim, get_room_index(blarg));
-            sprintf(buf, "%s frees %s from jail.", ch->name, victim->name);
-            do_sendinfo(ch, buf);
-        }
-    }
-    else
-    {
-        if (!is_number(arg2))
-        {
-            send_to_char("`YPlease enter a time in ticks`w\n", ch);
-            return;
-        }
-        jtimer = atoi(arg2);
-        if (jtimer <= -1)
-        {
-            send_to_char("`YPositive numbers only brainy.\n", ch);
-            return;
-        }
-        if (jtimer == 0)
-        {
-            jtimer = jtimer - 1;
-            victim->jail_timer = jtimer;
-        }
-        victim->jail_timer = jtimer;
-        if (victim->jail_timer < 0)
-            send_to_char("`RYou have been Jailed indefinatly!!!!`w\n\r",
-                         victim);
-        else
-            printf_to_char(victim,
-                           "`RYou have been Jailed for %d hours!!!!.`w\n\r",
-                           victim->jail_timer);
-        victim->jail_timer = victim->jail_timer;
-        send_to_char("Jail set.\n\r", ch);
-        if (IS_NPC(victim))
-            sprintf(buf, "%s has tossed %s in the slammer!", ch->name,
-                    victim->short_descr);
-        else
-            sprintf(buf, "%s has tossed %s in the slammer!", ch->name,
-                    victim->name);
-
-        if (JAIL_NOSHOUT == 1)
-        {
-            bv_set(victim->bv_comm_flags, BV_COMM_NO_SHOUT);
-        }
-
-        if (JAIL_NOEMOTE == 1)
-        {
-            bv_set(victim->bv_comm_flags, BV_COMM_NO_EMOTE);
-        }
-
-        if (JAIL_NOTELL == 1)
-        {
-            bv_set(victim->bv_comm_flags, BV_COMM_NO_TELL);
-        }
-
-        if (JAIL_NOCHANNEL == 1)
-        {
-            bv_set(victim->bv_comm_flags, BV_COMM_NO_CHANNELS);
-        }
-
-        SET_BIT(victim->act, PLR_JAILED);
-
-        if (JAIL_REMOVES_EQ == 1)
-        {
-            do_remove(victim, "all");
-        }
-        victim->was_in_room = victim->in_room;
-        char_from_room(victim);
-        char_to_room(victim, get_room_index(JAIL_CELL_VNUM));
-        do_sendinfo(ch, buf);
-    }
-    return;
-}
-
 /* equips a character */
 void do_outfit(CHAR_DATA * ch, char *argument)
 {
@@ -1856,7 +1689,6 @@ void do_mstat(CHAR_DATA * ch, char *argument)
 
     sprintf(buf, "Act: %s\n\r", act_bit_name(victim->act));
     send_to_char(buf, ch);
-    printf_to_char(ch, "Jail Timer: %d\n\r", victim->jail_timer);
 
     tmp_string = bv_to_string(victim->bv_comm_flags, bv_str_list_comm);
     sprintf(buf, "Comm: %s\n\r", tmp_string);
@@ -2622,12 +2454,6 @@ void do_switch(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (IS_SET(victim->act, PLR_JAILED))
-    {
-        send_to_char("Cannot switch into jailed mobs", ch);
-        return;
-    }
-
     if (victim == ch)
     {
         send_to_char("Ok.\n\r", ch);
@@ -2674,14 +2500,6 @@ void do_return(CHAR_DATA * ch, char *argument)
     if (ch->desc->original == NULL)
     {
         send_to_char("You aren't switched.\n\r", ch);
-        return;
-    }
-
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char
-        ("You have been jailed and will remain so until your jail sentence as a mob has been completed\n\r",
-         ch);
         return;
     }
 

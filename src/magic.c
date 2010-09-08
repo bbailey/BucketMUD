@@ -277,11 +277,6 @@ void do_cast(CHAR_DATA * ch, char *argument)
         send_to_char("Cast which what where?\n\r", ch);
         return;
     }
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("Your magic fizzles and does nothing.", ch);
-        return;
-    }
 
     if (IS_SET(ch->in_room->room_flags, ROOM_NOMAGIC))
     {

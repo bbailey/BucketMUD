@@ -614,7 +614,6 @@ struct char_data
     MPROG_ACT_LIST *mpact;
     int mpactnum;
     int mobinvis;
-    sh_int jail_timer;
     /* mob counter for a reset */
     sh_int *reset_count;
     BitVector *bv_offense_flags;

@@ -148,7 +148,6 @@ extern void do_herotalk(CHAR_DATA * ch, char *argument);
 extern void do_imotd(CHAR_DATA * ch, char *argument);
 extern void do_inventory(CHAR_DATA * ch, char *argument);
 extern void do_invis(CHAR_DATA * ch, char *argument);
-extern void do_jail(CHAR_DATA * ch, char *argument);
 extern void do_junk(CHAR_DATA * ch, char *argument);
 extern void do_kick(CHAR_DATA * ch, char *argument);
 extern void do_shield(CHAR_DATA * ch, char *argument);

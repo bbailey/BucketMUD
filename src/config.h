@@ -466,41 +466,6 @@ looting at all.
         FULL corpse Looting. I do NOT recommend setting this
             unless you know that your players can handle it. */
 
-            /* The following defines will determine how the jail systems acts. The 1st
-               2 determine how the jail releases people. It can either release them to a
-               certain vnum, or to a players recall room. Currently it defaults to the
-               players recall room. But if you want it to go to a certian room, then
-               set JAIL_RELEASE_RECALL to 0, and give JAIL_RELEASE_VNUM the vnum u want
-               it to release to.
-
-               The next couple defines, determines what the jail command will do to the player,
-               like if they can wear items, whether it removes them, what channels they
-               can talk on and what commands they can do while in jail. To turn something
-               on, give it a 1. To turn it off, give it a 0.
-               -Lancelight */
-
-            /* IMPORTANT NOTE!!!:
-               Remember, if you change ANYTHING here, you must do a complete re-compile.
-               dont compile just the affected object file or else you will find that the
-               changes will not work.
-               -Lancelight
-             */
-#define JAIL_RELEASE_VNUM 3001
-#define JAIL_RELEASE_RECALL 1
-
-#define JAIL_CELL_VNUM 3143	/* The actual jail room vnum */
-#define JAIL_REMOVES_EQ 1	/*Removes eq from the char to their inv */
-#define JAIL_CAN_WEAR 0		/*Can they wear things while in jail */
-#define JAIL_NOCHANNEL 1
-#define JAIL_NOSHOUT 1
-#define JAIL_NOYELL 1
-#define JAIL_NOTELL 1
-#define JAIL_NOEMOTE 1
-#define JAIL_CAN_DELETE 0	/* Can they delete while jailed */
-#define JAIL_CAN_WRITE_NOTE 0	/* Can they write notes while in jail */
-#define JAIL_CAN_SAC 0		/* Can they junk/sac items in jail */
-#define JAIL_CAN_DONATE 0	/* Can they donate EQ while in jail */
-
             /* The below email define should be used for sending email to the mud
                admin to request that they be permitted to play on the mud from their
                site. They will only get this msg if you have set something like ban
@@ -1591,8 +1556,8 @@ looting at all.
 #define PLR_AUTOGOLD            (G)
 #define PLR_AUTOSPLIT           (H)
 #define PLR_CONSENT              (I)
-#define PLR_JAILED               (J)
-#define PLR_BUILDING		 (K)
+#define PLR_UNUSED               (J)
+#define PLR_BUILDING		     (K)
 #define PLR_REMORT               (L)
 #define PLR_REMORTING            (M)
             /* RT personal flags */
