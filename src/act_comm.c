@@ -2358,17 +2358,8 @@ void do_quit(CHAR_DATA * ch, char *argument)
 
 void do_save(CHAR_DATA * ch, char *argument)
 {
-    extern bool chaos;
-
     if (IS_NPC(ch))
         return;
-
-    if (chaos)
-    {
-        send_to_char("Saving is not allowed during `rC`RH`YA`RO`rS.\n\r`w",
-                     ch);
-        return;
-    }
 
     save_char_obj(ch);
     send_to_char("Saving.\n\r", ch);

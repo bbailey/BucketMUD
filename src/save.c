@@ -30,8 +30,6 @@
 #include "bv_tables.h"
 
 extern int _filbuf(FILE *);
-extern bool chaos;
-
 
 /* Convert a standard bitvector to our new BitVector type */
 void bv_from_old_bitvector(BitVector *bv, uint32_t old_bitvector)
@@ -103,10 +101,6 @@ void save_char_obj(CHAR_DATA * ch)
     char strsave[MAX_INPUT_LENGTH];
     char TempFile[MAX_INPUT_LENGTH];
     FILE *fp;
-
-    /* No saving during CHAOS */
-    if (chaos)
-        return;
 
     if (IS_NPC(ch))
         return;

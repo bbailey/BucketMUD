@@ -114,7 +114,6 @@ bool god;			/* All new chars are gods!       */
 bool merc_down;			/* Shutdown                      */
 bool wizlock;			/* Game is wizlocked             */
 bool newlock;			/* Game is newlocked             */
-bool chaos;			/* Game in CHAOS!                */
 bool silentmode;		/* Send no output to descriptors */
 char str_boot_time[MAX_INPUT_LENGTH];
 time_t current_time;		/* time of this pulse */
@@ -1219,12 +1218,6 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
                 close_socket(d);
                 return;
             }
-            else if (chaos && !IS_HERO(ch))
-            {
-                write_to_buffer(d, "The game is in CHAOS!\n\r", 0);
-                close_socket(d);
-                return;
-            }
         }
 
         if (fOld)
@@ -1934,8 +1927,6 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
 
         if (IS_SET(ch->act, PLR_AFK))
             do_afk(ch, NULL);
-
-        ch->pcdata->chaos_score = 0;
 
         break;
 

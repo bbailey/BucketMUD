@@ -705,7 +705,6 @@ struct pc_data
     bool confirm_pk;
     char *prompt;
     ROOM_INDEX_DATA *recall_room;
-    int chaos_score;
     char *alias[MAX_ALIAS];
     char *alias_sub[MAX_ALIAS];
     char *nemesis;
@@ -785,7 +784,6 @@ struct system_config
     char *idea_file;
     char *typo_file;
     char *shutdown_file;
-    char *chaos_file;
     char *clans_file;
     char *factions_file;
     char *socials_file;

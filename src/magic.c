@@ -2893,8 +2893,6 @@ void spell_frenzy(int sn, int level, CHAR_DATA * ch, void *vo)
 }
 
 /* RT ROM-style gate */
-extern bool chaos;
-
 void spell_gate(int sn, int level, CHAR_DATA * ch, void *vo)
 {
     CHAR_DATA *victim;
@@ -2909,7 +2907,7 @@ void spell_gate(int sn, int level, CHAR_DATA * ch, void *vo)
     }
     if (NOSUMMONFULL == 1)
     {
-        if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= level + 3 || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
                 || IS_SET(victim->in_room->room_flags, ROOM_NOMAGIC)
@@ -2937,7 +2935,7 @@ void spell_gate(int sn, int level, CHAR_DATA * ch, void *vo)
                 || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
                 || IS_SET(victim->in_room->room_flags, ROOM_NOMAGIC)
                 || IS_SET(ch->in_room->room_flags, ROOM_NOMAGIC)
-                || victim->level >= ch->level + NOSUMMONLEVELMOB || (chaos)
+                || victim->level >= ch->level + NOSUMMONLEVELMOB
                 || IS_SET(victim->imm_flags, IMM_SUMMON)
                 || saves_spell(level, victim))
         {
@@ -2951,7 +2949,7 @@ void spell_gate(int sn, int level, CHAR_DATA * ch, void *vo)
     if (!IS_NPC(victim) && !IS_SET(victim->act, PLR_KILLER))
     {
 
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= ch->level + NOSUMMONLEVELNONPK || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= ch->level + NOSUMMONLEVELNONPK || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON))
@@ -2966,7 +2964,7 @@ void spell_gate(int sn, int level, CHAR_DATA * ch, void *vo)
 
     if (NOSUMMONPKSAME == 1 && IS_SET(victim->act, PLR_KILLER))
     {
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level > ch->level + NOSUMMONLEVELPK || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level > ch->level + NOSUMMONLEVELPK || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON)
                     && victim->level > ch->level + NOSUMMONLEVELPK)
@@ -2982,7 +2980,7 @@ void spell_gate(int sn, int level, CHAR_DATA * ch, void *vo)
     if (IS_SET(victim->act, PLR_KILLER) && NOSUMMONPKSAME == 0)
     {
 
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || (chaos) || (ch->level > (victim->level + NOSUMMONLEVELPK) || victim->level > (ch->level + NOSUMMONLEVELPK)) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || (ch->level > (victim->level + NOSUMMONLEVELPK) || victim->level > (ch->level + NOSUMMONLEVELPK)) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON)
                     && (ch->level > (victim->level + NOSUMMONLEVELPK)
@@ -3057,7 +3055,7 @@ void spell_nexus(int sn, int level, CHAR_DATA * ch, void *vo)
     }
     if (NOSUMMONFULL == 1)
     {
-        if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= level + 3 || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON))
@@ -3082,7 +3080,7 @@ void spell_nexus(int sn, int level, CHAR_DATA * ch, void *vo)
                 || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
                 || (IS_SET(victim->in_room->room_flags, ROOM_NOMAGIC))
                 || (IS_SET(ch->in_room->room_flags, ROOM_NOMAGIC))
-                || victim->level >= ch->level + NOSUMMONLEVELMOB || (chaos)
+                || victim->level >= ch->level + NOSUMMONLEVELMOB
                 || IS_SET(victim->imm_flags, IMM_SUMMON)
                 || saves_spell(level, victim))
         {
@@ -3096,7 +3094,7 @@ void spell_nexus(int sn, int level, CHAR_DATA * ch, void *vo)
     if (!IS_NPC(victim) && !IS_SET(victim->act, PLR_KILLER))
     {
 
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= ch->level + NOSUMMONLEVELNONPK || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= ch->level + NOSUMMONLEVELNONPK || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON))
@@ -3111,7 +3109,7 @@ void spell_nexus(int sn, int level, CHAR_DATA * ch, void *vo)
 
     if (NOSUMMONPKSAME == 1 && IS_SET(victim->act, PLR_KILLER))
     {
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level > ch->level + NOSUMMONLEVELPK || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level > ch->level + NOSUMMONLEVELPK || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON)
@@ -3127,7 +3125,7 @@ void spell_nexus(int sn, int level, CHAR_DATA * ch, void *vo)
     if (IS_SET(victim->act, PLR_KILLER) && NOSUMMONPKSAME == 0)
     {
 
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || (chaos) || (ch->level > (victim->level + NOSUMMONLEVELPK) || victim->level > (ch->level + NOSUMMONLEVELPK)) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || (ch->level > (victim->level + NOSUMMONLEVELPK) || victim->level > (ch->level + NOSUMMONLEVELPK)) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON)
@@ -4004,7 +4002,7 @@ void spell_summon(int sn, int level, CHAR_DATA * ch, void *vo)
     }
     if (NOSUMMONFULL == 1)
     {
-        if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= level + 3 || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if ((victim = get_char_world(ch, target_name)) == NULL || victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= level + 3 || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON))
                 || (IS_NPC(victim) && saves_spell(level, victim)))
@@ -4026,7 +4024,7 @@ void spell_summon(int sn, int level, CHAR_DATA * ch, void *vo)
                 || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY)
                 || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
                 || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-                || victim->level >= ch->level + NOSUMMONLEVELMOB || (chaos)
+                || victim->level >= ch->level + NOSUMMONLEVELMOB
                 || IS_SET(victim->imm_flags, IMM_SUMMON)
                 || saves_spell(level, victim))
         {
@@ -4040,7 +4038,7 @@ void spell_summon(int sn, int level, CHAR_DATA * ch, void *vo)
     if (!IS_NPC(victim) && !IS_SET(victim->act, PLR_KILLER))
     {
 
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= ch->level + NOSUMMONLEVELNONPK || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level >= ch->level + NOSUMMONLEVELNONPK || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON))
                 || (IS_NPC(victim) && saves_spell(level, victim)))
@@ -4054,7 +4052,7 @@ void spell_summon(int sn, int level, CHAR_DATA * ch, void *vo)
 
     if (NOSUMMONPKSAME == 1 && IS_SET(victim->act, PLR_KILLER))
     {
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level > ch->level + NOSUMMONLEVELPK || (chaos) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || victim->level > ch->level + NOSUMMONLEVELPK || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL))
                 || (IS_SET(victim->in_room->room_flags, ROOM_NOMAGIC))
@@ -4071,7 +4069,7 @@ void spell_summon(int sn, int level, CHAR_DATA * ch, void *vo)
     if (IS_SET(victim->act, PLR_KILLER) && NOSUMMONPKSAME == 0)
     {
 
-        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || (chaos) || (ch->level > (victim->level + NOSUMMONLEVELPK) || victim->level > (ch->level + NOSUMMONLEVELPK)) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
+        if (victim == ch || victim->in_room == NULL || !can_see_room(ch, victim->in_room) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || (ch->level > (victim->level + NOSUMMONLEVELPK) || victim->level > (ch->level + NOSUMMONLEVELPK)) || (!IS_NPC(victim) && victim->level >= LEVEL_HERO)	/* NOT trust */
                 ||(IS_NPC(victim) && IS_SET(victim->imm_flags, IMM_SUMMON))
                 || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NOSUMMON)
                     && (ch->level > (victim->level + NOSUMMONLEVELPK)
@@ -4105,7 +4103,6 @@ void spell_teleport(int sn, int level, CHAR_DATA * ch, void *vo)
     if (victim->in_room == NULL
             || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
             || (!IS_NPC(ch) && victim->fighting != NULL)
-            || (chaos)
             || (victim != ch && (saves_spell(level, victim)
                                  || saves_spell(level, victim))))
     {

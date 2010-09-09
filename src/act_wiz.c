@@ -2257,7 +2257,6 @@ void do_reboo(CHAR_DATA * ch, char *argument)
     return;
 }
 
-extern bool chaos;
 extern bool merc_down;
 
 void do_reboot(CHAR_DATA * ch, char *argument)
@@ -2265,12 +2264,6 @@ void do_reboot(CHAR_DATA * ch, char *argument)
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d, *d_next;
 
-    if ((chaos) && (ch->Class != 4))
-    {
-        send_to_char
-        ("Please remove `rC`RH`YA`RO`rS`w before rebooting.\n\r", ch);
-        return;
-    }
     if (IS_NPC(ch))
     {
         send_to_char("Mobs dont need to be rebooting the mud.\n", ch);
@@ -2316,21 +2309,12 @@ void do_shutdow(CHAR_DATA * ch, char *argument)
     return;
 }
 
-extern bool chaos;
-
 void do_shutdown(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];
     char strPath[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d, *d_next;
 
-    if ((chaos) && (ch->Class != 4))
-    {
-        send_to_char
-        ("Please remove `rC`RH`YA`RO`rS`w before shutting down.\n\r",
-         ch);
-        return;
-    }
     if (IS_NPC(ch))
     {
         send_to_char("Mobs dont need to be rebooting the mud.\n", ch);
@@ -4805,31 +4789,6 @@ void do_holylight(CHAR_DATA * ch, char *argument)
     {
         SET_BIT(ch->act, PLR_HOLYLIGHT);
         send_to_char("Holy light mode on.\n\r", ch);
-    }
-
-    return;
-}
-
-void do_chaos(CHAR_DATA * ch, char *argument)
-{
-    if (!chaos)
-    {
-        do_force(ch, "all save");
-        do_save(ch, "");
-    }
-
-    chaos = !chaos;
-
-    if (chaos)
-    {
-        send_to_char("Chaos now set.\n\r", ch);
-        do_sendinfo(ch, "`rC`RH`YA`RO`rS`R has begun!");
-    }
-    else
-    {
-        send_to_char("Chaos cancelled.\n\r", ch);
-        do_sendinfo(ch, "`rC`RH`YA`RO`rS`R has been cancelled.");
-        do_force(ch, "all quit");
     }
 
     return;

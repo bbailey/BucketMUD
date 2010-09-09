@@ -4098,9 +4098,6 @@ static int load_config_file(void)
                 else if (!str_cmp(word, "ShutdownFile"))
                     sysconfig.shutdown_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "ChaosFile"))
-                    sysconfig.chaos_file =
-                        strdup(get_config_value(ptr, word));
                 else if (!str_cmp(word, "ClansFile"))
                     sysconfig.clans_file =
                         strdup(get_config_value(ptr, word));

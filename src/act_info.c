@@ -2577,18 +2577,6 @@ static void insert_sort(CHAR_DATA * who_list[], CHAR_DATA * ch, int length)
     who_list[length] = ch;
 }
 
-static void chaos_sort(CHAR_DATA * who_list[], CHAR_DATA * ch, int length)
-{
-    while ((length)
-            && who_list[length - 1]->pcdata->chaos_score <
-            ch->pcdata->chaos_score)
-    {
-        who_list[length] = who_list[length - 1];
-        length--;
-    }
-    who_list[length] = ch;
-}
-
 /*
  * New 'who' command originally by Alander of Rivers of Mud.
  */
@@ -3032,15 +3020,8 @@ void do_where(CHAR_DATA * ch, char *argument)
     CHAR_DATA *victim;
     DESCRIPTOR_DATA *d;
     bool found;
-    extern bool chaos;
 
     one_argument(argument, arg);
-
-    if ((chaos) && (ch->level < HERO))
-    {
-        send_to_char("Where? Your killer is right behind you!\n\r", ch);
-        return;
-    }
 
     if (arg[0] == '\0' && (ch->level > HERO))
     {
@@ -3679,47 +3660,6 @@ void do_search(CHAR_DATA * ch, char *argument)
         send_to_char("You found no secret exits.\n\r", ch);
         return;
     }
-}
-
-void do_cwho(CHAR_DATA * ch, char *argument)
-{
-    char buf[MAX_STRING_LENGTH];
-
-    char output[4 * MAX_STRING_LENGTH];
-    DESCRIPTOR_DATA *d;
-    CHAR_DATA *who_list[300];
-    int length;
-    int maxlength;
-    extern bool chaos;
-
-    if (!chaos)
-    {
-        send_to_char("There is no `rC`RH`YA`RO`rS`w active.\n\r", ch);
-        return;
-    }
-
-    length = 0;
-    for (d = descriptor_list; d; d = d->next)
-    {
-        if (d->connected == CON_PLAYING)
-        {
-            chaos_sort(who_list, d->character, length);
-            length++;
-        }
-    }
-
-    buf[0] = '\0';
-    output[0] = '\0';
-    maxlength = length;
-    for (length = 0; length < maxlength; length++)
-    {
-        sprintf(buf, "`K[`W%4d`K] `w%s\n\r",
-                who_list[length]->pcdata->chaos_score,
-                who_list[length]->name);
-        strcat(output, buf);
-    }
-    send_to_char(output, ch);
-    return;
 }
 
 /* I changed this a bit.... got rid of the pet bug and added clan recognition.

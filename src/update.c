@@ -137,8 +137,6 @@ void gain_exp(CHAR_DATA * ch, int gain)
 /*
  * Regeneration stuff.
  */
-extern bool chaos;
-
 static int hit_gain(CHAR_DATA * ch)
 {
     int gain;
@@ -203,9 +201,6 @@ static int hit_gain(CHAR_DATA * ch)
         gain /= 8;
 
     if (IS_AFFECTED(ch, AFF_HASTE))
-        gain /= 2;
-
-    if (chaos)
         gain /= 2;
 
     return UMIN(gain, ch->max_hit - ch->hit);
@@ -275,9 +270,6 @@ static int mana_gain(CHAR_DATA * ch)
         gain /= 8;
 
     if (IS_AFFECTED(ch, AFF_HASTE))
-        gain /= 2;
-
-    if (chaos)
         gain /= 2;
 
     return UMIN(gain, ch->max_mana - ch->mana);
@@ -851,7 +843,7 @@ static void char_update(void)
     {
         ch_next = ch->next_player;
 
-        if (ch->desc != NULL && save_number == 30 && !chaos)
+        if (ch->desc != NULL && save_number == 30)
             save_char_obj(ch);
     }
 

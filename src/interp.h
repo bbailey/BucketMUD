@@ -349,8 +349,6 @@ extern void do_mpsilentforce(CHAR_DATA * ch, char *argument);
 extern void do_mpsilentcast(CHAR_DATA * ch, char *argument);
 extern void do_mpdosilent(CHAR_DATA * ch, char *argument);
 extern void do_mpdefault(CHAR_DATA * ch, char *argument);
-extern void do_chaos(CHAR_DATA * ch, char *argument);
-extern void do_cwho(CHAR_DATA * ch, char *argument);
 extern void do_unalias(CHAR_DATA * ch, char *argument);
 extern void do_brew(CHAR_DATA * ch, char *argument);
 extern void do_scribe(CHAR_DATA * ch, char *argument);

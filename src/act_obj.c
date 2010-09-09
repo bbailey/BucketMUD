@@ -33,8 +33,6 @@ extern void do_yell(CHAR_DATA * ch, char *argument);
 extern void do_say(CHAR_DATA * ch, char *argument);
 void do_scribe(CHAR_DATA * ch, char *argument);
 
-extern bool chaos;
-
 /*
  * Local functions.
  */
@@ -2032,15 +2030,12 @@ void do_zap(CHAR_DATA * ch, char *argument)
 
     if (victim != NULL && !IS_NPC(victim) && !IS_NPC(ch))  	/*make sure its a char first */
     {
-        if (!chaos)
+        if (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER))
         {
-            if (!IS_SET(victim->act, PLR_KILLER)
-                    || !IS_SET(ch->act, PLR_KILLER))
-            {
-                send_to_char("You can only kill other player killers.\n\r",
-                             ch);
-                return;
-            }
+            send_to_char("You can only kill other player killers.\n\r",
+                         ch);
+            return;
         }
     }
 
