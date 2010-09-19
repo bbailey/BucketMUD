@@ -40,11 +40,10 @@ By what name do you wish to be known? ~
 
 ~
 -1 MOTD~
-.
-This is the MOTD.  It can be edited in the ember.are file in the area
-directory.
-
-[Hit Return to continue]
+Welcome to BucketMUD. Please be sure to check out the forums, and also the code
+repository on GitHub if you are interested in tracking our development.
+Website: http://www.bucketmud.tk/
+GitHub: http://github.com/bbailey/BucketMUD
 ~
 51 IMOTD~
 .
