@@ -33,8 +33,6 @@ extern void do_yell(CHAR_DATA * ch, char *argument);
 extern void do_say(CHAR_DATA * ch, char *argument);
 void do_scribe(CHAR_DATA * ch, char *argument);
 
-extern bool chaos;
-
 /*
  * Local functions.
  */
@@ -474,14 +472,6 @@ void do_donate(CHAR_DATA * ch, char *argument)
     if (arg[0] == '\0')
     {
         send_to_char("Donate what?\n\r", ch);
-        return;
-    }
-    /* Donating EQ is not a good thing for someone who is in jail. Lets inform
-       them that they shouldnt be trying to cheat. -Lancelight */
-
-    if (IS_SET(ch->act, PLR_JAILED) && JAIL_CAN_DONATE == 0)
-    {
-        send_to_char("Donating is not allowed in jail.\n\r", ch);
         return;
     }
 
@@ -1597,15 +1587,6 @@ void do_wear(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    /* This check is more for RP'ish reasons, but I like the idea so its not
-       commented out. If you dont want this,just commented it out. -Lancelight */
-    if (IS_SET(ch->act, PLR_JAILED) && JAIL_CAN_WEAR == 0)
-    {
-        send_to_char("You will NOT wear civilian clothes while in jail!",
-                     ch);
-        return;
-    }
-
     if (!str_cmp(arg, "all"))
     {
         OBJ_DATA *obj_next;
@@ -1735,16 +1716,6 @@ void do_sacrifice(CHAR_DATA * ch, char *argument)
             }
     }
 
-    /* Again, this is sorta for RP, but it can also stop people from getting
-       rit of items they know that they arent suppose to have while in jail.
-       -Lancelight */
-
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("You will NOT get rid of any evidance!\n\r", ch);
-        return;
-    }
-
     if (obj->item_type == ITEM_CORPSE_PC)
     {
         if (obj->contains)
@@ -1816,16 +1787,6 @@ void do_quaff(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    /* I suggest leaving this check in place, just incase your mud has potions
-       that can damage the player. We dont want them breaking outa jail now do we
-       ;) -Lancelight */
-
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("No need to quaff while in jail.\n\r", ch);
-        return;
-    }
-
     if ((obj = get_obj_carry(ch, arg)) == NULL)
     {
         send_to_char("You do not have that potion.\n\r", ch);
@@ -1870,14 +1831,6 @@ void do_recite(CHAR_DATA * ch, char *argument)
     if ((scroll = get_obj_carry(ch, arg)) == NULL)
     {
         send_to_char("You do not have that scroll.\n\r", ch);
-        return;
-    }
-
-    /* Again, leave this in place unless u want jail breakers running around.
-       -Lancelight */
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("No need to recite anything while in jail.\n\r", ch);
         return;
     }
 
@@ -1949,13 +1902,6 @@ void do_brandish(CHAR_DATA * ch, char *argument)
     if (staff->item_type != ITEM_STAFF)
     {
         send_to_char("You can brandish only with a staff.\n\r", ch);
-        return;
-    }
-
-    /* Leave thgis in place unless u want jail breakers. -Lancelight */
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("No staves allowed in jail.\n\r", ch);
         return;
     }
 
@@ -2053,13 +1999,6 @@ void do_zap(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    /* Jail breakers? HA I think not. -Lancelight */
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("No using wands in jail bubz.\n\r", ch);
-        return;
-    }
-
     if (wand->item_type != ITEM_WAND)
     {
         send_to_char("You can zap only with a wand.\n\r", ch);
@@ -2091,15 +2030,12 @@ void do_zap(CHAR_DATA * ch, char *argument)
 
     if (victim != NULL && !IS_NPC(victim) && !IS_NPC(ch))  	/*make sure its a char first */
     {
-        if (!chaos)
+        if (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER))
         {
-            if (!IS_SET(victim->act, PLR_KILLER)
-                    || !IS_SET(ch->act, PLR_KILLER))
-            {
-                send_to_char("You can only kill other player killers.\n\r",
-                             ch);
-                return;
-            }
+            send_to_char("You can only kill other player killers.\n\r",
+                         ch);
+            return;
         }
     }
 
@@ -3356,12 +3292,6 @@ void do_junk(CHAR_DATA * ch, char *argument)
         send_to_char("What do you wish to junk?\n\r", ch);
         return;
     }
-    /* Let not let them throw away evidence now ;)  -Lancelight */
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("You will NOT get rid of any evidance!\n\r", ch);
-        return;
-    }
 
     if (str_cmp(arg, "all") && str_prefix("all.", arg))
     {
@@ -3496,13 +3426,6 @@ void do_brew(CHAR_DATA * ch, char *argument)
         send_to_char("You do not know how to brew potions.\n\r", ch);
         return;
     }
-    /* Brewing can damage players, so lets not let them get outa jail free ;)
-       -Lancelight */
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char("Brewing is not allowed in jail.\n\r", ch);
-        return;
-    }
 
     argument = one_argument(argument, arg);
 
@@ -3598,15 +3521,6 @@ void do_scribe(CHAR_DATA * ch, char *argument)
             && ch->level < skill_table[gsn_scribe].skill_level[ch->Class])
     {
         send_to_char("You do not know how to scribe scrolls.\n\r", ch);
-        return;
-    }
-
-    /* Writting scrolls can hurt players. Lets not let them die to get outa
-       jail. */
-    if (IS_SET(ch->act, PLR_JAILED))
-    {
-        send_to_char
-        ("You cant read or write while in jail, its to dark.\n\r", ch);
         return;
     }
 

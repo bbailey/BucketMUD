@@ -763,7 +763,8 @@ void do_note(CHAR_DATA * ch, char *argument)
 
     if (IS_NPC(ch))
         return;
-    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS) || IS_SET(ch->act, PLR_JAILED))
+
+    if (bv_is_set(ch->bv_comm_flags, BV_COMM_NO_CHANNELS))
     {
         send_to_char("You can't seem to write a note.\n\r", ch);
         return;

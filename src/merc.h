@@ -514,9 +514,6 @@ struct mob_index_data
     MPROG_GROUP_LIST *mprog_groups;
     int progtypes;
     sh_int breath_percent;
-    sh_int rnd_obj_percent;
-    sh_int rnd_obj_num;
-    long rnd_obj_types;
     unsigned int path_pos;
     bool path_move;
     FACTIONAFF_DATA *faction_affs;
@@ -598,9 +595,6 @@ struct char_data
     sh_int alignment;
     sh_int hitroll;
     sh_int breath_percent;
-    sh_int rnd_obj_percent;
-    sh_int rnd_obj_num;
-    long rnd_obj_types;
     sh_int damroll;
     sh_int armor[4];
     sh_int wimpy;
@@ -620,7 +614,6 @@ struct char_data
     MPROG_ACT_LIST *mpact;
     int mpactnum;
     int mobinvis;
-    sh_int jail_timer;
     /* mob counter for a reset */
     sh_int *reset_count;
     BitVector *bv_offense_flags;
@@ -712,7 +705,6 @@ struct pc_data
     bool confirm_pk;
     char *prompt;
     ROOM_INDEX_DATA *recall_room;
-    int chaos_score;
     char *alias[MAX_ALIAS];
     char *alias_sub[MAX_ALIAS];
     char *nemesis;
@@ -792,7 +784,6 @@ struct system_config
     char *idea_file;
     char *typo_file;
     char *shutdown_file;
-    char *chaos_file;
     char *clans_file;
     char *factions_file;
     char *socials_file;
@@ -1304,9 +1295,7 @@ void do_color(register char *inbuf, int inlen, register char *outbuf,
 
 /* db.c */
 
-#if !defined(CPP)
 char *remove_color(const char *str);
-#endif
 
 /* Added for ban.c -Lancelight */
 char *print_flags(int flag);
@@ -1341,9 +1330,6 @@ void *alloc_mem(int sMem);
 void *alloc_perm(int sMem);
 void free_mem(void *pMemPtr);
 unsigned int str_len(const char *str);
-#if defined(_MSC_VER)
-void snprintf(char *buffer, size_t count, const char *format, ...);
-#endif
 char *str_str(char *str1, char *str2);
 char *str_upr(char *str);
 int number_fuzzy(int number);
@@ -1664,60 +1650,6 @@ extern const struct flag_type furniture_flags[];
 
 extern const struct flag_type clan_flags[];
 extern const struct flag_type clan_join_flags[];
-extern const struct flag_type rnd_obj_flags[];
-
-struct rand_bag_material
-{
-    char *name;
-    bool isprefix;		/* before or after the type.name? */
-    sh_int size;		/* is the material big or small? */
-};
-
-struct rand_bag_type
-{
-    char *name;
-    sh_int capacity;		/* big or small? */
-    long wear_loc;		/* can it be worn? */
-};
-
-/* struct rand_light_type
- * {
- *  char *  name;
- *  sh_int  duration;
- * };
- */
-
-struct rand_weapon_type
-{
-    char *name;
-    sh_int magic_mod;
-    sh_int damage_mod;
-    sh_int weapon_type;
-};
-
-struct rand_armor_type
-{
-    char *name;
-    sh_int wearloc;
-    sh_int protect_mod;		/* + or - AC ? */
-    sh_int magic_mod;		/* better or worse for magic? */
-    sh_int p_type;
-};
-
-struct rand_item_material
-{
-    char *name;
-    sh_int coolness;		/* better AC for armor, better damroll for weapons, etc. */
-    sh_int magic_mod;
-    sh_int level;		/* level where this material is normal (i.e. iron is 1, dilithium is 80, etc.) */
-};
-
-struct rand_ring_type
-{
-    char *name;
-    sh_int coolness;		/* "exquisite gold" rings are cooler than "dirty copper" */
-    long extra_flags;		/* if it's "glowing" set it to glow, etc. */
-};
 
 /*****************************************************************************
  *                                 OLC END                                   *
@@ -1736,11 +1668,6 @@ int hit_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                    int members, int dam);
 int cast_xp_compute(CHAR_DATA * gch, CHAR_DATA * victim, int total_levels,
                     int members, int dam);
-
-/* mud_prog.c */
-#ifdef DUNNO_STRSTR
-char *strstr(const char *s1, const char *s2);
-#endif
 
 void mprog_act_trigger(char *txt, CHAR_DATA * ch);
 void mprog_bribe_trigger(CHAR_DATA * mob, CHAR_DATA * ch, int amount);

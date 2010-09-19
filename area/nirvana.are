@@ -3,7 +3,7 @@ Name        {30 35} Fstall  Nirvana~
 Builders    None~
 VNUMs       9000 9059
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ You see what appears to be a 3 sided pyramid with spidery arms and legs.
 modron~
 ACG J 300 S
 8 0 
-100 0 0 0 3d20+80 1d1+99 2d5+3 7
+100 3d20+80 1d1+99 2d5+3 7
 4 3 4 5
 trip assist_align assist_race ~
 BMNPQ HIK 0
@@ -35,7 +35,7 @@ A cubic creature, with spiny arms and legs.
 modron~
 AFGT DJ 300 S
 11 3 
-100 0 0 0 14d10+70 1d1+99 3d4+2 13
+100 14d10+70 1d1+99 3d4+2 13
 1 0 1 2
 bash disarm parry assist_align assist_race ~
 BMNPQ HIK 0
@@ -51,7 +51,7 @@ A five-armed creature which resembles a starfish on thin stilt-like legs.
 modron~
 ABFGT DJ 300 S
 14 3 
-100 0 0 0 15d12+110 1d1+99 4d4+3 16
+100 15d12+110 1d1+99 4d4+3 16
 -2 -2 0 -1
 bash disarm dodge rescue trip assist_align assist_race ~
 BMNPQR HIK 0
@@ -67,7 +67,7 @@ The decaton is a large, ten-tentacled sphere on stumpy legs.
 modron~
 ABFGQT DJ 300 S
 17 4 
-100 0 0 0 25d10+70 17d8+50 4d5+3 7
+100 25d10+70 17d8+50 4d5+3 7
 -4 -4 0 -2
 area_attack bash disarm parry trip assist_align assist_race ~
 BMNPQR HIK 0
@@ -83,7 +83,7 @@ A cylidrical modron with 9 tentacles and stubby legs.
 modron~
 ABFGQT DHJ 300 S
 20 5 
-100 0 0 0 11d8+250 20d8+75 4d6+4 7
+100 11d8+250 20d8+75 4d6+4 7
 -4 -4 -2 -3
 area_attack disarm dodge trip assist_align assist_race ~
 BMNPQR HIK G
@@ -100,7 +100,7 @@ it.
 modron~
 ABFGQ DJ 300 S
 22 5 
-100 0 0 0 25d10+300 18d10+75 4d6+5 8
+100 25d10+300 18d10+75 4d6+5 8
 -5 -5 -3 -4
 area_attack bash disarm fast parry assist_align assist_race ~
 BMNPQR HIK G
@@ -117,7 +117,7 @@ with 7 tentacles coming from it.
 modron~
 ABFGQR DJ 300 S
 24 5 
-100 0 0 0 30d10+350 20d10+100 6d4+5 13
+100 30d10+350 20d10+100 6d4+5 13
 -6 -6 -6 -4
 area_attack dodge parry crush assist_align assist_race ~
 BMNPQR HIK 0
@@ -134,7 +134,7 @@ and 4 tentacles below tipped with sharp claws.
 modron~
 ABFGQT DFHJ 300 S
 26 7 
-100 0 0 0 35d20+300 20d10+75 4d8+6 3
+100 35d20+300 20d10+75 4d8+6 3
 -8 -8 -8 -4
 area_attack bash disarm dodge fast kick kick_dirt parry rescue trip assist_align assist_race ~
 ABMNPQR CHIK 0
@@ -152,7 +152,7 @@ fan-like wings attached to their shoulders.
 modron~
 ABFGQ DJ 300 S
 28 6 
-100 0 0 0 10d100+150 20d12+100 4d8+7 13
+100 10d100+150 20d12+100 4d8+7 13
 -7 -8 -6 -8
 area_attack parry tail crush assist_align assist_race ~
 ABMNPQR HIK 0
@@ -170,7 +170,7 @@ like ball.
 modron~
 ABFGQRT DJ 300 S
 33 12 
-100 0 0 0 1d1+999 20d20+50 8d6+12 7
+100 1d1+999 20d20+50 8d6+12 7
 -11 -13 -10 -9
 bash disarm dodge assist_align assist_race ~
 ABMNPQR CHIK 0
@@ -187,7 +187,7 @@ and deepset eyes. It radiates intense power.
 modron~
 ABFGQRT DFHJ 0 S
 36 15 
-100 0 0 0 1d1+1599 40d20+50 7d8+15 17
+100 1d1+1599 40d20+50 7d8+15 17
 -11 -14 -11 -12
 disarm dodge fast kick kick_dirt parry trip assist_align assist_race ~
 ABHIKMNPQR CHIK 0
@@ -205,7 +205,7 @@ he looks very displeased to see you.
 modron~
 ABFGQRT DFHJ 0 S
 40 20 
-100 0 0 0 1d1+3999 1d1+3999 6d10+25 18
+100 1d1+3999 1d1+3999 6d10+25 18
 -15 -15 -15 -15
 area_attack fast assist_align assist_race ~
 ABHIKMNPQRS CHIK 0
@@ -225,9 +225,9 @@ unknown~
 A AC BC AB EF
 32 40 0 P
 A
-19 5
-A
 18 5
+A
+19 5
 E
 sword long the~
 This is an extremely long and heavy sword, with many magical runes inscribed

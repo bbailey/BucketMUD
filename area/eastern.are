@@ -3,7 +3,7 @@ Name        {10 20} Anon    Sands of Sorrow~
 Builders    None~
 VNUMs       5000 5070
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -20,7 +20,7 @@ some rest.
 Human~
 ACGHT P 900 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
 0 0 0
@@ -37,7 +37,7 @@ LOTS of rest.
 Human~
 AFGT P 650 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 3
+100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
 0 0 0
@@ -54,7 +54,7 @@ and black.
 snake~
 AGT 0 -10 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 L I
@@ -70,7 +70,7 @@ The little tail is mighty dangerous for such a small creature.
 Human~
 AGT 0 -50 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 11
+100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
 0 0 0
@@ -86,7 +86,7 @@ He's big, mean, and purple. Watch out!
 Human~
 ABFT 0 -100 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 7
+100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -102,7 +102,7 @@ Then adds to it, 'Prepare to die, have a nice day!'
 Human~
 ABCFT DH 450 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 11
+100 10d60+426 30d10+100 5d10+17 11
 -8 -8 -8 0
 none~
 0 0 0
@@ -120,7 +120,7 @@ about him.
 Human~
 AGHLT 0 950 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 7
+100 4d33+145 14d10+100 4d6+7 7
 1 1 1 5
 none~
 0 0 0
@@ -137,7 +137,7 @@ woven of silk and gold thread. A nasty cutlass hangs at his side.
 Human~
 ABLT 0 900 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -152,7 +152,7 @@ A proud nomad warrior stands here.
 Human~
 ABT 0 700 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 3
+100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
 0 0 0
@@ -167,7 +167,7 @@ A young slave sits here staring at you with pleading eyes.
 Human~
 ABHT 0 1000 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -184,7 +184,7 @@ Obviously it no longer fears death.
 Human~
 ABFLT DH -1000 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 3
+100 10d56+405 29d10+100 5d10+15 3
 -8 -8 -8 1
 none~
 0 0 0
@@ -200,7 +200,7 @@ This half-spider, half-drow creature is a formidable opponent.
 Human~
 AFGT D -1000 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 3
+100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
 0 0 0
@@ -216,7 +216,7 @@ The duergar could crush your head as easily as it does those rocks.
 Human~
 AFGT D -850 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 3
+100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
 0 0 0
@@ -233,7 +233,7 @@ has the same effect).
 Human~
 AGHT D 850 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -249,7 +249,7 @@ The shaman shoots spores into the air.
 Human~
 ABHT DH 850 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 7
+100 2d21+73 8d10+100 2d7+4 7
 5 5 5 7
 none~
 0 0 0
@@ -264,7 +264,7 @@ A small oasis invites you to dive in.
 Human~
 ABCFT 0 -200 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 7
+100 2d21+73 8d10+100 2d7+4 7
 5 5 5 7
 none~
 0 0 0
@@ -280,7 +280,7 @@ Don't mess with this animal.
 Human~
 ABFT 0 -351 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 7
+100 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
 none~
 0 0 0
@@ -308,9 +308,9 @@ unknown~
 D D D 0 0
 29 0 290 P
 A
-17 -4
-A
 2 2
+A
+17 -4
 #5002
 halberd~
 the halberd~
@@ -320,9 +320,9 @@ unknown~
 D AC ABC B 0
 29 16 290 P
 A
-19 2
-A
 18 2
+A
+19 2
 #5003
 amulet~
 the amulet~
@@ -508,9 +508,9 @@ unknown~
 D D D 0 0
 28 10 280 P
 A
-19 2
-A
 13 10
+A
+19 2
 #5026
 gem ruby~
 a large ruby~
@@ -943,26 +943,26 @@ A vast desert stretches for miles, the sand constantly shifting around you.
 You feel lost.
 ~
 0 8192 10
-D3
-Sand as far as the eye can see.
-~
-~
-0 0 5026
 D0
 Sand as far as the eye can see.
 ~
 ~
 0 0 5030
-D2
-Sand as far as the eye can see.
-~
-~
-0 0 5027
 D1
 Sand as far as the eye can see.
 ~
 ~
 0 0 5025
+D3
+Sand as far as the eye can see.
+~
+~
+0 0 5026
+D2
+Sand as far as the eye can see.
+~
+~
+0 0 5027
 S
 #5025
 The Sands of Sorrow~
@@ -970,6 +970,11 @@ A vast desert stretches for miles, the sand constantly shifting around you.
 You feel lost.
 ~
 0 8192 10
+D0
+You see a nomad camp by an oasis.
+~
+~
+0 0 5056
 D1
 Sand as far as the eye can see.
 ~
@@ -985,11 +990,6 @@ Sand as far as the eye can see.
 ~
 ~
 0 0 5024
-D0
-You see a nomad camp by an oasis.
-~
-~
-0 0 5056
 S
 #5026
 The Sands of Sorrow~
@@ -997,6 +997,11 @@ A vast desert stretches for miles, the sand constantly shifting around you.
 You feel lost.
 ~
 0 8192 10
+D1
+Sand as far as the eye can see.
+~
+~
+0 0 5024
 D0
 Sand as far as the eye can see.
 ~
@@ -1012,11 +1017,6 @@ Sand as far as the eye can see.
 ~
 ~
 0 0 5025
-D1
-Sand as far as the eye can see.
-~
-~
-0 0 5024
 S
 #5027
 The Sands of Sorrow~
@@ -1029,16 +1029,16 @@ You see a river flowing into the mountain.
 ~
 ~
 0 0 5007
-D2
-Sand as far as the eye can see.
-~
-~
-0 0 5030
 D1
 Sand as far as the eye can see.
 ~
 ~
 0 0 5028
+D2
+Sand as far as the eye can see.
+~
+~
+0 0 5030
 D0
 Sand as far as the eye can see.
 ~
@@ -1051,26 +1051,26 @@ A vast desert stretches for miles, the sand constantly shifting around you.
 You feel lost.
 ~
 0 8192 10
-D1
-Sand as far as the eye can see.
-~
-~
-0 0 5029
 D2
 Sand as far as the eye can see.
 ~
 ~
 0 0 5031
-D3
-Sand as far as the eye can see.
-~
-~
-0 0 5027
 D0
 Sand as far as the eye can see.
 ~
 ~
 0 0 5025
+D1
+Sand as far as the eye can see.
+~
+~
+0 0 5029
+D3
+Sand as far as the eye can see.
+~
+~
+0 0 5027
 S
 #5029
 The Sands of Sorrow~
@@ -1078,21 +1078,21 @@ A vast desert stretches for miles, the sand constantly shifting around you.
 You feel lost.
 ~
 0 8192 10
-D1
-The sand is glowing in this direction.
-~
-~
-0 0 5062
-D3
-Sand as far as the eye can see.
-~
-~
-0 0 5028
 D2
 Sand as far as the eye can see.
 ~
 ~
 0 0 5032
+D3
+Sand as far as the eye can see.
+~
+~
+0 0 5028
+D1
+The sand is glowing in this direction.
+~
+~
+0 0 5062
 D0
 Sand as far as the eye can see.
 ~
@@ -1105,6 +1105,11 @@ A vast desert stretches for miles, the sand constantly shifting around you.
 You feel lost.
 ~
 0 8192 10
+D3
+Sand as far as the eye can see.
+~
+~
+0 0 5032
 D2
 Sand as far as the eye can see.
 ~
@@ -1120,11 +1125,6 @@ Sand as far as the eye can see.
 ~
 ~
 0 0 5027
-D3
-Sand as far as the eye can see.
-~
-~
-0 0 5032
 S
 #5031
 The Sands of Sorrow~
@@ -1132,26 +1132,26 @@ A vast desert stretches for miles, the sand constantly shifting around you.
 You feel lost.
 ~
 0 8192 10
-D2
-Sand as far as the eye can see.
-~
-~
-0 0 5063
-D0
-Sand as far as the eye can see.
-~
-~
-0 0 5028
-D3
-Sand as far as the eye can see.
-~
-~
-0 0 5030
 D1
 Sand as far as the eye can see.
 ~
 ~
 0 0 5032
+D2
+Sand as far as the eye can see.
+~
+~
+0 0 5063
+D3
+Sand as far as the eye can see.
+~
+~
+0 0 5030
+D0
+Sand as far as the eye can see.
+~
+~
+0 0 5028
 S
 #5032
 The Sands of Sorrow~
@@ -1159,26 +1159,26 @@ A vast desert stretches for miles, the sand constantly shifting around you.
 You feel lost.
 ~
 0 8192 10
-D0
-Sand as far as the eye can see.
-~
-~
-0 0 5029
 D2
 You see a tiny ledge.
 ~
 ~
 0 0 5026
-D1
+D0
 Sand as far as the eye can see.
 ~
 ~
-0 0 5030
+0 0 5029
 D3
 Sand as far as the eye can see.
 ~
 ~
 0 0 5031
+D1
+Sand as far as the eye can see.
+~
+~
+0 0 5030
 S
 #5056
 A nomad camp~

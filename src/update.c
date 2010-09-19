@@ -137,8 +137,6 @@ void gain_exp(CHAR_DATA * ch, int gain)
 /*
  * Regeneration stuff.
  */
-extern bool chaos;
-
 static int hit_gain(CHAR_DATA * ch)
 {
     int gain;
@@ -203,9 +201,6 @@ static int hit_gain(CHAR_DATA * ch)
         gain /= 8;
 
     if (IS_AFFECTED(ch, AFF_HASTE))
-        gain /= 2;
-
-    if (chaos)
         gain /= 2;
 
     return UMIN(gain, ch->max_hit - ch->hit);
@@ -275,9 +270,6 @@ static int mana_gain(CHAR_DATA * ch)
         gain /= 8;
 
     if (IS_AFFECTED(ch, AFF_HASTE))
-        gain /= 2;
-
-    if (chaos)
         gain /= 2;
 
     return UMIN(gain, ch->max_mana - ch->mana);
@@ -628,82 +620,6 @@ static void char_update(void)
 
         ch_next = ch->next;
 
-        if (IS_SET(ch->act, PLR_JAILED) && ch->jail_timer == 1)
-        {
-            if (IS_NPC(ch))
-            {
-                blarg = ch->was_in_room->vnum;
-            }
-            else
-            {
-                if (JAIL_RELEASE_RECALL == 1)
-                    blarg = ch->pcdata->recall_room->vnum;
-                else
-                    blarg = JAIL_RELEASE_VNUM;
-            }
-
-            if (JAIL_NOSHOUT == 1)
-            {
-                bv_unset(ch->bv_comm_flags, BV_COMM_NO_SHOUT);
-            }
-
-            if (JAIL_NOEMOTE == 1)
-            {
-                bv_unset(ch->bv_comm_flags, BV_COMM_NO_EMOTE);
-            }
-
-            if (JAIL_NOTELL == 1)
-            {
-                bv_unset(ch->bv_comm_flags, BV_COMM_NO_TELL);
-            }
-
-            if (JAIL_NOCHANNEL == 1)
-            {
-                bv_unset(ch->bv_comm_flags, BV_COMM_NO_CHANNELS);
-            }
-
-            REMOVE_BIT(ch->act, PLR_JAILED);
-            send_to_char("`WYour `Rjail term`W has been `clifted\n\r", ch);
-
-            if (!IS_NPC(ch) && (JAIL_RELEASE_RECALL == 1))
-            {
-                send_to_char
-                ("`Wand you are being teleported back to `Grecall`W.`w\n",
-                 ch);
-                char_from_room(ch);
-                ch->jail_timer = 0;
-                char_to_room(ch, get_room_index(blarg));
-                if (IS_NPC(ch))
-                    sprintf(buf,
-                            "%s has served their time and has been freed jail.",
-                            ch->short_descr);
-                else
-                    sprintf(buf,
-                            "%s has served their time and has been freed jail.",
-                            ch->name);
-                do_sendinfo(ch, buf);
-            }
-            else
-            {
-                send_to_char
-                ("`Wand you are being teleported back to your room.\n",
-                 ch);
-                char_from_room(ch);
-                ch->jail_timer = 0;
-                char_to_room(ch, get_room_index(blarg));
-                sprintf(buf,
-                        "%s has served their time and has been freed jail.",
-                        ch->short_descr);
-                do_sendinfo(ch, buf);
-
-            }
-        }
-
-        if (IS_SET(ch->act, PLR_JAILED) && ch->jail_timer > 0)
-        {
-            --ch->jail_timer;
-        }
-
         /* Check to see if the player wants to see "ticks" or not -Lancelight */
         if (!IS_NPC(ch) && ch->pcdata->ticks == 0)
         {
@@ -764,10 +680,6 @@ static void char_update(void)
             }
 
             ++ch->idle_timer;
-            if (IS_SET(ch->act, PLR_JAILED))
-            {
-                --ch->jail_timer;
-            }
             if (ch->level < LEVEL_IMMORTAL)
             {
                 gain_condition(ch, COND_DRUNK, -1 * time_info.hour % 2);
@@ -931,7 +843,7 @@ static void char_update(void)
     {
         ch_next = ch->next_player;
 
-        if (ch->desc != NULL && save_number == 30 && !chaos)
+        if (ch->desc != NULL && save_number == 30)
             save_char_obj(ch);
     }
 

@@ -3,7 +3,7 @@ Name        {10 25} Anon    Dwarven Kingdom~
 Builders    None~
 VNUMs       6500 6562
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ The guard looks very tough and mean.
 Dwarf~
 ABLT DJ 500 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 3
+100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
 0 CLQ R
@@ -35,7 +35,7 @@ He is very dirty, and looks extremely over-worked.
 Dwarf~
 AGLT J 900 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 CLQ R
@@ -51,7 +51,7 @@ A black, almost transparent wraith.
 Human~
 ABT DF -900 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 7
+100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
 0 0 0
@@ -67,7 +67,7 @@ The storekeeper is very rotund, but looks like a sharp guy.
 Human~
 ABLT 0 900 S
 34 0 
-100 0 0 0 10d78+505 34d10+100 5d11+21 7
+100 10d78+505 34d10+100 5d11+21 7
 -11 -11 -11 0
 none~
 0 0 0
@@ -83,7 +83,7 @@ Granite Head is covered with flour and grains.
 Human~
 ABLT 0 900 S
 35 0 
-100 0 0 0 10d82+534 35d10+100 5d12+18 11
+100 10d82+534 35d10+100 5d12+18 11
 -11 -11 -11 0
 none~
 0 0 0
@@ -100,7 +100,7 @@ habitat.  He looks very powerful.
 lizard~
 AGT D 100 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 3
+100 6d36+205 18d10+100 4d7+12 3
 -1 -1 -1 4
 none~
 0 L I
@@ -116,7 +116,7 @@ The giant is about 8 feet tall, with arms of steel, and looks very strong.
 Giant~
 AGT 0 0 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 3
+100 5d34+175 16d10+100 4d7+8 3
 0 0 0 5
 none~
 0 HI JP
@@ -132,7 +132,7 @@ The mineworker is very tired, and very dirty, and he has bulging muscles.
 Dwarf~
 ABLT J 0 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 CLQ R
@@ -148,7 +148,7 @@ The mine leader is very big and very strong.
 Dwarf~
 ABLT J 0 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 CLQ R
@@ -164,7 +164,7 @@ He is a very skilled surgeon, with hands of steel.
 Dwarf~
 ABLT DHJ 1000 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 7
+100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
 0 CLQ R
@@ -179,7 +179,7 @@ A dwarven peon is awaiting help here.
 Dwarf~
 ABLT J 500 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 7
+100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
 0 CLQ R
@@ -194,7 +194,7 @@ A grinning dwarf is here.
 Dwarf~
 ABLT J 500 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 11
+100 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
 none~
 0 CLQ R
@@ -209,7 +209,7 @@ An unwanted son is here.  You feel sorry for the guy.
 Dwarf~
 AGT J 250 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 7
+100 2d21+73 8d10+100 2d7+4 7
 5 5 5 7
 none~
 0 CLQ R
@@ -224,7 +224,7 @@ An unwanted daughter is here.  You feel sorry for her.
 Dwarf~
 AGT J 250 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 3
+100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
 0 CLQ R
@@ -239,7 +239,7 @@ A barrack guard is here.
 Dwarf~
 ABLT J 100 S
 17 0 
-100 0 0 0 5d39+187 17d10+100 4d7+10 7
+100 5d39+187 17d10+100 4d7+10 7
 0 0 0 4
 none~
 0 CLQ R
@@ -254,7 +254,7 @@ A man in waiting is here.  He looks nervous and unsure of himself.
 Human~
 ABLT 0 300 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 3
+100 5d34+175 16d10+100 4d7+8 3
 0 0 0 5
 none~
 0 0 0
@@ -270,7 +270,7 @@ He looks VERY tough.
 Human~
 ABFLT H -1000 S
 28 0 
-100 0 0 0 10d52+387 28d10+100 5d9+18 11
+100 10d52+387 28d10+100 5d9+18 11
 -7 -7 -7 1
 none~
 0 0 0
@@ -285,7 +285,7 @@ There is a giant snake here.
 snake~
 ABFT 0 -1000 S
 15 0 
-100 0 0 0 4d37+162 15d10+100 4d6+9 3
+100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
 0 L I
@@ -353,9 +353,9 @@ unknown~
 AC AC C A F
 17 5 170 P
 A
-1 2
-A
 18 2
+A
+1 2
 #6510
 helmet~
 a dwarven helmet~
@@ -373,9 +373,9 @@ unknown~
 0 0 0 0 0
 19 1 1000 P
 A
-19 1
-A
 18 1
+A
+19 1
 #6512
 gloves~
 dwarven gloves~
@@ -385,9 +385,9 @@ unknown~
 BC BC BC 0 0
 19 2 1000 P
 A
-2 1
-A
 1 1
+A
+2 1
 #6513
 note~
 a note~

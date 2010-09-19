@@ -3,7 +3,7 @@ Name        {15 25} Dylan   Dylan's Area~
 Builders    None~
 VNUMs       9101 9199
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ sharp talons flex as she considers you for her dinner.
 Human~
 ACFT DFP -500 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 11
+100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
 0 0 0
@@ -40,7 +40,7 @@ her presence.
 Human~
 ABCFT DFP -750 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 3
+100 9d39+290 23d10+100 5d8+11 3
 -4 -4 -4 2
 none~
 0 0 0
@@ -57,7 +57,7 @@ because objects behind it seem to waver and are slightly blurred.
 Human~
 ACFT DFPQ 0 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 11
+100 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -74,7 +74,7 @@ finest ghostly silks and a headdress with an elaborate brooch.
 Human~
 ACT DHP -100 S
 28 0 
-100 0 0 0 10d52+387 28d10+100 5d9+18 7
+100 10d52+387 28d10+100 5d9+18 7
 -7 -7 -7 1
 none~
 0 0 0
@@ -90,7 +90,7 @@ moves surprisingly fast for something of its size.~
 Human~
 AGT 0 50 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 11
+100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
 0 0 0
@@ -107,7 +107,7 @@ moves surprisingly fast for something of its size.
 Human~
 AGT 0 50 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 7
+100 10d56+405 29d10+100 5d10+15 7
 -8 -8 -8 1
 none~
 0 0 0
@@ -125,7 +125,7 @@ they would be quite painful.  Her eyes pierce your very soul.
 Human~
 ABCFT DH -600 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -145,9 +145,9 @@ unknown~
 AB AB AB 0 0
 0 10 0 P
 A
-24 1
-A
 2 2
+A
+24 1
 #9102
 bronze bracers~
 A pair of carved bronze bracers~
@@ -165,9 +165,9 @@ unknown~
 D D D 0 0
 28 10 280 P
 A
-4 1
-A
 3 1
+A
+4 1
 #9104
 magenta potion~
 magenta potion~
@@ -1012,14 +1012,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D0
-(null)~
-~
-0 -1 9148
 D5
 (null)~
 ~
 0 -1 9146
+D0
+(null)~
+~
+0 -1 9148
 S
 #9145
 Raging hurricane.~
@@ -1028,6 +1028,11 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
+D2
+You see a sneezy little cloud.
+~
+~
+0 -1 9133
 D3
 (null)~
 ~
@@ -1036,11 +1041,6 @@ D5
 (null)~
 ~
 0 -1 9148
-D2
-You see a sneezy little cloud.
-~
-~
-0 -1 9133
 S
 #9146
 Raging hurricane.~
@@ -1081,6 +1081,10 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
+D4
+(null)~
+~
+0 -1 9145
 D3
 (null)~
 ~
@@ -1089,10 +1093,6 @@ D2
 (null)~
 ~
 0 -1 9144
-D4
-(null)~
-~
-0 -1 9145
 S
 #9149
 Raging hurricane.~
@@ -1101,6 +1101,10 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
+D1
+(null)~
+~
+0 -1 9150
 D0
 (null)~
 ~
@@ -1110,10 +1114,6 @@ You see a cumulative nimbus cloud.
 ~
 ~
 0 -1 9157
-D1
-(null)~
-~
-0 -1 9150
 S
 #9150
 Raging hurricane.~
@@ -1122,10 +1122,6 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D0
-(null)~
-~
-0 -1 9151
 D3
 (null)~
 ~
@@ -1134,6 +1130,10 @@ D1
 (null)~
 ~
 0 -1 9145
+D0
+(null)~
+~
+0 -1 9151
 S
 #9151
 Raging hurricane.~
@@ -1142,14 +1142,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D3
-(null)~
-~
-0 -1 9152
 D2
 (null)~
 ~
 0 -1 9150
+D3
+(null)~
+~
+0 -1 9152
 S
 #9152
 Raging hurricane.~
@@ -1158,14 +1158,14 @@ of the raging hurricane.  It is hard to see and hear anything.
 Your only thought is to seek refuge from the storm.
 ~
 0 8193 5
-D1
-(null)~
-~
-0 -1 9151
 D2
 (null)~
 ~
 0 -1 9149
+D1
+(null)~
+~
+0 -1 9151
 S
 #9153
 Calm cloud.~

@@ -3,7 +3,7 @@ Name        { 1  5} Hatchet Mud School~
 Builders    None~
 VNUMs       3700 3799
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ She's big and bad.  Don't mess with her.
 Human~
 ABGQTV CH 1000 S
 30 10 
-100 0 0 0 1d1+999 1d1+999 2d4+30 13
+100 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 area_attack bash disarm dodge fast kick kick_dirt parry trip ~
 ABCD 0 0
@@ -37,7 +37,7 @@ would really suffer the consequences.
 unique~
 ABG C 0 S
 5 -5 
-100 0 0 0 1d1+49 1d1+99 1d1+0 14
+100 1d1+49 1d1+99 1d1+0 14
 -15 -15 -15 -15
 area_attack trip ~
 AB CD 0
@@ -54,7 +54,7 @@ he is leashed up, and you are not.
 school monster~
 ABU 0 0 S
 1 0 
-100 0 0 0 1d1+7 1d1+99 1d3+0 5
+100 1d1+7 1d1+99 1d3+0 5
 10 10 10 10
 none~
 AB 0 C
@@ -71,7 +71,7 @@ he is leashed up, and you are not.
 school monster~
 ABHU 0 0 S
 1 0 
-100 0 0 0 1d1+7 1d1+99 1d2+0 5
+100 1d1+7 1d1+99 1d2+0 5
 10 10 10 10
 crush ~
 AB 0 C
@@ -88,7 +88,7 @@ he is leashed up, and you are not.
 school monster~
 ABFU 0 0 S
 1 0 
-100 0 0 0 1d1+7 1d1+99 1d4+0 5
+100 1d1+7 1d1+99 1d4+0 5
 10 10 10 10
 disarm parry ~
 AB 0 C
@@ -105,7 +105,7 @@ he is leashed up, and you are not.
 school monster~
 ABFHU 0 0 S
 1 0 
-100 0 0 0 1d1+7 1d1+99 1d3+0 5
+100 1d1+7 1d1+99 1d3+0 5
 10 10 10 10
 none~
 AB 0 C
@@ -122,7 +122,7 @@ looks like a great prize!!!
 school monster~
 ABU JZ 0 S
 2 1 
-100 0 0 0 2d2+20 1d1+99 1d4+1 5
+100 2d2+20 1d1+99 1d4+1 5
 8 8 8 10
 dodge trip ~
 AB 0 C
@@ -138,7 +138,7 @@ He is big and bad.  Don't mess with him.
 Human~
 ABGQTV CH 1000 S
 30 10 
-100 0 0 0 1d1+999 1d1+999 2d4+30 13
+100 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 area_attack bash disarm dodge fast kick kick_dirt parry trip ~
 ABCD 0 0
@@ -154,7 +154,7 @@ He is big and bad.  Don't mess with him.
 Human~
 ABGQTV CH 1000 S
 30 10 
-100 0 0 0 1d1+999 1d1+999 2d4+30 13
+100 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 area_attack bash disarm dodge fast kick kick_dirt parry trip ~
 ABCD 0 0
@@ -170,7 +170,7 @@ The rabbit smiles at you, completely harmless!
 rabbit~
 AGHU 0 100 S
 1 0 
-100 0 0 0 1d1+10 1d1+99 1d3+0 10
+100 1d1+10 1d1+99 1d3+0 10
 10 10 10 10
 dodge fast ~
 0 0 0
@@ -186,7 +186,7 @@ It smiles at you, and tries to eat your leg.
 lizard~
 AGU 0 -100 S
 2 0 
-100 0 0 0 2d2+20 1d1+99 1d4+1 10
+100 2d2+20 1d1+99 1d4+1 10
 8 8 8 10
 none~
 0 L I
@@ -202,7 +202,7 @@ It grunts at you.
 pig~
 AGU 0 0 S
 3 1 
-100 0 0 0 3d3+30 1d1+99 1d6+1 15
+100 3d3+30 1d1+99 1d6+1 15
 7 7 7 9
 bash berserk dodge ~
 0 0 0
@@ -218,7 +218,7 @@ It's fur might be worth money.
 fox~
 AGHU Z 100 S
 1 1 
-100 0 0 0 1d1+12 1d1+99 1d3+1 10
+100 1d1+12 1d1+99 1d3+1 10
 8 8 8 10
 dodge fast trip ~
 0 0 0
@@ -234,7 +234,7 @@ You don't see much but slime about it.
 unique~
 AGU 0 0 S
 0 0 
-100 0 0 0 1d1+0 1d1+99 1d1+0 14
+100 1d1+0 1d1+99 1d1+0 14
 10 10 10 10
 none~
 0 0 0
@@ -250,7 +250,7 @@ It looks mean.  You'd better run.
 school monster~
 AFTU Z 0 S
 5 1 
-100 0 0 0 5d5+55 1d1+99 1d6+3 10
+100 5d5+55 1d1+99 1d6+3 10
 5 5 5 8
 disarm parry tail ~
 AB HI C
@@ -266,7 +266,7 @@ The bear must be bigger than you!  It wants to rip your head off.
 bear~
 AGU 0 0 S
 4 1 
-100 0 0 0 4d4+44 1d1+99 1d6+2 5
+100 4d4+44 1d1+99 1d6+2 5
 6 5 6 7
 bash berserk disarm crush assist_race ~
 0 EI 0
@@ -282,7 +282,7 @@ The wolf doesn't want to be bothered.
 Wolf~
 AGU Z 0 S
 4 0 
-100 0 0 0 4d4+44 1d1+99 1d6+2 10
+100 4d4+44 1d1+99 1d6+2 10
 7 7 7 10
 dodge fast trip assist_race ~
 0 0 0
@@ -298,7 +298,7 @@ He is big and bad.  Don't mess with him.
 Human~
 ABCQTV CH 1000 S
 30 10 
-100 0 0 0 1d1+999 1d1+999 2d4+30 13
+100 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 area_attack bash disarm dodge fast kick kick_dirt parry trip ~
 ABCD 0 0
@@ -314,7 +314,7 @@ He is big and bad.  Don't mess with him.
 Human~
 ABCJQTV CH 1000 S
 30 10 
-100 0 0 0 1d1+999 1d1+999 2d4+30 13
+100 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 area_attack bash disarm dodge fast kick kick_dirt parry trip ~
 ABCD 0 0
@@ -330,7 +330,7 @@ He is big and bad.  Don't mess with him.
 Human~
 ABCKQTV CH 1000 S
 30 10 
-100 0 0 0 1d1+999 1d1+999 2d4+30 13
+100 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 area_attack bash disarm dodge fast kick kick_dirt parry trip ~
 ABCD 0 0
@@ -347,7 +347,7 @@ diploma is yours.
 school monster~
 ABU J 0 S
 3 1 
-100 0 0 0 2d4+30 1d1+99 1d6+1 5
+100 2d4+30 1d1+99 1d6+1 5
 8 8 8 10
 disarm dodge trip ~
 AB 0 C
@@ -563,9 +563,9 @@ unknown~
 0 0 0 0 0
 0 1 0 P
 A
-4 1
-A
 5 1
+A
+4 1
 E
 diploma~
 This document shows that you have graduated from Mud School.
@@ -582,9 +582,9 @@ unknown~
 0 0 200 0 0
 0 2 0 P
 A
-17 -1
-A
 24 -1
+A
+17 -1
 E
 banner~
 This is the official Merc war banner to see you through the darkest realm!
@@ -628,6 +628,11 @@ wall.
 ~
 0 131084 0
 E
+plaque~
+This zone (Mud School) is created by Hatchet for any Merc Mud.
+Copyright 1992, 1993.
+~
+E
 sign~
 Equipment check time!  Type 'EQUIPMENT' to see your current equipment.  Right
 now, you have just a vest, a shield, and a weapon.  As you go through Mud
@@ -642,11 +647,6 @@ To stop using a piece of equipment, type 'REMOVE item'.
 Finally, to see the items in your inventory, type 'INVENTORY'.
 
 When you are ready to continue, go west.
-~
-E
-plaque~
-This zone (Mud School) is created by Hatchet for any Merc Mud.
-Copyright 1992, 1993.
 ~
 D2
 You see a path into another room.

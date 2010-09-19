@@ -50,7 +50,7 @@
 		"     Thanatos - morn@telmaron.com or jonathan_w._rose@ffic.com\n\r" \
 		"     Heavily modified by Zane (zane@supernova.org) "
 
-#define CURRENT_AREA_VERSION 1
+#define CURRENT_AREA_VERSION 2
 
 /*
  * New typedefs.
@@ -260,9 +260,6 @@ DECLARE_OLC_FUN(medit_position);	/* ROM */
 DECLARE_OLC_FUN(medit_gold);	/* ROM */
 DECLARE_OLC_FUN(medit_hitroll);	/* ROM */
 DECLARE_OLC_FUN(medit_bdamage);
-DECLARE_OLC_FUN(medit_randtype);	/* ROM */
-DECLARE_OLC_FUN(medit_randnum);	/* ROM */
-DECLARE_OLC_FUN(medit_randpct);	/* ROM */
 /*
  * MudProgs Editor Prototypes
  */

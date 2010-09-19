@@ -3,7 +3,7 @@ Name        { 1  5} Sandman Dwarven Day Care~
 Builders    None~
 VNUMs       6600 6647
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ This is a young but not totally harmless creature.
 Dwarf~
 ACGT J -5 S
 3 0 
-100 0 0 0 1d4+30 1d1+99 1d4+2 13
+100 1d4+30 1d1+99 1d4+2 13
 7 6 7 10
 berserk assist_race ~
 0 CLQ R
@@ -35,7 +35,7 @@ This is a tiny little bear with a heart on his chest.
 doll~
 ACG 0 500 S
 1 0 
-100 0 0 0 1d10+10 1d1+99 1d4+0 13
+100 1d10+10 1d1+99 1d4+0 13
 8 5 9 10
 trip assist_race ~
 C ES GHJKO
@@ -51,7 +51,7 @@ You see a small little cute rag doll.
 doll~
 ACG 0 300 S
 2 0 
-100 0 0 0 2d5+19 1d1+99 1d5+0 13
+100 2d5+19 1d1+99 1d5+0 13
 7 4 8 10
 dodge fast assist_race ~
 C ES GHJKO
@@ -67,7 +67,7 @@ The toy is looking for target practice.
 doll~
 ACGT 0 -300 S
 3 1 
-100 0 0 0 3d5+36 1d1+99 1d4+3 17
+100 3d5+36 1d1+99 1d4+3 17
 6 7 6 9
 kick kick_dirt assist_race ~
 C EGS EGHJKO
@@ -84,7 +84,7 @@ He snarls and growls at you.
 doll~
 ACF 0 -400 S
 3 0 
-100 0 0 0 3d4+29 1d1+99 1d6+1 32
+100 3d4+29 1d1+99 1d6+1 32
 6 3 7 10
 berserk trip assist_race ~
 C ES GHJKO
@@ -100,7 +100,7 @@ This doll has been hugged and played with until there is almost nothing left.
 doll~
 ACG 0 -2 S
 1 0 
-100 0 0 0 1d10+1 1d1+99 1d4+0 13
+100 1d10+1 1d1+99 1d4+0 13
 8 5 9 10
 assist_race ~
 C ES GHJKO
@@ -117,7 +117,7 @@ appears that there is still some fight left in her.
 Dwarf~
 AG J 10 S
 5 1 
-100 0 0 0 4d4+50 5d4+100 1d6+1 16
+100 4d4+50 5d4+100 1d6+1 16
 5 5 5 10
 bash berserk assist_race ~
 0 CLQ R
@@ -134,7 +134,7 @@ You suddenly think that you had better flee.
 Dwarf~
 ABCT DJ -800 S
 8 1 
-100 0 0 0 3d10+100 8d4+100 1d7+3 17
+100 3d10+100 8d4+100 1d7+3 17
 3 2 3 8
 bash berserk assist_race ~
 0 CLQ R
@@ -151,7 +151,7 @@ biggest urge to put him out of his misery.
 Dwarf~
 ABC J -400 S
 1 0 
-100 0 0 0 2d4+15 1d1+199 2d2+1 13
+100 2d4+15 1d1+199 2d2+1 13
 8 8 8 10
 kick kick_dirt trip ~
 0 CLQ R
@@ -183,9 +183,9 @@ unknown~
 0 0 0 0 0
 3 1 1200 G
 A
-13 4
-A
 1 1
+A
+13 4
 E
 ring pink ice~
 How strange...it's made of ice, but it doesn't melt. It feels pleasantly 
@@ -200,9 +200,9 @@ unknown~
 A B A A A
 3 5 2000 G
 A
-12 5
-A
 4 1
+A
+12 5
 E
 robe linen~
 It radiates an aura of peace and wisdom.  The perfect garb for a teacher.
@@ -216,9 +216,9 @@ unknown~
 AB B AB ABC F
 0 3 50 W
 A
-18 -1
-A
 17 -1
+A
+18 -1
 E
 broom~
 It's worn and tired, probably from swatting too many children.
@@ -504,6 +504,10 @@ Mini-Maze~
 You are in a small passage that looks just like every other one.
 ~
 0 9 2
+D1
+(null)~
+~
+0 -1 6614
 D2
 (null)~
 ~
@@ -512,10 +516,6 @@ D3
 (null)~
 ~
 0 -1 6612
-D1
-(null)~
-~
-0 -1 6614
 S
 #6614
 Mini-Maze~
@@ -536,20 +536,24 @@ Mini-Maze~
 You are in a small passage that looks just like every other one.
 ~
 0 9 2
-D1
-(null)~
-~
-0 -1 6616
 D0
 (null)~
 ~
 0 -1 6613
+D1
+(null)~
+~
+0 -1 6616
 S
 #6616
 Mini-Maze~
 You are in a small passage that looks just like every other one.
 ~
 0 9 2
+D3
+(null)~
+~
+0 -1 6615
 D2
 (null)~
 ~
@@ -558,10 +562,6 @@ D0
 (null)~
 ~
 0 -1 6614
-D3
-(null)~
-~
-0 -1 6615
 S
 #6624
 End of the Mini-Maze~

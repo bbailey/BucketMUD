@@ -62,16 +62,13 @@ bool is_safe(CHAR_DATA * ch, CHAR_DATA * victim);
 static void one_hit
 (CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dt);
 static void mob_hit(CHAR_DATA * ch, CHAR_DATA * victim, int dt);
-static void chaos_kill(CHAR_DATA * victim);
 static void pk_kill(CHAR_DATA * victim);
 static void raw_kill(CHAR_DATA * victim);
 static void set_fighting(CHAR_DATA * ch, CHAR_DATA * victim);
 static void disarm(CHAR_DATA * ch, CHAR_DATA * victim,
                    OBJ_DATA * target_weapon);
-static void chaos_log(CHAR_DATA * ch, char *argument);
 static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
                         int dt, int dam_type);
-extern bool chaos;
 extern bool gsilentdamage;
 extern bool can_use(CHAR_DATA * ch, long sn);
 
@@ -145,7 +142,7 @@ static void check_assist(CHAR_DATA * ch, CHAR_DATA * victim)
             if (!IS_NPC(ch) && IS_NPC(rch)
                     && bv_is_set(rch->bv_offense_flags, BV_OFF_ASSIST_PLAYERS)
                     && rch->level + 6 > victim->level
-                    && (!chaos && !IS_SET(ch->act, PLR_KILLER)))
+                    && !IS_SET(ch->act, PLR_KILLER))
             {
                 do_emote(rch, "screams and attacks!");
                 multi_hit(rch, victim, TYPE_UNDEFINED);
@@ -770,15 +767,12 @@ static void one_hit(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
 /*
  * Inflict damage from a hit.
  */
-extern bool chaos;
-
 bool damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dam,
             int dt, int dam_type)
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
     bool immune;
-    int chaos_points;
 
     if (victim->position == POS_DEAD)
         return FALSE;
@@ -1019,18 +1013,8 @@ bool damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dam,
              * Dying penalty:
              * 1/2 way back to previous level.
              */
-            if (!chaos && victim->exp > 0 && IS_NPC(ch))
+            if (victim->exp > 0 && IS_NPC(ch))
                 gain_exp(victim, -1 * (victim->exp / 2));
-        }
-        if (chaos)
-        {
-            chaos_points = 0;
-
-            if (ch->level < victim->level)
-                chaos_points = 2 * (victim->level - ch->level);
-
-            chaos_points = chaos_points + victim->level;
-            ch->pcdata->chaos_score = chaos_points;
         }
 #ifdef AUTO_HATE
         if (!IS_NPC(victim) && IS_NPC(ch))
@@ -1044,9 +1028,7 @@ bool damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon, int dam,
             do_sendinfo(ch, buf);
         }
 
-        if (chaos && !IS_NPC(victim))
-            chaos_kill(victim);
-        else if (!(!IS_NPC(victim) && !IS_NPC(ch)))
+        if (!(!IS_NPC(victim) && !IS_NPC(ch)))
         {
             affect_factions(ch, victim);
             raw_kill(victim);
@@ -1130,7 +1112,6 @@ bool new_damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
     bool immune;
-    int chaos_points;
 
     if (victim->position == POS_DEAD)
         return FALSE;
@@ -1360,18 +1341,8 @@ bool new_damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
              * Dying penalty:
              * 1/2 way back to previous level.
              */
-            if (!chaos && victim->exp > 0 && IS_NPC(ch))
+            if (victim->exp > 0 && IS_NPC(ch))
                 gain_exp(victim, -1 * (victim->exp / 2));
-        }
-        if (chaos)
-        {
-            chaos_points = 0;
-
-            if (ch->level < victim->level)
-                chaos_points = 2 * (victim->level - ch->level);
-
-            chaos_points = chaos_points + victim->level;
-            ch->pcdata->chaos_score = chaos_points;
         }
 
         if (!IS_NPC(victim))
@@ -1381,9 +1352,7 @@ bool new_damage(CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * weapon,
             do_sendinfo(ch, buf);
         }
 
-        if (chaos && !IS_NPC(victim))
-            chaos_kill(victim);
-        else if (!(!IS_NPC(victim) && !IS_NPC(ch)))
+        if (!(!IS_NPC(victim) && !IS_NPC(ch)))
             raw_kill(victim);
         else
         {
@@ -1463,7 +1432,6 @@ static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
 {
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *corpse;
-    int chaos_points;
 
     if (victim->position == POS_DEAD)
         return FALSE;
@@ -1609,18 +1577,8 @@ static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
              * Dying penalty:
              * 1/2 way back to previous level.
              */
-            if (!chaos && victim->exp > 0 && IS_NPC(ch))
+            if (victim->exp > 0 && IS_NPC(ch))
                 gain_exp(victim, -1 * (victim->exp / 2));
-        }
-        if (chaos)
-        {
-            chaos_points = 0;
-
-            if (ch->level < victim->level)
-                chaos_points = 2 * (victim->level - ch->level);
-
-            chaos_points = chaos_points + victim->level;
-            ch->pcdata->chaos_score += chaos_points;
         }
 
         if (!IS_NPC(victim))
@@ -1630,9 +1588,7 @@ static bool vorpal_kill(CHAR_DATA * ch, CHAR_DATA * victim, int dam,
             do_sendinfo(ch, buf);
         }
 
-        if (chaos && !IS_NPC(victim))
-            chaos_kill(victim);
-        else if (!(!IS_NPC(victim) && !IS_NPC(ch)))
+        if (!(!IS_NPC(victim) && !IS_NPC(ch)))
             raw_kill(victim);
         else
         {
@@ -1702,7 +1658,7 @@ bool is_safe(CHAR_DATA * ch, CHAR_DATA * victim)
                 (IS_AFFECTED(ch, AFF_CHARM) || IS_SET(ch->act, ACT_PET)))
         {
             if (!IS_SET(ch->master->act, PLR_KILLER) ||
-                    (!chaos && !IS_SET(victim->act, PLR_KILLER)))
+                    !IS_SET(victim->act, PLR_KILLER))
             {
                 return TRUE;
             }
@@ -1788,8 +1744,8 @@ bool is_safe_spell(CHAR_DATA * ch, CHAR_DATA * victim, bool area)
 
         /* no player killing */
         if (!IS_NPC(victim) && !IS_NPC(ch)
-                && ((!chaos && !IS_SET(victim->act, PLR_KILLER))
-                    || (!chaos && !IS_SET(ch->act, PLR_KILLER))))
+                && (!IS_SET(victim->act, PLR_KILLER)
+                    || !IS_SET(ch->act, PLR_KILLER)))
         {
             send_to_char("You can only kill other player killers.\n\r",
                          ch);
@@ -1859,8 +1815,7 @@ static void check_killer(CHAR_DATA * ch, CHAR_DATA * victim)
     if (IS_NPC(ch)
             || ch == victim
             || ch->level >= LEVEL_HERO
-            || IS_SET(ch->act, PLR_KILLER) || victim->level >= LEVEL_HERO
-            || chaos)
+            || IS_SET(ch->act, PLR_KILLER) || victim->level >= LEVEL_HERO)
         return;
 
     send_to_char("*** You are now a KILLER!! ***\n\r", ch);
@@ -1948,7 +1903,7 @@ void stop_fighting(CHAR_DATA * ch, bool fBoth)
                 sprintf(buf, "`WYou lost %ld experience points.\n\r`w",
                         fch->exp_stack * -1);
 
-            if (!chaos && !gsilentdamage)
+            if (!gsilentdamage)
                 send_to_char(buf, fch);
 
             fch->exp_stack = 0;
@@ -2232,37 +2187,6 @@ void death_cry(CHAR_DATA * ch)
     return;
 }
 
-static void chaos_kill(CHAR_DATA * victim)
-{
-    char buf[MAX_STRING_LENGTH];
-    OBJ_DATA *obj;
-    OBJ_DATA *obj_next;
-    DESCRIPTOR_DATA *d;
-
-    stop_fighting(victim, TRUE);
-    for (obj = victim->carrying; obj != NULL; obj = obj_next)
-    {
-        obj_next = obj->next_content;
-        obj_from_char(obj);
-        obj_to_room(obj, victim->in_room);
-    }
-    act("`B$n's corpse is sucked into the ground!!`w", victim, 0, 0,
-        TO_ROOM);
-    if (!IS_NPC(victim))
-    {
-        sprintf(buf, "was slain with %d chaos points.",
-                victim->pcdata->chaos_score);
-        chaos_log(victim, buf);
-    }
-    d = victim->desc;
-    extract_char(victim, TRUE);
-    if (d)
-    {
-        close_socket(d);
-    }
-    return;
-}
-
 static void raw_kill(CHAR_DATA * victim)
 {
     int i;
@@ -2349,12 +2273,6 @@ static void group_gain(CHAR_DATA * ch, CHAR_DATA * victim)
      * Dying of mortal wounds or poison doesn't give xp to anyone!
      */
     if (!IS_NPC(victim) || victim == ch)
-        return;
-
-    /*
-     * Nobody gets xp during CHAOS.
-     */
-    if (chaos)
         return;
 
     members = 0;
@@ -3531,8 +3449,8 @@ void do_bash(CHAR_DATA * ch, char *argument)
 
     /* no player killing */
     if (!IS_NPC(victim) && !IS_NPC(ch)
-            && ((!chaos && !IS_SET(victim->act, PLR_KILLER))
-                || (!chaos && !IS_SET(ch->act, PLR_KILLER))))
+            && (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER)))
     {
         send_to_char("You can only kill other player killers.\n\r", ch);
         return;
@@ -3673,8 +3591,8 @@ void do_dirt(CHAR_DATA * ch, char *argument)
 
     /* no player killing */
     if (!IS_NPC(victim) && !IS_NPC(ch)
-            && ((!chaos && !IS_SET(victim->act, PLR_KILLER))
-                || (!chaos && !IS_SET(ch->act, PLR_KILLER))))
+            && (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER)))
     {
         send_to_char("You can only kill other player killers.\n\r", ch);
         return;
@@ -3817,8 +3735,8 @@ void do_trip(CHAR_DATA * ch, char *argument)
 
     /* no player killing */
     if (!IS_NPC(victim) && !IS_NPC(ch)
-            && ((!chaos && !IS_SET(victim->act, PLR_KILLER))
-                || (!chaos && !IS_SET(ch->act, PLR_KILLER))))
+            && (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER)))
     {
         send_to_char("You can only kill other player killers.\n\r", ch);
         return;
@@ -3922,8 +3840,8 @@ void do_kill(CHAR_DATA * ch, char *argument)
 
     /* no player killing */
     if (!IS_NPC(victim) && !IS_NPC(ch)
-            && ((!chaos && !IS_SET(victim->act, PLR_KILLER))
-                || (!chaos && !IS_SET(ch->act, PLR_KILLER))))
+            && (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER)))
     {
         send_to_char("You can only kill other player killers.\n\r", ch);
         return;
@@ -4065,8 +3983,8 @@ void do_backstab(CHAR_DATA * ch, char *argument)
 
     /* no player killing */
     if (!IS_NPC(victim) && !IS_NPC(ch)
-            && ((!chaos && !IS_SET(victim->act, PLR_KILLER))
-                || (!chaos && !IS_SET(ch->act, PLR_KILLER))))
+            && (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER)))
     {
         send_to_char("You can only kill other player killers.\n\r", ch);
         return;
@@ -4358,8 +4276,8 @@ void do_blackjack(CHAR_DATA * ch, char *argument)
         return;
     if (!IS_NPC(victim))
     {
-        if ((!chaos && !IS_SET(victim->act, PLR_KILLER))
-                || (!chaos && !IS_SET(ch->act, PLR_KILLER))
+        if (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER)
                 || IS_NEWAFF_SET(victim->newaff, NEWAFF_BLACKJACK))
         {
             send_to_char("You can only kill other player killers.\n\r",
@@ -4486,8 +4404,8 @@ void do_kick(CHAR_DATA * ch, char *argument)
 
     /* no player killing */
     if (!IS_NPC(victim) && !IS_NPC(ch)
-            && ((!chaos && !IS_SET(victim->act, PLR_KILLER))
-                || (!chaos && !IS_SET(ch->act, PLR_KILLER))))
+            && (!IS_SET(victim->act, PLR_KILLER)
+                || !IS_SET(ch->act, PLR_KILLER)))
     {
         send_to_char("You can only kill other player killers.\n\r", ch);
         return;
@@ -4665,11 +4583,7 @@ void do_slay(CHAR_DATA * ch, char *argument)
     act("`R$n slays you in cold blood!`w", ch, NULL, victim, TO_VICT);
     act("`R$n slays $N in cold blood!`w", ch, NULL, victim, TO_NOTVICT);
 
-    if (chaos)
-    {
-        chaos_kill(victim);
-    }
-    else if (IS_NPC(victim))
+    if (IS_NPC(victim))
     {
         raw_kill(victim);
     }
@@ -4732,11 +4646,7 @@ void do_mortslay(CHAR_DATA * ch, char *argument)
     act("`R$n slays you in cold blood!`w", ch, NULL, victim, TO_VICT);
     act("`R$n slays $N in cold blood!`w", ch, NULL, victim, TO_NOTVICT);
 
-    if (chaos)
-    {
-        chaos_kill(victim);
-    }
-    else if (IS_NPC(victim))
+    if (IS_NPC(victim))
     {
         raw_kill(victim);
     }
@@ -4745,15 +4655,6 @@ void do_mortslay(CHAR_DATA * ch, char *argument)
         pk_kill(victim);
     }
 
-    return;
-}
-
-static void chaos_log(CHAR_DATA * ch, char *argument)
-{
-    char buf[MAX_STRING_LENGTH];
-
-    sprintf(buf, "%s/%s", sysconfig.area_dir, sysconfig.chaos_file);
-    append_file(ch, buf, argument);
     return;
 }
 

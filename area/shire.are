@@ -3,7 +3,7 @@ Name        { 5 35} Poohb   The Shire~
 Builders    None~
 VNUMs       1100 1157
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -23,7 +23,7 @@ cannot overcome.
 Human~
 ABGT D 500 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 11
+100 6d36+205 18d10+100 4d7+12 11
 -1 -1 -1 4
 none~
 0 0 0
@@ -43,7 +43,7 @@ to take away that which belongs to him.
 Human~
 ABGT BD 0 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 11
+100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
 0 0 0
@@ -61,7 +61,7 @@ chap, always ready to befriend an injured bunny rabbit.
 Human~
 ABHT 0 350 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
 0 0 0
@@ -78,7 +78,7 @@ for he hasn't learned to walk yet.  He peers up at you and asks "da da?"
 Human~
 ABHT 0 100 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 11
+100 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
 none~
 0 0 0
@@ -96,7 +96,7 @@ in her eyes you can see her longing for a better life.
 Human~
 ABT 0 100 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -114,7 +114,7 @@ if provoked, her rear kick can be quite deadly.
 Human~
 AGIT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -132,7 +132,7 @@ and consequently cannot move around very quickly.
 pig~
 AGIT 0 0 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
 0 0 0
@@ -148,7 +148,7 @@ The chicken is bright and healthy.  She has no weapons but her beak.
 Human~
 AGIT 0 0 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 7
+100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
 0 0 0
@@ -166,7 +166,7 @@ anything.
 Human~
 ABFT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -182,7 +182,7 @@ The horse looks at you and turns away.  You can tell that it is afraid of you.
 Human~
 ABGIT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -201,7 +201,7 @@ This is one halfling you don't want to mess with.
 shiriff~
 ACGT 0 150 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 11
+100 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
 rescue assist_all ~
 0 0 0
@@ -220,7 +220,7 @@ This is one halfling you don't want to mess with.
 shiriff~
 ACGT 0 150 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 3
+100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 rescue assist_all ~
 0 0 0
@@ -239,7 +239,7 @@ Shire folk.
 thain~
 AGT 0 400 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 11
+100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 rescue assist_all ~
 0 0 0
@@ -256,7 +256,7 @@ local gossip.  In his younger days, he was quite a seasoned traveller.
 Human~
 ABGT 0 200 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -274,7 +274,7 @@ who deserves a spanking but never got one.
 Human~
 ACGHT 0 50 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -292,7 +292,7 @@ in two without thinking about it.
 Human~
 ABT 0 0 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 3
+100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
 0 0 0
@@ -310,7 +310,7 @@ longer and wearies of it.
 Human~
 ABT 0 600 S
 17 0 
-100 0 0 0 5d39+187 17d10+100 4d7+10 3
+100 5d39+187 17d10+100 4d7+10 3
 0 0 0 4
 none~
 0 0 0
@@ -328,7 +328,7 @@ beyond your gaze.
 Human~
 ABT 0 200 S
 17 0 
-100 0 0 0 5d39+187 17d10+100 4d7+10 7
+100 5d39+187 17d10+100 4d7+10 7
 0 0 0 4
 none~
 0 0 0
@@ -345,7 +345,7 @@ like you.
 Human~
 ABT 0 600 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 3
+100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -363,7 +363,7 @@ in his power to prevent riff-raff like you from stealing it.
 Human~
 ABT 0 600 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 11
+100 9d36+270 22d10+100 5d7+14 11
 -3 -3 -3 3
 none~
 0 0 0
@@ -380,7 +380,7 @@ and armour would certainly help him in any fight against riff-raff like you.
 Human~
 ABT 0 600 S
 23 0 
-100 0 0 0 9d36+300 50d10+100 5d7+18 11
+100 9d36+300 50d10+100 5d7+18 11
 -21 -21 -21 -5
 none~
 0 0 0
@@ -396,7 +396,7 @@ The battle master is a wizened fighter, with many scars to prove his worth.
 Human~
 ABT 0 350 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 11
+100 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
 none~
 0 0 0
@@ -413,7 +413,7 @@ high and you get the sudden urge to step on him.
 Human~
 AGHT 0 0 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 3
+100 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
 none~
 0 0 0
@@ -431,7 +431,7 @@ a good fight.
 Human~
 ABT 0 100 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 3
+100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
 0 0 0
@@ -448,7 +448,7 @@ talk so much so quickly.
 Human~
 ABHT 0 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 7
+100 1d6+23 3d10+100 1d5+1 7
 8 8 8 9
 none~
 0 0 0
@@ -467,7 +467,7 @@ harm a hair on her precious little head.
 Human~
 ABT 0 1000 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 3
+100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
 0 0 0
@@ -485,7 +485,7 @@ he lacks in skill.
 Human~
 ABT 0 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 11
+100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 none~
 0 0 0
@@ -503,7 +503,7 @@ coins if you'd be so good as to order a drink for him.
 Human~
 ABHT 0 0 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
 0 0 0
@@ -519,7 +519,7 @@ The country bumpkin snores noisily.
 Human~
 ABT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -536,7 +536,7 @@ local gossip.  In his younger days, he was quite a seasoned traveller.
 Human~
 ABT 0 200 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 11
+100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
 0 0 0
@@ -552,7 +552,7 @@ He is a very professional looking type.
 Human~
 ABT 0 200 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 11
+100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
 0 0 0
@@ -570,7 +570,7 @@ somewhere outside the shire.
 shiriff~
 ABT 0 150 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 rescue assist_all ~
 0 0 0
@@ -648,9 +648,9 @@ unknown~
 ABC ABC ABC 0 0
 20 3 200 P
 A
-17 10
-A
 12 20
+A
+17 10
 #1106
 elven bow~
 an elven bow~

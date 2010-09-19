@@ -3,7 +3,7 @@ Name        { 5 30} Raff    Elemental Canyon~
 Builders    None~
 VNUMs       9201 9260
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -19,7 +19,7 @@ He wants to see what's on the other side of the mountain too.
 Human~
 ACGT 0 500 S
 3 1 
-100 0 0 0 10d5+15 1d1+99 1d4+1 17
+100 10d5+15 1d1+99 1d4+1 17
 7 7 7 8
 trip ~
 0 HIJR 0
@@ -35,7 +35,7 @@ He looks like he's about to have dinner (maybe it's you?).
 Giant~
 ABFQT DF -700 S
 22 7 
-100 0 0 0 10d10+600 10d10+100 6d4+10 27
+100 10d10+600 10d10+100 6d4+10 27
 -7 -7 -7 -2
 area_attack bash berserk kick kick_dirt crush ~
 AB CDHI JP
@@ -51,7 +51,7 @@ Rather small for an elemental form, looks like a reject.
 Human~
 AGT 0 0 S
 1 0 
-100 0 0 0 1d2+6 1d10+100 1d2+0 11
+100 1d2+6 1d10+100 1d2+0 11
 9 9 9 9
 none~
 0 0 0
@@ -67,7 +67,7 @@ You can't tell which kind of elemental it is, maybe it's a bit o' all of them?
 Human~
 ABT 0 0 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 11
+100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
 0 0 0
@@ -83,7 +83,7 @@ A small elemental, a resident of the canyon.
 Human~
 ABGT 0 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 11
+100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 none~
 0 0 0
@@ -99,7 +99,7 @@ A medium elemental, a resident of the canyon.
 Human~
 ABGT 0 10 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -114,7 +114,7 @@ A large elemental, a resident of the canyon.~
 Human~
 ABGT 0 20 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 7
+100 5d34+175 16d10+100 4d7+8 7
 0 0 0 5
 none~
 0 0 0
@@ -132,7 +132,7 @@ he begins and the rock wall ends.
 Human~
 ABT H 0 S
 31 0 
-100 0 0 0 10d64+448 31d10+100 5d10+19 7
+100 10d64+448 31d10+100 5d10+19 7
 -9 -9 -9 0
 none~
 0 0 0
@@ -148,7 +148,7 @@ As you look at him he seems to blend in with the fire in his throne.
 Human~
 ABT H 0 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 3
+100 10d56+405 29d10+100 5d10+15 3
 -8 -8 -8 1
 none~
 0 0 0
@@ -164,7 +164,7 @@ As you peer at him you seem to be looking at the sky itself.
 Human~
 ABT H 0 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 11
+100 10d60+426 30d10+100 5d10+17 11
 -8 -8 -8 0
 none~
 0 0 0
@@ -181,7 +181,7 @@ You rub your eyes and look and the ruler is there grinning at you.
 Human~
 ABT H 0 S
 29 0 
-100 0 0 0 10d56+405 29d10+100 5d10+15 7
+100 10d56+405 29d10+100 5d10+15 7
 -8 -8 -8 1
 none~
 0 0 0
@@ -198,7 +198,7 @@ as you get scared, it reforms in elemental form.
 water fowl~
 ABT HTb 0 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 11
+100 10d60+426 30d10+100 5d10+17 11
 -8 -8 -8 0
 none~
 0 R 0
@@ -214,7 +214,7 @@ It trickles along the ground and gets your feet wet.
 water fowl~
 AGT Tb 0 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 7
+100 2d21+73 8d10+100 2d7+4 7
 5 5 5 7
 none~
 0 R 0
@@ -230,7 +230,7 @@ It smolders along the grass aimlessly.
 Human~
 AGT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -246,7 +246,7 @@ It looks a little blue.
 Human~
 AGT 0 520 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 11
+100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
 0 0 0
@@ -262,7 +262,7 @@ It seems to be a small living pebble!
 Human~
 AGT 0 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -278,7 +278,7 @@ Zipping from place to place at the speed of light is tough work.
 Human~
 AGT 0 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 0 0
@@ -294,7 +294,7 @@ The magical blob of acid is a cross between lightning and water.
 Human~
 AGT 0 0 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 3
+100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
 0 0 0
@@ -310,7 +310,7 @@ The magical lava beast is a cross between fire and earth.
 Human~
 AGT 0 0 S
 8 0 
-100 0 0 0 2d21+73 8d10+100 2d7+4 7
+100 2d21+73 8d10+100 2d7+4 7
 5 5 5 7
 none~
 0 0 0
@@ -326,7 +326,7 @@ The magical mud monster is a cross between water and earth.
 Human~
 AGT 0 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 7
+100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
 0 0 0
@@ -342,7 +342,7 @@ The magical mist is a cross between water and air.
 Human~
 AGT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -358,7 +358,7 @@ The magical manifestation of energy.
 Human~
 AGT 0 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 7
+100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
 0 0 0
@@ -374,7 +374,7 @@ The magical dust cloud is a cross between air and earth.
 Human~
 AGT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -390,7 +390,7 @@ The magical eddie current is a manifestation of an air elemental.
 Human~
 AGT 0 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 11
+100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
 0 0 0
@@ -407,7 +407,7 @@ humanoid figure somehow trapped in the fire.
 Human~
 ABGT 0 -100 S
 25 0 
-100 0 0 0 10d42+322 25d10+100 5d8+16 3
+100 10d42+322 25d10+100 5d8+16 3
 -5 -5 -5 2
 none~
 0 0 0
@@ -423,7 +423,7 @@ A humanoid figure seems to be trapped in the field of the Magneto.
 Human~
 ABGT 0 -150 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 3
+100 9d36+270 22d10+100 5d7+14 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -439,7 +439,7 @@ A humanoid figure encased in ice but still apparently alive.
 Human~
 ABGHT P -250 S
 23 0 
-100 0 0 0 9d39+290 23d10+100 5d8+11 11
+100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
 0 0 0
@@ -455,7 +455,7 @@ A humanoid figure trapped in stone seems alive.
 Human~
 ABGT 0 -310 S
 24 0 
-100 0 0 0 10d38+311 24d10+100 5d8+14 3
+100 10d38+311 24d10+100 5d8+14 3
 -5 -5 -5 2
 none~
 0 0 0
@@ -471,7 +471,7 @@ A humanoid figure is trapped in the rushing wind.
 Human~
 ABGT P -10 S
 28 0 
-100 0 0 0 10d52+387 28d10+100 5d9+18 3
+100 10d52+387 28d10+100 5d9+18 3
 -7 -7 -7 1
 none~
 0 0 0
@@ -488,7 +488,7 @@ Stone of Surrender which can be used to render opponents senseless.
 Human~
 ABGT B -50 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 11
+100 6d36+205 18d10+100 4d7+12 11
 -1 -1 -1 4
 none~
 0 0 0
@@ -505,7 +505,7 @@ the elemental forces.
 Human~
 AGT 0 150 S
 18 0 
-100 0 0 0 6d36+205 18d10+100 4d7+12 3
+100 6d36+205 18d10+100 4d7+12 3
 -1 -1 -1 4
 none~
 0 0 0
@@ -523,7 +523,7 @@ He seeks their aid for a powerful new spell of deception.
 Human~
 ABGT 0 -50 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -539,7 +539,7 @@ Rare herbs are rumored to grow only in the canyon.
 Human~
 AGT 0 -50 S
 13 0 
-100 0 0 0 3d38+131 13d10+100 3d7+8 7
+100 3d38+131 13d10+100 3d7+8 7
 1 1 1 6
 none~
 0 0 0
@@ -555,7 +555,7 @@ It's only a baby by dragon standards.
 Human~
 ABGT DF 0 S
 16 0 
-100 0 0 0 5d34+175 16d10+100 4d7+8 7
+100 5d34+175 16d10+100 4d7+8 7
 0 0 0 5
 none~
 0 0 0
@@ -571,7 +571,7 @@ The little bugger steals stuff and is generally obnoxious.
 Human~
 ACGHT PQ -500 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 3
+100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
 0 0 0
@@ -587,7 +587,7 @@ HUGE, need i say more?
 Human~
 ABGT 0 30 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 3
+100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
 0 0 0
@@ -603,7 +603,7 @@ I WOULD NOT suggest you attack me ...!
 Human~
 ABEGT 0 900 S
 30 0 
-100 0 0 0 10d60+426 30d10+100 5d10+17 3
+100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
 0 0 0
@@ -623,9 +623,9 @@ unknown~
 0 0 0 0 0
 31 5 310 P
 A
-4 1
-A
 3 1
+A
+4 1
 #9202
 breastplate stoney breast plate~
 a stoney breastplate~
@@ -685,9 +685,9 @@ unknown~
 A AC ABC AB 0
 29 10 290 P
 A
-19 2
-A
 18 -1
+A
+19 2
 #9208
 shield electric~
 an electric shield~
@@ -697,9 +697,9 @@ unknown~
 D D D 0 0
 29 8 290 P
 A
-5 1
-A
 1 -1
+A
+5 1
 #9209
 girth icy~
 an icy girth~
@@ -719,9 +719,9 @@ unknown~
 AD AD AD 0 0
 30 6 300 P
 A
-18 -2
-A
 12 25
+A
+18 -2
 #9211
 amulet elemental~
 an elemental amulet~
@@ -751,9 +751,9 @@ unknown~
 ABC ABC ABC 0 0
 22 4 220 P
 A
-4 -2
-A
 1 1
+A
+4 -2
 #9214
 legbands platinum bands~
 some platinum leg bands~
@@ -763,9 +763,9 @@ unknown~
 ABC ABC ABC 0 0
 22 4 220 P
 A
-3 -2
-A
 2 1
+A
+3 -2
 #9215
 wand~
 elemental wand of fire~
@@ -863,9 +863,9 @@ unknown~
 AB AC BC AB 0
 25 14 250 P
 A
-18 2
-A
 13 -20
+A
+18 2
 #9227
 icicle dagger ice~
 an icicle~
@@ -875,9 +875,9 @@ unknown~
 B AC BC ABD 0
 23 1 230 P
 A
-1 -1
-A
 19 2
+A
+1 -1
 #9228
 avalanche~
 the Avalanche~
@@ -897,9 +897,9 @@ unknown~
 BC AC ABC ABD 0
 28 11 280 P
 A
-17 -3
-A
 23 -5
+A
+17 -3
 #9230
 shock whip~
 the Shock Whip~
@@ -909,9 +909,9 @@ unknown~
 ABC AC AC B 0
 22 10 220 P
 A
-1 -2
-A
 19 3
+A
+1 -2
 #9231
 elixir anti~
 anti-cyclops elixir~
@@ -965,14 +965,14 @@ east around the mountain.
 ~
 0 0 5
 E
-bodies body dead~
-They look as if their necks have been broken and their flesh, chewed.
-~
-E
 heaps stones tombs~
 You are sure glad that YOU aren't under one of those piles!
 Many of the tombstones have the same name on them, 'Raff'.  He must come
 here a lot.
+~
+E
+bodies body dead~
+They look as if their necks have been broken and their flesh, chewed.
 ~
 D4
 (null)~

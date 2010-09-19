@@ -3,7 +3,7 @@ Name        { 5 10} Alfa    Graveyard~
 Builders    None~
 VNUMs       3600 3651
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ sorrow and depression.  He is haunted by a memory of a lost paradise.
 Human~
 AGT 0 350 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 3
+100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
 0 0 0
@@ -37,7 +37,7 @@ Maggots crawl all over its decaying body.
 Human~
 ABFT J -750 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -54,7 +54,7 @@ resemble claws.  Its eyes are a dark yellow colour and glare hungrily at you.
 Human~
 ABFT J -750 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 7
+100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
 0 0 0
@@ -71,7 +71,7 @@ time.
 Human~
 ABFT J -750 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 7
+100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
 0 0 0
@@ -88,7 +88,7 @@ time.
 Human~
 AFT J -750 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 7
+100 1d6+23 3d10+100 1d5+1 7
 8 8 8 9
 none~
 0 0 0
@@ -104,7 +104,7 @@ Maggots crawl all over its decaying body.
 Human~
 AFT J -750 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0

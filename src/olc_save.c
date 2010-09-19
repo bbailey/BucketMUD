@@ -174,9 +174,6 @@ static void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
     fprintf(fp, "%d ", pMobIndex->level);
     fprintf(fp, "%d \n", pMobIndex->hitroll);
     fprintf(fp, "%d ", pMobIndex->breath_percent);
-    fprintf(fp, "%d ", pMobIndex->rnd_obj_percent);
-    fprintf(fp, "%d ", pMobIndex->rnd_obj_num);
-    fprintf(fp, "%s ", fwrite_flag(pMobIndex->rnd_obj_types, buf));
     fprintf(fp, "%dd%d+%d ", pMobIndex->hit[DICE_NUMBER],
             pMobIndex->hit[DICE_TYPE], pMobIndex->hit[DICE_BONUS]);
     fprintf(fp, "%dd%d+%d ", pMobIndex->mana[DICE_NUMBER],

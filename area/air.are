@@ -3,7 +3,7 @@ Name        { 5 10} Copper  In the Air~
 Builders    None~
 VNUMs       1000 1040
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -20,7 +20,7 @@ It gracefully dances around your head.
 Human~
 AGT DE 500 S
 4 0 
-100 0 0 0 1d10+33 4d10+100 1d7+2 11
+100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
 0 0 0
@@ -37,7 +37,7 @@ for the fact it is hungry and is attacking you!
 Human~
 AFGT 0 300 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 7
+100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
 0 0 0

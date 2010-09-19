@@ -3,7 +3,7 @@ Name        { 5 20} Alfa    Holy Grove~
 Builders    None~
 VNUMs       8900 8999
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -21,7 +21,7 @@ traps and pitfalls.
 Human~
 AGHT DHN 1000 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 3
+100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
 0 0 0
@@ -39,7 +39,7 @@ traps and pitfalls.
 Human~
 AGHT DHN 1000 S
 20 0 
-100 0 0 0 7d38+238 20d10+100 5d7+10 7
+100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
 0 0 0
@@ -56,7 +56,7 @@ his lack of wrinkles.
 Human~
 AGHT N 1000 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 3
+100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
 0 0 0
@@ -72,7 +72,7 @@ She looks ageless, as do all druids.  She smiles a beautiful smile at you.
 Human~
 AGHT N 1000 S
 12 0 
-100 0 0 0 3d32+120 12d10+100 3d7+6 7
+100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
 0 0 0
@@ -89,7 +89,7 @@ she sniffs at you, but she goes back to chewing some grass.
 Human~
 AGHT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 3
+100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
 0 0 0
@@ -106,7 +106,7 @@ albeit ineffectively.
 Human~
 AGHT 0 0 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 7
+100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
 0 0 0
@@ -122,7 +122,7 @@ He eyes you with contained anger.  You'd better leave him alone!
 Human~
 AFGHT 0 0 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 11
+100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
 0 0 0
@@ -138,7 +138,7 @@ This bunny looks so adorable, you wished you had one just like this!
 Human~
 AGHT 0 0 S
 2 0 
-100 0 0 0 1d2+16 2d10+100 1d3+1 3
+100 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
 none~
 0 0 0
@@ -154,7 +154,7 @@ Upon careful inspection, you are sure it is NOT a cobra!
 snake~
 AFGHT P 0 S
 3 0 
-100 0 0 0 1d6+23 3d10+100 1d5+1 3
+100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
 0 L I
@@ -170,7 +170,7 @@ He doesn't like you bothering him, but is too polite to ask you to leave.
 Human~
 AGHT DN 1000 S
 11 0 
-100 0 0 0 3d27+107 11d10+100 3d6+6 3
+100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
 0 0 0
@@ -186,7 +186,7 @@ She wonders why you are staring at her, and how you got in here.
 Human~
 AGHT DN 1000 S
 9 0 
-100 0 0 0 2d27+83 9d10+100 2d7+6 3
+100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
 0 0 0

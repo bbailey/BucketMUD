@@ -3,7 +3,7 @@ Name        { 5 30} Wench   Dragon Tower~
 Builders    None~
 VNUMs       2200 2299
 Security    9
-Version     1
+Version     2
 End
 
 
@@ -20,7 +20,7 @@ few feet long, its sharp teeth make you think twice about petting it.
 Human~
 ABGT T -900 S
 7 0 
-100 0 0 0 1d33+61 7d10+100 2d6+3 7
+100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
 0 0 0
@@ -38,7 +38,7 @@ spear as you enter the room.
 Human~
 ABCFT D -900 S
 14 0 
-100 0 0 0 4d33+145 14d10+100 4d6+7 11
+100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
 0 0 0
@@ -54,7 +54,7 @@ He doesn't look happy to see you.
 Human~
 ABCFT T -1000 S
 27 0 
-100 0 0 0 10d49+360 27d10+100 5d9+15 11
+100 10d49+360 27d10+100 5d9+15 11
 -6 -6 -6 1
 none~
 0 0 0
@@ -72,7 +72,7 @@ powerful to have been accepted by the creatures which live here.
 Human~
 ABT BDH -900 S
 22 0 
-100 0 0 0 9d36+270 22d10+100 5d7+14 7
+100 9d36+270 22d10+100 5d7+14 7
 -3 -3 -3 3
 none~
 0 0 0
@@ -89,7 +89,7 @@ notice a golden medallion in the shape of a five headed dragon.
 Human~
 ABCFT DH -900 S
 21 0 
-100 0 0 0 8d37+252 21d10+100 5d7+12 3
+100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
 0 0 0
@@ -107,7 +107,7 @@ is controlled by a greater power.
 Human~
 ABCT DH -900 S
 26 0 
-100 0 0 0 10d45+345 26d10+100 5d9+13 7
+100 10d45+345 26d10+100 5d9+13 7
 -6 -6 -6 1
 none~
 0 0 0
@@ -125,7 +125,7 @@ prepares to defend herself.
 Human~
 ABT 0 -500 S
 6 0 
-100 0 0 0 1d24+51 6d10+100 2d5+3 11
+100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 none~
 0 0 0
@@ -142,7 +142,7 @@ not pleased it.
 Human~
 ABFT CDF -800 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 7
+100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -159,7 +159,7 @@ prepares to make you pay for your insolence ... with your lives!
 Human~
 ABCFT DF -1000 S
 54 0 
-100 0 0 0 10d196+1053 54d10+100 5d18+31 7
+100 10d196+1053 54d10+100 5d18+31 7
 -23 -23 -23 -6
 none~
 0 0 0
@@ -176,7 +176,7 @@ you and invites you to stay ... forever!
 Human~
 ABCFT DF -1000 S
 45 0 
-100 0 0 0 10d136+786 45d10+100 5d15+26 3
+100 10d136+786 45d10+100 5d15+26 3
 -18 -18 -18 -4
 none~
 0 0 0
@@ -193,7 +193,7 @@ going to roll over and die for you.
 Human~
 ABCFT DF -900 S
 39 0 
-100 0 0 0 10d102+629 39d10+100 5d13+22 11
+100 10d102+629 39d10+100 5d13+22 11
 -14 -14 -14 -2
 none~
 0 0 0
@@ -211,7 +211,7 @@ me a greater challenge than my offspring.'
 Human~
 ABCFT DF -1000 S
 38 0 
-100 0 0 0 10d97+603 38d10+100 5d13+20 3
+100 10d97+603 38d10+100 5d13+20 3
 -13 -13 -13 -1
 none~
 0 0 0
@@ -229,7 +229,7 @@ children.  Prepare to die.'
 Human~
 ABCFT DF -1000 S
 40 0 
-100 0 0 0 10d108+648 40d10+100 5d14+20 3
+100 10d108+648 40d10+100 5d14+20 3
 -15 -15 -15 -2
 none~
 0 0 0
@@ -246,7 +246,7 @@ it isn't happy to see you.
 Human~
 ABCFT DF -800 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 11
+100 7d34+223 19d10+100 5d6+12 11
 -1 -1 -1 4
 none~
 0 0 0
@@ -263,7 +263,7 @@ left him alone.
 Human~
 ABT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 11
+100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
 0 0 0
@@ -280,7 +280,7 @@ rest, however, and now guards this corridor tirelessly as a zombie.
 Human~
 ABCFT DF -400 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 7
+100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
 0 0 0
@@ -296,7 +296,7 @@ This small dragon looks like he's up to no good.
 Human~
 ACFGHT DF -300 S
 10 0 
-100 0 0 0 2d33+96 10d10+100 3d5+7 11
+100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
 0 0 0
@@ -313,7 +313,7 @@ suit.  As you enter the room, he points at you and laughs.
 Human~
 AGHT 0 0 S
 5 0 
-100 0 0 0 1d16+42 5d10+100 2d4+3 7
+100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
 0 0 0
@@ -330,7 +330,7 @@ it might be a good idea to leave her alone.
 Human~
 ABCT DFH -600 S
 19 0 
-100 0 0 0 7d34+223 19d10+100 5d6+12 7
+100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
 0 0 0
@@ -366,9 +366,9 @@ unknown~
 B AC BC ABD 0
 27 8 270 P
 A
-19 2
-A
 2 1
+A
+19 2
 #2203
 bracelet dragon~
 a dragon skin bracelet~
@@ -450,9 +450,9 @@ unknown~
 AB AB AB 0 0
 0 6 0 P
 A
-19 3
-A
 18 3
+A
+19 3
 #2230
 ring copper~
 a copper ring~
@@ -594,9 +594,9 @@ unknown~
 D D D 0 0
 26 10 260 P
 A
-1 1
-A
 19 2
+A
+1 1
 #2260
 scimitar golden~
 a golden scimitar~
@@ -606,9 +606,9 @@ unknown~
 A AC AC AB 0
 19 10 190 P
 A
-4 1
-A
 3 1
+A
+4 1
 #2261
 brooch diamond~
 a diamond brooch~
@@ -656,9 +656,9 @@ unknown~
 D D D 0 0
 26 10 260 P
 A
-13 10
-A
 1 1
+A
+13 10
 #2280
 leggings dragon scale~
 a pair of dragon scale leggings~
@@ -684,9 +684,9 @@ unknown~
 ABC AC AD C 0
 40 14 400 P
 A
-19 2
-A
 18 2
+A
+19 2
 #2286
 hammer copper~
 a copper hammer~
@@ -775,12 +775,12 @@ You trudge down the hallway.  You notice doors to the east and west.
 ~
 0 8 0
 E
-inscription~
-It says "STORAGE"
-~
-E
 sign~
 The sign says "NURSERY" in bold letters.     
+~
+E
+inscription~
+It says "STORAGE"
 ~
 D0
 The hall continues. 
@@ -1394,17 +1394,17 @@ path leads up the mountain.  The small opening is back to the north.
 ~
 0 0 2
 E
+well~
+You peer over the side of the well.  It looks VERY, VERY deep.  It appears
+to be ENDLESS.
+~
+E
 sign~
 The sign reads:
          This is a bottomless pit cleverly disguised as a well.  People have
 fallen in and never been heard from again.  Trust me, you don't want to go 
 down there.
                         The All Powerful Well Keeper
-~
-E
-well~
-You peer over the side of the well.  It looks VERY, VERY deep.  It appears
-to be ENDLESS.
 ~
 D0
 the small opening
