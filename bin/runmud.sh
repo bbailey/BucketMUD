@@ -11,7 +11,7 @@
 #:                $BUCKETMUD_HOME/log/bucketmud.log.
 
 
-BUCKETMUD_HOME=/home/bobby/projects/bucket/
+BUCKETMUD_HOME=/home/bucketmud/bucket/
 port=1234
 
 while true
