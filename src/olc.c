@@ -104,7 +104,6 @@ static const struct olc_cmd_type redit_table[] =
     {"mfreevnums", redit_mfreevnums},
     {"ofreevnums", redit_ofreevnums},
     {"rfreevnums", redit_rfreevnums},
-    {"mlist", redit_mlist},
     {"olist", redit_olist},
     {"mshow", redit_mshow},
     {"oshow", redit_oshow},

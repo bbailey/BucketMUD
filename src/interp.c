@@ -424,6 +424,7 @@ const struct cmd_type cmd_table[] =
     {"roster", do_roster, POS_RESTING, 0, LOG_NORMAL, 1},
     {"olevel", do_olevel, POS_DEAD, 1, LOG_NORMAL, 1},
     {"mlevel", do_mlevel, POS_DEAD, 1, LOG_NORMAL, 1},
+    {"mlist", do_mlist, POS_DEAD, 1, LOG_NORMAL, 1},
 
     /*
      * OLC

@@ -274,61 +274,6 @@ bool show_help(CHAR_DATA * ch, char *argument)
     return FALSE;
 }
 
-REDIT(redit_mlist)
-{
-    MOB_INDEX_DATA *pMobIndex;
-    AREA_DATA *pArea;
-    char *dupl;
-
-    char buf[MAX_STRING_LENGTH];
-    char buf1[MAX_STRING_LENGTH * 2];
-    char arg[MAX_INPUT_LENGTH];
-    bool fAll, found;
-    int vnum;
-    int col = 0;
-
-    one_argument(argument, arg);
-    if (arg[0] == '\0')
-    {
-        send_to_char("Syntax:  mlist <all/name>\n\r", ch);
-        return FALSE;
-    }
-
-    pArea = ch->in_room->area;
-    buf1[0] = '\0';
-    fAll = !str_cmp(arg, "all");
-    found = FALSE;
-
-    for (vnum = pArea->lvnum; vnum <= pArea->uvnum; vnum++)
-    {
-        if ((pMobIndex = get_mob_index(vnum)))
-        {
-            if (fAll || is_name(arg, pMobIndex->player_name))
-            {
-                found = TRUE;
-                dupl = remove_color(pMobIndex->short_descr);
-                sprintf(buf, "`B [`K%5d`B]`w %-17.16s",
-                        pMobIndex->vnum, dupl);
-                strcat(buf1, buf);
-                if (++col % 3 == 0)
-                    strcat(buf1, "\n\r");
-            }
-        }
-    }
-
-    if (!found)
-    {
-        send_to_char("Mobile(s) not found in this area.\n\r", ch);
-        return FALSE;
-    }
-
-    if (col % 3 != 0)
-        strcat(buf1, "\n\r");
-
-    send_to_char(buf1, ch);
-    return FALSE;
-}
-
 /* Free vnums are just the opposite of mlist, olist, olist -Lancelight */
 /* Free Vnums section: Mobs */
 REDIT(redit_mfreevnums)
