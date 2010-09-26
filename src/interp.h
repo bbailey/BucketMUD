@@ -376,5 +376,6 @@ extern void do_roster(CHAR_DATA * ch, char *argument);
 extern void do_olevel(CHAR_DATA * ch, char *argument);
 extern void do_mlevel(CHAR_DATA * ch, char *argument);
 extern void do_mlist(CHAR_DATA * ch, char *argument);
+extern void do_olist(CHAR_DATA * ch, char *argument);
 
 #endif

@@ -195,7 +195,6 @@ DECLARE_OLC_FUN(redit_oreset);
 DECLARE_OLC_FUN(redit_mfreevnums);
 DECLARE_OLC_FUN(redit_rfreevnums);
 DECLARE_OLC_FUN(redit_ofreevnums);
-DECLARE_OLC_FUN(redit_olist);
 DECLARE_OLC_FUN(redit_mshow);
 DECLARE_OLC_FUN(redit_oshow);
 

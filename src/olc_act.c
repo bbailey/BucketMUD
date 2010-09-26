@@ -428,63 +428,6 @@ REDIT(redit_rfreevnums)
     return FALSE;
 }
 
-REDIT(redit_olist)
-{
-    OBJ_INDEX_DATA *pObjIndex;
-    AREA_DATA *pArea;
-    char buf[MAX_STRING_LENGTH];
-    char buf1[MAX_STRING_LENGTH * 2];
-    char arg[MAX_INPUT_LENGTH];
-    bool fAll, found;
-    char *dupl;
-    int vnum;
-    int col = 0;
-
-    one_argument(argument, arg);
-
-    if (arg[0] == '\0')
-    {
-        send_to_char("Syntax:  olist <all/name/item_type>\n\r", ch);
-        return FALSE;
-    }
-
-    pArea = ch->in_room->area;
-    buf1[0] = '\0';
-    fAll = !str_cmp(arg, "all");
-    found = FALSE;
-
-    for (vnum = pArea->lvnum; vnum <= pArea->uvnum; vnum++)
-    {
-        if ((pObjIndex = get_obj_index(vnum)))
-        {
-            if (fAll || is_name(arg, pObjIndex->name)
-                    || flag_value(type_flags, arg) == pObjIndex->item_type)
-            {
-                found = TRUE;
-                dupl = remove_color(pObjIndex->short_descr);
-                sprintf(buf, "`B [`K%5d`B]`w %-30.29s",
-                        pObjIndex->vnum, dupl);
-                strcat(buf1, buf);
-                if (++col % 2 == 0)
-                    strcat(buf1, "\n\r");
-            }
-        }
-    }
-
-    if (!found)
-    {
-        send_to_char("Object(s) not found in this area.\n\r", ch);
-        return FALSE;
-    }
-
-    /*
-       if ( col % 3 != 0 )
-       strcat( buf1, "\n\r" );
-     */
-    send_to_char(buf1, ch);
-    return FALSE;
-}
-
 REDIT(redit_mshow)
 {
     MOB_INDEX_DATA *pMob;
