@@ -4346,7 +4346,7 @@ static void load_mobiles(FILE * fp)
         fBootDb = TRUE;
 
         pMobIndex = alloc_perm(sizeof(*pMobIndex));
-	    pMobIndex->bv_offense_flags = bv_new(BV_OFF_MAX);
+        pMobIndex->bv_offense_flags = bv_new(BV_OFF_MAX);
         pMobIndex->vnum = vnum;
         pMobIndex->area = area_last;	/* OLC */
         pMobIndex->player_name = fread_string(fp);

@@ -2373,9 +2373,9 @@ static char op_stack[256];	/* Operator stack       */
 static double arg_stack[256];	/* Argument stack       */
 static char token[256];		/* Token buffer         */
 static int op_sptr,		/* op_stack pointer     */
-arg_sptr,			/* arg_stack pointer    */
-parens,			/* Nesting level        */
-state;				/* 0 = Awaiting expression
+       arg_sptr,			/* arg_stack pointer    */
+       parens,			/* Nesting level        */
+       state;				/* 0 = Awaiting expression
 				   1 = Awaiting operator
 				 */
 static int do_op(void);

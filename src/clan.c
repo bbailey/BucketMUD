@@ -2157,7 +2157,7 @@ void do_clantalk(CHAR_DATA * ch, char *argument)
                                              && victim->pcdata->clan ==
                                              ch->pcdata->clan)
                                             || bv_is_set(victim->bv_comm_flags,
-                                                         BV_COMM_SNOOP_CLAN))
+                                                    BV_COMM_SNOOP_CLAN))
                 && !bv_is_set(victim->bv_comm_flags, BV_COMM_DEAF)
                 && !bv_is_set(victim->bv_comm_flags, BV_COMM_QUIET)
                 && !bv_is_set(victim->bv_comm_flags, BV_COMM_NO_CLAN))

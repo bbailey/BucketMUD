@@ -3095,7 +3095,8 @@ OEDIT(oedit_ed)
 /* ROM object functions : */
 
 OEDIT(oedit_extra)
-{				/* Moved out of oedit() due to naming conflicts -- Hugin */
+{
+    /* Moved out of oedit() due to naming conflicts -- Hugin */
     OBJ_INDEX_DATA *pObj;
     int value;
 
@@ -3118,7 +3119,8 @@ OEDIT(oedit_extra)
 }
 
 OEDIT(oedit_wear)
-{				/* Moved out of oedit() due to naming conflicts -- Hugin */
+{
+    /* Moved out of oedit() due to naming conflicts -- Hugin */
     OBJ_INDEX_DATA *pObj;
     int value;
 
@@ -3141,7 +3143,8 @@ OEDIT(oedit_wear)
 }
 
 OEDIT(oedit_type)
-{				/* Moved out of oedit() due to naming conflicts -- Hugin */
+{
+    /* Moved out of oedit() due to naming conflicts -- Hugin */
     OBJ_INDEX_DATA *pObj;
     int value;
 
@@ -3740,7 +3743,8 @@ MEDIT(medit_shop)
 /* ROM medit functions: */
 
 MEDIT(medit_sex)
-{				/* Moved out of medit() due to naming conflicts -- Hugin */
+{
+    /* Moved out of medit() due to naming conflicts -- Hugin */
     MOB_INDEX_DATA *pMob;
     int value;
 
@@ -3763,7 +3767,8 @@ MEDIT(medit_sex)
 }
 
 MEDIT(medit_act)
-{				/* Moved out of medit() due to naming conflicts -- Hugin */
+{
+    /* Moved out of medit() due to naming conflicts -- Hugin */
     MOB_INDEX_DATA *pMob;
     int value;
 
@@ -3787,7 +3792,8 @@ MEDIT(medit_act)
 }
 
 MEDIT(medit_affect)
-{				/* Moved out of medit() due to naming conflicts -- Hugin */
+{
+    /* Moved out of medit() due to naming conflicts -- Hugin */
     MOB_INDEX_DATA *pMob;
     int value;
 

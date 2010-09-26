@@ -74,7 +74,7 @@ void bv_from_string(BitVector *bv, const BitVectorStringList *bv_str_list, const
     gsize which_bit = 0;
 
     if (bv_str == NULL)
-	return;
+        return;
 
     bv_str_regex = g_regex_new("\\W*(\\w+)\\W*", 0, 0, &err);
     g_regex_match(bv_str_regex, bv_str, 0, &match_info);

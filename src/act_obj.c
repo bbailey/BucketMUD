@@ -1434,7 +1434,7 @@ static void wear_obj(CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace)
                 && IS_WEAPON_STAT(weapon, WEAPON_TWO_HANDS))
                 || (weapon != NULL && (second_weapon != NULL
                                        || get_eq_char(ch,
-                                                      WEAR_HOLD) != NULL)))
+                                               WEAR_HOLD) != NULL)))
         {
             send_to_char("Your hands are tied up with your weapon!\n\r",
                          ch);

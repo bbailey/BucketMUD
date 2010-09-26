@@ -1823,8 +1823,8 @@ void do_score(CHAR_DATA * ch, char *argument)
         send_to_char(buf, ch);
         sprintf(buf, "     | `YSTR:     `G%2d `W%s `y| `YRace: `G%s",
                 ch->perm_stat[STAT_STR], statdiff(ch->perm_stat[STAT_STR],
-                                                  get_curr_stat(ch,
-                                                                STAT_STR)),
+                        get_curr_stat(ch,
+                                      STAT_STR)),
                 race_table[ch->race].name);
         send_to_char(buf, ch);
         strcpy(buf, "\0");
@@ -1834,8 +1834,8 @@ void do_score(CHAR_DATA * ch, char *argument)
         sprintf(buf,
                 "`y|\n\r     | `YINT:     `G%2d `W%s `y| `YClass: `G%s",
                 ch->perm_stat[STAT_INT], statdiff(ch->perm_stat[STAT_INT],
-                                                  get_curr_stat(ch,
-                                                                STAT_INT)),
+                        get_curr_stat(ch,
+                                      STAT_INT)),
                 class_table[ch->Class].name);
         send_to_char(buf, ch);
         strcpy(buf, "\0");
@@ -1845,15 +1845,15 @@ void do_score(CHAR_DATA * ch, char *argument)
         sprintf(buf,
                 "`y|\n\r     | `YWIS:     `G%2d `W%s `y| `YLevel: `G%2d                                      `y|\n\r",
                 ch->perm_stat[STAT_WIS], statdiff(ch->perm_stat[STAT_WIS],
-                                                  get_curr_stat(ch,
-                                                                STAT_WIS)),
+                        get_curr_stat(ch,
+                                      STAT_WIS)),
                 ch->level);
         send_to_char(buf, ch);
         sprintf(buf,
                 "     | `YDEX:     `G%2d `W%s `y| `YAlignment: `G%5d `W[",
                 ch->perm_stat[STAT_DEX], statdiff(ch->perm_stat[STAT_DEX],
-                                                  get_curr_stat(ch,
-                                                                STAT_DEX)),
+                        get_curr_stat(ch,
+                                      STAT_DEX)),
                 ch->alignment);
         send_to_char(buf, ch);
         if (ch->alignment > 900)
@@ -1878,8 +1878,8 @@ void do_score(CHAR_DATA * ch, char *argument)
         sprintf(buf,
                 "     | `YCON:     `G%2d `W%s `y| `YSex: `G%s          `YCreation Points : `G%2d%s     `y|\n\r",
                 ch->perm_stat[STAT_CON], statdiff(ch->perm_stat[STAT_CON],
-                                                  get_curr_stat(ch,
-                                                                STAT_CON)),
+                        get_curr_stat(ch,
+                                      STAT_CON)),
                 ch->sex == 0 ? "Sexless" : ch->sex ==
                 1 ? "Male  " : "female", ch->pcdata->points,
                 ch->pcdata->points >= 100 ? "" : " ");
@@ -2058,7 +2058,7 @@ void do_score(CHAR_DATA * ch, char *argument)
             sprintf(buf,
                     "You need %ld exp to level.\n\r",
                     ((ch->level + 1) * exp_per_level(ch,
-                                                     ch->pcdata->points) -
+                            ch->pcdata->points) -
                      ch->exp));
             send_to_char(buf, ch);
         }

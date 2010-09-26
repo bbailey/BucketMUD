@@ -2862,7 +2862,7 @@ static char *doparseprompt(CHAR_DATA * ch)
             {
                 sprintf(workstr, "%s", "Pitch Black");
             }
-            else 
+            else
             {
                 sprintf(workstr, "%s", ch->in_room->name);
             }
