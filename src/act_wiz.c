@@ -5278,130 +5278,6 @@ void do_punload(CHAR_DATA * ch, char *argument)
 
 }
 
-void do_wizgrant(CHAR_DATA * ch, char *argument)
-{
-    struct cmd_type *cmd;
-    IMMCMD_TYPE *tmp;
-    CHAR_DATA *victim;
-    bool valid = FALSE;
-    char buf[MAX_INPUT_LENGTH];
-
-    if (argument == NULL)
-    {
-        send_to_char("Syntax:\n\r"
-                     "  wizgrant <name> <command>\n\r"
-                     "  wizgrant <name> all\n\r"
-                     "\n\r"
-                     "Note: The 'all' option will grant access to the wiz-commands that YOU\n\r"
-                     "      currently have access to.\n\r", ch);
-        return;
-    }
-
-    argument = one_argument(argument, buf);
-
-    /* Is argument a valid imm command? */
-    for (cmd = (struct cmd_type *) cmd_table; *cmd->name; cmd++)
-    {
-        if (!str_cmp(argument, cmd->name))
-        {
-            if (!cmd->imm)
-            {
-                send_to_char("That is not a valid wiz command!\n\r", ch);
-                return;
-            }
-            else
-            {
-                valid = TRUE;
-                break;
-            }
-        }
-    }
-
-    if (str_cmp(argument, "all"))
-    {
-        if (!valid)
-        {
-            send_to_char("That is not a valid wiz command!\n\r", ch);
-            return;
-        }
-
-        /* Does grantor have access to the command themselves? */
-        if (!can_do_immcmd(ch, argument))
-        {
-            send_to_char
-            ("You do not have access to grant that command!\n\r", ch);
-            return;
-        }
-    }
-
-    victim = get_player_world(ch, buf);
-
-    if (victim == NULL)
-    {
-        send_to_char("They aren't here.\n\r", ch);
-        return;
-    }
-
-    /* Does victim already have access to the command? */
-    if (can_do_immcmd(victim, argument))
-    {
-        send_to_char("They already have access to that command!\n\r", ch);
-        return;
-    }
-
-    /* Grant access to all commands */
-    if (!str_cmp(argument, "all"))
-    {
-        IMMCMD_TYPE *orig;
-
-        /* Copy all of ch's commands to victim */
-        for (orig = ch->pcdata->immcmdlist; orig != NULL;
-                orig = orig->next)
-        {
-            if (can_do_immcmd(victim, orig->cmd))
-                continue;
-
-            tmp = malloc(sizeof(IMMCMD_TYPE));
-
-            tmp->cmd = str_dup(orig->cmd);
-            tmp->next = victim->pcdata->immcmdlist;
-            victim->pcdata->immcmdlist = tmp;
-
-            sprintf(buf, "%s now has access to the %s command.\n\r",
-                    victim->name, tmp->cmd);
-
-            send_to_char(buf, ch);
-
-            sprintf(buf,
-                    "%s has granted you access to the %s command!\n\r",
-                    ch->name, tmp->cmd);
-
-            send_to_char(buf, victim);
-        }
-
-        return;
-    }
-
-    /* Grant access to a single command */
-    tmp = malloc(sizeof(IMMCMD_TYPE));
-
-    tmp->cmd = str_dup(argument);
-    tmp->next = victim->pcdata->immcmdlist;
-    victim->pcdata->immcmdlist = tmp;
-
-    sprintf(buf, "%s now has access to the %s command.\n\r",
-            victim->name, tmp->cmd);
-
-    send_to_char(buf, ch);
-
-    sprintf(buf, "%s has granted you access to the %s command!\n\r",
-            ch->name, tmp->cmd);
-
-    send_to_char(buf, victim);
-
-    return;
-}
-
 void do_wizrevoke(CHAR_DATA * ch, char *argument)
 {
     IMMCMD_TYPE *tmp, *tmp2;
@@ -5730,4 +5606,110 @@ void do_olist(CHAR_DATA *ch, char *argument)
      */
     send_to_char(buf1, ch);
     return;
+}
+
+
+void grant_command(CHAR_DATA *ch, char *command)
+{
+    IMMCMD_TYPE *immcmd = NULL;
+
+    immcmd = malloc(sizeof(IMMCMD_TYPE));
+    immcmd->cmd = strdup(command);
+    immcmd->next = ch->pcdata->immcmdlist;
+    ch->pcdata->immcmdlist = immcmd;
+    return;
+}
+
+void do_wizgrant(CHAR_DATA *ch, char *argument)
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim = NULL;
+    struct cmd_type *cmd_index = NULL;
+    bool cmd_found = false;
+
+    argument = one_argument(argument, arg1);
+    argument = one_argument(argument, arg2);
+
+    if (arg1[0] == '\0' || arg2[0] == '\0')
+    {
+        send_to_char("Syntax:\r\n"
+                     "  wizgrant <name> <command>\r\n"
+                     "  wizgrant <name> all\r\n", ch);
+        return;
+    }
+
+    if ((victim = get_player_world(ch, arg1)) == NULL)
+    {
+        printf_to_char(ch, "Could not find a player named '%s'.\r\n", arg1);
+        return;
+    }
+
+    for (cmd_index = (struct cmd_type *) cmd_table; *cmd_index->name; cmd_index++)
+    {
+        if(!str_cmp(arg2, cmd_index->name))
+        {
+            if (cmd_index->imm)
+            {
+                cmd_found = true;
+                break;
+            }
+
+            printf_to_char(ch, "'%s' is not a secure command.\r\n", arg2);
+            return;
+        }
+    }
+
+    if (!cmd_found && str_cmp(arg2, "all"))
+    {
+        printf_to_char(ch, "'%s' is not a known command.\r\n", arg2);
+        return;
+    }
+
+    if (str_cmp(arg2, "all"))
+    {
+        if (can_do_immcmd(victim, arg2))
+        {
+            printf_to_char(ch, "%s already has access to the '%s' command.\r\n", PERS(victim, ch), arg2);
+            return;
+        }
+
+        if (!can_do_immcmd(ch, arg2) && get_trust(ch) < MAX_LEVEL)
+        {
+            printf_to_char(ch, "You don't have access to the '%s' command.\r\n", arg2);
+        }
+
+        grant_command(victim, arg2);
+        printf_to_char(ch, "You grant access to the '%s' command to %s.\r\n", arg2, PERS(victim, ch));
+        printf_to_char(victim, "%s has granted you access to the '%s' command.\r\n", PERS(ch, victim), arg2);
+        return;
+    }
+    else
+    {
+        if (get_trust(ch) >= MAX_LEVEL)
+        {
+            for (cmd_index = (struct cmd_type *) cmd_table; *cmd_index->name; cmd_index++)
+            {
+                if (cmd_index->imm)
+                    if (!can_do_immcmd(victim,cmd_index->name))
+                        grant_command(victim,cmd_index->name);
+            }
+            printf_to_char(ch, "You have granted %s access to all secure commands.\r\n", PERS(victim, ch));
+            printf_to_char(victim, "%s has granted you access to all secure commands.\r\n", PERS(ch, victim));
+            return;
+        }
+        else
+        {
+            IMMCMD_TYPE *ch_immcmd;
+
+            for ( ch_immcmd = ch->pcdata->immcmdlist; ch_immcmd != NULL; ch_immcmd = ch_immcmd->next )
+            {
+                grant_command(victim, ch_immcmd->cmd);
+                printf_to_char(ch, "You have granted %s access to the '%s' command.\r\n", PERS(victim, ch), ch_immcmd->cmd);
+                printf_to_char(victim, "%s has granted you access to the '%s'command.\r\n", PERS(ch, victim), ch_immcmd->cmd);
+            }
+
+            return;
+        }
+    }
 }
