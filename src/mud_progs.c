@@ -2414,7 +2414,7 @@ static int evaluate(char *line, double *val)
     int ercode;
     struct operator_type *op;
 
-    str_upr(line);
+    g_strup(line);
     state = op_sptr = arg_sptr = parens = 0;
 
     while (*ptr)

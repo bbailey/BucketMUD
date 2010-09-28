@@ -2862,32 +2862,6 @@ unsigned int str_len(const char *str)
     return numb;
 }
 
-/*
- * Uppercase a string.  Added because not all OS's have strupr().
- */
-char *str_upr(char *str)
-{
-    char *buf;
-
-    if (!str || str[0] == '\0')
-        return str;
-
-    buf = str;
-
-    while (*buf != '\0')
-    {
-        if ((*buf >= 'a') && (*buf <= 'z'))
-        {
-            *buf = *buf - 32;
-            buf++;
-        }
-        else
-            buf++;
-    }
-
-    return str;
-}
-
 void do_areas(CHAR_DATA * ch, char *argument)
 {
     char buf[MAX_STRING_LENGTH];

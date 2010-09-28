@@ -1330,7 +1330,6 @@ void *alloc_mem(int sMem);
 void *alloc_perm(int sMem);
 void free_mem(void *pMemPtr);
 unsigned int str_len(const char *str);
-char *str_upr(char *str);
 int number_fuzzy(int number);
 int number_range(int from, int to);
 int number_percent(void);
