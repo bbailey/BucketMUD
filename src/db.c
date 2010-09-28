@@ -2863,40 +2863,6 @@ unsigned int str_len(const char *str)
 }
 
 /*
- * Search for a string within a string, case insensitive.
- */
-char *str_str(char *str1, char *str2)
-{
-    char *strcopy1;
-    char *strcopy2;
-    char *location;
-    char *result;
-
-    if (!str1 || !str2 || str1[0] == '\0' || str2[0] == '\0')
-        return NULL;
-
-    strcopy1 = strdup(str1);
-    strcopy2 = strdup(str2);
-
-    str_upr(strcopy1);
-    str_upr(strcopy2);
-
-    if ((location = strstr(strcopy1, strcopy2)) == NULL)
-    {
-        free(strcopy1);
-        free(strcopy2);
-        return NULL;
-    }
-    else
-    {
-        result = str1 + (location - strcopy1);
-        free(strcopy1);
-        free(strcopy2);
-        return result;
-    }
-}
-
-/*
  * Uppercase a string.  Added because not all OS's have strupr().
  */
 char *str_upr(char *str)

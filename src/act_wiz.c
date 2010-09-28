@@ -616,7 +616,7 @@ void do_bamfin(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (str_str(argument, ch->name) == NULL)
+        if (strcasestr(argument, ch->name) == NULL)
         {
             send_to_char("You must include your name.\n\r", ch);
             return;
@@ -646,7 +646,7 @@ void do_bamfout(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (str_str(argument, ch->name) == NULL)
+        if (strcasestr(argument, ch->name) == NULL)
         {
             send_to_char("You must include your name.\n\r", ch);
             return;
