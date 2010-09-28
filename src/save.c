@@ -762,19 +762,19 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
             }
 
             word = fread_word(fp);
-            if (!str_cmp(word, "PLAYER"))
+            if (!strcasecmp(word, "PLAYER"))
                 fread_char(ch, fp);
-            else if (!str_cmp(word, "OBJECT"))
+            else if (!strcasecmp(word, "OBJECT"))
                 fread_obj(ch, fp);
-            else if (!str_cmp(word, "O"))
+            else if (!strcasecmp(word, "O"))
                 fread_obj(ch, fp);
-            else if (!str_cmp(word, "PET"))
+            else if (!strcasecmp(word, "PET"))
                 fread_pet(ch, fp);
-            else if (!str_cmp(word, "FACTIONS"))
+            else if (!strcasecmp(word, "FACTIONS"))
                 fread_faction_standings(ch, fp);
-            else if (!str_cmp(word, "IMM"))
+            else if (!strcasecmp(word, "IMM"))
                 fread_imm(ch, fp);
-            else if (!str_cmp(word, "END"))
+            else if (!strcasecmp(word, "END"))
                 break;
             else
             {
@@ -873,7 +873,7 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
 #endif
 
 #define KEY( literal, field, value )                                    \
-                                if ( !str_cmp( word, literal ) )        \
+                                if ( !strcasecmp( word, literal ) )        \
                                 {                                       \
                                     field  = value;                     \
                                     fMatch = TRUE;                      \
@@ -909,14 +909,14 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             KEY("Alignment", ch->alignment, fread_number(fp));
             KEY("Alig", ch->alignment, fread_number(fp));
 
-            if (!str_cmp(word, "Anon"))
+            if (!strcasecmp(word, "Anon"))
             {
                 fread_to_eol(fp);
                 fMatch = TRUE;
                 break;
             }
 
-            if (!str_cmp(word, "Alias"))
+            if (!strcasecmp(word, "Alias"))
             {
                 if (count >= MAX_ALIAS)
                 {
@@ -932,14 +932,14 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "AC") || !str_cmp(word, "Armor"))
+            if (!strcasecmp(word, "AC") || !strcasecmp(word, "Armor"))
             {
                 fread_to_eol(fp);
                 fMatch = TRUE;
                 break;
             }
 
-            if (!str_cmp(word, "ACs"))
+            if (!strcasecmp(word, "ACs"))
             {
                 int i;
 
@@ -949,8 +949,8 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "Affect") || !str_cmp(word, "Aff")
-                    || !str_cmp(word, "AffD"))
+            if (!strcasecmp(word, "Affect") || !strcasecmp(word, "Aff")
+                    || !strcasecmp(word, "AffD"))
             {
                 AFFECT_DATA *paf;
 
@@ -964,7 +964,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                     affect_free = affect_free->next;
                 }
 
-                if (!str_cmp(word, "AffD"))
+                if (!strcasecmp(word, "AffD"))
                 {
                     int sn;
                     sn = skill_lookup(fread_word(fp));
@@ -988,8 +988,8 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 fMatch = TRUE;
                 break;
             }
-            if (!str_cmp(word, "NewAffect") || !str_cmp(word, "NewAff")
-                    || !str_cmp(word, "NewAffD"))
+            if (!strcasecmp(word, "NewAffect") || !strcasecmp(word, "NewAff")
+                    || !strcasecmp(word, "NewAffD"))
             {
                 NEWAFFECT_DATA *npaf;
 
@@ -1003,7 +1003,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                     newaffect_free = newaffect_free->next;
                 }
 
-                if (!str_cmp(word, "NewAffD"))
+                if (!strcasecmp(word, "NewAffD"))
                 {
                     int sn;
                     sn = skill_lookup(fread_word(fp));
@@ -1028,7 +1028,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "AttrMod") || !str_cmp(word, "AMod"))
+            if (!strcasecmp(word, "AttrMod") || !strcasecmp(word, "AMod"))
             {
                 int stat;
                 for (stat = 0; stat < MAX_STATS; stat++)
@@ -1037,7 +1037,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "AttrPerm") || !str_cmp(word, "Attr"))
+            if (!strcasecmp(word, "AttrPerm") || !strcasecmp(word, "Attr"))
             {
                 int stat;
 
@@ -1055,7 +1055,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             KEY("Bin", ch->pcdata->bamfin, fread_string(fp));
             KEY("Bout", ch->pcdata->bamfout, fread_string(fp));
             /* Read in board status */
-            if (!str_cmp(word, "Boards"))
+            if (!strcasecmp(word, "Boards"))
             {
                 int i, num = fread_number(fp);	/* number of boards saved */
                 char *boardname;
@@ -1081,7 +1081,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }			/* Boards */
 
-            if (!str_cmp(word, "BvCommFlags"))
+            if (!strcasecmp(word, "BvCommFlags"))
             {
                 tmp_string = fread_string(fp);
                 bv_from_string(ch->bv_comm_flags, bv_str_list_comm, tmp_string, BV_STR_SET);
@@ -1096,7 +1096,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             KEY("Cla", ch->Class, fread_number(fp));
             KEY("Clan", ch->pcdata->clan, fread_number(fp));
 
-            if (!str_cmp(word, "Condition") || !str_cmp(word, "Cond"))
+            if (!strcasecmp(word, "Condition") || !strcasecmp(word, "Cond"))
             {
                 ch->pcdata->condition[0] = fread_number(fp);
                 ch->pcdata->condition[1] = fread_number(fp);
@@ -1106,7 +1106,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             }
             KEY("Cmnt", ch->pcdata->comment, fread_string(fp));
 
-            if (!str_cmp(word, "Comm"))
+            if (!strcasecmp(word, "Comm"))
             {
                 bv_from_old_bitvector(ch->bv_comm_flags, fread_number(fp));
                 fMatch = true;
@@ -1123,7 +1123,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             break;
 
         case 'E':
-            if (!str_cmp(word, "End"))
+            if (!strcasecmp(word, "End"))
             {
                 /* Following two lines overide color setting in pfile */
                 if (ch->desc->ansi && !fCopyOver)
@@ -1143,7 +1143,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
         case 'G':
             KEY("Gold_bank", ch->pcdata->gold_bank, fread_number(fp));
             KEY("Gold", ch->gold, fread_number(fp));
-            if (!str_cmp(word, "Group") || !str_cmp(word, "Gr"))
+            if (!strcasecmp(word, "Group") || !strcasecmp(word, "Gr"))
             {
                 int gn;
                 char *temp;
@@ -1166,7 +1166,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             KEY("Hitroll", ch->hitroll, fread_number(fp));
             KEY("Hit", ch->hitroll, fread_number(fp));
 
-            if (!str_cmp(word, "HpManaMove") || !str_cmp(word, "HMV"))
+            if (!strcasecmp(word, "HpManaMove") || !strcasecmp(word, "HMV"))
             {
                 ch->hit = fread_number(fp);
                 ch->max_hit = fread_number(fp);
@@ -1178,8 +1178,8 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "HpManaMovePerm")
-                    || !str_cmp(word, "HMVP"))
+            if (!strcasecmp(word, "HpManaMovePerm")
+                    || !strcasecmp(word, "HMVP"))
             {
                 ch->pcdata->perm_hit = fread_number(fp);
                 ch->pcdata->perm_mana = fread_number(fp);
@@ -1211,7 +1211,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
 
             if (ch->version == 3)
             {
-                if (!str_cmp(word, "Log"))
+                if (!strcasecmp(word, "Log"))
                 {
                     fread_number(fp);
                     fMatch = TRUE;
@@ -1220,7 +1220,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             }
             else if (ch->version == 4)
             {
-                if (!str_cmp(word, "Logn"))
+                if (!strcasecmp(word, "Logn"))
                 {
                     fread_number(fp);
                     fMatch = TRUE;
@@ -1258,7 +1258,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
         case 'R':
             /* KEY( "Race",        ch->race,
                race_lookup(fread_string( fp )) ); */
-            if (!str_cmp(word, "Race"))
+            if (!strcasecmp(word, "Race"))
             {
                 char *race;
                 race = fread_string(fp);
@@ -1269,7 +1269,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
 
             KEY("Rank", ch->pcdata->clan_rank, fread_number(fp));
 
-            if (!str_cmp(word, "Recl"))
+            if (!strcasecmp(word, "Recl"))
             {
                 ch->pcdata->recall_room = get_room_index(fread_number(fp));
                 if (ch->pcdata->recall_room == NULL)
@@ -1279,7 +1279,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "Room"))
+            if (!strcasecmp(word, "Room"))
             {
                 ch->in_room = get_room_index(fread_number(fp));
                 if (ch->in_room == NULL)
@@ -1300,7 +1300,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             KEY("Spoc", ch->pcdata->spousec, fread_number(fp));
             KEY("Spou", ch->pcdata->spouse, fread_string(fp));
 
-            if (!str_cmp(word, "Skill") || !str_cmp(word, "Sk"))
+            if (!strcasecmp(word, "Skill") || !strcasecmp(word, "Sk"))
             {
                 int sn;
                 int value;
@@ -1331,7 +1331,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             KEY("Trust", ch->trust, fread_number(fp));
             KEY("Tru", ch->trust, fread_number(fp));
 
-            if (!str_cmp(word, "Title") || !str_cmp(word, "Titl"))
+            if (!strcasecmp(word, "Title") || !strcasecmp(word, "Titl"))
             {
                 ch->pcdata->title = fread_string(fp);
                 if (ch->pcdata->title[0] != '.'
@@ -1352,7 +1352,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
         case 'V':
             KEY("Version", ch->version, fread_number(fp));
             KEY("Vers", ch->version, fread_number(fp));
-            if (!str_cmp(word, "Vnum"))
+            if (!strcasecmp(word, "Vnum"))
             {
                 ch->pIndexData = get_mob_index(fread_number(fp));
                 fMatch = TRUE;
@@ -1386,7 +1386,7 @@ static void fread_imm(CHAR_DATA * ch, FILE * fp)
     {
         word = feof(fp) ? "End" : fread_word(fp);
 
-        if (!str_cmp(word, "End"))
+        if (!strcasecmp(word, "End"))
         {
             break;
         }
@@ -1408,7 +1408,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
 
     /* first entry had BETTER be the vnum or we barf */
     word = feof(fp) ? "END" : fread_word(fp);
-    if (!str_cmp(word, "Vnum"))
+    if (!strcasecmp(word, "Vnum"))
     {
         int vnum;
 
@@ -1444,7 +1444,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
             KEY("AfBy", pet->affected_by, fread_number(fp));
             KEY("Alig", pet->alignment, fread_number(fp));
 
-            if (!str_cmp(word, "ACs"))
+            if (!strcasecmp(word, "ACs"))
             {
                 int i;
 
@@ -1454,7 +1454,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "AffD"))
+            if (!strcasecmp(word, "AffD"))
             {
                 AFFECT_DATA *paf;
                 int sn;
@@ -1484,7 +1484,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "AMod"))
+            if (!strcasecmp(word, "AMod"))
             {
                 int stat;
 
@@ -1494,7 +1494,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "Attr"))
+            if (!strcasecmp(word, "Attr"))
             {
                 int stat;
 
@@ -1506,7 +1506,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
             break;
 
         case 'B':
-            if (!str_cmp(word, "BvCommFlags"))
+            if (!strcasecmp(word, "BvCommFlags"))
             {
                 tmp_string = fread_string(fp);
                 bv_from_string(pet->bv_comm_flags, bv_str_list_comm, tmp_string, BV_STR_SET);
@@ -1517,7 +1517,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
             break;
 
         case 'C':
-            if (!str_cmp(word, "Comm"))
+            if (!strcasecmp(word, "Comm"))
             {
                 bv_from_old_bitvector(pet->bv_comm_flags, fread_number(fp));
                 fMatch = true;
@@ -1532,7 +1532,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
             break;
 
         case 'E':
-            if (!str_cmp(word, "End"))
+            if (!strcasecmp(word, "End"))
             {
                 pet->leader = ch;
                 pet->master = ch;
@@ -1549,7 +1549,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
         case 'H':
             KEY("Hit", pet->hitroll, fread_number(fp));
 
-            if (!str_cmp(word, "HMV"))
+            if (!strcasecmp(word, "HMV"))
             {
                 pet->hit = fread_number(fp);
                 pet->max_hit = fread_number(fp);
@@ -1577,7 +1577,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
 
         case 'R':
             /* KEY( "Race", pet->race, race_lookup(fread_string(fp))); */
-            if (!str_cmp(word, "Race"))
+            if (!strcasecmp(word, "Race"))
             {
                 char *race;
                 race = fread_string(fp);
@@ -1624,7 +1624,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
     make_new = FALSE;
 
     word = feof(fp) ? "End" : fread_word(fp);
-    if (!str_cmp(word, "Vnum"))
+    if (!strcasecmp(word, "Vnum"))
     {
         int vnum;
         first = FALSE;		/* fp will be in right place */
@@ -1680,8 +1680,8 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
             break;
 
         case 'A':
-            if (!str_cmp(word, "Affect") || !str_cmp(word, "Aff")
-                    || !str_cmp(word, "AffD"))
+            if (!strcasecmp(word, "Affect") || !strcasecmp(word, "Aff")
+                    || !strcasecmp(word, "AffD"))
             {
                 AFFECT_DATA *paf;
 
@@ -1695,7 +1695,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
                     affect_free = affect_free->next;
                 }
 
-                if (!str_cmp(word, "AffD"))
+                if (!strcasecmp(word, "AffD"))
                 {
                     int sn;
                     sn = skill_lookup(fread_word(fp));
@@ -1720,7 +1720,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            else if (!str_cmp(word, "AfRd"))
+            else if (!strcasecmp(word, "AfRd"))
             {
                 AFFECT_DATA *paf;
 
@@ -1758,7 +1758,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
 
         case 'E':
 
-            if (!str_cmp(word, "Enchanted"))
+            if (!strcasecmp(word, "Enchanted"))
             {
                 obj->enchanted = TRUE;
                 fMatch = TRUE;
@@ -1768,7 +1768,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
             KEY("ExtraFlags", obj->extra_flags, fread_number(fp));
             KEY("ExtF", obj->extra_flags, fread_number(fp));
 
-            if (!str_cmp(word, "ExtraDescr") || !str_cmp(word, "ExDe"))
+            if (!strcasecmp(word, "ExtraDescr") || !strcasecmp(word, "ExDe"))
             {
                 EXTRA_DESCR_DATA *ed;
 
@@ -1789,7 +1789,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
                 fMatch = TRUE;
             }
 
-            if (!str_cmp(word, "End"))
+            if (!strcasecmp(word, "End"))
             {
                 if (!fNest || (fVnum && obj->pIndexData == NULL))
                 {
@@ -1855,7 +1855,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
         case 'N':
             KEY("Name", obj->name, fread_string(fp));
 
-            if (!str_cmp(word, "Nest"))
+            if (!strcasecmp(word, "Nest"))
             {
                 iNest = fread_number(fp);
                 if (iNest < 0 || iNest >= MAX_NEST)
@@ -1872,7 +1872,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
             break;
 
         case 'O':
-            if (!str_cmp(word, "Oldstyle"))
+            if (!strcasecmp(word, "Oldstyle"))
             {
                 if (obj->pIndexData != NULL)
                     make_new = TRUE;
@@ -1884,7 +1884,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
             KEY("ShortDescr", obj->short_descr, fread_string(fp));
             KEY("ShD", obj->short_descr, fread_string(fp));
 
-            if (!str_cmp(word, "Spell"))
+            if (!strcasecmp(word, "Spell"))
             {
                 int iValue;
                 int sn;
@@ -1915,7 +1915,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
             break;
 
         case 'V':
-            if (!str_cmp(word, "Values") || !str_cmp(word, "Vals"))
+            if (!strcasecmp(word, "Values") || !strcasecmp(word, "Vals"))
             {
                 obj->value[0] = fread_number(fp);
                 obj->value[1] = fread_number(fp);
@@ -1927,7 +1927,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "Val"))
+            if (!strcasecmp(word, "Val"))
             {
                 obj->value[0] = fread_number(fp);
                 obj->value[1] = fread_number(fp);
@@ -1938,7 +1938,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
                 break;
             }
 
-            if (!str_cmp(word, "Vnum"))
+            if (!strcasecmp(word, "Vnum"))
             {
                 int vnum;
 

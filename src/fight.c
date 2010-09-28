@@ -4546,7 +4546,7 @@ void do_slay(CHAR_DATA * ch, char *argument)
         send_to_char("Slay whom?\n\r", ch);
         return;
     }
-    if (!str_cmp(arg, "all") && (ch->level >= MAX_LEVEL))
+    if (!strcasecmp(arg, "all") && (ch->level >= MAX_LEVEL))
     {
         for (d = descriptor_list; d != NULL; d = d->next)
         {
@@ -4609,7 +4609,7 @@ void do_mortslay(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         for (d = descriptor_list; d != NULL; d = d->next)
         {

@@ -24,7 +24,7 @@ void do_marry(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg1, arg2))
+        if (!strcasecmp(arg1, arg2))
         {
             send_to_char("A person cannot be married to themselves!\n\r",
                          ch);

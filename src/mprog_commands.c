@@ -381,21 +381,21 @@ void do_mpstat(CHAR_DATA * ch, char *argument)
     }
 
     /* view a mob prog */
-    if (!str_cmp(arg, "mob"))
+    if (!strcasecmp(arg, "mob"))
     {
         do_mobstat(ch, string);
         return;
     }
 
     /* view a room prog */
-    if (!str_cmp(arg, "room"))
+    if (!strcasecmp(arg, "room"))
     {
         do_roomstat(ch, string);
         return;
     }
 
     /* view an obj prog */
-    if (!str_cmp(arg, "obj"))
+    if (!strcasecmp(arg, "obj"))
     {
         do_objstat(ch, string);
         return;
@@ -542,7 +542,7 @@ void do_mpjunk(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (str_cmp(arg, "all") && str_prefix("all.", arg))
+    if (strcasecmp(arg, "all") && str_prefix("all.", arg))
     {
         if ((obj = get_obj_wear(ch, arg)) != NULL)
         {
@@ -982,7 +982,7 @@ void do_mptransfer(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         for (d = descriptor_list; d != NULL; d = d->next)
         {
@@ -1107,7 +1107,7 @@ void do_mpforce(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
@@ -1166,7 +1166,7 @@ void do_mpsilentforce(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
@@ -1307,7 +1307,7 @@ void do_mpfollowpath(CHAR_DATA * ch, char *argument)
     if (strlen(arg) < 1)
         return;
 
-    if (!str_cmp(arg2, "restart") && !pMob->path_move)
+    if (!strcasecmp(arg2, "restart") && !pMob->path_move)
     {
         pMob->path_move = TRUE;
         pMob->path_pos = 0;
@@ -1483,18 +1483,18 @@ void do_mprandomsocial(CHAR_DATA * ch, char *argument)
     /* use to be argument */
     if (argument == '\0')
     {
-        if (str_cmp(RandomSOCIAL->others_no_arg, "none"))
+        if (strcasecmp(RandomSOCIAL->others_no_arg, "none"))
         {
             act(RandomSOCIAL->others_no_arg, ch, NULL, victim, TO_ROOM);
         }
-        if (str_cmp(RandomSOCIAL->char_no_arg, "none"))
+        if (strcasecmp(RandomSOCIAL->char_no_arg, "none"))
         {
             act(RandomSOCIAL->char_no_arg, ch, NULL, victim, TO_CHAR);
         }
     }
     else if ((victim = get_char_room(ch, argument)) == NULL)
     {
-        if (str_cmp(RandomSOCIAL->char_not_found, "none"))
+        if (strcasecmp(RandomSOCIAL->char_not_found, "none"))
         {
             act(RandomSOCIAL->char_not_found, ch, NULL, victim, TO_CHAR);
         }
@@ -1503,26 +1503,26 @@ void do_mprandomsocial(CHAR_DATA * ch, char *argument)
     }
     else if (victim == ch)
     {
-        if (str_cmp(RandomSOCIAL->others_auto, "none"))
+        if (strcasecmp(RandomSOCIAL->others_auto, "none"))
         {
             act(RandomSOCIAL->others_auto, ch, NULL, victim, TO_ROOM);
         }
-        if (str_cmp(RandomSOCIAL->char_auto, "none"))
+        if (strcasecmp(RandomSOCIAL->char_auto, "none"))
         {
             act(RandomSOCIAL->char_auto, ch, NULL, victim, TO_CHAR);
         }
     }
     else
     {
-        if (str_cmp(RandomSOCIAL->others_found, "none"))
+        if (strcasecmp(RandomSOCIAL->others_found, "none"))
         {
             act(RandomSOCIAL->others_found, ch, NULL, victim, TO_NOTVICT);
         }
-        if (str_cmp(RandomSOCIAL->char_found, "none"))
+        if (strcasecmp(RandomSOCIAL->char_found, "none"))
         {
             act(RandomSOCIAL->char_found, ch, NULL, victim, TO_CHAR);
         }
-        if (str_cmp(RandomSOCIAL->vict_found, "none"))
+        if (strcasecmp(RandomSOCIAL->vict_found, "none"))
         {
             act(RandomSOCIAL->vict_found, ch, NULL, victim, TO_VICT);
         }
@@ -1543,17 +1543,17 @@ void do_mprandomsocial(CHAR_DATA * ch, char *argument)
             case 6:
             case 7:
             case 8:
-                if (str_cmp(RandomSOCIAL->others_found, "none"))
+                if (strcasecmp(RandomSOCIAL->others_found, "none"))
                 {
                     act(RandomSOCIAL->others_found,
                         victim, NULL, ch, TO_NOTVICT);
                 }
-                if (str_cmp(RandomSOCIAL->char_found, "none"))
+                if (strcasecmp(RandomSOCIAL->char_found, "none"))
                 {
                     act(RandomSOCIAL->char_found, victim, NULL, ch,
                         TO_CHAR);
                 }
-                if (str_cmp(RandomSOCIAL->vict_found, "none"))
+                if (strcasecmp(RandomSOCIAL->vict_found, "none"))
                 {
                     act(RandomSOCIAL->vict_found, victim, NULL, ch,
                         TO_VICT);

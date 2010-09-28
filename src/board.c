@@ -219,7 +219,7 @@ int board_lookup(const char *name)
     int i;
 
     for (i = 0; i < MAX_BOARD; i++)
-        if (!str_cmp(boards[i].short_name, name))
+        if (!strcasecmp(boards[i].short_name, name))
             return i;
 
     return -1;
@@ -348,31 +348,31 @@ static void load_board(BOARD_DATA * board)
 
         pnote = alloc_perm(sizeof(*pnote));
 
-        if (str_cmp(fread_word(fp), "sender"))
+        if (strcasecmp(fread_word(fp), "sender"))
             break;
         pnote->sender = fread_string(fp);
 
-        if (str_cmp(fread_word(fp), "date"))
+        if (strcasecmp(fread_word(fp), "date"))
             break;
         pnote->date = fread_string(fp);
 
-        if (str_cmp(fread_word(fp), "stamp"))
+        if (strcasecmp(fread_word(fp), "stamp"))
             break;
         pnote->date_stamp = fread_number(fp);
 
-        if (str_cmp(fread_word(fp), "expire"))
+        if (strcasecmp(fread_word(fp), "expire"))
             break;
         pnote->expire = fread_number(fp);
 
-        if (str_cmp(fread_word(fp), "to"))
+        if (strcasecmp(fread_word(fp), "to"))
             break;
         pnote->to_list = fread_string(fp);
 
-        if (str_cmp(fread_word(fp), "subject"))
+        if (strcasecmp(fread_word(fp), "subject"))
             break;
         pnote->subject = fread_string(fp);
 
-        if (str_cmp(fread_word(fp), "text"))
+        if (strcasecmp(fread_word(fp), "text"))
             break;
         pnote->text = fread_string(fp);
 
@@ -425,7 +425,7 @@ void load_boards()
 /* Returns TRUE if the specified note is address to ch */
 bool is_note_to(CHAR_DATA * ch, NOTE_DATA * note)
 {
-    if (!str_cmp(ch->name, note->sender))
+    if (!strcasecmp(ch->name, note->sender))
         return TRUE;
 
     if (is_full_name("all", note->to_list))
@@ -626,7 +626,7 @@ static void do_nread(CHAR_DATA * ch, char *argument)
     time_t *last_note =
         &ch->pcdata->last_note[board_number(ch->pcdata->board)];
 
-    if (!str_cmp(argument, "again"))  	/* read last note again */
+    if (!strcasecmp(argument, "again"))  	/* read last note again */
     {
 
     }
@@ -692,7 +692,7 @@ static void do_nremove(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (str_cmp(ch->name, p->sender) && (get_trust(ch) < MAX_LEVEL))
+    if (strcasecmp(ch->name, p->sender) && (get_trust(ch) < MAX_LEVEL))
     {
         send_to_char("You are not authorized to remove this note.\n\r",
                      ch);
@@ -782,25 +782,25 @@ void do_note(CHAR_DATA * ch, char *argument)
 
     argument = one_argument(argument, arg);
 
-    if ((!arg[0]) || (!str_cmp(arg, "read")))	/* 'note' or 'note read X' */
+    if ((!arg[0]) || (!strcasecmp(arg, "read")))	/* 'note' or 'note read X' */
         do_nread(ch, argument);
 
-    else if (!str_cmp(arg, "list"))
+    else if (!strcasecmp(arg, "list"))
         do_nlist(ch, argument);
 
-    else if (!str_cmp(arg, "write"))
+    else if (!strcasecmp(arg, "write"))
         do_nwrite(ch, argument);
 
-    else if (!str_cmp(arg, "remove"))
+    else if (!strcasecmp(arg, "remove"))
         do_nremove(ch, argument);
 
-    else if (!str_cmp(arg, "purge"))
+    else if (!strcasecmp(arg, "purge"))
         send_to_char("Obsolete.\n\r", ch);
 
-    else if (!str_cmp(arg, "archive"))
+    else if (!strcasecmp(arg, "archive"))
         send_to_char("Obsolete.\n\r", ch);
 
-    else if (!str_cmp(arg, "catchup"))
+    else if (!strcasecmp(arg, "catchup"))
         do_ncatchup(ch, argument);
     else
         do_help(ch, "note");
@@ -886,7 +886,7 @@ void do_board(CHAR_DATA * ch, char *argument)
     /* Non-number given, find board with that name */
 
     for (i = 0; i < MAX_BOARD; i++)
-        if (!str_cmp(boards[i].short_name, argument))
+        if (!strcasecmp(boards[i].short_name, argument))
             break;
 
     if (i == MAX_BOARD)
@@ -1169,7 +1169,7 @@ void handle_con_note_text(DESCRIPTOR_DATA * d, char *argument)
     /* First, check for EndOfNote marker */
 
     strcpy(buf, argument);
-    if ((!str_cmp(buf, "~")) || (!str_cmp(buf, "END")))
+    if ((!strcasecmp(buf, "~")) || (!strcasecmp(buf, "END")))
     {
         write_to_buffer(d, "\n\r\n\r", 0);
         write_to_buffer(d, szFinishPrompt, 0);

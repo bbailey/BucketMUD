@@ -944,7 +944,7 @@ bool is_full_name(const char *str, char *namelist)
         namelist = one_argument(namelist, name);
         if (name[0] == '\0')
             return FALSE;
-        if (!str_cmp(str, name))
+        if (!strcasecmp(str, name))
             return TRUE;
     }
 }
@@ -971,10 +971,10 @@ bool is_exact_name(char *str, char *namelist)
             if (name[0] == '\0')	/* this name was not found */
                 return FALSE;
 
-            if (!str_cmp(string, name))
+            if (!strcasecmp(string, name))
                 return TRUE;	/* full pattern match */
 
-            if (!str_cmp(part, name))
+            if (!strcasecmp(part, name))
                 break;
         }
     }
@@ -2389,7 +2389,7 @@ CHAR_DATA *get_char_room(CHAR_DATA * ch, char *argument)
 
     number = number_argument(argument, arg2);
     count = 0;
-    if (!str_cmp(arg2, "self"))
+    if (!strcasecmp(arg2, "self"))
         return ch;
     if (!ch->in_room)		/* Make sure in_room isn't NULL (ConsoleChar) - Zane */
         return NULL;
@@ -2417,7 +2417,7 @@ CHAR_DATA *get_mob_room(CHAR_DATA * ch, char *argument)
     number = number_argument(argument, arg2);
     count = 0;
 
-    if (!str_cmp(arg2, "self"))
+    if (!strcasecmp(arg2, "self"))
         return ch;
 
     if (!ch->in_room)		/* Make sure in_room isn't NULL (ConsoleChar) - Zane */
@@ -2449,7 +2449,7 @@ CHAR_DATA *get_player_room(CHAR_DATA * ch, char *argument)
     number = number_argument(argument, arg2);
     count = 0;
 
-    if (!str_cmp(arg2, "self"))
+    if (!strcasecmp(arg2, "self"))
         return ch;
 
     if (!ch->in_room)		/* Make sure in_room isn't NULL (ConsoleChar) - Zane */

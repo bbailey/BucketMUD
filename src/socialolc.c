@@ -44,13 +44,13 @@ void load_socials(FILE * fp)
         word = fread_word(fp);
 
         /* Exit when "#$" found */
-        if (!str_cmp(word, "#$"))
+        if (!strcasecmp(word, "#$"))
         {
             break;
         }
 
         /* Start loading when "#SOCIALS" found */
-        if (!str_cmp(word, "#SOCIALS"))
+        if (!strcasecmp(word, "#SOCIALS"))
         {
             for (;;)
             {
@@ -240,7 +240,7 @@ void do_socialedit(CHAR_DATA * ch, char *argument)
         }
         else
         {
-            if (!str_cmp(arg, "create"))
+            if (!strcasecmp(arg, "create"))
             {
                 if (socialedit_create(ch, argument))
                 {
@@ -273,7 +273,7 @@ void socialedit(CHAR_DATA * ch, char *argument)
 
     pSocial = (SOCIALLIST_DATA *) ch->desc->pEdit;
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         edit_done(ch);
         do_asave(ch, "socials");
@@ -655,7 +655,7 @@ void do_socialfind(CHAR_DATA * ch, char *argument)
     for (pSocial = social_first; pSocial != NULL; pSocial = pSocial->next)
     {
         if ((is_name(argument, pSocial->name))
-                || (!str_cmp(argument, "all")))
+                || (!strcasecmp(argument, "all")))
         {
             count++;
             if (IS_IMMORTAL(ch))

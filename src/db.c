@@ -662,31 +662,31 @@ int boot_db()
 
                 if (word[0] == '$')
                     break;
-                else if (!str_cmp(word, "AREADATA"))
+                else if (!strcasecmp(word, "AREADATA"))
                     load_area(fpArea);
-                else if (!str_cmp(word, "CLANS"))
+                else if (!strcasecmp(word, "CLANS"))
                     load_clans(fpArea);
-                else if (!str_cmp(word, "HELPS"))
-                    if (!str_cmp(sysconfig.help_file, strArea))
+                else if (!strcasecmp(word, "HELPS"))
+                    if (!strcasecmp(sysconfig.help_file, strArea))
                         load_helps(fpArea);
                     else
                         bug("%s contains a #HELPS section, only %s can contain #HELPS.", strArea, sysconfig.help_file);
 
-                else if (!str_cmp(word, "MOBILES"))
+                else if (!strcasecmp(word, "MOBILES"))
                     load_mobiles(fpArea);
-                else if (!str_cmp(word, "PROGS"))
+                else if (!strcasecmp(word, "PROGS"))
                     load_progs(fpArea);
-                else if (!str_cmp(word, "OBJECTS"))
+                else if (!strcasecmp(word, "OBJECTS"))
                     load_objects(fpArea);
-                else if (!str_cmp(word, "RESETS"))
+                else if (!strcasecmp(word, "RESETS"))
                     skip_section(fpArea, word);
-                else if (!str_cmp(word, "ROOMS"))
+                else if (!strcasecmp(word, "ROOMS"))
                     load_rooms(fpArea);
-                else if (!str_cmp(word, "SHOPS"))
+                else if (!strcasecmp(word, "SHOPS"))
                     skip_section(fpArea, word);
-                /*                              else if ( !str_cmp( word,
+                /*                              else if ( !strcasecmp( word,
                    "SOCIALS"  ) ) load_socials  (fpArea); */
-                else if (!str_cmp(word, "FACTIONAFFS"))
+                else if (!strcasecmp(word, "FACTIONAFFS"))
                     skip_section(fpArea, word);
                 else
                 {
@@ -745,27 +745,27 @@ int boot_db()
                 if (word[0] == '$')
                     break;
                 /* OLC */
-                else if (!str_cmp(word, "AREADATA"))
+                else if (!strcasecmp(word, "AREADATA"))
                     skip_section(fpArea, word);	/*load_area    (fpArea) */
-                else if (!str_cmp(word, "CLANS"))
+                else if (!strcasecmp(word, "CLANS"))
                     skip_section(fpArea, word);	/*load_clans   (fparea) */
-                else if (!str_cmp(word, "HELPS"))
+                else if (!strcasecmp(word, "HELPS"))
                     skip_section(fpArea, word);	/*load_helps   (fpArea) */
-                else if (!str_cmp(word, "MOBILES"))
+                else if (!strcasecmp(word, "MOBILES"))
                     skip_section(fpArea, word);	/*load_mobiles (fpArea) */
-                else if (!str_cmp(word, "PROGS"))
+                else if (!strcasecmp(word, "PROGS"))
                     skip_section(fpArea, word);	/*load_progs   (fpArea) */
-                else if (!str_cmp(word, "OBJECTS"))
+                else if (!strcasecmp(word, "OBJECTS"))
                     skip_section(fpArea, word);	/*load_objects (fpArea) */
-                else if (!str_cmp(word, "RESETS"))
+                else if (!strcasecmp(word, "RESETS"))
                     load_resets(fpArea);
-                else if (!str_cmp(word, "ROOMS"))
+                else if (!strcasecmp(word, "ROOMS"))
                     skip_section(fpArea, word);	/*load_rooms   (fpArea) */
-                else if (!str_cmp(word, "SHOPS"))
+                else if (!strcasecmp(word, "SHOPS"))
                     load_shops(fpArea);
-                /*                              else if ( !str_cmp( word,
+                /*                              else if ( !strcasecmp( word,
                    "SOCIALS"  ) ) skip_section (fpArea,word); *//*load_socials (fpArea) */
-                else if (!str_cmp(word, "FACTIONAFFS"))
+                else if (!strcasecmp(word, "FACTIONAFFS"))
                     load_factionaffs(fpArea);
                 else
                 {
@@ -824,17 +824,17 @@ static void skip_section(FILE * fp, char *section)
     char *word;
     char letter;
 
-    if (!str_cmp(section, "AREADATA"))
+    if (!strcasecmp(section, "AREADATA"))
     {
         for (;;)
         {
             word = feof(fp) ? "End" : fread_word(fp);
-            if (!str_cmp(word, "End"))
+            if (!strcasecmp(word, "End"))
                 return;
             fread_to_eol(fp);
         }
     }
-    if (!str_cmp(section, "HELPS"))
+    if (!strcasecmp(section, "HELPS"))
     {
         for (;;)
         {
@@ -846,8 +846,8 @@ static void skip_section(FILE * fp, char *section)
         }
     }
 
-    if (!str_cmp(section, "MOBILES") || !str_cmp(section, "OBJECTS")
-            || !str_cmp(section, "ROOMS"))
+    if (!strcasecmp(section, "MOBILES") || !strcasecmp(section, "OBJECTS")
+            || !strcasecmp(section, "ROOMS"))
     {
         for (;;)
         {
@@ -856,14 +856,14 @@ static void skip_section(FILE * fp, char *section)
                 return;
         }
     }
-    if (!str_cmp(section, "PROGS") || !str_cmp(section, "RESETS"))
+    if (!strcasecmp(section, "PROGS") || !strcasecmp(section, "RESETS"))
     {
         for (;;)
         {
             switch (letter = fread_letter(fp))
             {
             case 'S':
-                if (!str_cmp(section, "RESETS"))
+                if (!strcasecmp(section, "RESETS"))
                     return;
             case 's':
                 fread_to_eol(fp);
@@ -872,7 +872,7 @@ static void skip_section(FILE * fp, char *section)
             fread_to_eol(fp);
         }
     }
-    if (!str_cmp(section, "SHOPS"))
+    if (!strcasecmp(section, "SHOPS"))
     {
         for (;;)
         {
@@ -882,7 +882,7 @@ static void skip_section(FILE * fp, char *section)
             fread_to_eol(fp);
         }
     }
-    if (!str_cmp(section, "FACTIONAFFS"))
+    if (!strcasecmp(section, "FACTIONAFFS"))
     {
         for (;;)
         {
@@ -892,7 +892,7 @@ static void skip_section(FILE * fp, char *section)
             fread_to_eol(fp);
         }
     }
-    /*  if (!str_cmp( section, "SOCIALS" ))
+    /*  if (!strcasecmp( section, "SOCIALS" ))
        {
        for ( ; ; )
        {
@@ -903,7 +903,7 @@ static void skip_section(FILE * fp, char *section)
        }
        } */
 
-    if (!str_cmp(section, "CLANS"))
+    if (!strcasecmp(section, "CLANS"))
     {
         for (;;)
         {
@@ -930,7 +930,7 @@ static void skip_section(FILE * fp, char *section)
 #endif
 
 #define KEY( literal, field, value )                \
-		if ( !str_cmp( word, literal ) )    \
+		if ( !strcasecmp( word, literal ) )    \
 		{                                   \
 		    field  = value;                 \
 		    fMatch = TRUE;                  \
@@ -938,7 +938,7 @@ static void skip_section(FILE * fp, char *section)
 				}
 
 #define SKEY( string, field )                       \
-		if ( !str_cmp( word, string ) )     \
+		if ( !strcasecmp( word, string ) )     \
 		{                                   \
 		    free_string( &field );           \
 		    field = fread_string( fp );     \
@@ -992,7 +992,7 @@ static void load_area(FILE * fp)
             break;
         case 'V':
             KEY("Version", pArea->version, fread_number(fp));
-            if (!str_cmp(word, "VNUMs"))
+            if (!strcasecmp(word, "VNUMs"))
             {
                 pArea->lvnum = fread_number(fp);
                 pArea->uvnum = fread_number(fp);
@@ -1000,7 +1000,7 @@ static void load_area(FILE * fp)
             }
             break;
         case 'E':
-            if (!str_cmp(word, "End"))
+            if (!strcasecmp(word, "End"))
             {
                 fMatch = TRUE;
                 if (area_first == NULL)
@@ -1073,10 +1073,10 @@ static void load_helps(FILE * fp)
         free_string(&pHelp->text);
         pHelp->text = fread_string(fp);
 
-        if (!str_cmp(pHelp->keyword, "greeting"))
+        if (!strcasecmp(pHelp->keyword, "greeting"))
             help_greeting = pHelp->text;
 
-        if (!str_cmp(pHelp->keyword, "ansigreet"))
+        if (!strcasecmp(pHelp->keyword, "ansigreet"))
             ansi_greeting = pHelp->text;
 
         help_entries = g_list_append(help_entries, pHelp);
@@ -3250,34 +3250,6 @@ void smash_tilde(char *str)
 }
 
 /*
- * Compare strings, case insensitive.
- * Return TRUE if different
- *   (compatibility with historical functions).
- */
-bool str_cmp(const char *astr, const char *bstr)
-{
-    if (astr == NULL)
-    {
-        bug("Str_cmp: null astr.", 0);
-        return TRUE;
-    }
-
-    if (bstr == NULL)
-    {
-        bug("Str_cmp: null bstr.", 0);
-        return TRUE;
-    }
-
-    for (; *astr || *bstr; astr++, bstr++)
-    {
-        if (LOWER(*astr) != LOWER(*bstr))
-            return TRUE;
-    }
-
-    return FALSE;
-}
-
-/*
  * Compare strings, case insensitive, for prefix matching.
  * Return TRUE if astr not a prefix of bstr
  *   (compatibility with historical functions).
@@ -3342,7 +3314,7 @@ bool str_suffix(const char *astr, const char *bstr)
 
     sstr1 = strlen(astr);
     sstr2 = strlen(bstr);
-    if (sstr1 <= sstr2 && !str_cmp(astr, bstr + sstr2 - sstr1))
+    if (sstr1 <= sstr2 && !strcasecmp(astr, bstr + sstr2 - sstr1))
         return FALSE;
     else
         return TRUE;
@@ -3569,65 +3541,65 @@ void tail_chain(void)
 
 static int mprog_name_to_type(char *name)
 {
-    if (!str_cmp(name, "in_file_prog"))
+    if (!strcasecmp(name, "in_file_prog"))
         return IN_FILE_PROG;
-    if (!str_cmp(name, "act_prog"))
+    if (!strcasecmp(name, "act_prog"))
         return ACT_PROG;
-    if (!str_cmp(name, "speech_prog"))
+    if (!strcasecmp(name, "speech_prog"))
         return SPEECH_PROG;
-    if (!str_cmp(name, "rand_prog"))
+    if (!strcasecmp(name, "rand_prog"))
         return RAND_PROG;
-    if (!str_cmp(name, "fight_prog"))
+    if (!strcasecmp(name, "fight_prog"))
         return FIGHT_PROG;
-    if (!str_cmp(name, "fightgroup_prog"))
+    if (!strcasecmp(name, "fightgroup_prog"))
         return FIGHTGROUP_PROG;
-    if (!str_cmp(name, "hitprcnt_prog"))
+    if (!strcasecmp(name, "hitprcnt_prog"))
         return HITPRCNT_PROG;
-    if (!str_cmp(name, "death_prog"))
+    if (!strcasecmp(name, "death_prog"))
         return DEATH_PROG;
-    if (!str_cmp(name, "entry_prog"))
+    if (!strcasecmp(name, "entry_prog"))
         return ENTRY_PROG;
-    if (!str_cmp(name, "greet_prog"))
+    if (!strcasecmp(name, "greet_prog"))
         return GREET_PROG;
-    if (!str_cmp(name, "all_greet_prog"))
+    if (!strcasecmp(name, "all_greet_prog"))
         return ALL_GREET_PROG;
-    if (!str_cmp(name, "give_prog"))
+    if (!strcasecmp(name, "give_prog"))
         return GIVE_PROG;
-    if (!str_cmp(name, "bribe_prog"))
+    if (!strcasecmp(name, "bribe_prog"))
         return BRIBE_PROG;
-    if (!str_cmp(name, "enter_prog"))
+    if (!strcasecmp(name, "enter_prog"))
         return ENTER_PROG;
-    if (!str_cmp(name, "leave_prog"))
+    if (!strcasecmp(name, "leave_prog"))
         return LEAVE_PROG;
-    if (!str_cmp(name, "sleep_prog"))
+    if (!strcasecmp(name, "sleep_prog"))
         return SLEEP_PROG;
-    if (!str_cmp(name, "rest_prog"))
+    if (!strcasecmp(name, "rest_prog"))
         return REST_PROG;
-    if (!str_cmp(name, "rfight_prog"))
+    if (!strcasecmp(name, "rfight_prog"))
         return RFIGHT_PROG;
-    if (!str_cmp(name, "rdeath_prog"))
+    if (!strcasecmp(name, "rdeath_prog"))
         return RDEATH_PROG;
-    if (!str_cmp(name, "wear_prog"))
+    if (!strcasecmp(name, "wear_prog"))
         return WEAR_PROG;
-    if (!str_cmp(name, "remove_prog"))
+    if (!strcasecmp(name, "remove_prog"))
         return REMOVE_PROG;
-    if (!str_cmp(name, "sac_prog"))
+    if (!strcasecmp(name, "sac_prog"))
         return SAC_PROG;
-    if (!str_cmp(name, "examine_prog"))
+    if (!strcasecmp(name, "examine_prog"))
         return EXA_PROG;
-    if (!str_cmp(name, "look_prog"))
+    if (!strcasecmp(name, "look_prog"))
         return LOOK_PROG;
-    if (!str_cmp(name, "zap_prog"))
+    if (!strcasecmp(name, "zap_prog"))
         return ZAP_PROG;
-    if (!str_cmp(name, "get_prog"))
+    if (!strcasecmp(name, "get_prog"))
         return GET_PROG;
-    if (!str_cmp(name, "drop_prog"))
+    if (!strcasecmp(name, "drop_prog"))
         return DROP_PROG;
-    if (!str_cmp(name, "use_prog"))
+    if (!strcasecmp(name, "use_prog"))
         return USE_PROG;
-    if (!str_cmp(name, "hit_prog"))
+    if (!strcasecmp(name, "hit_prog"))
         return HIT_PROG;
-    if (!str_cmp(name, "command_prog"))
+    if (!strcasecmp(name, "command_prog"))
         return COMMAND_PROG;
 
     return (ERROR_PROG);
@@ -3647,9 +3619,9 @@ static void load_mudprogs(FILE * fp)
     {
         word = fread_word(fp);
 
-        if (!str_cmp(word, "#$"))
+        if (!strcasecmp(word, "#$"))
             break;
-        else if (!str_cmp(word, "#MOBPROGS"))
+        else if (!strcasecmp(word, "#MOBPROGS"))
         {
             for (;;)
             {
@@ -3709,7 +3681,7 @@ static void load_mudprogs(FILE * fp)
                 pMudProg = NULL;
             }
         }
-        else if (!str_cmp(word, "#ROOMPROGS"))
+        else if (!strcasecmp(word, "#ROOMPROGS"))
         {
             for (;;)
             {
@@ -3769,7 +3741,7 @@ static void load_mudprogs(FILE * fp)
                 pMudProg = NULL;
             }
         }
-        else if (!str_cmp(word, "#OBJPROGS"))
+        else if (!strcasecmp(word, "#OBJPROGS"))
         {
             for (;;)
             {
@@ -3829,7 +3801,7 @@ static void load_mudprogs(FILE * fp)
                 pMudProg = NULL;
             }
         }
-        else if (!str_cmp(word, "#PROGGROUPS"))
+        else if (!strcasecmp(word, "#PROGGROUPS"))
         {
             for (;;)
             {
@@ -3936,7 +3908,7 @@ static int load_config_file(void)
             continue;
 
         /* Try to match a section header */
-        if (!str_cmp(buf, "[Paths]"))
+        if (!strcasecmp(buf, "[Paths]"))
         {
             /*
              * Read in each line of the section.  If a new section header is
@@ -3960,28 +3932,28 @@ static int load_config_file(void)
                 ptr = one_argument2(buf, word);
 
                 /* Try to match a variable name */
-                if (!str_cmp(word, "AreaDir"))
+                if (!strcasecmp(word, "AreaDir"))
                     sysconfig.area_dir =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "PlayerDir"))
+                else if (!strcasecmp(word, "PlayerDir"))
                     sysconfig.player_dir =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "PlayerTemp"))
+                else if (!strcasecmp(word, "PlayerTemp"))
                     sysconfig.player_temp =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "GodDir"))
+                else if (!strcasecmp(word, "GodDir"))
                     sysconfig.god_dir =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "ClanDir"))
+                else if (!strcasecmp(word, "ClanDir"))
                     sysconfig.clan_dir =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "NoteDir"))
+                else if (!strcasecmp(word, "NoteDir"))
                     sysconfig.note_dir =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "LogDir"))
+                else if (!strcasecmp(word, "LogDir"))
                     sysconfig.log_dir =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "ClassDir"))
+                else if (!strcasecmp(word, "ClassDir"))
                     sysconfig.class_dir =
                         strdup(get_config_value(ptr, word));
                 else
@@ -3993,7 +3965,7 @@ static int load_config_file(void)
                 }
             }
         }
-        else if (!str_cmp(buf, "[Files]"))
+        else if (!strcasecmp(buf, "[Files]"))
         {
             /*
              * Read in each line of the section.  If a new section header is
@@ -4017,43 +3989,43 @@ static int load_config_file(void)
                 ptr = one_argument2(buf, word);
 
                 /* Try to match a variable name */
-                if (!str_cmp(word, "AreaList"))
+                if (!strcasecmp(word, "AreaList"))
                     sysconfig.area_list =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "HelpFile"))
+                else if (!strcasecmp(word, "HelpFile"))
                     sysconfig.help_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "MudProgs"))
+                else if (!strcasecmp(word, "MudProgs"))
                     sysconfig.mudprogs_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "BugFile"))
+                else if (!strcasecmp(word, "BugFile"))
                     sysconfig.bug_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "IdeaFile"))
+                else if (!strcasecmp(word, "IdeaFile"))
                     sysconfig.idea_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "TypoFile"))
+                else if (!strcasecmp(word, "TypoFile"))
                     sysconfig.typo_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "ShutdownFile"))
+                else if (!strcasecmp(word, "ShutdownFile"))
                     sysconfig.shutdown_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "ClansFile"))
+                else if (!strcasecmp(word, "ClansFile"))
                     sysconfig.clans_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "FactionsFile"))
+                else if (!strcasecmp(word, "FactionsFile"))
                     sysconfig.factions_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "SocialsFile"))
+                else if (!strcasecmp(word, "SocialsFile"))
                     sysconfig.socials_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "HelpLogFile"))
+                else if (!strcasecmp(word, "HelpLogFile"))
                     sysconfig.help_log_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "BanFile"))
+                else if (!strcasecmp(word, "BanFile"))
                     sysconfig.ban_file =
                         strdup(get_config_value(ptr, word));
-                else if (!str_cmp(word, "DisableFile"))
+                else if (!strcasecmp(word, "DisableFile"))
                     sysconfig.disable_file =
                         strdup(get_config_value(ptr, word));
                 else
@@ -4087,7 +4059,7 @@ static char *get_config_value(char *inbuf, char *outbuf)
 {
     inbuf = one_argument2(inbuf, outbuf);
 
-    if (str_cmp(outbuf, "="))
+    if (strcasecmp(outbuf, "="))
     {
         perror("get_config_value: Variable format error.");
         exit(EXIT_FAILURE);

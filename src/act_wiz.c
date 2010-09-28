@@ -804,7 +804,7 @@ void do_pardon(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg2, "killer"))
+    if (!strcasecmp(arg2, "killer"))
     {
         if (IS_SET(victim->act, PLR_KILLER))
         {
@@ -815,7 +815,7 @@ void do_pardon(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg2, "thief"))
+    if (!strcasecmp(arg2, "thief"))
     {
         if (IS_SET(victim->act, PLR_THIEF))
         {
@@ -955,7 +955,7 @@ void do_transfer(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         for (d = descriptor_list; d != NULL; d = d->next)
         {
@@ -1201,19 +1201,19 @@ void do_stat(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "room"))
+    if (!strcasecmp(arg, "room"))
     {
         do_rstat(ch, string);
         return;
     }
 
-    if (!str_cmp(arg, "obj"))
+    if (!strcasecmp(arg, "obj"))
     {
         do_ostat(ch, string);
         return;
     }
 
-    if (!str_cmp(arg, "char") || !str_cmp(arg, "mob"))
+    if (!strcasecmp(arg, "char") || !strcasecmp(arg, "mob"))
     {
         do_mstat(ch, string);
         return;
@@ -1899,7 +1899,7 @@ void do_mfind(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    fAll = FALSE;		/* !str_cmp( arg, "all" ); */
+    fAll = FALSE;		/* !strcasecmp( arg, "all" ); */
     found = FALSE;
     nMatch = 0;
 
@@ -1997,7 +1997,7 @@ static void do_rfind(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    fAll = FALSE;		/* !str_cmp( arg, "all" ); */
+    fAll = FALSE;		/* !strcasecmp( arg, "all" ); */
     found = FALSE;
     nMatch = 0;
 
@@ -2062,7 +2062,7 @@ void do_mpfind(CHAR_DATA * ch, char *argument)
     found = FALSE;
     *buf = '\0';
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         fAll = TRUE;
     }
@@ -2663,13 +2663,13 @@ void do_load(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "mob") || !str_cmp(arg, "char"))
+    if (!strcasecmp(arg, "mob") || !strcasecmp(arg, "char"))
     {
         do_mload(ch, argument);
         return;
     }
 
-    if (!str_cmp(arg, "obj"))
+    if (!strcasecmp(arg, "obj"))
     {
         do_oload(ch, argument);
         return;
@@ -3007,7 +3007,7 @@ void do_restore(CHAR_DATA * ch, char *argument)
     DESCRIPTOR_DATA *d;
 
     one_argument(argument, arg);
-    if (arg[0] == '\0' || !str_cmp(arg, "room"))
+    if (arg[0] == '\0' || !strcasecmp(arg, "room"))
     {
         /* cure room */
 
@@ -3032,7 +3032,7 @@ void do_restore(CHAR_DATA * ch, char *argument)
 
     }
 
-    if (get_trust(ch) >= MAX_LEVEL && !str_cmp(arg, "all"))
+    if (get_trust(ch) >= MAX_LEVEL && !strcasecmp(arg, "all"))
     {
         /* cure all */
 
@@ -3142,7 +3142,7 @@ void do_log(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         if (fLogAll)
         {
@@ -3391,7 +3391,7 @@ void do_slookup(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         for (sn = 0; sn < MAX_SKILL; sn++)
         {
@@ -3501,7 +3501,7 @@ void do_sset(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    fAll = !str_cmp(arg2, "all");
+    fAll = !strcasecmp(arg2, "all");
     sn = 0;
     if (!fAll && (sn = skill_lookup(arg2)) < 0)
     {
@@ -3982,8 +3982,8 @@ void do_mset(CHAR_DATA * ch, char *argument)
             send_to_char("Not on NPC's.\n\r", ch);
             return;
         }
-        if (!str_cmp(arg3, "normal")
-                || !str_cmp(arg3, "default") || !str_cmp(arg3, "none"))
+        if (!strcasecmp(arg3, "normal")
+                || !strcasecmp(arg3, "default") || !strcasecmp(arg3, "none"))
         {
             free_string(&victim->pcdata->who_race);
             send_to_char("Race now shows the actual race.\n\r", ch);
@@ -4029,8 +4029,8 @@ void do_mset(CHAR_DATA * ch, char *argument)
             send_to_char("Not on NPC's.\n\r", ch);
             return;
         }
-        if (!str_cmp(arg3, "normal")
-                || !str_cmp(arg3, "default") || !str_cmp(arg3, "none"))
+        if (!strcasecmp(arg3, "normal")
+                || !strcasecmp(arg3, "default") || !strcasecmp(arg3, "none"))
         {
             free_string(&victim->pcdata->who_prefix);
             send_to_char("Prefix removed.\n\r", ch);
@@ -4253,31 +4253,31 @@ void do_oset(CHAR_DATA * ch, char *argument)
     /*
      * Set something.
      */
-    if (!str_prefix(arg2, "value0") || !str_cmp(arg2, "v0"))
+    if (!str_prefix(arg2, "value0") || !strcasecmp(arg2, "v0"))
     {
         obj->value[0] = UMIN(50, value);
         return;
     }
 
-    if (!str_prefix(arg2, "value1") || !str_cmp(arg2, "v1"))
+    if (!str_prefix(arg2, "value1") || !strcasecmp(arg2, "v1"))
     {
         obj->value[1] = value;
         return;
     }
 
-    if (!str_prefix(arg2, "value2") || !str_cmp(arg2, "v2"))
+    if (!str_prefix(arg2, "value2") || !strcasecmp(arg2, "v2"))
     {
         obj->value[2] = value;
         return;
     }
 
-    if (!str_prefix(arg2, "value3") || !str_cmp(arg2, "v3"))
+    if (!str_prefix(arg2, "value3") || !strcasecmp(arg2, "v3"))
     {
         obj->value[3] = value;
         return;
     }
 
-    if (!str_prefix(arg2, "value4") || !str_cmp(arg2, "v4"))
+    if (!str_prefix(arg2, "value4") || !strcasecmp(arg2, "v4"))
     {
         obj->value[3] = value;
         return;
@@ -4553,7 +4553,7 @@ void do_force(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg_target, "mob"))
+    if (!strcasecmp(arg_target, "mob"))
     {
         etarget = mob;
 
@@ -4567,7 +4567,7 @@ void do_force(CHAR_DATA * ch, char *argument)
             return;
         }
     }
-    else if (!str_cmp(arg_target, "char"))
+    else if (!strcasecmp(arg_target, "char"))
     {
         etarget = player;
 
@@ -4581,11 +4581,11 @@ void do_force(CHAR_DATA * ch, char *argument)
             return;
         }
     }
-    else if (!str_cmp(arg_target, "all"))
+    else if (!strcasecmp(arg_target, "all"))
         etarget = all;
-    else if (!str_cmp(arg_target, "players"))
+    else if (!strcasecmp(arg_target, "players"))
         etarget = players;
-    else if (!str_cmp(arg_target, "gods"))
+    else if (!strcasecmp(arg_target, "gods"))
         etarget = gods;
     else
     {
@@ -4597,7 +4597,7 @@ void do_force(CHAR_DATA * ch, char *argument)
 
     one_argument(argument, arg_command);
 
-    if (!str_cmp(arg_command, "delete"))
+    if (!strcasecmp(arg_command, "delete"))
     {
         send_to_char("That will NOT be done.\n\r", ch);
         return;
@@ -4934,13 +4934,13 @@ void do_objcheck(CHAR_DATA * ch, char *argument)
                            obj->cost);
         }
 
-        if (!str_cmp(obj->name, "no name") || obj->name[0] == '\0')
+        if (!strcasecmp(obj->name, "no name") || obj->name[0] == '\0')
         {
             i++;
             printf_to_char(ch, "[%5d] Keywords not set", obj->vnum);
         }
 
-        if (!str_cmp(obj->short_descr, "(no short description)") ||
+        if (!strcasecmp(obj->short_descr, "(no short description)") ||
                 obj->short_descr[0] == '\0')
         {
             printf_to_char(ch, "[%5d] No short description\n\r",
@@ -4948,7 +4948,7 @@ void do_objcheck(CHAR_DATA * ch, char *argument)
             i++;
         }
 
-        if (!str_cmp(obj->description, "(no description)") ||
+        if (!strcasecmp(obj->description, "(no description)") ||
                 obj->description[0] == '\0')
         {
             printf_to_char(ch, "[%5d] No long description\n\r", obj->vnum);
@@ -5353,7 +5353,7 @@ void do_wizrevoke(CHAR_DATA * ch, char *argument)
 
     for (tmp = victim->pcdata->immcmdlist; tmp != NULL; tmp = tmp->next)
     {
-        if (!str_cmp(argument, tmp->cmd))
+        if (!strcasecmp(argument, tmp->cmd))
         {
             if (tmp2 == NULL)
             {
@@ -5518,7 +5518,7 @@ void do_mlist(CHAR_DATA *ch, char *argument)
 
     pArea = ch->in_room->area;
     buf1[0] = '\0';
-    fAll = !str_cmp(arg, "all");
+    fAll = !strcasecmp(arg, "all");
     found = FALSE;
 
     for (vnum = pArea->lvnum; vnum <= pArea->uvnum; vnum++)
@@ -5573,7 +5573,7 @@ void do_olist(CHAR_DATA *ch, char *argument)
 
     pArea = ch->in_room->area;
     buf1[0] = '\0';
-    fAll = !str_cmp(arg, "all");
+    fAll = !strcasecmp(arg, "all");
     found = FALSE;
 
     for (vnum = pArea->lvnum; vnum <= pArea->uvnum; vnum++)
@@ -5647,7 +5647,7 @@ void do_wizgrant(CHAR_DATA *ch, char *argument)
 
     for (cmd_index = (struct cmd_type *) cmd_table; *cmd_index->name; cmd_index++)
     {
-        if(!str_cmp(arg2, cmd_index->name))
+        if(!strcasecmp(arg2, cmd_index->name))
         {
             if (cmd_index->imm)
             {
@@ -5660,13 +5660,13 @@ void do_wizgrant(CHAR_DATA *ch, char *argument)
         }
     }
 
-    if (!cmd_found && str_cmp(arg2, "all"))
+    if (!cmd_found && strcasecmp(arg2, "all"))
     {
         printf_to_char(ch, "'%s' is not a known command.\r\n", arg2);
         return;
     }
 
-    if (str_cmp(arg2, "all"))
+    if (strcasecmp(arg2, "all"))
     {
         if (can_do_immcmd(victim, arg2))
         {

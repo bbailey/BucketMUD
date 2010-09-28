@@ -245,7 +245,7 @@ static void ban_site(CHAR_DATA * ch, char *argument, bool fPerm)
     prev = NULL;
     for (pban = ban_list; pban != NULL; prev = pban, pban = pban->next)
     {
-        if (!str_cmp(name, pban->name))
+        if (!strcasecmp(name, pban->name))
         {
             if (pban->level > get_trust(ch))
             {
@@ -315,7 +315,7 @@ void do_allow(CHAR_DATA * ch, char *argument)
     prev = NULL;
     for (curr = ban_list; curr != NULL; prev = curr, curr = curr->next)
     {
-        if (!str_cmp(arg, curr->name))
+        if (!strcasecmp(arg, curr->name))
         {
             if (curr->level > get_trust(ch))
             {

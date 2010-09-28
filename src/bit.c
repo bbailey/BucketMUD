@@ -114,7 +114,7 @@ static int flag_lookup(const char *name,
 
     for (flag = 0; flag_table[flag].name[0] != '\0'; flag++)
     {
-        if (!str_cmp(name, flag_table[flag].name)
+        if (!strcasecmp(name, flag_table[flag].name)
                 && flag_table[flag].settable)
             return flag_table[flag].bit;
     }

@@ -47,13 +47,13 @@ void load_factions(FILE * fp)
         word = fread_word(fp);
 
         /* Exit when "#$" found */
-        if (!str_cmp(word, "#$"))
+        if (!strcasecmp(word, "#$"))
         {
             break;
         }
 
         /* Start loading when "#FACTIONS" found */
-        if (!str_cmp(word, "#FACTIONS"))
+        if (!strcasecmp(word, "#FACTIONS"))
         {
             for (;;)
             {
@@ -217,7 +217,7 @@ void do_factionedit(CHAR_DATA * ch, char *argument)
     }
     else
     {
-        if (!str_cmp(arg, "create"))
+        if (!strcasecmp(arg, "create"))
         {
             if (factedit_create(ch, argument))
             {
@@ -250,7 +250,7 @@ void factionedit(CHAR_DATA * ch, char *argument)
 
     pFact = (FACTIONLIST_DATA *) ch->desc->pEdit;
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         edit_done(ch);
         return;
@@ -1109,7 +1109,7 @@ void do_factionfind(CHAR_DATA * ch, char *argument)
     for (pFact = faction_first; pFact != NULL; pFact = pFact->next)
     {
         if ((is_name(argument, pFact->name))
-                || (!str_cmp(argument, "all")))
+                || (!strcasecmp(argument, "all")))
         {
             sprintf(buf, "%5d %-s\n\r", pFact->vnum, pFact->name);
             buffer = add_to_buf(buffer, buf);

@@ -1038,7 +1038,7 @@ void do_asave(CHAR_DATA * ch, char *argument)
 
     /* Save the factions file */
     /* ---------------------- */
-    if (!str_cmp("factions", arg))
+    if (!strcasecmp("factions", arg))
     {
         save_factions();
         send_to_char("Factions file saved!\n\r", ch);;
@@ -1047,7 +1047,7 @@ void do_asave(CHAR_DATA * ch, char *argument)
 
     /* Save the socials file */
     /* ---------------------- */
-    if (!str_cmp("socials", arg))
+    if (!strcasecmp("socials", arg))
     {
         save_socials();
         send_to_char("Socials file saved!\n\r", ch);;
@@ -1076,8 +1076,8 @@ void do_asave(CHAR_DATA * ch, char *argument)
     /* Save the mudprogs file */
     /*------------------- */
 
-    if (!str_cmp("mudprogs", arg) || !str_cmp("progs", arg)
-            || !str_cmp("mprogs", arg))
+    if (!strcasecmp("mudprogs", arg) || !strcasecmp("progs", arg)
+            || !strcasecmp("mprogs", arg))
     {
         save_mudprogs();
         send_to_char("MudProgs file saved!\n\r", ch);
@@ -1087,7 +1087,7 @@ void do_asave(CHAR_DATA * ch, char *argument)
     /* Save the world, only authorized areas. */
     /* -------------------------------------- */
 
-    if ((!str_cmp("world", arg) || !str_cmp("all", arg))
+    if ((!strcasecmp("world", arg) || !strcasecmp("all", arg))
             && IS_IMMORTAL(ch))
     {
         save_area_list();
@@ -1113,7 +1113,7 @@ void do_asave(CHAR_DATA * ch, char *argument)
     /* Save changed areas, only authorized areas. */
     /* ------------------------------------------ */
 
-    if (!str_cmp("changed", arg))
+    if (!strcasecmp("changed", arg))
     {
         save_area_list();
         save_mudprogs();
@@ -1150,7 +1150,7 @@ void do_asave(CHAR_DATA * ch, char *argument)
 
     /* Save the area.lst file. */
     /* ----------------------- */
-    if (!str_cmp(arg, "list"))
+    if (!strcasecmp(arg, "list"))
     {
         save_area_list();
         return;
@@ -1158,7 +1158,7 @@ void do_asave(CHAR_DATA * ch, char *argument)
 
     /* Save area being edited, if authorized. */
     /* -------------------------------------- */
-    if (!str_cmp(arg, "area"))
+    if (!strcasecmp(arg, "area"))
     {
         /* Is character currently editing. */
         if (ch->desc->editor == 0)

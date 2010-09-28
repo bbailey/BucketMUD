@@ -67,7 +67,7 @@ HELP_DATA *get_help(char *argument)
     for (help_iter = g_list_first(help_entries); help_iter != NULL; help_iter = g_list_next(help_iter))
     {
         pHelp = (HELP_DATA *) help_iter->data;
-        if (str_cmp(arg,pHelp->keyword))
+        if (strcasecmp(arg,pHelp->keyword))
         {
             found = true;
             break;
@@ -162,7 +162,7 @@ void helpsedit(CHAR_DATA * ch, char *argument)
 
     pHelp = (HELP_DATA *) ch->desc->pEdit;
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         edit_done(ch);
         do_asave(ch, "helps");

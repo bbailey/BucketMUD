@@ -194,7 +194,7 @@ void load_clans(FILE * fp)
                     {
                         if (x == (i - 1))
                             continue;
-                        if (!str_cmp
+                        if (!strcasecmp
                                 (clan->members[i - 1], clan->members[x]))
                         {
                             free_string(&clan->members[i - 1]);
@@ -397,7 +397,7 @@ void do_cedit(CHAR_DATA * ch, char *argument)
     }
     else
     {
-        if (!str_cmp(arg, "create"))
+        if (!strcasecmp(arg, "create"))
         {
             if (cedit_create(ch, argument))
             {
@@ -427,7 +427,7 @@ void cedit(CHAR_DATA * ch, char *argument)
     argument = one_argument(argument, command);
     EDIT_CLAN(ch, clan);
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         edit_done(ch);
         return;
@@ -955,7 +955,7 @@ static void remove_member(CHAR_DATA * ch, CLAN_DATA * clan)
 
     for (i = 0; i < clan->max_members; i++)
     {
-        if (!str_cmp(clan->members[i], ch->name))
+        if (!strcasecmp(clan->members[i], ch->name))
         {
             free_string(&clan->members[i]);
             clan->members[i] = str_dup("");
@@ -985,7 +985,7 @@ void do_show(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg1, "active"))
+    if (!strcasecmp(arg1, "active"))
     {
         found = FALSE;
         send_to_char("Clans actively recruiting:\n\r", ch);
@@ -1009,7 +1009,7 @@ void do_show(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg1, "inactive"))
+    if (!strcasecmp(arg1, "inactive"))
     {
         found = FALSE;
         send_to_char("Clans not actively recruiting:\n\r", ch);
@@ -1035,7 +1035,7 @@ void do_show(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg1, "all"))
+    if (!strcasecmp(arg1, "all"))
     {
         found = FALSE;
         send_to_char("Current existing clans:\n\r", ch);
@@ -1059,7 +1059,7 @@ void do_show(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg1, "members"))
+    if (!strcasecmp(arg1, "members"))
     {
         if (IS_NPC(ch))
             return;
@@ -1744,7 +1744,7 @@ void do_promote(CHAR_DATA * ch, char *argument)
 
         clan = get_clan(ch->pcdata->clan);
 
-        if (str_cmp(ch->name, clan->leader))
+        if (strcasecmp(ch->name, clan->leader))
         {
             if ((ch->pcdata->clan_rank == 2
                     && victim->pcdata->clan_rank < 4)
@@ -1803,7 +1803,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg1, "list"))
+    if (!strcasecmp(arg1, "list"))
     {
         if (clan_first == NULL)
         {
@@ -1834,7 +1834,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg1, "snoop"))
+    if (!strcasecmp(arg1, "snoop"))
     {
         if (bv_is_set(ch->bv_comm_flags, BV_COMM_SNOOP_CLAN))
         {
@@ -1867,7 +1867,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg2, "view"))
+    if (!strcasecmp(arg2, "view"))
     {
         printf_to_char(ch,
                        "Name:   [%s]\n\rNumber: [%2d]\n\rLeader: [%12s]\n\rSponsor:[%12s]\n\r",
@@ -1888,7 +1888,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg2, "member"))
+    if (!strcasecmp(arg2, "member"))
     {
         CHAR_DATA *victim;
 
@@ -1906,7 +1906,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg3, "add"))
+        if (!strcasecmp(arg3, "add"))
         {
             if (victim->pcdata->clan != 0)
             {
@@ -1935,7 +1935,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg3, "remove"))
+        if (!strcasecmp(arg3, "remove"))
         {
             if (victim->pcdata->clan != clan->number)
             {
@@ -1960,7 +1960,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg2, "bank") || !str_cmp(arg2, "fund"))
+    if (!strcasecmp(arg2, "bank") || !strcasecmp(arg2, "fund"))
     {
         int mod;
 
@@ -1978,7 +1978,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg3, "deposit"))
+        if (!strcasecmp(arg3, "deposit"))
         {
             clan->clan_fund += mod;
             printf_to_char(ch, "Balance: %d\n\r", clan->clan_fund);
@@ -1987,7 +1987,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg3, "withdraw"))
+        if (!strcasecmp(arg3, "withdraw"))
         {
             if (mod > clan->clan_fund)
             {
@@ -2006,9 +2006,9 @@ void do_clan(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg2, "status"))
+    if (!strcasecmp(arg2, "status"))
     {
-        if (!str_cmp(arg3, "creating"))
+        if (!strcasecmp(arg3, "creating"))
         {
             REMOVE_BIT(clan->clan_flags, CLAN_ACTIVE);
             REMOVE_BIT(clan->clan_flags, CLAN_INACTIVE);
@@ -2022,7 +2022,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg3, "active"))
+        if (!strcasecmp(arg3, "active"))
         {
             REMOVE_BIT(clan->clan_flags, CLAN_INACTIVE);
             REMOVE_BIT(clan->clan_flags, CLAN_CREATING);
@@ -2036,7 +2036,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg3, "inactive"))
+        if (!strcasecmp(arg3, "inactive"))
         {
             REMOVE_BIT(clan->clan_flags, CLAN_ACTIVE);
             REMOVE_BIT(clan->clan_flags, CLAN_CREATING);
@@ -2051,7 +2051,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg3, "disbanding"))
+        if (!strcasecmp(arg3, "disbanding"))
         {
             REMOVE_BIT(clan->clan_flags, CLAN_ACTIVE);
             REMOVE_BIT(clan->clan_flags, CLAN_INACTIVE);
@@ -2066,7 +2066,7 @@ void do_clan(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg3, "dead"))
+        if (!strcasecmp(arg3, "dead"))
         {
             REMOVE_BIT(clan->clan_flags, CLAN_ACTIVE);
             REMOVE_BIT(clan->clan_flags, CLAN_INACTIVE);
@@ -2192,7 +2192,7 @@ void do_resign(CHAR_DATA * ch, char *argument)
 
     clan = get_clan(ch->pcdata->clan);
 
-    if (!str_cmp(clan->leader, ch->name) || !str_cmp(clan->god, ch->name))
+    if (!strcasecmp(clan->leader, ch->name) || !strcasecmp(clan->god, ch->name))
     {
         send_to_char
         ("You cannot resign from this clan, you're too high ranked!\n\r",
@@ -2437,7 +2437,7 @@ void do_demote(CHAR_DATA * ch, char *argument)
 
         clan = get_clan(ch->pcdata->clan);
 
-        if (str_cmp(ch->name, clan->leader))
+        if (strcasecmp(ch->name, clan->leader))
         {
             if ((ch->pcdata->clan_rank == 2
                     && victim->pcdata->clan_rank <= 3)

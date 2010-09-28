@@ -318,21 +318,21 @@ void string_add(CHAR_DATA * ch, char *argument)
         argument = first_arg(argument, arg2, FALSE);
         argument = first_arg(argument, arg3, FALSE);
 
-        if (!str_cmp(arg, ".c"))
+        if (!strcasecmp(arg, ".c"))
         {
             send_to_char("String cleared.\n\r", ch);
             **ch->desc->pString = '\0';
             return;
         }
 
-        if (!str_cmp(arg, ".s"))
+        if (!strcasecmp(arg, ".s"))
         {
             send_to_char("String so far:\n\r", ch);
             show_line_numbers(ch, *ch->desc->pString);
             return;
         }
 
-        if (!str_cmp(arg, ".r"))
+        if (!strcasecmp(arg, ".r"))
         {
             if (arg2[0] == '\0')
             {
@@ -349,7 +349,7 @@ void string_add(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg, ".l"))
+        if (!strcasecmp(arg, ".l"))
         {
             if (!(*ch->desc->pString) || !(*ch->desc->pString[0]))
             {
@@ -374,7 +374,7 @@ void string_add(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg, ".a"))
+        if (!strcasecmp(arg, ".a"))
         {
             if (!(*ch->desc->pString) || !(*ch->desc->pString[0]))
             {
@@ -399,7 +399,7 @@ void string_add(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg, ".d"))
+        if (!strcasecmp(arg, ".d"))
         {
             int line;
 
@@ -426,14 +426,14 @@ void string_add(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg, ".f"))
+        if (!strcasecmp(arg, ".f"))
         {
             *ch->desc->pString = format_string(*ch->desc->pString);
             send_to_char("String formatted.\n\r", ch);
             return;
         }
 
-        if (!str_cmp(arg, ".h"))
+        if (!strcasecmp(arg, ".h"))
         {
             send_to_char("Sedit help (commands on blank line):   \n\r",
                          ch);

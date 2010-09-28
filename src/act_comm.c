@@ -1821,7 +1821,7 @@ void do_messages(CHAR_DATA * ch, char *argument)
        it's the most likely place to find a match */
     for (reply = player_list; reply != NULL; reply = reply->next)
     {
-        if (str_cmp(reply->name, ch->pcdata->fmessage->sender) == 0)
+        if (strcasecmp(reply->name, ch->pcdata->fmessage->sender) == 0)
         {
             ch->reply = reply;
             break;
@@ -1832,7 +1832,7 @@ void do_messages(CHAR_DATA * ch, char *argument)
     {
         for (reply = char_list; reply != NULL; reply = reply->next)
         {
-            if (str_cmp(reply->name, ch->pcdata->fmessage->sender) == 0)
+            if (strcasecmp(reply->name, ch->pcdata->fmessage->sender) == 0)
             {
                 ch->reply = reply;
                 break;
@@ -2538,7 +2538,7 @@ void do_order(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         fAll = TRUE;
         victim = NULL;

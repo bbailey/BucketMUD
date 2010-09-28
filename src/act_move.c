@@ -380,17 +380,17 @@ int find_door(CHAR_DATA * ch, char *arg)
     EXIT_DATA *pexit;
     int door;
 
-    if (!str_cmp(arg, "n") || !str_cmp(arg, "north"))
+    if (!strcasecmp(arg, "n") || !strcasecmp(arg, "north"))
         door = 0;
-    else if (!str_cmp(arg, "e") || !str_cmp(arg, "east"))
+    else if (!strcasecmp(arg, "e") || !strcasecmp(arg, "east"))
         door = 1;
-    else if (!str_cmp(arg, "s") || !str_cmp(arg, "south"))
+    else if (!strcasecmp(arg, "s") || !strcasecmp(arg, "south"))
         door = 2;
-    else if (!str_cmp(arg, "w") || !str_cmp(arg, "west"))
+    else if (!strcasecmp(arg, "w") || !strcasecmp(arg, "west"))
         door = 3;
-    else if (!str_cmp(arg, "u") || !str_cmp(arg, "up"))
+    else if (!strcasecmp(arg, "u") || !strcasecmp(arg, "up"))
         door = 4;
-    else if (!str_cmp(arg, "d") || !str_cmp(arg, "down"))
+    else if (!strcasecmp(arg, "d") || !strcasecmp(arg, "down"))
         door = 5;
     else
     {
@@ -1607,7 +1607,7 @@ void do_train(CHAR_DATA * ch, char *argument)
 
     cost = 1;
 
-    if (!str_cmp(argument, "str"))
+    if (!strcasecmp(argument, "str"))
     {
         if (class_table[ch->Class].attr_prime == STAT_STR)
             cost = 1;
@@ -1615,7 +1615,7 @@ void do_train(CHAR_DATA * ch, char *argument)
         pOutput = "strength";
     }
 
-    else if (!str_cmp(argument, "int"))
+    else if (!strcasecmp(argument, "int"))
     {
         if (class_table[ch->Class].attr_prime == STAT_INT)
             cost = 1;
@@ -1623,7 +1623,7 @@ void do_train(CHAR_DATA * ch, char *argument)
         pOutput = "intelligence";
     }
 
-    else if (!str_cmp(argument, "wis"))
+    else if (!strcasecmp(argument, "wis"))
     {
         if (class_table[ch->Class].attr_prime == STAT_WIS)
             cost = 1;
@@ -1631,7 +1631,7 @@ void do_train(CHAR_DATA * ch, char *argument)
         pOutput = "wisdom";
     }
 
-    else if (!str_cmp(argument, "dex"))
+    else if (!strcasecmp(argument, "dex"))
     {
         if (class_table[ch->Class].attr_prime == STAT_DEX)
             cost = 1;
@@ -1639,7 +1639,7 @@ void do_train(CHAR_DATA * ch, char *argument)
         pOutput = "dexterity";
     }
 
-    else if (!str_cmp(argument, "con"))
+    else if (!strcasecmp(argument, "con"))
     {
         if (class_table[ch->Class].attr_prime == STAT_CON)
             cost = 1;
@@ -1647,13 +1647,13 @@ void do_train(CHAR_DATA * ch, char *argument)
         pOutput = "constitution";
     }
 
-    else if (!str_cmp(argument, "hp"))
+    else if (!strcasecmp(argument, "hp"))
         cost = 1;
 
-    else if (!str_cmp(argument, "mana"))
+    else if (!strcasecmp(argument, "mana"))
         cost = 1;
 
-    else if (!str_cmp(argument, "move"))
+    else if (!strcasecmp(argument, "move"))
         cost = 1;
 
     else
@@ -1691,7 +1691,7 @@ void do_train(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp("hp", argument))
+    if (!strcasecmp("hp", argument))
     {
         if (cost > ch->train)
         {
@@ -1709,7 +1709,7 @@ void do_train(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp("mana", argument))
+    if (!strcasecmp("mana", argument))
     {
         if (cost > ch->train)
         {
@@ -1727,7 +1727,7 @@ void do_train(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp("move", argument))
+    if (!strcasecmp("move", argument))
     {
         if (cost > ch->train)
         {

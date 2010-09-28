@@ -428,7 +428,7 @@ void do_cast(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (str_cmp(skill_table[sn].name, "ventriloquate"))
+    if (strcasecmp(skill_table[sn].name, "ventriloquate"))
         say_spell(ch, sn);
 
     WAIT_STATE(ch, skill_table[sn].beats);
@@ -781,7 +781,7 @@ void do_spellup(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (get_trust(ch) >= MAX_LEVEL - 1 && !str_cmp(arg, "all"))
+    if (get_trust(ch) >= MAX_LEVEL - 1 && !strcasecmp(arg, "all"))
     {
         /* cure all */
 
@@ -1578,9 +1578,9 @@ void spell_continual_light(int sn, int level, CHAR_DATA * ch, void *vo)
 
 void spell_control_weather(int sn, int level, CHAR_DATA * ch, void *vo)
 {
-    if (!str_cmp(target_name, "better"))
+    if (!strcasecmp(target_name, "better"))
         weather_info.change += dice(level / 3, 4);
-    else if (!str_cmp(target_name, "worse"))
+    else if (!strcasecmp(target_name, "worse"))
         weather_info.change -= dice(level / 3, 4);
     else
         send_to_char("Do you want it to get better or worse?\n\r", ch);

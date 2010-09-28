@@ -348,7 +348,7 @@ static void show_olc_cmds(CHAR_DATA * ch,
     for (cmd = 0; olc_table[cmd].name[0] != '\0'; cmd++)
     {
         sprintf(buf, "%-15.15s", olc_table[cmd].name);
-        if (str_cmp(olc_table[cmd].name, "oclan"))
+        if (strcasecmp(olc_table[cmd].name, "oclan"))
             strcat(buf1, buf);
         if (++col % 5 == 0)
             strcat(buf1, "\n\r");
@@ -467,7 +467,7 @@ void aedit(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         edit_done(ch);
         return;
@@ -536,7 +536,7 @@ void redit(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         edit_done(ch);
         return;
@@ -609,7 +609,7 @@ void oedit(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         /*
          * Check to make sure the damage type is set if the item is a weapon.
@@ -676,7 +676,7 @@ void medit(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         edit_done(ch);
         return;
@@ -732,7 +732,7 @@ void mpedit(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         EDIT_MPROG(ch, pMudProg);
         if (!pMudProg->vnum)
@@ -798,7 +798,7 @@ void mpgedit(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(command, "done"))
+    if (!strcasecmp(command, "done"))
     {
         EDIT_MPGROUP(ch, pGroup);
         if (!pGroup->vnum)
@@ -870,7 +870,7 @@ void do_mpedit(CHAR_DATA * ch, char *argument)
     }
     else
     {
-        if (!str_cmp(arg1, "create"))
+        if (!strcasecmp(arg1, "create"))
         {
             if (mpedit_create(ch, argument))
                 ch->desc->editor = ED_MPROG;
@@ -878,13 +878,13 @@ void do_mpedit(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (!str_cmp(arg1, "assign"))
+        if (!strcasecmp(arg1, "assign"))
         {
             mpedit_assign(ch, argument);
             return;
         }
 
-        if (!str_cmp(arg1, "unassign"))
+        if (!strcasecmp(arg1, "unassign"))
         {
             mpedit_unassign(ch, argument);
             return;
@@ -932,7 +932,7 @@ void do_mpgedit(CHAR_DATA * ch, char *argument)
     }
     else
     {
-        if (!str_cmp(arg1, "create"))
+        if (!strcasecmp(arg1, "create"))
         {
             if (mpgedit_create(ch, argument))
                 ch->desc->editor = ED_MPGROUP;
@@ -1026,7 +1026,7 @@ void do_aedit(CHAR_DATA * ch, char *argument)
     }
     else
     {
-        if (!str_cmp(argument, "create"))
+        if (!strcasecmp(argument, "create"))
         {
             pArea = new_area();
             area_last->next = pArea;
@@ -1053,13 +1053,13 @@ void do_redit(CHAR_DATA * ch, char *argument)
 
     pRoom = ch->in_room;
 
-    if (!str_cmp(arg, "reset"))
+    if (!strcasecmp(arg, "reset"))
     {
         reset_room(pRoom);
         send_to_char("Room reset.\n\r", ch);
         return;
     }
-    else if (!str_cmp(arg, "create"))
+    else if (!strcasecmp(arg, "create"))
     {
         if (argument[0] == '\0' || atoi(argument) == 0)
         {
@@ -1107,7 +1107,7 @@ void do_oedit(CHAR_DATA * ch, char *argument)
     }
     else
     {
-        if (!str_cmp(arg, "create"))
+        if (!strcasecmp(arg, "create"))
         {
             value = atoi(argument);
             if (argument[0] == '\0' || value == 0)
@@ -1163,7 +1163,7 @@ void do_medit(CHAR_DATA * ch, char *argument)
     }
     else
     {
-        if (!str_cmp(arg, "create"))
+        if (!strcasecmp(arg, "create"))
         {
             value = atoi(argument);
             if (arg[0] == '\0' || value == 0)
@@ -1495,7 +1495,7 @@ void do_resets(CHAR_DATA * ch, char *argument)
          * Delete a reset.
          * ---------------
          */
-        if (!str_cmp(arg2, "delete"))
+        if (!strcasecmp(arg2, "delete"))
         {
             int insert_loc = atoi(arg);
 
@@ -1552,15 +1552,15 @@ void do_resets(CHAR_DATA * ch, char *argument)
              * Add a reset.
              * ------------
              */
-            if ((!str_cmp(arg2, "mob") && is_number(arg3))
-                    || (!str_cmp(arg2, "obj") && is_number(arg3)))
+            if ((!strcasecmp(arg2, "mob") && is_number(arg3))
+                    || (!strcasecmp(arg2, "obj") && is_number(arg3)))
             {
                 /*
                  * Check to see if the mob or object to be reset exists
                  * in the game.  This is added because of Rajic's fat
                  * fingers - Dorzak Tempestuous Realms
                  */
-                if (!str_cmp(arg2, "mob"))
+                if (!strcasecmp(arg2, "mob"))
                 {
                     MOB_INDEX_DATA *pMobIndex;
                     if ((pMobIndex = get_mob_index(atoi(arg3))) == NULL)
@@ -1570,7 +1570,7 @@ void do_resets(CHAR_DATA * ch, char *argument)
                         return;
                     }
                 }
-                if (!str_cmp(arg2, "obj"))
+                if (!strcasecmp(arg2, "obj"))
                 {
                     OBJ_INDEX_DATA *pObjIndex;
                     if ((pObjIndex = get_obj_index(atoi(arg3))) == NULL)
@@ -1584,7 +1584,7 @@ void do_resets(CHAR_DATA * ch, char *argument)
                  * Check for Mobile reset.
                  * -----------------------
                  */
-                if (!str_cmp(arg2, "mob"))
+                if (!strcasecmp(arg2, "mob"))
                 {
                     pReset = new_reset_data();
                     pReset->command = 'M';
@@ -1597,7 +1597,7 @@ void do_resets(CHAR_DATA * ch, char *argument)
                      * Check for Object reset.
                      * -----------------------
                      */
-                    if (!str_cmp(arg2, "obj"))
+                    if (!strcasecmp(arg2, "obj"))
                     {
                         pReset = new_reset_data();
                         pReset->vnum = atoi(arg3);
@@ -1616,7 +1616,7 @@ void do_resets(CHAR_DATA * ch, char *argument)
                              * Inside the room.
                              * ----------------
                              */
-                            if (!str_cmp(arg4, "room"))
+                            if (!strcasecmp(arg4, "room"))
                             {
                                 pReset->command = 'O';
                                 pReset->arg2 = 0;

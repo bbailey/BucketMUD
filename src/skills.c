@@ -522,7 +522,7 @@ void do_splist(CHAR_DATA * ch, char *argument)
 
     for (x = 0; x < MAX_CLASS; x++)
     {
-        if (!str_cmp(argument, class_table[x].who_name))
+        if (!strcasecmp(argument, class_table[x].who_name))
             break;
     }
 
@@ -860,7 +860,7 @@ void do_sklist(CHAR_DATA * ch, char *argument)
 
     for (x = 0; x < MAX_CLASS; x++)
     {
-        if (!str_cmp(argument, class_table[x].who_name))
+        if (!strcasecmp(argument, class_table[x].who_name))
             break;
     }
 
@@ -1615,7 +1615,7 @@ void do_groups(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(argument, "all"))  	/* show all groups */
+    if (!strcasecmp(argument, "all"))  	/* show all groups */
     {
         for (gn = 0; gn < MAX_GROUP; gn++)
         {

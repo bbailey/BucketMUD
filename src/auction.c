@@ -66,7 +66,7 @@ void do_auction(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg1, "info"))
+    if (!strcasecmp(arg1, "info"))
     {
         obj = auction_info.item;
 
@@ -315,7 +315,7 @@ void do_auction(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg1, "bid"))
+    if (!strcasecmp(arg1, "bid"))
     {
         long bid;
         obj = auction_info.item;

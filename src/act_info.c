@@ -1403,7 +1403,7 @@ void do_look(CHAR_DATA * ch, char *argument)
     number = number_argument(arg, arg3);
     count = 0;
 
-    if (arg[0] == '\0' || !str_cmp(arg, "auto"))
+    if (arg[0] == '\0' || !strcasecmp(arg, "auto"))
     {
         /* 'look' or 'look auto' */
         send_to_char("`B", ch);
@@ -1429,7 +1429,7 @@ void do_look(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "i") || !str_cmp(arg, "in"))
+    if (!strcasecmp(arg, "i") || !strcasecmp(arg, "in"))
     {
         /* 'look in' */
         if (arg2[0] == '\0')
@@ -1594,17 +1594,17 @@ void do_look(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "n") || !str_cmp(arg, "north"))
+    if (!strcasecmp(arg, "n") || !strcasecmp(arg, "north"))
         door = 0;
-    else if (!str_cmp(arg, "e") || !str_cmp(arg, "east"))
+    else if (!strcasecmp(arg, "e") || !strcasecmp(arg, "east"))
         door = 1;
-    else if (!str_cmp(arg, "s") || !str_cmp(arg, "south"))
+    else if (!strcasecmp(arg, "s") || !strcasecmp(arg, "south"))
         door = 2;
-    else if (!str_cmp(arg, "w") || !str_cmp(arg, "west"))
+    else if (!strcasecmp(arg, "w") || !strcasecmp(arg, "west"))
         door = 3;
-    else if (!str_cmp(arg, "u") || !str_cmp(arg, "up"))
+    else if (!strcasecmp(arg, "u") || !strcasecmp(arg, "up"))
         door = 4;
-    else if (!str_cmp(arg, "d") || !str_cmp(arg, "down"))
+    else if (!strcasecmp(arg, "d") || !strcasecmp(arg, "down"))
         door = 5;
     else
     {
@@ -1703,7 +1703,7 @@ void do_exits(CHAR_DATA * ch, char *argument)
     int door;
 
     buf[0] = '\0';
-    fAuto = !str_cmp(argument, "auto");
+    fAuto = !strcasecmp(argument, "auto");
 
     if (!check_blind(ch))
         return;
@@ -2362,7 +2362,7 @@ void do_help(CHAR_DATA * ch, char *argument)
 
         if (is_name(argall, pHelp->keyword))
         {
-            if (pHelp->level >= 0 && str_cmp(argall, "imotd"))
+            if (pHelp->level >= 0 && strcasecmp(argall, "imotd"))
             {
                 send_to_char(pHelp->keyword, ch);
                 send_to_char("\n\r", ch);
@@ -2423,7 +2423,7 @@ static char *who_clan(CHAR_DATA * ch, CHAR_DATA * looker, char *empty)
        the rest have to use clantalk to learn wh their clanmates are.  */
     if (IS_SET(clan->clan_flags, CLAN_SECRET) &&
             (ch->pcdata->clan_rank == 1 || ch->pcdata->clan_rank == 2
-             || !str_cmp(ch->name, clan->god))
+             || !strcasecmp(ch->name, clan->god))
             && ch->pcdata->clan == looker->pcdata->clan)
     {
         return clan->whoname;
@@ -2653,7 +2653,7 @@ void do_who(CHAR_DATA * ch, char *argument)
             /*
              * Look for classes to turn on.
              */
-            if (!str_cmp(argument, "imm"))
+            if (!strcasecmp(argument, "imm"))
             {
                 fImmortalOnly = TRUE;
             }
@@ -3739,14 +3739,14 @@ void do_finger(CHAR_DATA * ch, char *argument)
                         || (ch->pcdata->clan == victim->pcdata->clan
                             && (IS_SET(clan->clan_flags, CLAN_PRIVATE)
                                 || (IS_SET(clan->clan_flags, CLAN_SECRET)
-                                    && !str_cmp(victim->name,
+                                    && !strcasecmp(victim->name,
                                                 clan->leader))))))
                     || IS_IMMORTAL(ch))
             {
                 sprintf(buf2, "%s of %s",
-                        !str_cmp(victim->name,
+                        !strcasecmp(victim->name,
                                  clan->leader) ? "the leader" :
-                        !str_cmp(victim->name,
+                        !strcasecmp(victim->name,
                                  clan->god) ? "the sponsor" : "a member",
                         clan->whoname);
             }
@@ -3860,73 +3860,73 @@ void do_finger(CHAR_DATA * ch, char *argument)
             {
                 word = get_word(fp);
 
-                if (!str_cmp(word, "End"))
+                if (!strcasecmp(word, "End"))
                 {
                     break;
                 }
-                if (!str_cmp(word, "#END"))
+                if (!strcasecmp(word, "#END"))
                 {
                     break;
                 }
-                if (!str_cmp(word, "#PET"))
+                if (!strcasecmp(word, "#PET"))
                 {
                     break;
                 }
-                if (!str_cmp(word, "Spou"))
+                if (!strcasecmp(word, "Spou"))
                 {
                     spouse = fread_string(fp);
                 }
-                if (!str_cmp(word, "Neme"))
+                if (!strcasecmp(word, "Neme"))
                 {
                     nemesis = fread_string(fp);
                 }
-                if (!str_cmp(word, "PKdi"))
+                if (!strcasecmp(word, "PKdi"))
                 {
                     pk_deaths = fread_number(fp);
                 }
-                if (!str_cmp(word, "PKki"))
+                if (!strcasecmp(word, "PKki"))
                 {
                     pk_kills = fread_number(fp);
                 }
-                if (!str_cmp(word, "Cmnt"))
+                if (!strcasecmp(word, "Cmnt"))
                 {
                     comment = fread_string(fp);
                 }
-                if (!str_cmp(word, "Eml"))
+                if (!strcasecmp(word, "Eml"))
                 {
                     email = fread_string(fp);
                 }
-                if (!str_cmp(word, "Logn"))
+                if (!strcasecmp(word, "Logn"))
                 {
                     logon = fread_number(fp);
                     sprintf(ltime, "%s at %s", get_date(logon),
                             get_time(logon));
                 }
-                if (!str_cmp(word, "Plyd"))
+                if (!strcasecmp(word, "Plyd"))
                 {
                     played = fread_number(fp);
                 }
-                if (!str_cmp(word, "Levl"))
+                if (!strcasecmp(word, "Levl"))
                 {
                     level = fread_number(fp);
                 }
-                if (!str_cmp(word, "Race"))
+                if (!strcasecmp(word, "Race"))
                 {
                     race = fread_string(fp);
                 }
-                if (!str_cmp(word, "Sex"))
+                if (!strcasecmp(word, "Sex"))
                 {
                     sex = fread_number(fp);
                 }
-                if (!str_cmp(word, "Cla"))
+                if (!strcasecmp(word, "Cla"))
                 {
                     class = (class_table[fread_number(fp)].name);
                 }
-                if (!str_cmp(word, "Titl"))
+                if (!strcasecmp(word, "Titl"))
                 {
                     title = fread_string(fp);
                 }
-                if (!str_cmp(word, "Clan"))
+                if (!strcasecmp(word, "Clan"))
                 {
                     nclan = fread_number(fp);
                 }
@@ -3960,9 +3960,9 @@ void do_finger(CHAR_DATA * ch, char *argument)
                         || get_trust(ch) >= MAX_LEVEL)
                 {
                     sprintf(buf2, "%s of %s",
-                            !str_cmp(capitalize(arg),
+                            !strcasecmp(capitalize(arg),
                                      clan->leader) ? "the leader" :
-                            !str_cmp(capitalize(arg),
+                            !strcasecmp(capitalize(arg),
                                      clan->god) ? "the sponsor" :
                             "a member", clan->whoname);
                 }
@@ -4082,7 +4082,7 @@ void do_rebirth(CHAR_DATA * ch, char *argument)
     char buf[MAX_STRING_LENGTH];
     int iWear;
 
-    if (str_cmp(ch->desc->incomm, "rebirth yes"))
+    if (strcasecmp(ch->desc->incomm, "rebirth yes"))
     {
         send_to_char("If you want to be reborn, type 'rebirth yes'\n\r",
                      ch);
@@ -4296,7 +4296,7 @@ void do_alias(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_prefix(arg, "unalias") || !str_cmp(arg, "alias"))
+    if (!str_prefix(arg, "unalias") || !strcasecmp(arg, "alias"))
     {
         send_to_char("Sorry, that word is reserved.\n\r", ch);
         return;
@@ -4310,7 +4310,7 @@ void do_alias(CHAR_DATA * ch, char *argument)
                     || rch->pcdata->alias_sub[pos] == NULL)
                 break;
 
-            if (!str_cmp(arg, rch->pcdata->alias[pos]))
+            if (!strcasecmp(arg, rch->pcdata->alias[pos]))
             {
                 sprintf(buf, "%s aliases to '%s'.\n\r",
                         rch->pcdata->alias[pos],
@@ -4335,7 +4335,7 @@ void do_alias(CHAR_DATA * ch, char *argument)
         if (rch->pcdata->alias[pos] == NULL)
             break;
 
-        if (!str_cmp(arg, rch->pcdata->alias[pos]))  	/* redefine an alias */
+        if (!strcasecmp(arg, rch->pcdata->alias[pos]))  	/* redefine an alias */
         {
             free_string(&rch->pcdata->alias_sub[pos]);
             rch->pcdata->alias_sub[pos] = str_dup(argument);

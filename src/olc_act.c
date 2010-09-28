@@ -171,7 +171,7 @@ static void show_skill_cmds(CHAR_DATA * ch, int tar)
         if (!skill_table[sn].name)
             break;
 
-        if (!str_cmp(skill_table[sn].name, "reserved")
+        if (!strcasecmp(skill_table[sn].name, "reserved")
                 || skill_table[sn].spell_fun == spell_null)
             continue;
 
@@ -1145,7 +1145,7 @@ static bool change_exit(CHAR_DATA * ch, char *argument, int door)
         return FALSE;
     }
 
-    if (!str_cmp(command, "delete"))
+    if (!strcasecmp(command, "delete"))
     {
         ROOM_INDEX_DATA *pToRoom;
         sh_int rev;		/* ROM OLC */
@@ -1178,7 +1178,7 @@ static bool change_exit(CHAR_DATA * ch, char *argument, int door)
         return TRUE;
     }
 
-    if (!str_cmp(command, "link"))
+    if (!strcasecmp(command, "link"))
     {
         EXIT_DATA *pExit;
 
@@ -1232,7 +1232,7 @@ static bool change_exit(CHAR_DATA * ch, char *argument, int door)
         return TRUE;
     }
 
-    if (!str_cmp(command, "dig"))
+    if (!strcasecmp(command, "dig"))
     {
         char buf1[MAX_INPUT_LENGTH];
 
@@ -1254,7 +1254,7 @@ static bool change_exit(CHAR_DATA * ch, char *argument, int door)
         return TRUE;
     }
 
-    if (!str_cmp(command, "room"))
+    if (!strcasecmp(command, "room"))
     {
         if (!arg[0] || !is_number(arg))
         {
@@ -1284,7 +1284,7 @@ static bool change_exit(CHAR_DATA * ch, char *argument, int door)
         return TRUE;
     }
 
-    if (!str_cmp(command, "key"))
+    if (!strcasecmp(command, "key"))
     {
         if (!arg[0] || !is_number(arg))
         {
@@ -1320,7 +1320,7 @@ static bool change_exit(CHAR_DATA * ch, char *argument, int door)
         return TRUE;
     }
 
-    if (!str_cmp(command, "name"))
+    if (!strcasecmp(command, "name"))
     {
         if (!arg[0])
         {
@@ -1366,7 +1366,7 @@ static bool change_exit(CHAR_DATA * ch, char *argument, int door)
      * Set the exit flags, needs full argument.
      * ----------------------------------------
      */
-    if (!str_cmp(command, "exit"))
+    if (!strcasecmp(command, "exit"))
     {
         if ((value = flag_value(exit_flags, arg)) != NO_FLAG)
         {
@@ -1486,7 +1486,7 @@ REDIT(redit_ed)
         return FALSE;
     }
 
-    if (!str_cmp(command, "add"))
+    if (!strcasecmp(command, "add"))
     {
         if (!keyword[0])
         {
@@ -1505,7 +1505,7 @@ REDIT(redit_ed)
         return TRUE;
     }
 
-    if (!str_cmp(command, "edit"))
+    if (!strcasecmp(command, "edit"))
     {
         if (!keyword[0])
         {
@@ -1531,7 +1531,7 @@ REDIT(redit_ed)
         return TRUE;
     }
 
-    if (!str_cmp(command, "delete"))
+    if (!strcasecmp(command, "delete"))
     {
         EXTRA_DESCR_DATA *ped = NULL;
 
@@ -1566,7 +1566,7 @@ REDIT(redit_ed)
         return TRUE;
     }
 
-    if (!str_cmp(command, "format"))
+    if (!strcasecmp(command, "format"))
     {
         if (!keyword[0])
         {
@@ -2922,7 +2922,7 @@ OEDIT(oedit_ed)
         return FALSE;
     }
 
-    if (!str_cmp(command, "add"))
+    if (!strcasecmp(command, "add"))
     {
         if (keyword[0] == '\0')
         {
@@ -2940,7 +2940,7 @@ OEDIT(oedit_ed)
         return TRUE;
     }
 
-    if (!str_cmp(command, "edit"))
+    if (!strcasecmp(command, "edit"))
     {
         if (keyword[0] == '\0')
         {
@@ -2966,7 +2966,7 @@ OEDIT(oedit_ed)
         return TRUE;
     }
 
-    if (!str_cmp(command, "delete"))
+    if (!strcasecmp(command, "delete"))
     {
         EXTRA_DESCR_DATA *ped = NULL;
 
@@ -3001,7 +3001,7 @@ OEDIT(oedit_ed)
         return TRUE;
     }
 
-    if (!str_cmp(command, "format"))
+    if (!strcasecmp(command, "format"))
     {
         EXTRA_DESCR_DATA *ped = NULL;
 
@@ -3550,7 +3550,7 @@ MEDIT(medit_shop)
         return FALSE;
     }
 
-    if (!str_cmp(command, "hours"))
+    if (!strcasecmp(command, "hours"))
     {
         if (arg[0] == '\0' || !is_number(arg)
                 || argument[0] == '\0' || !is_number(argument))
@@ -3574,7 +3574,7 @@ MEDIT(medit_shop)
         return TRUE;
     }
 
-    if (!str_cmp(command, "profit"))
+    if (!strcasecmp(command, "profit"))
     {
         if (arg[0] == '\0' || !is_number(arg)
                 || argument[0] == '\0' || !is_number(argument))
@@ -3598,7 +3598,7 @@ MEDIT(medit_shop)
         return TRUE;
     }
 
-    if (!str_cmp(command, "type"))
+    if (!strcasecmp(command, "type"))
     {
         int value;
 
@@ -3635,7 +3635,7 @@ MEDIT(medit_shop)
         return TRUE;
     }
 
-    if (!str_cmp(command, "delete"))
+    if (!strcasecmp(command, "delete"))
     {
         SHOP_DATA *pShop;
         SHOP_DATA *pShop_next;

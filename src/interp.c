@@ -507,7 +507,7 @@ bool can_do_immcmd(CHAR_DATA * ch, char *cmd)
 
     for (tmp = ch->pcdata->immcmdlist; tmp != NULL; tmp = tmp->next)
     {
-        if (!str_cmp(tmp->cmd, cmd))
+        if (!strcasecmp(tmp->cmd, cmd))
         {
             return TRUE;
         }
@@ -751,7 +751,7 @@ bool check_social(CHAR_DATA * ch, char *command, char *argument)
          * I just know this is the path to a 12" 'if' statement.  :(
          * But two players asked for it already!  -- Furey
          */
-        if (!str_cmp(cmd->name, "snore"))
+        if (!strcasecmp(cmd->name, "snore"))
             break;
         send_to_char("In your dreams, or what?\n\r", ch);
 
@@ -762,18 +762,18 @@ bool check_social(CHAR_DATA * ch, char *command, char *argument)
     victim = NULL;
     if (!*arg)
     {
-        if (str_cmp(cmd->others_no_arg, "none"))
+        if (strcasecmp(cmd->others_no_arg, "none"))
         {
             act(cmd->others_no_arg, ch, NULL, victim, TO_ROOM);
         }
-        if (str_cmp(cmd->char_no_arg, "none"))
+        if (strcasecmp(cmd->char_no_arg, "none"))
         {
             act(cmd->char_no_arg, ch, NULL, victim, TO_CHAR);
         }
     }
     else if ((victim = get_char_room(ch, arg)) == NULL)
     {
-        if (!str_cmp(cmd->char_not_found, "none"))
+        if (!strcasecmp(cmd->char_not_found, "none"))
         {
 
             send_to_char("There is nothing here that matches that name.",
@@ -784,26 +784,26 @@ bool check_social(CHAR_DATA * ch, char *command, char *argument)
     }
     else if (victim == ch)
     {
-        if (str_cmp(cmd->others_auto, "none"))
+        if (strcasecmp(cmd->others_auto, "none"))
         {
             act(cmd->others_auto, ch, NULL, victim, TO_ROOM);
         }
-        if (str_cmp(cmd->char_auto, "none"))
+        if (strcasecmp(cmd->char_auto, "none"))
         {
             act(cmd->char_auto, ch, NULL, victim, TO_CHAR);
         }
     }
     else
     {
-        if (str_cmp(cmd->others_found, "none"))
+        if (strcasecmp(cmd->others_found, "none"))
         {
             act(cmd->others_found, ch, NULL, victim, TO_NOTVICT);
         }
-        if (str_cmp(cmd->char_found, "none"))
+        if (strcasecmp(cmd->char_found, "none"))
         {
             act(cmd->char_found, ch, NULL, victim, TO_CHAR);
         }
-        if (str_cmp(cmd->vict_found, "none"))
+        if (strcasecmp(cmd->vict_found, "none"))
         {
             act(cmd->vict_found, ch, NULL, victim, TO_VICT);
         }
@@ -824,15 +824,15 @@ bool check_social(CHAR_DATA * ch, char *command, char *argument)
             case 6:
             case 7:
             case 8:
-                if (str_cmp(cmd->others_found, "none"))
+                if (strcasecmp(cmd->others_found, "none"))
                 {
                     act(cmd->others_found, victim, NULL, ch, TO_NOTVICT);
                 }
-                if (str_cmp(cmd->char_found, "none"))
+                if (strcasecmp(cmd->char_found, "none"))
                 {
                     act(cmd->char_found, victim, NULL, ch, TO_CHAR);
                 }
-                if (str_cmp(cmd->vict_found, "none"))
+                if (strcasecmp(cmd->vict_found, "none"))
                 {
                     act(cmd->vict_found, victim, NULL, ch, TO_VICT);
                 }
@@ -1093,7 +1093,7 @@ void chk_command(CHAR_DATA * ch, char *argument)
                     break;
 
                 case POS_SLEEPING:
-                    if (str_cmp(social_cmd->name, "snore"))
+                    if (strcasecmp(social_cmd->name, "snore"))
                         found = FALSE;
                     break;
                 }
@@ -1329,7 +1329,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
 
     /* First check if it is one of the disabled commands */
     for (p = disabled_first; p; p = p->next)
-        if (!str_cmp(argument, p->command->name))
+        if (!strcasecmp(argument, p->command->name))
             break;
 
     if (p)  			/* this command is disabled */
@@ -1366,7 +1366,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
 
 
         /* IQ test */
-        if (!str_cmp(argument, "disable"))
+        if (!strcasecmp(argument, "disable"))
         {
             send_to_char("You cannot disable the disable command.\n\r",
                          ch);
@@ -1375,7 +1375,7 @@ void do_disable(CHAR_DATA * ch, char *argument)
 
         /* Search for the command */
         for (i = 0; cmd_table[i].name[0] != '\0'; i++)
-            if (!str_cmp(cmd_table[i].name, argument))
+            if (!strcasecmp(cmd_table[i].name, argument))
                 break;
 
         /* Found? */
@@ -1441,11 +1441,11 @@ void load_disabled()
 
     name = fread_word(fp);
 
-    while (str_cmp(name, END_MARKER))  	/* as long as name is NOT END_MARKER :) */
+    while (strcasecmp(name, END_MARKER))  	/* as long as name is NOT END_MARKER :) */
     {
         /* Find the command in the table */
         for (i = 0; cmd_table[i].name[0]; i++)
-            if (!str_cmp(cmd_table[i].name, name))
+            if (!strcasecmp(cmd_table[i].name, name))
                 break;
 
         if (!cmd_table[i].name[0])  	/* command does not exist? */

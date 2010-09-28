@@ -645,8 +645,8 @@ static void new_descriptor(int control)
 #ifndef NO_RDNS
         from = gethostbyaddr((char *) &sock.sin_addr,
                              sizeof(sock.sin_addr), AF_INET);
-        if (from && (!str_cmp(from->h_name, "ursula.uoregon.edu")
-                     || !str_cmp(from->h_name, "monet.ucdavis.edu")))
+        if (from && (!strcasecmp(from->h_name, "ursula.uoregon.edu")
+                     || !strcasecmp(from->h_name, "monet.ucdavis.edu")))
             dnew->host = str_dup("white.nextwork.rose-hulman.edu");
         else
             dnew->host = str_dup(from ? from->h_name : buf);
@@ -1321,7 +1321,7 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
                 if (d_old == d || d_old->character == NULL)
                     continue;
 
-                if (str_cmp(ch->name, d_old->character->name))
+                if (strcasecmp(ch->name, d_old->character->name))
                     continue;
 
                 close_socket(d_old);
@@ -1565,10 +1565,10 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
                              && IS_SET(ch->act, PLR_REMORT)))
                     {
                         if (iClass > 0
-                                && str_cmp(class_table[iClass].name,
+                                && strcasecmp(class_table[iClass].name,
                                            "Console"))
                             strcat(buf, " ");
-                        if (str_cmp(class_table[iClass].name, "Console"))
+                        if (strcasecmp(class_table[iClass].name, "Console"))
                             strcat(buf, class_table[iClass].name);
                     }
                 }
@@ -1696,7 +1696,7 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
     case CON_GET_NEW_CLASS:
         iClass = class_lookup(argument);
 
-        if (iClass == -1 || !str_cmp(argument, "console")
+        if (iClass == -1 || !strcasecmp(argument, "console")
                 || (class_table[iClass].remort_class
                     && !IS_SET(ch->act, PLR_REMORT)))
         {
@@ -1783,7 +1783,7 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
 
     case CON_GEN_GROUPS:
         send_to_char("\n\r", ch);
-        if (!str_cmp(argument, "done"))
+        if (!strcasecmp(argument, "done"))
         {
             sprintf(buf, "Creation points: %d\n\r", ch->pcdata->points);
             send_to_char(buf, ch);
@@ -1827,12 +1827,12 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
 
     case CON_READ_IMOTD:
 #ifdef IMMS_CAN_HIDE
-        if (!str_cmp(argument, "hidden"))
+        if (!strcasecmp(argument, "hidden"))
         {
             SET_BIT(ch->act, PLR_NO_ANNOUNCE);
         }
 
-        if (!str_cmp(argument, "wizi"))
+        if (!strcasecmp(argument, "wizi"))
         {
             SET_BIT(ch->act, PLR_NO_ANNOUNCE);
             SET_BIT(ch->act, PLR_WIZINVIS);
@@ -2035,7 +2035,7 @@ static bool check_reconnect(DESCRIPTOR_DATA * d, char *name, bool fConn)
     for (ch = player_list; ch != NULL; ch = ch->next_player)
     {
         if ((!fConn || ch->desc == NULL)
-                && !str_cmp(d->character->name, ch->name))
+                && !strcasecmp(d->character->name, ch->name))
         {
             if (fConn == FALSE)
             {
@@ -2085,7 +2085,7 @@ static bool check_playing(DESCRIPTOR_DATA * d, char *name)
                 && dold->character != NULL
                 && dold->connected != CON_GET_NAME
                 && dold->connected != CON_GET_OLD_PASSWORD
-                && !str_cmp(name, dold->original
+                && !strcasecmp(name, dold->original
                             ? dold->original->name : dold->character->name))
         {
             write_to_buffer(d,

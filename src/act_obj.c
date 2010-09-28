@@ -58,13 +58,13 @@ bool can_loot(CHAR_DATA * ch, OBJ_DATA * obj)
 
     owner = NULL;
     for (wch = char_list; wch != NULL; wch = wch->next)
-        if (!str_cmp(wch->name, obj->owner))
+        if (!strcasecmp(wch->name, obj->owner))
             owner = wch;
 
     if (owner == NULL)
         return TRUE;
 
-    if (!str_cmp(ch->name, owner->name))
+    if (!strcasecmp(ch->name, owner->name))
         return TRUE;
 
     if (!IS_NPC(owner) && IS_SET(owner->act, PLR_CANLOOT))
@@ -186,7 +186,7 @@ void do_get(CHAR_DATA * ch, char *argument)
     argument = one_argument(argument, arg);
     argument = one_argument(argument, arg2);
 
-    if (!str_cmp(arg2, "from"))
+    if (!strcasecmp(arg2, "from"))
         argument = one_argument(argument, arg2);
 
     /* Get type. */
@@ -198,7 +198,7 @@ void do_get(CHAR_DATA * ch, char *argument)
 
     if (arg2[0] == '\0')
     {
-        if (str_cmp(arg, "all") && str_prefix("all.", arg))
+        if (strcasecmp(arg, "all") && str_prefix("all.", arg))
         {
             /* 'get obj' */
             obj = get_obj_list(ch, arg, ch->in_room->contents);
@@ -237,7 +237,7 @@ void do_get(CHAR_DATA * ch, char *argument)
     else
     {
         /* 'get ... container' */
-        if (!str_cmp(arg2, "all") || !str_prefix("all.", arg2))
+        if (!strcasecmp(arg2, "all") || !str_prefix("all.", arg2))
         {
             send_to_char("You can't do that.\n\r", ch);
             return;
@@ -276,7 +276,7 @@ void do_get(CHAR_DATA * ch, char *argument)
             return;
         }
 
-        if (str_cmp(arg, "all") && str_prefix("all.", arg))
+        if (strcasecmp(arg, "all") && str_prefix("all.", arg))
         {
             /* 'get obj container' */
             obj = get_obj_list(ch, arg, container->contains);
@@ -335,7 +335,7 @@ void do_put(CHAR_DATA * ch, char *argument)
     argument = one_argument(argument, arg);
     argument = one_argument(argument, arg2);
 
-    if (!str_cmp(arg2, "in"))
+    if (!strcasecmp(arg2, "in"))
         argument = one_argument(argument, arg2);
 
     if (arg[0] == '\0' || arg2[0] == '\0')
@@ -344,7 +344,7 @@ void do_put(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg2, "all") || !str_prefix("all.", arg2))
+    if (!strcasecmp(arg2, "all") || !str_prefix("all.", arg2))
     {
         send_to_char("You can't do that.\n\r", ch);
         return;
@@ -368,7 +368,7 @@ void do_put(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (str_cmp(arg, "all") && str_prefix("all.", arg))
+    if (strcasecmp(arg, "all") && str_prefix("all.", arg))
     {
         /* 'put obj container' */
         if ((obj = get_obj_carry(ch, arg)) == NULL)
@@ -475,7 +475,7 @@ void do_donate(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (str_cmp(arg, "all") && str_prefix("all.", arg))
+    if (strcasecmp(arg, "all") && str_prefix("all.", arg))
     {
         /* 'donate obj' */
         if ((obj = get_obj_carry(ch, arg)) == NULL)
@@ -564,8 +564,8 @@ void do_drop(CHAR_DATA * ch, char *argument)
         amount = atoi(arg);
         argument = one_argument(argument, arg);
         if (amount <= 0
-                || (str_cmp(arg, "coins") && str_cmp(arg, "coin") &&
-                    str_cmp(arg, "gold")))
+                || (strcasecmp(arg, "coins") && strcasecmp(arg, "coin") &&
+                    strcasecmp(arg, "gold")))
         {
             send_to_char("Sorry, you can't do that.\n\r", ch);
             return;
@@ -603,7 +603,7 @@ void do_drop(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (str_cmp(arg, "all") && str_prefix("all.", arg))
+    if (strcasecmp(arg, "all") && str_prefix("all.", arg))
     {
         /* 'drop obj' */
         if ((obj = get_obj_carry(ch, arg)) == NULL)
@@ -687,8 +687,8 @@ void do_give(CHAR_DATA * ch, char *argument)
 
         amount = atoi(arg);
         if (amount <= 0
-                || (str_cmp(arg2, "coins") && str_cmp(arg2, "coin") &&
-                    str_cmp(arg2, "gold")))
+                || (strcasecmp(arg2, "coins") && strcasecmp(arg2, "coin") &&
+                    strcasecmp(arg2, "gold")))
         {
             send_to_char("Sorry, you can't do that.\n\r", ch);
             return;
@@ -866,7 +866,7 @@ void do_pour(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(argument, "out"))
+    if (!strcasecmp(argument, "out"))
     {
         if (out->value[1] == 0)
         {
@@ -1587,7 +1587,7 @@ void do_wear(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "all"))
+    if (!strcasecmp(arg, "all"))
     {
         OBJ_DATA *obj_next;
 
@@ -1629,7 +1629,7 @@ void do_remove(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (str_cmp(arg, "all") && str_prefix("all.", arg))
+    if (strcasecmp(arg, "all") && str_prefix("all.", arg))
     {
         /* 'rem obj' */
         if ((obj = get_obj_wear(ch, arg)) == NULL)
@@ -1690,7 +1690,7 @@ void do_sacrifice(CHAR_DATA * ch, char *argument)
 
     one_argument(argument, arg);
 
-    if (arg[0] == '\0' || !str_cmp(arg, ch->name))
+    if (arg[0] == '\0' || !strcasecmp(arg, ch->name))
     {
         act("$n offers $mself to the gods, but they graciously decline.",
             ch, NULL, NULL, TO_ROOM);
@@ -2269,8 +2269,8 @@ void do_steal(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (!str_cmp(arg, "coin")
-            || !str_cmp(arg, "coins") || !str_cmp(arg, "gold"))
+    if (!strcasecmp(arg, "coin")
+            || !strcasecmp(arg, "coins") || !strcasecmp(arg, "gold"))
     {
         int amount;
 
@@ -3293,7 +3293,7 @@ void do_junk(CHAR_DATA * ch, char *argument)
         return;
     }
 
-    if (str_cmp(arg, "all") && str_prefix("all.", arg))
+    if (strcasecmp(arg, "all") && str_prefix("all.", arg))
     {
         /* 'junk obj' */
         if ((obj = get_obj_carry(ch, arg)) == NULL)

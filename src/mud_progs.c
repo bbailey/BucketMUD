@@ -543,7 +543,7 @@ static int exec_proc(char *procname, int intarg, char *chararg)
 
     for (cmd = 0; mprog_cmd_table[cmd].name[0] != '\0'; cmd++)
         if (procname[0] == mprog_cmd_table[cmd].name[0]
-                && !str_cmp(procname, mprog_cmd_table[cmd].name))
+                && !strcasecmp(procname, mprog_cmd_table[cmd].name))
         {
             found = TRUE;
             break;
@@ -1552,8 +1552,8 @@ void mprog_give_trigger(CHAR_DATA * mob, CHAR_DATA * ch, OBJ_DATA * obj)
             one_argument(pList->mudprog->arglist, buf);
 
             if ((pList->mudprog->trigger_type & GIVE_PROG)
-                    && ((!str_cmp(obj->name, pList->mudprog->arglist))
-                        || (!str_cmp("all", buf))))
+                    && ((!strcasecmp(obj->name, pList->mudprog->arglist))
+                        || (!strcasecmp("all", buf))))
             {
                 ProgSource = mob;
                 ProgTriggeredBy = ch;
@@ -1703,7 +1703,7 @@ bool mprog_command_trigger(char *txt, CHAR_DATA * ch, char *extra)
                     pList = pList->next)
             {
                 if ((pList->mudprog->trigger_type & COMMAND_PROG)
-                        && (!str_cmp(pList->mudprog->arglist, arg)))
+                        && (!strcasecmp(pList->mudprog->arglist, arg)))
                 {
                     ProgSource = vmob;
                     ProgTriggeredBy = ch;
@@ -1725,7 +1725,7 @@ bool mprog_command_trigger(char *txt, CHAR_DATA * ch, char *extra)
                     pList = pList->next)
             {
                 if ((pList->mudprog->trigger_type & COMMAND_PROG)
-                        && (!str_cmp(pList->mudprog->arglist, arg)))
+                        && (!strcasecmp(pList->mudprog->arglist, arg)))
                 {
                     set_supermob(obj, OBJ_PROG);
                     ProgSource = supermob;
@@ -1750,7 +1750,7 @@ bool mprog_command_trigger(char *txt, CHAR_DATA * ch, char *extra)
                     pList = pList->next)
             {
                 if ((pList->mudprog->trigger_type & COMMAND_PROG)
-                        && (!str_cmp(pList->mudprog->arglist, arg)))
+                        && (!strcasecmp(pList->mudprog->arglist, arg)))
                 {
                     set_supermob(obj, OBJ_PROG);
                     ProgSource = supermob;
@@ -1774,7 +1774,7 @@ bool mprog_command_trigger(char *txt, CHAR_DATA * ch, char *extra)
         for (pList = room->mudprogs; pList; pList = pList->next)
         {
             if ((pList->mudprog->trigger_type & COMMAND_PROG)
-                    && (!str_cmp(pList->mudprog->arglist, arg)))
+                    && (!strcasecmp(pList->mudprog->arglist, arg)))
             {
                 set_supermob(room, ROOM_PROG);
                 ProgSource = supermob;

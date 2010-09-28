@@ -49,7 +49,7 @@ void do_account(CHAR_DATA * ch, char *argument)
 
         return;
     }
-    if (!str_cmp(Class, "thief"))
+    if (!strcasecmp(Class, "thief"))
     {
         sprintf(buf,
                 "Your guild's fence tells you.\n\rYou have in your beltpouch:\n\r"
@@ -85,13 +85,13 @@ void do_deposit(CHAR_DATA * ch, char *argument)
         return;
     }
     if (ch->in_room != get_room_index(ROOM_VNUM_BANK)
-            && str_cmp(Class, "thief"))
+            && strcasecmp(Class, "thief"))
     {
         send_to_char("You must be in the Bank to deposit.\n\r", ch);
         return;
     }
     else if (ch->in_room != get_room_index(ROOM_VNUM_BANK_THIEF)
-             && !str_cmp(Class, "thief"))
+             && !strcasecmp(Class, "thief"))
     {
         send_to_char("You must be at your fence to deposit.\n\r", ch);
         return;
@@ -105,7 +105,7 @@ void do_deposit(CHAR_DATA * ch, char *argument)
         if (arg1[0] == '\0' || arg2[0] == '\0')
         {
             send_to_char("How much to squirrel away?\n\r", ch);
-            if (!str_cmp(Class, "thief"))
+            if (!strcasecmp(Class, "thief"))
             {
                 send_to_char("THIEF: Deposit <value> gold\n\r", ch);
             }
@@ -118,7 +118,7 @@ void do_deposit(CHAR_DATA * ch, char *argument)
         }
         if (ch->in_room == get_room_index(ROOM_VNUM_BANK))
         {
-            if (!str_cmp(Class, "thief"))
+            if (!strcasecmp(Class, "thief"))
             {
                 act("A thief lurks in the shadows here.", ch, NULL, NULL,
                     TO_ROOM);
@@ -143,7 +143,7 @@ void do_deposit(CHAR_DATA * ch, char *argument)
                          ch);
                         return;
                     }
-                    if (!str_cmp(arg2, "gold"))
+                    if (!strcasecmp(arg2, "gold"))
                     {
                         if (ch->gold < amount)
                         {
@@ -171,7 +171,7 @@ void do_deposit(CHAR_DATA * ch, char *argument)
         }
         else if (ch->in_room == get_room_index(ROOM_VNUM_BANK_THIEF))
         {
-            if (str_cmp(Class, "thief"))
+            if (strcasecmp(Class, "thief"))
             {
                 act("A raider is Here to kill the Guildmaster.", ch, NULL,
                     NULL, TO_ROOM);
@@ -197,7 +197,7 @@ void do_deposit(CHAR_DATA * ch, char *argument)
                          ch);
                         return;
                     }
-                    if (!str_cmp(arg2, "gold"))
+                    if (!strcasecmp(arg2, "gold"))
                     {
                         if (ch->gold < amount)
                         {
@@ -257,13 +257,13 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
         return;
     }
     if (ch->in_room != get_room_index(ROOM_VNUM_BANK)
-            && str_cmp(Class, "thief"))
+            && strcasecmp(Class, "thief"))
     {
         send_to_char("You must be in the Bank to withdraw.\n\r", ch);
         return;
     }
     else if (ch->in_room != get_room_index(ROOM_VNUM_BANK_THIEF)
-             && !str_cmp(Class, "thief"))
+             && !strcasecmp(Class, "thief"))
     {
         send_to_char("You must be at your fence to withdraw.\n\r", ch);
         return;
@@ -277,7 +277,7 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
         if (arg1[0] == '\0' || arg2[0] == '\0')
         {
             send_to_char("How much to withdraw away?\n\r", ch);
-            if (!str_cmp(Class, "thief"))
+            if (!strcasecmp(Class, "thief"))
             {
                 send_to_char("THIEF: Withdraw <value> gold\n\r", ch);
             }
@@ -290,7 +290,7 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
         }
         if (ch->in_room == get_room_index(ROOM_VNUM_BANK))
         {
-            if (!str_cmp(Class, "thief"))
+            if (!strcasecmp(Class, "thief"))
             {
                 act("A thief lurks in the shadows here.", ch, NULL, NULL,
                     TO_ROOM);
@@ -314,7 +314,7 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
                         ("     For information Type 'Bank'.\n\r", ch);
                         return;
                     }
-                    if (!str_cmp(arg2, "gold"))
+                    if (!strcasecmp(arg2, "gold"))
                     {
                         if (ch->pcdata->gold_bank < amount)
                         {
@@ -348,7 +348,7 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
         }
         else if (ch->in_room == get_room_index(ROOM_VNUM_BANK_THIEF))
         {
-            if (str_cmp(Class, "thief"))
+            if (strcasecmp(Class, "thief"))
             {
                 act("A raider is Here to kill the Guildmaster.", ch, NULL,
                     NULL, TO_ROOM);
@@ -370,7 +370,7 @@ void do_withdraw(CHAR_DATA * ch, char *argument)
                          ch);
                         return;
                     }
-                    if (!str_cmp(arg2, "gold"))
+                    if (!strcasecmp(arg2, "gold"))
                     {
                         if (ch->pcdata->gold_bank < amount)
                         {

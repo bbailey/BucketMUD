@@ -160,7 +160,7 @@ void do_skill(CHAR_DATA * ch, char *argument)
     }
 
     for (class_no = 0; class_no < MAX_CLASS; class_no++)
-        if (!str_cmp(class_type, class_table[class_no].who_name))
+        if (!strcasecmp(class_type, class_table[class_no].who_name))
             break;
 
     if (class_no >= MAX_CLASS)
