@@ -23,6 +23,7 @@
  *  around, comes around.                                                  *
  ***************************************************************************/
 
+#define _GNU_SOURCE /* for strcasestr */
 #include <sys/time.h>
 #include <time.h>
 #include <sys/types.h>
