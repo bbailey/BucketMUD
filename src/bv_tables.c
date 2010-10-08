@@ -59,3 +59,4 @@ const BitVectorStringList bv_str_list_off[] =
     { "assist_vnum", BV_OFF_ASSIST_VNUM},
     { NULL, BV_OFF_MAX }
 };
+

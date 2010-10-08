@@ -63,3 +63,4 @@ typedef enum {
 extern const BitVectorStringList bv_str_list_off[];
 
 #endif // BUCKETMUD_BV_TABLES_H
+
