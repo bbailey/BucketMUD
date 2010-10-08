@@ -6,7 +6,7 @@ def set_options(opt):
 
 def configure(conf):
     conf.check_tool('compiler_cc')
-    conf.check_cfg(package='glib-2.0', args='--cflags --libs', mandatory=True)
+    conf.check_cfg(package='glib-2.0', args='--cflags --libs', atleast_version='2.14', mandatory=True)
     conf.check_cc(lib='m', uselib_store='M', mandatory=True)
     conf.check_cc(lib='crypt', uselib_store='CRYPT', mandatory=True)
 
