@@ -281,7 +281,6 @@ const struct cmd_type cmd_table[] =
     {"kick", do_kick, POS_FIGHTING, 0, LOG_NORMAL, 1},
     {"shield", do_shield, POS_FIGHTING, 0, LOG_NORMAL, 1},
     {"weapon", do_weapon, POS_FIGHTING, 0, LOG_NORMAL, 1},
-    {"blackjack", do_blackjack, POS_STANDING, 0, LOG_NORMAL, 1},
     {"murde", do_murde, POS_FIGHTING, 1, LOG_NORMAL, 0},
     {"murder", do_murder, POS_FIGHTING, 1, LOG_ALWAYS, 1},
     {"rescue", do_rescue, POS_FIGHTING, 0, LOG_NORMAL, 0},

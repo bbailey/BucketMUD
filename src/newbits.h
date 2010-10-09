@@ -17,7 +17,6 @@
 #define NEWAFF_GHOST_PASSDOOR       3
 #define NEWAFF_GHOST_DETECTINVIS    4
 #define NEWAFF_GHOST                5
-#define NEWAFF_BLACKJACK            6
 
 int IS_NEWAFF_SET(char *b, int bit);
 void SET_NEWAFF(char *b, int bit);

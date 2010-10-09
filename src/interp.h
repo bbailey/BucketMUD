@@ -152,7 +152,6 @@ extern void do_junk(CHAR_DATA * ch, char *argument);
 extern void do_kick(CHAR_DATA * ch, char *argument);
 extern void do_shield(CHAR_DATA * ch, char *argument);
 extern void do_weapon(CHAR_DATA * ch, char *argument);
-extern void do_blackjack(CHAR_DATA * ch, char *argument);
 extern void do_kill(CHAR_DATA * ch, char *argument);
 extern void do_last(CHAR_DATA * ch, char *argument);
 extern void do_lastimm(CHAR_DATA * ch, char *argument);

@@ -9,7 +9,6 @@ const struct newaff_table_struct newaff_table[MAX_NEWAFF_BIT] =	/* This table MU
     {NEWAFF_GHOST_PASSDOOR, "ghostpassdoor", FALSE},
     {NEWAFF_GHOST_DETECTINVIS, "ghostdetectinvis", FALSE},
     {NEWAFF_GHOST, "ghost", FALSE},
-    {NEWAFF_BLACKJACK, "blackjack", FALSE}
 };
 
 /* ************************************************************************ */

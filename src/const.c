@@ -1671,13 +1671,6 @@ struct skill_type skill_table[MAX_SKILL] =
     },
 
     {
-        "blackjack", {50, 50, 3, 3}, {0, 0, 4, 4},
-        spell_null, TAR_IGNORE, POS_STANDING,
-        &gsn_blackjack, SLOT(0), 0, 24,
-        "blackjack", "Man what a headache, good thing its over."
-    },
-
-    {
         "dirt kicking", {50, 50, 3, 3}, {0, 0, 4, 4},
         spell_null, TAR_IGNORE, POS_FIGHTING,
         &gsn_dirt, SLOT(0), 0, 24,

@@ -1014,7 +1014,6 @@ extern sh_int gsn_steal;
 extern sh_int gsn_disarm;
 extern sh_int gsn_enhanced_damage;
 extern sh_int gsn_kick;
-extern sh_int gsn_blackjack;
 extern sh_int gsn_parry;
 extern sh_int gsn_rescue;
 extern sh_int gsn_second_attack;

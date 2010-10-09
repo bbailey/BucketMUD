@@ -90,7 +90,6 @@ sh_int gsn_steal;
 sh_int gsn_disarm;
 sh_int gsn_enhanced_damage;
 sh_int gsn_kick;
-sh_int gsn_blackjack;
 sh_int gsn_parry;
 sh_int gsn_rescue;
 sh_int gsn_second_attack;
