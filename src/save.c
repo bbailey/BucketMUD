@@ -198,7 +198,6 @@ void save_char_obj(CHAR_DATA * ch)
 static void fwrite_char(CHAR_DATA * ch, FILE * fp)
 {
     AFFECT_DATA *paf;
-    NEWAFFECT_DATA *npaf;
     int sn, gn, pos, i;
     gchar *tmp_str = NULL;
 
@@ -247,8 +246,6 @@ static void fwrite_char(CHAR_DATA * ch, FILE * fp)
         fprintf(fp, "Act  %ld\n", ch->act);
     if (ch->affected_by != 0)
         fprintf(fp, "AfBy %ld\n", ch->affected_by);
-    if (ch->newaff[0] != 0)
-        fprintf(fp, "NewAfBy %s\n", ch->newaff);
 
     tmp_str = bv_to_string(ch->bv_comm_flags, bv_str_list_comm);
     fprintf(fp, "BvCommFlags %s~\n", tmp_str );
@@ -379,17 +376,6 @@ static void fwrite_char(CHAR_DATA * ch, FILE * fp)
                 paf->level,
                 paf->duration, paf->modifier, paf->location,
                 paf->bitvector);
-    }
-    for (npaf = ch->newaffected; npaf != NULL; npaf = npaf->next)
-    {
-        if (npaf->type < 0 || npaf->type >= MAX_SKILL)
-            continue;
-
-        fprintf(fp, "NewAffD '%s' %3d %3d %3d %3d %10d\n",
-                skill_table[npaf->type].name,
-                npaf->level,
-                npaf->duration,
-                npaf->modifier, npaf->location, npaf->bitvector);
     }
 
 #ifdef IMC
@@ -659,7 +645,6 @@ bool load_char_obj(DESCRIPTOR_DATA * d, char *name)
     ch->version = 0;
     ch->race = race_lookup("human");
     ch->affected_by = 0;
-    ch->newaff[0] = 0;
     ch->act = PLR_NOSUMMON
               | PLR_AUTOEXIT | PLR_AUTOLOOT | PLR_AUTOSAC | PLR_AUTOGOLD;
     bv_clear(ch->bv_comm_flags);
@@ -904,8 +889,6 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             KEY("Act", ch->act, fread_number(fp));
             KEY("AffectedBy", ch->affected_by, fread_number(fp));
             KEY("AfBy", ch->affected_by, fread_number(fp));
-            KEY("NewAffectedBy", ch->newaff[0], fread_number(fp));
-            KEY("NewAfBy", ch->newaff[0], fread_number(fp));
             KEY("Alignment", ch->alignment, fread_number(fp));
             KEY("Alig", ch->alignment, fread_number(fp));
 
@@ -985,45 +968,6 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
                 paf->bitvector = fread_number(fp);
                 paf->next = ch->affected;
                 ch->affected = paf;
-                fMatch = TRUE;
-                break;
-            }
-            if (!strcasecmp(word, "NewAffect") || !strcasecmp(word, "NewAff")
-                    || !strcasecmp(word, "NewAffD"))
-            {
-                NEWAFFECT_DATA *npaf;
-
-                if (newaffect_free == NULL)
-                {
-                    npaf = alloc_perm(sizeof(*npaf));
-                }
-                else
-                {
-                    npaf = newaffect_free;
-                    newaffect_free = newaffect_free->next;
-                }
-
-                if (!strcasecmp(word, "NewAffD"))
-                {
-                    int sn;
-                    sn = skill_lookup(fread_word(fp));
-                    if (sn < 0)
-                        bug("Fread_char: unknown skill.", 0);
-                    else
-                        npaf->type = sn;
-                }
-                else		/* old form */
-                    npaf->type = fread_number(fp);
-                if (ch->version == 0)
-                    npaf->level = ch->level;
-                else
-                    npaf->level = fread_number(fp);
-                npaf->duration = fread_number(fp);
-                npaf->modifier = fread_number(fp);
-                npaf->location = fread_number(fp);
-                npaf->bitvector = fread_number(fp);
-                /*              npaf->next      = ch->newaff[0];
-                   ch->newaff   = npaf; */
                 fMatch = TRUE;
                 break;
             }

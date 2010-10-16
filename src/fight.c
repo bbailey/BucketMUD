@@ -2204,11 +2204,7 @@ static void raw_kill(CHAR_DATA * victim)
     extract_char(victim, FALSE);
     while (victim->affected)
         affect_remove(victim, victim->affected);
-    while (victim->newaffected)
-        newaffect_remove(victim, victim->newaffected);
     victim->affected_by = 0;
-    memset(victim->newaff, 0,
-           (MAX_NEWAFF_BIT / 8) + (MAX_NEWAFF_BIT % 8 ? 1 : 0));
     for (i = 0; i < 4; i++)
         victim->armor[i] = 100;
     victim->position = POS_RESTING;
@@ -2235,11 +2231,7 @@ static void pk_kill(CHAR_DATA * victim)
     pk_extract_char(victim, FALSE);
     while (victim->affected)
         affect_remove(victim, victim->affected);
-    while (victim->newaffected)
-        newaffect_remove(victim, victim->newaffected);
     victim->affected_by = 0;
-    memset(victim->newaff, 0,
-           (MAX_NEWAFF_BIT / 8) + (MAX_NEWAFF_BIT % 8 ? 1 : 0));
     for (i = 0; i < 4; i++)
         victim->armor[i] = 100;
     victim->position = POS_RESTING;

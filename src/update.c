@@ -615,8 +615,6 @@ static void char_update(void)
     {
         AFFECT_DATA *paf;
         AFFECT_DATA *paf_next;
-        NEWAFFECT_DATA *npaf;
-        NEWAFFECT_DATA *npaf_next;
 
         ch_next = ch->next;
 
@@ -711,33 +709,6 @@ static void char_update(void)
                 }
 
                 affect_remove(ch, paf);
-            }
-        }
-        for (npaf = ch->newaffected; npaf != NULL; npaf = npaf_next)
-        {
-            npaf_next = npaf->next;
-            if (npaf->duration > 0)
-            {
-                npaf->duration--;
-                if (number_range(0, 4) == 0 && npaf->level > 0)
-                    npaf->level--;	/* spell strength fades with time */
-            }
-            else if (npaf->duration < 0)
-                continue;
-            else
-            {
-                if (npaf_next == NULL
-                        || npaf_next->type != npaf->type
-                        || npaf_next->duration > 0)
-                {
-                    if (npaf->type > 0 && skill_table[npaf->type].msg_off)
-                    {
-                        send_to_char(skill_table[npaf->type].msg_off, ch);
-                        send_to_char("\n\r", ch);
-                    }
-                }
-
-                newaffect_remove(ch, npaf);
             }
         }
 

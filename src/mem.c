@@ -429,38 +429,6 @@ void free_affect(AFFECT_DATA * pAf)
     return;
 }
 
-NEWAFFECT_DATA *new_newaffect(void)
-{
-    NEWAFFECT_DATA *npAf;
-
-    if (!newaffect_free)
-    {
-        npAf = alloc_perm(sizeof(*npAf));
-        top_newaffect++;
-    }
-    else
-    {
-        npAf = newaffect_free;
-        newaffect_free = newaffect_free->next;
-    }
-
-    npAf->next = NULL;
-    npAf->location = 0;
-    npAf->modifier = 0;
-    npAf->type = 0;
-    npAf->duration = 0;
-    npAf->bitvector = 0;
-
-    return npAf;
-}
-
-void free_newaffect(NEWAFFECT_DATA * npAf)
-{
-    npAf->next = newaffect_free;
-    newaffect_free = npAf;
-    return;
-}
-
 SHOP_DATA *new_shop(void)
 {
     SHOP_DATA *pShop;
@@ -595,8 +563,6 @@ MOB_INDEX_DATA *new_mob_index(void)
     pMob->level = 0;
     pMob->act = ACT_IS_NPC;
     pMob->affected_by = 0;
-    memset(pMob->newaff, 0,
-           (MAX_NEWAFF_BIT / 8) + (MAX_NEWAFF_BIT % 8 ? 1 : 0));
     pMob->alignment = 0;
     pMob->hitroll = 0;
     pMob->race = race_lookup("human");	/* - Hugin */

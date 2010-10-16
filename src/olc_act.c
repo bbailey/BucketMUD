@@ -3189,7 +3189,6 @@ MEDIT(medit_show)
     char buf[MAX_STRING_LENGTH];
     MOB_INDEX_DATA *pMob;
     FACTIONAFF_DATA *pFactAff;
-    int x;
     gchar *tmp_string = NULL;
 
     EDIT_MOB(ch, pMob);
@@ -3245,13 +3244,6 @@ MEDIT(medit_show)
     sprintf(buf, "Affected by: [%s]\n\r",
             flag_string(affect_flags, pMob->affected_by));
     send_to_char(buf, ch);
-    send_to_char("NEWAffected by: [ ", ch);
-    for (x = 1; x <= MAX_NEWAFF_BIT; x++)
-    {
-        if (IS_NEWAFF_SET(pMob->newaff, x))
-            printf_to_char(ch, "%s ", newaff_table[x].name);
-    }
-    send_to_char("]\n\r", ch);
 
     /* ROM values: */
 

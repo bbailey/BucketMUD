@@ -1908,7 +1908,6 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
     bv_clear(mob->bv_comm_flags);
     bv_set(mob->bv_comm_flags, BV_COMM_BRIEF);
     mob->affected_by = pMobIndex->affected_by;
-    strncpy(mob->newaff, pMobIndex->newaff, sizeof(mob->newaff));
     mob->alignment = pMobIndex->alignment;
     mob->level = pMobIndex->level;
     mob->hitroll = pMobIndex->hitroll;
@@ -2003,7 +2002,6 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
 {
     int i;
     AFFECT_DATA *paf;
-    NEWAFFECT_DATA *npaf;
 
     if (parent == NULL || clone == NULL || !IS_NPC(parent))
         return;
@@ -2037,7 +2035,6 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
     clone->vuln_flags = parent->vuln_flags;
     clone->invis_level = parent->invis_level;
     clone->affected_by = parent->affected_by;
-    strncpy(clone->newaff, parent->newaff, sizeof(clone->newaff));
     clone->position = parent->position;
     clone->practice = parent->practice;
     clone->train = parent->train;
@@ -2072,8 +2069,6 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
     /* now add the affects */
     for (paf = parent->affected; paf != NULL; paf = paf->next)
         affect_to_char(clone, paf);
-    for (npaf = parent->newaffected; npaf != NULL; npaf = npaf->next)
-        newaffect_to_char(clone, npaf);
 }
 
 /*
@@ -2246,8 +2241,6 @@ void clear_char(CHAR_DATA * ch)
         ch->perm_stat[i] = 13;
         ch->mod_stat[i] = 0;
     }
-    memset(ch->newaff, 0,
-           (MAX_NEWAFF_BIT / 8) + (MAX_NEWAFF_BIT % 8 ? 1 : 0));
     return;
 }
 
@@ -2260,8 +2253,6 @@ void free_char(CHAR_DATA * ch)
     OBJ_DATA *obj_next;
     AFFECT_DATA *paf;
     AFFECT_DATA *paf_next;
-    NEWAFFECT_DATA *npaf;
-    NEWAFFECT_DATA *npaf_next;
     QUEUE_DATA *mq;
     QUEUE_DATA *mq_next;
     sh_int i;
@@ -2280,12 +2271,6 @@ void free_char(CHAR_DATA * ch)
     {
         paf_next = paf->next;
         affect_remove(ch, paf);
-    }
-
-    for (npaf = ch->newaffected; npaf != NULL; npaf = npaf_next)
-    {
-        npaf_next = npaf->next;
-        newaffect_remove(ch, npaf);
     }
 
     if (ch->name)
@@ -2942,7 +2927,6 @@ void do_dump(CHAR_DATA * ch, char *argument)
     OBJ_INDEX_DATA *pObjIndex;
     DESCRIPTOR_DATA *d;
     AFFECT_DATA *af;
-    NEWAFFECT_DATA *naf;
     FILE *fp;
     int vnum, nMatch = 0;
     char buf[MAX_STRING_LENGTH];
@@ -2970,8 +2954,6 @@ void do_dump(CHAR_DATA * ch, char *argument)
         if (fch->pcdata != NULL)
             num_pcs++;
         for (af = fch->affected; af != NULL; af = af->next)
-            aff_count++;
-        for (naf = fch->newaffected; naf != NULL; naf = naf->next)
             aff_count++;
     }
     for (fch = char_free; fch != NULL; fch = fch->next)

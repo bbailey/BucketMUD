@@ -337,7 +337,6 @@ void free_extra_descr(ED * pExtra);
 ROOM_INDEX_DATA *new_room_index(void);
 void free_room_index(ROOM_INDEX_DATA * pRoom);
 AFFECT_DATA *new_affect(void);
-NEWAFFECT_DATA *new_newaffect(void);
 void free_affect(AFFECT_DATA * pAf);
 SHOP_DATA *new_shop(void);
 void free_shop(SHOP_DATA * pShop);

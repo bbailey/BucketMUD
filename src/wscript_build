@@ -9,7 +9,7 @@ bld.new_task_gen(
 'BitVectorStr.c', 'board.c', 'bv_tables.c', 'clan.c', 'class.c',
 'comm.c', 'const.c', 'db.c', 'drunk2.c', 'factions.c', 'fight.c',
 'handler.c', 'helpolc.c', 'imc.c', 'interp.c', 'magic.c', 'marry.c',
-'mem.c', 'mprog_commands.c', 'mprog_procs.c', 'mud_progs.c', 'newbits.c',
+'mem.c', 'mprog_commands.c', 'mprog_procs.c', 'mud_progs.c',
 'olc_act.c', 'olc.c', 'olc_save.c', 'recycle.c', 'remort.c',
 'save.c', 'sha256.c', 'skills.c', 'socialolc.c', 'ssm.c', 'string.c',
 'update.c'],

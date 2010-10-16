@@ -1228,7 +1228,6 @@ void do_effects(CHAR_DATA * ch, char *argument)
     char buf[MAX_STRING_LENGTH];
 
     AFFECT_DATA *paf;
-    NEWAFFECT_DATA *npaf;
 
     switch (ch->position)
     {
@@ -1272,25 +1271,6 @@ void do_effects(CHAR_DATA * ch, char *argument)
                 sprintf(buf, " modifies %s by %d for %d hours",
                         affect_loc_name(paf->location),
                         paf->modifier, paf->duration);
-                send_to_char(buf, ch);
-            }
-
-            send_to_char(".\n\r", ch);
-        }
-    }
-    if (ch->newaffected != NULL)
-    {
-        for (npaf = ch->newaffected; npaf != NULL; npaf = npaf->next)
-        {
-            sprintf(buf, "ZaksBugSpell: '%s'",
-                    skill_table[npaf->type].name);
-            send_to_char(buf, ch);
-
-            if (ch->level >= 20)
-            {
-                sprintf(buf, " modifies %s by %d for %d hours",
-                        affect_loc_name(npaf->location),
-                        npaf->modifier, npaf->duration);
                 send_to_char(buf, ch);
             }
 
@@ -1801,7 +1781,6 @@ void do_score(CHAR_DATA * ch, char *argument)
 
     char tempbuf[200];
     AFFECT_DATA *paf;
-    NEWAFFECT_DATA *npaf;
     unsigned int i, x;
 
     if (!IS_NPC(ch))
@@ -2223,21 +2202,6 @@ void do_score(CHAR_DATA * ch, char *argument)
                     sprintf(buf, " modifies %s by %d for %d hours",
                             affect_loc_name(paf->location),
                             paf->modifier, paf->duration);
-                    send_to_char(buf, ch);
-                }
-
-                send_to_char(".\n\r", ch);
-            }
-            for (npaf = ch->newaffected; npaf != NULL; npaf = npaf->next)
-            {
-                sprintf(buf, "Spell: '%s'", skill_table[npaf->type].name);
-                send_to_char(buf, ch);
-
-                if (ch->level >= 20)
-                {
-                    sprintf(buf, " modifies %s by %d for %d hours",
-                            affect_loc_name(npaf->location),
-                            npaf->modifier, npaf->duration);
                     send_to_char(buf, ch);
                 }
 

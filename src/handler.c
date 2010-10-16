@@ -33,7 +33,6 @@
 void do_return(CHAR_DATA * ch, char *argument);
 
 AFFECT_DATA *affect_free;
-NEWAFFECT_DATA *newaffect_free;
 
 char thedate[10];
 char thetime[7];
@@ -459,7 +458,6 @@ void reset_char(CHAR_DATA * ch)
     int loc, mod, stat;
     OBJ_DATA *obj;
     AFFECT_DATA *af;
-    NEWAFFECT_DATA *naf;
     int i;
 
     if (IS_NPC(ch))
@@ -701,72 +699,6 @@ void reset_char(CHAR_DATA * ch)
     {
         mod = af->modifier;
         switch (af->location)
-        {
-        case APPLY_STR:
-            ch->mod_stat[STAT_STR] += mod;
-            break;
-        case APPLY_DEX:
-            ch->mod_stat[STAT_DEX] += mod;
-            break;
-        case APPLY_INT:
-            ch->mod_stat[STAT_INT] += mod;
-            break;
-        case APPLY_WIS:
-            ch->mod_stat[STAT_WIS] += mod;
-            break;
-        case APPLY_CON:
-            ch->mod_stat[STAT_CON] += mod;
-            break;
-
-        case APPLY_SEX:
-            ch->sex += mod;
-            break;
-        case APPLY_MANA:
-            ch->max_mana += mod;
-            break;
-        case APPLY_HIT:
-            ch->max_hit += mod;
-            break;
-        case APPLY_MOVE:
-            ch->max_move += mod;
-            break;
-
-        case APPLY_AC:
-            for (i = 0; i < 4; i++)
-                ch->armor[i] += mod;
-            break;
-        case APPLY_HITROLL:
-            ch->hitroll += mod;
-            break;
-        case APPLY_DAMROLL:
-            ch->damroll += mod;
-            break;
-
-        case APPLY_SAVING_PARA:
-            ch->saving_throw += mod;
-            break;
-        case APPLY_SAVING_ROD:
-            ch->saving_throw += mod;
-            break;
-        case APPLY_SAVING_PETRI:
-            ch->saving_throw += mod;
-            break;
-        case APPLY_SAVING_BREATH:
-            ch->saving_throw += mod;
-            break;
-        case APPLY_SAVING_SPELL:
-            ch->saving_throw += mod;
-            break;
-        case APPLY_ALIGN:
-            ch->alignment += mod;
-            break;
-        }
-    }
-
-    for (naf = ch->newaffected; naf != NULL; naf = naf->next)
-    {
-        mod = naf->modifier;
-        switch (naf->location)
         {
         case APPLY_STR:
             ch->mod_stat[STAT_STR] += mod;
@@ -1140,137 +1072,6 @@ static void affect_modify(CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd)
     return;
 }
 
-static void newaffect_modify(CHAR_DATA * ch, NEWAFFECT_DATA * npaf,
-                             bool fAdd)
-{
-    OBJ_DATA *wield;
-    int mod, i;
-
-    mod = npaf->modifier;
-
-    if (fAdd)
-    {
-        SET_NEWAFF(ch->newaff, npaf->bitvector);
-    }
-    else
-    {
-        REMOVE_NEWAFF(ch->newaff, npaf->bitvector);
-        mod = 0 - mod;
-    }
-
-    switch (npaf->location)
-    {
-    default:
-        bug("newaffect_modify: unknown location %d.", npaf->location);
-        return;
-
-    case APPLY_NONE:
-        break;
-    case APPLY_STR:
-        ch->mod_stat[STAT_STR] += mod;
-        break;
-    case APPLY_DEX:
-        ch->mod_stat[STAT_DEX] += mod;
-        break;
-    case APPLY_INT:
-        ch->mod_stat[STAT_INT] += mod;
-        break;
-    case APPLY_WIS:
-        ch->mod_stat[STAT_WIS] += mod;
-        break;
-    case APPLY_CON:
-        ch->mod_stat[STAT_CON] += mod;
-        break;
-    case APPLY_SEX:
-        ch->sex += mod;
-        break;
-    case APPLY_CLASS:
-        break;
-    case APPLY_LEVEL:
-        break;
-    case APPLY_AGE:
-        break;
-    case APPLY_HEIGHT:
-        break;
-    case APPLY_WEIGHT:
-        break;
-    case APPLY_MANA:
-        ch->max_mana += mod;
-        if (ch->mana > ch->max_mana)
-            ch->mana = ch->max_mana;
-        break;
-
-    case APPLY_HIT:
-        ch->max_hit += mod;
-        if (ch->hit > ch->max_hit)
-            ch->hit = ch->max_hit;
-        break;
-
-    case APPLY_MOVE:
-        ch->max_move += mod;
-        if (ch->move > ch->max_move)
-            ch->move = ch->max_move;
-        break;
-
-    case APPLY_GOLD:
-        break;
-    case APPLY_EXP:
-        break;
-    case APPLY_AC:
-        for (i = 0; i < 4; i++)
-            ch->armor[i] += mod;
-        break;
-
-    case APPLY_HITROLL:
-        ch->hitroll += mod;
-        break;
-    case APPLY_DAMROLL:
-        ch->damroll += mod;
-        break;
-    case APPLY_SAVING_PARA:
-        ch->saving_throw += mod;
-        break;
-    case APPLY_SAVING_ROD:
-        ch->saving_throw += mod;
-        break;
-    case APPLY_SAVING_PETRI:
-        ch->saving_throw += mod;
-        break;
-    case APPLY_SAVING_BREATH:
-        ch->saving_throw += mod;
-        break;
-    case APPLY_SAVING_SPELL:
-        ch->saving_throw += mod;
-        break;
-    case APPLY_ALIGN:
-        ch->alignment += mod;
-        break;
-    }
-
-    /*
-     * Check for weapon wielding.
-     * Guard against recursion (for weapons with affects).
-     */
-    if (!IS_NPC(ch) && (wield = get_eq_char(ch, WEAR_WIELD)) != NULL
-            && get_obj_weight(wield) >
-            str_app[get_curr_stat(ch, STAT_STR)].wield)
-    {
-        static int depth;
-
-        if (depth == 0)
-        {
-            depth++;
-            act("You drop $p.", ch, wield, NULL, TO_CHAR);
-            act("$n drops $p.", ch, wield, NULL, TO_ROOM);
-            obj_from_char(wield);
-            obj_to_room(wield, ch->in_room);
-            depth--;
-        }
-    }
-
-    return;
-}
-
 /*
  * Give an affect to a char.
  */
@@ -1293,28 +1094,6 @@ void affect_to_char(CHAR_DATA * ch, AFFECT_DATA * paf)
     ch->affected = paf_new;
 
     affect_modify(ch, paf_new, TRUE);
-    return;
-}
-
-void newaffect_to_char(CHAR_DATA * ch, NEWAFFECT_DATA * npaf)
-{
-    NEWAFFECT_DATA *npaf_new;
-
-    if (newaffect_free == NULL)
-    {
-        npaf_new = alloc_perm(sizeof(*npaf_new));
-    }
-    else
-    {
-        npaf_new = newaffect_free;
-        newaffect_free = newaffect_free->next;
-    }
-
-    *npaf_new = *npaf;
-    npaf_new->next = ch->newaffected;
-    ch->newaffected = npaf_new;
-
-    newaffect_modify(ch, npaf_new, TRUE);
     return;
 }
 
@@ -1380,45 +1159,6 @@ void affect_remove(CHAR_DATA * ch, AFFECT_DATA * paf)
     return;
 }
 
-void newaffect_remove(CHAR_DATA * ch, NEWAFFECT_DATA * npaf)
-{
-    if (ch->newaffected == NULL)
-    {
-        bug("Affect_remove: no affect.", 0);
-        return;
-    }
-
-    newaffect_modify(ch, npaf, FALSE);
-
-    if (npaf == ch->newaffected)
-    {
-        ch->newaffected = npaf->next;
-    }
-    else
-    {
-        NEWAFFECT_DATA *nprev;
-
-        for (nprev = ch->newaffected; nprev != NULL; nprev = nprev->next)
-        {
-            if (nprev->next == npaf)
-            {
-                nprev->next = npaf->next;
-                break;
-            }
-        }
-
-        if (nprev == NULL)
-        {
-            bug("newaffect_remove: cannot find npaf.", 0);
-            return;
-        }
-    }
-
-    npaf->next = newaffect_free;
-    newaffect_free = npaf->next;
-    return;
-}
-
 void affect_remove_obj(OBJ_DATA * obj, AFFECT_DATA * paf)
 {
     if (obj->affected == NULL)
@@ -1477,21 +1217,6 @@ void affect_strip(CHAR_DATA * ch, int sn)
     return;
 }
 
-void newaffect_strip(CHAR_DATA * ch, int sn)
-{
-    NEWAFFECT_DATA *npaf;
-    NEWAFFECT_DATA *npaf_next;
-
-    for (npaf = ch->newaffected; npaf != NULL; npaf = npaf_next)
-    {
-        npaf_next = npaf->next;
-        if (npaf->type == sn)
-            newaffect_remove(ch, npaf);
-    }
-
-    return;
-}
-
 /*
  * Return true if a char is affected by a spell.
  */
@@ -1502,19 +1227,6 @@ bool is_affected(CHAR_DATA * ch, int sn)
     for (paf = ch->affected; paf != NULL; paf = paf->next)
     {
         if (paf->type == sn)
-            return TRUE;
-    }
-
-    return FALSE;
-}
-
-bool is_newaffected(CHAR_DATA * ch, int sn)
-{
-    NEWAFFECT_DATA *npaf;
-
-    for (npaf = ch->newaffected; npaf != NULL; npaf = npaf->next)
-    {
-        if (npaf->type == sn)
             return TRUE;
     }
 
@@ -1543,29 +1255,6 @@ void affect_join(CHAR_DATA * ch, AFFECT_DATA * paf)
     }
 
     affect_to_char(ch, paf);
-    return;
-}
-
-void newaffect_join(CHAR_DATA * ch, NEWAFFECT_DATA * npaf)
-{
-    NEWAFFECT_DATA *npaf_old;
-    bool found;
-
-    found = FALSE;
-    for (npaf_old = ch->newaffected; npaf_old != NULL;
-            npaf_old = npaf_old->next)
-    {
-        if (npaf_old->type == npaf->type)
-        {
-            npaf->level = (npaf->level += npaf_old->level) / 2;
-            npaf->duration += npaf_old->duration;
-            npaf->modifier += npaf_old->modifier;
-            newaffect_remove(ch, npaf_old);
-            break;
-        }
-    }
-
-    newaffect_to_char(ch, npaf);
     return;
 }
 

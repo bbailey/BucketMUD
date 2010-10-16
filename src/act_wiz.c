@@ -1571,9 +1571,7 @@ void do_mstat(CHAR_DATA * ch, char *argument)
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     AFFECT_DATA *paf;
-    NEWAFFECT_DATA *npaf;
     CHAR_DATA *victim;
-    int x;
     gchar *tmp_string = NULL;
 
     one_argument(argument, arg);
@@ -1736,20 +1734,6 @@ void do_mstat(CHAR_DATA * ch, char *argument)
         send_to_char(buf, ch);
     }
 
-    if (victim->newaffected)
-    {
-        send_to_char("NewAffected by: ", ch);
-        for (x = 0; x < MAX_NEWAFF_BIT; x++)
-        {
-            if (IS_NEWAFF_SET(victim->newaff, x))
-            {
-                printf_to_char(ch, "In is new aff set");
-                printf_to_char(ch, "%s ", newaff_table[x].name);
-            }
-        }
-        send_to_char("\n\r", ch);
-    }
-
     sprintf(buf, "Master: %s  Leader: %s  Pet: %s\n\r",
             victim->master ? victim->master->name : "(none)",
             victim->leader ? victim->leader->name : "(none)",
@@ -1783,25 +1767,6 @@ void do_mstat(CHAR_DATA * ch, char *argument)
                 paf->duration, affect_bit_name(paf->bitvector),
                 paf->level);
         send_to_char(buf, ch);
-    }
-
-    for (npaf = victim->newaffected; npaf != NULL; npaf = npaf->next)
-    {
-        sprintf(buf,
-                "NewSpell: '%s' modifies %s by %d for %d hours at level %d with bits ",
-                skill_table[(int) npaf->type].name,
-                affect_loc_name(npaf->location),
-                npaf->modifier, npaf->duration, npaf->level);
-        send_to_char(buf, ch);
-        for (x = 1; x < MAX_NEWAFF_BIT; x++)
-        {
-            if (IS_NEWAFF_SET(victim->newaff, x))
-            {
-                printf_to_char(ch, "%s.", newaff_table[x].name);
-            }
-        }
-        send_to_char("\n\r", ch);
-
     }
 
     if (!IS_NPC(victim))

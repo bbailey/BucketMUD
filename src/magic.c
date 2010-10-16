@@ -191,7 +191,6 @@ static bool saves_dispel(int dis_level, int spell_level, int duration)
 static bool check_dispel(int dis_level, CHAR_DATA * victim, int sn)
 {
     AFFECT_DATA *af;
-    NEWAFFECT_DATA *naf;
 
     if (is_affected(victim, sn))
     {
@@ -211,28 +210,6 @@ static bool check_dispel(int dis_level, CHAR_DATA * victim, int sn)
                 }
                 else
                     af->level--;
-            }
-        }
-    }
-
-    if (is_newaffected(victim, sn))
-    {
-        for (naf = victim->newaffected; naf != NULL; naf = naf->next)
-        {
-            if (naf->type == sn)
-            {
-                if (!saves_dispel(dis_level, naf->level, naf->duration))
-                {
-                    newaffect_strip(victim, sn);
-                    if (skill_table[sn].msg_off)
-                    {
-                        send_to_char(skill_table[sn].msg_off, victim);
-                        send_to_char("\n\r", victim);
-                    }
-                    return TRUE;
-                }
-                else
-                    naf->level--;
             }
         }
     }

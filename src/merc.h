@@ -45,7 +45,6 @@ typedef short int sh_int;
  * Structure types.
  */
 typedef struct affect_data AFFECT_DATA;
-typedef struct newaffect_data NEWAFFECT_DATA;
 typedef struct area_data AREA_DATA;
 typedef struct auction_data AUCTION_DATA;	/* Added for automated auction. -Lancelight */
 typedef struct buf_type BUFFER;	/* Added for recycle.h -Lancelight */
@@ -165,7 +164,6 @@ void do_board(CHAR_DATA * ch, char *argument);
 
 #include "config.h"
 #include "factions.h"
-#include "newbits.h"
 #include <signal.h>
 
 /* Just a note....
@@ -450,17 +448,6 @@ struct affect_data
     int bitvector;
 };
 
-struct newaffect_data
-{
-    NEWAFFECT_DATA *next;
-    sh_int type;
-    sh_int level;
-    sh_int duration;
-    sh_int location;
-    sh_int modifier;
-    int bitvector;		/* Soon to be removed */
-};
-
 /*
  * A kill structure (indexed by level).
  */
@@ -488,8 +475,6 @@ struct mob_index_data
     char *description;
     long act;
     long affected_by;
-    char newaff[(MAX_NEWAFF_BIT / 8) +
-                (((MAX_NEWAFF_BIT % 8) > 0) ? 1 : 0)];
     sh_int alignment;
     sh_int level;
     sh_int hitroll;
@@ -541,7 +526,6 @@ struct char_data
     MOB_INDEX_DATA *pIndexData;
     DESCRIPTOR_DATA *desc;
     AFFECT_DATA *affected;
-    NEWAFFECT_DATA *newaffected;
     OBJ_DATA *carrying;
     OBJ_DATA *on;
     ROOM_INDEX_DATA *in_room;
@@ -582,8 +566,6 @@ struct char_data
     long vuln_flags;
     sh_int invis_level;
     long affected_by;
-    char newaff[(MAX_NEWAFF_BIT / 8) +
-                (((MAX_NEWAFF_BIT % 8) > 0) ? 1 : 0)];
     sh_int position;
     sh_int practice;
     sh_int train;
@@ -1090,7 +1072,6 @@ void save_disabled(void);
 #define IS_ADMIN(ch)             (get_trust(ch) >= LEVEL_HERO)
 #define IS_TRUSTED(ch,level)    (get_trust((ch)) >= (level))
 #define IS_AFFECTED(ch, sn)     (IS_SET((ch)->affected_by, (sn)))
-#define IS_NEWAFFECTED(ch, sn)  (IS_NEWAFF_SET((ch)->newaff,(sn)))
 #define IS_VALID(data)          ((data) != NULL && (data)->valid)
 #define VALIDATE(data)          ((data)->valid = TRUE)
 #define INVALIDATE(data)        ((data)->valid = FALSE)
@@ -1197,7 +1178,6 @@ extern OBJ_DATA *object_list;
 extern MPROG_DATA *mprog_free;
 extern MPROG_GROUP *mprog_group_free;
 extern AFFECT_DATA *affect_free;
-extern NEWAFFECT_DATA *newaffect_free;
 extern CHAR_DATA *char_free;
 extern DESCRIPTOR_DATA *descriptor_free;
 extern EXTRA_DESCR_DATA *extra_descr_free;
@@ -1237,7 +1217,6 @@ extern SYS_CONFIG sysconfig;
 #define OID     OBJ_INDEX_DATA
 #define RID     ROOM_INDEX_DATA
 #define AD      AFFECT_DATA
-#define NEWAD   NEWAFFECT_DATA
 
 /* act_comm.c */
 void check_sex(CHAR_DATA * ch);
@@ -1403,17 +1382,12 @@ bool is_name(char *str, char *namelist);
 bool is_full_name(const char *str, char *namelist);
 bool is_exact_name(char *str, char *namelist);
 void affect_to_char(CHAR_DATA * ch, AFFECT_DATA * paf);
-void newaffect_to_char(CHAR_DATA * ch, NEWAFFECT_DATA * paf);
 void affect_to_obj(OBJ_DATA * obj, AFFECT_DATA * paf);
 void affect_remove(CHAR_DATA * ch, AFFECT_DATA * paf);
-void newaffect_remove(CHAR_DATA * ch, NEWAFFECT_DATA * paf);
 void affect_remove_obj(OBJ_DATA * obj, AFFECT_DATA * paf);
 void affect_strip(CHAR_DATA * ch, int sn);
-void newaffect_strip(CHAR_DATA * ch, int sn);
 bool is_affected(CHAR_DATA * ch, int sn);
-bool is_newaffected(CHAR_DATA * ch, int sn);
 void affect_join(CHAR_DATA * ch, AFFECT_DATA * paf);
-void newaffect_join(CHAR_DATA * ch, NEWAFFECT_DATA * paf);
 void char_from_room(CHAR_DATA * ch);
 void char_to_room(CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex);
 void obj_to_char(OBJ_DATA * obj, CHAR_DATA * ch);
@@ -1454,7 +1428,6 @@ bool can_drop_obj(CHAR_DATA * ch, OBJ_DATA * obj);
 char *item_type_name(OBJ_DATA * obj);
 char *affect_loc_name(int location);
 char *affect_bit_name(int vector);
-char *newaffect_bit_name(int vector);
 char *extra_bit_name(int extra_flags);
 char *wear_bit_name(int wear_flags);
 char *act_bit_name(int act_flags);
@@ -1549,7 +1522,6 @@ extern SHOP_DATA *shop_last;
 extern int top_mprog;
 extern int top_mprog_group;
 extern int top_affect;
-extern int top_newaffect;
 extern int top_area;
 extern int top_ed;
 extern int top_exit;
