@@ -757,6 +757,7 @@ struct system_config
     char *note_dir;
     char *log_dir;
     char *class_dir;
+    char *bin_dir;
 
     /* Files */
     char *area_list;
@@ -772,6 +773,7 @@ struct system_config
     char *help_log_file;
     char *ban_file;
     char *disable_file;
+    char *bin_exec;
 };
 
 struct liq_type

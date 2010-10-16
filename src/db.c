@@ -237,7 +237,6 @@ void reset_area(AREA_DATA * pArea);
 bool write_to_descriptor(int desc, char *txt, int length);
 
 #define COPYOVER_FILE  "TEMP"
-#define EXE_FILE       "../src/ember"
 
 extern int port, control;
 extern bool fCopyOver;
@@ -249,13 +248,15 @@ void do_copyover(CHAR_DATA * ch, char *argument)
     FILE *fp;
     DESCRIPTOR_DATA *d, *d_next;
     char buf[100], buf2[100], buf3[100];
+    char exec_file[MAX_STRING_LENGTH];
+
     if (IS_NPC(ch))
     {
         send_to_char("Mobs dont need to be hotbooting the mud.\n", ch);
         return;
     }
 
-    sprintf(strPath, "%s/%s", sysconfig.area_dir, COPYOVER_FILE);
+    sprintf(strPath, "%s/%s", sysconfig.bin_dir, COPYOVER_FILE);
     fp = fopen(strPath, "w");
 
     if (!fp)
@@ -333,7 +334,8 @@ void do_copyover(CHAR_DATA * ch, char *argument)
     strncpy(buf3, "-1", 100);
 #endif
 
-    execl(EXE_FILE, " ", buf, "EmberMUD", buf2, buf3, (char *) NULL);
+    snprintf(exec_file, MAX_STRING_LENGTH-1, "%s/%s", sysconfig.bin_dir, sysconfig.bin_exec);
+    execl(exec_file, " ", buf, "BucketMUD", buf2, buf3, (char *) NULL);
 
     /* Failed - sucessful exec will not return */
 
@@ -377,7 +379,7 @@ static void copyover_recover(void)
     int desc;
     bool fOld;
 
-    sprintf(buf, "%s/%s", sysconfig.area_dir, COPYOVER_FILE);
+    sprintf(buf, "%s/%s", sysconfig.bin_dir, COPYOVER_FILE);
     fp = fopen(buf, "r");
 
     if (!fp)  			/* there are some descriptors open which will hang forever then ? */
@@ -3937,6 +3939,9 @@ static int load_config_file(void)
                 else if (!strcasecmp(word, "ClassDir"))
                     sysconfig.class_dir =
                         strdup(get_config_value(ptr, word));
+                else if (!strcasecmp(word, "BinDir"))
+                    sysconfig.bin_dir =
+                        strdup(get_config_value(ptr, word));
                 else
                 {
                     /* Unknown line or section header */
@@ -4008,6 +4013,9 @@ static int load_config_file(void)
                         strdup(get_config_value(ptr, word));
                 else if (!strcasecmp(word, "DisableFile"))
                     sysconfig.disable_file =
+                        strdup(get_config_value(ptr, word));
+                else if (!strcasecmp(word, "BinExec"))
+                    sysconfig.bin_exec =
                         strdup(get_config_value(ptr, word));
                 else
                 {
