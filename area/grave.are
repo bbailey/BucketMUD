@@ -3,7 +3,7 @@ Name        { 5 10} Alfa    Graveyard~
 Builders    None~
 VNUMs       3600 3651
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -24,7 +24,8 @@ AGT 0 350 S
 100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
-0 0 0
+0 0
+none~
 6 6 1 5
 AHMV ABCDEFGHIJK M 0
 #3601
@@ -40,7 +41,8 @@ ABFT J -750 S
 100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 5
 AHMV ABCDEFGHIJK M 0
 #3602
@@ -57,7 +59,8 @@ ABFT J -750 S
 100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 10
 AHMV ABCDEFGHIJK M 0
 #3603
@@ -74,7 +77,8 @@ ABFT J -750 S
 100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 1
 AHMV ABCDEFGHIJK M 0
 #3604
@@ -91,7 +95,8 @@ AFT J -750 S
 100 1d6+23 3d10+100 1d5+1 7
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 1
 AHMV ABCDEFGHIJK M 0
 #3605
@@ -107,7 +112,8 @@ AFT J -750 S
 100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 10
 AHMV ABCDEFGHIJK M 0
 #0

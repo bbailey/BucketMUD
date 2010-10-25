@@ -183,7 +183,7 @@ int check_immune(CHAR_DATA * ch, int dam_type)
             immune = IS_IMMUNE;
         else if (IS_SET(ch->res_flags, RES_WEAPON))
             immune = IS_RESISTANT;
-        else if (IS_SET(ch->vuln_flags, VULN_WEAPON))
+        else if (bv_is_set(ch->bv_vuln_flags, BV_VULN_WEAPON))
             immune = IS_VULNERABLE;
     }
     else  			/* magical attack */
@@ -194,7 +194,7 @@ int check_immune(CHAR_DATA * ch, int dam_type)
             immune = IS_IMMUNE;
         else if (IS_SET(ch->res_flags, RES_MAGIC))
             immune = IS_RESISTANT;
-        else if (IS_SET(ch->vuln_flags, VULN_MAGIC))
+        else if (bv_is_set(ch->bv_vuln_flags, BV_VULN_MAGIC))
             immune = IS_VULNERABLE;
     }
 
@@ -254,7 +254,7 @@ int check_immune(CHAR_DATA * ch, int dam_type)
         immune = IS_IMMUNE;
     else if (IS_SET(ch->res_flags, bit))
         immune = IS_RESISTANT;
-    else if (IS_SET(ch->vuln_flags, bit))
+    else if (bv_is_set(ch->bv_vuln_flags, bit))
         immune = IS_VULNERABLE;
 
     return immune;
@@ -3039,11 +3039,11 @@ char *imm_bit_name(int imm_flags)
         strcat(buf, " drowning");
     if (imm_flags & IMM_LIGHT)
         strcat(buf, " light");
-    if (imm_flags & VULN_IRON)
+    if (imm_flags & IMM_IRON)
         strcat(buf, " iron");
-    if (imm_flags & VULN_WOOD)
+    if (imm_flags & IMM_WOOD)
         strcat(buf, " wood");
-    if (imm_flags & VULN_SILVER)
+    if (imm_flags & IMM_SILVER)
         strcat(buf, " silver");
 
     return (buf[0] != '\0') ? buf + 1 : "none";

@@ -3,7 +3,7 @@ Name        { 5 30} Wench   Dragon Tower~
 Builders    None~
 VNUMs       2200 2299
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -23,7 +23,8 @@ ABGT T -900 S
 100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 0 200
 AHMV ABCDEFGHIJK M 0
 #2201
@@ -41,7 +42,8 @@ ABCFT D -900 S
 100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 200
 AHMV ABCDEFGHIJK M 0
 #2202
@@ -57,7 +59,8 @@ ABCFT T -1000 S
 100 10d49+360 27d10+100 5d9+15 11
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 3500
 AHMV ABCDEFGHIJK M 0
 #2203
@@ -75,7 +78,8 @@ ABT BDH -900 S
 100 9d36+270 22d10+100 5d7+14 7
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 60
 AHMV ABCDEFGHIJK M 0
 #2204
@@ -92,7 +96,8 @@ ABCFT DH -900 S
 100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 40
 AHMV ABCDEFGHIJK M 0
 #2205
@@ -110,7 +115,8 @@ ABCT DH -900 S
 100 10d45+345 26d10+100 5d9+13 7
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 80
 AHMV ABCDEFGHIJK M 0
 #2206
@@ -128,7 +134,8 @@ ABT 0 -500 S
 100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 2 10
 AHMV ABCDEFGHIJK M 0
 #2207
@@ -145,7 +152,8 @@ ABFT CDF -800 S
 100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #2220
@@ -162,7 +170,8 @@ ABCFT DF -1000 S
 100 10d196+1053 54d10+100 5d18+31 7
 -23 -23 -23 -6
 none~
-0 0 0
+0 0
+none~
 8 8 2 5000
 AHMV ABCDEFGHIJK M 0
 #2221
@@ -179,7 +188,8 @@ ABCFT DF -1000 S
 100 10d136+786 45d10+100 5d15+26 3
 -18 -18 -18 -4
 none~
-0 0 0
+0 0
+none~
 8 8 1 1000
 AHMV ABCDEFGHIJK M 0
 #2222
@@ -196,7 +206,8 @@ ABCFT DF -900 S
 100 10d102+629 39d10+100 5d13+22 11
 -14 -14 -14 -2
 none~
-0 0 0
+0 0
+none~
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #2223
@@ -214,7 +225,8 @@ ABCFT DF -1000 S
 100 10d97+603 38d10+100 5d13+20 3
 -13 -13 -13 -1
 none~
-0 0 0
+0 0
+none~
 8 8 2 3500
 AHMV ABCDEFGHIJK M 0
 #2225
@@ -232,7 +244,8 @@ ABCFT DF -1000 S
 100 10d108+648 40d10+100 5d14+20 3
 -15 -15 -15 -2
 none~
-0 0 0
+0 0
+none~
 8 8 2 2000
 AHMV ABCDEFGHIJK M 0
 #2226
@@ -249,7 +262,8 @@ ABCFT DF -800 S
 100 7d34+223 19d10+100 5d6+12 11
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 0 500
 AHMV ABCDEFGHIJK M 0
 #2227
@@ -266,7 +280,8 @@ ABT 0 0 S
 100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 10
 AHMV ABCDEFGHIJK M 0
 #2240
@@ -283,7 +298,8 @@ ABCFT DF -400 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 150
 AHMV ABCDEFGHIJK M 0
 #2241
@@ -299,7 +315,8 @@ ACFGHT DF -300 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #2242
@@ -316,7 +333,8 @@ AGHT 0 0 S
 100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 50
 AHMV ABCDEFGHIJK M 0
 #2243
@@ -333,7 +351,8 @@ ABCT DFH -600 S
 100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 2 1000
 AHMV ABCDEFGHIJK M 0
 #0
@@ -366,9 +385,9 @@ unknown~
 B AC BC ABD 0
 27 8 270 P
 A
-2 1
-A
 19 2
+A
+2 1
 #2203
 bracelet dragon~
 a dragon skin bracelet~
@@ -450,9 +469,9 @@ unknown~
 AB AB AB 0 0
 0 6 0 P
 A
-18 3
-A
 19 3
+A
+18 3
 #2230
 ring copper~
 a copper ring~
@@ -594,9 +613,9 @@ unknown~
 D D D 0 0
 26 10 260 P
 A
-19 2
-A
 1 1
+A
+19 2
 #2260
 scimitar golden~
 a golden scimitar~
@@ -606,9 +625,9 @@ unknown~
 A AC AC AB 0
 19 10 190 P
 A
-3 1
-A
 4 1
+A
+3 1
 #2261
 brooch diamond~
 a diamond brooch~
@@ -656,9 +675,9 @@ unknown~
 D D D 0 0
 26 10 260 P
 A
-1 1
-A
 13 10
+A
+1 1
 #2280
 leggings dragon scale~
 a pair of dragon scale leggings~
@@ -684,9 +703,9 @@ unknown~
 ABC AC AD C 0
 40 14 400 P
 A
-18 2
-A
 19 2
+A
+18 2
 #2286
 hammer copper~
 a copper hammer~
@@ -775,12 +794,12 @@ You trudge down the hallway.  You notice doors to the east and west.
 ~
 0 8 0
 E
-sign~
-The sign says "NURSERY" in bold letters.     
-~
-E
 inscription~
 It says "STORAGE"
+~
+E
+sign~
+The sign says "NURSERY" in bold letters.     
 ~
 D0
 The hall continues. 
@@ -1394,17 +1413,17 @@ path leads up the mountain.  The small opening is back to the north.
 ~
 0 0 2
 E
-well~
-You peer over the side of the well.  It looks VERY, VERY deep.  It appears
-to be ENDLESS.
-~
-E
 sign~
 The sign reads:
          This is a bottomless pit cleverly disguised as a well.  People have
 fallen in and never been heard from again.  Trust me, you don't want to go 
 down there.
                         The All Powerful Well Keeper
+~
+E
+well~
+You peer over the side of the well.  It looks VERY, VERY deep.  It appears
+to be ENDLESS.
 ~
 D0
 the small opening

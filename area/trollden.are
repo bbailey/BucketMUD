@@ -3,7 +3,7 @@ Name        {10 15} Merc    Troll Den~
 Builders    None~
 VNUMs       2800 2808
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -24,7 +24,8 @@ ABCFGT DPQ -200 S
 100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #2801
@@ -42,7 +43,8 @@ ACFGT P -500 S
 100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 6 8 1 50
 AHMV ABCDEFGHIJK M 0
 #2802
@@ -60,7 +62,8 @@ ABCFGT P -500 S
 100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #2803
@@ -78,7 +81,8 @@ ABCFT P -100 S
 100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 6 8 1 25
 AHMV ABCDEFGHIJK M 0
 #2804
@@ -96,7 +100,8 @@ ABCFGT P -1000 S
 100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
-0 HI JP
+0 HI
+lightning mental ~
 5 8 1 300
 AHMV ABCDEFGHIJK M 0
 #2805
@@ -114,7 +119,8 @@ ABCFGT P -800 S
 100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 5 8 2 250
 AHMV ABCDEFGHIJK M 0
 #2806
@@ -131,7 +137,8 @@ ACFHT PQ 0 S
 100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
-0 0 0
+0 0
+none~
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #2807
@@ -150,7 +157,8 @@ ABCFGT DP -200 S
 100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #2808
@@ -168,7 +176,8 @@ ACFGT P -500 S
 100 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #0
@@ -242,9 +251,9 @@ unknown~
 C B BC ABC 0
 6 3 60 P
 A
-19 -1
-A
 18 -1
+A
+19 -1
 E
 bone~
 This piece of bone looks sturdy enough to be used as a weapon, but you

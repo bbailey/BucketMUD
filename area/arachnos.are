@@ -3,7 +3,7 @@ Name        { 5 20} Mahatma Arachnos~
 Builders    None~
 VNUMs       6200 6399
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -23,7 +23,8 @@ ACGT D 0 S
 100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 2 10
 AHMV ABCDEFGHIJK M 0
 #6302
@@ -39,7 +40,8 @@ ABCGT D -1000 S
 100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 1000
 AHMV ABCDEFGHIJK M 0
 #6303
@@ -55,7 +57,8 @@ ABFT 0 -300 S
 100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 2 125
 AHMV ABCDEFGHIJK M 0
 #6304
@@ -71,7 +74,8 @@ ABT J -400 S
 100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
-0 Q S
+0 Q
+light ~
 8 8 1 10
 AHMV ABCDEFGHIJK M 0
 #6305
@@ -88,7 +92,8 @@ ABFT 0 -800 S
 100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 2 150
 AHMV ABCDEFGHIJK M 0
 #6306
@@ -104,7 +109,8 @@ ACGT 0 -300 S
 100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 20
 AHMV ABCDEFGHIJK M 0
 #6307
@@ -120,7 +126,8 @@ ACGT 0 1000 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 2 125
 AHMV ABCDEFGHIJK M 0
 #6308
@@ -136,7 +143,8 @@ ACGT 0 0 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 50
 AHMV ABCDEFGHIJK M 0
 #6309
@@ -153,7 +161,8 @@ ACEHT BDP 1000 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 100
 AHMV ABCDEFGHIJK M 0
 #6310
@@ -169,7 +178,8 @@ ABFT 0 -800 S
 100 3d38+131 13d10+100 3d7+8 7
 1 1 1 6
 none~
-0 0 0
+0 0
+none~
 8 8 2 175
 AHMV ABCDEFGHIJK M 0
 #6311
@@ -186,7 +196,8 @@ ABCT D -400 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 75
 AHMV ABCDEFGHIJK M 0
 #6312
@@ -202,7 +213,8 @@ ABCT D 1000 S
 100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 600
 AHMV ABCDEFGHIJK M 0
 #6313
@@ -218,7 +230,8 @@ AFGT P 250 S
 100 6d36+205 18d10+100 4d7+12 7
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 4 4 1 160
 AHMV ABCDEFGHIJK M 0
 #6314
@@ -237,7 +250,8 @@ ABFT BD -1000 S
 100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 2 1000
 AHMV ABCDEFGHIJK M 0
 #6315
@@ -254,7 +268,8 @@ ABCT D 1000 S
 100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 2 1500
 AHMV ABCDEFGHIJK M 0
 #6316
@@ -270,7 +285,8 @@ ABT D 1000 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 100
 AHMV ABCDEFGHIJK M 0
 #6317
@@ -286,7 +302,8 @@ ABT D 100 S
 100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #6318
@@ -304,7 +321,8 @@ ABGT 0 -350 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #6319
@@ -322,7 +340,8 @@ ABGT D -1000 S
 100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #0
@@ -339,9 +358,9 @@ unknown~
 D D D 0 0
 26 5 260 P
 A
-4 3
-A
 17 -2
+A
+4 3
 #6304
 visor black knight's~
 a black knight's visor~
@@ -351,9 +370,9 @@ unknown~
 ABC ABC ABC 0 0
 24 5 240 P
 A
-1 1
-A
 5 2
+A
+1 1
 #6308
 coins gold~
 a big pile of gold coins~

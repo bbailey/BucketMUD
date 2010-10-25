@@ -60,3 +60,26 @@ const BitVectorStringList bv_str_list_off[] =
     { NULL, BV_OFF_MAX }
 };
 
+const BitVectorStringList bv_str_list_vuln[] = {
+    { "magic", BV_VULN_MAGIC },
+    { "weapon", BV_VULN_WEAPON },
+    { "bash", BV_VULN_BASH },
+    { "pierce", BV_VULN_PIERCE },
+    { "slash", BV_VULN_SLASH },
+    { "fire", BV_VULN_FIRE },
+    { "cold", BV_VULN_COLD },
+    { "lightning", BV_VULN_LIGHTNING },
+    { "acid", BV_VULN_ACID },
+    { "poison", BV_VULN_POISON },
+    { "negative", BV_VULN_NEGATIVE },
+    { "holy", BV_VULN_HOLY },
+    { "energy", BV_VULN_ENERGY },
+    { "mental", BV_VULN_MENTAL },
+    { "disease", BV_VULN_DISEASE },
+    { "drowning", BV_VULN_DROWNING },
+    { "light", BV_VULN_LIGHT },
+    { "wood", BV_VULN_WOOD },
+    { "silver", BV_VULN_SILVER },
+    { "iron", BV_VULN_SILVER },
+    { NULL, BV_VULN_MAX }
+};

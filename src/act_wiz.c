@@ -1714,10 +1714,10 @@ void do_mstat(CHAR_DATA * ch, char *argument)
         send_to_char(buf, ch);
     }
 
-    if (victim->vuln_flags)
     {
-        sprintf(buf, "Vulnerable: %s\n\r",
-                imm_bit_name(victim->vuln_flags));
+        tmp_string = bv_to_string(victim->bv_vuln_flags, bv_str_list_vuln);
+        sprintf(buf, "Vulnerable: %s\n\r", tmp_string);
+        g_free(tmp_string);
         send_to_char(buf, ch);
     }
 

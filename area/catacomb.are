@@ -3,7 +3,7 @@ Name        {10 20} Raff    Dwarven Catacombs~
 Builders    None~
 VNUMs       2001 2069
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -22,7 +22,8 @@ ABFT FTZ 0 S
 100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 dodge fast ~
-0 0 S
+0 0
+light ~
 8 8 0 0
 AGW ACDEFHJKP M 0
 #2002
@@ -38,7 +39,8 @@ AHT 0 200 S
 100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 60
 AHMV ABCDEFGHIJK M 0
 #2003
@@ -57,7 +59,8 @@ ACHT F 100 S
 100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 80
 AHMV ABCDEFGHIJK M 0
 #2004
@@ -74,7 +77,8 @@ ACFT 0 -500 S
 100 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 10
 AHMV ABCDEFGHIJK M 0
 #2005
@@ -90,7 +94,8 @@ AT HPU 0 S
 100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 20
 AHMV ABCDEFGHIJK M 0
 #2006
@@ -104,7 +109,8 @@ AFT 0 0 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 100
 AHMV ABCDEFGHIJK M 0
 #2007
@@ -121,7 +127,8 @@ ACFT 0 -290 S
 100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 110
 AHMV ABCDEFGHIJK M 0
 #2008
@@ -141,7 +148,8 @@ ACFT 0 600 S
 100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 50
 AHMV ABCDEFGHIJK M 0
 #2009
@@ -157,7 +165,8 @@ ACFT FU 0 S
 100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 60
 AHMV ABCDEFGHIJK M 0
 #2010
@@ -173,7 +182,8 @@ AFT D 700 S
 100 3d38+131 13d10+100 3d7+8 11
 1 1 1 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 60
 AHMV ABCDEFGHIJK M 0
 #2011
@@ -189,7 +199,8 @@ ACFT 0 -100 S
 100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 55
 AHMV ABCDEFGHIJK M 0
 #2012
@@ -205,7 +216,8 @@ AT FPU 0 S
 100 4d37+162 15d10+100 4d6+9 11
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 80
 AHMV ABCDEFGHIJK M 0
 #2013
@@ -221,7 +233,8 @@ ABFT FTZ -100 S
 100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 dodge fast ~
-0 0 S
+0 0
+light ~
 8 8 1 100
 AGW ACDEFHJKP M 0
 #2014
@@ -238,7 +251,8 @@ ABFT 0 -888 S
 100 5d34+175 16d10+100 4d7+8 7
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 110
 AHMV ABCDEFGHIJK M 0
 #2015
@@ -255,7 +269,8 @@ ABT DFH 1000 S
 100 5d39+187 17d10+100 4d7+10 3
 0 0 0 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #2016
@@ -271,7 +286,8 @@ ABFT DF -303 S
 100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 3000
 AHMV ABCDEFGHIJK M 0
 #2017
@@ -287,7 +303,8 @@ ABFT 0 -1000 S
 100 10d38+311 24d10+100 5d8+14 3
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 0 2000
 AHMV ABCDEFGHIJK M 0
 #0
@@ -332,9 +349,9 @@ unknown~
 A C AC AB 0
 15 9 150 P
 A
-18 1
-A
 19 1
+A
+18 1
 #2005
 sword excalibur~
 the sword Excalibur~
@@ -344,9 +361,9 @@ unknown~
 A AC AC AB 0
 22 15 220 P
 A
-18 3
-A
 1 1
+A
+18 3
 #2006
 crown~
 a kingly crown~
@@ -400,13 +417,13 @@ unknown~
 BC BC BC 0 0
 16 15 160 P
 A
-12 10
-A
-13 10
+19 -1
 A
 18 -2
 A
-19 -1
+13 10
+A
+12 10
 #2012
 scale shield dragonscale~
 a dragonscale shield~

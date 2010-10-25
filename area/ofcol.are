@@ -3,7 +3,7 @@ Name        { All } Alfa    Ofcol~
 Builders    None~
 VNUMs       5550 5577
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -156,10 +156,9 @@ You notice that there are no exits from this room.
 ~
 0 4 0
 E
-pictures picture decoration~
-These pictures show the friend's and foe's of Ravan.
-They are easy to separate, as most of the foe's have the letters
-R.I.P. inscripted underneath them.
+friend friends~
+The list include such prominent names as : God, Lottie, Kurgan,
+Ezzard, Mike, Sprocket and Stormbringer.
 ~
 E
 foe foes enemies~
@@ -168,9 +167,10 @@ It pictures him hanging from a gallow, north of the town.
 It has the letters R.I.P. inscripted underneath.
 ~
 E
-friend friends~
-The list include such prominent names as : God, Lottie, Kurgan,
-Ezzard, Mike, Sprocket and Stormbringer.
+pictures picture decoration~
+These pictures show the friend's and foe's of Ravan.
+They are easy to separate, as most of the foe's have the letters
+R.I.P. inscripted underneath them.
 ~
 S
 #0

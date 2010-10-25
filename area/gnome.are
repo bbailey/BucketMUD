@@ -3,7 +3,7 @@ Name        { 5 15} Vougon  Gnome Village~
 Builders    None~
 VNUMs       1500 1590
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -23,7 +23,8 @@ ACET 0 600 S
 100 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 5
 AHMV ABCDEFGHIJK M 0
 #1501
@@ -40,7 +41,8 @@ ACET 0 600 S
 100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 2 50
 AHMV ABCDEFGHIJK M 0
 #1502
@@ -57,7 +59,8 @@ ACT 0 500 S
 100 1d24+51 6d10+100 2d5+3 7
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 45
 AHMV ABCDEFGHIJK M 0
 #1503
@@ -74,7 +77,8 @@ ABCT 0 500 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 100
 AHMV ABCDEFGHIJK M 0
 #1504
@@ -91,7 +95,8 @@ ABT 0 400 S
 100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #1505
@@ -108,7 +113,8 @@ ABT 0 550 S
 100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 800
 AHMV ABCDEFGHIJK M 0
 #1507
@@ -125,7 +131,8 @@ ABCFT Jc -900 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 berserk ~
-0 BE HK
+0 BE
+fire acid ~
 8 8 1 80
 BMV ABCDEFGHIJKUV M 0
 #1508
@@ -141,7 +148,8 @@ ABCIT 0 100 S
 100 1d2+6 1d10+100 1d2+0 3
 9 9 9 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1509
@@ -157,7 +165,8 @@ ACT 0 -200 S
 100 1d6+23 3d10+100 1d5+1 7
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1510
@@ -173,7 +182,8 @@ ACT 0 -200 S
 100 1d6+23 3d10+100 1d5+1 7
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 1
 AHMV ABCDEFGHIJK M 0
 #1511
@@ -189,7 +199,8 @@ ACT 0 -200 S
 100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 2
 AHMV ABCDEFGHIJK M 0
 #1512
@@ -206,7 +217,8 @@ ABFT Jc -800 S
 100 3d38+131 13d10+100 3d7+8 11
 1 1 1 6
 berserk ~
-0 BE HK
+0 BE
+fire acid ~
 8 8 1 900
 BMV ABCDEFGHIJKUV M 0
 #1513
@@ -222,7 +234,8 @@ AT TZ -500 S
 100 1d24+51 6d10+100 2d5+3 11
 6 6 6 8
 dodge fast ~
-0 0 S
+0 0
+light ~
 8 8 0 0
 AGW ACDEFHJKP M 0
 #1514
@@ -239,7 +252,8 @@ AT 0 -700 S
 100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 0 69
 AHMV ABCDEFGHIJK M 0
 #1515
@@ -256,7 +270,8 @@ ABCFT DTZ -900 S
 100 3d38+131 13d10+100 3d7+8 11
 1 1 1 6
 dodge fast ~
-0 0 S
+0 0
+light ~
 8 8 1 600
 AGW ACDEFHJKP M 0
 #1516
@@ -273,7 +288,8 @@ ABFT 0 -700 S
 100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 75
 AHMV ABCDEFGHIJK M 0
 #1517
@@ -290,7 +306,8 @@ ABFT 0 -600 S
 100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 20
 AHMV ABCDEFGHIJK M 0
 #1518
@@ -307,7 +324,8 @@ ABT 0 -500 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 60
 AHMV ABCDEFGHIJK M 0
 #1519
@@ -324,7 +342,8 @@ ABT 0 -500 S
 100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 6 8 1 600
 AHMV ABCDEFGHIJK M 0
 #1520
@@ -340,7 +359,8 @@ ABCT 0 -400 S
 100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 70
 AHMV ABCDEFGHIJK M 0
 #1521
@@ -357,7 +377,8 @@ ABCT 0 -200 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #1522
@@ -373,7 +394,8 @@ ABCT 0 100 S
 100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 5 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1523
@@ -389,7 +411,8 @@ ABCT 0 100 S
 100 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 5 8 2 0
 AHMV ABCDEFGHIJK M 0
 #1524
@@ -406,7 +429,8 @@ ABCFT 0 -10 S
 100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 20
 AHMV ABCDEFGHIJK M 0
 #1526
@@ -423,7 +447,8 @@ ABCT 0 -300 S
 100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 260
 AHMV ABCDEFGHIJK M 0
 #0
@@ -957,12 +982,12 @@ and a small hut is to the west.
 ~
 0 0 2
 E
-stream~
-The stream is pretty small, but it looks too cold to swim.
-~
-E
 hut~
 The hut looks well built, but it seems to have taken some damage.
+~
+E
+stream~
+The stream is pretty small, but it looks too cold to swim.
 ~
 D1
 You see a small path.
@@ -1462,10 +1487,6 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D1
-(null)~
-~
-0 -1 1549
 D0
 (null)~
 ~
@@ -1474,6 +1495,10 @@ D3
 (null)~
 ~
 0 -1 1551
+D1
+(null)~
+~
+0 -1 1549
 S
 #1549
 A Damp Hallway~
@@ -1481,14 +1506,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D3
-(null)~
-~
-0 -1 1548
 D2
 (null)~
 ~
 0 -1 1550
+D3
+(null)~
+~
+0 -1 1548
 S
 #1550
 A Damp Hallway~
@@ -1496,14 +1521,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D0
-(null)~
-~
-0 -1 1549
 D2
 (null)~
 ~
 0 -1 1555
+D0
+(null)~
+~
+0 -1 1549
 S
 #1551
 A Damp Hallway~
@@ -1526,14 +1551,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D2
-(null)~
-~
-0 -1 1553
 D0
 (null)~
 ~
 0 -1 1551
+D2
+(null)~
+~
+0 -1 1553
 S
 #1553
 A Damp Hallway~
@@ -1575,14 +1600,14 @@ You are wandering in a dark, damp, twisting hallway.  The temperature
 seems to be greater here, as well as your fear.
 ~
 0 8201 2
-D3
-(null)~
-~
-0 -1 1554
 D0
 (null)~
 ~
 0 -1 1550
+D3
+(null)~
+~
+0 -1 1554
 S
 #1556
 The End of the Hallway~

@@ -3,7 +3,7 @@ Name        { 5 10} Copper  In the Air~
 Builders    None~
 VNUMs       1000 1040
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -23,7 +23,8 @@ AGT DE 500 S
 100 1d10+33 4d10+100 1d7+2 11
 7 7 7 8
 none~
-0 0 0
+0 0
+none~
 8 8 0 2
 AHMV ABCDEFGHIJK M 0
 #1001
@@ -40,7 +41,8 @@ AFGT 0 300 S
 100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 50
 AHMV ABCDEFGHIJK M 0
 #0

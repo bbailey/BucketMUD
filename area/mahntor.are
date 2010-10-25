@@ -3,7 +3,7 @@ Name        { 5 35} Chris   The Keep of Mahn-Tor~
 Builders    None~
 VNUMs       2300 2399
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -24,7 +24,8 @@ ABT DH -1000 S
 100 10d42+322 25d10+100 5d8+16 11
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #2301
@@ -42,7 +43,8 @@ ABT 0 250 S
 100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 0 500
 AHMV ABCDEFGHIJK M 0
 #2302
@@ -60,7 +62,8 @@ ABFT CEP 0 S
 100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 250
 AHMV ABCDEFGHIJK M 0
 #2303
@@ -76,7 +79,8 @@ ABT 0 -250 S
 100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 6 6 0 255
 AHMV ABCDEFGHIJK M 0
 #2304
@@ -93,7 +97,8 @@ ABT DH 1000 S
 100 10d38+311 24d10+100 5d8+14 7
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 2 2000
 AHMV ABCDEFGHIJK M 0
 #2305
@@ -109,7 +114,8 @@ ABFT Q 0 S
 100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 100
 AHMV ABCDEFGHIJK M 0
 #2306
@@ -127,7 +133,8 @@ ABCFT 0 -1000 S
 100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #2307
@@ -144,7 +151,8 @@ AGHT 0 -200 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 20
 AHMV ABCDEFGHIJK M 0
 #2308
@@ -161,7 +169,8 @@ ACFGHT 0 -350 S
 100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #2309
@@ -178,7 +187,8 @@ ABCFGT 0 -500 S
 100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 1000
 AHMV ABCDEFGHIJK M 0
 #2310
@@ -195,7 +205,8 @@ ABCFGHT DH -750 S
 100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #2311
@@ -212,7 +223,8 @@ ABCFGHT DH -1000 S
 100 10d42+322 25d10+100 5d8+16 7
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #2312
@@ -229,7 +241,8 @@ ABCFGHT 0 0 S
 100 7d34+223 19d10+100 5d6+12 11
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #2313
@@ -246,7 +259,8 @@ ABCFGHT 0 -350 S
 100 5d34+175 16d10+100 4d7+8 3
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 100
 AHMV ABCDEFGHIJK M 0
 #2314
@@ -264,7 +278,8 @@ ABCFGT 0 0 S
 100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 0 350
 AHMV ABCDEFGHIJK M 0
 #2315
@@ -281,7 +296,8 @@ ABCGHT 0 100 S
 100 4d37+162 15d10+100 4d6+9 3
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 1000
 AHMV ABCDEFGHIJK M 0
 #2316
@@ -298,7 +314,8 @@ ABCFGT 0 -330 S
 100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #2317
@@ -315,7 +332,8 @@ ACFGT 0 -330 S
 100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #2318
@@ -332,7 +350,8 @@ ABCGT D -330 S
 100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 0 2500
 AHMV ABCDEFGHIJK M 0
 #2319
@@ -349,7 +368,8 @@ ABCFGT D -330 S
 100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 4500
 AHMV ABCDEFGHIJK M 0
 #2320
@@ -366,7 +386,8 @@ ABCFGT D -330 S
 100 10d45+345 26d10+100 5d9+13 3
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #2321
@@ -383,7 +404,8 @@ ABCFGT D -250 S
 100 10d49+360 27d10+100 5d9+15 11
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 7500
 AHMV ABCDEFGHIJK M 0
 #2322
@@ -400,7 +422,8 @@ ABCGHT 0 1000 S
 100 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 1
 AHMV ABCDEFGHIJK M 0
 #2323
@@ -416,7 +439,8 @@ ABCGHT 0 250 S
 100 7d38+238 20d10+100 5d7+10 3
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #2324
@@ -433,7 +457,8 @@ ABCGT DH -300 S
 100 10d56+405 29d10+100 5d10+15 11
 -8 -8 -8 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #2325
@@ -450,7 +475,8 @@ ABFT DH -300 S
 100 10d56+405 29d10+100 5d10+15 3
 -8 -8 -8 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2326
@@ -467,7 +493,8 @@ ABFT DH -1000 S
 100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2327
@@ -484,7 +511,8 @@ ABT DH 1000 S
 100 10d64+448 31d10+100 5d10+19 3
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2328
@@ -502,7 +530,8 @@ ABFT DH 300 S
 100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2329
@@ -519,7 +548,8 @@ ABFT DH 1000 S
 100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2330
@@ -536,7 +566,8 @@ ABT DH 500 S
 100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2331
@@ -553,7 +584,8 @@ ABFT DH 500 S
 100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2332
@@ -570,7 +602,8 @@ ABCFT Q -500 S
 100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #2333
@@ -588,7 +621,8 @@ ABCT BDHTU -500 S
 100 10d78+505 34d10+100 5d11+21 11
 -11 -11 -11 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #0
@@ -605,9 +639,9 @@ unknown~
 D D D 0 0
 29 6 290 P
 A
-18 1
-A
 19 1
+A
+18 1
 E
 gloves combat~
 These gloves are plated with metal plates that provide strength and 
@@ -648,9 +682,9 @@ unknown~
 0 AC ABC BC 0
 29 24 290 P
 A
-18 3
-A
 19 3
+A
+18 3
 #2305
 cloak pitch black~
 a pitch black cloak~
@@ -712,9 +746,9 @@ unknown~
 A AC ABC ABD 0
 30 9 300 P
 A
-18 3
-A
 19 3
+A
+18 3
 E
 nightbringer short sword shortsword~
 The runes "NiGHtBrINgeR" are scrawled along the blade.
@@ -728,9 +762,9 @@ unknown~
 AD AD AD 0 0
 31 15 310 P
 A
-4 1
-A
 3 1
+A
+4 1
 #2311
 breast plate gilded gold~
 a gilded gold breast plate~
@@ -770,9 +804,9 @@ unknown~
 C AC ABC BC 0
 31 24 310 P
 A
-18 3
-A
 19 3
+A
+18 3
 E
 dawnbringer mace huge~
 The runes "DAwNbRIngER" are scrawled along the handle.
@@ -828,9 +862,9 @@ unknown~
 AB AC ABC BC 0
 31 10 310 P
 A
-18 3
-A
 19 3
+A
+18 3
 E
 staff gnarled magius~
 It appears to be simply a gnarled old limb. It feels powerful though.
@@ -886,9 +920,9 @@ unknown~
 C AC ABC BC 0
 30 13 300 P
 A
-18 2
-A
 19 2
+A
+18 2
 #2324
 symbol holy golden~
 a golden holy symbol~
@@ -952,9 +986,9 @@ unknown~
 AB AC ABC BC 0
 31 13 310 P
 A
-18 2
-A
 12 20
+A
+18 2
 E
 staff ice~
 The runes "FrIgID" are inscribed in the icy staff.
@@ -968,9 +1002,9 @@ unknown~
 AD AD AD 0 0
 30 3 300 P
 A
-18 1
-A
 19 1
+A
+18 1
 #2331
 horn life~
 the horn of life~
@@ -1016,9 +1050,9 @@ unknown~
 0 AC ABC ABC 0
 30 15 300 P
 A
-18 1
-A
 19 1
+A
+18 1
 #2335
 pack leather small~
 a small leather pack~
@@ -1068,9 +1102,9 @@ unknown~
 A AC ABC ABD 0
 31 11 310 P
 A
-18 1
-A
 19 1
+A
+18 1
 E
 sword wicked short shortsword~
 It looks just perfect for backstabbing.
@@ -1098,9 +1132,9 @@ unknown~
 AD AD AD 0 0
 34 12 340 P
 A
-1 1
-A
 5 1
+A
+1 1
 #2342
 buckler spiked~
 a spiked buckler~
@@ -1138,9 +1172,9 @@ unknown~
 AC AC D AB 0
 34 26 340 P
 A
-18 2
-A
 19 2
+A
+18 2
 E
 axe great~
 The runes "DeAtH" are scrawled along the blade.
@@ -1180,9 +1214,9 @@ unknown~
 0 AC BC AB 0
 25 3 250 P
 A
-18 1
-A
 19 1
+A
+18 1
 E
 blade ethereal~
 You can almost see through it.
@@ -1359,9 +1393,9 @@ unknown~
 D AC AC AB 0
 20 18 200 P
 A
-18 1
-A
 19 1
+A
+18 1
 #2369
 visor blue steel helm~
 a blue steel helm and visor~
@@ -1395,9 +1429,9 @@ unknown~
 A AC BC AB F
 24 18 240 P
 A
-18 2
-A
 19 2
+A
+18 2
 #2373
 visor helm steel red~
 a red steel helm and visor~
@@ -1431,9 +1465,9 @@ unknown~
 D AC BC AB 0
 26 19 260 P
 A
-18 1
-A
 19 1
+A
+18 1
 #2377
 visor helm crimson steel~
 a crimson steel helm and visor~
@@ -1467,9 +1501,9 @@ unknown~
 C AC BC BC 0
 27 20 270 P
 A
-18 2
-A
 19 2
+A
+18 2
 E
 star morning morningstar~
 It looks damaging.
@@ -1563,11 +1597,11 @@ unknown~
 D D D 0 0
 25 13 250 P
 A
-1 4
+17 10
 A
 19 3
 A
-17 10
+1 4
 E
 gauntlets ogre power~
 They look very "handy".
@@ -2118,13 +2152,13 @@ There are small inscriptions on the rock at the base of the portal.
 ~
 0 0 2
 E
-small inscriptions inscription~
-"Enter all ye who wish to join the Brotherhood!"
-~
-E
 portal blue~
 You see a swirling blue portal of light. You think you can see glimpses of
 something moving on the "other side".
+~
+E
+small inscriptions inscription~
+"Enter all ye who wish to join the Brotherhood!"
 ~
 D0
 (null)~
@@ -2268,22 +2302,22 @@ your mind. You lose all concept of direction. Small, silent giggles can be
 heard all around. You can wander in any direction.
 ~
 0 8201 4
-D2
-(null)~
-~
-0 0 2335
-D1
-(null)~
-~
-0 0 2334
-D3
-(null)~
-~
-0 0 2334
 D0
 (null)~
 ~
 0 0 2337
+D1
+(null)~
+~
+0 0 2334
+D2
+(null)~
+~
+0 0 2335
+D3
+(null)~
+~
+0 0 2334
 S
 #2333
 Lost in the Mist~
@@ -2297,14 +2331,14 @@ D2
 (null)~
 ~
 0 0 2333
-D0
-(null)~
-~
-0 0 2333
 D1
 (null)~
 ~
 0 0 2336
+D0
+(null)~
+~
+0 0 2333
 D3
 (null)~
 ~
@@ -2341,22 +2375,22 @@ and denied you exit. This mist is your jailor. You cannot tell where you are.
 You hear quiet laughter all about you.
 ~
 0 8201 4
-D1
-(null)~
-~
-0 0 2333
-D2
-(null)~
-~
-0 0 2337
 D3
 (null)~
 ~
 0 0 2331
+D1
+(null)~
+~
+0 0 2333
 D0
 (null)~
 ~
 0 0 2332
+D2
+(null)~
+~
+0 0 2337
 S
 #2336
 Lost in the Mist~
@@ -2365,6 +2399,10 @@ what appears to be trees and hills to the east. The mist itself thickens to
 the west, while it grows thin to the east.
 ~
 0 8201 4
+D3
+(null)~
+~
+0 0 2333
 D1
 (null)~
 ~
@@ -2373,10 +2411,6 @@ D2
 (null)~
 ~
 0 0 2338
-D3
-(null)~
-~
-0 0 2333
 D0
 (null)~
 ~
@@ -2414,6 +2448,10 @@ direction. You stumble blindly through the mist, oblivious to your
 surroundings.
 ~
 0 8201 3
+D1
+(null)~
+~
+0 0 2337
 D3
 (null)~
 ~
@@ -2426,10 +2464,6 @@ D2
 (null)~
 ~
 0 0 2334
-D1
-(null)~
-~
-0 0 2337
 S
 #2339
 The solid path~
@@ -2656,22 +2690,22 @@ The cold cuts to the bone. Swirling snow and wind make impossible for you to
 discern any directions.
 ~
 0 0 5
-D2
-(null)~
-~
-0 0 2355
-D3
-(null)~
-~
-0 0 2354
-D0
-(null)~
-~
-0 0 2353
 D1
 (null)~
 ~
 0 0 2352
+D2
+(null)~
+~
+0 0 2355
+D0
+(null)~
+~
+0 0 2353
+D3
+(null)~
+~
+0 0 2354
 S
 #2352
 The frigid wastelands~
@@ -2680,22 +2714,22 @@ The cold cuts to the bine. Swirling snow and wind make it impossible to
 discern any directions.
 ~
 0 0 5
-D2
-(null)~
-~
-0 -1 2358
-D1
-(null)~
-~
-0 -1 2354
-D0
-(null)~
-~
-0 -1 2357
 D3
 (null)~
 ~
 0 0 2351
+D0
+(null)~
+~
+0 -1 2357
+D1
+(null)~
+~
+0 -1 2354
+D2
+(null)~
+~
+0 -1 2358
 S
 #2353
 The Glacier Temple~
@@ -2725,14 +2759,14 @@ D2
 (null)~
 ~
 0 0 2356
-D0
-(null)~
-~
-0 0 2359
 D1
 (null)~
 ~
 0 0 2351
+D0
+(null)~
+~
+0 0 2359
 D3
 (null)~
 ~
@@ -2745,7 +2779,11 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
-D3
+D0
+(null)~
+~
+0 0 2351
+D1
 (null)~
 ~
 0 0 2356
@@ -2753,11 +2791,7 @@ D2
 (null)~
 ~
 0 0 2357
-D0
-(null)~
-~
-0 0 2351
-D1
+D3
 (null)~
 ~
 0 0 2356
@@ -2773,6 +2807,10 @@ D3
 (null)~
 ~
 0 0 2355
+D0
+(null)~
+~
+0 0 2354
 D2
 (null)~
 ~
@@ -2781,10 +2819,6 @@ D1
 (null)~
 ~
 0 0 2355
-D0
-(null)~
-~
-0 0 2354
 S
 #2357
 The frigid wastelands~
@@ -2797,6 +2831,10 @@ D0
 (null)~
 ~
 0 0 2355
+D3
+(null)~
+~
+0 0 2359
 D1
 (null)~
 ~
@@ -2805,10 +2843,6 @@ D2
 (null)~
 ~
 0 0 2352
-D3
-(null)~
-~
-0 0 2359
 S
 #2358
 The frigid wastelands~
@@ -2817,22 +2851,22 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any direction.
 ~
 0 0 5
-D0
-(null)~
-~
-0 0 2352
 D1
 (null)~
 ~
 0 0 2359
-D3
-(null)~
-~
-0 0 2357
 D2
 (null)~
 ~
 0 0 2360
+D0
+(null)~
+~
+0 0 2352
+D3
+(null)~
+~
+0 0 2357
 S
 #2359
 The frigid wastelands~
@@ -2841,6 +2875,14 @@ The cold cuts to the bone. Swirling snow and wind make it impossible for you
 to discern any directions.
 ~
 0 0 5
+D2
+(null)~
+~
+0 0 2354
+D3
+(null)~
+~
+0 0 2358
 D0
 (null)~
 ~
@@ -2849,14 +2891,6 @@ D1
 (null)~
 ~
 0 0 2357
-D3
-(null)~
-~
-0 0 2358
-D2
-(null)~
-~
-0 0 2354
 S
 #2360
 The edge of the frigid wastes~
@@ -3353,12 +3387,12 @@ door is to the west. To the east, you see a heavy stone door.
 ~
 0 8 0
 E
-gold~
-Looks like the back of a secret door of sorts.
-~
-E
 huge stone~
 A very formidable looking door.
+~
+E
+gold~
+Looks like the back of a secret door of sorts.
 ~
 D1
 (null)~
@@ -3420,12 +3454,12 @@ itself leads south and north.
 ~
 0 8 0
 E
-red~
-You see a red door. It has the name "Gorak" written on it.
-~
-E
 yellow~
 You see a yellow door. It has the name "Sumaron" written on it.
+~
+E
+red~
+You see a red door. It has the name "Gorak" written on it.
 ~
 D0
 (null)~
@@ -3452,12 +3486,12 @@ black door. The hall itself leads north and south.
 ~
 0 8 0
 E
-black~
-You see a black door. It has the name "Darkoth" inscribed on it.
-~
-E
 maroon~
 You see a maroon door here. It has the name "Amyrok" written on it.
+~
+E
+black~
+You see a black door. It has the name "Darkoth" inscribed on it.
 ~
 D0
 (null)~
@@ -3518,12 +3552,12 @@ south.
 ~
 0 8 0
 E
-white~
-You see a white door here. It has the name "Tyrgoth" inscribed on it.
-~
-E
 green~
 You see a green door here. It has the name "Nasturn" written on it.
+~
+E
+white~
+You see a white door here. It has the name "Tyrgoth" inscribed on it.
 ~
 D0
 (null)~
@@ -3615,12 +3649,12 @@ itself leads north back along the rows of doors.
 ~
 0 8 0
 E
-brown~
-You see a brown door here. It has the name "Belrak" written on it.
-~
-E
 grey~
 You see a grey door here. It has the name "Dorgar" written on it.
+~
+E
+brown~
+You see a brown door here. It has the name "Belrak" written on it.
 ~
 D0
 (null)~

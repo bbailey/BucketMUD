@@ -62,5 +62,31 @@ typedef enum {
 
 extern const BitVectorStringList bv_str_list_off[];
 
+typedef enum {
+    BV_VULN_MAGIC = 2,
+    BV_VULN_WEAPON = 3,
+    BV_VULN_BASH = 4,
+    BV_VULN_PIERCE = 5,
+    BV_VULN_SLASH = 6,
+    BV_VULN_FIRE = 7,
+    BV_VULN_COLD = 8,
+    BV_VULN_LIGHTNING = 9,
+    BV_VULN_ACID = 10,
+    BV_VULN_POISON = 11,
+    BV_VULN_NEGATIVE = 12,
+    BV_VULN_HOLY = 13,
+    BV_VULN_ENERGY = 14,
+    BV_VULN_MENTAL = 15,
+    BV_VULN_DISEASE = 16,
+    BV_VULN_DROWNING = 17,
+    BV_VULN_LIGHT = 18,
+    BV_VULN_WOOD = 23,
+    BV_VULN_SILVER = 24,
+    BV_VULN_IRON = 25,
+    BV_VULN_MAX
+} BV_VULN_FLAGS;
+
+extern const BitVectorStringList bv_str_list_vuln[];
+
 #endif // BUCKETMUD_BV_TABLES_H
 

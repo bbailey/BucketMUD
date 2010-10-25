@@ -3,7 +3,7 @@ Name        {10 35} Anon    New Thalos~
 Builders    None~
 VNUMs       9500 9799
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -22,7 +22,8 @@ ABJKRVb DF 0 S
 100 1d1+30000 1d1+499 5d8+5 11
 -15 -15 -15 -15
 dodge fast trip ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 15000
 AHMV ABCDEFGHIJK M 0
 #9501
@@ -38,7 +39,8 @@ ABJKQVb DFH 250 S
 100 1d1+30000 1d1+499 6d7+8 10
 -15 -15 -15 -15
 disarm dodge fade kick kick_dirt parry ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 15000
 AHMV ABCDEFGHIJK M 0
 #9502
@@ -54,7 +56,8 @@ ABJKTVb DF 0 S
 100 1d1+30000 1d1+99 2d4+30 14
 -15 -15 -15 -15
 area_attack bash disarm dodge fast kick kick_dirt parry ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 15000
 AHMV ABCDEFGHIJK M 0
 #9503
@@ -72,7 +75,8 @@ ABJKTVb DFJ -100 S
 100 1d1+30000 1d1+99 1d4+10 14
 -15 -15 -15 -15
 backstab disarm dodge fast parry trip ~
-ABCD B Z
+ABCD B
+silver iron ~
 8 8 1 35000
 AHMV ABCDEFGHIJK M 0
 #9504
@@ -90,7 +94,8 @@ ABT 0 800 S
 100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 6 6 2 101
 AHMV ABCDEFGHIJK M 0
 #9505
@@ -106,7 +111,8 @@ ABRTVXYZ D 800 S
 100 10d38+311 24d10+100 5d8+14 3
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 101
 AHMV ABCDEFGHIJK M 0
 #9506
@@ -122,7 +128,8 @@ ABGT D 0 S
 100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 50
 AHMV ABCDEFGHIJK M 0
 #9507
@@ -138,7 +145,8 @@ ACGHT 0 -20 S
 100 1d6+23 3d10+100 1d5+1 11
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 5 5 1 0
 AHMV ABCDEFGHIJK M 0
 #9508
@@ -154,7 +162,8 @@ ACGHT 0 -20 S
 100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 5 5 1 0
 AHMV ABCDEFGHIJK M 0
 #9509
@@ -170,7 +179,8 @@ ACGHST 0 -20 S
 100 1d2+6 1d10+100 1d2+0 11
 9 9 9 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9510
@@ -186,7 +196,8 @@ ABTVXYZd D 800 S
 100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 bash ~
-CD 0 0
+CD 0
+none~
 8 8 1 10000
 AHMV ABCDEFGHIJK M 0
 #9511
@@ -202,7 +213,8 @@ ABTVXYZ D 800 S
 100 9d36+270 22d10+100 5d7+14 11
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 101
 AHMV ABCDEFGHIJK M 0
 #9512
@@ -218,7 +230,8 @@ ABT D 800 S
 100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 101
 AHMV ABCDEFGHIJK M 0
 #9513
@@ -235,7 +248,8 @@ ABTVXYZ D 800 S
 100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 101
 AHMV ABCDEFGHIJK M 0
 #9514
@@ -251,7 +265,8 @@ ABTVXYZd D 800 S
 100 9d36+270 22d10+100 5d7+14 7
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 2 101
 AHMV ABCDEFGHIJK M 0
 #9515
@@ -268,7 +283,8 @@ ABTVXYZ D 800 S
 100 9d39+290 23d10+100 5d8+11 11
 -4 -4 -4 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 101
 AHMV ABCDEFGHIJK M 0
 #9516
@@ -285,7 +301,8 @@ ABTVXYZ D 800 S
 100 9d39+290 23d10+100 5d8+11 3
 -4 -4 -4 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 101
 AHMV ABCDEFGHIJK M 0
 #9517
@@ -301,7 +318,8 @@ ABTVXYZd D 800 S
 100 9d39+290 23d10+100 5d8+11 7
 -4 -4 -4 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 9635
 AHMV ABCDEFGHIJK M 0
 #9518
@@ -319,7 +337,8 @@ ABT D 800 S
 100 9d39+290 23d10+100 5d8+11 3
 -4 -4 -4 2
 none~
-0 0 0
+0 0
+none~
 8 8 2 101
 AHMV ABCDEFGHIJK M 0
 #9519
@@ -336,7 +355,8 @@ ABGT 0 0 S
 100 4d37+162 15d10+100 4d6+9 11
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 25
 AHMV ABCDEFGHIJK M 0
 #9520
@@ -352,7 +372,8 @@ ABGT 0 10 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 9
 AHMV ABCDEFGHIJK M 0
 #9521
@@ -367,7 +388,8 @@ ABQTX 0 1000 S
 100 10d82+534 35d10+100 5d12+18 3
 -11 -11 -11 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 230
 AHMV ABCDEFGHIJK M 0
 #9522
@@ -382,7 +404,8 @@ ABQTX 0 1000 S
 100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 230
 AHMV ABCDEFGHIJK M 0
 #9523
@@ -398,7 +421,8 @@ ABQTX 0 1000 S
 100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 230
 AHMV ABCDEFGHIJK M 0
 #9524
@@ -414,7 +438,8 @@ ABQTX 0 1000 S
 100 10d69+462 32d10+100 5d11+17 7
 -10 -10 -10 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 238
 AHMV ABCDEFGHIJK M 0
 #9525
@@ -430,7 +455,8 @@ ABQTX 0 1000 S
 100 10d64+448 31d10+100 5d10+19 7
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 2 230
 AHMV ABCDEFGHIJK M 0
 #9526
@@ -446,7 +472,8 @@ ABQTX 0 1000 S
 100 10d64+448 31d10+100 5d10+19 3
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 2 230
 AHMV ABCDEFGHIJK M 0
 #9527
@@ -462,7 +489,8 @@ ABQRTX 0 1000 S
 100 10d73+487 33d10+100 5d11+19 7
 -10 -10 -10 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 650
 AHMV ABCDEFGHIJK M 0
 #9528
@@ -478,7 +506,8 @@ ABQRTUWX 0 1000 S
 100 10d82+534 35d10+100 5d12+18 7
 -11 -11 -11 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 650
 AHMV ABCDEFGHIJK M 0
 #9529
@@ -494,7 +523,8 @@ ACGHQT D 0 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 13
 AHMV ABCDEFGHIJK M 0
 #9530
@@ -510,7 +540,8 @@ ACGHST D 0 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 2
 AHMV ABCDEFGHIJK M 0
 #9531
@@ -526,7 +557,8 @@ ACGHRTU D 0 S
 100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 6
 AHMV ABCDEFGHIJK M 0
 #9532
@@ -542,7 +574,8 @@ ACGHT D 0 S
 100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 12
 AHMV ABCDEFGHIJK M 0
 #9533
@@ -559,7 +592,8 @@ ACFHT 0 -100 S
 100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 9
 AHMV ABCDEFGHIJK M 0
 #9534
@@ -575,7 +609,8 @@ AGT 0 0 S
 100 3d38+131 13d10+100 3d7+8 11
 1 1 1 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 12
 AHMV ABCDEFGHIJK M 0
 #9535
@@ -591,7 +626,8 @@ ACHST 0 100 S
 100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 2
 AHMV ABCDEFGHIJK M 0
 #9536
@@ -608,7 +644,8 @@ AGT 0 0 S
 100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 12
 AHMV ABCDEFGHIJK M 0
 #9537
@@ -625,7 +662,8 @@ AGHT 0 0 S
 100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9538
@@ -641,7 +679,8 @@ ACGSTU 0 -200 S
 100 10d42+322 25d10+100 5d8+16 7
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 123
 AHMV ABCDEFGHIJK M 0
 #9539
@@ -657,7 +696,8 @@ AGTU 0 -200 S
 100 10d42+322 25d10+100 5d8+16 3
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 123
 AHMV ABCDEFGHIJK M 0
 #9540
@@ -673,7 +713,8 @@ ACGHRT D 200 S
 100 10d42+322 25d10+100 5d8+12 7
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 123
 AHMV ABCDEFGHIJK M 0
 #9541
@@ -689,7 +730,8 @@ AGQT D 0 S
 100 10d42+322 25d10+100 5d8+16 3
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 8 1 123
 AHMV ABCDEFGHIJK M 0
 #9542
@@ -706,7 +748,8 @@ AHT 0 0 S
 100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 2
 AHMV ABCDEFGHIJK M 0
 #9543
@@ -722,7 +765,8 @@ ACHTU 0 -10 S
 100 1d2+16 2d10+100 1d3+1 7
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9544
@@ -738,7 +782,8 @@ AGHT 0 -200 S
 100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9545
@@ -754,7 +799,8 @@ AHT 0 200 S
 100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9546
@@ -770,7 +816,8 @@ ABETU 0 300 S
 100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 6 6 1 69
 AHMV ABCDEFGHIJK M 0
 #9547
@@ -786,7 +833,8 @@ ACFTU 0 -1000 S
 100 1d2+16 2d10+100 1d3+1 11
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9548
@@ -802,7 +850,8 @@ ACFRT 0 -500 S
 100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 2 3
 AHMV ABCDEFGHIJK M 0
 #9549
@@ -818,7 +867,8 @@ AEFRT U -750 S
 100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 6
 AHMV ABCDEFGHIJK M 0
 #9550
@@ -834,7 +884,8 @@ ABTW D 200 S
 100 10d82+534 35d10+100 5d12+18 3
 -11 -11 -11 0
 none~
-0 0 0
+0 0
+none~
 5 5 1 440
 AHMV ABCDEFGHIJK M 0
 #9551
@@ -851,7 +902,8 @@ ABT 0 0 S
 100 1d6+23 3d10+100 1d5+1 3
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #9552
@@ -868,7 +920,8 @@ ABCHT D -100 S
 100 6d36+205 18d10+100 4d7+12 7
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 4 4 1 50
 AHMV ABCDEFGHIJK M 0
 #9553
@@ -885,7 +938,8 @@ ABFT D 0 S
 100 4d33+145 14d10+100 4d6+7 7
 1 1 1 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 25
 AHMV ABCDEFGHIJK M 0
 #9554
@@ -902,7 +956,8 @@ AET D 100 S
 100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 5 5 2 69
 AHMV ABCDEFGHIJK M 0
 #9555
@@ -918,7 +973,8 @@ ABQRTUWX DHU 1000 S
 100 10d64+448 31d10+100 5d10+19 3
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 5 5 0 280
 AHMV ABCDEFGHIJK M 0
 #9556
@@ -934,7 +990,8 @@ ABRT D 0 S
 100 9d36+270 22d10+100 5d7+14 3
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 79
 AHMV ABCDEFGHIJK M 0
 #9557
@@ -950,7 +1007,8 @@ ABQT D 0 S
 100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 79
 AHMV ABCDEFGHIJK M 0
 #9558
@@ -966,7 +1024,8 @@ ABTU D 0 S
 100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 79
 AHMV ABCDEFGHIJK M 0
 #9559
@@ -983,7 +1042,8 @@ ABST D 0 S
 100 8d37+252 21d10+100 5d7+12 11
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 79
 AHMV ABCDEFGHIJK M 0
 #9560
@@ -999,7 +1059,8 @@ AGT 0 0 S
 100 1d2+16 2d10+100 1d3+1 3
 8 8 8 9
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9561
@@ -1015,7 +1076,8 @@ AGHT 0 1000 S
 100 3d27+107 11d10+100 3d6+6 3
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 9
 AHMV ABCDEFGHIJK M 0
 #9562
@@ -1031,7 +1093,8 @@ ABGT 0 1000 S
 100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 9
 AHMV ABCDEFGHIJK M 0
 #9563
@@ -1047,7 +1110,8 @@ ABGTU D 1000 S
 100 7d34+223 19d10+100 5d6+12 7
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 69
 AHMV ABCDEFGHIJK M 0
 #9564
@@ -1063,7 +1127,8 @@ ABTU 0 0 S
 100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9565
@@ -1080,7 +1145,8 @@ ABTVXYZ 0 0 S
 100 10d56+405 29d10+100 5d10+15 7
 -8 -8 -8 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 230
 AHMV ABCDEFGHIJK M 0
 #9566
@@ -1097,7 +1163,8 @@ ABTVXYZ 0 0 S
 100 10d64+448 31d10+100 5d10+19 7
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 230
 AHMV ABCDEFGHIJK M 0
 #9567
@@ -1113,7 +1180,8 @@ ACGHTU 0 0 S
 100 1d16+42 5d10+100 2d4+3 11
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9568
@@ -1131,7 +1199,8 @@ ACGHT 0 0 S
 100 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9569
@@ -1147,7 +1216,8 @@ AT 0 -1000 S
 100 10d56+405 29d10+100 5d10+15 11
 -8 -8 -8 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 230
 AHMV ABCDEFGHIJK M 0
 #9570
@@ -1163,7 +1233,8 @@ AFGTW 0 0 S
 100 2d21+73 8d10+100 2d7+4 7
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 0 3
 AHMV ABCDEFGHIJK M 0
 #9571
@@ -1179,7 +1250,8 @@ AFGT 0 0 S
 100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
-0 HI JP
+0 HI
+lightning mental ~
 8 8 0 3
 AHMV ABCDEFGHIJK M 0
 #9572
@@ -1195,7 +1267,8 @@ AFGTU 0 0 S
 100 2d27+83 9d10+100 2d7+6 11
 4 4 4 7
 fast ~
-0 0 0
+0 0
+none~
 8 8 0 3
 AGV ACDEFHJKUV M 0
 #9573
@@ -1211,7 +1284,8 @@ AFGTU 0 0 S
 100 2d21+73 8d10+100 2d7+4 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 0 3
 AHMV ABCDEFGHIJK M 0
 #9574
@@ -1227,7 +1301,8 @@ ABFT D -300 S
 100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 12
 AHMV ABCDEFGHIJK M 0
 #9575
@@ -1245,7 +1320,8 @@ ABFT D -500 S
 100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 6
 AHMV ABCDEFGHIJK M 0
 #9576
@@ -1262,7 +1338,8 @@ ABEQTU B 300 S
 100 4d33+145 14d10+100 4d6+7 7
 1 1 1 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 25
 AHMV ABCDEFGHIJK M 0
 #9577
@@ -1279,7 +1356,8 @@ AFGTU 0 0 S
 100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
-0 HI JP
+0 HI
+lightning mental ~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #9578
@@ -1296,7 +1374,8 @@ ABHTU 0 1000 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 9
 AHMV ABCDEFGHIJK M 0
 #9579
@@ -1313,7 +1392,8 @@ ABRTVXYZ 0 0 S
 100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 2 238
 AHMV ABCDEFGHIJK M 0
 #9580
@@ -1329,7 +1409,8 @@ ABRTVXYZ 0 0 S
 100 10d60+426 30d10+100 5d10+17 11
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 238
 AHMV ABCDEFGHIJK M 0
 #9581
@@ -1345,7 +1426,8 @@ ABEQT DH 1000 S
 100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 238
 AHMV ABCDEFGHIJK M 0
 #9582
@@ -1362,7 +1444,8 @@ AGHTU D 1000 S
 100 10d64+448 31d10+100 5d10+19 11
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 250
 AHMV ABCDEFGHIJK M 0
 #9583
@@ -1379,7 +1462,8 @@ ABHTVXYZ D -500 S
 100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 69
 AHMV ABCDEFGHIJK M 0
 #9584
@@ -1396,7 +1480,8 @@ ABHTVXYZ D -500 S
 100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 69
 AHMV ABCDEFGHIJK M 0
 #9585
@@ -1413,7 +1498,8 @@ ABTU 0 0 S
 100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 69
 AHMV ABCDEFGHIJK M 0
 #9586
@@ -1431,7 +1517,8 @@ ABGTU BDU 1000 S
 100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 2 12
 AHMV ABCDEFGHIJK M 0
 #9587
@@ -1448,7 +1535,8 @@ ABETUW D 0 S
 100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 2 12
 AHMV ABCDEFGHIJK M 0
 #9588
@@ -1464,7 +1552,8 @@ ABRT 0 0 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 9
 AHMV ABCDEFGHIJK M 0
 #9589
@@ -1480,7 +1569,8 @@ AGT 0 1000 S
 100 8d37+252 21d10+100 5d7+12 3
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 69
 AHMV ABCDEFGHIJK M 0
 #9590
@@ -1496,7 +1586,8 @@ ABT 0 400 S
 100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 69
 AHMV ABCDEFGHIJK M 0
 #9591
@@ -1512,7 +1603,8 @@ ABEQT D -500 S
 100 10d64+448 31d10+100 5d10+19 7
 -9 -9 -9 0
 none~
-0 0 0
+0 0
+none~
 8 8 0 238
 AHMV ABCDEFGHIJK M 0
 #9592
@@ -1528,7 +1620,8 @@ AT 0 1000 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 9
 AHMV ABCDEFGHIJK M 0
 #0
@@ -2311,9 +2404,9 @@ unknown~
 AB AB AB 0 0
 0 1 0 P
 A
-14 10
-A
 2 1
+A
+14 10
 #9598
 daemon claw~
 the Daemon Claw~
@@ -2341,9 +2434,9 @@ unknown~
 D AC BC AB 0
 25 16 250 P
 A
-19 2
-A
 18 2
+A
+19 2
 #9601
 fountain water~
 a fountain~
@@ -2391,9 +2484,14 @@ tavern of the Dancing Daemon Inn, and your future adventures in New Thalos.
 ~
 0 124 0
 E
-1.1picture~
-You see a picture of Felix here, standing before the arena.
-He seems to be doing a body count.
+4.picture~
+You see a picture of Loki... at least you think it's Loki.
+He seems to be hiding from the camera.
+~
+E
+3.picture~
+You see a picture of Hammor on the front porch of the Danjerhaus,
+drinking a guinness stout and petting Big Guy the Cat.
 ~
 E
 2.picture~
@@ -2402,14 +2500,9 @@ Through a window in the back you see a large aquarium. The newbie seems to
 be cowering in fear.
 ~
 E
-3.picture~
-You see a picture of Hammor on the front porch of the Danjerhaus,
-drinking a guinness stout and petting Big Guy the Cat.
-~
-E
-4.picture~
-You see a picture of Loki... at least you think it's Loki.
-He seems to be hiding from the camera.
+1.1picture~
+You see a picture of Felix here, standing before the arena.
+He seems to be doing a body count.
 ~
 D5
 The stairs lead down to the Daemon.
@@ -4736,6 +4829,10 @@ blood, there is a barely readable sign.
 ~
 0 120 0
 E
+vat~
+You think you hear noises from the vat....nah.
+~
+E
 note sign~
 LIST : gives you a list of items for sale.
 VALUE : tells you how much an item is worth
@@ -4743,10 +4840,6 @@ SELL : sells an item to Butch for a generous sum
 BUY : Butch's FAVORITE command lets you have an item for his low low price.
 
                                         NEWBEE INTRUCTOR COMMITEE
-~
-E
-vat~
-You think you hear noises from the vat....nah.
 ~
 D3
 (null)~
@@ -5662,13 +5755,13 @@ hallway.
 ~
 0 8 0
 E
-mirror~
-You see a the fighting image of some armor clad humanoid wielding a weapon.
-~
-E
 window~
 Looking out this window you can see the grounds of the palace that
 seperate the walls of the palace from the building itself.
+~
+E
+mirror~
+You see a the fighting image of some armor clad humanoid wielding a weapon.
 ~
 D0
 (null)~

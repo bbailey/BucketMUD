@@ -3,7 +3,7 @@ Name        {15 25} Generic Old Marsh~
 Builders    None~
 VNUMs       8301 8321
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -23,7 +23,8 @@ ABCFGT Jc -600 S
 100 5d39+187 17d10+100 4d7+10 3
 0 0 0 4
 berserk ~
-0 BE HK
+0 BE
+fire acid ~
 8 5 1 1000
 BMV ABCDEFGHIJKUV M 0
 #8302
@@ -41,7 +42,8 @@ ACFGT Jc -400 S
 100 4d37+162 15d10+100 4d6+9 11
 0 0 0 5
 berserk ~
-0 BE HK
+0 BE
+fire acid ~
 8 8 1 800
 BMV ABCDEFGHIJKUV M 0
 #8303
@@ -57,7 +59,8 @@ ACFGT 0 -500 S
 100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 1000
 AHMV ABCDEFGHIJK M 0
 #8304
@@ -73,7 +76,8 @@ ACFGT 0 -700 S
 100 10d38+311 24d10+100 5d8+14 11
 -5 -5 -5 2
 none~
-0 0 0
+0 0
+none~
 8 5 0 2500
 AHMV ABCDEFGHIJK M 0
 #8305
@@ -89,7 +93,8 @@ ACGT DF -1000 S
 100 10d60+426 30d10+100 5d10+17 7
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 2500
 AHMV ABCDEFGHIJK M 0
 #8306
@@ -106,7 +111,8 @@ ACFGT DF -450 S
 100 9d36+270 22d10+100 5d7+14 7
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 1000
 AHMV ABCDEFGHIJK M 0
 #8307
@@ -123,7 +129,8 @@ ACGHT P 0 S
 100 1d10+33 4d10+100 1d7+2 3
 7 7 7 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 50
 AHMV ABCDEFGHIJK M 0
 #8308
@@ -141,7 +148,8 @@ ACGHT P 0 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 300
 AHMV ABCDEFGHIJK M 0
 #8309
@@ -157,7 +165,8 @@ ACFGHT PQ -100 S
 100 5d34+175 16d10+100 4d7+8 11
 0 0 0 5
 none~
-0 L I
+0 L
+cold ~
 8 8 1 1000
 AGRXYc ADEFKLQVX M 0
 #8310
@@ -173,7 +182,8 @@ ACFGHT PQ -100 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 L I
+0 L
+cold ~
 8 8 2 0
 AGRXYc ADEFKLQVX M 0
 #8312
@@ -190,7 +200,8 @@ ACGT 0 -200 S
 100 2d33+96 10d10+100 3d5+7 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 2 100
 AHMV ABCDEFGHIJK M 0
 #8313
@@ -207,7 +218,8 @@ ACGT DF -200 S
 100 7d34+223 19d10+100 5d6+12 11
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 1400
 AHMV ABCDEFGHIJK M 0
 #8314
@@ -224,7 +236,8 @@ ACFGT Z -200 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 dodge fast ~
-0 0 0
+0 0
+none~
 8 8 2 0
 AGV ACDEFJKQV M 0
 #8318
@@ -240,7 +253,8 @@ ACGT Q -100 S
 100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #8319
@@ -257,7 +271,8 @@ ABCDFGT DF -100 S
 100 3d32+120 12d10+100 3d7+6 7
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 35
 AHMV ABCDEFGHIJK M 0
 #8320
@@ -273,7 +288,8 @@ ABCDFGT DF -100 S
 100 4d33+145 14d10+100 4d6+7 3
 1 1 1 5
 none~
-0 HI JP
+0 HI
+lightning mental ~
 8 8 1 1200
 AHMV ABCDEFGHIJK M 0
 #8321
@@ -289,7 +305,8 @@ ABCDFGT DF -100 S
 100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 200
 AHMV ABCDEFGHIJK M 0
 #0
@@ -306,9 +323,9 @@ unknown~
 AB C AC B 0
 14 10 140 P
 A
-19 3
-A
 2 2
+A
+19 3
 #8302
 horned helmet~
 a dark horned helmet~
@@ -318,9 +335,9 @@ unknown~
 AC AC AC 0 0
 14 5 140 P
 A
-19 1
-A
 3 -3
+A
+19 1
 E
 horns horn~
 These horns appear to be made of adamantite.~
@@ -341,9 +358,9 @@ unknown~
 D AC AC A 0
 19 16 190 P
 A
-18 3
-A
 19 3
+A
+18 3
 #8307
 green potion~
 a murky green potion~
@@ -415,13 +432,13 @@ distance.  And feel fear creep into your heart.
 ~
 0 1 5
 E
+pieces~
+You see severed limbs and spongy intestines.
+~
+E
 humanoid corpse~
 He looks mangled and shredded.  You see one large gash mark that looks
 like it came from the claw of some huge beast.
-~
-E
-pieces~
-You see severed limbs and spongy intestines.
 ~
 D1
 Eastward is the thick bog of ooze...
@@ -522,12 +539,12 @@ be taunting you towards the pool.
 ~
 0 1 6
 E
-lights ~
-From the stories you have heard, you recognize them as will-o-wisps.
-~
-E
 quicksand~
 It looks deadly to the foolish.
+~
+E
+lights ~
+From the stories you have heard, you recognize them as will-o-wisps.
 ~
 D1
 The swamp thing's lair.
@@ -581,12 +598,8 @@ huge fortress, half buried in the marsh.
 ~
 0 1 6
 E
-clouds~
-The clouds look dark and foreboding.
-~
-E
-beast~
-It looks to be a demon of some foul breed.
+vegetation~
+It looks sentient.
 ~
 E
 fortress~
@@ -594,8 +607,12 @@ It is surrounded by walls nearly 20 meters high.  In a tall tower on the
 northeast side, a window glows blue with magical energy.
 ~
 E
-vegetation~
-It looks sentient.
+beast~
+It looks to be a demon of some foul breed.
+~
+E
+clouds~
+The clouds look dark and foreboding.
 ~
 D0
 To the north a hill protrudes from the marshes.

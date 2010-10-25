@@ -401,7 +401,7 @@ struct race_type
     gchar *offense_flags;			/* off bits for the race */
     long imm;			/* imm bits for the race */
     long res;			/* res bits for the race */
-    long vuln;			/* vuln bits for the race */
+    gchar *vuln_flags;			/* vuln bits for the race */
     long form;			/* default form flag for the race */
     long parts;			/* default parts for the race */
     bool remort_race;		/* is a remort only race */
@@ -485,7 +485,6 @@ struct mob_index_data
     sh_int dam_type;
     long imm_flags;
     long res_flags;
-    long vuln_flags;
     sh_int start_pos;
     sh_int default_pos;
     sh_int sex;
@@ -503,6 +502,7 @@ struct mob_index_data
     bool path_move;
     FACTIONAFF_DATA *faction_affs;
     BitVector *bv_offense_flags;
+    BitVector *bv_vuln_flags;
 };
 /* Used for formating up the vnum command -Lancelight */
 extern OBJ_INDEX_DATA *obj_first;
@@ -563,7 +563,6 @@ struct char_data
     BitVector *bv_comm_flags;
     long imm_flags;
     long res_flags;
-    long vuln_flags;
     sh_int invis_level;
     long affected_by;
     sh_int position;
@@ -599,6 +598,7 @@ struct char_data
     /* mob counter for a reset */
     sh_int *reset_count;
     BitVector *bv_offense_flags;
+    BitVector *bv_vuln_flags;
 };
 
 struct mud_prog_act_list
@@ -1610,7 +1610,6 @@ extern const struct flag_type size_flags[];
 extern const struct flag_type off_flags[];
 extern const struct flag_type imm_flags[];
 extern const struct flag_type res_flags[];
-extern const struct flag_type vuln_flags[];
 extern const struct flag_type position_flags[];
 extern const struct flag_type weapon_class[];
 extern const struct flag_type weapon_type[];

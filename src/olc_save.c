@@ -188,8 +188,10 @@ static void save_mobile(FILE * fp, MOB_INDEX_DATA * pMobIndex)
     fprintf(fp, "%s~\n", tmp_string);
     g_free(tmp_string);
     fprintf(fp, "%s ", fwrite_flag(pMobIndex->imm_flags, buf));
-    fprintf(fp, "%s ", fwrite_flag(pMobIndex->res_flags, buf));
-    fprintf(fp, "%s\n", fwrite_flag(pMobIndex->vuln_flags, buf));
+    fprintf(fp, "%s\n", fwrite_flag(pMobIndex->res_flags, buf));
+    tmp_string = bv_to_string(pMobIndex->bv_vuln_flags, bv_str_list_vuln);
+    fprintf(fp, "%s~\n", tmp_string);
+    g_free(tmp_string);
     fprintf(fp, "%d %d %d %ld\n",
             pMobIndex->start_pos,
             pMobIndex->default_pos, pMobIndex->sex, pMobIndex->gold);

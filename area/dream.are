@@ -3,7 +3,7 @@ Name        { 1  5} Furey   Machine Dreams~
 Builders    None~
 VNUMs       8600 8699
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -22,7 +22,8 @@ AT 0 1000 S
 100 1d33+61 7d10+100 2d6+3 11
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 2 10
 AHMV ABCDEFGHIJK M 0
 #0
@@ -39,14 +40,14 @@ unknown~
 C C C 0 0
 9 5 90 P
 E
+motto~
+'Time on the ground is time wasted.'
+~
+E
 bells morris~
 These are a set of sturdy leather leggings with small brass bells sewn on.
 They look like the leggings worn by Morris dancers.  There is a motto tooled
 into the leather.
-~
-E
-motto~
-'Time on the ground is time wasted.'
 ~
 #8601
 handkerchief hankie kerchief morris~
@@ -97,36 +98,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8601
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8602
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8610
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8603
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8606
 D5
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8620
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8603
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8602
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8606
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8610
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8601
 S
 #8601
 The Void~
@@ -135,21 +136,16 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8621
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8607
 D2
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8604
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8621
 D1
 You see machine dreams and taste violet phosphor.
 ~
@@ -165,6 +161,11 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8611
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8607
 S
 #8602
 The Void~
@@ -178,31 +179,31 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8612
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8605
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8622
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8601
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8600
 D0
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8608
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8622
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8605
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8600
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8601
 S
 #8603
 The Void~
@@ -211,36 +212,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8613
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8600
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8604
 D5
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8623
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8606
 D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8605
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8600
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8613
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8606
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8604
 S
 #8604
 The Void~
@@ -249,36 +250,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8196 2
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8614
-D5
-You see an abandoned warehouse.
-~
-~
-0 0 3050
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8601
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8603
 D1
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8605
+D5
+You see an abandoned warehouse.
+~
+~
+0 0 3050
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8603
 D2
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8607
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8601
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8614
 S
 #8605
 The Void~
@@ -287,36 +288,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8602
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8608
 D1
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8603
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8615
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8625
 D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8604
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8615
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8602
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8625
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8608
 S
 #8606
 The Void~
@@ -325,21 +326,11 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8626
 D4
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8616
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8600
 D3
 You see machine dreams and taste violet phosphor.
 ~
@@ -350,11 +341,21 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8607
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8626
 D0
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8603
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8600
 S
 #8607
 The Void~
@@ -363,11 +364,16 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D3
+D0
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8606
+0 0 8604
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8617
 D5
 You see machine dreams and taste violet phosphor.
 ~
@@ -378,21 +384,16 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8608
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8617
 D2
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8601
-D0
+D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8604
+0 0 8606
 S
 #8608
 The Void~
@@ -401,36 +402,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8628
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8602
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8605
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8618
 D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8607
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8605
 D1
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8606
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8618
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8602
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8628
 S
 #8610
 The Void~
@@ -444,31 +445,31 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8600
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8620
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8612
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8613
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8616
 D1
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8611
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8616
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8613
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8612
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8620
 S
 #8611
 The Void~
@@ -482,31 +483,31 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8601
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8621
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8612
-D0
-You see the Road to Newfane.
-~
-~
-0 0 8630
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8610
 D2
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8614
+D0
+You see the Road to Newfane.
+~
+~
+0 0 8630
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8612
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8621
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8610
 S
 #8612
 The Void~
@@ -515,36 +516,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8618
 D1
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8610
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8611
 D4
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8622
-D2
+D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8615
+0 0 8611
 D5
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8602
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8618
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8615
 S
 #8613
 The Void~
@@ -553,16 +554,21 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D2
+D5
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8616
+0 0 8603
 D3
 You see a road by a pond.
 ~
 ~
 0 0 8636
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8616
 D4
 You see machine dreams and taste violet phosphor.
 ~
@@ -573,11 +579,6 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8610
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8603
 D1
 You see machine dreams and taste violet phosphor.
 ~
@@ -591,11 +592,11 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D3
+D4
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8613
+0 0 8624
 D5
 You see machine dreams and taste violet phosphor.
 ~
@@ -606,11 +607,6 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8611
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8624
 D2
 You see machine dreams and taste violet phosphor.
 ~
@@ -621,6 +617,11 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8615
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8613
 S
 #8615
 The Void~
@@ -634,31 +635,31 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8618
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8612
-D1
-You see a large dance hall.
-~
-~
-0 0 8632
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8605
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8625
 D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8614
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8625
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8612
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8605
+D1
+You see a large dance hall.
+~
+~
+0 0 8632
 S
 #8616
 The Void~
@@ -667,36 +668,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8606
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8617
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8618
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8610
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8613
 D4
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8626
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8610
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8606
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8613
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8618
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8617
 S
 #8617
 The Void~
@@ -705,36 +706,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D2
-You see a small hall.
-~
-~
-0 0 8634
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8614
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8616
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8618
 D4
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8627
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8616
+D2
+You see a small hall.
+~
+~
+0 0 8634
 D5
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8607
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8614
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8618
 S
 #8618
 The Void~
@@ -743,11 +744,6 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8612
 D1
 You see machine dreams and taste violet phosphor.
 ~
@@ -763,6 +759,11 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8608
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8612
 D4
 You see machine dreams and taste violet phosphor.
 ~
@@ -781,36 +782,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8623
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8622
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8600
 D1
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8621
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8626
 D5
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8610
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8623
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8600
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8622
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8626
 S
 #8621
 The Void~
@@ -819,26 +820,26 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8622
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8627
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8620
 D5
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8611
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8627
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8622
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8620
 D2
 You see machine dreams and taste violet phosphor.
 ~
@@ -857,36 +858,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8628
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8621
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8612
 D1
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8620
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8612
 D2
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8625
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8628
 D4
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8602
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8621
 S
 #8623
 The Void~
@@ -895,21 +896,21 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D4
+D5
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8603
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8626
+0 0 8613
 D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8625
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8603
 D0
 You see machine dreams and taste violet phosphor.
 ~
@@ -920,11 +921,11 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8624
-D5
+D2
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8613
+0 0 8626
 S
 #8624
 The Void~
@@ -933,26 +934,11 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D4
-You see a mountain ridge against the sky.
-~
-~
-0 0 8638
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8627
 D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8623
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8625
 D5
 You see machine dreams and taste violet phosphor.
 ~
@@ -963,6 +949,21 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8621
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8627
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8625
+D4
+You see a mountain ridge against the sky.
+~
+~
+0 0 8638
 S
 #8625
 The Void~
@@ -971,36 +972,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8605
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8615
 D3
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8624
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8623
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8628
 D0
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8622
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8615
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8628
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8623
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8605
 S
 #8626
 The Void~
@@ -1009,21 +1010,26 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D4
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8606
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8627
 D2
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8620
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8627
+D4
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8606
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8623
 D3
 You see machine dreams and taste violet phosphor.
 ~
@@ -1034,11 +1040,6 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8616
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8623
 S
 #8627
 The Void~
@@ -1047,36 +1048,36 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D5
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8617
-D2
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8621
-D0
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8624
-D1
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8628
-D3
-You see machine dreams and taste violet phosphor.
-~
-~
-0 0 8626
 D4
 You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8607
+D2
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8621
+D5
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8617
+D0
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8624
+D3
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8626
+D1
+You see machine dreams and taste violet phosphor.
+~
+~
+0 0 8628
 S
 #8628
 The Void~
@@ -1085,16 +1086,16 @@ synesthesia invading your nerves and reshuffling your senses.  The sky is the
 same obsidian color as the ground and you can't find a horizon.
 ~
 0 8192 2
-D4
+D2
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8608
-D0
+0 0 8622
+D1
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8625
+0 0 8626
 D3
 You see machine dreams and taste violet phosphor.
 ~
@@ -1105,16 +1106,16 @@ You see machine dreams and taste violet phosphor.
 ~
 ~
 0 0 8618
-D1
+D0
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8626
-D2
+0 0 8625
+D4
 You see machine dreams and taste violet phosphor.
 ~
 ~
-0 0 8622
+0 0 8608
 S
 #8630
 Road to Newfane~

@@ -1502,7 +1502,7 @@ static void nanny(DESCRIPTOR_DATA * d, char *argument)
         ch->affected_by = ch->affected_by | race_table[race].aff;
         ch->imm_flags = ch->imm_flags | race_table[race].imm;
         ch->res_flags = ch->res_flags | race_table[race].res;
-        ch->vuln_flags = ch->vuln_flags | race_table[race].vuln;
+        bv_from_string(ch->bv_vuln_flags, bv_str_list_vuln, race_table[race].vuln_flags, BV_STR_SET);
         ch->form = race_table[race].form;
         ch->parts = race_table[race].parts;
 

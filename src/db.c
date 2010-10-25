@@ -1932,7 +1932,8 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA * pMobIndex)
     mob->bv_offense_flags = bv_copy(pMobIndex->bv_offense_flags);
     mob->imm_flags = pMobIndex->imm_flags;
     mob->res_flags = pMobIndex->res_flags;
-    mob->vuln_flags = pMobIndex->vuln_flags;
+    bv_delete(mob->bv_vuln_flags);
+    mob->bv_vuln_flags = bv_copy(pMobIndex->bv_vuln_flags);
     mob->start_pos = pMobIndex->start_pos;
     mob->default_pos = pMobIndex->default_pos;
     mob->sex = pMobIndex->sex;
@@ -2034,7 +2035,8 @@ void clone_mobile(CHAR_DATA * parent, CHAR_DATA * clone)
     clone->bv_comm_flags = bv_copy(parent->bv_comm_flags);
     clone->imm_flags = parent->imm_flags;
     clone->res_flags = parent->res_flags;
-    clone->vuln_flags = parent->vuln_flags;
+    bv_delete(clone->bv_vuln_flags);
+    clone->bv_vuln_flags = bv_copy(parent->bv_vuln_flags);
     clone->invis_level = parent->invis_level;
     clone->affected_by = parent->affected_by;
     clone->position = parent->position;
@@ -2230,6 +2232,8 @@ void clear_char(CHAR_DATA * ch)
         ch->bv_comm_flags = bv_new(BV_COMM_MAX);
     if (ch->bv_offense_flags == NULL)
         ch->bv_offense_flags = bv_new(BV_OFF_MAX);
+    if (ch->bv_vuln_flags == NULL)
+        ch->bv_vuln_flags = bv_new(BV_VULN_MAX);
     ch->position = POS_STANDING;
     ch->practice = 0;
     ch->hit = 20;
@@ -4248,6 +4252,7 @@ static void load_mobiles(FILE * fp)
 
         pMobIndex = alloc_perm(sizeof(*pMobIndex));
         pMobIndex->bv_offense_flags = bv_new(BV_OFF_MAX);
+        pMobIndex->bv_vuln_flags = bv_new(BV_VULN_MAX);
         pMobIndex->vnum = vnum;
         pMobIndex->area = area_last;	/* OLC */
         pMobIndex->player_name = fread_string(fp);
@@ -4325,8 +4330,19 @@ static void load_mobiles(FILE * fp)
                                | race_table[pMobIndex->race].imm;
         pMobIndex->res_flags = fread_flag(fp)
                                | race_table[pMobIndex->race].res;
-        pMobIndex->vuln_flags = fread_flag(fp)
-                                | race_table[pMobIndex->race].vuln;
+        /* Read in vuln flags from area file and assign to mob */
+        if (pMobIndex->area->version < 3) {
+            bv_from_old_bitvector(pMobIndex->bv_vuln_flags, fread_flag(fp));
+        }
+        else
+        {
+            tmp_string = fread_string(fp);
+            bv_from_string(pMobIndex->bv_vuln_flags, bv_str_list_vuln, tmp_string, BV_STR_SET);
+            free_string(&tmp_string);
+        }
+        /* Make sure mobs have the default vuln flags for their race in addition to custom ones */
+        bv_from_string(pMobIndex->bv_vuln_flags, bv_str_list_vuln, race_table[pMobIndex->race].vuln_flags, BV_STR_SET);
+
         /* vital statistics */
         pMobIndex->start_pos = fread_number(fp);
         pMobIndex->default_pos = fread_number(fp);

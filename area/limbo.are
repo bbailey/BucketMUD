@@ -3,7 +3,7 @@ Name        {None } Diku    Limbo~
 Builders    None~
 VNUMs       1 99
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -31,7 +31,8 @@ A 0 1000 S
 100 5d10+550 26d5+100 4d6+3 32
 -15 -15 -15 -10
 tail trip ~
-AB CD 0
+AB CD
+none~
 8 8 2 500
 DHZ ACDEFHJKPQUVX M 0
 #4
@@ -46,7 +47,8 @@ ABGVd 0 0 S
 100 112d164+930 93d10+193 11d9+31 0
 -57 -57 -57 -23
 none~
-CD 0 0
+CD 0
+none~
 8 8 0 2325
 AHKMV ABCDEFGHIJKLMO L 0
 #10
@@ -62,7 +64,8 @@ ABV 0 0 S
 100 1d1+1 1d1+1 1d1+1 0
 -25 -25 -25 -5
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #0

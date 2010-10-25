@@ -96,7 +96,6 @@ static const struct olc_help_type help_table[] =
     {"part", part_flags, "Mobile body parts."},
     {"imm", imm_flags, "Mobile immunity."},
     {"res", res_flags, "Mobile resistance."},
-    {"vuln", vuln_flags, "Mobile vlnerability."},
     {"size", size_flags, "Mobile size."},
     {"position", position_flags, "Mobile positions."},
     {"material", material_type, "Material mob/obj is made from."},
@@ -3269,8 +3268,9 @@ MEDIT(medit_show)
             flag_string(res_flags, pMob->res_flags));
     send_to_char(buf, ch);
 
-    sprintf(buf, "Vuln:        [%s]\n\r",
-            flag_string(vuln_flags, pMob->vuln_flags));
+    tmp_string = bv_to_string(pMob->bv_vuln_flags, bv_str_list_vuln);
+    sprintf(buf, "Vuln:        [%s]\n\r", tmp_string);
+    g_free(tmp_string);
     send_to_char(buf, ch);
 
     tmp_string = bv_to_string(pMob->bv_offense_flags, bv_str_list_off);
@@ -3907,18 +3907,14 @@ MEDIT(medit_res)
 MEDIT(medit_vuln)
 {
     MOB_INDEX_DATA *pMob;
-    int value;
 
     if (argument[0] != '\0')
     {
         EDIT_MOB(ch, pMob);
 
-        if ((value = flag_value(vuln_flags, argument)) != NO_FLAG)
-        {
-            pMob->vuln_flags ^= value;
-            send_to_char("Vulnerability toggled.\n\r", ch);
-            return TRUE;
-        }
+        bv_from_string(pMob->bv_offense_flags, bv_str_list_off, argument, BV_STR_TOGGLE);
+        send_to_char("Vulnerability toggled.\n\r", ch);
+        return TRUE;
     }
 
     send_to_char("Syntax: vuln [flags]\n\r"
@@ -4207,7 +4203,7 @@ MEDIT(medit_race)
         bv_from_string(pMob->bv_offense_flags, bv_str_list_off, race_table[race].offense_flags, BV_STR_SET);
         pMob->imm_flags |= race_table[race].imm;
         pMob->res_flags |= race_table[race].res;
-        pMob->vuln_flags |= race_table[race].vuln;
+        bv_from_string(pMob->bv_vuln_flags, bv_str_list_vuln, race_table[race].vuln_flags, BV_STR_SET);
         pMob->form |= race_table[race].form;
         pMob->parts |= race_table[race].parts;
 

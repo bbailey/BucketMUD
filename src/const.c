@@ -78,35 +78,35 @@ const struct race_type race_table[] =
     {
         "Dwarf", TRUE,
         0, AFF_INFRARED, "",
-        0, RES_MAGIC | RES_POISON | RES_DISEASE, VULN_DROWNING,
+        0, RES_MAGIC | RES_POISON | RES_DISEASE, "drowning",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "Elf", TRUE,
         0, AFF_INFRARED, "",
-        0, RES_CHARM, VULN_IRON,
+        0, RES_CHARM, "iron",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "Giant", TRUE,
         0, 0, "",
-        0, RES_FIRE | RES_COLD, VULN_MENTAL | VULN_LIGHTNING,
+        0, RES_FIRE | RES_COLD, "mental lightning",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "Hobbit", TRUE,
         0, AFF_INFRARED, "",
-        0, RES_MAGIC | RES_POISON | RES_DISEASE, VULN_DROWNING,
+        0, RES_MAGIC | RES_POISON | RES_DISEASE, "drowning",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "Human", TRUE,
         0, 0, "",
-        0, 0, 0,
+        0, 0, "",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
@@ -114,14 +114,14 @@ const struct race_type race_table[] =
         "Troll", TRUE,
         0, AFF_REGENERATION | AFF_INFRARED,
         "berserk",
-        0, RES_CHARM | RES_BASH, VULN_FIRE | VULN_ACID,
+        0, RES_CHARM | RES_BASH, "fire acid",
         B | M | V, A | B | C | D | E | F | G | H | I | J | K | U | V, FALSE
     },
 
     {
         "Wolf", FALSE,
         0, AFF_DARK_VISION, "fast dodge",
-        0, 0, 0,
+        0, 0, "",
         A | G | V, A | C | D | E | F | J | K | Q | V, FALSE
     },
 
@@ -129,91 +129,91 @@ const struct race_type race_table[] =
         "Wyvern", FALSE,
         0, AFF_FLYING | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
         "bash fast dodge",
-        IMM_POISON, 0, VULN_LIGHT,
+        IMM_POISON, 0, "light",
         B | Z | cc, A | C | D | E | F | H | J | K | Q | U | V | X, FALSE
     },
 
     {
         "Drow Elf", FALSE,
         0, AFF_DARK_VISION, "",
-        0, RES_CHARM, VULN_IRON | VULN_LIGHT,
+        0, RES_CHARM, "iron light",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K
     },
 
     {
         "bat", FALSE,
         0, AFF_FLYING | AFF_DARK_VISION, "dodge fast",
-        0, 0, VULN_LIGHT,
+        0, 0, "light",
         A | G | W, A | C | D | E | F | H | J | K | P, FALSE
     },
 
     {
         "bear", FALSE,
         0, 0, "crush disarm berserk",
-        0, RES_BASH | RES_COLD, 0,
+        0, RES_BASH | RES_COLD, "",
         A | G | V, A | B | C | D | E | F | H | J | K | U | V, FALSE
     },
 
     {
         "cat", FALSE,
         0, AFF_DARK_VISION, "fast dodge",
-        0, 0, 0,
+        0, 0, "",
         A | G | V, A | C | D | E | F | H | J | K | Q | U | V, FALSE
     },
 
     {
         "centipede", FALSE,
         0, AFF_DARK_VISION, "",
-        0, RES_PIERCE | RES_COLD, VULN_BASH, FALSE
+        0, RES_PIERCE | RES_COLD, "bash",
+        /* WTF? No parts? */ FALSE, FALSE
     },
 
     {
         "dog", FALSE,
         0, 0, "fast",
-        0, 0, 0,
+        0, 0, "",
         A | G | V, A | C | D | E | F | H | J | K | U | V, FALSE
     },
 
     {
         "doll", FALSE,
         0, 0, "",
-        IMM_MAGIC, RES_BASH | RES_LIGHT,
-        VULN_SLASH | VULN_FIRE | VULN_ACID | VULN_LIGHTNING | VULN_ENERGY,
+        IMM_MAGIC, RES_BASH | RES_LIGHT, "slash fire acid lightning energy",
         E | J | M | cc, A | B | C | G | H | K, FALSE
     },
 
     {
         "fido", FALSE,
         0, 0, "dodge assist_race",
-        0, 0, VULN_MAGIC,
+        0, 0, "magic",
         B | G | V, A | C | D | E | F | H | J | K | Q | V, FALSE
     },
 
     {
         "fox", FALSE,
         0, AFF_DARK_VISION, "fast dodge",
-        0, 0, 0,
+        0, 0, "",
         A | G | V, A | C | D | E | F | H | J | K | Q | V, FALSE
     },
 
     {
         "goblin", FALSE,
         0, AFF_INFRARED, "",
-        0, RES_DISEASE, VULN_MAGIC,
+        0, RES_DISEASE, "magic",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "hobgoblin", FALSE,
         0, AFF_INFRARED, "",
-        0, RES_DISEASE | RES_POISON, 0,
+        0, RES_DISEASE | RES_POISON, "",
         0, 0, FALSE
     },
 
     {
         "kobold", FALSE,
         0, AFF_INFRARED, "",
-        0, RES_POISON, VULN_MAGIC,
+        0, RES_POISON, "magic",
         A | B | H | M | V, A | B | C | D | E | F | G | H | I | J | K | Q,
         FALSE
     },
@@ -221,7 +221,7 @@ const struct race_type race_table[] =
     {
         "lizard", FALSE,
         0, 0, "",
-        0, RES_POISON, VULN_COLD,
+        0, RES_POISON, "cold",
         A | G | X | cc, A | C | D | E | F | H | K | Q | V, FALSE
     },
 
@@ -229,82 +229,85 @@ const struct race_type race_table[] =
         "modron", FALSE,
         0, AFF_INFRARED, "assist_race assist_align",
         IMM_CHARM | IMM_DISEASE | IMM_MENTAL | IMM_HOLY | IMM_NEGATIVE,
-        RES_FIRE | RES_COLD | RES_ACID, 0,
+        RES_FIRE | RES_COLD | RES_ACID, "",
         H, A | B | C | G | H | J | K, FALSE
     },
 
     {
         "orc", FALSE,
         0, AFF_INFRARED, "",
-        0, RES_DISEASE, VULN_LIGHT,
+        0, RES_DISEASE, "light",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "pig", FALSE,
         0, 0, "",
-        0, 0, 0,
+        0, 0, "",
         A | G | V, A | C | D | E | F | H | J | K, FALSE
     },
 
     {
         "rabbit", FALSE,
         0, 0, "dodge fast",
-        0, 0, 0,
+        0, 0, "",
         A | G | V, A | C | D | E | F | H | J | K, FALSE
     },
 
     {
         "sailor", FALSE,
         bb, 0, "",
-        0, 0, 0,
+        0, 0, "",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "school monster", FALSE,
         ACT_NOALIGN, 0, "",
-        IMM_CHARM | IMM_SUMMON, 0, VULN_MAGIC,
+        IMM_CHARM | IMM_SUMMON, 0, "magic",
         A | M | V, A | B | C | D | E | F | H | J | K | Q | U, FALSE
     },
 
     {
         "shiriff", FALSE,
         T, 0, "rescue assist_all",
-        0, 0, 0,
+        0, 0, "",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "snake", FALSE,
         0, 0, "",
-        0, RES_POISON, VULN_COLD,
+        0, RES_POISON, "cold",
         A | G | R | X | Y | cc, A | D | E | F | K | L | Q | V | X, FALSE
     },
 
     {
         "song bird", FALSE,
         0, AFF_FLYING, "fast dodge",
-        0, 0, 0,
+        0, 0, "",
         A | G | W, A | C | D | E | F | H | K | P, FALSE
     },
 
     {
         "thain", FALSE,
         T, 0, "rescue assist_all",
-        0, 0, 0,
+        0, 0, "",
         A | H | M | V, A | B | C | D | E | F | G | H | I | J | K, FALSE
     },
 
     {
         "water fowl", FALSE,
         0, AFF_SWIM | AFF_FLYING, "",
-        0, RES_DROWNING, 0,
+        0, RES_DROWNING, "",
         A | G | W, A | C | D | E | F | H | K | P, FALSE
     },
 
     {
-        NULL, 0, 0, 0, 0, 0, 0
+        NULL, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0
     }
 };
 

@@ -3,7 +3,7 @@ Name        { 5 35} Glop    Mega-City One ~
 Builders    None~
 VNUMs       8000 8028
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -24,7 +24,8 @@ ACT 0 -400 S
 100 1d10+33 4d10+100 1d7+2 7
 7 7 7 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8001
@@ -41,7 +42,8 @@ ACGT 0 -500 S
 100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8002
@@ -59,7 +61,8 @@ ABFT D 0 S
 100 5d39+187 17d10+100 4d7+10 11
 0 0 0 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8003
@@ -76,7 +79,8 @@ ACGT J 0 S
 100 5d34+175 16d10+100 4d7+8 11
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8004
@@ -92,7 +96,8 @@ ACGHT 0 -150 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8005
@@ -109,7 +114,8 @@ ACGT 0 -400 S
 100 4d37+162 15d10+100 4d6+9 7
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #8006
@@ -127,7 +133,8 @@ AGT DF 300 S
 100 7d38+238 20d10+100 5d7+10 11
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8007
@@ -144,7 +151,8 @@ ABCT DFJ -600 S
 100 8d37+252 21d10+100 5d7+12 11
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8008
@@ -162,7 +170,8 @@ ABCFT DF -900 S
 100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8009
@@ -180,7 +189,8 @@ ABCT 0 -400 S
 100 7d34+223 19d10+100 5d6+12 3
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8010
@@ -197,7 +207,8 @@ AGT DFH 300 S
 100 10d60+426 30d10+100 5d10+17 3
 -8 -8 -8 0
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #8011
@@ -215,7 +226,8 @@ AGT DF 500 S
 100 10d45+345 26d10+100 5d9+13 11
 -6 -6 -6 1
 none~
-0 0 0
+0 0
+none~
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #8012
@@ -231,7 +243,8 @@ ABFT 0 -400 S
 100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #0
@@ -339,13 +352,13 @@ unknown~
 B AC AC AB 0
 19 2 190 P
 A
-2 1
-A
-5 1
+18 2
 A
 19 2
 A
-18 2
+5 1
+A
+2 1
 E
 vibroblade~
 Obviously of alien manufacture, this blade enhances fighting

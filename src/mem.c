@@ -570,7 +570,7 @@ MOB_INDEX_DATA *new_mob_index(void)
     pMob->parts = 0;		/* ROM patch -- Hugin */
     pMob->imm_flags = 0;	/* ROM patch -- Hugin */
     pMob->res_flags = 0;	/* ROM patch -- Hugin */
-    pMob->vuln_flags = 0;	/* ROM patch -- Hugin */
+    pMob->bv_vuln_flags = bv_new(BV_OFF_MAX);
     pMob->material = material_lookup("");	/* -- Hugin */
     pMob->bv_offense_flags = bv_new(BV_OFF_MAX);
     pMob->size = SIZE_MEDIUM;	/* ROM patch -- Hugin */

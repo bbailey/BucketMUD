@@ -71,7 +71,6 @@ static const struct flag_stat_type flag_stat_table[] =
     {position_flags, TRUE},
     {imm_flags, FALSE},
     {res_flags, FALSE},
-    {vuln_flags, FALSE},
     {weapon_class, TRUE},
     {weapon_type, FALSE},
     {0, 0}
@@ -753,31 +752,6 @@ const struct flag_type res_flags[] =
     {"disease", RES_DISEASE, TRUE},
     {"drowning", RES_DROWNING, TRUE},
     {"light", RES_LIGHT, TRUE},
-    {"", 0, 0}
-};
-
-const struct flag_type vuln_flags[] =
-{
-    {"magic", VULN_MAGIC, TRUE},
-    {"weapon", VULN_WEAPON, TRUE},
-    {"bash", VULN_BASH, TRUE},
-    {"pierce", VULN_PIERCE, TRUE},
-    {"slash", VULN_SLASH, TRUE},
-    {"fire", VULN_FIRE, TRUE},
-    {"cold", VULN_COLD, TRUE},
-    {"lightning", VULN_LIGHTNING, TRUE},
-    {"acid", VULN_ACID, TRUE},
-    {"poison", VULN_POISON, TRUE},
-    {"negative", VULN_NEGATIVE, TRUE},
-    {"holy", VULN_HOLY, TRUE},
-    {"energy", VULN_ENERGY, TRUE},
-    {"mental", VULN_MENTAL, TRUE},
-    {"disease", VULN_DISEASE, TRUE},
-    {"drowning", VULN_DROWNING, TRUE},
-    {"light", VULN_LIGHT, TRUE},
-    {"wood", VULN_WOOD, TRUE},
-    {"silver", VULN_SILVER, TRUE},
-    {"iron", VULN_IRON, TRUE},
     {"", 0, 0}
 };
 

@@ -3,7 +3,7 @@ Name        { 5 30} Tyrst   Wyvern's Tower~
 Builders    None~
 VNUMs       1601 1720
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -22,7 +22,8 @@ ABFGT 0 -300 S
 100 1d16+42 5d10+100 2d4+3 3
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #1602
@@ -38,7 +39,8 @@ ABFGHT 0 -400 S
 100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 4
 AHMV ABCDEFGHIJK M 0
 #1603
@@ -54,7 +56,8 @@ ACFGT 0 -600 S
 100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 5
 AHMV ABCDEFGHIJK M 0
 #1604
@@ -70,7 +73,8 @@ ABCT 0 -600 S
 100 3d32+120 12d10+100 3d7+6 3
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 8
 AHMV ABCDEFGHIJK M 0
 #1605
@@ -86,7 +90,8 @@ ABCGT DF -900 S
 100 3d38+131 13d10+100 3d7+8 7
 1 1 1 6
 none~
-0 0 0
+0 0
+none~
 8 8 2 30
 AHMV ABCDEFGHIJK M 0
 #1606
@@ -102,7 +107,8 @@ ABFGT 0 0 S
 100 2d33+96 10d10+100 3d5+7 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #1607
@@ -118,7 +124,8 @@ ABCFGT 0 -200 S
 100 3d27+107 11d10+100 3d6+6 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 6 8 0 12
 AHMV ABCDEFGHIJK M 0
 #1608
@@ -134,7 +141,8 @@ ACFGT BDF -1000 S
 100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 9
 AHMV ABCDEFGHIJK M 0
 #1609
@@ -150,7 +158,8 @@ ABCFGT DF -1000 S
 100 3d32+120 12d10+100 3d7+6 11
 2 2 2 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 22
 AHMV ABCDEFGHIJK M 0
 #1610
@@ -166,7 +175,8 @@ ACGT D -600 S
 100 3d38+131 13d10+100 3d7+8 11
 1 1 1 6
 none~
-0 0 0
+0 0
+none~
 8 8 1 15
 AHMV ABCDEFGHIJK M 0
 #1612
@@ -182,7 +192,8 @@ ABCFGT D -600 S
 100 4d33+145 14d10+100 4d6+7 11
 1 1 1 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1613
@@ -198,7 +209,8 @@ ABCFGT D -900 S
 100 6d36+205 18d10+100 4d7+12 11
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1614
@@ -214,7 +226,8 @@ ACFGT 0 -1000 S
 100 4d33+145 14d10+100 4d6+7 3
 1 1 1 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #1615
@@ -230,7 +243,8 @@ ABGT D 0 S
 100 5d34+175 16d10+100 4d7+8 7
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #1616
@@ -246,7 +260,8 @@ ACFGT DF -1000 S
 100 6d36+205 18d10+100 4d7+12 3
 -1 -1 -1 4
 none~
-0 0 0
+0 0
+none~
 8 5 1 0
 AHMV ABCDEFGHIJK M 0
 #1617
@@ -262,7 +277,8 @@ ACFGT BDH -1000 S
 100 7d38+238 20d10+100 5d7+10 7
 -2 -2 -2 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1702
@@ -278,7 +294,8 @@ ACT 0 0 S
 100 1d16+42 5d10+100 2d4+3 7
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 8 8 1 1
 AHMV ABCDEFGHIJK M 0
 #1704
@@ -294,7 +311,8 @@ ACT 0 0 S
 100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 5 8 1 1
 AHMV ABCDEFGHIJK M 0
 #1706
@@ -310,7 +328,8 @@ ACGT D 200 S
 100 3d27+107 11d10+100 3d6+6 11
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 5 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1707
@@ -326,7 +345,8 @@ ABCT D 300 S
 100 5d34+175 16d10+100 4d7+8 11
 0 0 0 5
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1708
@@ -341,7 +361,8 @@ ABCT D 400 S
 100 8d37+252 21d10+100 5d7+12 7
 -3 -3 -3 3
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1710
@@ -357,7 +378,8 @@ ACT 0 200 S
 100 1d33+61 7d10+100 2d6+3 3
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 1
 AHMV ABCDEFGHIJK M 0
 #1711
@@ -373,7 +395,8 @@ ACT 0 200 S
 100 1d33+61 7d10+100 2d6+3 7
 5 5 5 7
 none~
-0 0 0
+0 0
+none~
 8 8 2 1
 AHMV ABCDEFGHIJK M 0
 #1712
@@ -389,7 +412,8 @@ ACT 0 200 S
 100 1d24+51 6d10+100 2d5+3 3
 6 6 6 8
 none~
-0 0 0
+0 0
+none~
 5 5 1 1
 AHMV ABCDEFGHIJK M 0
 #1714
@@ -405,7 +429,8 @@ ABCT B 200 S
 100 2d27+83 9d10+100 2d7+6 7
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1715
@@ -421,7 +446,8 @@ ABT B 200 S
 100 2d27+83 9d10+100 2d7+6 3
 4 4 4 7
 none~
-0 0 0
+0 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1716
@@ -438,7 +464,8 @@ ABCT B 200 S
 100 3d27+107 11d10+100 3d6+6 7
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 5 8 1 0
 AHMV ABCDEFGHIJK M 0
 #1720
@@ -454,7 +481,8 @@ AHT 0 0 S
 100 2d33+96 10d10+100 3d5+7 3
 3 3 3 6
 none~
-0 0 0
+0 0
+none~
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #0
@@ -499,9 +527,9 @@ unknown~
 A AB AC AB 0
 9 12 90 P
 A
-18 1
-A
 19 1
+A
+18 1
 #1606
 rod might~
 the rod of might~
@@ -511,9 +539,9 @@ unknown~
 C AC C BC 0
 16 13 160 P
 A
-18 2
-A
 1 1
+A
+18 2
 #1612
 black kite shield~
 a black kite shield~
@@ -556,9 +584,9 @@ unknown~
 ABC ABC ABC 0 0
 20 2 200 P
 A
-17 -6
-A
 12 5
+A
+17 -6
 #1621
 dark red potion~
 a dark red potion~
@@ -649,9 +677,9 @@ unknown~
 A A ABC AB 0
 0 10 0 P
 A
-18 3
-A
 19 3
+A
+18 3
 #1711
 fur cap~
 a fur cap~

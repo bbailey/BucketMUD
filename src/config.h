@@ -1055,6 +1055,10 @@ looting at all.
 #define IMM_DROWNING            (R)
 #define IMM_LIGHT               (S)
 
+#define IMM_WOOD                (X)
+#define IMM_SILVER              (Y)
+#define IMM_IRON                (Z)
+
             /* RES bits for mobs */
 #define RES_CHARM               (B)
 #define RES_MAGIC               (C)
@@ -1074,28 +1078,6 @@ looting at all.
 #define RES_DISEASE             (Q)
 #define RES_DROWNING            (R)
 #define RES_LIGHT               (S)
-
-            /* VULN bits for mobs */
-#define VULN_MAGIC              (C)
-#define VULN_WEAPON             (D)
-#define VULN_BASH               (E)
-#define VULN_PIERCE             (F)
-#define VULN_SLASH              (G)
-#define VULN_FIRE               (H)
-#define VULN_COLD               (I)
-#define VULN_LIGHTNING          (J)
-#define VULN_ACID               (K)
-#define VULN_POISON             (L)
-#define VULN_NEGATIVE           (M)
-#define VULN_HOLY               (N)
-#define VULN_ENERGY             (O)
-#define VULN_MENTAL             (P)
-#define VULN_DISEASE            (Q)
-#define VULN_DROWNING           (R)
-#define VULN_LIGHT              (S)
-#define VULN_WOOD               (X)
-#define VULN_SILVER             (Y)
-#define VULN_IRON               (Z)
 
             /* body form */
 #define FORM_EDIBLE             (A)

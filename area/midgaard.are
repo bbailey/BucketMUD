@@ -3,7 +3,7 @@ Name        { All } Diku    Midgaard~
 Builders    None~
 VNUMs       3000 3399
 Security    9
-Version     2
+Version     3
 End
 
 
@@ -24,7 +24,8 @@ ABV D 900 S
 100 1d1+999 1d1+999 1d8+32 19
 -15 -15 -15 -15
 area_attack dodge ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 15000
 AHMV ABCDEFGHIJK M 0
 #3001
@@ -41,7 +42,8 @@ ABV 0 900 S
 100 1d1+999 1d1+99 1d8+20 13
 -15 -15 -15 -15
 bash berserk dodge ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #3002
@@ -57,7 +59,8 @@ ABV 0 900 S
 100 1d1+999 1d1+99 1d8+20 13
 1 1 1 1
 disarm dodge ~
-AB 0 0
+AB 0
+none~
 8 8 1 1300
 AHMV ABCDEFGHIJK M 0
 #3003
@@ -73,7 +76,8 @@ ABTV 0 900 S
 100 1d1+999 1d1+99 1d8+32 17
 -15 -15 -15 -15
 bash disarm kick kick_dirt parry ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 25000
 AHMV ABCDEFGHIJK M 0
 #3004
@@ -90,7 +94,8 @@ ABV 0 900 S
 100 1d1+999 1d1+99 1d8+32 17
 -15 -15 -15 -15
 bash disarm dodge parry trip ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 25000
 AHMV ABCDEFGHIJK M 0
 #3005
@@ -106,7 +111,8 @@ ACHS PQ -100 S
 100 6d8+80 1d1+99 1d5+1 17
 2 4 3 7
 disarm dodge trip ~
-0 0 0
+0 0
+none~
 8 8 3 100
 AHMV ABCDEFGHIJK M 0
 #3006
@@ -122,7 +128,8 @@ ABTV 0 900 S
 100 1d1+999 1d1+99 1d8+32 13
 -15 -15 -15 -15
 bash disarm kick kick_dirt ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 1300
 AHMV ABCDEFGHIJK M 0
 #3007
@@ -138,7 +145,8 @@ ABJKTVb 0 900 S
 100 1d1+999 1d1+99 1d4+23 13
 -15 -15 -15 -15
 dodge fast trip ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 58
 AHMV ABCDEFGHIJK M 0
 #3008
@@ -154,7 +162,8 @@ ABV 0 900 S
 100 1d1+999 1d1+99 1d8+20 17
 -15 -15 -15 -15
 none~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 4000
 AHMV ABCDEFGHIJK M 0
 #3009
@@ -170,7 +179,8 @@ ABV 0 900 S
 100 1d1+999 1d1+99 1d8+22 16
 -15 -15 -15 -15
 area_attack dodge ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 58000
 AHMV ABCDEFGHIJK M 0
 #3010
@@ -187,7 +197,8 @@ ABV 0 900 S
 100 1d1+999 1d1+99 1d8+20 17
 -15 -15 -15 -15
 area_attack dodge trip ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 2 4500
 AHMV ABCDEFGHIJK M 0
 #3011
@@ -208,7 +219,8 @@ ABTV CDFJZ 1000 S
 100 1d1+2999 1d1+499 4d4+30 8
 -20 -20 -20 -10
 area_attack bash berserk disarm dodge fast kick kick_dirt parry rescue trip crush assist_guard ~
-ABP CDHI JP
+ABP CDHI
+lightning mental ~
 8 8 1 0
 AHMV ABCDEFGHIJK H 0
 #3012
@@ -225,7 +237,8 @@ ABQVa DFH 1000 S
 100 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 dodge fast kick kick_dirt parry ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #3020
@@ -243,7 +256,8 @@ ABKRV DEFJZ 1000 S
 100 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
 dodge fade ~
-ABCD B Z
+ABCD B
+silver iron ~
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #3021
@@ -260,7 +274,8 @@ ABKQV CDEFHZ 1000 S
 100 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 disarm dodge fast kick kick_dirt parry ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3022
@@ -278,7 +293,8 @@ ABKSV DFZ 1000 S
 100 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 backstab disarm dodge fast trip ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 2 0
 0 0 M 0
 #3023
@@ -296,7 +312,8 @@ ABKTV DFJ 1000 S
 100 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 area_attack bash berserk disarm kick kick_dirt parry ~
-ABCD CLQ R
+ABCD CLQ
+drowning ~
 8 8 1 0
 AHMV ABCDEFGHIJK M 0
 #3024
@@ -314,7 +331,8 @@ ABRTV BDJ 800 S
 100 1d1+999 1d1+499 10d4+10 19
 -10 -10 -10 -8
 area_attack disarm fade ~
-AB BCD Z
+AB BCD
+silver iron ~
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #3025
@@ -333,7 +351,8 @@ ABQTV DJ 800 S
 100 1d1+999 1d1+499 5d8+10 20
 -10 -10 -10 -7
 berserk disarm kick kick_dirt parry ~
-AB CD 0
+AB CD
+none~
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #3026
@@ -351,7 +370,8 @@ ABSTV DFPQ 800 S
 100 1d1+999 1d1+99 4d10+12 11
 -12 -12 -12 -6
 backstab disarm dodge trip ~
-AB CD 0
+AB CD
+none~
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #3027
@@ -370,7 +390,8 @@ ABTV DF 800 S
 100 1d1+999 1d1+199 11d4+10 17
 -10 -10 -10 -4
 area_attack bash berserk disarm fast kick kick_dirt parry ~
-AB CD 0
+AB CD
+none~
 8 8 1 2000
 AHMV ABCDEFGHIJK M 0
 #3040
@@ -386,7 +407,8 @@ ABV 0 900 S
 100 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 dodge fast trip ~
-AB CD 0
+AB CD
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3041
@@ -402,7 +424,8 @@ ABV 0 900 S
 100 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 dodge fast trip ~
-AB CD 0
+AB CD
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3042
@@ -418,7 +441,8 @@ ABRV D 600 S
 100 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 dodge trip ~
-AB CD 0
+AB CD
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3043
@@ -433,7 +457,8 @@ ABQV 0 600 S
 100 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 dodge fast trip ~
-AB CD 0
+AB CD
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3044
@@ -448,7 +473,8 @@ ABSV 0 600 S
 100 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 dodge fast trip ~
-AB CD 0
+AB CD
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3045
@@ -463,7 +489,8 @@ ABTV 0 600 S
 100 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 backstab dodge fast trip ~
-AB CD 0
+AB CD
+none~
 8 8 1 150
 AHMV ABCDEFGHIJK M 0
 #3046
@@ -480,7 +507,8 @@ ABSV 0 600 S
 100 1d1+499 1d1+99 1d8+18 13
 -8 -8 -8 -4
 backstab disarm dodge trip ~
-AB CD 0
+AB CD
+none~
 8 8 1 200
 AHMV ABCDEFGHIJK M 0
 #3060
@@ -496,7 +524,8 @@ ACGT 0 1000 S
 100 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
 bash berserk disarm parry rescue assist_guard assist_vnum ~
-0 C 0
+0 C
+none~
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3061
@@ -511,7 +540,8 @@ AGH 0 900 S
 100 2d6+10 1d1+99 1d5+0 7
 10 10 10 10
 trip assist_vnum ~
-0 0 C
+0 0
+magic ~
 8 8 3 10
 AHMV ABCDEFGHIJK M 0
 #3062
@@ -528,7 +558,8 @@ AFGHU 0 -200 S
 100 1d6+4 1d1+99 1d4+0 10
 10 10 10 10
 dodge assist_race ~
-0 0 C
+0 0
+magic ~
 8 8 3 0
 BGV ACDEFHJKQV S 0
 #3063
@@ -544,7 +575,8 @@ ACS 0 -200 S
 100 2d6+60 1d1+99 1d6+1 17
 7 5 5 10
 backstab trip assist_align ~
-0 0 C
+0 0
+magic ~
 8 8 1 18
 AHMV ABCDEFGHIJK M 0
 #3064
@@ -560,7 +592,8 @@ AG 0 400 S
 100 2d6+22 1d1+99 1d6+0 13
 8 8 8 10
 assist_vnum ~
-0 0 C
+0 0
+magic ~
 8 8 1 65
 AHMV ABCDEFGHIJK M 0
 #3065
@@ -576,7 +609,8 @@ AB 0 400 S
 100 2d6+10 1d1+99 1d5+0 13
 8 8 8 10
 dodge trip assist_vnum ~
-0 0 C
+0 0
+magic ~
 8 8 2 0
 AHMV ABCDEFGHIJK M 0
 #3066
@@ -592,7 +626,8 @@ AFGHU Z -200 S
 100 1d6+4 1d1+99 1d4+0 22
 8 8 8 9
 berserk dodge fast assist_race ~
-0 0 C
+0 0
+magic ~
 8 8 3 0
 AGV ACDEFHJKQUV S 0
 #3067
@@ -608,7 +643,8 @@ ABT 0 1000 S
 100 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
 bash berserk disarm parry rescue assist_guard assist_vnum ~
-0 C 0
+0 C
+none~
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3068
@@ -624,7 +660,8 @@ ABT 0 1000 S
 100 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
 bash berserk disarm parry rescue assist_guard assist_vnum ~
-0 C 0
+0 C
+none~
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3069
@@ -640,7 +677,8 @@ ABT BQ 1000 S
 100 20d20+200 1d1+199 2d4+7 17
 -4 -6 -6 0
 bash berserk disarm fast parry rescue assist_guard assist_vnum ~
-0 C 0
+0 C
+none~
 8 8 3 500
 AHMV ABCDEFGHIJK M 0
 #3070
@@ -657,7 +695,8 @@ ABQRV DEF 1000 S
 100 1d1+999 1d1+999 10d10+10 19
 -15 -15 -15 -15
 dodge fade fast ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 1 5000
 AHMV ABCDEFGHIJK M 0
 #3071
@@ -673,7 +712,8 @@ ABT 0 1000 S
 100 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
 bash berserk disarm parry rescue assist_guard assist_vnum ~
-0 C 0
+0 C
+none~
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3072
@@ -689,7 +729,8 @@ ABT 0 1000 S
 100 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
 bash berserk disarm parry rescue assist_guard assist_vnum ~
-0 C 0
+0 C
+none~
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3090
@@ -705,7 +746,8 @@ ABU Z 400 S
 100 2d6+11 1d1+99 1d4+0 22
 8 8 8 10
 dodge fast ~
-0 C 0
+0 C
+none~
 8 8 3 0
 AGV ACDEFHJKQUV T 0
 #3091
@@ -721,7 +763,8 @@ ABU F 400 S
 100 4d6+25 1d1+99 1d6+0 10
 7 7 7 10
 fast trip ~
-0 C 0
+0 C
+none~
 8 8 3 0
 AGV ACDEFHJKQUV S 0
 #3092
@@ -737,7 +780,8 @@ ABU F 400 S
 100 3d12+50 1d1+99 1d6+0 10
 5 5 5 9
 fast trip ~
-0 C 0
+0 C
+none~
 8 8 3 0
 AGV ACDEFHJKQUV S 0
 #3093
@@ -753,7 +797,8 @@ ABU F 400 S
 100 6d10+60 1d1+149 2d4+1 10
 4 4 4 8
 bash berserk fast rescue ~
-0 C 0
+0 C
+none~
 8 8 3 0
 AGV ACDEFHJKUV M 0
 #3094
@@ -769,7 +814,8 @@ ABU FZ 0 S
 100 6d10+80 1d1+99 2d5+1 10
 4 4 4 8
 bash dodge fast ~
-0 C 0
+0 C
+none~
 8 8 3 0
 AGV ACDEFJKQV M 0
 #3100
@@ -786,7 +832,8 @@ ABV 0 1000 S
 100 1d1+499 1d1+99 1d8+12 13
 -15 -15 -15 -15
 dodge fade ~
-AB CD 0
+AB CD
+none~
 8 8 2 180
 AHMV ABCDEFGHIJK M 0
 #3120
@@ -802,7 +849,8 @@ ABH 0 800 S
 100 2d6+35 1d1+99 1d7+0 17
 7 7 7 10
 none~
-0 0 C
+0 0
+magic ~
 6 6 1 75
 AHMV ABCDEFGHIJK M 0
 #3121
@@ -818,7 +866,8 @@ ABU Tb 1000 S
 100 2d6+10 1d1+99 1d5+0 23
 8 8 8 10
 bash dodge assist_race ~
-0 R C
+0 R
+magic ~
 8 8 3 0
 AGW ACDEFHKP S 0
 #3122
@@ -834,7 +883,8 @@ ABU Tb 1000 S
 100 1d4+0 1d1+99 1d1+0 24
 10 10 10 10
 dodge assist_race ~
-0 R C
+0 R
+magic ~
 8 8 3 0
 AGW ACDEFHKP T 0
 #3123
@@ -850,7 +900,8 @@ AGHU T 1000 S
 100 2d6+0 1d1+99 1d3+0 23
 10 10 10 10
 dodge fast assist_race ~
-0 0 C
+0 0
+magic ~
 8 8 3 0
 AGW ACDEFHKP T 0
 #3124
@@ -866,7 +917,8 @@ AGU Tb 1000 S
 100 2d6+5 1d1+99 1d4+0 24
 10 10 10 10
 dodge assist_race ~
-0 R C
+0 R
+magic ~
 8 8 3 0
 AGW ACDEFHKP S 0
 #3140
@@ -882,7 +934,8 @@ ABCFT D 1000 S
 100 15d15+190 1d1+199 2d4+6 17
 -2 -2 -2 6
 bash berserk disarm fast parry rescue assist_vnum ~
-0 C 0
+0 C
+none~
 8 8 1 500
 AHMV ABCDEFGHIJK M 0
 #3141
@@ -898,7 +951,8 @@ ABCFT 0 1000 S
 100 15d15+10 1d1+149 2d4+4 17
 0 0 0 8
 bash berserk disarm fast parry rescue assist_vnum ~
-0 C 0
+0 C
+none~
 8 8 3 150
 AHMV ABCDEFGHIJK M 0
 #3142
@@ -916,7 +970,8 @@ AB 0 900 S
 100 4d12+148 1d1+99 2d7+1 16
 0 0 0 8
 dodge fast kick kick_dirt ~
-0 0 0
+0 0
+none~
 6 6 2 100
 AHMV ABCDEFGHIJK M 0
 #3143
@@ -932,7 +987,8 @@ AB N 900 S
 100 6d10+500 1d1+199 1d8+12 17
 -15 -15 -15 -15
 disarm dodge trip assist_players ~
-AB CD 0
+AB CD
+none~
 4 4 1 1000
 AHMV ABCDEFGHIJK M 0
 #3144
@@ -948,7 +1004,8 @@ AH 0 900 S
 100 2d6+10 1d1+99 1d5+0 16
 10 10 10 10
 berserk ~
-0 0 C
+0 0
+magic ~
 8 8 1 14
 AHMV ABCDEFGHIJK M 0
 #3150
@@ -965,7 +1022,8 @@ ABV 0 900 S
 100 1d1+999 1d1+199 1d8+10 16
 -15 -15 -15 -15
 dodge fade ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 2 1000
 AHMV ABCDEFGHIJK M 0
 #3160
@@ -984,7 +1042,8 @@ ABV 0 900 S
 100 1d1+999 1d1+199 5d6+20 16
 -15 -15 -15 -15
 dodge fade ~
-ABCD 0 0
+ABCD 0
+none~
 8 8 2 1000
 AHMV ABCDEFGHIJK M 0
 #3161
@@ -1002,7 +1061,8 @@ ABV D 200 S
 100 11d10+200 1d1+99 4d6+4 10
 -6 -5 -2 4
 dodge fast trip assist_race ~
-0 FL I
+0 FL
+cold ~
 8 8 1 0
 AGRXYc ADEFKLQVX S 0
 #0
@@ -1230,14 +1290,14 @@ unknown~
 0 0 250 0 0
 0 4 60 P
 E
+letters~
+They say, "Use 'hold lantern' to activate."
+~
+E
 lantern~
 It is a large and robust but somewhat battered oil lantern made from brass,
 equipped with a handle to make it handy and a hood to protect its flame.
 Some letters have been scratched on its bottom.
-~
-E
-letters~
-They say, "Use 'hold lantern' to activate."
 ~
 #3032
 bag~
@@ -1318,9 +1378,9 @@ unknown~
 0 0 0 0 0
 5 1 5000 P
 A
-17 -2
-A
 24 -1
+A
+17 -2
 E
 ring~
 It's a silver ring set with a gleaming moonstone.
@@ -2412,9 +2472,9 @@ unknown~
 A B AC AB 0
 8 5 0 P
 A
-18 1
-A
 19 1
+A
+18 1
 E
 sword~
 You see a sword of great craftsmanship.  Imprinted on the side is:
@@ -2429,9 +2489,9 @@ unknown~
 B A BC ABD 0
 2 2 0 P
 A
-18 1
-A
 19 1
+A
+18 1
 E
 dagger~
 You see a dagger of great craftsmanship.  Imprinted on the side is:
@@ -2446,9 +2506,9 @@ unknown~
 C B C ABC 0
 7 10 0 P
 A
-18 1
-A
 19 2
+A
+18 1
 E
 mace~
 You see a mace of great craftsmanship.  Imprinted on the side is:
@@ -2606,9 +2666,9 @@ unknown~
 0 0 0 0 0
 12 1 0 P
 A
-17 -5
-A
 24 -1
+A
+17 -5
 #3365
 banner war merc~
 a war banner~
@@ -2618,9 +2678,9 @@ unknown~
 0 0 500 0 0
 8 1 0 P
 A
-24 -1
-A
 17 -2
+A
+24 -1
 E
 banner~
 This is the official Merc war banner to see you through the darkest realm!
@@ -2857,6 +2917,11 @@ A small sign with big letters is fastened to the bar.
 ~
 0 262152 0
 E
+writing carving carvings symbols symbol~
+Although it is very hard to understand, you think it looks a lot like beer,
+poems about beer, and small beer-mugs.
+~
+E
 sign~
 The sign reads:
 Free instructions provided by the Grunting Boar Inn.
@@ -2864,11 +2929,6 @@ Free instructions provided by the Grunting Boar Inn.
    Buy  - Buy something (drinkable) from the bartender.
    List - The bartender will show you all the different drinks and
           specialties, and tell the price of each.
-~
-E
-writing carving carvings symbols symbol~
-Although it is very hard to understand, you think it looks a lot like beer,
-poems about beer, and small beer-mugs.
 ~
 D3
 You see the exit to the entrance hall.
@@ -2897,6 +2957,14 @@ A small sign is on the counter.
 ~
 0 262152 0
 E
+sign~
+Free instructions provided by the store:
+
+   Buy  - Will buy you some bread or pastry.
+   List - The baker will kindly tell you the price and sort of the bread in
+          his bakery.
+~
+E
 danish pastry~
 You see that this is truly delicious pastry.  Must be made by a Dane from
 Denmark (which surely is not the capital of Sweden!).  Former ruler of
@@ -2905,14 +2973,6 @@ Iceland, Estonia etc. etc.
    The sight of those large, wholesome chokoladeboller makes your mouth water
 and your soul sing.
 
-~
-E
-sign~
-Free instructions provided by the store:
-
-   Buy  - Will buy you some bread or pastry.
-   List - The baker will kindly tell you the price and sort of the bread in
-          his bakery.
 ~
 D2
 You see the main street.
@@ -3453,17 +3513,17 @@ sorts and sizes.
 ~
 0 262152 0
 E
-jars bottles~
-Some of them are transparent enabling you to see that some contain colored
-powders while others contain body parts of various animals.
+scrolls~
+Each scroll is stored in a leather tube that protects it from moist.
 ~
 E
 books~
 Most of them appear to be very old and dusty.
 ~
 E
-scrolls~
-Each scroll is stored in a leather tube that protects it from moist.
+jars bottles~
+Some of them are transparent enabling you to see that some contain colored
+powders while others contain body parts of various animals.
 ~
 D2
 You see the main street.
@@ -3480,15 +3540,6 @@ A small sign with golden letters stands on the desk.
 ~
 0 262152 0
 E
-oil lamps~
-They are made from polished gold and looks as if they are securely fastened
-to the smooth stone walls.
-~
-E
-desk~
-Your face is reflected in its surface.
-~
-E
 sign~
 The golden letters say :-
 
@@ -3496,6 +3547,15 @@ The golden letters say :-
         'buy <item>' to buy an item,
         'sell <item>' to sell an item and
         'value <item>' to make the jeweller evaluate an item.
+~
+E
+desk~
+Your face is reflected in its surface.
+~
+E
+oil lamps~
+They are made from polished gold and looks as if they are securely fastened
+to the smooth stone walls.
 ~
 D0
 You see Main Street.
@@ -3513,8 +3573,17 @@ A wooden sign is hanging above the fireplace.
 ~
 0 262152 0
 E
-fireplace~
-It is a rather large fireplace made from heavy granite rocks.
+sign~
+The wooden sign says :-
+
+    Use 'list' to see what is in store,
+        'buy <item>' to buy an item,
+        'sell <item>' to sell an item and
+        'value <item>' to make the leather worker evaluate an item.
+~
+E
+pot~
+Several large pieces of leather hide are boiling in the iron pot.
 ~
 E
 table~
@@ -3523,17 +3592,8 @@ covered in marks and scratches.  A large burning candle stands directly on
 the table surface, tallow flowing down its sides.
 ~
 E
-pot~
-Several large pieces of leather hide are boiling in the iron pot.
-~
-E
-sign~
-The wooden sign says :-
-
-    Use 'list' to see what is in store,
-        'buy <item>' to buy an item,
-        'sell <item>' to sell an item and
-        'value <item>' to make the leather worker evaluate an item.
+fireplace~
+It is a rather large fireplace made from heavy granite rocks.
 ~
 D2
 You see the alley.
@@ -3549,9 +3609,14 @@ east and Wall Road leads both north and south from here.
 ~
 0 262144 1
 E
-bridge footbridge~
-It is too high up to reach but it looks as if one easily could walk across it
-from one tower to the other.
+wall~
+It is built from large grey rocks that have been fastened to each other with
+some kind of mortar.  It is far too high to climb.
+~
+E
+tower towers~
+Both of the towers are built from large grey rocks that have been fastened to
+each other with some kind of mortar, just like the city wall.
 ~
 E
 gate~
@@ -3560,14 +3625,9 @@ reinforced with large iron bands to make them even more sturdy.  One of the
 doors is equipped with a very big lock.
 ~
 E
-tower towers~
-Both of the towers are built from large grey rocks that have been fastened to
-each other with some kind of mortar, just like the city wall.
-~
-E
-wall~
-It is built from large grey rocks that have been fastened to each other with
-some kind of mortar.  It is far too high to climb.
+bridge footbridge~
+It is too high up to reach but it looks as if one easily could walk across it
+from one tower to the other.
 ~
 D0
 Wall road runs along the inner city wall to the north.
@@ -3600,9 +3660,14 @@ the city wall.
 ~
 0 262144 1
 E
-bridge footbridge~
-It is too high up to reach but it looks as if one easily could walk across it
-from one tower to the other.
+wall~
+It is built from large grey rocks that have been fastened to each other with
+some kind of mortar.  It is far too high to climb.
+~
+E
+tower towers~
+Both of the towers are built from large grey rocks that have been fastened to
+each other with some kind of mortar, just like the city wall.
 ~
 E
 gate~
@@ -3611,14 +3676,9 @@ reinforced with large iron bands to make them even more sturdy.  One of the
 doors is equipped with a very big lock.
 ~
 E
-tower towers~
-Both of the towers are built from large grey rocks that have been fastened to
-each other with some kind of mortar, just like the city wall.
-~
-E
-wall~
-It is built from large grey rocks that have been fastened to each other with
-some kind of mortar.  It is far too high to climb.
+bridge footbridge~
+It is too high up to reach but it looks as if one easily could walk across it
+from one tower to the other.
 ~
 D0
 Wall road heads north along the city wall.
@@ -3670,13 +3730,13 @@ Some letters have been written on the wall here.
 ~
 0 262144 1
 E
-letters~
-It says 'Who watches the watchmen?'
-~
-E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 some kind of mortar.  It is far too high to climb.
+~
+E
+letters~
+It says 'Who watches the watchmen?'
 ~
 D0
 The road continues further north.
@@ -3860,18 +3920,18 @@ opening in the wall ten feet below the bridge.
 ~
 0 262144 1
 E
-bridge~
+wall~
 It is built from large grey rocks that have been fastened to each other with
-some kind of mortar, just like the wall.
+some kind of mortar.  It is far too high to climb.
 ~
 E
 opening~
 You cannot really see it from here as it is somewhere beneath your feet.
 ~
 E
-wall~
+bridge~
 It is built from large grey rocks that have been fastened to each other with
-some kind of mortar.  It is far too high to climb.
+some kind of mortar, just like the wall.
 ~
 D0
 You see the road.
@@ -3893,9 +3953,14 @@ wall.
 ~
 0 262144 1
 E
-bridge footbridge~
-It is too high up to reach but it looks as if one easily could walk across it
-from one tower to the other.
+wall~
+It is built from large grey rocks that have been fastened to each other with
+some kind of mortar.  It is far too high to climb.
+~
+E
+tower towers~
+Both of the towers are built from large grey rocks that have been fastened to
+each other with some kind of mortar, just like the city wall.
 ~
 E
 gate~
@@ -3904,14 +3969,9 @@ reinforced with large iron bands to make them even more sturdy.  One of the
 doors is equipped with a very big lock.
 ~
 E
-tower towers~
-Both of the towers are built from large grey rocks that have been fastened to
-each other with some kind of mortar, just like the city wall.
-~
-E
-wall~
-It is built from large grey rocks that have been fastened to each other with
-some kind of mortar.  It is far too high to climb.
+bridge footbridge~
+It is too high up to reach but it looks as if one easily could walk across it
+from one tower to the other.
 ~
 D0
 (null)~
@@ -3936,9 +3996,14 @@ the city wall.
 ~
 0 262144 1
 E
-bridge footbridge~
-It is too high up to reach but it looks as if one easily could walk across it
-from one tower to the other.
+wall~
+It is built from large grey rocks that have been fastened to each other with
+some kind of mortar.  It is far too high to climb.
+~
+E
+tower towers~
+Both of the towers are built from large grey rocks that have been fastened to
+each other with some kind of mortar, just like the city wall.
 ~
 E
 gate~
@@ -3947,14 +4012,9 @@ reinforced with large iron bands to make them even more sturdy.  One of the
 doors is equipped with a very big lock.
 ~
 E
-tower towers~
-Both of the towers are built from large grey rocks that have been fastened to
-each other with some kind of mortar, just like the city wall.
-~
-E
-wall~
-It is built from large grey rocks that have been fastened to each other with
-some kind of mortar.  It is far too high to climb.
+bridge footbridge~
+It is too high up to reach but it looks as if one easily could walk across it
+from one tower to the other.
 ~
 D1
 (null)~
@@ -3976,15 +4036,15 @@ seen a rainbow.
 ~
 0 263176 0
 E
-altar~
-Even though the altar is more than ten feet long it appears to be made from a
-single block of white virgin marble.
-~
-E
 statue Mota king god~
 The statue represents the Great God Mota, holding his staff.  He has long, grey
 hair and beard and a kindly look on his face.  His staff is topped by a painted
 cube, the 6 faces of which represent the 6 aspects of his power.
+~
+E
+altar~
+Even though the altar is more than ten feet long it appears to be made from a
+single block of white virgin marble.
 ~
 D2
 You see the southern end of the temple.
@@ -4451,6 +4511,11 @@ A road sign is here.
 ~
 0 262144 1
 E
+chain~
+The the chain reaches the clouds high above you.  It must take some really
+powerful magic to hold such a chain in place.
+~
+E
 sign~
 The sign points in all directions:
 
@@ -4462,11 +4527,6 @@ The sign points in all directions:
 Someone has added the following with red paint:
 
    Up    - Redferne's Flying Citadel.
-~
-E
-chain~
-The the chain reaches the clouds high above you.  It must take some really
-powerful magic to hold such a chain in place.
 ~
 D0
 (null)~
@@ -4546,8 +4606,8 @@ hanging on the grate.  The concourse crosses Elm Street to the east.
 ~
 0 262144 1
 E
-grate grating~
-Looks heavy.  A small sign is hanging on it.
+elm tree~
+The fresh young leaves of the elm tree wave gently in the wind.
 ~
 E
 sign~
@@ -4559,8 +4619,8 @@ The sign says :-
           Please show respect and do not desecrate their tombs.
 ~
 E
-elm tree~
-The fresh young leaves of the elm tree wave gently in the wind.
+grate grating~
+Looks heavy.  A small sign is hanging on it.
 ~
 D1
 You see the concourse.
@@ -4946,13 +5006,13 @@ half hidden by a stack of books, leads to a room in the back of the shop.
 ~
 0 262150 0
 E
+window~
+You peer out the window and see a cityguard beating up an old lady.
+~
+E
 bookcase~
 You see many cartographer journals and topographical studies.  You also see
 quite a few tomes written by someone named "Anson MacDonald".
-~
-E
-window~
-You peer out the window and see a cityguard beating up an old lady.
 ~
 D0
 A sign on the door says, "Unauthorized Personel Prohibited".
@@ -5800,12 +5860,12 @@ you search vainly for a clean table to sit at, and then give up.
 ~
 0 262152 0
 E
-table tables~
-You find a table that's relatively vomit-free.
-~
-E
 wall walls~
 Bare, except for the holes.
+~
+E
+table tables~
+You find a table that's relatively vomit-free.
 ~
 D2
 A dark alley is to the south.
