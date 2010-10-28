@@ -937,15 +937,7 @@ static void fread_char(CHAR_DATA * ch, FILE * fp)
             {
                 AFFECT_DATA *paf;
 
-                if (affect_free == NULL)
-                {
-                    paf = alloc_perm(sizeof(*paf));
-                }
-                else
-                {
-                    paf = affect_free;
-                    affect_free = affect_free->next;
-                }
+                paf = new_affect();
 
                 if (!strcasecmp(word, "AffD"))
                 {
@@ -1403,13 +1395,7 @@ static void fread_pet(CHAR_DATA * ch, FILE * fp)
                 AFFECT_DATA *paf;
                 int sn;
 
-                if (affect_free == NULL)
-                    paf = alloc_perm(sizeof(*paf));
-                else
-                {
-                    paf = affect_free;
-                    affect_free = affect_free->next;
-                }
+                paf = new_affect();
 
                 sn = skill_lookup(fread_word(fp));
                 if (sn < 0)
@@ -1629,15 +1615,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
             {
                 AFFECT_DATA *paf;
 
-                if (affect_free == NULL)
-                {
-                    paf = alloc_perm(sizeof(*paf));
-                }
-                else
-                {
-                    paf = affect_free;
-                    affect_free = affect_free->next;
-                }
+                paf = new_affect();
 
                 if (!strcasecmp(word, "AffD"))
                 {
@@ -1668,15 +1646,8 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
             {
                 AFFECT_DATA *paf;
 
-                if (affect_free == NULL)
-                {
-                    paf = alloc_perm(sizeof(*paf));
-                }
-                else
-                {
-                    paf = affect_free;
-                    affect_free = affect_free->next;
-                }
+                paf = new_affect();
+
                 paf->type = -999;
                 paf->level = fread_number(fp);
                 paf->duration = fread_number(fp);
@@ -1716,15 +1687,7 @@ static void fread_obj(CHAR_DATA * ch, FILE * fp)
             {
                 EXTRA_DESCR_DATA *ed;
 
-                if (extra_descr_free == NULL)
-                {
-                    ed = alloc_perm(sizeof(*ed));
-                }
-                else
-                {
-                    ed = extra_descr_free;
-                    extra_descr_free = extra_descr_free->next;
-                }
+                ed = new_extra_descr();
 
                 ed->keyword = fread_string(fp);
                 ed->description = fread_string(fp);

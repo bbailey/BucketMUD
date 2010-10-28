@@ -4159,15 +4159,7 @@ void do_string(CHAR_DATA * ch, char *argument)
 
             sprintf(buf, "%s\n\r", argument);
 
-            if (extra_descr_free == NULL)
-            {
-                ed = alloc_perm(sizeof(*ed));
-            }
-            else
-            {
-                ed = extra_descr_free;
-                extra_descr_free = ed->next;
-            }
+            ed = new_extra_descr();
 
             ed->keyword = str_dup(arg3);
             ed->description = str_dup(buf);

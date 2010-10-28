@@ -346,7 +346,7 @@ static void load_board(BOARD_DATA * board)
         while (isspace(letter));
         ungetc(letter, fp);
 
-        pnote = alloc_perm(sizeof(*pnote));
+        pnote = new_note();
 
         if (strcasecmp(fread_word(fp), "sender"))
             break;

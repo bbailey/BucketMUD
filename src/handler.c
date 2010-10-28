@@ -1079,15 +1079,7 @@ void affect_to_char(CHAR_DATA * ch, AFFECT_DATA * paf)
 {
     AFFECT_DATA *paf_new;
 
-    if (affect_free == NULL)
-    {
-        paf_new = alloc_perm(sizeof(*paf_new));
-    }
-    else
-    {
-        paf_new = affect_free;
-        affect_free = affect_free->next;
-    }
+    paf_new = new_affect();
 
     *paf_new = *paf;
     paf_new->next = ch->affected;
@@ -1102,13 +1094,7 @@ void affect_to_obj(OBJ_DATA * obj, AFFECT_DATA * paf)
 {
     AFFECT_DATA *paf_new;
 
-    if (affect_free == NULL)
-        paf_new = alloc_perm(sizeof(*paf_new));
-    else
-    {
-        paf_new = affect_free;
-        affect_free = affect_free->next;
-    }
+    paf_new = new_affect();
 
     *paf_new = *paf;
     paf_new->next = obj->affected;

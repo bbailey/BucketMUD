@@ -964,7 +964,7 @@ static void load_area(FILE * fp)
     char *word = NULL;
     bool fMatch;
 
-    pArea = alloc_perm(sizeof(*pArea));
+    pArea = new_area();
     pArea->age = 15;
     pArea->nplayer = 0;
     pArea->filename = str_dup(strArea);
@@ -1146,7 +1146,7 @@ static void load_resets(FILE * fp)
             continue;
         }
 
-        pReset = alloc_perm(sizeof(*pReset));
+        pReset = new_reset_data();
         pReset->command = letter;
         /* if_flag */
         fread_number(fp);
@@ -1341,7 +1341,7 @@ static void load_rooms(FILE * fp)
         }
         fBootDb = TRUE;
 
-        pRoomIndex = alloc_perm(sizeof(*pRoomIndex));
+        pRoomIndex = new_room_index();
         pRoomIndex->people = NULL;
         pRoomIndex->contents = NULL;
         pRoomIndex->extra_descr = NULL;
@@ -1376,7 +1376,7 @@ static void load_rooms(FILE * fp)
                     exit(EXIT_FAILURE);
                 }
 
-                pexit = alloc_perm(sizeof(*pexit));
+                pexit = new_exit();
                 pexit->description = fread_string(fp);
                 pexit->keyword = fread_string(fp);
                 pexit->exit_info = 0;
@@ -1424,7 +1424,8 @@ static void load_rooms(FILE * fp)
             {
                 EXTRA_DESCR_DATA *ed;
 
-                ed = alloc_perm(sizeof(*ed));
+                ed = new_extra_descr();
+
                 ed->keyword = fread_string(fp);
                 ed->description = fread_string(fp);
                 ed->next = pRoomIndex->extra_descr;
@@ -1461,7 +1462,7 @@ static void load_shops(FILE * fp)
         MOB_INDEX_DATA *pMobIndex;
         int iTrade;
 
-        pShop = alloc_perm(sizeof(*pShop));
+        pShop = new_shop();
         pShop->keeper = fread_number(fp);
         if (pShop->keeper == 0)
             break;
@@ -4507,7 +4508,8 @@ static void load_objects(FILE * fp)
             {
                 AFFECT_DATA *paf;
 
-                paf = alloc_perm(sizeof(*paf));
+                paf = new_affect();
+
                 paf->type = -1;
                 paf->level = pObjIndex->level;
                 paf->duration = -1;
@@ -4523,7 +4525,8 @@ static void load_objects(FILE * fp)
             {
                 EXTRA_DESCR_DATA *ed;
 
-                ed = alloc_perm(sizeof(*ed));
+                ed = new_extra_descr();
+
                 ed->keyword = fread_string(fp);
                 ed->description = fread_string(fp);
                 ed->next = pObjIndex->extra_descr;

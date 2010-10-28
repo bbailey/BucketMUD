@@ -2339,13 +2339,7 @@ void spell_enchant_armor(int sn, int level, CHAR_DATA * ch, void *vo)
 
         for (paf = obj->pIndexData->affected; paf != NULL; paf = paf->next)
         {
-            if (affect_free == NULL)
-                af_new = alloc_perm(sizeof(*af_new));
-            else
-            {
-                af_new = affect_free;
-                affect_free = affect_free->next;
-            }
+            af_new = new_affect();
 
             af_new->next = obj->affected;
             obj->affected = af_new;
@@ -2398,14 +2392,7 @@ void spell_enchant_armor(int sn, int level, CHAR_DATA * ch, void *vo)
     else  			/* add a new affect */
     {
 
-
-        if (affect_free == NULL)
-            paf = alloc_perm(sizeof(*paf));
-        else
-        {
-            paf = affect_free;
-            affect_free = affect_free->next;
-        }
+        paf = new_affect();
 
         paf->type = sn;
         paf->level = level;
@@ -2545,13 +2532,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA * ch, void *vo)
 
         for (paf = obj->pIndexData->affected; paf != NULL; paf = paf->next)
         {
-            if (affect_free == NULL)
-                af_new = alloc_perm(sizeof(*af_new));
-            else
-            {
-                af_new = affect_free;
-                affect_free = affect_free->next;
-            }
+            af_new = new_affect();
 
             af_new->next = obj->affected;
             obj->affected = af_new;
@@ -2605,15 +2586,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA * ch, void *vo)
     }
     else  			/* add a new affect */
     {
-
-
-        if (affect_free == NULL)
-            paf = alloc_perm(sizeof(*paf));
-        else
-        {
-            paf = affect_free;
-            affect_free = affect_free->next;
-        }
+        paf = new_affect();
 
         paf->type = sn;
         paf->level = level;
@@ -2641,15 +2614,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA * ch, void *vo)
     }
     else  			/* add a new affect */
     {
-
-
-        if (affect_free == NULL)
-            paf = alloc_perm(sizeof(*paf));
-        else
-        {
-            paf = affect_free;
-            affect_free = affect_free->next;
-        }
+        paf = new_affect();
 
         paf->type = sn;
         paf->level = level;
