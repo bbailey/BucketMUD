@@ -2999,7 +2999,7 @@ void do_dump(CHAR_DATA * ch, char *argument)
             nMatch++;
         }
 
-    fprintf(fp, "ObjProt	%4d (%8d bytes)\n",
+    fprintf(fp, "ObjProt	%4d (%8lu bytes)\n",
             top_obj_index, top_obj_index * (sizeof(*pObjIndex)));
 
     /* objects */
@@ -3014,7 +3014,7 @@ void do_dump(CHAR_DATA * ch, char *argument)
     for (obj = obj_free; obj != NULL; obj = obj->next)
         count2++;
 
-    fprintf(fp, "Objs	%4d (%8d bytes), %2d free (%d bytes)\n",
+    fprintf(fp, "Objs	%4d (%8lu bytes), %2d free (%lu bytes)\n",
             count, count * (sizeof(*obj)), count2,
             count2 * (sizeof(*obj)));
 
@@ -3024,16 +3024,16 @@ void do_dump(CHAR_DATA * ch, char *argument)
         count++;
 
     fprintf(fp,
-            "Affects	%4d (%8d bytes), %2d free (%d bytes) New Affects not yet included\n",
+            "Affects	%4d (%8lu bytes), %2d free (%lu bytes) New Affects not yet included\n",
             aff_count, aff_count * (sizeof(*af)), count,
             count * (sizeof(*af)));
 
     /* rooms */
-    fprintf(fp, "Rooms	%4d (%8d bytes)\n",
+    fprintf(fp, "Rooms	%4d (%8lu bytes)\n",
             top_room, top_room * (sizeof(ROOM_INDEX_DATA)));
 
     /* exits */
-    fprintf(fp, "Exits	%4d (%8d bytes)\n",
+    fprintf(fp, "Exits	%4d (%8lu bytes)\n",
             top_exit, top_exit * (sizeof(EXIT_DATA)));
 
     fclose(fp);
